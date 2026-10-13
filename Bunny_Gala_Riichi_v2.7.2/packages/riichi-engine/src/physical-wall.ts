@@ -1,6 +1,7 @@
 import {SEATS,type Seat} from './deal.js';
 import type {Tile} from './tiles.js';
 export interface PhysicalWall {tileIds:string[];breakSlot:number;dice:[number,number];}
+/** Level 1 is the upper tile, drawn before level 0 within each stack. */
 export interface PublicWallSlot {side:Seat;stack:number;level:0|1;occupied:boolean;dead:boolean;indicator?:Tile;}
 export function constructPhysicalWall(wall:readonly Tile[],dealer:Seat,dice:[number,number]=[1,1]):PhysicalWall{
  if(wall.length!==136||new Set(wall.map(t=>t.id)).size!==136||dice.some(n=>!Number.isInteger(n)||n<1||n>6))throw new Error('Invalid physical wall');
@@ -15,5 +16,5 @@ export function constructPhysicalWall(wall:readonly Tile[],dealer:Seat,dice:[num
 export function publicWallSlots(state:{physicalWall?:PhysicalWall;liveWall:Tile[];deadWall:{tiles:Tile[];doraIndicators:Tile[];revealedDoraCount:number}}):PublicWallSlot[]{
  if(!state.physicalWall)return[];
  const live=new Set(state.liveWall.map(t=>t.id)),dead=new Set(state.deadWall.tiles.map(t=>t.id)),indicators=state.deadWall.doraIndicators.slice(0,state.deadWall.revealedDoraCount);
- return state.physicalWall.tileIds.map((id,i)=>{const indicator=indicators.find(t=>t.id===id);return{side:SEATS[Math.floor(i/34)]!,stack:Math.floor(i%34/2),level:i%2 as 0|1,occupied:live.has(id)||dead.has(id),dead:dead.has(id),...(indicator?{indicator}:{})};});
+ return state.physicalWall.tileIds.map((id,i)=>{const indicator=indicators.find(t=>t.id===id);return{side:SEATS[Math.floor(i/34)]!,stack:Math.floor(i%34/2),level:(1-i%2) as 0|1,occupied:live.has(id)||dead.has(id),dead:dead.has(id),...(indicator?{indicator}:{})};});
 }

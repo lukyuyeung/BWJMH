@@ -113,3 +113,21 @@
 @media(orientation:landscape) and (max-height:500px){
  .table .seated-luk{top:calc(var(--view-height) - 200px);width:156px;height:200px}
 }
+
+/* Public tiles remain readable independently of the perspective table. */
+.public-tile-tools{position:fixed;left:max(8px,env(safe-area-inset-left));top:max(8px,env(safe-area-inset-top));z-index:20;display:flex;gap:6px;align-items:center;max-width:calc(100vw - 190px)}
+.public-tile-tools button{min-height:44px;padding:8px 12px;font-size:13px;background:#172b27;color:#fff8e8;border:1px solid #e7bf70}
+.discard-glance{display:flex;align-items:center;gap:8px;padding:4px 8px;border:2px solid #ffd66b;border-radius:8px;background:#13251ff2;color:#fff;box-shadow:0 0 0 1px #17130a}
+.discard-glance>span:first-child{max-width:130px;font-size:12px}
+.discard-glance .tile.mini{width:32px;height:44px;flex-basis:32px;transform:none;background:#fffaf0;box-shadow:none}
+.river-overlay{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:12px}
+.river-backdrop{position:absolute;inset:0;background:#000b}
+.river-dialog{position:relative;width:min(760px,100%);max-height:calc(100dvh - 24px);overflow:auto;background:#13241f;color:#fff8e8;border:1px solid #e8bf71;border-radius:12px;padding:16px}
+.river-dialog header{display:flex;align-items:center;justify-content:space-between;gap:12px}.river-dialog h2{font-size:18px;margin:0}.river-dialog header button{min-height:44px}
+.river-dialog p{font-size:12px}.river-seats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.river-seats h3{font-size:14px;margin:0 0 8px}
+.flat-river{display:grid;grid-template-columns:repeat(6,36px);gap:8px 5px;align-items:center;min-height:48px}
+.flat-river .tile.mini{width:36px;height:48px;flex-basis:36px;transform:none;opacity:1;background:#fffaf0;border:1px solid #cbbf9e;box-shadow:0 2px 0 #ac9974;padding:2px}
+.flat-river .tile.mini.sideways{transform:rotate(90deg);scale:.8}.flat-river .tile.latest-discard{outline:3px solid #ffd65c;outline-offset:2px}
+.flat-river .tile-honor{font-size:28px}.flat-river .characters b{font-size:16px}.flat-river .characters em{font-size:20px}
+@media(max-width:600px){.river-seats{grid-template-columns:1fr}.public-tile-tools{max-width:calc(100vw - 64px);flex-wrap:wrap}.public-tile-tools button{font-size:12px;padding:6px 8px}.discard-glance>span:first-child{max-width:90px}}
+@media(orientation:landscape) and (max-height:500px){.public-tile-tools{top:52px}.discard-glance{padding:2px 6px}.river-dialog{padding:12px}.river-seats{gap:10px}}

@@ -11,3 +11,13 @@ describe('public physical wall',()=>{
  it('draw changes exactly its original wall slot, including dead boundary refill',()=>{const g=createHandState(dealInitialHands(createStandardWall()));const id=g.liveWall[0]!.id,idx=g.physicalWall!.tileIds.indexOf(id);g.liveWall.shift();expect(publicWallSlots(g)[idx]!.occupied).toBe(false);const rinshan=g.deadWall.rinshan.shift()!;g.deadWall.tiles=g.deadWall.tiles.filter(t=>t.id!==rinshan.id);const refill=g.liveWall.pop()!;g.deadWall.tiles.push(refill);g.deadWall.revealedDoraCount++;const slots=publicWallSlots(g);expect(slots.filter(s=>s.dead)).toHaveLength(14);expect(slots.filter(s=>s.indicator)).toHaveLength(2);expect(slots[g.physicalWall!.tileIds.indexOf(refill.id)]!.dead).toBe(true);expect(slots[g.physicalWall!.tileIds.indexOf(rinshan.id)]!.occupied).toBe(false);});
  it('rejects duplicate physical tiles and invalid dice',()=>{const wall=createStandardWall();expect(()=>constructPhysicalWall([...wall.slice(1),wall[1]!],'east')).toThrow();expect(()=>constructPhysicalWall(wall,'east',[0,7])).toThrow();});
 });
+
+
+it('draws the upper tile before the lower tile of a physical stack',()=>{
+ const wall=createStandardWall();const physicalWall=constructPhysicalWall(wall,'east',[3,4]);
+ const state={physicalWall,liveWall:[...wall.slice(0,122)],deadWall:{tiles:wall.slice(122),doraIndicators:[],revealedDoraCount:0}};
+ const first=physicalWall.tileIds.indexOf(wall[0]!.id),second=physicalWall.tileIds.indexOf(wall[1]!.id);
+ const before=publicWallSlots(state);expect(before[first]!.level).toBe(1);expect(before[second]!.level).toBe(0);expect(before[first]!.stack).toBe(before[second]!.stack);expect(before[first]!.side).toBe(before[second]!.side);
+ state.liveWall.shift();const after=publicWallSlots(state);expect(after[first]!.occupied).toBe(false);expect(after[second]!.occupied).toBe(true);
+ const game=createHandState(dealInitialHands(wall));expect(publicWallSlots(game).filter(s=>s.indicator).every(s=>s.level===1)).toBe(true);
+});
