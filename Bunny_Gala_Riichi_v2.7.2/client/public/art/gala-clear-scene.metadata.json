@@ -1,0 +1,16 @@
+{
+  "source": "User clean casino background and gray-white suited voxel rabbit UI reference",
+  "method": "Reference-guided image generation; character sheet uses transparent background",
+  "live_data": [
+    "tiles",
+    "rivers",
+    "melds",
+    "scores",
+    "HUD"
+  ],
+  "assets": {
+    "gala-empty-table.png": "b323186ec9188177f8f51015f5f2e1d7d38e524ea4120960be162524d0d22f5a",
+    "gala-seated-rabbits.png": "5b0ad3e87a1bdc24f50278039c6bc322b4fab680061b8cac1088bb7ee85695df"
+  },
+  "characters": "Three static 2D sprites; no rigged model or skeletal animation"
+}

@@ -12,7 +12,7 @@ try{
  assert.equal((await fetch('http://127.0.0.1:3001/health')).status,200);
  await page.goto('http://127.0.0.1:4173?lobby=1');await page.getByLabel('玩家名稱').fill('Production Solo');
  for(const name of ['建立房間','加入機械人','準備','開始遊戲'])await page.getByRole('button',{name,exact:true}).click();
- await page.getByText('你的手牌',{exact:true}).waitFor();await page.waitForFunction(()=>document.querySelector('.tile-webgl')?.dataset.uprightErrors==='0');
+ await page.locator('.hand button[data-face]').first().waitFor();await page.waitForFunction(()=>document.querySelector('.tile-webgl')?.dataset.uprightErrors==='0');
  const code=await page.locator('.table').getAttribute('data-room-code');const room=server.rooms.getRoomForTesting(code);
  assert(room);assert.equal(room.players.filter(p=>p.isBot).length,3);
  assert.equal(await page.locator('.qa-scenario').count(),0);
