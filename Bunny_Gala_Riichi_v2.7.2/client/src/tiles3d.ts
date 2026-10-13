@@ -52,7 +52,8 @@ export function mountTiles3D(root:HTMLElement):()=>void{
  // Supply the real view direction to lighting; render installs the shared projection.
  camera.position.set(500,-1200,800);camera.lookAt(500,-300,0);camera.updateMatrixWorld();
 
- const handCamera=new THREE.OrthographicCamera(-W/2,W/2,H/2,-H/2,1,2500);handCamera.position.set(W/2,-H/2-1000,900);handCamera.lookAt(W/2,-H/2,0);handCamera.updateMatrixWorld();
+ const handElevation=350,handDistance=1800;
+ const handCamera=new THREE.OrthographicCamera(-W/2,W/2,H/2,-H/2,1,2500);handCamera.position.set(W/2,-H/2-handDistance,handElevation);handCamera.lookAt(W/2,-H/2,0);handCamera.updateMatrixWorld();
  const handPlane=new THREE.Plane(new THREE.Vector3(0,0,1),0),handRay=new THREE.Raycaster();
  const debug=(import.meta as any).env.DEV&&new URLSearchParams(location.search).get('debugCamera')==='side';
  const sideCamera=new THREE.PerspectiveCamera(40,W/H,1,4000);sideCamera.position.set(1700,-1150,520);sideCamera.up.set(0,0,1);sideCamera.lookAt(500,-300,35);sideCamera.updateMatrixWorld();
@@ -97,7 +98,7 @@ export function mountTiles3D(root:HTMLElement):()=>void{
   const board=root.querySelector<HTMLElement>('.board');if(!board)return;
   const present=new Set<HTMLElement>();let clippedBodies=0,matching=0,golden=false,uprightErrors=0,contactErrors=0,publicContactErrors=0;
   for(const el of root.querySelectorAll<HTMLElement>('.board .tile,.board .tile-back,.board .wall-lower,.hand .tile,.hand .tile-back')){
-   present.add(el);const own=!!el.closest('.hand'),w=el.offsetWidth,h=own&&!el.closest('.own-melds')?el.offsetHeight/Math.cos(Math.atan2(900,1000)):el.offsetHeight,depth=own&&!el.closest('.own-melds')?24:el.closest('.river,.melds,.own-melds')?22:Math.min(22,w*.49);
+   present.add(el);const own=!!el.closest('.hand'),w=el.offsetWidth,h=own&&!el.closest('.own-melds')?el.offsetHeight/Math.cos(Math.atan2(handElevation,handDistance)):el.offsetHeight,depth=own&&!el.closest('.own-melds')?24:el.closest('.river,.melds,.own-melds')?22:Math.min(22,w*.49);
    const key=[w,h,depth].join(':');let geo=geometries.get(key);if(!geo){geo=new RoundedBoxGeometry(w,h,depth,2,own?8:4.5);geometries.set(key,geo);}
    let mesh=tiles.get(el);if(!mesh){mesh=new THREE.Group();mesh.matrixAutoUpdate=false;for(let j=0;j<4;j++){const part=new THREE.Mesh();part.frustumCulled=false;part.receiveShadow=true;part.castShadow=j===0&&!own;mesh.add(part);}tiles.set(el,mesh);(own?handScene:boardScene).add(mesh);}
    // One solid body draw and two face draws instead of six separate box-face draws.

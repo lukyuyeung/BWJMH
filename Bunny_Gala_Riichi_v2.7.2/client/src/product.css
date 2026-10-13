@@ -191,3 +191,14 @@
 .table .round-center .wall-count small{display:none}.table .round-center>strong{font-size:16px;line-height:20px}.table .round-center .wall-count{font-size:20px;line-height:22px}
 .table .turn-timer{top:calc(145px - var(--view-height) * .44);bottom:auto;right:0}
 .table .pos-3 .opponent-rack{left:70px}.table .pos-1 .opponent-rack{right:70px}
+
+/* Mahjong proportions, seated silhouettes and explicit local seat wind. */
+.table .scene-canvas .hand .tile:not(.mini){width:60px;height:78px;flex-basis:60px}
+.scene-actor.actor-left,.scene-actor.actor-right{height:calc(var(--view-height) * .48);width:calc(var(--view-height) * .34764);top:calc(var(--view-height) * .18);clip-path:none}
+.scene-actor.actor-left{left:150px}.scene-actor.actor-right{right:150px}
+.scene-table-occlusion{position:absolute;inset:0;z-index:2;pointer-events:none;background:url('/art/gala-empty-table.png') 0 0/1536px var(--view-height) no-repeat;clip-path:polygon(29% 32%,71% 32%,99% 92%,1% 92%)}
+.table .scene-pos-3{left:110px;top:calc(var(--view-height) * .65)}.table .scene-pos-1{right:30px;top:calc(var(--view-height) * .65)}
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{width:270px;height:28px;gap:10px}
+.table .round-center .seat-wind{font-size:20px;line-height:24px;color:#fff2c7;white-space:nowrap}
+.table .round-center>strong{font-size:20px;line-height:24px;white-space:nowrap}
+.table .round-center .wall-count{font-size:20px;line-height:24px;white-space:nowrap}.table .round-center .wall-count small{display:inline;font-size:14px;margin-left:3px}

@@ -16,7 +16,7 @@ try{
  // Freeze bot timeouts in this fixture; legal claims are resolved explicitly below.
  const registerTimer=server.actionTimers.set.bind(server.actionTimers);server.actionTimers.set=(key,timer)=>{clearTimeout(timer);return registerTimer(key,timer);};
  const pause=()=>{clearTimeout(server.actionTimers.get(code));server.actionTimers.delete(code);};pause();
- assert.equal(await page.locator('[data-action=pass-claim]').count(),0);assert.equal(await page.locator('.round-counters,.center-winds').count(),0);assert.equal(await page.locator('.wall-count').innerText(),`${room.game.liveWall.length}`);
+ assert.equal(await page.locator('[data-action=pass-claim]').count(),0);assert.equal(await page.locator('.round-counters,.center-winds').count(),0);assert.equal(await page.locator('.wall-count').innerText(),`餘${room.game.liveWall.length}張`);
  const menus=page.locator('.mobile-menus button');assert.deepEqual(await menus.evaluateAll(nodes=>nodes.map(n=>n.getAttribute('aria-label'))),['設定','牌譜','役種','全螢幕']);
  const sort=page.getByRole('button',{name:'自動理牌',exact:true});assert.equal(await sort.getAttribute('aria-pressed'),'true');await sort.click();assert.equal(await sort.getAttribute('aria-pressed'),'false');await sort.click();
  await page.getByRole('button',{name:'略過叫牌',exact:true}).click();assert.equal(await page.getByRole('button',{name:'略過叫牌',exact:true}).innerText(),'不鳴');await page.getByRole('button',{name:'略過叫牌',exact:true}).click();
@@ -33,6 +33,7 @@ try{
  assert.equal(await page.locator('.board .river .latest-discard').getAttribute('data-face'),latestFace);assert(room.revision>beforeDiscard);
  await page.waitForFunction(()=>!!document.querySelector('.board .river .latest-discard')?.dataset.faceBounds);
  const discardedRect=await page.locator('.board .river .latest-discard').evaluate(el=>JSON.parse(el.dataset.faceBounds));
+ const handWidth=(await page.locator('.hand .tile:not(.mini)').first().boundingBox()).width;assert(discardedRect.width<=handWidth*1.5,'discarded tile must not double the hand tile width');
  const nearWall=await page.locator('.wall-pos-0 .tile-back,.wall-pos-0 .wall-lower').evaluateAll(nodes=>nodes.filter(n=>n.dataset.faceBounds).map(n=>JSON.parse(n.dataset.faceBounds)));
  assert(nearWall.every(w=>!(discardedRect.x<w.x+w.width&&discardedRect.x+discardedRect.width>w.x&&discardedRect.y<w.y+w.height&&discardedRect.y+discardedRect.height>w.y)),'near wall must not cover the discarded face');
  await page.screenshot({path:out+'/latest-discard-on-table.png'});
