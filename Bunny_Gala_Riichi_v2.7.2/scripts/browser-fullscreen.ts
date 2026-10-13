@@ -12,7 +12,7 @@ const browser=await chromium.launch({headless:true,...(process.env.QA_CHROMIUM_P
 const page=await browser.newPage({viewport:{width:844,height:390},hasTouch:true});page.setDefaultTimeout(30000);
 const errors:string[]=[],checks:any[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'){errors.push(m.text());console.error('Browser resource error',m.location());}});
 try{
- await page.goto(app.resolvedUrls!.local[0]!);await page.getByLabel('玩家名稱').fill('Fullscreen QA');
+ await page.goto(app.resolvedUrls!.local[0]!+'?lobby=1');await page.getByLabel('玩家名稱').fill('Fullscreen QA');
  for(const name of ['建立房間','加入機械人','準備'])await page.getByRole('button',{name,exact:true}).click();
  const code=await page.getByRole('heading',{name:/^[A-Z2-9]{6}$/}).innerText(),room=service.rooms.getRoomForTesting(code)!;
  service.rooms.setRules(code,room.hostPlayerId,{actionTimeoutMs:120000});await page.getByRole('button',{name:'開始遊戲',exact:true}).click();
@@ -21,7 +21,8 @@ try{
   await page.setViewportSize(size);await page.waitForFunction(()=>document.querySelector<HTMLCanvasElement>('.tile-webgl')?.dataset.uprightErrors==='0');
   await page.waitForFunction(()=>{const r=document.querySelector('.scene-viewport')!.getBoundingClientRect();return Math.abs(r.width-innerWidth)<1&&Math.abs(r.height-innerHeight)<1;});
   await page.waitForFunction(()=>{const root=document.querySelector('.scene-canvas')!,canvas=document.querySelector<HTMLCanvasElement>('.tile-webgl'),hand=document.querySelector('.hand')!.getBoundingClientRect();return root.classList.contains('webgl-ready')&&Math.abs(Number(canvas?.dataset.tableScale)-Number(getComputedStyle(root).getPropertyValue('--table-scale')))<.001&&Math.abs(Number(canvas?.dataset.handTop)-hand.top)<1;});
-  const bounds:any=await page.evaluate("(()=>{const rect=(q)=>{const b=document.querySelector(q).getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,height:b.height};};return {stage:rect('.scene-viewport'),hand:rect('.hand'),tile:rect('.hand .tile'),center:rect('.round-center'),menus:rect('.mobile-menus'),action:rect('[data-action=pass-claim]'),timer:rect('.turn-timer'),scroll:document.documentElement.scrollHeight,viewport:innerHeight};})()");
+  await page.locator('.hand button:enabled').first().tap();await page.locator('[data-action=discard-confirm]').waitFor();
+  const bounds:any=await page.evaluate("(()=>{const rect=(q)=>{const b=document.querySelector(q).getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,height:b.height};};return {stage:rect('.scene-viewport'),hand:rect('.hand'),tile:rect('.hand .tile'),center:rect('.round-center'),menus:rect('.mobile-menus'),action:rect('[data-action=discard-confirm]'),timer:rect('.turn-timer'),scroll:document.documentElement.scrollHeight,viewport:innerHeight};})()");
   assert.equal(bounds.stage.x,0);assert.equal(bounds.stage.y,0);assert(bounds.scroll<=bounds.viewport);assert(bounds.action.y+bounds.action.height<=size.height+1);assert(bounds.timer.y+bounds.timer.height<=bounds.action.y+1);assert(bounds.center.y+bounds.center.height<=bounds.tile.y+1,'round information must not sit behind hand');assert(bounds.action.height>=43.9);
   assert(await page.locator('.hand .tile').count()>=13);assert.equal(await page.locator('.mobile-options:visible').count(),0);
   await page.screenshot({path:out+`/mobile-${size.width}x${size.height}.png`});checks.push({size,bounds});

@@ -37,6 +37,23 @@ io.on('connection', (socket) => {
   });
   socket.on('room:leave',(_payload:unknown,ack:Ack)=>safely(ack,()=>{const{roomCode,playerId}=requireSession(socket.data);const room=rooms.leaveLobby(roomCode,playerId);socket.leave(roomCode);delete socket.data.roomCode;delete socket.data.playerId;if(room)io.to(roomCode).emit('room:state',rooms.getPublicState(roomCode));return{left:true};}));
   socket.on('room:close',(_payload:unknown,ack:Ack)=>safely(ack,()=>{const{roomCode,playerId}=requireSession(socket.data);rooms.deleteRoom(roomCode,playerId);closeSockets(roomCode);return{closed:true};}));
+  socket.on('room:quick-start',(payload:{name?:string;avatarUrl?:string},ack:Ack)=>safely(ack,()=>{
+    let roomCode=socket.data.roomCode as string|undefined,playerId=socket.data.playerId as string|undefined,gameStarted=false;
+    if(!roomCode||!playerId){
+      const created=rooms.createRoom(payload?.name??'玩家',payload?.avatarUrl);roomCode=created.room.code;playerId=created.player.id;
+      rooms.fillWithBots(roomCode,playerId);rooms.setReady(roomCode,playerId,true);rooms.startGame(roomCode,playerId);bindSession(socket,roomCode,playerId);gameStarted=true;
+    }
+    const current=rooms.getRoomForTesting(roomCode)!;
+    if(current.phase==='lobby'){
+      if(current.hostPlayerId===playerId)rooms.fillWithBots(roomCode,playerId);
+      rooms.setReady(roomCode,playerId,true);
+      if(current.hostPlayerId===playerId&&rooms.getPublicState(roomCode).canStart){rooms.startGame(roomCode,playerId);gameStarted=true;}
+    }
+    const room=rooms.getPublicState(roomCode);io.to(roomCode).emit('room:state',room);
+    if(room.phase==='playing')broadcastPrivateGameStates(roomCode,gameStarted);
+    return{playerId,resumeToken:rooms.getResumeToken(roomCode,playerId),room};
+  }));
+
   socket.on('room:create', (payload: { name?: string; avatarUrl?:string }, ack: Ack) => {
     safely(ack, () => {
       if(socket.data.roomCode)throw new RoomError('ALREADY_IN_ROOM','Leave the current room first.');

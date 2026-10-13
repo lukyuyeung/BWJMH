@@ -9,7 +9,7 @@ const service=createGameServer();await new Promise(r=>service.httpServer.listen(
 const vite=await createServer({root:'client',server:{host:'127.0.0.1',port:0},define:{'import.meta.env.VITE_SERVER_URL':JSON.stringify(`http://127.0.0.1:${port}`)}});await vite.listen();
 const browser=await chromium.launch({headless:true,...(process.env.QA_CHROMIUM_PATH?{executablePath:process.env.QA_CHROMIUM_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader']});
 try{const page=await browser.newPage({viewport:{width:844,height:390},hasTouch:true});const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')console.log('CONSOLE_ERROR',m.text(),m.location())});page.on('response',r=>{if(r.status()>=400)console.log('HTTP_ERROR',r.status(),r.url())});
- await page.goto(vite.resolvedUrls.local[0]);await page.getByLabel('玩家名稱',{exact:true}).fill('頭像測試');await page.getByRole('button',{name:'選擇忍者兔',exact:true}).click();
+ await page.goto(vite.resolvedUrls.local[0]+'?lobby=1');await page.getByLabel('玩家名稱',{exact:true}).fill('頭像測試');await page.evaluate(()=>window.dispatchEvent(new CustomEvent('bunny:profile',{detail:{avatarUrl:'/art/v5/CHARACTER_NINJA_MASTER.jpeg'}})));
  for(const name of ['建立房間','加入機械人','準備'])await page.getByRole('button',{name,exact:true}).click();const code=await page.getByRole('heading',{name:/^[A-Z2-9]{6}$/}).innerText(),room=service.rooms.getRoomForTesting(code);
  assert.equal(room.players[0].avatarUrl,'/art/v5/CHARACTER_NINJA_MASTER.jpeg');await page.getByRole('button',{name:'開始遊戲',exact:true}).click();await page.getByText('你的手牌',{exact:true}).waitFor();
  const pause=()=>{clearTimeout(service.actionTimers.get(code));service.actionTimers.delete(code);};pause();

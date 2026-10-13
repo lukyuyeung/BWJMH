@@ -10,10 +10,10 @@ const browser=await chromium.launch({headless:true,...(process.env.QA_CHROMIUM_P
 const errors=[];const page=await browser.newPage({viewport:{width:1920,height:1080}});page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});page.setDefaultTimeout(60000);
 try{
  assert.equal((await fetch('http://127.0.0.1:3001/health')).status,200);
- await page.goto('http://127.0.0.1:4173');await page.getByLabel('玩家名稱').fill('Production Solo');
+ await page.goto('http://127.0.0.1:4173?lobby=1');await page.getByLabel('玩家名稱').fill('Production Solo');
  for(const name of ['建立房間','加入機械人','準備','開始遊戲'])await page.getByRole('button',{name,exact:true}).click();
  await page.getByText('你的手牌',{exact:true}).waitFor();await page.waitForFunction(()=>document.querySelector('.tile-webgl')?.dataset.uprightErrors==='0');
- const code=await page.locator('.room-pill').first().innerText();const room=server.rooms.getRoomForTesting(code.match(/[A-Z2-9]{6}/)[0]);
+ const code=await page.locator('.table').getAttribute('data-room-code');const room=server.rooms.getRoomForTesting(code);
  assert(room);assert.equal(room.players.filter(p=>p.isBot).length,3);
  assert.equal(await page.locator('.qa-scenario').count(),0);
  await page.screenshot({path:out+'/production-desktop.png'});
