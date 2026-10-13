@@ -1,0 +1,25 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.5.1 simulate
+> npm run build -w @bunny/riichi-engine && node --import tsx server/scripts/simulate.ts 1 1001 bot
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.5.1 build
+> tsc -p tsconfig.json
+
+{
+  "matches": 1,
+  "hands": 12,
+  "actions": 1547,
+  "wins": 8,
+  "draws": 4,
+  "calls": 8,
+  "kans": 2,
+  "riichi": 9,
+  "seeds": [
+    1001,
+    1001
+  ],
+  "policy": "bot"
+}

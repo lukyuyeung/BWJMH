@@ -1,0 +1,12 @@
+TypeError: Cannot read properties of undefined (reading 'get')
+    at pause (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-fullscreen.ts:19:129)
+    at <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-fullscreen.ts:19:173)
+/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-fullscreen.ts:19
+ const pause=()=>{clearTimeout(service.actionTimers.get(code));service.actionTimers.delete(code);clearTimeout(service.botTimers.get(code));service.botTimers.delete(code);};pause();
+                                                                                                                                ^
+
+TypeError: Cannot read properties of undefined (reading 'get')
+    at pause (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-fullscreen.ts:19:129)
+    at <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-fullscreen.ts:19:173)
+
+Node.js v24.19.0

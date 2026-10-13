@@ -1,0 +1,40 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.7.0 test
+> vitest run --run test/v271.test.ts
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+
+ ❯ test/v271.test.ts (6 tests | 1 failed) 30ms
+   × match ending policies > exact zero does not cause bankruptcy 16ms
+     → expected -3500 to be +0 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/v271.test.ts > match ending policies > exact zero does not cause bankruptcy
+AssertionError: expected -3500 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ -3500
+
+ ❯ test/v271.test.ts:7:391
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  12:18:36
+   Duration  391ms (transform 139ms, setup 0ms, collect 168ms, tests 30ms, environment 0ms, prepare 53ms)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+npm error workspace @bunny/server@2.7.0
+npm error location /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+npm error command failed
+npm error command sh -c vitest run --run test/v271.test.ts

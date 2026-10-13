@@ -1,0 +1,27 @@
+You are continuing the existing Bunny Riichi project using the attached V5 FINAL LOCKED UI/UX asset pack.
+
+Before changing any UI or artwork, read:
+1. 00_READ_FIRST/00_START_HERE.txt
+2. 00_READ_FIRST/01_MASTER_INDEX.txt
+3. 01_LOCKED_MASTERS/LOCK_RULES.txt
+4. 02_UI_LAYOUT_LOCK/GAMEPLAY_LAYOUT_LOCK.txt
+5. 02_UI_LAYOUT_LOCK/ART_DIRECTION_LOCK.txt
+
+HARD RULE: 01_LOCKED_MASTERS is the source of truth. When a supplied locked asset exists, use that actual asset/file rather than regenerating or approximating it. Generated concepts and deprecated explorations must never override locked masters.
+
+Implement the new art direction on top of the existing Bunny Riichi project without redesigning the architecture, replacing the Riichi engine, or removing working functionality just to make the visuals easier.
+
+Key visual implementation:
+- Wizard left, Ninja top, King right; Yellow Bunny is player profile identity only and must not block the bottom hand.
+- All four players have profile/avatar + score.
+- Four-sided emerald Riichi table with premium gold trim and restrained pink accent.
+- Remove all four decorative corner panels and leave those spaces clean.
+- Bunny Gala interior follows ENVIRONMENT_MASTER style, with background DOF/reduced visual competition.
+- Official Bunny Gala logo can only come from LOGO_MASTER itself; never redraw it.
+- Concealed tile backs are black/charcoal textured inset + thin metallic-gold border + ivory body, with NO logo, NO suits, NO corner decoration.
+- Central round HUD only; no duplicate top-left round HUD.
+- Player hand supports proper 13 + 1 draw presentation.
+- Discard rivers use clean 6-tile rows; Riichi sideways discard must be readable.
+- CHI/PON/KAN/RON/TSUMO/PASS are contextual, appearing only when legal.
+
+If any visual instruction appears ambiguous, do not invent a new design. Preserve the existing functioning gameplay and follow the closest locked master/rule. Report the ambiguity before replacing a locked asset.

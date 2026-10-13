@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "matches": 50,
+      "hands": 441,
+      "actions": 49475,
+      "wins": 341,
+      "draws": 100,
+      "calls": 520,
+      "kans": 45,
+      "riichi": 338,
+      "seeds": [
+        1001,
+        1050
+      ],
+      "policy": "bot",
+      "elapsedMs": 129717
+    },
+    {
+      "matches": 150,
+      "hands": 906,
+      "actions": 141645,
+      "wins": 8,
+      "draws": 898,
+      "calls": 4037,
+      "kans": 155,
+      "riichi": 8,
+      "seeds": [
+        2001,
+        2150
+      ],
+      "policy": "calls",
+      "elapsedMs": 43434
+    },
+    {
+      "matches": 25,
+      "hands": 152,
+      "actions": 23632,
+      "wins": 0,
+      "draws": 152,
+      "calls": 0,
+      "kans": 0,
+      "riichi": 0,
+      "seeds": [
+        4001,
+        4025
+      ],
+      "policy": "safe",
+      "elapsedMs": 10048
+    }
+  ]
+}

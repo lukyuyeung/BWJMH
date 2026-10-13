@@ -1,0 +1,32 @@
+LOCK RULES — DO NOT OVERRIDE
+
+OFFICIAL LOGO
+- Use LOGO_MASTER__DO_NOT_REDRAW.png itself when branding is required.
+- No AI redraw, tracing-by-generation, simplification, substitute icon, altered typography, or invented Bunny logo.
+- Do not use a logo reconstructed from a gameplay screenshot.
+
+CHARACTERS
+- Left opponent = Wizard master.
+- Top opponent = Ninja master.
+- Right opponent = King master.
+- Player identity = Yellow Bunny master, but no full-body player character blocking the bottom hand.
+- Preserve high-quality cinematic 3D voxel CGI character identity and proportions.
+- Gameplay idle pose should not require weapons/props to be held. Signature props may appear only when an animation/state specifically needs them.
+- Remove mud/dirt styling from characters for this game presentation.
+
+TABLE
+- Four-sided Japanese Riichi Mahjong table.
+- Emerald felt is dominant.
+- Metallic gold trim is premium structural accent.
+- Pink/magenta neon is secondary accent only, not the dominant table color.
+- Remove all four decorative corner panels. Leave those areas clean; do not fill them with replacement widgets.
+
+ENVIRONMENT
+- Luxury Bunny Gala interior, not cyberpunk street/arcade Vegas.
+- Warm gold + pink illumination, curved balconies, chandelier/palm vocabulary, polished premium casino atmosphere.
+- Background must be visually subordinate: depth-of-field and reduced contrast/brightness behind gameplay.
+
+TILE BACK
+- Use TILE_BACK_MASTER direction.
+- Black/charcoal textured inset + thin gold metal edge + ivory tile body.
+- No logo, no suits, no corner marks, no checkerboard, no repeated pattern, no neon branding.

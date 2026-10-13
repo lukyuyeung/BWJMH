@@ -1,0 +1,42 @@
+{
+  "chi": 582,
+  "pon": 1024,
+  "daiminkan": 40,
+  "ankan": 75,
+  "kakan": 48,
+  "ron": 658,
+  "tsumo": 478,
+  "invalidActions": 0,
+  "deadlocks": 0,
+  "scoreConservationErrors": 0,
+  "matches": 160,
+  "hands": 1401,
+  "actions": 155931,
+  "wins": 1136,
+  "draws": 265,
+  "calls": 1646,
+  "kans": 163,
+  "riichi": 1043,
+  "policy": "bot",
+  "seeds": [
+    270101,
+    270260
+  ],
+  "batches": 4,
+  "profiles": [
+    "aggressive",
+    "balanced",
+    "defensive"
+  ],
+  "asserted_invariants": [
+    "136 unique physical tiles",
+    "four copies of every face",
+    "public wall occupancy/live/dead agreement",
+    "14-tile dead wall",
+    "hand sizes",
+    "dealer consistency",
+    "100000-point score plus pot conservation",
+    "legal non-stalling transitions",
+    "12000-action match cap"
+  ]
+}

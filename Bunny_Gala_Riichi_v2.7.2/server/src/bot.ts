@@ -1,0 +1,41 @@
+import { calculateShanten, improvingTiles, SEATS, type Tile, type TileFace, type Seat } from '@bunny/riichi-engine';
+import { visibleCounts } from './assistance.js';
+import type { PlayerGameState } from './room.js';
+export type BotProfile='aggressive'|'balanced'|'defensive';
+export const BOT_PROFILES:Record<BotProfile,{defendAt:number;callTolerance:number;riichiUkeire:number;kanWall:number}>={aggressive:{defendAt:3,callTolerance:1,riichiUkeire:1,kanWall:10},balanced:{defendAt:1,callTolerance:0,riichiUkeire:3,kanWall:16},defensive:{defendAt:0,callTolerance:-1,riichiUkeire:5,kanWall:24}};
+export type BotDecision = {type:'tsumo'|'ron'|'pass'|'draw'|'pon'|'kan'}|{type:'chi';faces:TileFace[]}|{type:'discard'|'riichi'|'ankan'|'kakan';tileId:string};
+const simple=(f:TileFace)=>f.length===2&&Number(f[0])>1&&Number(f[0])<9;
+/** Deterministic policy; exclusively consumes the player's private/public serialization. */
+export function chooseBotAction(s:PlayerGameState,profile:BotProfile='balanced'):BotDecision|null {
+ const strategy=BOT_PROFILES[profile];
+ const a=s.hand.actions,seat=s.you.seat,own=s.you.hand,faces=own.map(t=>t.face),melds=s.hand.melds[seat];
+ const visible=visibleCounts(own,s.hand.discards,s.hand.melds,s.hand.doraIndicators);
+ const threats=SEATS.filter(x=>x!==seat&&s.hand.riichi[x]);
+ const seatWind=(['E','S','W','N'] as TileFace[])[(SEATS.indexOf(seat)-SEATS.indexOf(s.hand.match.dealer)+4)%4]!;
+ const valueHonor=(f:TileFace)=>['P','F','C',seatWind,s.hand.match.roundWind==='east'?'E':'S'].includes(f);
+ const hasYaku=(fs:TileFace[],ms=melds)=>{const all=[...fs,...ms.flatMap(m=>m.tiles.map(t=>t.face))];const suits=new Set(all.filter(f=>f.length===2).map(f=>f[1]));const flush=suits.size===1;return all.every(simple)||flush||ms.some(m=>m.type!=='chi'&&valueHonor(m.tiles[0]!.face))||fs.some(f=>valueHonor(f)&&fs.filter(x=>x===f).length>=3);};
+ const risk=(f:TileFace)=>threats.reduce((n,t)=>n+(s.hand.discards[t].some(x=>x.face===f)?0:f.length===1?Math.max(0,3-(visible.get(f)??0))*1.5:simple(f)?9:5),0);
+ const rankDiscards=(tiles:Tile[],fixed:number,legal?:string[])=>tiles.filter(t=>!legal||legal.includes(t.id)).map(t=>{const rest=tiles.filter(x=>x.id!==t.id).map(x=>x.face);return {tile:t,rest,shanten:calculateShanten(rest,fixed),risk:risk(t.face),efficiency:0};}).sort((a,b)=>a.shanten-b.shanten||a.risk-b.risk||a.tile.id.localeCompare(b.tile.id));
+ if(a.canTsumo)return{type:'tsumo'};if(a.canRon)return{type:'ron'};
+ if(a.canPassClaim){
+  if(a.canWinClaim&&!a.canRon)return null;
+  if(!s.hand.claim)return{type:'pass'};
+  const late=s.hand.wallRemaining<16;const finalRound=s.hand.match.handNumber===4&&(s.room.rules.matchLength==='tonpuusen'||s.hand.match.roundWind==='south');const leading=SEATS.every(x=>s.room.scores[seat]>=s.room.scores[x]);
+  if(threats.length&&(profile!=='aggressive'||late||finalRound&&leading))return{type:'pass'};
+  const called=s.hand.claim.tile;const baseline=calculateShanten(faces,melds.length);const choices:{decision:BotDecision;shanten:number;value:number}[]=[];
+  const consider=(type:'chi'|'pon'|'kan',sequence:TileFace[])=>{const needed=[...sequence];needed.splice(needed.indexOf(called.face),1);const rest=[...own];for(const f of needed){const i=rest.findIndex(t=>t.face===f);if(i<0)return;rest.splice(i,1);}const ms=[...melds,{type,tiles:[...needed.map((face,i)=>({id:'preview'+i,face,copy:0 as const,red:false})),called],calledTile:called,from:s.hand.claim!.discarder,open:true}];if(!hasYaku(rest.map(t=>t.face),ms))return;const forbidden:TileFace[]=type==='kan'?[]:[called.face];if(type==='chi'){const n=Number(called.face[0]),suit=called.face[1];if(called.face===sequence[0]&&n+3<=9)forbidden.push(`${n+3}${suit}` as TileFace);if(called.face===sequence[2]&&n-3>=1)forbidden.push(`${n-3}${suit}` as TileFace);}const legal=rest.filter(t=>!forbidden.includes(t.face)).map(t=>t.id);const shanten=type==='kan'?calculateShanten(rest.map(t=>t.face),ms.length):rankDiscards(rest,ms.length,legal)[0]?.shanten??8;const value=(type!=='chi'&&valueHonor(called.face)?2:1)+(s.hand.yourDora.total>0?1:0)+(type==='kan'&&valueHonor(called.face)&&profile!=='defensive'?.35:0);if(shanten<baseline+(profile==='defensive'?0:strategy.callTolerance)||(shanten===baseline&&baseline>0&&value>=2&&profile!=='defensive'))choices.push({decision:type==='chi'?{type,faces:sequence}:{type},shanten,value});};
+  for(const seq of a.chiSequences)consider('chi',seq);if(a.canPon)consider('pon',[called.face,called.face,called.face]);if(a.canKan&&s.hand.wallRemaining>strategy.kanWall)consider('kan',Array(4).fill(called.face));
+  choices.sort((a,b)=>a.shanten-b.shanten||b.value-a.value);return choices[0]?.decision??{type:'pass'};
+ }
+ if(a.canDraw)return{type:'draw'};
+ if(a.canDiscard){
+  if(!threats.length&&s.hand.wallRemaining>strategy.kanWall){const baseline=calculateShanten(faces,melds.length);for(const id of [...a.ankanTileIds,...a.kakanTileIds]){const tile=own.find(t=>t.id===id)!;const closed=a.ankanTileIds.includes(id),rest=closed?own.filter(t=>t.face!==tile.face):own.filter(t=>t.id!==id);if(calculateShanten(rest.map(t=>t.face),melds.length+(closed?1:0))<=baseline)return{type:closed?'ankan':'kakan',tileId:id};}}
+  const ranked=rankDiscards(own,melds.length,s.hand.discardTileIds);if(!ranked.length)return null;
+  if(threats.length&&(ranked[0]!.shanten>=strategy.defendAt)){ranked.sort((a,b)=>a.risk-b.risk||a.shanten-b.shanten);return{type:'discard',tileId:ranked[0]!.tile.id};}
+  const bestShanten=ranked[0]!.shanten;const candidates=ranked.filter(x=>x.shanten===bestShanten);for(const c of candidates)c.efficiency=improvingTiles(c.rest,melds.length).reduce((n,f)=>n+Math.max(0,4-(visible.get(f)??0)),0);candidates.sort((a,b)=>b.efficiency-a.efficiency||a.risk-b.risk||Number(a.tile.red)-Number(b.tile.red)||a.tile.id.localeCompare(b.tile.id));const best=candidates[0]!;
+  // Do not lock a dangerous or nearly dead wait; preserve damaten when already valuable.
+  if(a.riichiDiscardIds.includes(best.tile.id)&&best.efficiency>=strategy.riichiUkeire&&!threats.length&&s.hand.wallRemaining>=12&&!(hasYaku(best.rest)&&s.hand.yourDora.total>=3))return{type:'riichi',tileId:best.tile.id};
+  return{type:'discard',tileId:best.tile.id};
+ }
+ return null;
+}

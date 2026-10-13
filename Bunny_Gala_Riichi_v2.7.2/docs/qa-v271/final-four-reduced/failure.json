@@ -1,0 +1,70 @@
+{
+  "error": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n",
+  "steps": [
+    "Four concurrent browser contexts create/join/Ready/start and load actual 3D scene",
+    "All eight supplied master bytes served and decoded; official video byte hash verified over HTTP"
+  ],
+  "errors": [],
+  "renderers": [
+    {
+      "canvas": {
+        "engine": "three.js r186",
+        "renderCount": "3",
+        "quality": "low",
+        "meshCount": "136",
+        "triangles": "66942",
+        "clippedTileBodies": "0",
+        "matchingDiscards": "0",
+        "uprightErrors": "0",
+        "contactErrors": "0",
+        "camera": "gameplay"
+      },
+      "canvases": 1
+    },
+    {
+      "canvas": {
+        "engine": "three.js r186",
+        "renderCount": "4",
+        "quality": "low",
+        "meshCount": "136",
+        "triangles": "66940",
+        "clippedTileBodies": "0",
+        "matchingDiscards": "0",
+        "uprightErrors": "0",
+        "contactErrors": "0",
+        "camera": "gameplay"
+      },
+      "canvases": 1
+    },
+    {
+      "canvas": {
+        "engine": "three.js r186",
+        "renderCount": "4",
+        "quality": "low",
+        "meshCount": "136",
+        "triangles": "66940",
+        "clippedTileBodies": "0",
+        "matchingDiscards": "0",
+        "uprightErrors": "0",
+        "contactErrors": "0",
+        "camera": "gameplay"
+      },
+      "canvases": 1
+    },
+    {
+      "canvas": {
+        "engine": "three.js r186",
+        "renderCount": "4",
+        "quality": "low",
+        "meshCount": "136",
+        "triangles": "66940",
+        "clippedTileBodies": "0",
+        "matchingDiscards": "0",
+        "uprightErrors": "0",
+        "contactErrors": "0",
+        "camera": "gameplay"
+      },
+      "canvases": 1
+    }
+  ]
+}

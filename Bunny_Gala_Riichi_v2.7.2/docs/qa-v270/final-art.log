@@ -1,0 +1,8 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.7.0 verify:art
+> node scripts/verify-art.mjs
+
+Verified 8 locked master hashes and runtime references.
+Verified current Gala Reference cleanplate hash and gameplay stylesheet.
+Verified official Chinitsu MP4 hash and server registry.

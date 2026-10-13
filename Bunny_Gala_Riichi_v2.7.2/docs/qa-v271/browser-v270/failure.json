@@ -1,0 +1,15 @@
+{
+  "error": "TimeoutError: locator.click: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Next Hand', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"start\" data-action=\"next-hand\">Next Hand</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <label>…</label> from <div class=\"mobile-options\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <label>…</label> from <div class=\"mobile-options\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    87 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <label>…</label> from <div class=\"mobile-options\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "steps": [
+    "Four concurrent browser contexts create/join/Ready/start and load actual 3D scene",
+    "All eight supplied master bytes served and decoded; official video byte hash verified over HTTP",
+    "Desktop 1920/1366 and mobile 844x390/667x375/915x412: four walls, upright axes/contact/clipping, timer above PASS, no mobile scrolling",
+    "Actual side-camera rendering and close-ups captured for all four hands",
+    "Actual four-player Socket.IO payloads contain no opposing concealed IDs or live wall IDs",
+    "Valid physical fixtures: graphical Chi/Pon/Daiminkan/Ankan/Kakan controls execute through Socket.IO; seat-relative right melds",
+    "Riichi discard highlights and public-information waiting previews; exact 1000-point deposit",
+    "Mobile touch inspection never discards; explicit confirmation submits a legal discard",
+    "Confirmed Chinitsu: all four share event/deadline, original MP4 actually plays, reload returns the current server presentation/results phase, server transitions all to results"
+  ],
+  "errors": []
+}

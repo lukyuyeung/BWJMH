@@ -1,0 +1,22 @@
+PASS Four concurrent browser contexts create/join/Ready/start and load actual 3D scene
+PASS All eight supplied master bytes served and decoded; official video byte hash verified over HTTP
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.screenshot: Timeout 45000ms exceeded.
+Call log:
+[2m  - taking page screenshot[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+
+    at <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-v270.ts:39:11) {
+  log: [
+    '  - taking page screenshot',
+    '  - waiting for fonts to load...',
+    '  - fonts loaded'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.19.0

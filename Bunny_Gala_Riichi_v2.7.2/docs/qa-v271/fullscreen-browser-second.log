@@ -1,0 +1,20 @@
+page.evaluate: ReferenceError: __name is not defined
+    at eval (eval at evaluate (:311:30), <anonymous>:1:17)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-fullscreen.ts:23:27) {
+  log: []
+}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: ReferenceError: __name is not defined
+    at eval (eval at evaluate (:311:30), <anonymous>:1:17)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-fullscreen.ts:23:27) {
+  log: []
+}
+
+Node.js v24.19.0

@@ -1,0 +1,12 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+
+ ✓ test/cinematic-socket.test.ts (1 test) 7623ms
+   ✓ real four-player transport: active cinematic reconnect/forged advance/result timeout/cleanup 7622ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  11:51:32
+   Duration  8.40s (transform 249ms, setup 0ms, collect 437ms, tests 7.62s, environment 0ms, prepare 75ms)
+

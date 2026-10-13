@@ -1,0 +1,4 @@
+PASS Idle countdown changes do not redraw 3D tiles
+PASS Three real mobile landscape sizes: native 44px auto controls, readable fullscreen settings, working quality presets and touch toggles
+PASS Graphical Chi applies server Kuikae; prohibited discard disabled in real UI
+PASS Actual browser reconnects automatically after server restart, preserving hand/revision/KuiKae and executing next legal confirmed discard

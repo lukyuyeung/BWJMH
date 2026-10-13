@@ -1,0 +1,20 @@
+ART DIRECTION LOCK
+
+TARGET FEEL
+Premium Bunny Gala luxury entertainment venue + high-quality cinematic 3D voxel characters + readable competitive Riichi Mahjong UI.
+
+DO
+- Use emerald, warm gold, controlled magenta/pink, ivory, charcoal.
+- Use soft premium highlights and material depth.
+- Keep the scene polished but not overly sharp.
+- Keep characters high-quality voxel CGI, matching their masters.
+- Keep UI clean enough that Mahjong information is immediately readable.
+
+DO NOT
+- Turn the room into generic cyberpunk Vegas.
+- Flood the table with neon.
+- Invent new Bunny logos.
+- Use anime-human characters in place of Bunny voxel characters.
+- Add mud to characters.
+- Add decorative UI solely because empty space exists.
+- Let background signage compete with the tiles.

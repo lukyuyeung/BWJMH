@@ -1,0 +1,34 @@
+{
+  "name": "bunny-riichi",
+  "version": "2.7.2",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "test": "npm run test -w @bunny/riichi-engine && npm run test -w @bunny/server",
+    "typecheck": "npm run typecheck -w @bunny/riichi-engine && npm run typecheck -w @bunny/server && npm run typecheck -w @bunny/client && tsc -p tsconfig.qa.json",
+    "server": "npm run dev -w @bunny/server",
+    "client": "npm run dev -w @bunny/client",
+    "build": "npm run build -w @bunny/riichi-engine && npm run build -w @bunny/server && npm run build -w @bunny/client",
+    "pretest": "npm run build -w @bunny/riichi-engine",
+    "pretypecheck": "npm run build -w @bunny/riichi-engine",
+    "preserver": "npm run build -w @bunny/riichi-engine",
+    "simulate": "npm run build -w @bunny/riichi-engine && node --import tsx server/scripts/simulate.ts",
+    "test:browser": "npm run build -w @bunny/riichi-engine && node --import tsx scripts/browser-smoke.ts",
+    "verify:art": "node scripts/verify-art.mjs",
+    "qa:scenarios": "npm run build -w @bunny/riichi-engine && node --import tsx scripts/qa-scenarios.ts",
+    "test:browser:v270": "npm run build -w @bunny/riichi-engine && node --import tsx scripts/browser-v270.ts",
+    "test:browser:v271": "npm run build -w @bunny/riichi-engine && node --import tsx scripts/browser-v271.ts",
+    "test:browser:fullscreen": "npm run build -w @bunny/riichi-engine && node --import tsx scripts/browser-fullscreen.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  },
+  "type": "module"
+}

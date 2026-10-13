@@ -1,0 +1,15 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.0 test
+> vitest run --run test/v271.test.ts
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/packages/riichi-engine
+
+ ✓ test/v271.test.ts (11 tests) 22ms
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  12:18:35
+   Duration  444ms (transform 145ms, setup 0ms, collect 176ms, tests 22ms, environment 0ms, prepare 55ms)
+

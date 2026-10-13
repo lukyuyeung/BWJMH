@@ -1,0 +1,25 @@
+LOCKED MASTER INDEX
+
+LOGO_MASTER__DO_NOT_REDRAW.png
+Official Bunny Gala logo. Pixel/geometry source of truth. Place/composite the supplied asset; never regenerate it.
+
+CHARACTER_WIZARD_MASTER.jpeg
+Wizard identity master.
+
+CHARACTER_NINJA_MASTER.jpeg
+Ninja identity master.
+
+CHARACTER_KING_MASTER.jpeg
+King identity master.
+
+CHARACTER_PLAYER_YELLOW_BUNNY_MASTER.png
+Yellow Bunny player identity master. Full body does NOT appear in the player's foreground seat during gameplay; use as player avatar/profile identity.
+
+TABLE_MATERIAL_MASTER__NOT_GEOMETRY.png
+Material/art-direction master only: emerald felt, gold metal trim, restrained pink accent. DO NOT copy poker/round-table geometry. Final table is four-sided Riichi Mahjong geometry.
+
+ENVIRONMENT_MASTER__STYLE_ONLY.png
+Bunny Gala interior master: warm gold + pink luxury casino, curved balconies, chandeliers, palms, premium depth. Use environment only. Do NOT import the Yellow Bunny, bird, carrot basket, broken-glass event, moon/open roof as required gameplay elements.
+
+TILE_BACK_MASTER__BLACK_GOLD_NO_LOGO.png
+Final tile-back direction: textured charcoal/black inset, thin metallic-gold edge, ivory body. NO LOGO. NO SUITS. NO CORNER ICONS. NO PATTERN GRAPHICS beyond subtle material texture.

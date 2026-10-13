@@ -1,0 +1,51 @@
+BUNNY RIICHI — GAMEPLAY LAYOUT LOCK
+
+CAMERA / HIERARCHY
+- Landscape gameplay composition, player looking across a four-sided Riichi table.
+- Visual priority: Mahjong tiles > table/game state > profiles/characters > environment.
+- Keep discard rivers and hand readable before decorative effects.
+
+SEATING / CHARACTERS
+- Wizard = LEFT.
+- Ninja = TOP/CENTER opponent.
+- King = RIGHT.
+- Player = BOTTOM; do NOT show a full-body Yellow Bunny in front of the player's hand.
+
+PLAYER PROFILES
+- All four players must have a profile/avatar and score.
+- Default starting example score may be 25,000 when illustrating a standard initial state.
+- Profiles must not cover tile walls, discard rivers, calls, or player hand.
+
+ROUND / HUD
+- Round/game-state information is centralized in the table-center HUD.
+- Do NOT duplicate the Round HUD at top-left.
+- Top center should remain visually clean; no unnecessary button bar.
+- Utility controls may remain top-right: Game Rules / Info / Settings / Exit.
+
+TABLE / CORNERS
+- Four decorative corner panels are REMOVED.
+- Do not replace them with ornaments merely to fill space.
+
+HAND
+- Player hand is large and legible.
+- Correct Riichi presentation: 13-tile resting hand; draw state shows 13 + 1 drawn tile with a visible gap before the drawn tile.
+- Selected tile may lift upward subtly; do not rely on excessive blue gaming glow.
+
+DISCARD RIVERS
+- Show realistic discard rivers to prove readability.
+- Organize each player's river in clean rows, normally 6 tiles per row.
+- Orient each river toward its owning player consistently.
+- Riichi declaration is represented by the appropriate sideways discard tile.
+
+CALLS / MELDS
+- Open melds must have reserved readable space near the owning player's side.
+- CHI / PON / KAN / RON / TSUMO / PASS are contextual actions, not permanent giant buttons occupying the bottom UI.
+- Only show actions that are currently legal/available.
+
+AUTO / TIMER
+- Auto-play may be a compact control if the implementation supports it.
+- Timer must be clear but secondary to the hand.
+
+TILE BACK
+- Every concealed wall tile uses the locked black + gold + ivory design.
+- No Bunny Gala logo on tile backs.

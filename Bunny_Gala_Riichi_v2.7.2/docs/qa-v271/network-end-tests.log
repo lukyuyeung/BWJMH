@@ -1,0 +1,16 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.7.1 test
+> vitest run --run test/network-guard.test.ts test/v271.test.ts
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+
+ ✓ test/v271.test.ts (6 tests) 26ms
+ ✓ test/network-guard.test.ts (2 tests) 165ms
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+   Start at  12:22:19
+   Duration  542ms (transform 207ms, setup 0ms, collect 379ms, tests 191ms, environment 0ms, prepare 111ms)
+

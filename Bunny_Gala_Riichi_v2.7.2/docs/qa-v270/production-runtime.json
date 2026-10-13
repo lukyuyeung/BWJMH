@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "compiledServer": true,
+  "compiledClient": true,
+  "soloBots": 3,
+  "turnBefore": 1,
+  "turnAfter": 5,
+  "productionQaUiAbsent": true,
+  "viewport": [
+    1920,
+    1080,
+    844,
+    390
+  ],
+  "errors": []
+}

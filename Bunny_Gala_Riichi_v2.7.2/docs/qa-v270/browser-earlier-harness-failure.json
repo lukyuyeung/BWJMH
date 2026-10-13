@@ -1,0 +1,14 @@
+{
+  "error": "Error: state timeout 3",
+  "steps": [
+    "Four concurrent browser contexts create/join/Ready/start and load actual 3D scene",
+    "All eight supplied master bytes served and decoded; official video byte hash verified over HTTP",
+    "Desktop 1920/1366 and mobile 844x390/667x375/915x412: four walls, upright axes/contact/clipping, timer above PASS, no mobile scrolling",
+    "Actual side-camera rendering and close-ups captured for all four hands",
+    "Actual four-player Socket.IO payloads contain no opposing concealed IDs or live wall IDs",
+    "Valid physical fixtures: graphical Chi/Pon/Daiminkan/Ankan/Kakan controls execute through Socket.IO; seat-relative right melds",
+    "Riichi discard highlights and public-information waiting previews; exact 1000-point deposit",
+    "Mobile touch inspection never discards; explicit confirmation submits a legal discard"
+  ],
+  "errors": []
+}

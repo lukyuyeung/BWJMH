@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env.local
+client/.env.local
+
+.bunny-data/

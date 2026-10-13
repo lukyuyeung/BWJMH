@@ -1,0 +1,80 @@
+PASS Four concurrent browser contexts create/join/Ready/start and load actual 3D scene
+PASS All eight supplied master bytes served and decoded; official video byte hash verified over HTTP
+PASS Desktop 1920/1366 and mobile 844x390/667x375/915x412: four walls, upright axes/contact/clipping, timer above PASS, no mobile scrolling
+PASS Actual side-camera rendering and close-ups captured for all four hands
+PASS Actual four-player Socket.IO payloads contain no opposing concealed IDs or live wall IDs
+SCENARIO chi {"revision":2,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":false,"canTsumo":false,"canRon":false,"canWinClaim":false,"canPassClaim":true,"canPon":false,"canKan":false,"ankanTileIds":[],"kakanTileIds":[],"chiSequences":[["2m","3m","4m"],["3m","4m","5m"]],"riichiDiscardIds":[]},"phase":"awaiting_claim"}
+SCENARIO pon {"revision":4,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":false,"canTsumo":false,"canRon":false,"canWinClaim":false,"canPassClaim":true,"canPon":true,"canKan":false,"ankanTileIds":[],"kakanTileIds":[],"chiSequences":[],"riichiDiscardIds":[]},"phase":"awaiting_claim"}
+SCENARIO daiminkan {"revision":6,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":false,"canTsumo":false,"canRon":false,"canWinClaim":false,"canPassClaim":true,"canPon":true,"canKan":true,"ankanTileIds":[],"kakanTileIds":[],"chiSequences":[],"riichiDiscardIds":[]},"phase":"awaiting_claim"}
+SCENARIO ankan {"revision":8,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":true,"canTsumo":false,"canRon":false,"canWinClaim":false,"canPassClaim":false,"canPon":false,"canKan":false,"ankanTileIds":["2m-0"],"kakanTileIds":[],"chiSequences":[],"riichiDiscardIds":["2m-0","2m-1","2m-2","2m-3"]},"phase":"awaiting_discard"}
+SCENARIO kakan {"revision":10,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":true,"canTsumo":false,"canRon":false,"canWinClaim":false,"canPassClaim":false,"canPon":false,"canKan":false,"ankanTileIds":[],"kakanTileIds":["5m-3"],"chiSequences":[],"riichiDiscardIds":[]},"phase":"awaiting_discard"}
+PASS Valid physical fixtures: graphical Chi/Pon/Daiminkan/Ankan/Kakan controls execute through Socket.IO; seat-relative right melds
+SCENARIO riichi {"revision":12,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":true,"canTsumo":false,"canRon":false,"canWinClaim":false,"canPassClaim":false,"canPon":false,"canKan":false,"ankanTileIds":[],"kakanTileIds":[],"chiSequences":[],"riichiDiscardIds":["C-0","2p-0"]},"phase":"awaiting_discard"}
+PASS Riichi discard highlights and public-information waiting previews; exact 1000-point deposit
+SCENARIO chi {"revision":14,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":false,"canTsumo":false,"canRon":false,"canWinClaim":false,"canPassClaim":true,"canPon":false,"canKan":false,"ankanTileIds":[],"kakanTileIds":[],"chiSequences":[["2m","3m","4m"],["3m","4m","5m"]],"riichiDiscardIds":[]},"phase":"awaiting_claim"}
+PASS Mobile touch inspection never discards; explicit confirmation submits a legal discard
+SCENARIO chinitsu {"revision":17,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":true,"canTsumo":true,"canRon":false,"canWinClaim":false,"canPassClaim":false,"canPon":false,"canKan":false,"ankanTileIds":[],"kakanTileIds":[],"chiSequences":[],"riichiDiscardIds":["1m-0","2m-0","3m-0","1m-1","2m-1","3m-1","4m-0","5m-0","6m-0","7m-0","8m-0","9m-0","5m-1","5m-2"]},"phase":"awaiting_discard"}
+PASS Confirmed Chinitsu: all four share event/deadline, original MP4 actually plays, reload returns the current server presentation/results phase, server transitions all to results
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 45000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: 'Next Hand', exact: true })[22m
+[2m    - locator resolved to <button class="start" data-action="next-hand">Next Hand</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <label>…</label> from <div class="mobile-options">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <label>…</label> from <div class="mobile-options">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    87 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <label>…</label> from <div class="mobile-options">…</div> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at click (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-v270.ts:16:111)
+    at async <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-v270.ts:65:366) {
+  log: [
+    "  - waiting for getByRole('button', { name: 'Next Hand', exact: true })",
+    '    - locator resolved to <button class="start" data-action="next-hand">Next Hand</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <label>…</label> from <div class="mobile-options">…</div> subtree intercepts pointer events',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <label>…</label> from <div class="mobile-options">…</div> subtree intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    87 × waiting for element to be visible, enabled and stable',
+    '       - element is visible, enabled and stable',
+    '       - scrolling into view if needed',
+    '       - done scrolling',
+    '       - <label>…</label> from <div class="mobile-options">…</div> subtree intercepts pointer events',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.19.0

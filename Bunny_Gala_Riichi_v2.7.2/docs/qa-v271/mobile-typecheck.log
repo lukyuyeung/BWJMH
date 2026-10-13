@@ -1,0 +1,40 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.7.0 pretypecheck
+> npm run build -w @bunny/riichi-engine
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.0 build
+> tsc -p tsconfig.json
+
+
+> bunny-riichi@2.7.0 typecheck
+> npm run typecheck -w @bunny/riichi-engine && npm run typecheck -w @bunny/server && npm run typecheck -w @bunny/client && tsc -p tsconfig.qa.json
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.0 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.7.0 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/client@2.7.0 typecheck
+> tsc --noEmit
+
+src/main.tsx(102,3366): error TS17015: Expected corresponding closing tag for JSX fragment.
+src/main.tsx(102,3381): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/main.tsx(102,3382): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/main.tsx(102,3391): error TS1003: Identifier expected.
+npm error Lifecycle script `typecheck` failed with error:
+npm error code 2
+npm error path /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/client
+npm error workspace @bunny/client@2.7.0
+npm error location /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/client
+npm error command failed
+npm error command sh -c tsc --noEmit

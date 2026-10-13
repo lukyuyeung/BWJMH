@@ -1,0 +1,29 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.7.1 pretypecheck
+> npm run build -w @bunny/riichi-engine
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.1 build
+> tsc -p tsconfig.json
+
+
+> bunny-riichi@2.7.1 typecheck
+> npm run typecheck -w @bunny/riichi-engine && npm run typecheck -w @bunny/server && npm run typecheck -w @bunny/client && tsc -p tsconfig.qa.json
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.1 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.7.1 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/client@2.7.1 typecheck
+> tsc --noEmit
+

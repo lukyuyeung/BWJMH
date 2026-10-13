@@ -1,0 +1,19 @@
+BUNNY RIICHI UI/UX — V5 FINAL LOCKED HANDOFF
+
+PURPOSE
+This pack is the source of truth for continuing Bunny Riichi UI/UX work. Work must NOT guess, redesign, replace, or regenerate locked assets.
+
+ABSOLUTE PRIORITY ORDER
+1) 01_LOCKED_MASTERS = immutable source assets / art direction masters.
+2) 02_UI_LAYOUT_LOCK = gameplay composition and UX rules.
+3) 03_REFERENCE_ONLY = inspiration/context only; never override masters.
+4) 04_DO_NOT_USE = deprecated/failed explorations. Never use in final work.
+
+NON-NEGOTIABLE
+- If a locked original asset exists, USE THAT FILE. Never AI-redraw an approximation.
+- Do not infer a new Bunny Gala logo from screenshots/concepts.
+- Do not use generated concept images as character identity references.
+- Do not reintroduce removed corner table panels.
+- Do not reintroduce logo/pattern/suits on Riichi tile backs.
+- Do not change the architecture or game logic merely to fit artwork.
+- When implementation conflicts with art, preserve gameplay readability first, then apply the locked art direction.

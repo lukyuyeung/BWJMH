@@ -1,0 +1,25 @@
+{
+  "chi": 128,
+  "pon": 228,
+  "daiminkan": 15,
+  "ankan": 19,
+  "kakan": 14,
+  "ron": 171,
+  "tsumo": 107,
+  "invalidActions": 0,
+  "deadlocks": 0,
+  "scoreConservationErrors": 0,
+  "matches": 40,
+  "hands": 346,
+  "actions": 38961,
+  "wins": 278,
+  "draws": 68,
+  "calls": 371,
+  "kans": 48,
+  "riichi": 262,
+  "seeds": [
+    270221,
+    270260
+  ],
+  "policy": "bot"
+}

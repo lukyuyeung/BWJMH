@@ -1,0 +1,67 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.6.0 test:browser
+> npm run build -w @bunny/riichi-engine && node --import tsx scripts/browser-smoke.ts
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.6.0 build
+> tsc -p tsconfig.json
+
+PASS Four browser contexts: create/code/join/seats/ready/host start
+PASS Actual UI discard → claim Pass if needed → automatic South draw → discard
+PASS Browser reload resumes same identity/private hand
+PASS One human + three Bunny Bots start and execute legal timed actions
+PASS Auto Sort toggles server-order and sorted own hand without a game action
+PASS Reference scene loaded; Rules/Info/contrast settings work; Exit and return retain reconnect identity
+PASS Art assets loaded; four profiles and mobile viewport without horizontal overflow
+PASS TSUMO control and settled score display
+PASS Next Hand creates fresh hand and cancels previous hand presentation
+PASS Auto Discard sends legal drawn tile via real Socket.IO and can be toggled off
+PASS Riichi button deducts 1,000 points and displays declaration/pot
+PASS Ankan button exposes closed Kan, Kan Dora and Rinshan continuation
+PASS Legal Ron displayed; Auto Ron sends accepted intent and stops after settlement
+PASS Claim window displays Chi, Pon and Pass; Chi has no false drawn-tile gap
+PASS Pon control executes and displays meld without a false draw
+PASS Disable Calls automatically passes legal Chi/Pon/Kan, then can be toggled off
+PASS Open Kan control executes with Rinshan replacement
+PASS Kakan control upgrades Pon only after legal claim resolution
+PASS Hover matching opponents public discards only; real 3D rings, no quantity tooltip
+PASS 1920x1080, 1366x768 and mobile landscape: four walls, hidden opponent faces, melds at hand right, timer above Pass
+PASS Modular double-yakuman placeholder uses official existing art; Skip dismisses without mutating game
+PASS Populated six-column rivers from legal server auto-actions; live WebGL mesh geometry confirmed
+PASS GPU context loss retains playable CSS fallback; restored context resumes one 3D canvas
+PASS Final ranking visible; Next Hand and discard controls unavailable
+PASS Room-first terminal notification and later unfinished hand snapshots cannot unlock a finished match
+{
+  "ok": true,
+  "browser": "153.0.8010.0",
+  "steps": [
+    "Four browser contexts: create/code/join/seats/ready/host start",
+    "Actual UI discard → claim Pass if needed → automatic South draw → discard",
+    "Browser reload resumes same identity/private hand",
+    "One human + three Bunny Bots start and execute legal timed actions",
+    "Auto Sort toggles server-order and sorted own hand without a game action",
+    "Reference scene loaded; Rules/Info/contrast settings work; Exit and return retain reconnect identity",
+    "Art assets loaded; four profiles and mobile viewport without horizontal overflow",
+    "TSUMO control and settled score display",
+    "Next Hand creates fresh hand and cancels previous hand presentation",
+    "Auto Discard sends legal drawn tile via real Socket.IO and can be toggled off",
+    "Riichi button deducts 1,000 points and displays declaration/pot",
+    "Ankan button exposes closed Kan, Kan Dora and Rinshan continuation",
+    "Legal Ron displayed; Auto Ron sends accepted intent and stops after settlement",
+    "Claim window displays Chi, Pon and Pass; Chi has no false drawn-tile gap",
+    "Pon control executes and displays meld without a false draw",
+    "Disable Calls automatically passes legal Chi/Pon/Kan, then can be toggled off",
+    "Open Kan control executes with Rinshan replacement",
+    "Kakan control upgrades Pon only after legal claim resolution",
+    "Hover matching opponents public discards only; real 3D rings, no quantity tooltip",
+    "1920x1080, 1366x768 and mobile landscape: four walls, hidden opponent faces, melds at hand right, timer above Pass",
+    "Modular double-yakuman placeholder uses official existing art; Skip dismisses without mutating game",
+    "Populated six-column rivers from legal server auto-actions; live WebGL mesh geometry confirmed",
+    "GPU context loss retains playable CSS fallback; restored context resumes one 3D canvas",
+    "Final ranking visible; Next Hand and discard controls unavailable",
+    "Room-first terminal notification and later unfinished hand snapshots cannot unlock a finished match"
+  ],
+  "consoleErrors": []
+}

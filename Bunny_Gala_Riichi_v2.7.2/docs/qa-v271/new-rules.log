@@ -1,0 +1,34 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.0 test
+> vitest run --run test/v271.test.ts
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/packages/riichi-engine
+
+ ❯ test/v271.test.ts (8 tests | 1 failed) 26ms
+   × v2.7.1 additional rules > Chi 3m prohibits immediate same/swap tiles and clears after legal discard 8ms
+     → That Chi is not available.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/v271.test.ts > v2.7.1 additional rules > Chi 3m prohibits immediate same/swap tiles and clears after legal discard
+Error: That Chi is not available.
+ ❯ Module.claimChi src/game.ts:39:174
+
+ ❯ test/v271.test.ts:16:299
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 passed (8)
+   Start at  12:10:48
+   Duration  412ms (transform 143ms, setup 0ms, collect 173ms, tests 26ms, environment 0ms, prepare 64ms)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/packages/riichi-engine
+npm error workspace @bunny/riichi-engine@2.7.0
+npm error location /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/packages/riichi-engine
+npm error command failed
+npm error command sh -c vitest run --run test/v271.test.ts

@@ -1,0 +1,47 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.5.1 test:browser
+> npm run build -w @bunny/riichi-engine && node --import tsx scripts/browser-smoke.ts
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.5.1 build
+> tsc -p tsconfig.json
+
+PASS Four browser contexts: create/code/join/seats/ready/host start
+PASS Actual UI discard → claim Pass if needed → automatic South draw → discard
+PASS Browser reload resumes same identity/private hand
+PASS One human + three Bunny Bots start and execute legal timed actions
+PASS Reference scene loaded; Rules/Info/contrast settings work; Exit and return retain reconnect identity
+PASS Art assets loaded; four profiles and mobile viewport without horizontal overflow
+PASS TSUMO control and settled score display
+PASS Next Hand creates fresh hand
+PASS Auto Discard sends legal drawn tile via real Socket.IO and can be toggled off
+PASS Riichi button deducts 1,000 points and displays declaration/pot
+PASS Ankan button exposes closed Kan, Kan Dora and Rinshan continuation
+PASS Legal Ron displayed; Auto Ron sends accepted intent and stops after settlement
+PASS Claim window displays Chi, Pon and Pass; Chi has no false drawn-tile gap
+PASS Pon control executes and displays meld without a false draw
+PASS Open Kan control executes with Rinshan replacement
+PASS Kakan control upgrades Pon only after legal claim resolution
+PASS Hover matching opponents public discards only; real 3D rings, no quantity tooltip
+PASS 1920x1080, 1366x768 and mobile landscape: four walls, hidden opponent faces, melds at hand right, timer above Pass
+PASS Modular double-yakuman placeholder uses official existing art; Skip dismisses without mutating game
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: the central HUD must not cover populated discard rivers
+
+6 !== 0
+
+    at <anonymous> (/workspace/scratch/1facc1b99b70/project/scripts/browser-smoke.ts:70:1348) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 6,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

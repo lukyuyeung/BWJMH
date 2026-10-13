@@ -1,0 +1,76 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.7.1 pretest
+> npm run build -w @bunny/riichi-engine
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.1 build
+> tsc -p tsconfig.json
+
+
+> bunny-riichi@2.7.1 test
+> npm run test -w @bunny/riichi-engine && npm run test -w @bunny/server
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.1 test
+> vitest run
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/packages/riichi-engine
+
+ ✓ test/scoring.test.ts (17 tests) 6ms
+ ✓ test/yaku.test.ts (6 tests) 11ms
+ ✓ test/product-direction.test.ts (11 tests) 25ms
+ ✓ test/engine.test.ts (12 tests) 28ms
+ ✓ test/v270.test.ts (19 tests) 32ms
+ ✓ test/v271.test.ts (11 tests) 35ms
+ ✓ test/audit-v251.test.ts (61 tests) 85ms
+ ✓ test/melds.test.ts (4 tests) 23ms
+ ✓ test/yaku-extended.test.ts (3 tests) 6ms
+ ✓ test/agari.test.ts (5 tests) 4ms
+ ✓ test/fu.test.ts (2 tests) 5ms
+ ✓ test/decomposition.test.ts (2 tests) 4ms
+ ✓ test/deadwall.test.ts (3 tests) 8ms
+ ✓ test/tenpai.test.ts (2 tests) 5ms
+ ✓ test/v2-regression.test.ts (1 test) 2ms
+
+ Test Files  15 passed (15)
+      Tests  159 passed (159)
+   Start at  12:32:06
+   Duration  851ms (transform 641ms, setup 0ms, collect 1.66s, tests 279ms, environment 3ms, prepare 971ms)
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.7.1 test
+> vitest run
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+
+ ✓ test/settlement-audit.test.ts (9 tests) 33ms
+ ✓ test/room.test.ts (12 tests) 53ms
+ ✓ test/product-direction.test.ts (9 tests) 70ms
+ ✓ test/v270.test.ts (36 tests) 148ms
+ ✓ test/v271.test.ts (6 tests) 29ms
+ ✓ test/storage.test.ts (7 tests) 292ms
+ ✓ test/match.test.ts (6 tests) 3ms
+ ✓ test/simulation.test.ts (1 test) 105ms
+ ✓ test/network-guard.test.ts (2 tests) 180ms
+ ✓ test/crash-recovery.test.ts (1 test) 669ms
+   ✓ SIGKILL after acknowledged actions recovers the same authoritative hand and session 668ms
+ ✓ test/socket-audit.test.ts (6 tests) 5403ms
+   ✓ real Socket.IO trust boundary > server timer does safe AFK discard and cleans itself on room close 5208ms
+ ✓ test/cinematic-socket.test.ts (1 test) 7606ms
+   ✓ real four-player transport: active cinematic reconnect/forged advance/result timeout/cleanup 7605ms
+ ✓ test/simulation-audit.test.ts (3 tests) 38379ms
+   ✓ deterministic matches preserve all invariants with safe policy 4027ms
+   ✓ deterministic matches preserve all invariants with bot policy 31468ms
+   ✓ deterministic matches preserve all invariants with calls policy 2884ms
+
+ Test Files  13 passed (13)
+      Tests  99 passed (99)
+   Start at  12:32:07
+   Duration  39.44s (transform 681ms, setup 0ms, collect 2.17s, tests 52.97s, environment 2ms, prepare 754ms)
+

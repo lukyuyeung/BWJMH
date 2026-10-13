@@ -1,0 +1,48 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.5.1 pretypecheck
+> npm run build -w @bunny/riichi-engine
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.5.1 build
+> tsc -p tsconfig.json
+
+
+> bunny-riichi@2.5.1 typecheck
+> npm run typecheck -w @bunny/riichi-engine && npm run typecheck -w @bunny/server && npm run typecheck -w @bunny/client && tsc -p tsconfig.qa.json
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.5.1 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.5.1 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/client@2.5.1 typecheck
+> tsc --noEmit
+
+src/main.tsx(93,7477): error TS2375: Type '{ tiles: Tile[]; claimed: string | undefined; }' is not assignable to type '{ tiles: Tile[]; claimed?: string; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'claimed' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+src/main.tsx(93,7718): error TS2375: Type '{ tiles: Tile[]; claimed: string | undefined; }' is not assignable to type '{ tiles: Tile[]; claimed?: string; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'claimed' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+src/main.tsx(93,8653): error TS2375: Type '{ tiles: Tile[]; claimed: string | undefined; }' is not assignable to type '{ tiles: Tile[]; claimed?: string; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'claimed' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+npm error Lifecycle script `typecheck` failed with error:
+npm error code 2
+npm error path /workspace/scratch/1facc1b99b70/project/client
+npm error workspace @bunny/client@2.5.1
+npm error location /workspace/scratch/1facc1b99b70/project/client
+npm error command failed
+npm error command sh -c tsc --noEmit

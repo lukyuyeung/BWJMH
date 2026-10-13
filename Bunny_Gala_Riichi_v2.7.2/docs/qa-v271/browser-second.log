@@ -1,0 +1,19 @@
+PASS Idle countdown changes do not redraw 3D tiles
+PASS Three real mobile landscape sizes: native 44px auto controls, readable fullscreen settings, working quality presets and touch toggles
+PASS Graphical Chi applies server Kuikae; prohibited discard disabled in real UI
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 45000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: '確認打牌', exact: true })[22m
+
+    at <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-v271.ts:12:743) {
+  log: [
+    "  - waiting for getByRole('button', { name: '確認打牌', exact: true })"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.19.0

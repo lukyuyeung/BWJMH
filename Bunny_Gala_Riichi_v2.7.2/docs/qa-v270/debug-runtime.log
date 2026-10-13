@@ -1,0 +1,62 @@
+STATE awaiting_discard 1 {
+  canAbortiveDraw: false,
+  canDraw: false,
+  canDiscard: true,
+  canTsumo: false,
+  canRon: false,
+  canWinClaim: false,
+  canPassClaim: false,
+  canPon: false,
+  canKan: false,
+  ankanTileIds: [],
+  kakanTileIds: [],
+  chiSequences: [],
+  riichiDiscardIds: []
+}
+INTERNAL {
+  canAbortiveDraw: false,
+  canDraw: false,
+  canDiscard: false,
+  canTsumo: false,
+  canRon: false,
+  canWinClaim: false,
+  canPassClaim: true,
+  canPon: false,
+  canKan: false,
+  ankanTileIds: [],
+  kakanTileIds: [],
+  chiSequences: [ [ '2m', '3m', '4m' ], [ '3m', '4m', '5m' ] ],
+  riichiDiscardIds: []
+}
+STATE awaiting_claim 2 {
+  canAbortiveDraw: false,
+  canDraw: false,
+  canDiscard: false,
+  canTsumo: false,
+  canRon: false,
+  canWinClaim: false,
+  canPassClaim: true,
+  canPon: false,
+  canKan: false,
+  ankanTileIds: [],
+  kakanTileIds: [],
+  chiSequences: [ [ '2m', '3m', '4m' ], [ '3m', '4m', '5m' ] ],
+  riichiDiscardIds: []
+}
+DOM 30s
+North 北 · 叫牌
+CHI
+二
+萬
+三
+萬
+四
+萬
+CHI
+三
+萬
+四
+萬
+五
+萬
+Pass

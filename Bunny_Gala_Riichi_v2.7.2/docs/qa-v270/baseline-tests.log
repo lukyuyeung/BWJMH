@@ -1,0 +1,66 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.6.0 pretest
+> npm run build -w @bunny/riichi-engine
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.6.0 build
+> tsc -p tsconfig.json
+
+
+> bunny-riichi@2.6.0 test
+> npm run test -w @bunny/riichi-engine && npm run test -w @bunny/server
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.6.0 test
+> vitest run
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/packages/riichi-engine
+
+ ✓ test/scoring.test.ts (17 tests) 8ms
+ ✓ test/engine.test.ts (12 tests) 31ms
+ ✓ test/product-direction.test.ts (11 tests) 33ms
+ ✓ test/yaku.test.ts (6 tests) 36ms
+ ✓ test/yaku-extended.test.ts (3 tests) 13ms
+ ✓ test/audit-v251.test.ts (61 tests) 87ms
+ ✓ test/deadwall.test.ts (3 tests) 10ms
+ ✓ test/tenpai.test.ts (2 tests) 7ms
+ ✓ test/fu.test.ts (2 tests) 5ms
+ ✓ test/agari.test.ts (5 tests) 5ms
+ ✓ test/melds.test.ts (4 tests) 20ms
+ ✓ test/decomposition.test.ts (2 tests) 6ms
+ ✓ test/v2-regression.test.ts (1 test) 4ms
+
+ Test Files  13 passed (13)
+      Tests  129 passed (129)
+   Start at  11:17:27
+   Duration  1.27s (transform 493ms, setup 0ms, collect 1.31s, tests 266ms, environment 6ms, prepare 1.33s)
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.6.0 test
+> vitest run
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+
+ ✓ test/match.test.ts (6 tests) 10ms
+ ✓ test/settlement-audit.test.ts (9 tests) 54ms
+ ✓ test/room.test.ts (12 tests) 82ms
+ ✓ test/product-direction.test.ts (9 tests) 99ms
+ ✓ test/simulation.test.ts (1 test) 195ms
+ ✓ test/socket-audit.test.ts (6 tests) 5508ms
+   ✓ real Socket.IO trust boundary > server timer does safe AFK discard and cleans itself on room close 5210ms
+ ✓ test/simulation-audit.test.ts (3 tests) 50037ms
+   ✓ deterministic matches preserve all invariants with safe policy 5680ms
+   ✓ deterministic matches preserve all invariants with bot policy 39401ms
+   ✓ deterministic matches preserve all invariants with calls policy 4954ms
+
+ Test Files  7 passed (7)
+      Tests  46 passed (46)
+   Start at  11:17:29
+   Duration  50.65s (transform 829ms, setup 0ms, collect 2.08s, tests 55.98s, environment 2ms, prepare 643ms)
+

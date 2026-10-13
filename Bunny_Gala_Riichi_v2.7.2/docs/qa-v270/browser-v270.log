@@ -1,0 +1,21 @@
+PASS Four concurrent browser contexts create/join/Ready/start and load actual 3D scene
+PASS All eight supplied master bytes served and decoded; official video byte hash verified over HTTP
+PASS Desktop 1920/1366 and mobile 844x390/667x375/915x412: four walls, upright axes/contact/clipping, timer above PASS, no mobile scrolling
+PASS Actual side-camera rendering and close-ups captured for all four hands
+PASS Actual four-player Socket.IO payloads contain no opposing concealed IDs or live wall IDs
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 45000ms exceeded.
+Call log:
+[2m  - waiting for locator('.scene-actions button[data-action=chi]:enabled').first() to be visible[22m
+
+    at <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-v270.ts:49:242) {
+  log: [
+    "  - waiting for locator('.scene-actions button[data-action=chi]:enabled').first() to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.19.0

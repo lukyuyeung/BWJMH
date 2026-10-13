@@ -1,0 +1,53 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.7.1 test
+> vitest run --maxWorkers=1 --minWorkers=1
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+
+ ✓ test/room.test.ts (12 tests) 142ms
+ ✓ test/socket-audit.test.ts (6 tests) 5959ms
+   ✓ real Socket.IO trust boundary > server timer does safe AFK discard and cleans itself on room close 5253ms
+ ✓ test/storage.test.ts (7 tests) 1067ms
+   ✓ server-private recovery > four actual sockets reclaim the same ongoing hand across server restart 724ms
+ ✓ test/product-direction.test.ts (9 tests) 343ms
+ ✓ test/v270.test.ts (37 tests) 1043ms
+ ✓ test/settlement-audit.test.ts (9 tests) 273ms
+ ✓ test/v271.test.ts (8 tests) 266ms
+ ✓ test/cinematic-socket.test.ts (1 test) 8290ms
+   ✓ real four-player transport: active cinematic reconnect/forged advance/result timeout/cleanup 8289ms
+ ✓ test/crash-recovery.test.ts (1 test) 8324ms
+   ✓ SIGKILL after acknowledged actions recovers the same authoritative hand and session 8272ms
+ ✓ test/network-guard.test.ts (2 tests) 482ms
+stdout | test/storage-http.test.ts > real Vite requests cannot retrieve server-private checkpoint through filesystem URLs
+8:32:52 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+
+stderr | test/storage-http.test.ts > real Vite requests cannot retrieve server-private checkpoint through filesystem URLs
+The request url "/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server/.bunny-data/probe-6f4d751b-6d0d-47be-9a27-cfe17fb991ea.json" is outside of Vite serving allow list.
+
+- /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/client
+- /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/node_modules
+- /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/packages/riichi-engine/dist
+
+Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+
+
+stderr | test/storage-http.test.ts > real Vite requests cannot retrieve server-private checkpoint through filesystem URLs
+The request url "/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server/.bunny-data/probe-6f4d751b-6d0d-47be-9a27-cfe17fb991ea.json" is outside of Vite serving allow list.
+
+ ✓ test/storage-http.test.ts (1 test) 781ms
+   ✓ real Vite requests cannot retrieve server-private checkpoint through filesystem URLs 780ms
+ ✓ test/match.test.ts (6 tests) 56ms
+ ✓ test/simulation.test.ts (1 test) 454ms
+   ✓ state-machine simulation > can advance an automated table without leaking illegal state 451ms
+ ✓ test/simulation-audit.test.ts (3 tests) 218065ms
+   ✓ deterministic matches preserve all invariants with safe policy 23431ms
+   ✓ deterministic matches preserve all invariants with bot policy 180380ms
+   ✓ deterministic matches preserve all invariants with calls policy 14246ms
+
+ Test Files  14 passed (14)
+      Tests  103 passed (103)
+   Start at  20:32:01
+   Duration  274.69s (transform 3.48s, setup 0ms, collect 10.11s, tests 245.55s, environment 7ms, prepare 5.21s)
+

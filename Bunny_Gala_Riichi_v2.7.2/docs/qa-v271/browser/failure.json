@@ -1,0 +1,9 @@
+{
+  "error": "TimeoutError: locator.click: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '確認打牌', exact: true })\u001b[22m\n",
+  "checks": [
+    "Idle countdown changes do not redraw 3D tiles",
+    "Three real mobile landscape sizes: native 44px auto controls, readable fullscreen settings, working quality presets and touch toggles",
+    "Graphical Chi applies server Kuikae; prohibited discard disabled in real UI"
+  ],
+  "errors": []
+}

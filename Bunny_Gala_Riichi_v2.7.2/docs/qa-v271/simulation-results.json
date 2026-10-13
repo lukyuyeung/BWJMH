@@ -1,0 +1,31 @@
+{
+  "chi": 479,
+  "pon": 1025,
+  "daiminkan": 39,
+  "ankan": 68,
+  "kakan": 54,
+  "ron": 626,
+  "tsumo": 445,
+  "invalidActions": 0,
+  "deadlocks": 0,
+  "scoreConservationErrors": 0,
+  "matches": 160,
+  "hands": 1302,
+  "actions": 145310,
+  "wins": 1071,
+  "draws": 231,
+  "calls": 1543,
+  "kans": 161,
+  "riichi": 967,
+  "seeds": [
+    271101,
+    271260
+  ],
+  "policy": "bot",
+  "batches": [
+    "sim-271101.json",
+    "sim-271141.json",
+    "sim-271181.json",
+    "sim-271221.json"
+  ]
+}

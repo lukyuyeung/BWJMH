@@ -1,0 +1,29 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+bunny-riichi@2.7.0 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0
+├─┬ @bunny/client@2.7.0 -> ./client
+│ ├── @types/react-dom@18.3.7
+│ ├── @types/react@18.3.31
+│ ├── @types/three@0.186.0
+│ ├── react-dom@18.3.1
+│ ├── react@18.3.1
+│ ├── socket.io-client@4.8.4
+│ ├── three@0.186.1
+│ ├── typescript@5.9.3
+│ └── vite@6.4.4
+├─┬ @bunny/riichi-engine@2.7.0 -> ./packages/riichi-engine
+│ ├── @types/node@22.20.5
+│ ├── typescript@5.9.3 deduped
+│ └── vitest@2.1.9
+├─┬ @bunny/server@2.7.0 -> ./server
+│ ├── @bunny/riichi-engine@2.7.0 deduped -> ./packages/riichi-engine
+│ ├── @types/cors@2.8.19
+│ ├── @types/express@4.17.25
+│ ├── cors@2.8.6
+│ ├── express@4.22.3
+│ ├── socket.io-client@4.8.4 deduped
+│ ├── socket.io@4.8.4
+│ ├── tsx@4.23.15
+│ ├── typescript@5.9.3 deduped
+│ └── vitest@2.1.9 deduped
+└── playwright@1.63.0
+

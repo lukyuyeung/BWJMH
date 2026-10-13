@@ -1,0 +1,93 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> bunny-riichi@2.7.0 pretest
+> npm run build -w @bunny/riichi-engine
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.0 build
+> tsc -p tsconfig.json
+
+
+> bunny-riichi@2.7.0 test
+> npm run test -w @bunny/riichi-engine && npm run test -w @bunny/server
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/riichi-engine@2.7.0 test
+> vitest run
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/packages/riichi-engine
+
+ ✓ test/scoring.test.ts (17 tests) 6ms
+ ✓ test/melds.test.ts (4 tests) 13ms
+ ✓ test/yaku.test.ts (6 tests) 6ms
+ ✓ test/engine.test.ts (12 tests) 21ms
+ ✓ test/product-direction.test.ts (11 tests) 23ms
+ ✓ test/v270.test.ts (19 tests) 25ms
+ ✓ test/audit-v251.test.ts (61 tests) 61ms
+ ✓ test/agari.test.ts (5 tests) 4ms
+ ✓ test/yaku-extended.test.ts (3 tests) 5ms
+ ✓ test/fu.test.ts (2 tests) 3ms
+ ✓ test/decomposition.test.ts (2 tests) 3ms
+ ✓ test/deadwall.test.ts (3 tests) 5ms
+ ✓ test/tenpai.test.ts (2 tests) 11ms
+ ✓ test/v2-regression.test.ts (1 test) 2ms
+
+ Test Files  14 passed (14)
+      Tests  148 passed (148)
+   Start at  12:07:32
+   Duration  728ms (transform 667ms, setup 0ms, collect 1.50s, tests 188ms, environment 2ms, prepare 925ms)
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @bunny/server@2.7.0 test
+> vitest run
+
+
+ RUN  v2.1.9 /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+
+ ✓ test/match.test.ts (6 tests) 3ms
+ ✓ test/settlement-audit.test.ts (9 tests) 38ms
+ ✓ test/room.test.ts (12 tests) 52ms
+ ✓ test/product-direction.test.ts (9 tests) 47ms
+ ✓ test/v270.test.ts (36 tests) 186ms
+ ✓ test/simulation.test.ts (1 test) 115ms
+ ✓ test/socket-audit.test.ts (6 tests) 5426ms
+   ✓ real Socket.IO trust boundary > server timer does safe AFK discard and cleans itself on room close 5210ms
+ ✓ test/cinematic-socket.test.ts (1 test) 7614ms
+   ✓ real four-player transport: active cinematic reconnect/forged advance/result timeout/cleanup 7613ms
+ ❯ test/simulation-audit.test.ts (3 tests | 1 failed) 36942ms
+   ✓ deterministic matches preserve all invariants with safe policy 4306ms
+   ✓ deterministic matches preserve all invariants with bot policy 32273ms
+   × deterministic matches preserve all invariants with calls policy 362ms
+     → Simulation seed=1 policy=calls phase=awaiting_discard turn=27: Error: This tile cannot be discarded immediately after the call.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/simulation-audit.test.ts > deterministic matches preserve all invariants with calls policy
+Error: Simulation seed=1 policy=calls phase=awaiting_discard turn=27: Error: This tile cannot be discarded immediately after the call.
+ ❯ Module.runSimulations scripts/simulate.ts:23:23
+     21|    }
+     22|    stats.hands++;if(room.game!.result){stats.wins++;stats[room.game!.r…
+     23|   }catch(error){throw new Error(`Simulation seed=${seed} policy=${poli…
+       |                       ^
+     24|  }
+     25|  return stats;
+ ❯ test/simulation-audit.test.ts:3:122
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 8 passed (9)
+      Tests  1 failed | 82 passed (83)
+   Start at  12:07:33
+   Duration  37.70s (transform 627ms, setup 0ms, collect 1.78s, tests 50.42s, environment 6ms, prepare 580ms)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+npm error workspace @bunny/server@2.7.0
+npm error location /workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/server
+npm error command failed
+npm error command sh -c vitest run

@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "version": "2.6.0",
+  "install": "npm ci:189 packages",
+  "tests": {
+    "engine": 129,
+    "server": 46,
+    "total": 175
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "assets": "8 locked masters + cleanplate unchanged",
+  "browser": {
+    "version": "153.0.8010.0",
+    "checks": 25,
+    "consoleErrors": []
+  },
+  "simulations": {
+    "matches": 225,
+    "hands": 1499,
+    "actions": 214752,
+    "wins": 349,
+    "draws": 1150,
+    "calls": 4557,
+    "kans": 200,
+    "riichi": 346
+  }
+}

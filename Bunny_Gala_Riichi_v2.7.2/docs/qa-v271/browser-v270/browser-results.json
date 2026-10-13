@@ -1,0 +1,71 @@
+{
+  "ok": true,
+  "browser": "153.0.8010.0",
+  "steps": [
+    "Four concurrent browser contexts create/join/Ready/start and load actual 3D scene",
+    "All eight supplied master bytes served and decoded; official video byte hash verified over HTTP",
+    "Desktop 1920/1366 and mobile 844x390/667x375/915x412: four walls, upright axes/contact/clipping, timer above PASS, no mobile scrolling",
+    "Actual side-camera rendering and close-ups captured for all four hands",
+    "Actual four-player Socket.IO payloads contain no opposing concealed IDs or live wall IDs",
+    "Valid physical fixtures: graphical Chi/Pon/Daiminkan/Ankan/Kakan controls execute through Socket.IO; seat-relative right melds",
+    "Riichi discard highlights and public-information waiting previews; exact 1000-point deposit",
+    "Mobile touch inspection never discards; explicit confirmation submits a legal discard",
+    "Confirmed Chinitsu: all four share event/deadline, original MP4 actually plays, reload returns the current server presentation/results phase, server transitions all to results",
+    "Mobile fullscreen winning results and server-approved Next Hand clear prior cinematic",
+    "Actual video network failure + another client Skip: no premature results or client-driven advance; all four reach server results"
+  ],
+  "assets": [
+    {
+      "path": "/art/v5/TABLE_MATERIAL_MASTER__NOT_GEOMETRY.png",
+      "status": 200,
+      "sha256": "bd71ef20f901335b626c0a3ef2de02751068f33d9d9c1c6bcd5bfc166989e3a9",
+      "decoded": true
+    },
+    {
+      "path": "/art/v5/CHARACTER_WIZARD_MASTER.jpeg",
+      "status": 200,
+      "sha256": "de7efd79d2692ce6b5cb71d282dfd8c3f18fc93bc2d0741487c7dd869a78d9d8",
+      "decoded": true
+    },
+    {
+      "path": "/art/v5/ENVIRONMENT_MASTER__STYLE_ONLY.png",
+      "status": 200,
+      "sha256": "f59ac3066b48d11dbebbcf5323e32ee4072b4d7d522615cfa6fe93709169a607",
+      "decoded": true
+    },
+    {
+      "path": "/art/v5/CHARACTER_KING_MASTER.jpeg",
+      "status": 200,
+      "sha256": "83578b0275a5aa63cce133bab6db9b307c70c911d31b0737b935018310d8b37f",
+      "decoded": true
+    },
+    {
+      "path": "/art/v5/LOGO_MASTER__DO_NOT_REDRAW.png",
+      "status": 200,
+      "sha256": "2aa9ccf0c5178154d5fa6efcac75e16af46898032cccecfc0e7fb08b3425841e",
+      "decoded": true
+    },
+    {
+      "path": "/art/v5/CHARACTER_NINJA_MASTER.jpeg",
+      "status": 200,
+      "sha256": "5cae19029d007024611cf9229adf40457979516b80f300226586271e340e20f8",
+      "decoded": true
+    },
+    {
+      "path": "/art/v5/TILE_BACK_MASTER__BLACK_GOLD_NO_LOGO.png",
+      "status": 200,
+      "sha256": "88cf45e58f6e9dd0cb9d0d7d542c1e0fefd8b07534879a7045e198ff7831e826",
+      "decoded": true
+    },
+    {
+      "path": "/art/v5/CHARACTER_PLAYER_YELLOW_BUNNY_MASTER.png",
+      "status": 200,
+      "sha256": "4938c5cf60c81176d041008be42d1c01e7513494e9c4f1d5fb374871dbabb7c2",
+      "decoded": true
+    }
+  ],
+  "consoleErrors": [],
+  "intentionallyInjectedErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+  ]
+}

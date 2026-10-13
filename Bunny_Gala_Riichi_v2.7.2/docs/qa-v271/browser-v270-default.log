@@ -1,0 +1,15 @@
+PASS Four concurrent browser contexts create/join/Ready/start and load actual 3D scene
+PASS All eight supplied master bytes served and decoded; official video byte hash verified over HTTP
+PASS Desktop 1920/1366 and mobile 844x390/667x375/915x412: four walls, upright axes/contact/clipping, timer above PASS, no mobile scrolling
+PASS Actual side-camera rendering and close-ups captured for all four hands
+PASS Actual four-player Socket.IO payloads contain no opposing concealed IDs or live wall IDs
+SCENARIO chi {"revision":2,"actions":{"canAbortiveDraw":false,"canDraw":false,"canDiscard":false,"canTsumo":false,"canRon":false,"canWinClaim":false,"canPassClaim":true,"canPon":false,"canKan":false,"ankanTileIds":[],"kakanTileIds":[],"chiSequences":[["2m","3m","4m"],["3m","4m","5m"]],"riichiDiscardIds":[]},"phase":"awaiting_claim"}
+/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-v270.ts:18
+async function waitState(index:number,predicate:(s:any)=>boolean,timeout=15000){const until=Date.now()+timeout;while(Date.now()<until){if(states[index]&&predicate(states[index]))return states[index];await new Promise(r=>setTimeout(r,50));}throw Error('state timeout '+index);}
+                                                                                                                                                                                                                                                     ^
+
+Error: state timeout 0
+    at waitState (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-v270.ts:18:246)
+    at async <anonymous> (/workspace/scratch/1facc1b99b70/project/Bunny_Gala_Riichi_v2.6.0/scripts/browser-v270.ts:49:335)
+
+Node.js v24.19.0
