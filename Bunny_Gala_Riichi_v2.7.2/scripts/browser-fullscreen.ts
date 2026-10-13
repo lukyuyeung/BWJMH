@@ -10,12 +10,12 @@ const port=(service.httpServer.address() as any).port;
 const app=await createServer({root:'client',server:{host:'127.0.0.1',port:0},define:{'import.meta.env.VITE_SERVER_URL':JSON.stringify(`http://127.0.0.1:${port}`)}});await app.listen();
 const browser=await chromium.launch({headless:true,...(process.env.QA_CHROMIUM_PATH?{executablePath:process.env.QA_CHROMIUM_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--no-zygote','--use-gl=angle','--use-angle=swiftshader']});
 const page=await browser.newPage({viewport:{width:844,height:390},hasTouch:true});page.setDefaultTimeout(30000);
-const errors:string[]=[],checks:any[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+const errors:string[]=[],checks:any[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'){errors.push(m.text());console.error('Browser resource error',m.location());}});
 try{
- await page.goto(app.resolvedUrls!.local[0]!);await page.getByLabel('Player name').fill('Fullscreen QA');
- for(const name of ['Create Room','Fill with Bots','Ready'])await page.getByRole('button',{name,exact:true}).click();
+ await page.goto(app.resolvedUrls!.local[0]!);await page.getByLabel('玩家名稱').fill('Fullscreen QA');
+ for(const name of ['建立房間','加入機械人','準備'])await page.getByRole('button',{name,exact:true}).click();
  const code=await page.getByRole('heading',{name:/^[A-Z2-9]{6}$/}).innerText(),room=service.rooms.getRoomForTesting(code)!;
- service.rooms.setRules(code,room.hostPlayerId,{actionTimeoutMs:120000});await page.getByRole('button',{name:'Start Game',exact:true}).click();
+ service.rooms.setRules(code,room.hostPlayerId,{actionTimeoutMs:120000});await page.getByRole('button',{name:'開始遊戲',exact:true}).click();
  const pause=()=>{clearTimeout(service.actionTimers.get(code));service.actionTimers.delete(code);};pause();
  for(const size of [{width:844,height:390},{width:844,height:375},{width:667,height:375},{width:915,height:412}]){
   await page.setViewportSize(size);await page.waitForFunction(()=>document.querySelector<HTMLCanvasElement>('.tile-webgl')?.dataset.uprightErrors==='0');
@@ -26,10 +26,10 @@ try{
   assert(await page.locator('.hand .tile').count()>=13);assert.equal(await page.locator('.mobile-options:visible').count(),0);
   await page.screenshot({path:out+`/mobile-${size.width}x${size.height}.png`});checks.push({size,bounds});
  }
- await page.getByRole('button',{name:'Settings',exact:true}).click();await page.locator('.mobile-panel').getByLabel('Auto Ron',{exact:true}).check();await page.locator('.mobile-panel').getByLabel('Auto Ron',{exact:true}).uncheck();await page.getByRole('button',{name:'Close panel',exact:true}).click();
+ await page.getByRole('button',{name:'設定',exact:true}).click();await page.locator('.mobile-panel').getByLabel('自動和牌',{exact:true}).check();await page.locator('.mobile-panel').getByLabel('自動和牌',{exact:true}).uncheck();await page.getByRole('button',{name:'關閉設定',exact:true}).click();
  await page.locator('.hand button:enabled').first().tap();await page.locator('[data-action=discard-confirm]').click();pause();
  installScenario(service.rooms,room,'chi');service.broadcastPrivateGameStates(code);pause();await page.locator('[data-action=chi]:enabled').first().waitFor();await page.screenshot({path:out+'/mobile-chi.png'});
  await page.locator('[data-action=chi]:enabled').first().click();pause();await page.waitForFunction(()=>document.querySelector('.own-melds .meld'));await page.screenshot({path:out+'/mobile-meld.png'});
- installScenario(service.rooms,room,'chinitsu');service.broadcastPrivateGameStates(code);pause();await page.locator('[data-action=tsumo]:enabled').click();await page.getByRole('dialog',{name:'Hand results'}).waitFor();const result=await page.getByRole('dialog',{name:'Hand results'}).boundingBox();assert(result&&result.x>=0&&result.y>=0&&result.x+result.width<=915+1&&result.y+result.height<=412+1);await page.getByRole('button',{name:'Next Hand',exact:true}).waitFor();await page.screenshot({path:out+'/mobile-results.png'});
+ installScenario(service.rooms,room,'chinitsu');service.broadcastPrivateGameStates(code);pause();await page.locator('[data-action=tsumo]:enabled').click();await page.getByRole('dialog',{name:'本局結算'}).waitFor();const result=await page.getByRole('dialog',{name:'本局結算'}).boundingBox();assert(result&&result.x>=0&&result.y>=0&&result.x+result.width<=915+1&&result.y+result.height<=412+1);await page.getByRole('button',{name:'下一局 ❯',exact:true}).waitFor();await page.screenshot({path:out+'/mobile-results.png'});
  assert.deepEqual(errors,[]);writeFileSync(out+'/browser-results.json',JSON.stringify({ok:true,checks,errors},null,2));console.log(JSON.stringify({ok:true,viewports:checks.length,errors}));
 }catch(e){await page.screenshot({path:out+'/failure.png'}).catch(()=>{});console.error(e);throw e;}finally{await browser.close();await app.close();await service.close();}

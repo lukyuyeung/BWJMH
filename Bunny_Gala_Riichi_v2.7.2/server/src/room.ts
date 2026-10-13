@@ -12,6 +12,7 @@ import { createShuffledWall, dealInitialHands, createHandState, drawTile, discar
 export interface Player {
   id: string;
   name: string;
+  avatarUrl?: string;
   seat: Seat;
   ready: boolean;
   connected: boolean;
@@ -49,6 +50,7 @@ export interface Room {
 export interface PublicPlayer {
   id: string;
   name: string;
+  avatarUrl?: string;
   seat: Seat;
   ready: boolean;
   connected: boolean;
@@ -87,6 +89,7 @@ export interface PlayerGameState {
     cinematic?:CinematicState;
     assistance:{waits:{face:import("@bunny/riichi-engine").TileFace;remaining:number}[];riichi:Record<string,{face:import("@bunny/riichi-engine").TileFace;remaining:number}[]>};
     settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:import("@bunny/riichi-engine").Tile[];tenpai:Seat[]};
+    resultUraIndicators?: import('@bunny/riichi-engine').Tile[];
     doraIndicators: import('@bunny/riichi-engine').Tile[];
     yourDora: { indicatorDora:number; akaDora:number; total:number };
     rinshanRemaining: number;
@@ -139,16 +142,16 @@ export class RoomManager {
     for(const original of saved){const room=structuredClone(original);for(const player of room.players)if(!player.isBot)player.connected=false;room.disconnectedAt=Date.now();this.rooms.set(room.code,room);}
   }
 
-  createRoom(name: string): { room: Room; player: Player } {
+  createRoom(name: string, avatarUrl?: string): { room: Room; player: Player } {
     const playerName = validateName(name);
     const code = this.generateUniqueCode();
-    const player: Player = { id: randomUUID(), name: playerName, seat: 'east', ready: false, connected: true, resumeToken: randomUUID() };
+    const player: Player = { id: randomUUID(), name: playerName, ...avatarProfile(avatarUrl), seat: 'east', ready: false, connected: true, resumeToken: randomUUID() };
     const room: Room = { code, hostPlayerId: player.id, phase: 'lobby', players: [player], scores:{east:25000,south:25000,west:25000,north:25000}, riichiPot:0, settled:false, match:createMatchState(), rules:{...DEFAULT_RULESET},revision:0 };
     this.rooms.set(code, room);
     return { room, player };
   }
 
-  joinRoom(rawCode: string, name: string): { room: Room; player: Player } {
+  joinRoom(rawCode: string, name: string, avatarUrl?: string): { room: Room; player: Player } {
     const code = normalizeRoomCode(rawCode);
     const room = this.rooms.get(code);
     if (!room) throw new RoomError('ROOM_NOT_FOUND', 'Room not found.');
@@ -157,7 +160,7 @@ export class RoomManager {
     const playerName = validateName(name);
     const seat = SEATS.find((candidate) => !room.players.some((p) => p.seat === candidate));
     if (!seat) throw new RoomError('ROOM_FULL', 'Room is full.');
-    const player: Player = { id: randomUUID(), name: playerName, seat, ready: false, connected: true, resumeToken: randomUUID() };
+    const player: Player = { id: randomUUID(), name: playerName, ...avatarProfile(avatarUrl), seat, ready: false, connected: true, resumeToken: randomUUID() };
     room.players.push(player);
     return { room, player };
   }
@@ -167,7 +170,7 @@ export class RoomManager {
     if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');
     if(room.players.length>=4)throw new RoomError('ROOM_FULL','Room is full.');
     const seat=SEATS.find(s=>!room.players.some(p=>p.seat===s)); if(!seat)throw new RoomError('ROOM_FULL','Room is full.');
-    const bot:Player={id:randomUUID(),name:name?.trim()||`Bunny Bot ${room.players.length}`,seat,ready:true,connected:true,resumeToken:randomUUID(),isBot:true,botProfile:profile??(['aggressive','balanced','defensive'] as const)[(room.players.length-1)%3]!}; room.players.push(bot); return{room,player:bot};
+    const bot:Player={id:randomUUID(),name:name?.trim()||(['玩家兔','國王兔','忍者兔','巫師兔'][room.players.length]??'機械人'),avatarUrl:'/art/v5/'+(['CHARACTER_PLAYER_YELLOW_BUNNY_MASTER.png','CHARACTER_KING_MASTER.jpeg','CHARACTER_NINJA_MASTER.jpeg','CHARACTER_WIZARD_MASTER.jpeg'][room.players.length]!),seat,ready:true,connected:true,resumeToken:randomUUID(),isBot:true,botProfile:profile??(['aggressive','balanced','defensive'] as const)[(room.players.length-1)%3]!}; room.players.push(bot); return{room,player:bot};
   }
 
   fillWithBots(rawCode:string,playerId:string):Room{let room=this.requireRoom(rawCode);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');while(room.players.length<4)room=this.addBot(rawCode,playerId).room;return room;}
@@ -246,6 +249,7 @@ export class RoomManager {
         ...(room.settled?{settlement:{awardedPot:room.awardedPot??0,scoreChanges:Object.fromEntries(SEATS.map(s=>[s,room.scores[s]-(room.handStartingScores?.[s]??25000)])) as Record<Seat,number>,tenpai:game.phase==='exhaustive_draw'?SEATS.filter(s=>getPlayerWaits(game,s).length>0):[],...(game.result?{winningHand:game.result.method==='ron'?[...game.hands[game.result.winner],game.result.winningTile]:[...game.hands[game.result.winner]]}:{})}}:{}),
         doraIndicators: getVisibleDora(game),
         yourDora: getBonusDoraForSeat(game, player.seat),
+        ...(room.settled&&game.result&&game.riichi[game.result.winner].declared?{resultUraIndicators:game.deadWall.uraIndicators.slice(0,game.deadWall.revealedDoraCount)}:{}),
         rinshanRemaining: game.deadWall.rinshan.length,
         discards: {
           east: [...game.discards.east], south: [...game.discards.south],
@@ -350,6 +354,13 @@ export class RoomManager {
     if (room.phase !== 'playing' || !room.game) throw new RoomError('GAME_NOT_STARTED', 'Game has not started.');
     return room;
   }
+  updateAvatar(code:string,playerId:string,avatarUrl?:string):Room {
+    const room=this.requireRoom(code),player=this.requirePlayer(room,playerId);
+    const profile=avatarProfile(avatarUrl);
+    if(profile.avatarUrl)player.avatarUrl=profile.avatarUrl;else delete player.avatarUrl;
+    return room;
+  }
+
   getPublicState(code: string): PublicRoomState {
     return toPublicRoomState(this.requireRoom(code));
   }
@@ -387,6 +398,7 @@ export function toPublicRoomState(room: Room): PublicRoomState {
     players: room.players.map((player) => ({
       id: player.id,
       name: player.name,
+      ...(player.avatarUrl?{avatarUrl:player.avatarUrl}:{}),
       seat: player.seat,
       ready: player.ready,
       connected: player.connected,
@@ -404,4 +416,13 @@ function validateName(name: string): string {
   const value = name.trim();
   if (value.length < 1 || value.length > 20) throw new RoomError('INVALID_NAME', 'Name must be 1–20 characters.');
   return value;
+}
+
+function avatarProfile(value:unknown):{avatarUrl?:string} {
+ if(value===undefined||value==='')return{};
+ if(typeof value!=='string'||value.length>2048)throw new RoomError('INVALID_AVATAR','Invalid avatar URL.');
+ const path=/^\/art\/[A-Za-z0-9_./-]+\.(png|jpe?g|webp)$/i;
+ if(path.test(value)&&!value.includes('..'))return{avatarUrl:value};
+ try{const url=new URL(value);if(url.protocol==='https:'&&!url.username&&!url.password)return{avatarUrl:url.href};}catch{}
+ throw new RoomError('INVALID_AVATAR','Avatar must use HTTPS or a local art asset.');
 }

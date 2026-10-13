@@ -1,0 +1,26 @@
+import {chromium} from 'playwright';
+import {createServer} from 'vite';
+import {createGameServer} from '../server/src/index.ts';
+import {installScenario} from '../server/qa/scenarios.ts';
+import assert from 'node:assert/strict';
+import {mkdirSync} from 'node:fs';
+const out=process.env.QA_OUTPUT_DIR??'/tmp/bunny-result-ui-qa';mkdirSync(out,{recursive:true});
+const service=createGameServer();await new Promise(r=>service.httpServer.listen(0,'127.0.0.1',r));const port=service.httpServer.address().port;
+const vite=await createServer({root:'client',server:{host:'127.0.0.1',port:0},define:{'import.meta.env.VITE_SERVER_URL':JSON.stringify(`http://127.0.0.1:${port}`)}});await vite.listen();
+const browser=await chromium.launch({headless:true,...(process.env.QA_CHROMIUM_PATH?{executablePath:process.env.QA_CHROMIUM_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader']});
+try{const page=await browser.newPage({viewport:{width:844,height:390},hasTouch:true});const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')console.log('CONSOLE_ERROR',m.text(),m.location())});page.on('response',r=>{if(r.status()>=400)console.log('HTTP_ERROR',r.status(),r.url())});
+ await page.goto(vite.resolvedUrls.local[0]);await page.getByLabel('玩家名稱',{exact:true}).fill('頭像測試');await page.getByRole('button',{name:'選擇忍者兔',exact:true}).click();
+ for(const name of ['建立房間','加入機械人','準備'])await page.getByRole('button',{name,exact:true}).click();const code=await page.getByRole('heading',{name:/^[A-Z2-9]{6}$/}).innerText(),room=service.rooms.getRoomForTesting(code);
+ assert.equal(room.players[0].avatarUrl,'/art/v5/CHARACTER_NINJA_MASTER.jpeg');await page.getByRole('button',{name:'開始遊戲',exact:true}).click();await page.getByText('你的手牌',{exact:true}).waitFor();
+ const pause=()=>{clearTimeout(service.actionTimers.get(code));service.actionTimers.delete(code);};pause();
+ await page.evaluate(()=>window.dispatchEvent(new CustomEvent('bunny:profile',{detail:{avatarUrl:'/art/v5/CHARACTER_WIZARD_MASTER.jpeg'}})));
+ await page.waitForFunction(()=>document.querySelector('.scene-own-profile img')?.getAttribute('src')==='/art/v5/CHARACTER_WIZARD_MASTER.jpeg');assert.equal(room.players[0].avatarUrl,'/art/v5/CHARACTER_WIZARD_MASTER.jpeg');
+ installScenario(service.rooms,room,'tsumo');service.broadcastPrivateGameStates(code);pause();await page.locator('[data-action=tsumo]:enabled').click();
+ const result=page.getByRole('dialog',{name:'本局結算'});await result.waitFor();assert.equal(await result.locator('.bg-held-tile .tile').getAttribute('data-face'),room.game.result.winningTile.face);assert.equal(await result.locator('.bg-held-tile .tile').getAttribute('data-red'),String(room.game.result.winningTile.red));
+ assert.equal(await result.locator('.bg-win-tile').count(),1);assert.equal(await result.locator('.bg-score-player').count(),4);assert.equal(await result.locator('.bg-result-avatar img').first().getAttribute('src'),room.players[0].avatarUrl);
+ const cards=await result.locator('.bg-score-text>b').allTextContents();assert.deepEqual(cards,room.players.map(p=>room.scores[p.seat].toLocaleString()));
+ await page.screenshot({path:out+'/landscape.png'});await page.setViewportSize({width:390,height:844});await page.screenshot({path:out+'/portrait.png'});assert(await page.evaluate(()=>document.querySelector('.bg-result-v1').scrollWidth<=innerWidth));
+ await page.setViewportSize({width:844,height:390});await page.getByRole('button',{name:'下一局 ❯',exact:true}).click();await result.waitFor({state:'hidden'});pause();
+ installScenario(service.rooms,room,'ron');service.broadcastPrivateGameStates(code);pause();await page.locator('[data-action=ron]:enabled').click();await result.waitFor();assert.equal(await result.locator('.bg-held-tile .tile').getAttribute('data-face'),room.game.result.winningTile.face);assert.equal(room.game.result.method,'ron');
+ assert.deepEqual(errors,[]);console.log('PASS: avatar selection + App profile event -> server -> result; real tsumo/ron winning tile; four score cards; landscape/portrait; next hand; no page errors');
+}finally{await browser.close();await vite.close();await service.close();}

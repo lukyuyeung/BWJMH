@@ -37,10 +37,10 @@ io.on('connection', (socket) => {
   });
   socket.on('room:leave',(_payload:unknown,ack:Ack)=>safely(ack,()=>{const{roomCode,playerId}=requireSession(socket.data);const room=rooms.leaveLobby(roomCode,playerId);socket.leave(roomCode);delete socket.data.roomCode;delete socket.data.playerId;if(room)io.to(roomCode).emit('room:state',rooms.getPublicState(roomCode));return{left:true};}));
   socket.on('room:close',(_payload:unknown,ack:Ack)=>safely(ack,()=>{const{roomCode,playerId}=requireSession(socket.data);rooms.deleteRoom(roomCode,playerId);closeSockets(roomCode);return{closed:true};}));
-  socket.on('room:create', (payload: { name?: string }, ack: Ack) => {
+  socket.on('room:create', (payload: { name?: string; avatarUrl?:string }, ack: Ack) => {
     safely(ack, () => {
       if(socket.data.roomCode)throw new RoomError('ALREADY_IN_ROOM','Leave the current room first.');
-      const { room, player } = rooms.createRoom(payload?.name ?? '');
+      const { room, player } = rooms.createRoom(payload?.name ?? '',payload?.avatarUrl);
       bindSession(socket, room.code, player.id);
       const state = rooms.getPublicState(room.code);
       io.to(room.code).emit('room:state', state);
@@ -48,10 +48,10 @@ io.on('connection', (socket) => {
     });
   });
 
-  socket.on('room:join', (payload: { code?: string; name?: string }, ack: Ack) => {
+  socket.on('room:join', (payload: { code?: string; name?: string; avatarUrl?:string }, ack: Ack) => {
     safely(ack, () => {
       if(socket.data.roomCode)throw new RoomError('ALREADY_IN_ROOM','Leave the current room first.');
-      const { room, player } = rooms.joinRoom(payload?.code ?? '', payload?.name ?? '');
+      const { room, player } = rooms.joinRoom(payload?.code ?? '', payload?.name ?? '',payload?.avatarUrl);
       bindSession(socket, room.code, player.id);
       const state = rooms.getPublicState(room.code);
       io.to(room.code).emit('room:state', state);
@@ -62,6 +62,11 @@ io.on('connection', (socket) => {
   socket.on('room:reconnect', (payload: { code?:string; playerId?:string; resumeToken?:string }, ack: Ack) => {
     safely(ack,()=>{ if(!payload?.code||!payload?.playerId||!payload?.resumeToken) throw new RoomError('INVALID_RECONNECT','Missing reconnect credentials.'); const {room,player}=rooms.reconnect(payload.code,payload.playerId,payload.resumeToken); bindSession(socket,room.code,player.id); const state=rooms.getPublicState(room.code); io.to(room.code).emit('room:state',state); if(room.phase==='playing') broadcastPrivateGameStates(room.code,false); return {playerId:player.id,resumeToken:player.resumeToken,room:state}; });
   });
+
+  socket.on('player:avatar',(payload:{avatarUrl?:string},ack:Ack)=>safely(ack,()=>{
+    const {roomCode,playerId}=requireSession(socket.data);rooms.updateAvatar(roomCode,playerId,payload?.avatarUrl);
+    const state=rooms.getPublicState(roomCode);io.to(roomCode).emit('room:state',state);return{room:state};
+  }));
 
   socket.on('room:fill-bots', (_payload:unknown,ack:Ack)=>{safely(ack,()=>{const{roomCode,playerId}=requireSession(socket.data);rooms.fillWithBots(roomCode,playerId);const state=rooms.getPublicState(roomCode);io.to(roomCode).emit('room:state',state);return{room:state};});});
 
