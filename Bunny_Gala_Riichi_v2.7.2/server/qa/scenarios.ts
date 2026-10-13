@@ -31,7 +31,7 @@ export function installScenario(manager:RoomManager,room:Room,name:Scenario):voi
  'mobile-result':'2m 3m 4m 3p 4p 5p 4s 5s 6s 6s 7s 8s 5p 5p',
  };
  if(name==='kakan'||name==='open-yaku'||name==='rinshan'){
-  const tiles=take(name==='kakan'?'5m 5m 5m':name==='rinshan'?'P P P P':'P P P');ms.east.push({type:name==='rinshan'?'kan':'pon',tiles,calledTile:tiles[0]!,from:'north',open:true});
+  const tiles=take(name==='kakan'?'5m 5m 5m':name==='rinshan'?'P P P P':'P P P');ms.east.push({type:name==='rinshan'?'kan':'pon',tiles,calledTile:tiles[name==='rinshan'?3:0]!,from:'north',open:true});
  }
  h.east=take(own[name]??(name==='exhaustive'?'1m 2m 4m 5m 7m 8m 1p 3p 5p 7p E S W':'1m 2m 4m 5m 7m 8m 1p 3p 5p 7p E S W N'));
  if(name==='riichi-ron')h.south=take('1p 3p 1s 2s 3s 7m 8m 9m P P P C C');

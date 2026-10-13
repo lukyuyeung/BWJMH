@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {TABLE_TILE} from './table-metrics.js';
 import {feltProjection} from './felt-projection.js';
 import {uprightPose} from './seat-space.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
@@ -35,7 +36,7 @@ function layoutMatrix(el:HTMLElement,root:HTMLElement,depth:number):DOMMatrix{
   if(node===el){
    if(el.closest('.concealed'))transform=new DOMMatrix().translate(0,0,depth);
    else if(el.closest('.wall-stack'))transform=new DOMMatrix().translate(0,0,el.closest('.wall-indicator')?0:el.classList.contains('wall-lower')?depth:depth*2+1);
-   else transform=new DOMMatrix().translate(0,0,depth).rotate(0,0,el.classList.contains('sideways')?90:0);
+   else transform=new DOMMatrix().translate(0,0,el.classList.contains('kan-added')?depth*2:depth).rotate(0,0,el.classList.contains('sideways')?90:0);
   }
   const local=new DOMMatrix().translate(node.offsetLeft,node.offsetTop).translate(origin[0]??0,origin[1]??0,origin[2]??0).multiply(transform).translate(-(origin[0]??0),-(origin[1]??0),-(origin[2]??0));
   result=local.multiply(result);node=node.offsetParent as HTMLElement|null;
@@ -47,21 +48,18 @@ export function mountTiles3D(root:HTMLElement):()=>void{
  let softwareRenderer=false,lowQuality=false,renderCount=0;let disposed=false,contextLost=false,frame=0,renderer:THREE.WebGLRenderer|undefined,environment:THREE.WebGLRenderTarget|undefined;
  const geometries=new Map<string,THREE.BufferGeometry>(),materials=new Map<string,THREE.Material>(),textures:THREE.Texture[]=[];
  const tiles=new Map<HTMLElement,THREE.Group>();
- const boardScene=new THREE.Scene(),handScene=new THREE.Scene();
+ const boardScene=new THREE.Scene();
  const camera=new THREE.Camera();
  // Supply the real view direction to lighting; render installs the shared projection.
  camera.position.set(500,-1200,800);camera.lookAt(500,-300,0);camera.updateMatrixWorld();
 
- const handElevation=350,handDistance=1800;
- const handCamera=new THREE.OrthographicCamera(-W/2,W/2,H/2,-H/2,1,2500);handCamera.position.set(W/2,-H/2-handDistance,handElevation);handCamera.lookAt(W/2,-H/2,0);handCamera.updateMatrixWorld();
- const handPlane=new THREE.Plane(new THREE.Vector3(0,0,1),0),handRay=new THREE.Raycaster();
  const debug=(import.meta as any).env.DEV&&new URLSearchParams(location.search).get('debugCamera')==='side';
  const sideCamera=new THREE.PerspectiveCamera(40,W/H,1,4000);sideCamera.position.set(1700,-1150,520);sideCamera.up.set(0,0,1);sideCamera.lookAt(500,-300,35);sideCamera.updateMatrixWorld();
  const ivory=new THREE.MeshPhysicalMaterial({color:'#fffaf0',roughness:.92,metalness:0,clearcoat:0});
  const concealedBody=new THREE.MeshStandardMaterial({color:'#22191a',roughness:.9});
   const gold=new THREE.MeshStandardMaterial({color:'#eeb64b',metalness:.85,roughness:.22});
   const shadowMaterial=new THREE.ShadowMaterial({opacity:.35});
- const floorGeometry=new THREE.PlaneGeometry(1200,780),floor=new THREE.Mesh(floorGeometry,shadowMaterial);floor.position.set(500,-350,-.8);floor.receiveShadow=true;boardScene.add(floor);
+ const floorGeometry=new THREE.PlaneGeometry(1100,1100),floor=new THREE.Mesh(floorGeometry,shadowMaterial);floor.position.set(500,-500,-.8);floor.receiveShadow=true;boardScene.add(floor);
  function lighting(scene:THREE.Scene,hand=false){
   scene.add(new THREE.AmbientLight('#fff0df',.7));
   const key=new THREE.DirectionalLight('#ffe0bd',1.6);key.position.set(hand?350:100,hand?-150:50,800);key.target.position.set(hand?800:500,hand?-820:-300,0);scene.add(key,key.target);
@@ -69,7 +67,7 @@ export function mountTiles3D(root:HTMLElement):()=>void{
   const rim=new THREE.DirectionalLight('#e685b3',.22);rim.position.set(1200,-400,400);scene.add(rim);
   const fill=new THREE.DirectionalLight('#d7e6e3',.65);fill.position.set(600,-900,400);scene.add(fill);
  }
- lighting(boardScene);lighting(handScene,true);
+ lighting(boardScene);
  const shadowCanvas=document.createElement('canvas');shadowCanvas.width=64;shadowCanvas.height=64;const sc=shadowCanvas.getContext('2d')!;const sg=sc.createRadialGradient(32,32,4,32,32,32);sg.addColorStop(0,'#000a');sg.addColorStop(1,'#0000');sc.fillStyle=sg;sc.fillRect(0,0,64,64);const shadowTexture=new THREE.CanvasTexture(shadowCanvas);textures.push(shadowTexture);const contactMaterial=new THREE.MeshBasicMaterial({map:shadowTexture,transparent:true,depthWrite:false});const contacts=new Map<HTMLElement,THREE.Mesh>();const contactGeo=new THREE.PlaneGeometry(1,1);
 
  const flip=new THREE.Matrix4().makeScale(1,-1,1);
@@ -91,16 +89,16 @@ export function mountTiles3D(root:HTMLElement):()=>void{
   // Rebuild poses only after an actual board/hand/layout mutation.
   if(!geometryDirty&&tiles.size){
    let golden=false;for(const mesh of tiles.values()){const ring=mesh.getObjectByName('highlight') as THREE.Mesh|undefined;if(ring?.visible&&mesh.userData.latest){golden=true;(ring.material as THREE.MeshBasicMaterial).opacity=document.documentElement.dataset.reduceEffects==='true'||matchMedia('(prefers-reduced-motion: reduce)').matches?1:1;}}
-   renderer.shadowMap.needsUpdate=false;renderer.info.reset();renderer.clear();renderer.render(boardScene,debug?sideCamera:camera);renderer.clearDepth();renderer.render(handScene,handCamera);renderer.domElement.dataset.renderCount=String(++renderCount);
+   renderer.shadowMap.needsUpdate=false;renderer.info.reset();renderer.clear();renderer.render(boardScene,debug?sideCamera:camera);renderer.domElement.dataset.renderCount=String(++renderCount);
 
    return;
   }
   const board=root.querySelector<HTMLElement>('.board');if(!board)return;
   const present=new Set<HTMLElement>();let clippedBodies=0,matching=0,golden=false,uprightErrors=0,contactErrors=0,publicContactErrors=0;
   for(const el of root.querySelectorAll<HTMLElement>('.board .tile,.board .tile-back,.board .wall-lower,.hand .tile,.hand .tile-back')){
-   present.add(el);const own=!!el.closest('.hand'),w=el.offsetWidth,h=own&&!el.closest('.own-melds')?el.offsetHeight/Math.cos(Math.atan2(handElevation,handDistance)):el.offsetHeight,depth=own&&!el.closest('.own-melds')?24:el.closest('.river,.melds,.own-melds')?22:Math.min(22,w*.49);
-   const key=[w,h,depth].join(':');let geo=geometries.get(key);if(!geo){geo=new RoundedBoxGeometry(w,h,depth,2,own?8:4.5);geometries.set(key,geo);}
-   let mesh=tiles.get(el);if(!mesh){mesh=new THREE.Group();mesh.matrixAutoUpdate=false;for(let j=0;j<4;j++){const part=new THREE.Mesh();part.frustumCulled=false;part.receiveShadow=true;part.castShadow=j===0&&!own;mesh.add(part);}tiles.set(el,mesh);(own?handScene:boardScene).add(mesh);}
+   present.add(el);const own=!!el.closest('.hand'),w=TABLE_TILE.width,h=TABLE_TILE.height,depth=TABLE_TILE.depth;
+   const key=[w,h,depth].join(':');let geo=geometries.get(key);if(!geo){geo=new RoundedBoxGeometry(w,h,depth,2,4.5);geometries.set(key,geo);}
+   let mesh=tiles.get(el);if(!mesh){mesh=new THREE.Group();mesh.matrixAutoUpdate=false;for(let j=0;j<4;j++){const part=new THREE.Mesh();part.frustumCulled=false;part.receiveShadow=true;part.castShadow=j===0;mesh.add(part);}tiles.set(el,mesh);boardScene.add(mesh);}
    // One solid body draw and two face draws instead of six separate box-face draws.
    // The face meshes share the rounded body's vertex normals/UVs and use depth offset.
    const face=el.dataset.face,front=face?material(face,el.dataset.red==='true',own):back;
@@ -108,28 +106,19 @@ export function mountTiles3D(root:HTMLElement):()=>void{
    for(let j=1;j<4;j++){const surfaceKey=key+':surface:'+j;let surface=geometries.get(surfaceKey);if(!surface){surface=geo.clone();const range=geo.groups[j===1?4:5]!;surface.clearGroups();surface.setDrawRange(range.start,range.count);geometries.set(surfaceKey,surface);}const part=mesh.children[j] as THREE.Mesh;part.geometry=surface;part.material=j===1?front:back;}
    const trimKey=key+':trim';let trimGeo=geometries.get(trimKey);if(!trimGeo){const x=-(w+.2)/2,y=-(h+.2)/2,ww=w+.2,hh=h+.2,r=Math.min(w*.11,5);const shape=new THREE.Shape();shape.moveTo(x+r,y);shape.lineTo(x+ww-r,y);shape.quadraticCurveTo(x+ww,y,x+ww,y+r);shape.lineTo(x+ww,y+hh-r);shape.quadraticCurveTo(x+ww,y+hh,x+ww-r,y+hh);shape.lineTo(x+r,y+hh);shape.quadraticCurveTo(x,y+hh,x,y+hh-r);shape.lineTo(x,y+r);shape.quadraticCurveTo(x,y,x+r,y);trimGeo=new THREE.ExtrudeGeometry(shape,{depth:2.3,bevelEnabled:false,curveSegments:5});trimGeo.translate(0,0,-1.15);geometries.set(trimKey,trimGeo);}const trim=mesh.children[3] as THREE.Mesh;trim.geometry=trimGeo;trim.material=gold;trim.position.z=face?-depth/2+1.4:depth/2-1.4;
    const standing=!!el.closest('.concealed')||own&&!el.closest('.own-melds');
-   if(own){
-    const rect=el.getBoundingClientRect(),base=root.getBoundingClientRect(),scale=base.width/W;
-    const sx=(rect.left-base.left+rect.width/2)/scale,sy=(rect.top-base.top+rect.height/2)/scale;
-    const centerZ=standing?h/2:depth/2;
-    handPlane.constant=-centerZ;handRay.setFromCamera(new THREE.Vector2(2*sx/W-1,1-2*sy/H),handCamera);
-    const center=new THREE.Vector3();handRay.ray.intersectPlane(handPlane,center);
-    mesh.matrix.makeTranslation(center.x,center.y,centerZ).multiply(standing?new THREE.Matrix4().makeRotationX(uprightPose(0,h).pitch):new THREE.Matrix4().makeRotationZ(el.classList.contains('sideways')?Math.PI/2:0));
-    let contact=contacts.get(el);if(!contact){contact=new THREE.Mesh(contactGeo,contactMaterial);handScene.add(contact);contacts.set(el,contact);}contact.position.set(center.x,center.y,0);contact.scale.set(w*1.4,depth*1.2,1);
-   }else {
-    const pose=layoutMatrix(el,board,depth);
-    const anchored=flip.clone().multiply(new THREE.Matrix4().fromArray(Array.from(pose.toFloat64Array()))).multiply(flip);
-    if(standing){
-     const relative=el.closest('.pos-1')?1:el.closest('.pos-3')?3:2;
-     const p=uprightPose(relative,h),center=new THREE.Vector3().setFromMatrixPosition(anchored);
-     mesh.matrix.makeTranslation(center.x,center.y,p.centerZ).multiply(new THREE.Matrix4().makeRotationZ(p.yaw)).multiply(new THREE.Matrix4().makeRotationX(p.pitch));
-    }else mesh.matrix.copy(anchored);
-   }
+   const pose=layoutMatrix(el,board,depth);
+   const anchored=flip.clone().multiply(new THREE.Matrix4().fromArray(Array.from(pose.toFloat64Array()))).multiply(flip);
+   if(standing){
+    const relative=own?0:el.closest('.pos-1')?1:el.closest('.pos-3')?3:2;
+    const p=uprightPose(relative,h),center=new THREE.Vector3().setFromMatrixPosition(anchored);
+    mesh.matrix.makeTranslation(center.x,center.y,p.centerZ).multiply(new THREE.Matrix4().makeRotationZ(p.yaw)).multiply(new THREE.Matrix4().makeRotationX(p.pitch));
+    let contact=contacts.get(el);if(!contact){contact=new THREE.Mesh(contactGeo,contactMaterial);boardScene.add(contact);contacts.set(el,contact);}contact.position.set(center.x,center.y,0);contact.scale.set(w*1.3,depth*1.3,1);
+   }else mesh.matrix.copy(anchored);
    if(standing){const up=new THREE.Vector3(0,1,0).transformDirection(mesh.matrix);if(up.distanceTo(new THREE.Vector3(0,0,1))>1e-6)uprightErrors++;const foot=new THREE.Vector3(0,-h/2,0).applyMatrix4(mesh.matrix);if(Math.abs(foot.z)>1e-6)contactErrors++;}
    if(el.closest('.river,.melds')&&!own){const foot=new THREE.Vector3(0,0,-depth/2).applyMatrix4(mesh.matrix);if(Math.abs(foot.z)>1e-6)publicContactErrors++;}
    // Regression diagnostic: the calibrated depth interval must contain every tile body.
-   const view=own?handCamera:camera;const clip=new THREE.Matrix4().multiplyMatrices(view.projectionMatrix,view.matrixWorldInverse).multiply(mesh.matrix);let clipped=false;
-   if(el.closest('.river,.wall-stack')){
+   const view=camera;const clip=new THREE.Matrix4().multiplyMatrices(view.projectionMatrix,view.matrixWorldInverse).multiply(mesh.matrix);let clipped=false;
+   if(el.closest('.river,.wall-stack,.hand,.concealed,.melds')){
     const facePoints=[];for(const x of [-w/2,w/2])for(const y of [-h/2,h/2]){const v=new THREE.Vector4(x,y,depth/2,1).applyMatrix4(clip);facePoints.push({x:(v.x/v.w+1)*W/2,y:(1-v.y/v.w)*H/2});}
     const bounds=root.getBoundingClientRect(),scale=bounds.width/W;
     const left=Math.min(...facePoints.map(p=>p.x)),top=Math.min(...facePoints.map(p=>p.y)),right=Math.max(...facePoints.map(p=>p.x)),bottom=Math.max(...facePoints.map(p=>p.y));
@@ -137,7 +126,7 @@ export function mountTiles3D(root:HTMLElement):()=>void{
    }
    for(const x of [-w/2,w/2])for(const y of [-h/2,h/2])for(const z of [-depth/2,depth/2]){const v=new THREE.Vector4(x,y,z,1).applyMatrix4(clip);if(v.z < -v.w||v.z>v.w)clipped=true;}
    if(clipped)clippedBodies++;
-   const matched=el.classList.contains('matching-discard'),latest=el.classList.contains('latest-discard');mesh.userData.latest=latest;if(matched)matching++;if(latest)golden=true;
+   const matched=el.classList.contains('matching-discard'),latest=el.classList.contains('latest-discard');mesh.userData.latest=latest;mesh.userData.dimensions=[w,h,depth];if(matched)matching++;if(latest)golden=true;
    let ring=mesh.getObjectByName('highlight') as THREE.Mesh|undefined;
    if((matched||latest)&&!ring){const shape=new THREE.Shape();shape.moveTo(-w/2-3,-h/2-3);shape.lineTo(w/2+3,-h/2-3);shape.lineTo(w/2+3,h/2+3);shape.lineTo(-w/2-3,h/2+3);shape.closePath();const hole=new THREE.Path();hole.moveTo(-w/2-1,-h/2-1);hole.lineTo(-w/2-1,h/2+1);hole.lineTo(w/2+1,h/2+1);hole.lineTo(w/2+1,-h/2-1);hole.closePath();shape.holes.push(hole);const geom=new THREE.ShapeGeometry(shape);const ringKey=key+':ring:'+(++highlightSequence);geometries.set(ringKey,geom);const mat=new THREE.MeshBasicMaterial({color:matched?'#70e7ff':'#ff459a',transparent:true,depthTest:false,toneMapped:false});materials.set(ringKey,mat);ring=new THREE.Mesh(geom,mat);ring.name='highlight';ring.userData.resourceKey=ringKey;ring.frustumCulled=false;ring.renderOrder=100;ring.position.z=depth/2+3;mesh.add(ring);}
    if(ring){ring.visible=matched||latest;const mat=ring.material as THREE.MeshBasicMaterial;mat.color.set(latest?'#ff459a':'#70e7ff');mat.opacity=latest&&document.documentElement.dataset.reduceEffects!=='true'&&!matchMedia('(prefers-reduced-motion: reduce)').matches ? 1:1;}
@@ -147,9 +136,9 @@ export function mountTiles3D(root:HTMLElement):()=>void{
    mesh.matrixWorldNeedsUpdate=true;
   }
   for(const [el,mesh] of tiles)if(!present.has(el)){for(const name of ['highlight','matching-dot']){const overlay=mesh.getObjectByName(name) as THREE.Mesh|undefined;if(overlay){const resourceKey=overlay.userData.resourceKey as string;overlay.geometry.dispose();(overlay.material as THREE.Material).dispose();geometries.delete(resourceKey);materials.delete(resourceKey);}}mesh.removeFromParent();tiles.delete(el);contacts.get(el)?.removeFromParent();contacts.delete(el);}
-  renderer.shadowMap.needsUpdate=geometryDirty;geometryDirty=false;renderer.info.reset();renderer.clear();renderer.render(boardScene,debug?sideCamera:camera);renderer.clearDepth();renderer.render(handScene,handCamera);
+  renderer.shadowMap.needsUpdate=geometryDirty;geometryDirty=false;renderer.info.reset();renderer.clear();renderer.render(boardScene,debug?sideCamera:camera);
   // Expose render diagnostics for browser QA without exposing any game secrets.
-  root.dataset.tileRenderer='webgl';const handBounds=root.querySelector<HTMLElement>('.hand')?.getBoundingClientRect();renderer.domElement.dataset.handTop=String(handBounds?.top??-1);renderer.domElement.dataset.tableScale=String(tableScale);renderer.domElement.dataset.tableOffset=String(tableOffset);renderer.domElement.dataset.renderCount=String(++renderCount);renderer.domElement.dataset.quality=lowQuality?'low':'high';renderer.domElement.dataset.meshCount=String(tiles.size);renderer.domElement.dataset.triangles=String(renderer.info.render.triangles);renderer.domElement.dataset.clippedTileBodies=String(clippedBodies);renderer.domElement.dataset.matchingDiscards=String(matching);renderer.domElement.dataset.uprightErrors=String(uprightErrors);renderer.domElement.dataset.contactErrors=String(contactErrors);renderer.domElement.dataset.publicContactErrors=String(publicContactErrors);renderer.domElement.dataset.camera=debug?'side':'gameplay';
+  root.dataset.tileRenderer='webgl';const handBounds=root.querySelector<HTMLElement>('.hand')?.getBoundingClientRect();renderer.domElement.dataset.handTop=String(handBounds?.top??-1);renderer.domElement.dataset.tableScale=String(tableScale);renderer.domElement.dataset.tableOffset=String(tableOffset);renderer.domElement.dataset.renderCount=String(++renderCount);renderer.domElement.dataset.quality=lowQuality?'low':'high';renderer.domElement.dataset.meshCount=String(tiles.size);renderer.domElement.dataset.triangles=String(renderer.info.render.triangles);renderer.domElement.dataset.clippedTileBodies=String(clippedBodies);renderer.domElement.dataset.matchingDiscards=String(matching);renderer.domElement.dataset.uprightErrors=String(uprightErrors);renderer.domElement.dataset.contactErrors=String(contactErrors);renderer.domElement.dataset.publicContactErrors=String(publicContactErrors);renderer.domElement.dataset.camera=debug?'side':'gameplay';renderer.domElement.dataset.tileModel=JSON.stringify(TABLE_TILE);renderer.domElement.dataset.cameraCount='1';renderer.domElement.dataset.tileModels=JSON.stringify([...new Set([...tiles.values()].map(mesh=>JSON.stringify(mesh.userData.dimensions)))].map(s=>JSON.parse(s)));
   renderer.domElement.style.visibility='visible';root.classList.add('webgl-ready');
  }
  function invalidateViewport(){if(renderer){root.classList.remove('webgl-ready');renderer.domElement.style.visibility='hidden';}geometryDirty=true;schedule();}
@@ -159,7 +148,7 @@ export function mountTiles3D(root:HTMLElement):()=>void{
  const onVisibility=()=>{if(!document.hidden)schedule(false);};
  const onLost=(e:Event)=>{e.preventDefault();contextLost=true;root.classList.remove('webgl-ready');root.dataset.tileRenderer='fallback';};
  const onRestored=()=>{contextLost=false;refreshEnvironment();schedule()};
- function refreshEnvironment(){if(!renderer||disposed)return;environment?.dispose();const pmrem=new THREE.PMREMGenerator(renderer);const roomEnvironment=new RoomEnvironment();environment=pmrem.fromScene(roomEnvironment,.04);boardScene.environment=environment.texture;handScene.environment=environment.texture;boardScene.environmentIntensity=.35;handScene.environmentIntensity=.45;roomEnvironment.dispose();pmrem.dispose();}
+ function refreshEnvironment(){if(!renderer||disposed)return;environment?.dispose();const pmrem=new THREE.PMREMGenerator(renderer);const roomEnvironment=new RoomEnvironment();environment=pmrem.fromScene(roomEnvironment,.04);boardScene.environment=environment.texture;boardScene.environmentIntensity=.35;roomEnvironment.dispose();pmrem.dispose();}
  function applyQuality(){const requested=document.documentElement.dataset.graphicsQuality??localStorage.getItem('bunny-graphics')??'auto';lowQuality=requested==='low'||requested==='auto'&&(softwareRenderer||matchMedia('(orientation: landscape) and (max-height: 500px)').matches);if(renderer){invalidateViewport();renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.shadowMap.enabled=!lowQuality&&document.documentElement.dataset.reduceEffects!=='true'&&!matchMedia('(prefers-reduced-motion: reduce)').matches;geometryDirty=true;schedule();}}
  async function initialize(){
   applyQuality();
@@ -175,5 +164,5 @@ export function mountTiles3D(root:HTMLElement):()=>void{
   observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style','data-face','data-red','disabled']});resize.observe(root);root.addEventListener('pointerover',schedule);root.addEventListener('pointerout',schedule);root.addEventListener('scroll',schedule,true);document.addEventListener('visibilitychange',onVisibility);window.addEventListener('bunny:graphics',applyQuality);window.addEventListener('resize',applyQuality);matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',applyQuality);render();
  }
  void initialize().catch(()=>{if(!disposed)root.dataset.tileRenderer='fallback';});
- return()=>{disposed=true;cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();root.removeEventListener('pointerover',schedule);root.removeEventListener('pointerout',schedule);root.removeEventListener('scroll',schedule,true);document.removeEventListener('visibilitychange',onVisibility);window.removeEventListener('bunny:graphics',applyQuality);window.removeEventListener('resize',applyQuality);matchMedia('(prefers-reduced-motion: reduce)').removeEventListener('change',applyQuality);root.classList.remove('webgl-ready');if(renderer){renderer.domElement.removeEventListener('webglcontextlost',onLost);renderer.domElement.removeEventListener('webglcontextrestored',onRestored);renderer.domElement.remove();renderer.dispose();renderer.forceContextLoss();}for(const geo of geometries.values())geo.dispose();floorGeometry.dispose();contactGeo.dispose();contactMaterial.dispose();for(const m of materials.values())m.dispose();ivory.dispose();concealedBody.dispose();gold.dispose();shadowMaterial.dispose();environment?.dispose();back?.dispose();for(const t of textures)t.dispose();for(const scene of [boardScene,handScene])scene.traverse(o=>{if(o instanceof THREE.DirectionalLight)o.shadow.dispose();});};
+ return()=>{disposed=true;cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();root.removeEventListener('pointerover',schedule);root.removeEventListener('pointerout',schedule);root.removeEventListener('scroll',schedule,true);document.removeEventListener('visibilitychange',onVisibility);window.removeEventListener('bunny:graphics',applyQuality);window.removeEventListener('resize',applyQuality);matchMedia('(prefers-reduced-motion: reduce)').removeEventListener('change',applyQuality);root.classList.remove('webgl-ready');if(renderer){renderer.domElement.removeEventListener('webglcontextlost',onLost);renderer.domElement.removeEventListener('webglcontextrestored',onRestored);renderer.domElement.remove();renderer.dispose();renderer.forceContextLoss();}for(const geo of geometries.values())geo.dispose();floorGeometry.dispose();contactGeo.dispose();contactMaterial.dispose();for(const m of materials.values())m.dispose();ivory.dispose();concealedBody.dispose();gold.dispose();shadowMaterial.dispose();environment?.dispose();back?.dispose();for(const t of textures)t.dispose();for(const scene of [boardScene])scene.traverse(o=>{if(o instanceof THREE.DirectionalLight)o.shadow.dispose();});};
 }

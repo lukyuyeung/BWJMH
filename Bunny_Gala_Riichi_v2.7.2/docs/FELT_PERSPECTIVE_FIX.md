@@ -1,42 +1,45 @@
-# Felt and seated character correction
+# Single physical table and result screen
 
-Public tiles previously used an affine rectangle independently of the photographed
-felt. Side river tiles were also stretched by seat, and the camera had no height
-perspective, collapsing upright side racks into lines.
+All physical tiles now share the 44×60×18 model in `client/src/table-metrics.ts`.
+The same constants supply CSS layout and the WebGL geometry. The physical board
+is 1000×1000. Hands, concealed racks, walls, rivers and all melds belong to this
+one board scene and one calibrated camera. Private hand controls are inside the
+board; the former screen-space hand scene/camera has been removed. Natural
+perspective remains, but no tile class receives an independent size or scale.
+Flat tile bottoms and standing tile feet contact the felt at Z=0. Upper wall
+slots and stacked added-kan tiles use the tile depth for their elevation.
 
-`client/src/felt-projection.ts` now supplies the same perspective transform to DOM
-poses and WebGL. Public tile bodies have 22 stage units of thickness and their
-bottom faces contact Z=0. Wall stacks retain their actual occupied slots and
-upper/lower draw order. Rivers keep chronological six-column ordering and normal
-50×68 faces for every seat. The center display sits between the four rivers.
+The call presentation component no longer transforms the scene viewport. Its
+sound and small call notice remain. Browser QA samples table bounds during chi,
+pon, daiminkan, ankan and kakan and rejects any zoom, translation or resize.
+The hand row sits at the near edge of the felt, separated from its river.
 
-Characters remain transparent 2D sprites. They are smaller and positioned over
-the existing chair seats, with lower bodies occluded by a matching foreground table layer. Player cards
-sit below the side characters instead of covering their faces. The old debug
-information bar no longer covers the backdrop. No extra viewing buttons were added.
+The yaku guide shows illustrated tile groups for all 38 supported yaku. These
+are examples, not live hands. Situational conditions remain explained in text.
+The examples are tested as valid winning shapes, with kan groups normalized.
 
-Validation:
+Results sort real concealed tiles in suit/rank order, preserve red flags and
+winning IDs, and display exposed melds separately, retaining source orientation
+and kan stacking. No tiles or scores are embedded in art. A new result-only
+casino plate restores the red velvet chair, chips, amber/pink light and black/gold
+panel composition. The right corner title and duplicated winner text are removed.
+The held tile, han/fu, limits, score changes and avatars still use server data.
 
-- `npm run typecheck` and `npm run build`.
-- `node --import tsx scripts/browser-felt.mjs`: actual exhaustive-hand public
-  payload at 1902×900, 844×390, and 915×412; screenshots, tile contact checks,
-  unobscured center and screen bounds. Portrait is not covered by this check.
-- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-fullscreen.ts`:
-  four landscape mobile sizes and claim/result flow.
-- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-table-ui.mjs`:
-  direct entry, reconnection, all five meld variants, legal contextual controls,
-  river ordering and discarded-face visibility. Bot timeout scheduling is frozen
-  only in this fixture so screenshots cannot race chankan settlement.
+Validation commands:
 
-With the photographed perspective, the smallest dense phone river faces are
-about 23×9 pixels at 844×390; this is a measured limitation, not a guarantee of
-legibility on every device. No independent seat stretching or extra inspector
-is used to conceal this tradeoff.
+- `npm run typecheck`, `npm run build`, `npm run verify:art`.
+- `npx vitest run server/test/result-layout.test.ts` (inventory, meld provenance,
+  all illustrated winning shapes).
+- `node --import tsx scripts/browser-felt.mjs` (desktop and landscape phones,
+  one model/camera, real tile ground contact, populated rivers and center bounds).
+- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-table-ui.mjs`
+  (legal calls, fixed viewport during calls, illustrated guide, same-seat reload).
+- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-result-ui.mjs`
+  (real sorted tsumo/ron hands, exposed pon/kan, score card bounds, portrait and
+  landscape, actual winning tile and App profile event).
 
-Follow-up: standing hand tiles use 60×78 screen dimensions and a lower hand
-camera so their visible aspect is 1.3 rather than an elongated card. The live
-last-discard browser check limits its width to 1.5× a standing hand tile; public
-river geometry remains 50×68 at every seat (natural near/far perspective remains).
-The center includes the local seat wind, derived relative to the current dealer,
-and the remaining tile count with its unit. Seated side characters move inward,
-and the foreground table image masks the lower bodies while leaving faces visible.
+Characters remain transparent 2D sprites composited behind the photographed table.
+The App account provider is still deferred. At 844×390 the smallest far river
+faces have a projected depth around 6 pixels; physical size consistency does not
+remove the phone screen's perspective/legibility limit. Portrait table play is
+not claimed by the landscape acceptance checks; the portrait result screen is.

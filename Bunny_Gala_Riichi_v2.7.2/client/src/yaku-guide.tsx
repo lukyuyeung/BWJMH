@@ -1,3 +1,4 @@
+import {yakuExamples,exampleGroups} from './yaku-examples.js';
 import React from 'react';
 import {yakuNames} from './locale.js';
 const guide:[string,string,string][]=[
@@ -41,4 +42,4 @@ const guide:[string,string,string][]=[
  ['Chiihou','役滿 · 門清','子家第一張摸牌自摸和牌，期間無叫牌。'],
 ];
 const tileName=(face:string)=>({E:'東',S:'南',W:'西',N:'北',P:'白',F:'發',C:'中'} as Record<string,string>)[face]??face.replace('m','萬').replace('p','筒').replace('s','索');
-export function YakuGuide({waits}:{waits:string[]}){return <section className="yaku-guide"><h2>役種 · 和牌指南</h2><p>一般和牌需要四組面子加一對雀頭，並至少有一種役。七對子、國士無雙另有牌型。寶牌本身不是役。</p><p className="current-waits">{waits.length?'目前等待：'+waits.map(tileName).join('、'):'目前沒有可顯示的聽牌等待。'} 有等待不代表可以榮和；仍須有役且沒有振聽。</p><p>吃只限上家棄牌；碰需要兩張同牌；明槓需要三張同牌。實際可用操作會在牌桌出現。</p>{guide.map(([name,value,description])=><details key={name}><summary><strong>{yakuNames[name]}</strong><span>{value}</span></summary><p>{description}</p></details>)}<p>只列本遊戲已支援的役種；多家榮和、包牌等完整規則仍未實作。</p></section>}
+export function YakuGuide({waits,renderTile}:{waits:string[];renderTile:(face:string,key:string)=>React.ReactNode}){return <section className="yaku-guide"><h2>役種 · 和牌指南</h2><p>一般和牌需要四組面子加一對雀頭，並至少有一種役。七對子、國士無雙另有牌型。寶牌本身不是役。</p><p className="current-waits">{waits.length?'目前等待：'+waits.map(tileName).join('、'):'目前沒有可顯示的聽牌等待。'} 有等待不代表可以榮和；仍須有役且沒有振聽。</p><p>吃只限上家棄牌；碰需要兩張同牌；明槓需要三張同牌。實際可用操作會在牌桌出現。</p>{guide.map(([name,value,description])=><details key={name}><summary><strong>{yakuNames[name]}</strong><span>{value}</span></summary><div className="yaku-example" aria-label={yakuNames[name]+'示例牌'}>{exampleGroups(yakuExamples[name]!).map((group,i)=><span className="yaku-example-group" key={i}>{group.map((face,j)=>renderTile(face,name+'-'+i+'-'+j))}</span>)}</div><p>{description}</p><small>牌型示例；和牌方式、門清及巡目條件仍須符合上面說明。</small></details>)}<p>只列本遊戲已支援的役種；多家榮和、包牌等完整規則仍未實作。</p></section>}

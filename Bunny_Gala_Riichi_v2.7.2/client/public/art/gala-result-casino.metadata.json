@@ -1,0 +1,6 @@
+{
+  "asset": "gala-result-casino.png",
+  "purpose": "Result-only casino/chair background; all scores, tiles and avatars remain live UI",
+  "method": "Generated empty casino plate; no game information baked into artwork",
+  "sha256": "225e702c79413a0ff0a2499968bd8ddf6a78d46ba093f0afa0e50ac1f69cda65"
+}

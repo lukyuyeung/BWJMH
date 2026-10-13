@@ -23,3 +23,8 @@ for(const [file,expected] of Object.entries(newScene.assets)){
  if(!sceneCss.includes(file))throw Error('New scene asset is not connected: '+file);
 }
 console.log('Verified new clean table and transparent rabbit sprites.');
+
+const resultArt=JSON.parse(readFileSync(new URL('../client/public/art/gala-result-casino.metadata.json',import.meta.url),'utf8'));
+if(createHash('sha256').update(readFileSync(new URL('../client/public/art/'+resultArt.asset,import.meta.url))).digest('hex')!==resultArt.sha256)throw Error('Result casino asset changed');
+if(!sceneCss.includes(resultArt.asset))throw Error('Result casino background is not connected');
+console.log('Verified result-only casino plate; game tiles and scores are live overlays.');
