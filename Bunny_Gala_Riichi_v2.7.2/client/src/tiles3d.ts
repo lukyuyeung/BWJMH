@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {feltProjection} from './felt-projection.js';
 import {uprightPose} from './seat-space.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
@@ -48,13 +49,8 @@ export function mountTiles3D(root:HTMLElement):()=>void{
  const tiles=new Map<HTMLElement,THREE.Group>();
  const boardScene=new THREE.Scene(),handScene=new THREE.Scene();
  const camera=new THREE.Camera();
- // Calibrated table homography. Z gives actual volume above the photographed felt.
- const a=.63,b=-.5458172997423638,d=-.002711675706537,g=-.00071367399371967,tx=450,ty=400;
- camera.projectionMatrix.set(2*a/W,-2*b/W+g,0,2*tx/W-1,0,2*d/H-g,2*.65/H,1-2*ty/H,0,.00035,-.001,0,0,-g,0,1);
+ // Supply the real view direction to lighting; render installs the shared projection.
  camera.position.set(500,-1200,800);camera.lookAt(500,-300,0);camera.updateMatrixWorld();
- // Keep the calibrated felt coordinates while supplying the real viewing direction
- // to material shaders (an origin-level camera caused grazing, washed-out highlights).
- camera.projectionMatrix.multiply(camera.matrixWorld);camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
 
  const handCamera=new THREE.OrthographicCamera(-W/2,W/2,H/2,-H/2,1,2500);handCamera.position.set(W/2,-H/2-1000,900);handCamera.lookAt(W/2,-H/2,0);handCamera.updateMatrixWorld();
  const handPlane=new THREE.Plane(new THREE.Vector3(0,0,1),0),handRay=new THREE.Raycaster();
@@ -85,10 +81,9 @@ export function mountTiles3D(root:HTMLElement):()=>void{
  function render(){
   frame=0;if(disposed||contextLost||!renderer||!back)return;
   const layout=getComputedStyle(root),tableScale=Number(layout.getPropertyValue('--table-scale'))||1,tableOffset=parseFloat(layout.getPropertyValue('--table-offset'))||0;
-  const boardTop=parseFloat(layout.getPropertyValue('--board-top'))||240,boardScaleY=Number(layout.getPropertyValue('--board-scale-y'))||.45;
-  // A readable, near-top-down public board. DOM and WebGL share this affine map;
-  // no perspective or mobile squashing shrinks the far player's tile faces.
-  camera.projectionMatrix.set(2*.84/W,0,0,2*348/W-1,0,2*boardScaleY/H,2*.65/H,1-2*boardTop/H,0,.00035,-.001,0,0,0,0,1);
+  // Actual perspective and Z volume, calibrated to the background's felt.
+  const p=feltProjection(parseFloat(layout.getPropertyValue('--view-height'))||H);
+  camera.projectionMatrix.set(2*p.a/W,-2*p.b/W+p.g,2*p.zX/W-p.zW,2*p.tx/W-1,0,2*p.d/H-p.g,-2*p.zY/H+p.zW,1-2*p.ty/H,0,.00035,-.001,0,0,-p.g,p.zW,1);
   camera.projectionMatrix.multiply(camera.matrixWorld);camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
   const now=performance.now();if(now-lastFrame<(lowQuality?250:80)){schedule(false);return;}lastFrame=now;
   // Pulse-only frames reuse seat transforms, clipping and contact calculations.
@@ -100,9 +95,9 @@ export function mountTiles3D(root:HTMLElement):()=>void{
    return;
   }
   const board=root.querySelector<HTMLElement>('.board');if(!board)return;
-  const present=new Set<HTMLElement>();let clippedBodies=0,matching=0,golden=false,uprightErrors=0,contactErrors=0;
+  const present=new Set<HTMLElement>();let clippedBodies=0,matching=0,golden=false,uprightErrors=0,contactErrors=0,publicContactErrors=0;
   for(const el of root.querySelectorAll<HTMLElement>('.board .tile,.board .tile-back,.board .wall-lower,.hand .tile,.hand .tile-back')){
-   present.add(el);const own=!!el.closest('.hand'),w=el.offsetWidth,h=own&&!el.closest('.own-melds')?el.offsetHeight/Math.cos(Math.atan2(900,1000)):el.offsetHeight,depth=own&&!el.closest('.own-melds')?24:el.closest('.river,.melds,.own-melds')?10:Math.min(22,w*.49);
+   present.add(el);const own=!!el.closest('.hand'),w=el.offsetWidth,h=own&&!el.closest('.own-melds')?el.offsetHeight/Math.cos(Math.atan2(900,1000)):el.offsetHeight,depth=own&&!el.closest('.own-melds')?24:el.closest('.river,.melds,.own-melds')?22:Math.min(22,w*.49);
    const key=[w,h,depth].join(':');let geo=geometries.get(key);if(!geo){geo=new RoundedBoxGeometry(w,h,depth,2,own?8:4.5);geometries.set(key,geo);}
    let mesh=tiles.get(el);if(!mesh){mesh=new THREE.Group();mesh.matrixAutoUpdate=false;for(let j=0;j<4;j++){const part=new THREE.Mesh();part.frustumCulled=false;part.receiveShadow=true;part.castShadow=j===0&&!own;mesh.add(part);}tiles.set(el,mesh);(own?handScene:boardScene).add(mesh);}
    // One solid body draw and two face draws instead of six separate box-face draws.
@@ -130,6 +125,7 @@ export function mountTiles3D(root:HTMLElement):()=>void{
     }else mesh.matrix.copy(anchored);
    }
    if(standing){const up=new THREE.Vector3(0,1,0).transformDirection(mesh.matrix);if(up.distanceTo(new THREE.Vector3(0,0,1))>1e-6)uprightErrors++;const foot=new THREE.Vector3(0,-h/2,0).applyMatrix4(mesh.matrix);if(Math.abs(foot.z)>1e-6)contactErrors++;}
+   if(el.closest('.river,.melds')&&!own){const foot=new THREE.Vector3(0,0,-depth/2).applyMatrix4(mesh.matrix);if(Math.abs(foot.z)>1e-6)publicContactErrors++;}
    // Regression diagnostic: the calibrated depth interval must contain every tile body.
    const view=own?handCamera:camera;const clip=new THREE.Matrix4().multiplyMatrices(view.projectionMatrix,view.matrixWorldInverse).multiply(mesh.matrix);let clipped=false;
    if(el.closest('.river,.wall-stack')){
@@ -142,17 +138,17 @@ export function mountTiles3D(root:HTMLElement):()=>void{
    if(clipped)clippedBodies++;
    const matched=el.classList.contains('matching-discard'),latest=el.classList.contains('latest-discard');mesh.userData.latest=latest;if(matched)matching++;if(latest)golden=true;
    let ring=mesh.getObjectByName('highlight') as THREE.Mesh|undefined;
-   if((matched||latest)&&!ring){const shape=new THREE.Shape();shape.moveTo(-w/2-6,-h/2-6);shape.lineTo(w/2+6,-h/2-6);shape.lineTo(w/2+6,h/2+6);shape.lineTo(-w/2-6,h/2+6);shape.closePath();const hole=new THREE.Path();hole.moveTo(-w/2-1,-h/2-1);hole.lineTo(-w/2-1,h/2+1);hole.lineTo(w/2+1,h/2+1);hole.lineTo(w/2+1,-h/2-1);hole.closePath();shape.holes.push(hole);const geom=new THREE.ShapeGeometry(shape);const ringKey=key+':ring:'+(++highlightSequence);geometries.set(ringKey,geom);const mat=new THREE.MeshBasicMaterial({color:matched?'#70e7ff':'#ff459a',transparent:true,depthTest:false,toneMapped:false});materials.set(ringKey,mat);ring=new THREE.Mesh(geom,mat);ring.name='highlight';ring.userData.resourceKey=ringKey;ring.frustumCulled=false;ring.renderOrder=100;ring.position.z=depth/2+6;mesh.add(ring);}
+   if((matched||latest)&&!ring){const shape=new THREE.Shape();shape.moveTo(-w/2-3,-h/2-3);shape.lineTo(w/2+3,-h/2-3);shape.lineTo(w/2+3,h/2+3);shape.lineTo(-w/2-3,h/2+3);shape.closePath();const hole=new THREE.Path();hole.moveTo(-w/2-1,-h/2-1);hole.lineTo(-w/2-1,h/2+1);hole.lineTo(w/2+1,h/2+1);hole.lineTo(w/2+1,-h/2-1);hole.closePath();shape.holes.push(hole);const geom=new THREE.ShapeGeometry(shape);const ringKey=key+':ring:'+(++highlightSequence);geometries.set(ringKey,geom);const mat=new THREE.MeshBasicMaterial({color:matched?'#70e7ff':'#ff459a',transparent:true,depthTest:false,toneMapped:false});materials.set(ringKey,mat);ring=new THREE.Mesh(geom,mat);ring.name='highlight';ring.userData.resourceKey=ringKey;ring.frustumCulled=false;ring.renderOrder=100;ring.position.z=depth/2+3;mesh.add(ring);}
    if(ring){ring.visible=matched||latest;const mat=ring.material as THREE.MeshBasicMaterial;mat.color.set(latest?'#ff459a':'#70e7ff');mat.opacity=latest&&document.documentElement.dataset.reduceEffects!=='true'&&!matchMedia('(prefers-reduced-motion: reduce)').matches ? 1:1;}
    let dot=mesh.getObjectByName('matching-dot') as THREE.Mesh|undefined;
-   if(matched&&latest&&!dot){const resourceKey=key+':matching-dot:'+(++highlightSequence);const geo=new THREE.CircleGeometry(Math.max(3,w*.13),8);const mat=new THREE.MeshBasicMaterial({color:'#70e7ff',depthTest:false,toneMapped:false});geometries.set(resourceKey,geo);materials.set(resourceKey,mat);dot=new THREE.Mesh(geo,mat);dot.name='matching-dot';dot.userData.resourceKey=resourceKey;dot.renderOrder=101;dot.position.set(w/2-6,h/2-6,depth/2+4);mesh.add(dot);}
+   if(matched&&latest&&!dot){const resourceKey=key+':matching-dot:'+(++highlightSequence);const geo=new THREE.CircleGeometry(Math.max(3,w*.13),8);const mat=new THREE.MeshBasicMaterial({color:'#70e7ff',depthTest:false,toneMapped:false});geometries.set(resourceKey,geo);materials.set(resourceKey,mat);dot=new THREE.Mesh(geo,mat);dot.name='matching-dot';dot.userData.resourceKey=resourceKey;dot.renderOrder=101;dot.position.set(w/2-3,h/2-3,depth/2+4);mesh.add(dot);}
    if(dot)dot.visible=matched&&latest;
    mesh.matrixWorldNeedsUpdate=true;
   }
   for(const [el,mesh] of tiles)if(!present.has(el)){for(const name of ['highlight','matching-dot']){const overlay=mesh.getObjectByName(name) as THREE.Mesh|undefined;if(overlay){const resourceKey=overlay.userData.resourceKey as string;overlay.geometry.dispose();(overlay.material as THREE.Material).dispose();geometries.delete(resourceKey);materials.delete(resourceKey);}}mesh.removeFromParent();tiles.delete(el);contacts.get(el)?.removeFromParent();contacts.delete(el);}
   renderer.shadowMap.needsUpdate=geometryDirty;geometryDirty=false;renderer.info.reset();renderer.clear();renderer.render(boardScene,debug?sideCamera:camera);renderer.clearDepth();renderer.render(handScene,handCamera);
   // Expose render diagnostics for browser QA without exposing any game secrets.
-  root.dataset.tileRenderer='webgl';const handBounds=root.querySelector<HTMLElement>('.hand')?.getBoundingClientRect();renderer.domElement.dataset.handTop=String(handBounds?.top??-1);renderer.domElement.dataset.tableScale=String(tableScale);renderer.domElement.dataset.tableOffset=String(tableOffset);renderer.domElement.dataset.renderCount=String(++renderCount);renderer.domElement.dataset.quality=lowQuality?'low':'high';renderer.domElement.dataset.meshCount=String(tiles.size);renderer.domElement.dataset.triangles=String(renderer.info.render.triangles);renderer.domElement.dataset.clippedTileBodies=String(clippedBodies);renderer.domElement.dataset.matchingDiscards=String(matching);renderer.domElement.dataset.uprightErrors=String(uprightErrors);renderer.domElement.dataset.contactErrors=String(contactErrors);renderer.domElement.dataset.camera=debug?'side':'gameplay';
+  root.dataset.tileRenderer='webgl';const handBounds=root.querySelector<HTMLElement>('.hand')?.getBoundingClientRect();renderer.domElement.dataset.handTop=String(handBounds?.top??-1);renderer.domElement.dataset.tableScale=String(tableScale);renderer.domElement.dataset.tableOffset=String(tableOffset);renderer.domElement.dataset.renderCount=String(++renderCount);renderer.domElement.dataset.quality=lowQuality?'low':'high';renderer.domElement.dataset.meshCount=String(tiles.size);renderer.domElement.dataset.triangles=String(renderer.info.render.triangles);renderer.domElement.dataset.clippedTileBodies=String(clippedBodies);renderer.domElement.dataset.matchingDiscards=String(matching);renderer.domElement.dataset.uprightErrors=String(uprightErrors);renderer.domElement.dataset.contactErrors=String(contactErrors);renderer.domElement.dataset.publicContactErrors=String(publicContactErrors);renderer.domElement.dataset.camera=debug?'side':'gameplay';
   renderer.domElement.style.visibility='visible';root.classList.add('webgl-ready');
  }
  function invalidateViewport(){if(renderer){root.classList.remove('webgl-ready');renderer.domElement.style.visibility='hidden';}geometryDirty=true;schedule();}

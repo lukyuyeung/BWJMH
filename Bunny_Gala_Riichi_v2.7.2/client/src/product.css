@@ -142,7 +142,7 @@
 
 /* Clear table edition: visibility is the default, directly on the live table. */
 .table .scene-viewport{aspect-ratio:1850/850;max-width:none}.table .scene-canvas{background-image:url('/art/gala-empty-table.png');background-position:0 0;background-size:1536px var(--view-height);background-repeat:no-repeat} .responsive-table-material{display:none!important}
-.table .board{height:760px;width:1000px;transform:matrix3d(.84,0,0,0,0,var(--board-scale-y),0,0,0,-.65,1,0,348,var(--board-top),0,1)!important}
+.table .board{height:760px;width:1000px;transform:var(--felt-plane)!important}
 .table .river{grid-template-columns:repeat(6,50px);gap:6px;overflow:visible;--river-scale:1!important}.table .board .tile.mini{width:50px;height:68px;flex-basis:50px;padding:3px;background:#fffaf0;border-color:#d7c7a1;box-shadow:0 4px 0 #bba57d,0 5px 4px #0005}.table .board .mini .tile-honor{font-size:39px}.table .board .mini .characters b{font-size:23px}.table .board .mini .characters em{font-size:28px}
 .table .pos-0 .river{bottom:38px;left:50%;transform:translateX(-50%)}.table .pos-2 .river{top:38px;left:50%;transform:translateX(-50%) rotate(180deg)}.table .pos-3 .river{left:15%;top:50%;transform:translate(-50%,-50%) rotate(90deg)}.table .pos-1 .river{right:15%;top:50%;transform:translate(50%,-50%) rotate(-90deg)}
 .table .wall-pos-0{bottom:2px}.table .wall-pos-2{top:2px}.table .wall-pos-3{left:24px}.table .wall-pos-1{right:24px}.table .opponent-rack{opacity:1}.table .pos-2 .opponent-rack{top:-56px}.table .pos-3 .opponent-rack{left:-36px}.table .pos-1 .opponent-rack{right:-36px}
@@ -164,3 +164,30 @@
 .table .board{--public-face-height:68px}.table .board:has(.river .tile:nth-child(19)){--public-face-height:60px}.table .board .river .tile.mini{height:var(--public-face-height)}.table .pos-1 .river .tile.mini,.table .pos-3 .river .tile.mini{width:var(--public-face-height);height:50px}.table .pos-1 .river,.table .pos-3 .river{grid-template-columns:repeat(6,var(--public-face-height))}
 .table .round-center.crowded{height:30px;flex-direction:row}.table .round-center.crowded .wall-count small{display:none}
 .table .round-center.crowded{height:28px}
+
+/* Felt calibration: far corners (400,.34H)/(1136,.34H),
+   near corners (150,.79H)/(1386,.79H); shared by the WebGL camera. */
+.table .board{transform:var(--felt-plane)!important}
+.table .board .river{grid-template-columns:repeat(6,50px);gap:4px}
+.table .board .river .tile.mini{width:50px;height:68px;flex-basis:50px}
+.table .pos-2 .river{top:110px}.table .pos-0 .river{bottom:110px}
+.table .pos-3 .river{left:24%;top:50%}.table .pos-1 .river{right:24%;top:50%}
+.table .wall-pos-2{top:45px}.table .wall-pos-0{bottom:30px}.table .wall-pos-3{left:55px}.table .wall-pos-1{right:55px}
+.table .pos-2 .opponent-rack{top:0}.table .pos-3 .opponent-rack{left:10px}.table .pos-1 .opponent-rack{right:10px}
+.scene-actor.actor-left,.scene-actor.actor-right{height:calc(var(--view-height) * .46);width:calc(var(--view-height) * .33315);top:calc(var(--view-height) * .20);clip-path:inset(0 0 9% 0)}
+.scene-actor.actor-left{left:20px}.scene-actor.actor-right{right:20px}
+.scene-actor.actor-opposite{top:calc(var(--view-height) * .055);height:calc(var(--view-height) * .30);width:calc(var(--view-height) * .21727);left:calc(768px - var(--view-height) * .108635);clip-path:inset(0 0 23% 0)}
+.table .scene-pos-3{left:65px;top:calc(var(--view-height) * .66)}.table .scene-pos-1{right:30px;top:calc(var(--view-height) * .66)}
+.table .scene-pos-2{left:900px;top:calc(var(--view-height) * .18)}
+.table .round-center,.table .round-center.compact{top:calc(var(--view-height) * .535)}
+.table .game-header{background:none;border:0;box-shadow:none}.table>.hint{display:none}
+.table .automation-rail{left:max(8px,env(safe-area-inset-left));transform:translateY(-50%)}
+
+.table .scene-pos-3{left:110px}.table .scene-canvas>.hint{display:none}
+
+.table .play-controls{position:absolute;inset:0;pointer-events:none;background:none;border:0;padding:0}.table .play-controls>.hint{display:none}.table .play-controls .riichi-controls,.table .play-controls .result-overlay,.table .play-controls .error{pointer-events:auto}.table .riichi-controls{position:absolute;bottom:135px;left:225px;z-index:10}
+.table .pos-3 .river{left:20%}.table .pos-1 .river{right:20%}
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{top:calc(var(--view-height) * .49);height:28px;width:110px;flex-direction:row;gap:8px;padding:2px 4px}
+.table .round-center .wall-count small{display:none}.table .round-center>strong{font-size:16px;line-height:20px}.table .round-center .wall-count{font-size:20px;line-height:22px}
+.table .turn-timer{top:calc(145px - var(--view-height) * .44);bottom:auto;right:0}
+.table .pos-3 .opponent-rack{left:70px}.table .pos-1 .opponent-rack{right:70px}

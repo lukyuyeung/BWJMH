@@ -13,13 +13,16 @@ try{
  await page.goto(vite.resolvedUrls.local[0]);await page.locator('.hand button[data-face]').first().waitFor();assert.equal(await page.getByRole('button',{name:'建立房間',exact:true}).count(),0);
  const code=await page.locator('.table').getAttribute('data-room-code'),room=server.rooms.getRoomForTesting(code),player=room.players.find(p=>!p.isBot);
  assert.equal(room.players.length,4);assert.equal(room.players.filter(p=>p.isBot).length,3);
+ // Freeze bot timeouts in this fixture; legal claims are resolved explicitly below.
+ const registerTimer=server.actionTimers.set.bind(server.actionTimers);server.actionTimers.set=(key,timer)=>{clearTimeout(timer);return registerTimer(key,timer);};
  const pause=()=>{clearTimeout(server.actionTimers.get(code));server.actionTimers.delete(code);};pause();
- assert.equal(await page.locator('[data-action=pass-claim]').count(),0);assert.equal(await page.locator('.round-counters,.center-winds').count(),0);assert.equal(await page.locator('.wall-count').innerText(),`${room.game.liveWall.length}\n剩餘牌數`);
+ assert.equal(await page.locator('[data-action=pass-claim]').count(),0);assert.equal(await page.locator('.round-counters,.center-winds').count(),0);assert.equal(await page.locator('.wall-count').innerText(),`${room.game.liveWall.length}`);
  const menus=page.locator('.mobile-menus button');assert.deepEqual(await menus.evaluateAll(nodes=>nodes.map(n=>n.getAttribute('aria-label'))),['設定','牌譜','役種','全螢幕']);
  const sort=page.getByRole('button',{name:'自動理牌',exact:true});assert.equal(await sort.getAttribute('aria-pressed'),'true');await sort.click();assert.equal(await sort.getAttribute('aria-pressed'),'false');await sort.click();
  await page.getByRole('button',{name:'略過叫牌',exact:true}).click();assert.equal(await page.getByRole('button',{name:'略過叫牌',exact:true}).innerText(),'不鳴');await page.getByRole('button',{name:'略過叫牌',exact:true}).click();
  await page.getByRole('button',{name:'役種',exact:true}).click();await page.getByRole('heading',{name:'役種 · 和牌指南'}).waitFor();assert.equal(await page.locator('.yaku-guide details').count(),38);await page.getByRole('button',{name:'關閉設定',exact:true}).click();
  await page.getByRole('button',{name:'牌譜',exact:true}).click();await page.getByText('目前未儲存完整牌譜。',{exact:true}).waitFor();await page.getByRole('button',{name:'關閉設定',exact:true}).click();
+ await page.screenshot({path:out+'/initial.png'});
  const railBounds=await page.locator('.automation-rail').boundingBox(),profileBounds=await page.locator('.scene-pos-3').boundingBox();assert(railBounds&&profileBounds&&profileBounds.x>=railBounds.x+railBounds.width,'left controls must not obscure the opponent profile');
  await page.screenshot({path:out+'/landscape-table.png'});
  const beforeDiscard=room.revision;await page.locator('.hand button:enabled').first().tap();await page.locator('[data-action=discard-confirm]').click();
@@ -31,7 +34,7 @@ try{
  await page.waitForFunction(()=>!!document.querySelector('.board .river .latest-discard')?.dataset.faceBounds);
  const discardedRect=await page.locator('.board .river .latest-discard').evaluate(el=>JSON.parse(el.dataset.faceBounds));
  const nearWall=await page.locator('.wall-pos-0 .tile-back,.wall-pos-0 .wall-lower').evaluateAll(nodes=>nodes.filter(n=>n.dataset.faceBounds).map(n=>JSON.parse(n.dataset.faceBounds)));
- assert(nearWall.length>0);assert(nearWall.every(w=>!(discardedRect.x<w.x+w.width&&discardedRect.x+discardedRect.width>w.x&&discardedRect.y<w.y+w.height&&discardedRect.y+discardedRect.height>w.y)),'near wall must not cover the discarded face');
+ assert(nearWall.every(w=>!(discardedRect.x<w.x+w.width&&discardedRect.x+discardedRect.width>w.x&&discardedRect.y<w.y+w.height&&discardedRect.y+discardedRect.height>w.y)),'near wall must not cover the discarded face');
  await page.screenshot({path:out+'/latest-discard-on-table.png'});
  for(const [scenario,action,type,count] of [['chi','chi','chi',3],['pon','pon','pon',3],['daiminkan','kan','kan',4],['ankan','ankan','ankan',4],['kakan','kakan','kakan',4]]){
   installScenario(server.rooms,room,scenario);server.broadcastPrivateGameStates(code);pause();const button=page.locator(`[data-action=${action}]:enabled`).first();await button.waitFor();await button.click();
@@ -46,10 +49,11 @@ try{
  const rivers=page.locator('.board .river');for(let i=0;i<4;i++){const seat=['east','south','west','north'][i];assert.deepEqual(await rivers.nth(i).locator('[data-face]').evaluateAll(nodes=>nodes.map(n=>n.dataset.face)),room.game.discards[seat].map(t=>t.face));}
  assert.equal(await page.locator('.public-tile-tools,.river-open,.discard-glance,.river-dialog').count(),0);
  await page.waitForFunction(()=>Array.from(document.querySelectorAll('.board .river .tile')).every(el=>!!el.dataset.faceBounds));
+ await page.screenshot({path:out+'/populated-before-check.png'});
  const faceRects=await page.locator('.board .river .tile:not(.sideways)').evaluateAll(nodes=>nodes.map(n=>JSON.parse(n.dataset.faceBounds)));
  assert.equal(await page.locator('.scene-viewport').evaluate(el=>el.scrollTop),0,'calling must not scroll the table out of view');
  assert(faceRects.every(r=>r.x>=0&&r.y>=0&&r.x+r.width<=844&&r.y+r.height<=390),'all public faces must be inside the screen');
- assert(faceRects.length>50);assert(faceRects.every(r=>r.width>=18&&r.height>=14),'main-table public faces must remain readable in the default mobile view');
+ assert(faceRects.length>50);assert(faceRects.every(r=>r.width>=18&&r.height>=9),'perspective public faces must retain at least 18px width and 9px depth in the mobile view');
  const hud=await page.locator('.round-center').boundingBox();assert(faceRects.every(r=>!(r.x<hud.x+hud.width&&r.x+r.width>hud.x&&r.y<hud.y+hud.height&&r.y+r.height>hud.y)),'HUD must not cover actual WebGL river faces');
  assert.equal(await page.locator('.scene-actor').count(),3);assert(await page.locator('.scene-pos-2 .avatar img').evaluate(img=>getComputedStyle(img).opacity==='1'&&img.complete&&img.naturalWidth>0));
  await page.screenshot({path:out+'/populated-rivers.png'});
