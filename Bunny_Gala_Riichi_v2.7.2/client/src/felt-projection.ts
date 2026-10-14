@@ -1,8 +1,9 @@
-import {TABLE_SIZE} from './table-metrics.js';
-/** Photographed felt, in a 1536-wide stage. DOM and WebGL use one camera. */
+import {TABLE_SIZE,TABLE_VIEW,tableSpanHeight} from './table-metrics.js';
+/** Exact DOM projection of the real orthographic scene camera; no photographed table map. */
 export function feltProjection(height:number){
- const a=.736,b=(150*.596-400)/TABLE_SIZE,g=(.596-1)/TABLE_SIZE;
- const d=height*(.79*.596-.34)/TABLE_SIZE,tx=400,ty=height*.34;
- const zX=-.4992,zY=-1.05,zW=-.00065;
+ const scale=height/tableSpanHeight(height);
+ const a=scale,b=0,g=0,d=scale*Math.sin(TABLE_VIEW.elevation);
+ const tx=768-a*TABLE_SIZE/2,ty=height*TABLE_VIEW.centerY-d*TABLE_SIZE/2;
+ const zX=0,zY=-scale*Math.cos(TABLE_VIEW.elevation),zW=0;
  return {a,b,g,d,tx,ty,zX,zY,zW,css:`matrix3d(${a},0,0,0,${b},${d},0,${g},${zX},${zY},1,${zW},${tx},${ty},0,1)`};
 }

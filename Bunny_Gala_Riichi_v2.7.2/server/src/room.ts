@@ -98,6 +98,7 @@ export interface PlayerGameState {
     actions: { canAbortiveDraw?:boolean;canDraw:boolean; canDiscard:boolean; canTsumo:boolean; canRon:boolean; canWinClaim:boolean; canPassClaim:boolean; canPon:boolean; canKan:boolean; ankanTileIds:string[]; kakanTileIds:string[]; chiSequences:import('@bunny/riichi-engine').TileFace[][]; riichiDiscardIds:string[] };
     melds: Record<Seat, import('@bunny/riichi-engine').Meld[]>;
     riichi: Record<Seat, boolean>;
+    riichiDeclarationTileIds?:Partial<Record<Seat,string>>;
     waits: import('@bunny/riichi-engine').TileFace[];
     furiten: boolean;
     claim?: { discarder: Seat; tile: import('@bunny/riichi-engine').Tile };
@@ -241,7 +242,7 @@ export class RoomManager {
       room: toPublicRoomState(room),
       you: { playerId: player.id, seat: player.seat, hand: [...game.hands[player.seat]], drawnTileId: game.lastDrawSeat===player.seat&&game.phase==='awaiting_discard'?game.hands[player.seat].at(-1)?.id:undefined },
       hand: {
-        ...(game.abortiveReason?{abortiveReason:game.abortiveReason}:{}),currentSeat: game.currentSeat, phase: game.phase, turnNumber: game.turnNumber,revision:room.revision,match:{...(room.handMatch??room.match)},discardTileIds:getLegalDiscardIds(game,player.seat),
+        ...(game.abortiveReason?{abortiveReason:game.abortiveReason}:{}),riichiDeclarationTileIds:Object.fromEntries(SEATS.filter(s=>game.riichi[s].declared&&game.riichi[s].declarationTileId).map(s=>[s,game.riichi[s].declarationTileId!])),currentSeat: game.currentSeat, phase: game.phase, turnNumber: game.turnNumber,revision:room.revision,match:{...(room.handMatch??room.match)},discardTileIds:getLegalDiscardIds(game,player.seat),
         wallRemaining: game.liveWall.length,wallSlots:publicWallSlots(game),
         timeout:{deadline:room.actionDeadline??null,serverNow:Date.now()},
         events:(room.events??[]).map(e=>({...e})),assistance,

@@ -240,3 +240,26 @@
 .bg-score-player{height:100%;min-height:0;padding:4px;overflow:hidden}.bg-score-text strong,.bg-score-text b,.bg-score-text span{line-height:1.05}.bg-result-footer{height:100%;overflow:visible}.bg-next button{height:100%;min-height:44px}
 .bg-result-v1{background:linear-gradient(#180c0d11,#180c0d22),url('/art/gala-result-casino.png') center/cover}
 .table .scene-canvas .board .hand{top:970px}
+/* Real table camera: the room contains no photographed game table. */
+.table .scene-canvas{background-image:url('/art/gala-room-only.png');background-size:cover;background-position:center}
+.table .scene-actors,.table .scene-table-occlusion{display:none}.table .tile-webgl{height:var(--view-height)!important;z-index:3}
+.table .scene-canvas .board{width:var(--table-size);height:var(--table-size)}
+.table .scene-canvas .board .hand{width:var(--table-size);top:calc(var(--table-size) + 30px - var(--tile-height) / 2);height:var(--tile-height)}
+.table .board .hand .tiles,.table .board .hand-area{height:var(--tile-height)}
+.table .pos-2 .river{top:350px}.table .pos-0 .river{bottom:350px}.table .pos-3 .river{left:512px;top:50%}.table .pos-1 .river{right:512px;top:50%}
+.table .wall-pos-2{top:260px}.table .wall-pos-0{bottom:186px}.table .wall-pos-3{left:286px}.table .wall-pos-1{right:286px}
+.table .pos-2 .opponent-rack{top:100px}.table .pos-3 .opponent-rack{left:144px}.table .pos-1 .opponent-rack{right:144px}
+.table .board .hand .tile:not(.mini),.table .board .concealed .tile-back{transform:translateZ(calc(var(--tile-height) / 2)) rotateX(-90deg)}
+.table .scene-canvas .tiles button:hover,.table .scene-canvas .tiles button:focus-visible{transform:translateZ(calc(var(--tile-height) / 2)) rotateX(-90deg)!important;outline:none!important;box-shadow:none!important}
+.table .board .melds .mini,.table .board .own-melds .mini{transform:translateZ(var(--tile-depth))}.table .board .meld .sideways{transform:translateZ(var(--tile-depth)) rotate(90deg)}.table .board .kan-added{transform:translateZ(calc(var(--tile-depth) * 2)) rotate(90deg)!important}
+.table .wall-indicator{transform:translateZ(calc(var(--tile-depth) * 2))}.table .wall-indicator.level-0{transform:translateZ(var(--tile-depth))}
+.table .tile.matching-discard,.table .tile.latest-discard,.table .riichi-option,.table .selected-tile{outline:none!important;box-shadow:none!important;animation:none}.table .tile.latest-discard:after{display:none!important}
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{top:calc(var(--view-height) * .49);width:286px;height:46px;flex-wrap:wrap;gap:0 12px;padding:2px 6px}
+.table .round-center .wall-count{flex-basis:100%;font-size:20px;line-height:20px}.table .round-center .seat-wind,.table .round-center>strong{font-size:22px;line-height:22px}.table .round-center .wall-count small{font-size:16px}
+.table .discard-count{position:absolute;left:50%;top:calc(var(--view-height) * .91);transform:translateX(-50%);font-size:22px;background:#101518ed;color:#b5ffdb;border:1px solid #55a587;padding:3px 12px;z-index:12;pointer-events:none}
+.riichi-stick{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}.table .waiting-preview{top:calc(var(--view-height) * .94);font-size:18px}
+.table .scene-canvas:not(.webgl-ready) .board:before{content:'';display:block;position:absolute;inset:0;background:#075d50;border:20px solid #795334;transform:translateZ(-1px);z-index:-1}
+.table .board .river{grid-template-columns:repeat(6,var(--tile-width));gap:4px}
+.table .board .meld .sideways{margin-inline:12px}.table .board .own-melds{transform:translateY(calc(var(--tile-height) / -2))}
+.table .scene-canvas .board .hand{top:calc(var(--table-size) + 50px - var(--tile-height) / 2)}
+.table .webgl-ready .board .river .tile.latest-discard:after{display:none!important}

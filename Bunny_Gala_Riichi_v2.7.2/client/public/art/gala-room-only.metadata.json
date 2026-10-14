@@ -1,0 +1,6 @@
+{
+  "asset": "gala-room-only.png",
+  "purpose": "Room-only backdrop; felt, rim, chairs, tiles and riichi sticks are actual scene geometry",
+  "method": "Generated empty casino room plate, no game table or game information",
+  "sha256": "be2314ca020c50a3a2c318484429332c01447139c02fa72935bbae79abf513e1"
+}

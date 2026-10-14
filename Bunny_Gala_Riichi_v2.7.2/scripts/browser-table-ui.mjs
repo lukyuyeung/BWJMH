@@ -25,7 +25,7 @@ try{
  await page.screenshot({path:out+'/initial.png'});
  const railBounds=await page.locator('.automation-rail').boundingBox(),profileBounds=await page.locator('.scene-pos-3').boundingBox();assert(railBounds&&profileBounds&&profileBounds.x>=railBounds.x+railBounds.width,'left controls must not obscure the opponent profile');
  await page.screenshot({path:out+'/landscape-table.png'});
- const beforeDiscard=room.revision;await page.locator('.hand button:enabled').first().tap();await page.locator('[data-action=discard-confirm]').click();
+ const beforeDiscard=room.revision;await page.locator('.hand button:enabled').first().tap();
  await page.waitForFunction(()=>document.querySelectorAll('.board .river .latest-discard').length===1);pause();
  const latestFace=await page.locator('.board .river .latest-discard').getAttribute('data-face');
  if(room.game.phase==='awaiting_claim')for(const other of room.players.filter(p=>p.id!==player.id))if(server.rooms.getPlayerGameState(code,other.id).hand.actions.canPassClaim)server.rooms.passClaim(code,other.id);
@@ -33,7 +33,7 @@ try{
  assert.equal(await page.locator('.board .river .latest-discard').getAttribute('data-face'),latestFace);assert(room.revision>beforeDiscard);
  await page.waitForFunction(()=>!!document.querySelector('.board .river .latest-discard')?.dataset.faceBounds);
  const discardedRect=await page.locator('.board .river .latest-discard').evaluate(el=>JSON.parse(el.dataset.faceBounds));
- const model=await page.locator('.tile-webgl').getAttribute('data-tile-models');assert.deepEqual(JSON.parse(model),[[44,60,18]],'all physical tiles must use one model');
+ const model=await page.locator('.tile-webgl').getAttribute('data-tile-models');assert.deepEqual(JSON.parse(model),[[64,88,26]],'all physical tiles must use one model');
  const handWidth=(await page.locator('.hand .tile:not(.mini)').first().boundingBox()).width;assert(handWidth>0);assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-count'),'1');
  const nearWall=await page.locator('.wall-pos-0 .tile-back,.wall-pos-0 .wall-lower').evaluateAll(nodes=>nodes.filter(n=>n.dataset.faceBounds).map(n=>JSON.parse(n.dataset.faceBounds)));
  assert(nearWall.every(w=>!(discardedRect.x<w.x+w.width&&discardedRect.x+discardedRect.width>w.x&&discardedRect.y<w.y+w.height&&discardedRect.y+discardedRect.height>w.y)),'near wall must not cover the discarded face');
@@ -55,7 +55,7 @@ try{
  const faceRects=await page.locator('.board .river .tile:not(.sideways)').evaluateAll(nodes=>nodes.map(n=>JSON.parse(n.dataset.faceBounds)));
  assert.equal(await page.locator('.scene-viewport').evaluate(el=>el.scrollTop),0,'calling must not scroll the table out of view');
  assert(faceRects.every(r=>r.x>=0&&r.y>=0&&r.x+r.width<=844&&r.y+r.height<=390),'all public faces must be inside the screen');
- assert(faceRects.length>50);assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-count'),'1');assert.deepEqual(JSON.parse(await page.locator('.tile-webgl').getAttribute('data-tile-models')),[[44,60,18]],'wall, hands, rivers and melds must share one physical size');
+ assert(faceRects.length>50);assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-count'),'1');assert.deepEqual(JSON.parse(await page.locator('.tile-webgl').getAttribute('data-tile-models')),[[64,88,26]],'wall, hands, rivers and melds must share one physical size');
  const hud=await page.locator('.round-center').boundingBox();assert(faceRects.every(r=>!(r.x<hud.x+hud.width&&r.x+r.width>hud.x&&r.y<hud.y+hud.height&&r.y+r.height>hud.y)),'HUD must not cover actual WebGL river faces');
  assert.equal(await page.locator('.scene-actor').count(),3);assert(await page.locator('.scene-pos-2 .avatar img').evaluate(img=>getComputedStyle(img).opacity==='1'&&img.complete&&img.naturalWidth>0));
  await page.screenshot({path:out+'/populated-rivers.png'});

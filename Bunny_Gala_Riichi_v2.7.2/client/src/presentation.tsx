@@ -6,7 +6,7 @@ export type PerformanceKind='CHI'|'PON'|'KAN'|'RIICHI'|'RON'|'TSUMO'|'MANGAN'|'H
 export type PerformanceEvent={id:number;kind:PerformanceKind;seat:string};
 export type PerformanceAsset={voice?:string;animation?:string;sound?:string;particles?:boolean;durationMs?:number;cameraEmphasis?:number};
 /** Future official clips are configured here, without changing the engine or event contracts. */
-export const performances:Record<Character,Partial<Record<PerformanceKind,PerformanceAsset>>>={yellow:{},wizard:{},ninja:{},king:{}};
+export const performances:Record<Character,Partial<Record<PerformanceKind,PerformanceAsset>>>={yellow:{RIICHI:{durationMs:1000}},wizard:{RIICHI:{durationMs:1000}},ninja:{RIICHI:{durationMs:1000}},king:{RIICHI:{durationMs:1000}}};
 const major=new Set<PerformanceKind>(['MANGAN','HANEMAN','BAIMAN','SANBAIMAN','YAKUMAN','DOUBLE_YAKUMAN']);
 let audio:AudioContext|undefined;
 function sound(asset:PerformanceAsset){if(asset.voice||asset.sound){const clip=new Audio(asset.voice??asset.sound);void clip.play().catch(()=>{});return()=>{clip.pause();clip.src='';};}try{audio??=new AudioContext();if(audio.state!=='running')return()=>{};const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.setValueAtTime(520,audio.currentTime);o.frequency.exponentialRampToValueAtTime(780,audio.currentTime+.12);g.gain.setValueAtTime(.035,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.2);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.2);return()=>{try{o.stop();}catch{}};}catch{return()=>{};}}

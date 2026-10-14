@@ -16,12 +16,12 @@ try{
  installScenario(server.rooms,room,'exhaustive');server.broadcastPrivateGameStates(code);clearTimeout(server.actionTimers.get(code));server.actionTimers.delete(code);
  for(const size of [{width:1902,height:900},{width:844,height:390},{width:915,height:412}]){
   await page.setViewportSize(size);
-  await page.waitForFunction(()=>Array.from(document.querySelectorAll('.board .river .tile')).length>50&&Array.from(document.querySelectorAll('.board .river .tile')).every(n=>n.dataset.faceBounds)&&document.querySelector('.scene-canvas').classList.contains('webgl-ready'));
+  await page.waitForFunction(()=>Array.from(document.querySelectorAll('.board .river .tile')).length>50&&Array.from(document.querySelectorAll('.board .river .tile')).every(n=>n.dataset.faceBounds)&&document.querySelector('.scene-canvas').classList.contains('webgl-ready')&&document.querySelector('.tile-webgl').dataset.actors3d==='3');
   await page.screenshot({path:`${out}/${size.width}x${size.height}.png`});
   const faces=await page.locator('.board .river .tile').evaluateAll(nodes=>nodes.map(n=>JSON.parse(n.dataset.faceBounds)));
   assert(faces.every(r=>r.x>=0&&r.y>=0&&r.x+r.width<=size.width&&r.y+r.height<=size.height),'public tiles must be onscreen');
   const dealer=(room.handMatch??room.match).dealer;const seats=['east','south','west','north'];const self=room.players.find(p=>!p.isBot).seat;const wind=['東','南','西','北'][(seats.indexOf(self)-seats.indexOf(dealer)+4)%4];assert.equal(await page.locator('.seat-wind').innerText(),'自風：'+wind);
-  assert.deepEqual(JSON.parse(await page.locator('.tile-webgl').getAttribute('data-tile-models')),[[44,60,18]]);assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-count'),'1');
+  assert.deepEqual(JSON.parse(await page.locator('.tile-webgl').getAttribute('data-tile-models')),[[64,88,26]]);assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-count'),'1');
   const handRect=await page.locator('.hand .tile:not(.mini)').first().boundingBox();assert(handRect.width>0&&handRect.height>0,'grounded private tiles must retain usable controls');
   const hud=await page.locator('.round-center').boundingBox();assert(faces.every(r=>!(r.x<hud.x+hud.width&&r.x+r.width>hud.x&&r.y<hud.y+hud.height&&r.y+r.height>hud.y)),'center cannot cover river faces');
   assert.equal(await page.locator('.play-controls>.hint:visible').count(),0);

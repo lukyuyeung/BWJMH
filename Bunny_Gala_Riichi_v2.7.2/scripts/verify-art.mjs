@@ -28,3 +28,8 @@ const resultArt=JSON.parse(readFileSync(new URL('../client/public/art/gala-resul
 if(createHash('sha256').update(readFileSync(new URL('../client/public/art/'+resultArt.asset,import.meta.url))).digest('hex')!==resultArt.sha256)throw Error('Result casino asset changed');
 if(!sceneCss.includes(resultArt.asset))throw Error('Result casino background is not connected');
 console.log('Verified result-only casino plate; game tiles and scores are live overlays.');
+
+const roomArt=JSON.parse(readFileSync(new URL('../client/public/art/gala-room-only.metadata.json',import.meta.url),'utf8'));
+if(createHash('sha256').update(readFileSync(new URL('../client/public/art/'+roomArt.asset,import.meta.url))).digest('hex')!==roomArt.sha256)throw Error('Room-only backdrop hash mismatch');
+if(!sceneCss.includes(roomArt.asset))throw Error('Room-only backdrop is not connected');
+console.log('Verified room-only art; table, rim, chairs and carrots use real geometry.');

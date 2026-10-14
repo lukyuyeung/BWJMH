@@ -1,45 +1,81 @@
-# Single physical table and result screen
+# Physical table, interaction and results
 
-All physical tiles now share the 44×60×18 model in `client/src/table-metrics.ts`.
-The same constants supply CSS layout and the WebGL geometry. The physical board
-is 1000×1000. Hands, concealed racks, walls, rivers and all melds belong to this
-one board scene and one calibrated camera. Private hand controls are inside the
-board; the former screen-space hand scene/camera has been removed. Natural
-perspective remains, but no tile class receives an independent size or scale.
-Flat tile bottoms and standing tile feet contact the felt at Z=0. Upper wall
-slots and stacked added-kan tiles use the tile depth for their elevation.
+Gameplay uses a real opaque 1800×1800 felt mesh, flush wood/gold rim and chair
+geometry. The room-only background contains no baked table. All physical tiles
+share the 64×88×26 model from `client/src/table-metrics.ts`: own hand, opponent
+racks, wall stacks, rivers and melds. One orthographic camera renders everything;
+near and far tiles have identical physical and projected widths. CSS hit targets
+use the same camera projection. The camera fits landscape height without changing
+when cards are drawn or called. Tile feet and public tile bottoms contact Z=0;
+upper wall tiles and added-kan tiles use the same physical depth.
 
-The call presentation component no longer transforms the scene viewport. Its
-sound and small call notice remain. Browser QA samples table bounds during chi,
-pon, daiminkan, ankan and kakan and rejects any zoom, translation or resize.
-The hand row sits at the near edge of the felt, separated from its river.
+The own hand stands on the near rim. Rivers use six columns, chronological rows
+and four fixed positions on the felt. Sideways called tiles retain source-seat
+orientation. The center displays the round, own seat wind and remaining live wall.
+Calls retain their notice/sound but cannot transform the table viewport.
 
-The yaku guide shows illustrated tile groups for all 38 supported yaku. These
-are examples, not live hands. Situational conditions remain explained in text.
-The examples are tested as valid winning shapes, with kan groups normalized.
+Legal hand tiles discard with one click or tap. There is no second discard-confirm
+button. Hover/focus lights the whole faces of matching discards in all four rivers
+and the called tile of exposed melds; the count includes claimed discards exactly
+once. The privately held companions of a meld are not counted as played discards.
+Selecting riichi lights only server-provided legal declaration discards.
+After declaration, automatic discard uses the authoritative newly drawn tile ID,
+withholding it for a legal tsumo or kan choice. It cannot discard an illegal or
+missing ID. Existing action revision/in-flight guards remain.
 
-Results sort real concealed tiles in suit/rank order, preserve red flags and
-winning IDs, and display exposed melds separately, retaining source orientation
-and kan stacking. No tiles or scores are embedded in art. A new result-only
-casino plate restores the red velvet chair, chips, amber/pink light and black/gold
-panel composition. The right corner title and duplicated winner text are removed.
-The held tile, han/fu, limits, score changes and avatars still use server data.
+The engine records the declaration tile ID and publishes it as public hand data.
+Reload and checkpoint recovery preserve its sideways orientation. Declared seats
+receive a voxel carrot riichi deposit on the felt, animated into a clear space
+beside their river, and a one-second riichi notice. The carrot is real geometry.
+Transparent bunny PNG planes sit in world space with depth testing; the opaque
+table hides their lower bodies. They are not rigged 3D character models.
 
-Validation commands:
+Local standalone play provides a new-match button after the match finishes.
+It clears only the current game session, preserving the profile/avatar. A supplied
+Bunny Gala host session does not receive this local-session replacement control.
+The external account/avatar provider remains deferred; profile events and existing
+avatar data adapters remain in place.
 
+Results keep sorted real concealed tiles, winning IDs/red flags and separately
+oriented exposed melds/kan stacks. Held winning tiles, han/fu, score changes and
+avatars use server data. The result-only casino composition remains separate from
+the rebuilt gameplay scene. The guide illustrates all 38 supported yaku.
+
+## Validation
+
+- `npm run test`: 164 engine and 124 server tests, including declaration recovery,
+  automatic riichi discard exceptions, public count deduplication and inventories.
 - `npm run typecheck`, `npm run build`, `npm run verify:art`.
-- `npx vitest run server/test/result-layout.test.ts` (inventory, meld provenance,
-  all illustrated winning shapes).
-- `node --import tsx scripts/browser-felt.mjs` (desktop and landscape phones,
-  one model/camera, real tile ground contact, populated rivers and center bounds).
-- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-table-ui.mjs`
-  (legal calls, fixed viewport during calls, illustrated guide, same-seat reload).
-- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-result-ui.mjs`
-  (real sorted tsumo/ron hands, exposed pon/kan, score card bounds, portrait and
-  landscape, actual winning tile and App profile event).
+- `node --import tsx scripts/browser-riichi.mjs`: direct touch, whole-face signals,
+  eligible riichi discards, carrot mesh, reload, actual tsumogiri, kan/tsumo choices
+  and local restart.
+- `node --import tsx scripts/browser-felt.mjs`: populated rivers, shared model,
+  camera, ground contact and bounds at desktop and landscape phone sizes.
+- `node --import tsx scripts/browser-table-viewport.mjs`: four landscape sizes,
+  public card bounds, HUD placement and accessible action targets.
+- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-table-ui.mjs`:
+  entry/session recovery, all five meld types without zoom, rivers and yaku guide.
+- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-result-ui.mjs`:
+  sorted real tsumo/ron results, pon/kan, scoring bounds and profile avatar event.
 
-Characters remain transparent 2D sprites composited behind the photographed table.
-The App account provider is still deferred. At 844×390 the smallest far river
-faces have a projected depth around 6 pixels; physical size consistency does not
-remove the phone screen's perspective/legibility limit. Portrait table play is
-not claimed by the landscape acceptance checks; the portrait result screen is.
+Landscape phone tests measure a smallest projected public face around 26×10px at
+844×390. Phone resolution still limits small rotated glyphs. Portrait result layout
+is covered; these gameplay acceptance checks cover landscape.
+
+## Update an existing Codespace
+
+Stop the old server with Ctrl+C in its existing terminal, then run:
+
+```bash
+cd /workspaces/BWJMH
+git pull --ff-only origin codex/clear-table-scene
+cd Bunny_Gala_Riichi_v2.7.2
+npm run build
+npm run server
+```
+
+This update changes engine/server data, so rebuilding and restarting the server is
+required. Keep the existing Vite terminal running and hard-refresh the game page.
+Do not start a second server on port 3001. For a stopped client, start it in a
+separate terminal with `cd /workspaces/BWJMH/Bunny_Gala_Riichi_v2.7.2/client` and
+`npx vite --host 0.0.0.0 --port 5174 --strictPort`, then open port 5174 in Ports.
