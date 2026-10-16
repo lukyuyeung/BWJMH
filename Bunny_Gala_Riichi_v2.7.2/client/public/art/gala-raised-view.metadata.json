@@ -1,0 +1,28 @@
+{
+  "source": "gala-empty-table.png: user-selected ornate casino table design",
+  "change": "Raise the seated-player viewing angle; preserve gold/copper rim, emerald patterned felt, central octagon, red velvet chairs and casino",
+  "camera_degrees": 52,
+  "felt_corners_normalized": [
+    [
+      0.2816,
+      0.1953
+    ],
+    [
+      0.7184,
+      0.1953
+    ],
+    [
+      0.8643,
+      0.8906
+    ],
+    [
+      0.1357,
+      0.8906
+    ]
+  ],
+  "assets": {
+    "gala-original-table-raised-view.png": "3c0a5dea2f255dd6623d388e2eeabf236bffb8d5cbe6a18edc1bcf17f7a749c1",
+    "mahjong-player-view-reference.png": "f9cd183a1cc81921401a95c042830243429ef15c006e19223bd2b02621cf0562"
+  },
+  "tile_reference": "Shape/material reference only: live glyphs, face IDs and counts continue to come from game state. Canonical model 88x120x34; no photographed glyphs baked onto live tiles."
+}

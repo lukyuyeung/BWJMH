@@ -134,7 +134,7 @@
 .table .round-center{border-radius:18px;background:#141016e8;height:92px;display:flex;flex-direction:column;justify-content:center;gap:6px}.table .round-center .wall-count small{display:block;font-size:12px;line-height:16px}.table .round-center .wall-count{margin:0;color:#ffb4dd}.table .round-center.compact{height:92px}
 .yaku-guide details{border-top:1px solid #8d6949;padding:10px 0}.yaku-guide summary{display:flex;gap:12px;justify-content:space-between;cursor:pointer;min-height:44px;align-items:center}.yaku-guide summary span{font-size:12px;color:#edc78b}.yaku-guide p{line-height:1.6}.current-waits{padding:10px;background:#372023;border:1px solid #ad8453}
 @media(max-width:600px){.automation-rail button{width:44px;height:44px;font-size:22px}.automation-rail{gap:6px;left:4px}.automation-rail button span{font-size:inherit}}
-@media(orientation:landscape) and (max-height:500px){.automation-rail{left:max(4px,env(safe-area-inset-left));top:48%}.automation-rail button{width:44px;height:44px;font-size:24px}.automation-rail button:nth-child(3){font-size:18px}.table .round-center,.table .round-center.compact{height:80px;width:180px}.table .round-center .wall-count small{font-size:17px;line-height:19px}.table .scene-actions .context-actions:empty{display:none}.table .scene-actions button[data-action=pass-claim]{flex:0 0 auto;min-width:calc(44px / var(--scene-scale))}}
+@media(orientation:landscape) and (max-height:500px){.automation-rail{left:max(4px,env(safe-area-inset-left));top:48%}.automation-rail button{width:44px;height:44px;font-size:24px}.automation-rail button[data-label-length="2"]{font-size:18px}.table .round-center,.table .round-center.compact{height:80px;width:180px}.table .round-center .wall-count small{font-size:17px;line-height:19px}.table .scene-actions .context-actions:empty{display:none}.table .scene-actions button[data-action=pass-claim]{flex:0 0 auto;min-width:calc(44px / var(--scene-scale))}}
 .table .game-header .room-pill{visibility:hidden}.table .scene-canvas .dora{top:20px;left:22px;right:auto;width:auto;gap:12px;padding:6px;z-index:10;background:#110b13e8}.dora-row{display:flex;gap:4px;align-items:center}.dora-row>small{font-size:15px;color:#ffe2a0;width:48px}.table .scene-canvas .dora .tile-back{width:23px;height:31px;box-shadow:none;transform:none}.table .scene-canvas .dora .tile.mini{flex:0 0 23px}
 @media(orientation:landscape) and (max-height:500px){.table .scene-canvas .dora{top:12px;left:18px;gap:8px}.dora-row>small{font-size:20px;width:62px}.table .scene-canvas .dora .tile.mini,.table .scene-canvas .dora .tile-back{width:30px;height:41px;flex-basis:30px}.table .scene-canvas .dora .mini .tile-honor{font-size:25px}.table .scene-canvas .dora .mini .characters b{font-size:13px}.table .scene-canvas .dora .mini .characters em{font-size:16px}}
 .table .webgl-ready .dora .tile-back{background:url('/art/v5/TILE_BACK_MASTER__BLACK_GOLD_NO_LOGO.png') 15.7% 19.8%/461% 261% no-repeat!important;border:1px solid #cba45e!important;border-radius:3px;box-shadow:none!important}
@@ -240,8 +240,7 @@
 .bg-score-player{height:100%;min-height:0;padding:4px;overflow:hidden}.bg-score-text strong,.bg-score-text b,.bg-score-text span{line-height:1.05}.bg-result-footer{height:100%;overflow:visible}.bg-next button{height:100%;min-height:44px}
 .bg-result-v1{background:linear-gradient(#180c0d11,#180c0d22),url('/art/gala-result-casino.png') center/cover}
 .table .scene-canvas .board .hand{top:970px}
-/* Real table camera: the room contains no photographed game table. */
-.table .scene-canvas{background-image:url('/art/gala-room-only.png');background-size:cover;background-position:center}
+/* Shared physical tile layout; selected table art is restored below. */
 .table .scene-actors,.table .scene-table-occlusion{display:none}.table .tile-webgl{height:var(--view-height)!important;z-index:3}
 .table .scene-canvas .board{width:var(--table-size);height:var(--table-size)}
 .table .scene-canvas .board .hand{width:var(--table-size);top:calc(var(--table-size) + 30px - var(--tile-height) / 2);height:var(--tile-height)}
@@ -258,8 +257,28 @@
 .table .round-center .wall-count{flex-basis:100%;font-size:20px;line-height:20px}.table .round-center .seat-wind,.table .round-center>strong{font-size:22px;line-height:22px}.table .round-center .wall-count small{font-size:16px}
 .table .discard-count{position:absolute;left:50%;top:calc(var(--view-height) * .91);transform:translateX(-50%);font-size:22px;background:#101518ed;color:#b5ffdb;border:1px solid #55a587;padding:3px 12px;z-index:12;pointer-events:none}
 .riichi-stick{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}.table .waiting-preview{top:calc(var(--view-height) * .94);font-size:18px}
-.table .scene-canvas:not(.webgl-ready) .board:before{content:'';display:block;position:absolute;inset:0;background:#075d50;border:20px solid #795334;transform:translateZ(-1px);z-index:-1}
+.table .scene-canvas:not(.webgl-ready) .board:before{display:none}
 .table .board .river{grid-template-columns:repeat(6,var(--tile-width));gap:4px}
 .table .board .meld .sideways{margin-inline:12px}.table .board .own-melds{transform:translateY(calc(var(--tile-height) / -2))}
 .table .scene-canvas .board .hand{top:calc(var(--table-size) + 50px - var(--tile-height) / 2)}
 .table .webgl-ready .board .river .tile.latest-discard:after{display:none!important}
+
+/* Restore the user's ornate table; the raised view and tile camera share corners. */
+.table .scene-canvas{background-image:url('/art/gala-original-table-raised-view.png');background-size:100% 100%;background-position:0 0}
+.table .automation-rail button span{font-size:inherit;line-height:1}
+.table .automation-rail button[data-label-length="2"]{font-size:18px}
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{top:calc(var(--view-height) * .49)}
+.table .scene-canvas .board .hand{top:calc(var(--table-size) - 80px - var(--tile-height) / 2)}
+
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{width:200px;height:46px;gap:0 6px}
+.table .round-center .seat-wind,.table .round-center>strong{font-size:18px;line-height:22px}
+.table .scene-canvas .board .hand{top:calc(var(--table-size) - 10px - var(--tile-height) / 2)}
+
+/* One compact block, with reserved four-row rivers clear of the center. */
+.table .pos-2 .river{top:144px}.table .pos-0 .river{bottom:144px}
+.table .pos-3 .river{left:380px}.table .pos-1 .river{right:380px}
+.table .wall-pos-2{top:16px}.table .wall-pos-0{bottom:20px}
+.table .wall-pos-3{left:16px}.table .wall-pos-1{right:16px}
+.table .pos-2 .opponent-rack{top:-40px}.table .pos-3 .opponent-rack{left:-40px}.table .pos-1 .opponent-rack{right:-40px}
+.table .scene-canvas .board .hand{top:calc(var(--table-size) + 10px - var(--tile-height) / 2)}
+.table .board .meld .sideways{margin-inline:calc((var(--tile-height) - var(--tile-width)) / 2)}

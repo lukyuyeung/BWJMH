@@ -1,81 +1,78 @@
-# Physical table, interaction and results
+# Original table design and player-view tiles
 
-Gameplay uses a real opaque 1800×1800 felt mesh, flush wood/gold rim and chair
-geometry. The room-only background contains no baked table. All physical tiles
-share the 64×88×26 model from `client/src/table-metrics.ts`: own hand, opponent
-racks, wall stacks, rivers and melds. One orthographic camera renders everything;
-near and far tiles have identical physical and projected widths. CSS hit targets
-use the same camera projection. The camera fits landscape height without changing
-when cards are drawn or called. Tile feet and public tile bottoms contact Z=0;
-upper wall tiles and added-kan tiles use the same physical depth.
+The gameplay background is `client/public/art/gala-original-table-raised-view.png`,
+a camera edit of the user-selected `gala-empty-table.png`. The original is retained
+unchanged. The raised view preserves the ornate copper/gold rim, emerald patterned
+felt, fine gold ornament, center octagon and red velvet casino chairs. The plain
+procedural green table and replacement chair geometry have been removed.
 
-The own hand stands on the near rim. Rivers use six columns, chronological rows
-and four fixed positions on the felt. Sideways called tiles retain source-seat
-orientation. The center displays the round, own seat wind and remaining live wall.
-Calls retain their notice/sound but cannot transform the table viewport.
+`mahjong-player-view-reference.png` is the tile shape/material reference requested
+by the user: standing, flat and back views of a compact ivory mahjong block, black
+back and restrained gold seam. It is stored in Art, not substituted for live game
+faces. Actual face glyphs and tile IDs continue to come from game state.
 
-Legal hand tiles discard with one click or tap. There is no second discard-confirm
-button. Hover/focus lights the whole faces of matching discards in all four rivers
-and the called tile of exposed melds; the count includes claimed discards exactly
-once. The privately held companions of a meld are not counted as played discards.
-Selecting riichi lights only server-provided legal declaration discards.
-After declaration, automatic discard uses the authoritative newly drawn tile ID,
-withholding it for a legal tsumo or kan choice. It cannot discard an illegal or
-missing ID. Existing action revision/in-flight guards remain.
+The canonical block is 88×120×34 world units for own hands, concealed opponent
+hands, all rivers, all melds and both wall levels. Rounded ivory bodies, charcoal
+backs and a narrow gold seam follow the reference. No class gets a separate scale.
+Apparent size naturally changes with distance/orientation in the shared camera.
+The hand stands on the player's near rim. Six-column rivers reserve space for
+four rows at each side; the narrower two-line round/seat/wall HUD leaves the
+central gap clear.
 
-The engine records the declaration tile ID and publishes it as public hand data.
-Reload and checkpoint recovery preserve its sideways orientation. Declared seats
-receive a voxel carrot riichi deposit on the felt, animated into a clear space
-beside their river, and a one-second riichi notice. The carrot is real geometry.
-Transparent bunny PNG planes sit in world space with depth testing; the opaque
-table hides their lower bodies. They are not rigged 3D character models.
+`felt-projection.ts` calibrates the plane to the actual four felt corners of the
+raised-view image. CSS hit targets and the single WebGL camera use this exact
+homogeneous transform, including the same physical Z-height projection. This
+keeps flat discards on the pictured felt and standing tile feet at Z=0. The
+invisible depth-only surface occludes the lower bodies of seated bunny sprites;
+it never paints a different table over the selected artwork. Carrot riichi
+sticks remain real meshes. Characters remain static transparent PNG planes,
+not rigged models. Calls do not change the scene viewport or camera.
 
-Local standalone play provides a new-match button after the match finishes.
-It clears only the current game session, preserving the profile/avatar. A supplied
-Bunny Gala host session does not receive this local-session replacement control.
-The external account/avatar provider remains deferred; profile events and existing
-avatar data adapters remain in place.
+The former mobile CSS exception that shrank the entire third automation button
+has been removed. Single-glyph 理、和、鳴、切 share the same font size. Only the
+actual two-character 不鳴 label uses the smaller font to fit its button.
 
-Results keep sorted real concealed tiles, winning IDs/red flags and separately
-oriented exposed melds/kan stacks. Held winning tiles, han/fu, score changes and
-avatars use server data. The result-only casino composition remains separate from
-the rebuilt gameplay scene. The guide illustrates all 38 supported yaku.
+Existing gameplay interaction remains: single-tap legal discard, whole-face
+matching discard lights/counts, server-provided riichi discard choices, automatic
+post-riichi tsumogiri that preserves tsumo/kan choices, authoritative declaration
+tile recovery, and a local new-match button after the match finishes. External
+Bunny Gala account/avatar provider remains deferred. Result art/scoring and the
+38 illustrated yaku examples are retained.
 
 ## Validation
 
-- `npm run test`: 164 engine and 124 server tests, including declaration recovery,
-  automatic riichi discard exceptions, public count deduplication and inventories.
-- `npm run typecheck`, `npm run build`, `npm run verify:art`.
-- `node --import tsx scripts/browser-riichi.mjs`: direct touch, whole-face signals,
-  eligible riichi discards, carrot mesh, reload, actual tsumogiri, kan/tsumo choices
-  and local restart.
-- `node --import tsx scripts/browser-felt.mjs`: populated rivers, shared model,
-  camera, ground contact and bounds at desktop and landscape phone sizes.
+- `npm run typecheck`, `npm run build -w @bunny/client`, `npm run verify:art`.
+- `node --import tsx scripts/browser-felt.mjs`: desktop and landscape phones,
+  actual active ornate backdrop, all public tile centers within pictured felt,
+  shared model/camera, zero ground-contact errors and unobscured center HUD.
 - `node --import tsx scripts/browser-table-viewport.mjs`: four landscape sizes,
-  public card bounds, HUD placement and accessible action targets.
+  river bounds, equal single-glyph automation font sizes, contextual controls
+  at least 44 pixels tall, and absence of a second discard-confirm button.
+- `node --import tsx scripts/browser-riichi.mjs`: direct touch, public face lights,
+  legal riichi choices, carrot deposit, declaration recovery, actual automatic
+  newly drawn tile discard, protected kan/tsumo choices and local restart.
 - `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-table-ui.mjs`:
-  entry/session recovery, all five meld types without zoom, rivers and yaku guide.
-- `QA_CHROMIUM_PATH=/usr/bin/chromium node --import tsx scripts/browser-result-ui.mjs`:
-  sorted real tsumo/ron results, pon/kan, scoring bounds and profile avatar event.
+  same-seat session recovery, all five meld types without camera zoom, chronological
+  rivers, deferred records and illustrated yaku guide.
 
-Landscape phone tests measure a smallest projected public face around 26×10px at
-844×390. Phone resolution still limits small rotated glyphs. Portrait result layout
-is covered; these gameplay acceptance checks cover landscape.
+These gameplay checks cover landscape. At 844×390 the smallest projected public
+face is approximately 19×11 pixels; finite phone resolution still limits small
+rotated glyphs. Portrait gameplay is not claimed by landscape checks.
 
-## Update an existing Codespace
+## Existing Codespace update
 
-Stop the old server with Ctrl+C in its existing terminal, then run:
+This revision changes frontend visuals only. Keep the running game server and
+working proxy-enabled Vite client. From another terminal:
 
 ```bash
 cd /workspaces/BWJMH
 git pull --ff-only origin codex/clear-table-scene
-cd Bunny_Gala_Riichi_v2.7.2
-npm run build
-npm run server
 ```
 
-This update changes engine/server data, so rebuilding and restarting the server is
-required. Keep the existing Vite terminal running and hard-refresh the game page.
-Do not start a second server on port 3001. For a stopped client, start it in a
-separate terminal with `cd /workspaces/BWJMH/Bunny_Gala_Riichi_v2.7.2/client` and
-`npx vite --host 0.0.0.0 --port 5174 --strictPort`, then open port 5174 in Ports.
+Open the working forwarded client address (5175 for the most recent proxy setup),
+then hard-refresh. Do not launch duplicate listeners or change back to the old
+5174 page. A stopped client can use the previously configured ignored
+`client/node_modules/.cache/bunny-codespaces.config.mjs` with
+`VITE_SERVER_URL=/ npx vite --config node_modules/.cache/bunny-codespaces.config.mjs --port 5175 --strictPort`
+from the client directory. The server must still answer `/health` internally on
+3001. Future engine/server changes require a rebuild and restart of that server.

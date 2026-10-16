@@ -31,5 +31,11 @@ console.log('Verified result-only casino plate; game tiles and scores are live o
 
 const roomArt=JSON.parse(readFileSync(new URL('../client/public/art/gala-room-only.metadata.json',import.meta.url),'utf8'));
 if(createHash('sha256').update(readFileSync(new URL('../client/public/art/'+roomArt.asset,import.meta.url))).digest('hex')!==roomArt.sha256)throw Error('Room-only backdrop hash mismatch');
-if(!sceneCss.includes(roomArt.asset))throw Error('Room-only backdrop is not connected');
-console.log('Verified room-only art; table, rim, chairs and carrots use real geometry.');
+console.log('Verified retained room-only backdrop integrity; inactive in gameplay.');
+
+const raisedArt=JSON.parse(readFileSync(new URL('../client/public/art/gala-raised-view.metadata.json',import.meta.url),'utf8'));
+for(const [file,expected] of Object.entries(raisedArt.assets)){
+ if(createHash('sha256').update(readFileSync(new URL('../client/public/art/'+file,import.meta.url))).digest('hex')!==expected)throw Error('Raised-view art hash mismatch: '+file);
+}
+if(!sceneCss.includes('gala-original-table-raised-view.png'))throw Error('Original raised-view table is not connected');
+console.log('Verified preserved ornate table and seated-player tile reference.');
