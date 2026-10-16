@@ -1,0 +1,198 @@
+{
+  "mode": "full-hands",
+  "counts": {
+    "rivers": [
+      24,
+      24,
+      24,
+      24
+    ],
+    "wallStacks": [
+      17,
+      17,
+      17,
+      17
+    ],
+    "walls": [
+      34,
+      34,
+      34,
+      34
+    ],
+    "hands": [
+      14,
+      13,
+      13,
+      13
+    ],
+    "melds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "riichiCarrots": 4
+  },
+  "dimensions": [
+    100,
+    136,
+    44
+  ],
+  "tableSize": 3400,
+  "windPositions": {
+    "bottom": "東（自風）",
+    "right": "南",
+    "top": "西",
+    "left": "北"
+  },
+  "regions": [
+    {
+      "seat": 0,
+      "name": "hand-and-meld-band",
+      "t0": -1080,
+      "r0": 1530,
+      "t1": 1080,
+      "r1": 1670
+    },
+    {
+      "seat": 0,
+      "name": "river",
+      "t0": -310,
+      "r0": 520,
+      "t1": 346,
+      "r1": 1076
+    },
+    {
+      "seat": 0,
+      "name": "wall",
+      "t0": -882,
+      "r0": 1252,
+      "t1": 882,
+      "r1": 1388
+    },
+    {
+      "seat": 0,
+      "name": "riichi",
+      "t0": -125,
+      "r0": 365,
+      "t1": 125,
+      "r1": 475
+    },
+    {
+      "seat": 1,
+      "name": "hand-and-meld-band",
+      "t0": -1080,
+      "r0": 1530,
+      "t1": 1080,
+      "r1": 1670
+    },
+    {
+      "seat": 1,
+      "name": "river",
+      "t0": -310,
+      "r0": 520,
+      "t1": 346,
+      "r1": 1076
+    },
+    {
+      "seat": 1,
+      "name": "wall",
+      "t0": -882,
+      "r0": 1232,
+      "t1": 882,
+      "r1": 1368
+    },
+    {
+      "seat": 1,
+      "name": "riichi",
+      "t0": -125,
+      "r0": 365,
+      "t1": 125,
+      "r1": 475
+    },
+    {
+      "seat": 2,
+      "name": "hand-and-meld-band",
+      "t0": -1080,
+      "r0": 1530,
+      "t1": 1080,
+      "r1": 1670
+    },
+    {
+      "seat": 2,
+      "name": "river",
+      "t0": -310,
+      "r0": 520,
+      "t1": 346,
+      "r1": 1076
+    },
+    {
+      "seat": 2,
+      "name": "wall",
+      "t0": -882,
+      "r0": 1232,
+      "t1": 882,
+      "r1": 1368
+    },
+    {
+      "seat": 2,
+      "name": "riichi",
+      "t0": -125,
+      "r0": 365,
+      "t1": 125,
+      "r1": 475
+    },
+    {
+      "seat": 3,
+      "name": "hand-and-meld-band",
+      "t0": -1080,
+      "r0": 1530,
+      "t1": 1080,
+      "r1": 1670
+    },
+    {
+      "seat": 3,
+      "name": "river",
+      "t0": -310,
+      "r0": 520,
+      "t1": 346,
+      "r1": 1076
+    },
+    {
+      "seat": 3,
+      "name": "wall",
+      "t0": -882,
+      "r0": 1232,
+      "t1": 882,
+      "r1": 1368
+    },
+    {
+      "seat": 3,
+      "name": "riichi",
+      "t0": -125,
+      "r0": 365,
+      "t1": 125,
+      "r1": 475
+    }
+  ],
+  "outside": [],
+  "overlaps": [],
+  "blocked": [],
+  "hudOverlaps": 0,
+  "carrotHudOverlaps": 0,
+  "carrotHUDConflicts": [],
+  "hudBounds": {
+    "x": 1061,
+    "y": 463.234375,
+    "right": 1339,
+    "bottom": 581.234375
+  },
+  "uiFaceOverlaps": 0,
+  "carrotRiverOverlaps": 0,
+  "riichiZoneErrors": 0,
+  "groundErrors": 0,
+  "previewOnly": true,
+  "notA136TileSnapshot": true,
+  "localHandPresentation": "independent near-front portrait projection; not table lens",
+  "localHandBoundsCheck": "table-space checks apply to reserved world band; independent overlay requires visual review"
+}
