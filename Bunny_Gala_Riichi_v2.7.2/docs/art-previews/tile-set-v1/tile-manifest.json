@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "purpose": "art-review-only",
+  "integrated": false,
+  "expectedBasicFaces": 34,
+  "expectedRedVariants": 3,
+  "finishedPreviewCount": 36,
+  "missingUserOriginals": [
+    "1s"
+  ],
+  "materialReference": "body-material-views.png",
+  "positionConvention": "One-based row/column on review sheet; not texture UVs.",
+  "tiles": [
+    {
+      "face": "1m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 1,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "2m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 1,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "3m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 1,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "4m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 2,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "5m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 2,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "6m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 2,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "7m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 3,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "8m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 3,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "9m",
+      "red": false,
+      "sheet": "man-1-9.png",
+      "row": 3,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "1p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 1,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "2p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 1,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "3p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 1,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "4p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 2,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "5p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 2,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "6p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 2,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "7p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 3,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "8p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 3,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "9p",
+      "red": false,
+      "sheet": "pin-1-9.png",
+      "row": 3,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "1s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 1,
+      "column": 1,
+      "status": "awaiting-user-original"
+    },
+    {
+      "face": "2s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 1,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "3s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 1,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "4s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 2,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "5s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 2,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "6s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 2,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "7s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 3,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "8s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 3,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "9s",
+      "red": false,
+      "sheet": "sou-2-9-reserved-1s.png",
+      "row": 3,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "E",
+      "red": false,
+      "sheet": "honors-and-red-fives.png",
+      "row": 1,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "S",
+      "red": false,
+      "sheet": "honors-and-red-fives.png",
+      "row": 1,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "W",
+      "red": false,
+      "sheet": "honors-and-red-fives.png",
+      "row": 1,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "N",
+      "red": false,
+      "sheet": "honors-and-red-fives.png",
+      "row": 1,
+      "column": 4,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "P",
+      "red": false,
+      "sheet": "honors-and-red-fives.png",
+      "row": 1,
+      "column": 5,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "F",
+      "red": false,
+      "sheet": "honors-and-red-fives.png",
+      "row": 2,
+      "column": 1,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "C",
+      "red": false,
+      "sheet": "honors-and-red-fives.png",
+      "row": 2,
+      "column": 2,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "5m",
+      "red": true,
+      "sheet": "honors-and-red-fives.png",
+      "row": 2,
+      "column": 3,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "5p",
+      "red": true,
+      "sheet": "honors-and-red-fives.png",
+      "row": 2,
+      "column": 4,
+      "status": "preview-awaiting-approval"
+    },
+    {
+      "face": "5s",
+      "red": true,
+      "sheet": "honors-and-red-fives.png",
+      "row": 2,
+      "column": 5,
+      "status": "preview-awaiting-approval"
+    }
+  ]
+}
