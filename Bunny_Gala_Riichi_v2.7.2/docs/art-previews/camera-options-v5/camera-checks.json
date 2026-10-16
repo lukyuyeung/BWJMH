@@ -1,0 +1,63 @@
+{
+  "checks": [
+    {
+      "angleDegrees": 40,
+      "occlusionEndAtFaceHeight": 144.27222992602944,
+      "meldNearEdge": 112,
+      "frontFaceOcclusionDepth": 32.27222992602944,
+      "cameraDistance": 3600,
+      "fieldOfView": 33
+    },
+    {
+      "angleDegrees": 40,
+      "occlusionEndAtFaceHeight": 144.27222992602944,
+      "meldNearEdge": 112,
+      "frontFaceOcclusionDepth": 32.27222992602944,
+      "cameraDistance": 1800,
+      "fieldOfView": 33
+    },
+    {
+      "angleDegrees": 60,
+      "occlusionEndAtFaceHeight": 104.95041722813606,
+      "meldNearEdge": 112,
+      "frontFaceOcclusionDepth": 0,
+      "cameraDistance": 3600,
+      "fieldOfView": 33
+    },
+    {
+      "angleDegrees": 60,
+      "occlusionEndAtFaceHeight": 104.95041722813606,
+      "meldNearEdge": 112,
+      "frontFaceOcclusionDepth": 0,
+      "cameraDistance": 1800,
+      "fieldOfView": 33
+    },
+    {
+      "angleDegrees": 75,
+      "occlusionEndAtFaceHeight": 85.14874831559186,
+      "meldNearEdge": 112,
+      "frontFaceOcclusionDepth": 0,
+      "cameraDistance": 3600,
+      "fieldOfView": 33
+    },
+    {
+      "angleDegrees": 75,
+      "occlusionEndAtFaceHeight": 85.14874831559186,
+      "meldNearEdge": 112,
+      "frontFaceOcclusionDepth": 0,
+      "cameraDistance": 1800,
+      "fieldOfView": 33
+    }
+  ],
+  "tileDimensions": [
+    100,
+    136,
+    64
+  ],
+  "walls": 34,
+  "meldGroups": 4,
+  "riverTiles": 24,
+  "angleDefinition": "view direction above tabletop, degrees",
+  "sharedScene": true,
+  "previewOnly": true
+}
