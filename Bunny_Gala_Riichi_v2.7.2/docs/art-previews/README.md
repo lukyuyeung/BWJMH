@@ -1,3 +1,7 @@
+# 最新構圖提案：滿版牌枱與三個半身角色
+
+[查看 V7 構圖預覽](full-table-companions-v7/README.md)（概念圖，尚未改動遊戲）
+
 # 最新：真正 60° 已接入遊戲
 
 [查看 V6 電腦及電話實際畫面](live-table-60-v6/README.md)
