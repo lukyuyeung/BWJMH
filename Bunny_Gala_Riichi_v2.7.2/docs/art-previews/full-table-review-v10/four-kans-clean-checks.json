@@ -1,0 +1,326 @@
+{
+  "mode": "four-kans",
+  "counts": {
+    "rivers": [
+      24,
+      24,
+      24,
+      24
+    ],
+    "wallStacks": [
+      17,
+      17,
+      17,
+      17
+    ],
+    "walls": [
+      34,
+      34,
+      34,
+      34
+    ],
+    "hands": [
+      2,
+      1,
+      1,
+      1
+    ],
+    "melds": [
+      16,
+      16,
+      16,
+      16
+    ],
+    "riichiCarrots": 0
+  },
+  "dimensions": [
+    100,
+    136,
+    64
+  ],
+  "tableSize": 3000,
+  "windPositions": {
+    "bottom": "東（自風）",
+    "right": "南",
+    "top": "西",
+    "left": "北"
+  },
+  "regions": [
+    {
+      "seat": 0,
+      "name": "meld-0",
+      "t0": -815,
+      "r0": 1352,
+      "t1": -367,
+      "r1": 1488
+    },
+    {
+      "seat": 0,
+      "name": "meld-1",
+      "t0": -343,
+      "r0": 1352,
+      "t1": 105,
+      "r1": 1488
+    },
+    {
+      "seat": 0,
+      "name": "meld-2",
+      "t0": 129,
+      "r0": 1352,
+      "t1": 577,
+      "r1": 1488
+    },
+    {
+      "seat": 0,
+      "name": "meld-3",
+      "t0": 601,
+      "r0": 1352,
+      "t1": 1049,
+      "r1": 1488
+    },
+    {
+      "seat": 0,
+      "name": "hand-and-meld-band",
+      "t0": -1080,
+      "r0": 1350,
+      "t1": 1080,
+      "r1": 1490
+    },
+    {
+      "seat": 0,
+      "name": "river",
+      "t0": -310,
+      "r0": 440,
+      "t1": 346,
+      "r1": 996
+    },
+    {
+      "seat": 0,
+      "name": "wall",
+      "t0": -882,
+      "r0": 1152,
+      "t1": 882,
+      "r1": 1288
+    },
+    {
+      "seat": 0,
+      "name": "riichi",
+      "t0": -125,
+      "r0": 295,
+      "t1": 125,
+      "r1": 405
+    },
+    {
+      "seat": 1,
+      "name": "meld-0",
+      "t0": -867,
+      "r0": 1352,
+      "t1": -419,
+      "r1": 1488
+    },
+    {
+      "seat": 1,
+      "name": "meld-1",
+      "t0": -395,
+      "r0": 1352,
+      "t1": 53,
+      "r1": 1488
+    },
+    {
+      "seat": 1,
+      "name": "meld-2",
+      "t0": 77,
+      "r0": 1352,
+      "t1": 525,
+      "r1": 1488
+    },
+    {
+      "seat": 1,
+      "name": "meld-3",
+      "t0": 549,
+      "r0": 1352,
+      "t1": 997,
+      "r1": 1488
+    },
+    {
+      "seat": 1,
+      "name": "hand-and-meld-band",
+      "t0": -1080,
+      "r0": 1350,
+      "t1": 1080,
+      "r1": 1490
+    },
+    {
+      "seat": 1,
+      "name": "river",
+      "t0": -310,
+      "r0": 440,
+      "t1": 346,
+      "r1": 996
+    },
+    {
+      "seat": 1,
+      "name": "wall",
+      "t0": -882,
+      "r0": 1062,
+      "t1": 882,
+      "r1": 1198
+    },
+    {
+      "seat": 1,
+      "name": "riichi",
+      "t0": -125,
+      "r0": 295,
+      "t1": 125,
+      "r1": 405
+    },
+    {
+      "seat": 2,
+      "name": "meld-0",
+      "t0": -867,
+      "r0": 1262,
+      "t1": -419,
+      "r1": 1398
+    },
+    {
+      "seat": 2,
+      "name": "meld-1",
+      "t0": -395,
+      "r0": 1262,
+      "t1": 53,
+      "r1": 1398
+    },
+    {
+      "seat": 2,
+      "name": "meld-2",
+      "t0": 77,
+      "r0": 1262,
+      "t1": 525,
+      "r1": 1398
+    },
+    {
+      "seat": 2,
+      "name": "meld-3",
+      "t0": 549,
+      "r0": 1262,
+      "t1": 997,
+      "r1": 1398
+    },
+    {
+      "seat": 2,
+      "name": "hand-and-meld-band",
+      "t0": -1080,
+      "r0": 1260,
+      "t1": 1080,
+      "r1": 1400
+    },
+    {
+      "seat": 2,
+      "name": "river",
+      "t0": -310,
+      "r0": 440,
+      "t1": 346,
+      "r1": 996
+    },
+    {
+      "seat": 2,
+      "name": "wall",
+      "t0": -882,
+      "r0": 1062,
+      "t1": 882,
+      "r1": 1198
+    },
+    {
+      "seat": 2,
+      "name": "riichi",
+      "t0": -125,
+      "r0": 295,
+      "t1": 125,
+      "r1": 405
+    },
+    {
+      "seat": 3,
+      "name": "meld-0",
+      "t0": -867,
+      "r0": 1352,
+      "t1": -419,
+      "r1": 1488
+    },
+    {
+      "seat": 3,
+      "name": "meld-1",
+      "t0": -395,
+      "r0": 1352,
+      "t1": 53,
+      "r1": 1488
+    },
+    {
+      "seat": 3,
+      "name": "meld-2",
+      "t0": 77,
+      "r0": 1352,
+      "t1": 525,
+      "r1": 1488
+    },
+    {
+      "seat": 3,
+      "name": "meld-3",
+      "t0": 549,
+      "r0": 1352,
+      "t1": 997,
+      "r1": 1488
+    },
+    {
+      "seat": 3,
+      "name": "hand-and-meld-band",
+      "t0": -1080,
+      "r0": 1350,
+      "t1": 1080,
+      "r1": 1490
+    },
+    {
+      "seat": 3,
+      "name": "river",
+      "t0": -310,
+      "r0": 440,
+      "t1": 346,
+      "r1": 996
+    },
+    {
+      "seat": 3,
+      "name": "wall",
+      "t0": -882,
+      "r0": 1062,
+      "t1": 882,
+      "r1": 1198
+    },
+    {
+      "seat": 3,
+      "name": "riichi",
+      "t0": -125,
+      "r0": 295,
+      "t1": 125,
+      "r1": 405
+    }
+  ],
+  "outside": [],
+  "overlaps": [],
+  "blocked": [],
+  "hudOverlaps": 0,
+  "carrotHudOverlaps": 0,
+  "carrotHUDConflicts": [],
+  "hudBounds": {
+    "x": 1061,
+    "y": 463.234375,
+    "right": 1339,
+    "bottom": 581.234375
+  },
+  "uiFaceOverlaps": 0,
+  "carrotRiverOverlaps": 0,
+  "riichiZoneErrors": 0,
+  "groundErrors": 0,
+  "previewOnly": true,
+  "notA136TileSnapshot": true,
+  "localHandPresentation": "independent near-front portrait projection; not table lens",
+  "localHandBoundsCheck": "table-space checks apply to reserved world band; independent overlay requires visual review"
+}
