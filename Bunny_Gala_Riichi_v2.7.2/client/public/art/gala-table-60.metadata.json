@@ -1,0 +1,25 @@
+{
+  "asset": "gala-table-60-empty.png",
+  "sha256": "d77b58075d188746f6e2135f50ac245d473784f76599c8bcefc45019efbd1668",
+  "source": "Generated from the retained original raised-view table; same ornate design, elevated camera",
+  "cameraElevationDegrees": 60,
+  "sourceFeltCorners": [
+    [
+      595,
+      130
+    ],
+    [
+      1250,
+      130
+    ],
+    [
+      1350,
+      744
+    ],
+    [
+      500,
+      744
+    ]
+  ],
+  "alignment": "Four-corner homography to the same real perspective camera used for physical tiles; background plate is decoration, not gameplay data"
+}

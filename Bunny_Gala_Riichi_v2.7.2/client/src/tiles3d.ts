@@ -1,9 +1,10 @@
 import * as THREE from 'three';
 import {createTableScene,createCarrot} from './table-scene.js';
-import {TABLE_TILE,TABLE_SIZE} from './table-metrics.js';
+import {TABLE_TILE,TABLE_SIZE,TABLE_VIEW} from './table-metrics.js';
 import {feltProjection} from './felt-projection.js';
-import {uprightPose} from './seat-space.js';
+import {uprightPose,localHandPose} from './seat-space.js';
 import {loadTileArt,tileFaceCanvas} from './tile-art.js';
+import {goldSeamGeometry,goldBackInlayGeometry} from './tile-geometry.js';
 import {riichiStickPose} from './table-layout.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
@@ -46,12 +47,14 @@ export function mountTiles3D(root:HTMLElement):()=>void{
  const carrots=new Map<number,{mesh:THREE.Group;target:THREE.Vector3;start:number}>();
  let lastStageHeight=0;
 
+ const inspectTable=(import.meta as any).env.DEV&&new URLSearchParams(location.search).has('inspectTable');
  const debug=(import.meta as any).env.DEV&&new URLSearchParams(location.search).get('debugCamera')==='side';
  const sideCamera=new THREE.PerspectiveCamera(40,W/H,1,4000);sideCamera.position.set(1700,-1150,520);sideCamera.up.set(0,0,1);sideCamera.lookAt(500,-300,35);sideCamera.updateMatrixWorld();
  const ivory=new THREE.MeshPhysicalMaterial({color:'#fff2d9',roughness:.28,metalness:0,clearcoat:.45,clearcoatRoughness:.3,envMapIntensity:.18});
 
-  const gold=new THREE.MeshStandardMaterial({color:'#eeb64b',metalness:.85,roughness:.22});
-  const shadowMaterial=new THREE.ShadowMaterial({opacity:.35});
+  const gold=new THREE.MeshPhysicalMaterial({color:'#e9b34b',metalness:.72,roughness:.24,clearcoat:.15,envMapIntensity:.5});
+  const goldInlay=new THREE.MeshBasicMaterial({color:'#d8a640',toneMapped:false});
+ const shadowMaterial=new THREE.ShadowMaterial({opacity:.35});
  const floorGeometry=new THREE.PlaneGeometry(TABLE_SIZE+128,TABLE_SIZE+128),floor=new THREE.Mesh(floorGeometry,shadowMaterial);floor.position.set(TABLE_SIZE/2,-TABLE_SIZE/2,-.8);floor.receiveShadow=true;boardScene.add(floor);
  function lighting(scene:THREE.Scene,hand=false){
   scene.add(new THREE.AmbientLight('#fff7ed',.85));
@@ -74,7 +77,7 @@ export function mountTiles3D(root:HTMLElement):()=>void{
   frame=0;if(disposed||contextLost||!renderer||!back)return;
   const layout=getComputedStyle(root),tableScale=Number(layout.getPropertyValue('--table-scale'))||1,tableOffset=parseFloat(layout.getPropertyValue('--table-offset'))||0;
   const stageHeight=parseFloat(layout.getPropertyValue('--view-height'))||H;
-  frameCamera(stageHeight);
+  frameCamera(stageHeight);tableScene.resize(stageHeight);
   if(lastStageHeight!==stageHeight){renderer.setSize(W,stageHeight);lastStageHeight=stageHeight;geometryDirty=true;}
   const marked=new Set<number>();
   for(const marker of root.querySelectorAll<HTMLElement>('.riichi-stick')){const relative=Number(marker.dataset.relative);marked.add(relative);if(!carrots.has(relative)){const p=riichiStickPose(relative),mesh=createCarrot();mesh.rotation.z=p.yaw;boardScene.add(mesh);carrots.set(relative,{mesh,target:new THREE.Vector3(p.u,-p.v,0),start:performance.now()});}}
@@ -105,23 +108,24 @@ export function mountTiles3D(root:HTMLElement):()=>void{
   for(const el of root.querySelectorAll<HTMLElement>('.board .tile,.board .tile-back,.board .wall-lower,.hand .tile,.hand .tile-back')){
    present.add(el);const own=!!el.closest('.hand'),w=TABLE_TILE.width,h=TABLE_TILE.height,depth=TABLE_TILE.depth;
    const key=[w,h,depth].join(':');let geo=geometries.get(key);if(!geo){geo=new RoundedBoxGeometry(w,h,depth-11,4,6.5);geometries.set(key,geo);}
-   let mesh=tiles.get(el);if(!mesh){mesh=new THREE.Group();mesh.matrixAutoUpdate=false;for(let j=0;j<4;j++){const part=new THREE.Mesh();part.frustumCulled=false;part.receiveShadow=true;part.castShadow=j===0||j===2;mesh.add(part);}tiles.set(el,mesh);boardScene.add(mesh);}
+   let mesh=tiles.get(el);if(!mesh){mesh=new THREE.Group();mesh.matrixAutoUpdate=false;for(let j=0;j<5;j++){const part=new THREE.Mesh();part.frustumCulled=false;part.receiveShadow=true;part.castShadow=j===0||j===2;mesh.add(part);}tiles.set(el,mesh);boardScene.add(mesh);}
    const face=el.dataset.face,front=face?material(face,el.dataset.red==='true'):ivory;
    const body=mesh.children[0] as THREE.Mesh;body.geometry=geo;body.material=ivory;body.position.z=5.5;
    const surfaceKey=key+':front';let surface=geometries.get(surfaceKey);if(!surface){surface=geo.clone();const range=geo.groups[4]!;surface.clearGroups();surface.setDrawRange(range.start,range.count);geometries.set(surfaceKey,surface);}const frontPart=mesh.children[1] as THREE.Mesh;frontPart.geometry=surface;frontPart.material=front;frontPart.position.z=5.5;
    const capKey=key+':black-cap';let capGeo=geometries.get(capKey);if(!capGeo){capGeo=new RoundedBoxGeometry(w,h,11,3,4.5);geometries.set(capKey,capGeo);}const cap=mesh.children[2] as THREE.Mesh;cap.geometry=capGeo;cap.material=back;cap.position.z=-depth/2+5.5;
-   const trimKey=key+':trim';let trimGeo=geometries.get(trimKey);if(!trimGeo){trimGeo=new RoundedBoxGeometry(w-.4,h-.4,.8,2,.3);geometries.set(trimKey,trimGeo);}const trim=mesh.children[3] as THREE.Mesh;trim.geometry=trimGeo;trim.material=gold;trim.position.z=-depth/2+11;
+   const trimKey=key+':trim';let trimGeo=geometries.get(trimKey);if(!trimGeo){trimGeo=goldSeamGeometry(w,h);geometries.set(trimKey,trimGeo);}const trim=mesh.children[3] as THREE.Mesh;trim.geometry=trimGeo;trim.material=gold;trim.position.z=-depth/2+11;
+   const inlayKey=key+':back-inlay';let inlayGeo=geometries.get(inlayKey);if(!inlayGeo){inlayGeo=goldBackInlayGeometry(w,h);geometries.set(inlayKey,inlayGeo);}const inlay=mesh.children[4] as THREE.Mesh;inlay.geometry=inlayGeo;inlay.material=goldInlay;inlay.position.z=-depth/2-.03;
    const standing=!!el.closest('.concealed')||own&&!el.closest('.own-melds');
    const pose=layoutMatrix(el,board,depth);
    const anchored=flip.clone().multiply(new THREE.Matrix4().fromArray(Array.from(pose.toFloat64Array()))).multiply(flip);
    if(standing){
     const relative=own?0:el.closest('.pos-1')?1:el.closest('.pos-3')?3:2;
-    const p=uprightPose(relative,h),center=new THREE.Vector3().setFromMatrixPosition(anchored);
+    const p=own?localHandPose(h,depth):uprightPose(relative,h),center=new THREE.Vector3().setFromMatrixPosition(anchored);
     mesh.matrix.makeTranslation(center.x,center.y,p.centerZ).multiply(new THREE.Matrix4().makeRotationZ(p.yaw)).multiply(new THREE.Matrix4().makeRotationX(p.pitch));
     let contact=contacts.get(el);if(!contact){contact=new THREE.Mesh(contactGeo,contactMaterial);boardScene.add(contact);contacts.set(el,contact);}contact.position.set(center.x,center.y,.2);contact.scale.set(w*1.3,depth*1.3,1);
    }else{mesh.matrix.copy(anchored);if(!face)mesh.matrix.multiply(new THREE.Matrix4().makeRotationX(Math.PI));}
-   if(standing){const up=new THREE.Vector3(0,1,0).transformDirection(mesh.matrix);if(up.distanceTo(new THREE.Vector3(0,0,1))>1e-6)uprightErrors++;const foot=new THREE.Vector3(0,-h/2,0).applyMatrix4(mesh.matrix);if(Math.abs(foot.z)>1e-6)contactErrors++;}
-   if(el.closest('.river,.melds')&&!own){const foot=new THREE.Vector3(0,0,face?-depth/2:depth/2).applyMatrix4(mesh.matrix);if(Math.abs(foot.z)>1e-6)publicContactErrors++;}
+   if(standing){const up=new THREE.Vector3(0,1,0).transformDirection(mesh.matrix),expected=Math.sin((own?75:90)*Math.PI/180);if(Math.abs(up.z-expected)>1e-6)uprightErrors++;const foot=new THREE.Vector3(0,-h/2,own?-depth/2:0).applyMatrix4(mesh.matrix);if(Math.abs(foot.z)>1e-6)contactErrors++;}
+   if(el.closest('.river,.melds')&&!own){const foot=new THREE.Vector3(0,0,face?-depth/2:depth/2).applyMatrix4(mesh.matrix);if(Math.abs(foot.z-(el.classList.contains('kan-added')?depth:0))>1e-6)publicContactErrors++;}
    // Regression diagnostic: the calibrated depth interval must contain every tile body.
    const view=camera;const clip=new THREE.Matrix4().multiplyMatrices(view.projectionMatrix,view.matrixWorldInverse).multiply(mesh.matrix);let clipped=false;
    if(el.closest('.river,.wall-stack,.hand,.concealed,.melds')){
@@ -140,9 +144,24 @@ export function mountTiles3D(root:HTMLElement):()=>void{
    mesh.matrixWorldNeedsUpdate=true;
   }
   for(const [el,mesh] of tiles)if(!present.has(el)){for(const name of ['highlight','matching-dot']){const overlay=mesh.getObjectByName(name) as THREE.Mesh|undefined;if(overlay){const resourceKey=overlay.userData.resourceKey as string;overlay.geometry.dispose();(overlay.material as THREE.Material).dispose();geometries.delete(resourceKey);materials.delete(resourceKey);}}mesh.removeFromParent();tiles.delete(el);contacts.get(el)?.removeFromParent();contacts.delete(el);}
+  if(inspectTable){
+   boardScene.updateMatrixWorld(true);
+   const c=TABLE_SIZE/2,eye=new THREE.Vector3(c,-c-TABLE_VIEW.distance*Math.cos(TABLE_VIEW.elevation),TABLE_VIEW.distance*Math.sin(TABLE_VIEW.elevation));
+   const ray=new THREE.Raycaster(),objects=[...tiles.values()];let checked=0,blocked=0;
+   for(const [el,mesh]of tiles){if(!el.dataset.face||!el.closest('.melds,.own-melds'))continue;let visible=0;const blockers=new Set<string>();
+    for(const x of [-.36,0,.36])for(const y of [-.36,0,.36]){
+     const point=new THREE.Vector3(x*TABLE_TILE.width,y*TABLE_TILE.height,TABLE_TILE.depth/2+.05).applyMatrix4(mesh.matrixWorld),distance=eye.distanceTo(point);
+     ray.set(eye,point.clone().sub(eye).normalize());ray.far=distance-.15;
+     const hit=ray.intersectObjects(objects,true).find(h=>h.object.parent!==mesh);
+     if(!hit)visible++;else{const target=[...tiles].find(([,m])=>m===hit.object.parent)?.[0];blockers.add(target?.closest('.wall-stack')?'wall':target?.closest('.concealed,.hand-tile-hit')?'hand':'tile');}
+    }
+    el.dataset.visibleSamples=String(visible);el.dataset.faceBlockers=[...blockers].join(',');checked++;if(visible<9)blocked++;
+   }
+   renderer.domElement.dataset.meldVisibility=JSON.stringify({checked,blocked});
+  }
   renderer.shadowMap.needsUpdate=geometryDirty;geometryDirty=false;renderer.info.reset();renderer.clear();renderer.render(boardScene,debug?sideCamera:camera);
   // Expose render diagnostics for browser QA without exposing any game secrets.
-  root.dataset.tileRenderer='webgl';const handBounds=root.querySelector<HTMLElement>('.hand')?.getBoundingClientRect();renderer.domElement.dataset.handTop=String(handBounds?.top??-1);renderer.domElement.dataset.tableScale=String(tableScale);renderer.domElement.dataset.tableOffset=String(tableOffset);renderer.domElement.dataset.renderCount=String(++renderCount);renderer.domElement.dataset.quality=lowQuality?'low':'high';renderer.domElement.dataset.meshCount=String(tiles.size);renderer.domElement.dataset.triangles=String(renderer.info.render.triangles);renderer.domElement.dataset.clippedTileBodies=String(clippedBodies);renderer.domElement.dataset.matchingDiscards=String(matching);renderer.domElement.dataset.uprightErrors=String(uprightErrors);renderer.domElement.dataset.contactErrors=String(contactErrors);renderer.domElement.dataset.publicContactErrors=String(publicContactErrors);renderer.domElement.dataset.camera=debug?'side':'gameplay';renderer.domElement.dataset.tileModel=JSON.stringify(TABLE_TILE);renderer.domElement.dataset.cameraCount='1';renderer.domElement.dataset.cameraType='calibrated-perspective';renderer.domElement.dataset.lightStyle='whole-face';renderer.domElement.dataset.tableGeometry='reference-depth-plane';renderer.domElement.dataset.riichiSticks=String(carrots.size);renderer.domElement.dataset.tileArt='lacquer-atlas-v1';renderer.domElement.dataset.viewportWidth=String(Math.round(root.getBoundingClientRect().width));renderer.domElement.dataset.viewportHeight=String(Math.round(root.getBoundingClientRect().height));renderer.domElement.dataset.actors3d=String(tableScene.actors.length);renderer.domElement.dataset.tileModels=JSON.stringify([...new Set([...tiles.values()].map(mesh=>JSON.stringify(mesh.userData.dimensions)))].map(s=>JSON.parse(s)));
+  root.dataset.tileRenderer='webgl';const handBounds=root.querySelector<HTMLElement>('.hand')?.getBoundingClientRect();renderer.domElement.dataset.handTop=String(handBounds?.top??-1);renderer.domElement.dataset.tableScale=String(tableScale);renderer.domElement.dataset.tableOffset=String(tableOffset);renderer.domElement.dataset.renderCount=String(++renderCount);renderer.domElement.dataset.quality=lowQuality?'low':'high';renderer.domElement.dataset.meshCount=String(tiles.size);renderer.domElement.dataset.triangles=String(renderer.info.render.triangles);renderer.domElement.dataset.clippedTileBodies=String(clippedBodies);renderer.domElement.dataset.matchingDiscards=String(matching);renderer.domElement.dataset.uprightErrors=String(uprightErrors);renderer.domElement.dataset.contactErrors=String(contactErrors);renderer.domElement.dataset.publicContactErrors=String(publicContactErrors);renderer.domElement.dataset.camera=debug?'side':'gameplay';renderer.domElement.dataset.tileModel=JSON.stringify(TABLE_TILE);renderer.domElement.dataset.cameraCount='1';renderer.domElement.dataset.cameraType='true-perspective';renderer.domElement.dataset.cameraElevation='60';renderer.domElement.dataset.goldSeam='rounded-metal-4.2-and-back-inlay';renderer.domElement.dataset.riichiMaterial='opaque-unlit';renderer.domElement.dataset.lightStyle='whole-face';renderer.domElement.dataset.tableGeometry='reference-depth-plane';renderer.domElement.dataset.riichiSticks=String(carrots.size);renderer.domElement.dataset.tileArt='lacquer-atlas-v1';renderer.domElement.dataset.viewportWidth=String(Math.round(root.getBoundingClientRect().width));renderer.domElement.dataset.viewportHeight=String(Math.round(root.getBoundingClientRect().height));renderer.domElement.dataset.actors3d=String(tableScene.actors.length);renderer.domElement.dataset.tileModels=JSON.stringify([...new Set([...tiles.values()].map(mesh=>JSON.stringify(mesh.userData.dimensions)))].map(s=>JSON.parse(s)));
   renderer.domElement.style.visibility='visible';root.classList.add('webgl-ready');
  }
  function invalidateViewport(){if(renderer){root.classList.remove('webgl-ready');renderer.domElement.style.visibility='hidden';}geometryDirty=true;schedule();}
@@ -162,5 +181,5 @@ export function mountTiles3D(root:HTMLElement):()=>void{
   observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style','data-face','data-red','disabled']});resize.observe(root);root.addEventListener('pointerover',schedule);root.addEventListener('pointerout',schedule);root.addEventListener('scroll',schedule,true);document.addEventListener('visibilitychange',onVisibility);window.addEventListener('bunny:graphics',applyQuality);window.addEventListener('resize',applyQuality);matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',applyQuality);render();
  }
  void initialize().catch(()=>{if(!disposed)root.dataset.tileRenderer='fallback';});
- return()=>{disposed=true;cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();root.removeEventListener('pointerover',schedule);root.removeEventListener('pointerout',schedule);root.removeEventListener('scroll',schedule,true);document.removeEventListener('visibilitychange',onVisibility);window.removeEventListener('bunny:graphics',applyQuality);window.removeEventListener('resize',applyQuality);matchMedia('(prefers-reduced-motion: reduce)').removeEventListener('change',applyQuality);root.classList.remove('webgl-ready');tableScene.dispose();for(const c of carrots.values())c.mesh.userData.dispose();if(renderer){renderer.domElement.removeEventListener('webglcontextlost',onLost);renderer.domElement.removeEventListener('webglcontextrestored',onRestored);renderer.domElement.remove();renderer.dispose();renderer.forceContextLoss();}for(const geo of geometries.values())geo.dispose();floorGeometry.dispose();contactGeo.dispose();contactMaterial.dispose();for(const m of materials.values())m.dispose();ivory.dispose();gold.dispose();shadowMaterial.dispose();environment?.dispose();back?.dispose();for(const t of textures)t.dispose();for(const scene of [boardScene])scene.traverse(o=>{if(o instanceof THREE.DirectionalLight)o.shadow.dispose();});};
+ return()=>{disposed=true;cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();root.removeEventListener('pointerover',schedule);root.removeEventListener('pointerout',schedule);root.removeEventListener('scroll',schedule,true);document.removeEventListener('visibilitychange',onVisibility);window.removeEventListener('bunny:graphics',applyQuality);window.removeEventListener('resize',applyQuality);matchMedia('(prefers-reduced-motion: reduce)').removeEventListener('change',applyQuality);root.classList.remove('webgl-ready');tableScene.dispose();for(const c of carrots.values())c.mesh.userData.dispose();if(renderer){renderer.domElement.removeEventListener('webglcontextlost',onLost);renderer.domElement.removeEventListener('webglcontextrestored',onRestored);renderer.domElement.remove();renderer.dispose();renderer.forceContextLoss();}for(const geo of geometries.values())geo.dispose();floorGeometry.dispose();contactGeo.dispose();contactMaterial.dispose();for(const m of materials.values())m.dispose();ivory.dispose();gold.dispose();goldInlay.dispose();shadowMaterial.dispose();environment?.dispose();back?.dispose();for(const t of textures)t.dispose();for(const scene of [boardScene])scene.traverse(o=>{if(o instanceof THREE.DirectionalLight)o.shadow.dispose();});};
 }

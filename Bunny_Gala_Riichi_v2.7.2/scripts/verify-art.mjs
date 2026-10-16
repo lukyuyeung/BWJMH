@@ -39,3 +39,8 @@ for(const [file,expected] of Object.entries(raisedArt.assets)){
 }
 if(!sceneCss.includes('gala-original-table-raised-view.png'))throw Error('Original raised-view table is not connected');
 console.log('Verified preserved ornate table and seated-player tile reference.');
+
+const highView=JSON.parse(readFileSync(new URL('../client/public/art/gala-table-60.metadata.json',import.meta.url),'utf8'));
+if(createHash('sha256').update(readFileSync(new URL('../client/public/art/'+highView.asset,import.meta.url))).digest('hex')!==highView.sha256)throw Error('60-degree plate hash mismatch');
+if(!sceneCss.includes(highView.asset)||!readFileSync(new URL('../client/src/main.tsx',import.meta.url),'utf8').includes('table-backdrop'))throw Error('60-degree scene not connected');
+console.log('Verified new 60-degree original-design plate; retained original artwork unchanged.');

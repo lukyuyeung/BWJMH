@@ -307,3 +307,43 @@
 .table .round-center,.table .round-center.compact,.table .round-center.crowded{display:grid;grid-template-columns:max-content max-content;grid-template-rows:20px 20px;justify-content:center;align-items:center;column-gap:3px}
 .table .round-center>strong,.table .round-center.compact>strong,.table .round-center.crowded>strong,.table .round-center .seat-wind{font-size:17px;line-height:20px}
 .table .round-center .wall-count{grid-column:1 / -1;margin:0}
+
+/* True 60° scene: one camera drives backdrop, physical tiles and hit targets. */
+.table .scene-canvas{background-image:none;background-color:#1b100d}
+.table-backdrop{position:absolute;left:0;top:0;width:1850px;height:850px;transform-origin:0 0;background:url('/art/gala-table-60-empty.png') 0 0/100% 100% no-repeat;pointer-events:none;z-index:0}
+.table .wall-pos-0{bottom:calc(50% - var(--wall-radius) - var(--tile-height)/2)}
+.table .wall-pos-2{top:calc(50% - var(--wall-radius) - var(--tile-height)/2)}
+.table .wall-pos-3{left:calc(50% - var(--wall-radius))}
+.table .wall-pos-1{right:calc(50% - var(--wall-radius))}
+.table .pos-2 .opponent-rack{top:calc(50% - var(--hand-radius) - var(--tile-height)/2)}
+.table .pos-3 .opponent-rack{left:calc(50% - var(--hand-radius));top:50%}
+.table .pos-1 .opponent-rack{right:calc(50% - var(--hand-radius));top:50%}
+.table .scene-canvas .board .hand{top:calc(50% + var(--hand-radius) - var(--tile-height)/2)}
+.table .board .opponent-rack{gap:30px;align-items:center}
+.table .board .opponent-rack .melds{gap:24px;align-items:center}
+.table .board .own-melds{gap:24px;margin-left:26px;transform:none;align-items:center}
+.table .board .meld{gap:4px;align-items:center}
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{top:calc(var(--view-height)*.5);width:110px;height:42px;transform:translate(-50%,-50%);grid-template-rows:18px 18px;column-gap:3px}
+.table .round-center>strong,.table .round-center.compact>strong,.table .round-center.crowded>strong,.table .round-center .seat-wind{font-size:14px;line-height:18px}
+.table .round-center .wall-count{font-size:18px;line-height:18px}
+/* HUD cards keep the real 100:136 face ratio, including revealed indicators. */
+.table .scene-canvas .dora{top:12px;left:16px;gap:10px;padding:8px;min-height:0;align-items:center}
+.table .scene-canvas .dora .dora-row{gap:4px;align-items:center}
+.table .scene-canvas .dora .dora-row>small{width:52px;font-size:17px}
+.table .scene-canvas .dora .tile.mini,.table .scene-canvas .dora .tile-back{width:30px!important;height:40.8px!important;min-width:30px;flex:0 0 30px!important;transform:none!important;margin:0;padding:0;border-radius:4px;box-sizing:border-box;box-shadow:0 2px 0 #a9936d!important}
+.table .scene-pos-2{left:calc(50% + 150px);top:calc(var(--view-height)*.07)}
+.table .scene-pos-3{left:140px;top:calc(var(--view-height)*.68)}
+.table .scene-pos-1{right:40px;top:calc(var(--view-height)*.68)}
+@media(orientation:landscape) and (max-height:500px){
+ .table .scene-canvas .dora{top:8px;left:12px;gap:8px;padding:5px}
+ .table .scene-canvas .dora .dora-row>small{width:54px;font-size:18px}
+ .table .scene-canvas .dora .tile.mini,.table .scene-canvas .dora .tile-back{width:32px!important;height:43.52px!important;min-width:32px;flex-basis:32px!important}
+ .table .scene-pos-3{left:calc(54px / var(--scene-scale))}
+}
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{width:104px}
+.table .board .hand .tile:not(.mini),.table .scene-canvas .tiles button:hover,.table .scene-canvas .tiles button:focus-visible{transform:translateZ(calc(var(--tile-height)*.4829629131 + var(--tile-depth)*.1294095226)) rotateX(-75deg) translateZ(calc(var(--tile-depth)/2))!important}
+/* Four melds stay in one physical row; wrapping would put early groups behind the wall. */
+.table .board .opponent-rack{width:max-content;max-width:none;flex-wrap:nowrap}
+.table .board .opponent-rack .concealed,.table .board .opponent-rack .melds,.table .board .own-melds,.table .board .meld{flex:none;flex-wrap:nowrap}
+/* Keep the opposite score card above the entire exposed-meld row. */
+.table .scene-pos-2{left:calc(50% + 85px);top:6px}
