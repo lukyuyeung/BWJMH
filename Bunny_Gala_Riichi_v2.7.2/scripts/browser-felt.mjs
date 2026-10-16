@@ -1,3 +1,4 @@
+import {TABLE_TILE} from '../client/src/table-metrics.ts';
 import {chromium} from 'playwright';
 import {createServer} from 'vite';
 import {createGameServer} from '../server/src/index.ts';
@@ -22,8 +23,8 @@ try{
   assert(faces.every(r=>r.x>=0&&r.y>=0&&r.x+r.width<=size.width&&r.y+r.height<=size.height),'public tiles must be onscreen');
   for(const face of faces){const x=(face.x+face.width/2)/size.width,y=(face.y+face.height/2)/size.height;const t=(y-.1953)/(.8906-.1953),half=(.4368+(.7286-.4368)*t)/2;assert(y>=.1953&&y<=.8906&&x>=.5-half&&x<=.5+half,'public tile centers must sit on the pictured felt');}
 
-  const dealer=(room.handMatch??room.match).dealer;const seats=['east','south','west','north'];const self=room.players.find(p=>!p.isBot).seat;const wind=['東','南','西','北'][(seats.indexOf(self)-seats.indexOf(dealer)+4)%4];assert.equal(await page.locator('.seat-wind').innerText(),'自風：'+wind);
-  assert.deepEqual(JSON.parse(await page.locator('.tile-webgl').getAttribute('data-tile-models')),[[88,120,34]]);assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-count'),'1');assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-type'),'calibrated-perspective');assert((await page.locator('.scene-canvas').evaluate(el=>getComputedStyle(el).backgroundImage)).includes('gala-original-table-raised-view.png'),'original ornate table must be the active backdrop');
+  const dealer=(room.handMatch??room.match).dealer;const seats=['east','south','west','north'];const self=room.players.find(p=>!p.isBot).seat;const wind=['東','南','西','北'][(seats.indexOf(self)-seats.indexOf(dealer)+4)%4];assert.equal(await page.locator('.seat-wind').innerText(),'自風 '+wind);
+  assert.deepEqual(JSON.parse(await page.locator('.tile-webgl').getAttribute('data-tile-models')),[[TABLE_TILE.width,TABLE_TILE.height,TABLE_TILE.depth]]);assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-count'),'1');assert.equal(await page.locator('.tile-webgl').getAttribute('data-camera-type'),'calibrated-perspective');assert((await page.locator('.scene-canvas').evaluate(el=>getComputedStyle(el).backgroundImage)).includes('gala-original-table-raised-view.png'),'original ornate table must be the active backdrop');
   const handRect=await page.locator('.hand .tile:not(.mini)').first().boundingBox();assert(handRect.width>0&&handRect.height>0,'grounded private tiles must retain usable controls');
   const hud=await page.locator('.round-center').boundingBox();assert(faces.every(r=>!(r.x<hud.x+hud.width&&r.x+r.width>hud.x&&r.y<hud.y+hud.height&&r.y+r.height>hud.y)),'center cannot cover river faces');
   assert.equal(await page.locator('.play-controls>.hint:visible').count(),0);

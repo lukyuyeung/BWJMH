@@ -1,0 +1,198 @@
+[
+  {
+    "viewport": {
+      "width": 1902,
+      "height": 900
+    },
+    "tileModel": [
+      [
+        100,
+        136,
+        64
+      ]
+    ],
+    "art": "lacquer-atlas-v1",
+    "riverTileCounts": [
+      24,
+      15,
+      15,
+      15
+    ],
+    "riichiSticks": [
+      {
+        "seat": 0,
+        "u": 1100,
+        "v": 1300
+      },
+      {
+        "seat": 1,
+        "u": 1300,
+        "v": 1100
+      },
+      {
+        "seat": 2,
+        "u": 1100,
+        "v": 900
+      },
+      {
+        "seat": 3,
+        "u": 900,
+        "v": 1100
+      }
+    ],
+    "flatTileContactErrors": 0,
+    "riverFacesOnscreen": true,
+    "depositsUnobstructed": true,
+    "smallestFacePixels": {
+      "width": 42.29497096235845,
+      "height": 22.335766230716963
+    }
+  },
+  {
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "tileModel": [
+      [
+        100,
+        136,
+        64
+      ]
+    ],
+    "art": "lacquer-atlas-v1",
+    "riverTileCounts": [
+      24,
+      15,
+      15,
+      15
+    ],
+    "riichiSticks": [
+      {
+        "seat": 0,
+        "u": 1100,
+        "v": 1300
+      },
+      {
+        "seat": 1,
+        "u": 1300,
+        "v": 1100
+      },
+      {
+        "seat": 2,
+        "u": 1100,
+        "v": 900
+      },
+      {
+        "seat": 3,
+        "u": 900,
+        "v": 1100
+      }
+    ],
+    "flatTileContactErrors": 0,
+    "riverFacesOnscreen": true,
+    "depositsUnobstructed": true,
+    "smallestFacePixels": {
+      "width": 18.76811540075212,
+      "height": 9.678832033310716
+    }
+  },
+  {
+    "viewport": {
+      "width": 667,
+      "height": 375
+    },
+    "tileModel": [
+      [
+        100,
+        136,
+        64
+      ]
+    ],
+    "art": "lacquer-atlas-v1",
+    "riverTileCounts": [
+      24,
+      15,
+      15,
+      15
+    ],
+    "riichiSticks": [
+      {
+        "seat": 0,
+        "u": 1100,
+        "v": 1300
+      },
+      {
+        "seat": 1,
+        "u": 1300,
+        "v": 1100
+      },
+      {
+        "seat": 2,
+        "u": 1100,
+        "v": 900
+      },
+      {
+        "seat": 3,
+        "u": 900,
+        "v": 1100
+      }
+    ],
+    "flatTileContactErrors": 0,
+    "riverFacesOnscreen": true,
+    "depositsUnobstructed": true,
+    "smallestFacePixels": {
+      "width": 14.83214807144747,
+      "height": 9.306569262798755
+    }
+  },
+  {
+    "viewport": {
+      "width": 915,
+      "height": 412
+    },
+    "tileModel": [
+      [
+        100,
+        136,
+        64
+      ]
+    ],
+    "art": "lacquer-atlas-v1",
+    "riverTileCounts": [
+      24,
+      15,
+      15,
+      15
+    ],
+    "riichiSticks": [
+      {
+        "seat": 0,
+        "u": 1100,
+        "v": 1300
+      },
+      {
+        "seat": 1,
+        "u": 1300,
+        "v": 1100
+      },
+      {
+        "seat": 2,
+        "u": 1100,
+        "v": 900
+      },
+      {
+        "seat": 3,
+        "u": 900,
+        "v": 1100
+      }
+    ],
+    "flatTileContactErrors": 0,
+    "riverFacesOnscreen": true,
+    "depositsUnobstructed": true,
+    "smallestFacePixels": {
+      "width": 20.346949753185058,
+      "height": 10.224817430061565
+    }
+  }
+]

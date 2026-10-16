@@ -282,3 +282,28 @@
 .table .pos-2 .opponent-rack{top:-40px}.table .pos-3 .opponent-rack{left:-40px}.table .pos-1 .opponent-rack{right:-40px}
 .table .scene-canvas .board .hand{top:calc(var(--table-size) + 10px - var(--tile-height) / 2)}
 .table .board .meld .sideways{margin-inline:calc((var(--tile-height) - var(--tile-width)) / 2)}
+
+/* The same approved faces are used by WebGL, fallback, yaku and result views. */
+.tile-face-art{display:block;position:absolute;inset:3%;background-repeat:no-repeat;background-color:#fff3d9;border-radius:5%;pointer-events:none}
+.tile{position:relative}
+/* Anchor the first row at the center edge; later rows grow towards each seat. */
+.table .board .river{display:flex;flex-direction:column;width:calc(var(--tile-width) * 6 + 20px + var(--tile-height) - var(--tile-width));height:calc(var(--tile-height) * 4 + 12px);gap:4px;padding:0;overflow:visible;transform-origin:0 0;--river-scale:1!important}
+.table .board .river-row{display:flex;flex:none;gap:4px;height:var(--tile-height);align-items:center}
+.table .board .river .tile{flex:none}
+.table .board .river .tile.sideways{margin-inline:calc((var(--tile-height) - var(--tile-width)) / 2)}
+.table .pos-0 .river{left:calc(50% - var(--river-half-width));top:calc(50% + var(--river-inner-edge));right:auto;bottom:auto;transform:none}
+.table .pos-2 .river{left:calc(50% + var(--river-half-width));top:calc(50% - var(--river-inner-edge));right:auto;bottom:auto;transform:rotate(180deg)}
+.table .pos-3 .river{left:calc(50% - var(--river-inner-edge));top:calc(50% - var(--river-half-width));right:auto;bottom:auto;transform:rotate(90deg)}
+.table .pos-1 .river{left:calc(50% + var(--river-inner-edge));top:calc(50% + var(--river-half-width));right:auto;bottom:auto;transform:rotate(-90deg)}
+.table .wall-side{gap:4px}
+.table .wall-pos-0{bottom:72px;top:auto}.table .wall-pos-2{top:72px;bottom:auto}
+.table .wall-pos-3{left:140px}.table .wall-pos-1{right:140px}
+.table .pos-2 .opponent-rack{top:calc(34px - var(--tile-height) / 2)}.table .pos-3 .opponent-rack{left:34px}.table .pos-1 .opponent-rack{right:34px}
+.table .scene-canvas .board .hand{top:calc(var(--table-size) - 34px - var(--tile-height) / 2)}
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{top:calc(var(--view-height) * .44);width:124px}
+
+.table .round-center .seat-wind,.table .round-center>strong{font-size:16px}
+
+.table .round-center,.table .round-center.compact,.table .round-center.crowded{display:grid;grid-template-columns:max-content max-content;grid-template-rows:20px 20px;justify-content:center;align-items:center;column-gap:3px}
+.table .round-center>strong,.table .round-center.compact>strong,.table .round-center.crowded>strong,.table .round-center .seat-wind{font-size:17px;line-height:20px}
+.table .round-center .wall-count{grid-column:1 / -1;margin:0}
