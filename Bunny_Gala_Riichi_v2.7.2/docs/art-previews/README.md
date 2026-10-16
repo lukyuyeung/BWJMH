@@ -1,3 +1,7 @@
+# 最新：滿版牌枱的區域與完整容量
+
+[查看 V8：四家座風、蘿蔔棒、24 張牌河與四組副露](full-table-capacity-v8/README.md)（獨立模型排位示意，尚未改遊戲）
+
 # 最新構圖提案：滿版牌枱與三個半身角色
 
 [查看 V7 構圖預覽](full-table-companions-v7/README.md)（概念圖，尚未改動遊戲）
