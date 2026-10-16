@@ -2,6 +2,7 @@
 
 新 Art 必須先提供 GitHub 預覽連結，等用戶確認後才接入遊戲。聊天圖片輸出及 `/workspace` 本機連結在用戶介面未必可見。
 
+- [最新 V2：完整牌枱、立直棒、24 張牌河及 37 款牌面（已補孔雀一索）](table-design-v2/README.md)
 - [全套麻雀質感及牌面 V1：36 款預覽，一索待原稿](tile-set-v1/README.md)
 - [已確認的單張麻雀角度示意](mahjong-angles-A-H-preview.png)
 - [四家牌河：固定玩家座位整體視角（待確認）](mahjong-rivers-player-view-overview.png)

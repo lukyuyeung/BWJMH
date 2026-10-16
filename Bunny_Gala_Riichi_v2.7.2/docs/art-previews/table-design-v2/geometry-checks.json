@@ -1,0 +1,328 @@
+{
+  "counts": {
+    "rivers": [
+      24,
+      24,
+      24,
+      24
+    ],
+    "wallStacks": [
+      17,
+      17,
+      17,
+      17
+    ],
+    "wallTiles": [
+      34,
+      34,
+      34,
+      34
+    ],
+    "hands": [
+      14,
+      13,
+      13,
+      13
+    ],
+    "riichiSpaces": 4,
+    "sidewaysDeclarations": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "dimensions": [
+    88,
+    120,
+    56
+  ],
+  "uniqueRiverDesigns": 37,
+  "all37DesignsPresent": true,
+  "peacockOneBamboo": true,
+  "wallYawDegrees": [
+    0,
+    90,
+    180,
+    90
+  ],
+  "oppositeAndPlayerWallLongAxisSame": true,
+  "allTilesGrounded": true,
+  "reservedRegionsNonOverlapping": true,
+  "stickZones": [
+    {
+      "seat": 0,
+      "u": 1500,
+      "v": 2400,
+      "yaw": 0
+    },
+    {
+      "seat": 1,
+      "u": 2400,
+      "v": 1500,
+      "yaw": 1.5707963267948966
+    },
+    {
+      "seat": 2,
+      "u": 1500,
+      "v": 600,
+      "yaw": 3.141592653589793
+    },
+    {
+      "seat": 3,
+      "u": 600,
+      "v": 1500,
+      "yaw": -1.5707963267948966
+    }
+  ],
+  "regions": {
+    "river0": [
+      1226,
+      1800,
+      1806,
+      2292
+    ],
+    "river1": [
+      1800,
+      1194,
+      2292,
+      1774
+    ],
+    "river2": [
+      1194,
+      708,
+      1774,
+      1200
+    ],
+    "river3": [
+      708,
+      1226,
+      1200,
+      1806
+    ],
+    "wall0": [
+      720,
+      2520,
+      2280,
+      2640
+    ],
+    "wall1": [
+      2520,
+      720,
+      2640,
+      2280
+    ],
+    "wall2": [
+      720,
+      360,
+      2280,
+      480
+    ],
+    "wall3": [
+      360,
+      720,
+      480,
+      2280
+    ],
+    "stick0": [
+      1350,
+      2352,
+      1650,
+      2448
+    ],
+    "stick1": [
+      2352,
+      1350,
+      2448,
+      1650
+    ],
+    "stick2": [
+      1350,
+      552,
+      1650,
+      648
+    ],
+    "stick3": [
+      552,
+      1350,
+      648,
+      1650
+    ],
+    "hand0": [
+      858,
+      2822,
+      2167,
+      2878
+    ],
+    "hand1": [
+      2822,
+      904,
+      2878,
+      2096
+    ],
+    "hand2": [
+      904,
+      122,
+      2096,
+      178
+    ],
+    "hand3": [
+      122,
+      904,
+      178,
+      2096
+    ]
+  },
+  "faceChecks": {
+    "1m": {
+      "marks": 0,
+      "red": false
+    },
+    "2m": {
+      "marks": 0,
+      "red": false
+    },
+    "3m": {
+      "marks": 0,
+      "red": false
+    },
+    "4m": {
+      "marks": 0,
+      "red": false
+    },
+    "5m": {
+      "marks": 0,
+      "red": false
+    },
+    "6m": {
+      "marks": 0,
+      "red": false
+    },
+    "7m": {
+      "marks": 0,
+      "red": false
+    },
+    "8m": {
+      "marks": 0,
+      "red": false
+    },
+    "9m": {
+      "marks": 0,
+      "red": false
+    },
+    "1p": {
+      "marks": 1,
+      "red": false
+    },
+    "2p": {
+      "marks": 2,
+      "red": false
+    },
+    "3p": {
+      "marks": 3,
+      "red": false
+    },
+    "4p": {
+      "marks": 4,
+      "red": false
+    },
+    "5p": {
+      "marks": 5,
+      "red": false
+    },
+    "6p": {
+      "marks": 6,
+      "red": false
+    },
+    "7p": {
+      "marks": 7,
+      "red": false
+    },
+    "8p": {
+      "marks": 8,
+      "red": false
+    },
+    "9p": {
+      "marks": 9,
+      "red": false
+    },
+    "1s": {
+      "marks": 1,
+      "red": false
+    },
+    "2s": {
+      "marks": 2,
+      "red": false
+    },
+    "3s": {
+      "marks": 3,
+      "red": false
+    },
+    "4s": {
+      "marks": 4,
+      "red": false
+    },
+    "5s": {
+      "marks": 5,
+      "red": false
+    },
+    "6s": {
+      "marks": 6,
+      "red": false
+    },
+    "7s": {
+      "marks": 7,
+      "red": false
+    },
+    "8s": {
+      "marks": 8,
+      "red": false
+    },
+    "9s": {
+      "marks": 9,
+      "red": false
+    },
+    "E": {
+      "marks": 0,
+      "red": false
+    },
+    "S": {
+      "marks": 0,
+      "red": false
+    },
+    "W": {
+      "marks": 0,
+      "red": false
+    },
+    "N": {
+      "marks": 0,
+      "red": false
+    },
+    "P": {
+      "marks": 0,
+      "red": false
+    },
+    "F": {
+      "marks": 0,
+      "red": false
+    },
+    "C": {
+      "marks": 0,
+      "red": false
+    },
+    "5m-red": {
+      "marks": 0,
+      "red": true
+    },
+    "5p-red": {
+      "marks": 5,
+      "red": true
+    },
+    "5s-red": {
+      "marks": 5,
+      "red": true
+    }
+  },
+  "sharedPhysicalTileSize": true,
+  "gameIntegration": false
+}
