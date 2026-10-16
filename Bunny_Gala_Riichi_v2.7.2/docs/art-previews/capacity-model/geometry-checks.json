@@ -1,0 +1,148 @@
+{
+  "counts": {
+    "rivers": [
+      24,
+      24,
+      24,
+      24
+    ],
+    "wallStacks": [
+      17,
+      17,
+      17,
+      17
+    ],
+    "wallTiles": [
+      34,
+      34,
+      34,
+      34
+    ],
+    "hands": [
+      14,
+      13,
+      13,
+      13
+    ],
+    "riichiSpaces": 4
+  },
+  "dimensions": [
+    88,
+    120,
+    56
+  ],
+  "privateHandVertical": true,
+  "otherWallYawDegrees": 90,
+  "wallBaseLayers": [
+    0,
+    56
+  ],
+  "maxRiverRows": 4,
+  "maxRiverColumns": 6,
+  "allRiverCapacitySlotsSolid": true,
+  "mainModels": 285,
+  "groundedMeshes": true,
+  "allReservedRegionsNonOverlapping": true,
+  "regions": {
+    "river0": [
+      1226,
+      1800,
+      1774,
+      2292
+    ],
+    "river1": [
+      1800,
+      1226,
+      2292,
+      1774
+    ],
+    "river2": [
+      1226,
+      708,
+      1774,
+      1200
+    ],
+    "river3": [
+      708,
+      1226,
+      1200,
+      1774
+    ],
+    "wall0": [
+      720,
+      2520,
+      2280,
+      2640
+    ],
+    "wall1": [
+      2520,
+      720,
+      2640,
+      2280
+    ],
+    "wall2": [
+      448,
+      376,
+      2552,
+      464
+    ],
+    "wall3": [
+      360,
+      720,
+      480,
+      2280
+    ],
+    "stick0": [
+      2250,
+      2722,
+      2550,
+      2818
+    ],
+    "stick1": [
+      2352,
+      1350,
+      2448,
+      1650
+    ],
+    "stick2": [
+      1350,
+      552,
+      1650,
+      648
+    ],
+    "stick3": [
+      552,
+      1350,
+      648,
+      1650
+    ],
+    "hand0": [
+      858,
+      2822,
+      2167,
+      2878
+    ],
+    "hand1": [
+      2822,
+      904,
+      2878,
+      2096
+    ],
+    "hand2": [
+      904,
+      122,
+      2096,
+      178
+    ],
+    "hand3": [
+      122,
+      904,
+      178,
+      2096
+    ]
+  },
+  "riverThicknessAllSeats": 56,
+  "privateHandAngleToFeltDegrees": 90,
+  "oneMainCamera": true,
+  "gameIntegration": false
+}
