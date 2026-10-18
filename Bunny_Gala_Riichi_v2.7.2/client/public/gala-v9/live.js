@@ -72,7 +72,8 @@ window.addEventListener('message',event=>{
 });
 R.renderer.domElement.addEventListener('webglcontextlost',()=>parent.postMessage({type:'bunny:gala-error'},location.origin));
 new ResizeObserver(fit).observe(document.querySelector('#viewport'));
-runtimeReady.then(()=>{
+runtimeReady.then(async()=>{
+ await document.fonts.load('700 172px "LXGW WenKai TC"','東南西北發中一二三四五六七八九萬').catch(()=>{});
  if(!R.ready)throw new Error('Gala rig did not load');
  R.setSkin('bottom','golden');
  R.controls.enabled=false;R.controls.enableDamping=false;
