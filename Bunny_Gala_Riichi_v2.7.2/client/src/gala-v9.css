@@ -1,0 +1,29 @@
+/* V9 renderer is revealed only after its models load; the previous table is the fallback. */
+.gala-v9-frame{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;visibility:hidden}
+.gala-v9-ready .gala-v9-frame{visibility:visible}
+.gala-v9-ready .scene-canvas{background:none!important;pointer-events:none}
+.gala-v9-ready .scene-canvas .responsive-table-material,
+.gala-v9-ready .scene-canvas .board,
+.gala-v9-ready .scene-canvas .seated-luk{display:none!important}
+.gala-v9-ready .scene-canvas :is(button,input,select,label,.hand-tile-hit,.scene-modal,.scene-scrim){pointer-events:auto}
+.gala-v9-ready .scene-canvas .round-center{top:45%;width:175px;height:100px;opacity:.94}
+.gala-v9-ready .scene-canvas .round-center.compact{top:45%;height:86px}
+.gala-v9-ready .scene-canvas .scene-pos-1{right:16px;top:59%}
+.gala-v9-ready .scene-canvas .scene-pos-2{left:57%;top:16%}
+.gala-v9-ready .scene-canvas .scene-pos-3{left:16px;top:59%}
+.gala-v9-ready .scene-canvas .tile-render-fallback{display:none}
+.gala-v9-ready .scene-canvas .handhead span{background:#100d0bc9;padding:2px 6px;border-radius:4px}
+.v9-call{position:fixed;z-index:45;width:clamp(90px,18vw,260px);pointer-events:none;animation:gala-call .65s both;filter:drop-shadow(2px 4px 2px #000a)}
+.v9-call img{width:100%;height:100%;object-fit:contain}
+.v9-call[data-relative="0"]{left:3%;bottom:24%}
+.v9-call[data-relative="1"]{right:2%;top:18%}
+.v9-call[data-relative="2"]{left:54%;top:12%}
+.v9-call[data-relative="3"]{left:2%;top:18%}
+.v9-riichi{position:fixed;inset:27% 0 auto;height:34vh;z-index:45;pointer-events:none;overflow:hidden;animation:gala-riichi 1.4s both}
+.v9-riichi:before{content:'';position:absolute;inset:18% 0;background:linear-gradient(90deg,#180d23ee,#7d174bcc,#180d23ee);border-block:2px solid #e7ae5e;box-shadow:0 0 30px #ef468d55}
+.v9-riichi svg{position:absolute;height:100%;width:40%;left:10%;filter:drop-shadow(0 8px 8px #0009)}
+.v9-riichi svg+svg{left:48%;width:42%}
+.v9-riichi small{position:absolute;bottom:6%;left:53%;font-size:clamp(12px,2vw,24px);color:#ffe5ac;letter-spacing:3px}
+@keyframes gala-call{0%{opacity:0;transform:translateY(16px) scale(.75)}25%{opacity:1;transform:translateY(0) scale(1.05)}75%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.95)}}
+@keyframes gala-riichi{0%{transform:translateX(-110%)}23%,73%{transform:translateX(0)}100%{transform:translateX(110%)}}
+@media(prefers-reduced-motion:reduce){.v9-call,.v9-riichi{animation:none}}
