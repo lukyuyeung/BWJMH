@@ -347,3 +347,8 @@
 .table .board .opponent-rack .concealed,.table .board .opponent-rack .melds,.table .board .own-melds,.table .board .meld{flex:none;flex-wrap:nowrap}
 /* Keep the opposite score card above the entire exposed-meld row. */
 .table .scene-pos-2{left:calc(50% + 85px);top:6px}
+
+.table-backdrop{background-image:url('/art/empty-plate.png')}
+/* Color-only finish: original plate remains byte-for-byte unchanged. */
+.table-backdrop{isolation:isolate}
+.table-backdrop::after{content:'';position:absolute;inset:0;background:#dfb3ab;mix-blend-mode:color;opacity:.82;pointer-events:none;clip-path:polygon(evenodd,21.5% 16.7%,78.5% 16.7%,80.7% 20%,100% 89%,100% 100%,0 100%,0 89%,19.3% 20%,21.5% 16.7%,22.7% 19.2%,21.1% 21.8%,1.6% 92.5%,2.6% 96%,97.4% 96%,98.4% 92.5%,78.9% 21.8%,77.3% 19.2%,22.7% 19.2%)}

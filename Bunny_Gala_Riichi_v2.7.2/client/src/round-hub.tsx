@@ -1,0 +1,5 @@
+import React from 'react';
+import type{Seat}from'./main.js';
+import './round-hub.css';
+const seats:Seat[]=['east','south','west','north'];const names={east:'東',south:'南',west:'西',north:'北'};
+export function RoundHub({you,current,scores,roundWind,handNumber,honba,pot,remaining}:{you:Seat;current:Seat;scores:Record<Seat,number>;roundWind:'east'|'south';handNumber:number;honba:number;pot:number;remaining:number}){const relative=[...seats.slice(seats.indexOf(you)),...seats.slice(0,seats.indexOf(you))];return <section className="round-center gala-round-hub" aria-label="四方牌局資訊"><div className="hub-bezel"/>{relative.map((s,i)=><div key={s} className={'hub-seat hub-seat-'+i+(s===current?' active':'')} data-seat={s}><b>{names[s]}</b><span>{scores[s].toLocaleString()}</span></div>)}<div className="hub-core"><strong>{names[roundWind]}{handNumber}局</strong><div><span>餘牌</span><b>{remaining}</b></div><small>自風 {names[you]}</small></div><div className="hub-deposits"><span title="本場"><i className="hub-honba"/>{honba}</span><span title="供託"><i className="hub-carrot"/>{Math.floor(pot/1000)}</span></div></section>}
