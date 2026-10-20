@@ -1,0 +1,30 @@
+[
+  {
+    "character": "yellow",
+    "path": "yellow-presentation.png",
+    "kind": "derived-presentation-cutout",
+    "note": "Background-removed presentation derived from existing references; original character masters unchanged.",
+    "sha256": "5d2dd5ffd3c71bf380b008e45a13fb81143b6e0f8e54a2f1c537776074bf4527"
+  },
+  {
+    "character": "wizard",
+    "path": "wizard-presentation.png",
+    "kind": "derived-presentation-cutout",
+    "note": "Background-removed presentation derived from existing references; original character masters unchanged.",
+    "sha256": "44b8394a3add0e83c98fd58243051d3797d09c2548d2c5cd6b073d927b223eec"
+  },
+  {
+    "character": "ninja",
+    "path": "ninja-presentation.png",
+    "kind": "derived-presentation-cutout",
+    "note": "Background-removed presentation derived from existing references; original character masters unchanged.",
+    "sha256": "cc02afbf4bd953b454352d9ffeee4cb4aa088cfb49258adfd41563204cd86d7a"
+  },
+  {
+    "character": "king",
+    "path": "king-presentation.png",
+    "kind": "derived-presentation-cutout",
+    "note": "Background-removed presentation derived from existing references; original character masters unchanged.",
+    "sha256": "1aacb1729c8cb268c0fd4cdee376516fc68ebbc6265f0bb22e744bafad3dea7f"
+  }
+]
