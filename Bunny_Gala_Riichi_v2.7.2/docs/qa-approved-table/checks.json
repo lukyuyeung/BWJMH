@@ -1,0 +1,42 @@
+{
+  "errors": [],
+  "failed": [],
+  "data": {
+    "engine": "three.js r186",
+    "riichiPositions": "[]",
+    "carrotAnimating": "false",
+    "handTop": "805.0620727539062",
+    "tableScale": "1",
+    "tableOffset": "0",
+    "renderCount": "18",
+    "quality": "low",
+    "meshCount": "136",
+    "triangles": "332764",
+    "clippedTileBodies": "0",
+    "matchingDiscards": "0",
+    "uprightErrors": "0",
+    "contactErrors": "0",
+    "publicContactErrors": "0",
+    "camera": "gameplay",
+    "tileModel": "{\"width\":100,\"height\":136,\"depth\":44}",
+    "cameraCount": "1",
+    "cameraType": "approved-plate-calibrated",
+    "cameraElevation": "art-fitted",
+    "goldSeam": "rounded-metal-4.2-and-back-inlay",
+    "riichiMaterial": "opaque-unlit",
+    "lightStyle": "whole-face",
+    "tableGeometry": "reference-depth-plane",
+    "riichiSticks": "0",
+    "tileArt": "lacquer-atlas-v1",
+    "viewportWidth": "1902",
+    "viewportHeight": "900",
+    "actors3d": "0",
+    "tileModels": "[[100,136,44]]"
+  },
+  "hubRiverIntersections": {
+    "exhaustive": 0,
+    "four-melds": 0
+  },
+  "serverRoomTests": 12,
+  "phoneValidation": "956x440 Chromium touch viewport, not physical Safari"
+}
