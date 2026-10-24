@@ -1,0 +1,159 @@
+:root {
+  --bg: #1d1430;
+  --panel: #2b1f45;
+  --line: #4a3670;
+  --gold: #f3c76b;
+  --text: #f1eaff;
+  --muted: #b9a9d9;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 16px 48px;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 system-ui, 'PingFang TC', 'Noto Sans TC', sans-serif;
+}
+
+header,
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 4px;
+  color: var(--gold);
+  font-size: 24px;
+}
+
+h1 small {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+header p {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+}
+
+@media (max-width: 760px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+#games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  align-content: start;
+}
+
+.game,
+aside {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.game h2,
+aside h2 {
+  margin: 0;
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.meta,
+.hint {
+  margin: 2px 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+select,
+button {
+  font: inherit;
+  color: var(--text);
+  background: #3a2a5c;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--gold);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.buttons button {
+  background: linear-gradient(#f6d27e, #d9a441);
+  color: #3a2200;
+  border: none;
+  font-weight: 600;
+}
+
+#players {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+}
+
+#players li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.carrots {
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.error {
+  color: #ff9a9a;
+}
+
+code {
+  color: var(--gold);
+}

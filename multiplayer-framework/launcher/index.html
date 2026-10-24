@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bunny Gala 練習平台</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Bunny Gala 練習平台 <small>0.18</small></h1>
+      <p>每個名字是一位練習玩家。用不同名字各開一個分頁，就能在同一桌測 online；空位由機器人補上。</p>
+    </header>
+    <main>
+      <section id="games" aria-label="遊戲"></section>
+      <aside>
+        <h2>練習玩家</h2>
+        <ul id="players"></ul>
+        <p class="hint">餘額只存在這台電腦的記憶體裡，重啟 <code>npm run dev</code> 就回到 1,000,000。</p>
+      </aside>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
