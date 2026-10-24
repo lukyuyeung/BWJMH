@@ -1,0 +1,6 @@
+{
+  "name": "@bunny-gala/game-carrot-duel",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./logic": "./src/game.ts" }
+}

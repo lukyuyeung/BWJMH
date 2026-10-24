@@ -1,0 +1,398 @@
+/* Bunny Gala 遊戲大廳的標準樣式（照德州撲克 Poker Room 的大廳）。不要改；數字和版面見 docs/大廳規格.md。 */
+.gl-lobby {
+  --gl-gold: #ffc94a;
+  --gl-text: #fff4ff;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: minmax(0, 38%) minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  padding: calc(10px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom))
+    calc(16px + env(safe-area-inset-left));
+  background:
+    radial-gradient(ellipse at 28% 62%, rgba(255, 95, 210, 0.18), transparent 55%),
+    linear-gradient(180deg, rgba(20, 8, 40, 0.35), rgba(14, 6, 28, 0.6)),
+    var(--gl-scene) center 40% / cover no-repeat,
+    #1c1029;
+  color: var(--gl-text);
+  font-family: 'Nunito', system-ui, 'PingFang TC', 'Noto Sans TC', sans-serif;
+  overflow: hidden;
+}
+
+/* Poker 的頁面全部用 border-box，尺寸才會一樣。 */
+.gl-lobby,
+.gl-lobby *,
+.gl-sheet-shade,
+.gl-sheet-shade * {
+  box-sizing: border-box;
+}
+
+/* 主視覺角色：左下，頭頂不碰到名牌。 */
+.gl-mascot {
+  position: absolute;
+  left: calc(-1vw + env(safe-area-inset-left));
+  bottom: 0;
+  height: calc(100vh - 64px - env(safe-area-inset-top));
+  width: auto;
+  max-width: 44vw;
+  object-fit: contain;
+  object-position: bottom left;
+  filter: drop-shadow(0 0 24px rgba(255, 95, 210, 0.35));
+  pointer-events: none;
+}
+
+.gl-top {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* 平台共用返回鍵：頂列最左，和右邊的設定一樣大（38px）。 */
+.gl-top > .bg-back {
+  --bg-back-top: calc(50% - 19px);
+  --bg-back-left: 0px;
+  --bg-back-size: 38px;
+}
+
+.gl-player {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 132px;
+  margin-left: 50px;
+  padding: 5px 18px 5px 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0;
+  border-image: url('/assets/lobby/icons/icon-player-plate.png') 0 60 fill / 0 20px;
+}
+
+.gl-player-avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 2px solid var(--gl-gold);
+  background: #3a1f55;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.gl-player-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.gl-player-name {
+  font-weight: 800;
+  font-size: 15px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gl-player-carrots {
+  font-size: 12px;
+  color: var(--gl-gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.gl-logo {
+  height: clamp(60px, 24vh, 112px);
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.gl-tools {
+  justify-self: end;
+  display: flex;
+  gap: 10px;
+}
+
+.gl-icon {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.gl-icon-face {
+  display: block;
+  width: 48px;
+  height: 48px;
+  padding: 9px;
+  background: url('/assets/lobby/icons/icon-frame.png') center / 100% 100% no-repeat;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.35));
+}
+
+.gl-icon.small .gl-icon-face {
+  width: 38px;
+  height: 38px;
+  padding: 7px;
+}
+
+.gl-icon:active .gl-icon-face {
+  transform: translateY(2px);
+}
+
+.gl-icon-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+.gl-panel {
+  grid-column: 2;
+  grid-row: 2;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-height: 0;
+}
+
+.gl-heading {
+  margin: 0;
+  font-size: clamp(16px, 4.6vh, 22px);
+  font-weight: 800;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.gl-tiles {
+  display: grid;
+  gap: 12px;
+  min-height: 0;
+}
+
+.gl-tiles.modes {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: min(52vh, 230px);
+}
+
+.gl-tiles.rooms {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  height: min(56vh, 230px);
+}
+
+/* 卡片：金到粉的外框（tile-frame.png）包著滿版場景圖。 */
+.gl-tile {
+  position: relative;
+  padding: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 18px;
+  border-image: url('/assets/lobby/tile-frame.png') 60 / 18px;
+  border-radius: 20px;
+  background: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35), 0 0 18px rgba(255, 95, 210, 0.2);
+  color: var(--gl-text);
+  font: inherit;
+  cursor: pointer;
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+}
+
+.gl-tile:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* 上次玩的房間：金色光圈。 */
+.gl-tile.last {
+  box-shadow: 0 0 0 3px var(--gl-gold), 0 0 22px rgba(255, 201, 74, 0.7), 0 6px 0 rgba(0, 0, 0, 0.4);
+}
+
+.gl-tile-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% + 24px);
+  margin: -12px;
+  padding: 8px 6px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #2a1146 center / cover no-repeat;
+  box-shadow: inset 0 46px 28px -18px rgba(14, 6, 28, 0.85), inset 0 -40px 24px -16px rgba(14, 6, 28, 0.8);
+}
+
+.gl-tile-spacer {
+  flex: 1;
+}
+
+.gl-tile-title {
+  font-size: clamp(14px, 4.4vh, 20px);
+  font-weight: 800;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+}
+
+.gl-tile-note {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gl-gold);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* 進不去的房間：變灰，斜帶寫「需要 X」。 */
+.gl-tile.locked {
+  cursor: default;
+}
+
+.gl-tile.locked .gl-tile-inner {
+  filter: grayscale(0.7) brightness(0.65);
+}
+
+.gl-tile-badge {
+  position: absolute;
+  top: 40%;
+  left: -30%;
+  right: -30%;
+  padding: 4px 0;
+  transform: rotate(-12deg);
+  background: rgba(14, 8, 22, 0.85);
+  color: var(--gl-gold);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.gl-bottom {
+  grid-column: 1 / 3;
+  grid-row: 3;
+  align-self: end;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+}
+
+/* 霓虹 QUICK START：右下。 */
+.gl-quick {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: end;
+  align-self: end;
+  position: relative;
+  z-index: 1;
+  padding: 10px 40px 12px;
+  border: 0;
+  border-radius: 999px;
+  background:
+    url('/assets/lobby/quick-start.png') center / 100% 100% no-repeat,
+    radial-gradient(ellipse at 50% 50%, rgba(255, 95, 210, 0.45), rgba(60, 10, 60, 0.55) 70%);
+  color: #ffe6f6;
+  font: italic 900 clamp(20px, 6.4vh, 32px) 'Nunito', system-ui, sans-serif;
+  letter-spacing: 1px;
+  -webkit-text-stroke: 1px #ff4fc8;
+  text-shadow: 0 0 6px #ff5fd2, 0 0 16px #ff2fb8;
+  cursor: pointer;
+  animation: gl-neon 3.2s ease-in-out infinite;
+}
+
+.gl-quick:disabled {
+  opacity: 0.45;
+  animation: none;
+  cursor: default;
+}
+
+.gl-quick:active {
+  transform: scale(0.97);
+}
+
+@keyframes gl-neon {
+  0%, 92%, 96%, 100% { opacity: 1; }
+  94% { opacity: 0.75; }
+}
+
+/* 設定、規則面板。 */
+.gl-sheet-shade {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 4, 20, 0.6);
+}
+
+.gl-sheet {
+  position: relative;
+  width: min(480px, 80vw);
+  max-height: 80vh;
+  overflow: auto;
+  padding: 18px 22px 22px;
+  border-radius: 18px;
+  border: 2px solid var(--gl-gold);
+  background: linear-gradient(#3a1f5f, #241238);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gl-sheet-close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.gl-sheet-title {
+  margin: 4px 0 14px;
+  text-align: center;
+  color: var(--gl-gold);
+  font-size: 20px;
+}
+
+.gl-rules {
+  margin: 0;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.gl-audio {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+}
+
+.gl-audio .audio-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gl-audio .audio-row span {
+  min-width: 48px;
+}
+
+.gl-audio button {
+  font: inherit;
+  color: var(--gl-text);
+  padding: 6px 16px;
+  border-radius: 10px;
+  border: 1px solid #5a3f86;
+  background: #2b1f45;
+}
+
+.gl-audio button.on {
+  border-color: var(--gl-gold);
+  color: var(--gl-gold);
+}
+
+.gl-error {
+  grid-column: 1 / 3;
+  align-self: center;
+  justify-self: center;
+  color: #ff9a9a;
+}
