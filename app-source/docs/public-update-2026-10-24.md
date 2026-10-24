@@ -25,3 +25,6 @@ Real multiplayer, authoritative server clocks, authentication, reconnection, APP
 - Required-avatar loading hold, untouched revision, fresh clock, retry recovery and nonblocking optional ribbon failure: passed.
 - Nine own-character emotes, touch selection, three-second lifetime and cooldown: passed.
 - Software WebGL first frame, high-hand flip/landing phases and return to the existing win banner: passed.
+
+## Follow-up: hide winning actions until riichi scratch reveal
+During a covered riichi draw, the action row is absent rather than merely disabled. A manual tsumo callback also checks the reveal gate. Existing automation waits until reveal completion. `qa/riichi-hidden-tsumo54-qa.mjs` verifies no pre-reveal tsumo button, post-scratch tsumo availability, auto-win gating, quick reveal, nonwinning automatic discard, and ten-second expiry. Typecheck and production build passed.
