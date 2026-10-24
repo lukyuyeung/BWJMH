@@ -17,6 +17,7 @@ export interface Player {
   connected: boolean;
   resumeToken: string;
   isBot?: boolean;
+  autoPlay?:boolean;
   botProfile?:BotProfile;
   botDifficulty?:BotDifficulty;
 }
@@ -55,6 +56,7 @@ export interface PublicPlayer {
   connected: boolean;
   isHost: boolean;
   isBot: boolean;
+  autoPlay:boolean;
   botProfile?:BotProfile;
   botDifficulty?:BotDifficulty;
 }
@@ -291,6 +293,30 @@ export class RoomManager {
     return room;
   }
 
+  /** Invoke only from the authoritative turn timer, never a client-supplied timeout. */
+  expirePlayerTurn(code:string,playerId:string,now=Date.now()):Room{
+    const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId),g=room.game!;
+    if(room.settled||room.match.finished||room.cinematic?.phase==='playing'||room.actionDeadline===undefined||now<room.actionDeadline)return room;
+    if(!player.isBot&&g.currentSeat===player.seat&&g.phase==='awaiting_discard')player.autoPlay=true;
+    return this.autoAct(code,playerId);
+  }
+  /** One legal action per tick. The host retains revision, animation and clock ownership. */
+  advanceAutoPlay(code:string):boolean{
+    const room=this.requirePlayingRoom(code),g=room.game!;
+    if(room.settled||room.match.finished||room.cinematic?.phase==='playing')return false;
+    for(const player of room.players.filter(p=>!p.isBot&&p.autoPlay)){
+      const state=this.getPlayerGameState(code,player.id);
+      if(!state.hand.actions.canPassClaim&&!(g.currentSeat===player.seat&&['awaiting_draw','awaiting_discard'].includes(g.phase)))continue;
+      const before=JSON.stringify(g);this.autoAct(code,player.id);if(before!==JSON.stringify(g))return true;
+    }return false;
+  }
+  resumeControl(code:string,playerId:string):Room{
+    const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId);
+    if(player.isBot||!player.connected)throw new RoomError('CONTROL_UNAVAILABLE','Player control is unavailable.');
+    if(player.autoPlay){player.autoPlay=false;if(room.game?.currentSeat===player.seat&&room.game.phase==='awaiting_discard'&&!room.settled)room.actionDeadline=Date.now()+30000;}
+    return room;
+  }
+
   getBotPlayerIds(code:string):string[]{return this.requireRoom(code).players.filter(p=>p.isBot).map(p=>p.id)}
 
   actBot(code:string,playerId:string):Room{
@@ -392,6 +418,7 @@ export function toPublicRoomState(room: Room): PublicRoomState {
       seat: player.seat,
       ready: player.ready,
       connected: player.connected,
+      autoPlay:!!player.autoPlay,
       isHost: player.id === room.hostPlayerId,
       isBot: Boolean(player.isBot),
       ...(player.botProfile?{botProfile:player.botProfile}:{}),

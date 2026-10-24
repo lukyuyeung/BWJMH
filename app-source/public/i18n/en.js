@@ -70,3 +70,5 @@ Object.assign(en,{
 Object.assign(en,{'牌局已更新，請再操作。':'The hand has changed. Please try again.','此預覽提供單人牌局。':'This preview supports solo matches.','操作未能完成':'The action could not be completed.','未知示範牌型':'Unknown demo hand.','示範牌數錯誤':'Invalid demo tile count.','1番':'1 han','2番':'2 han','3番':'3 han','2番・25符':'2 han · 25 fu','BUNNY WARRIORS · 立直':'BUNNY WARRIORS · RIICHI'});
 Object.assign(en,{'聽牌預覽':'Wait preview','出牌後聽牌預覽':'Waits after discard','振聽':'Furiten'});
 Object.assign(en,{'載入素材':'Loading art','正在準備牌桌':'Preparing table','重新載入':'Retry loading','素材載入未完成，請重試':'Some art could not load. Tap to retry.','四人對戰載入畫面':'Four-player loading screen'});
+
+Object.assign(en,{'逾時 · BOT 正在代你摸切':'Timed out · BOT is drawing and discarding for you','返回自己操作':'Take back control','請先返回自己操作。':'Take back control before playing.'});

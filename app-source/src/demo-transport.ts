@@ -29,10 +29,12 @@ const state=this.manager.getPlayerGameState(this.room.code,this.playerId);
  private perform(name:string,p:any,callback?:(result:any)=>void){
   try{const c=this.room.code,id=this.playerId;if(window.__bunnyLoading&&name.startsWith('game:')){callback?.({ok:false,error:{code:'LOADING',message:'正在準備牌桌'}});return;}
    if(name.startsWith('game:')&&name!=='game:demo-win'&&name!=='game:next-hand'&&tableMotionBusy()){callback?.({ok:true,data:{}});return;}
+   if(name.startsWith('game:')&&this.room.players.find(player=>player.id===id)?.autoPlay&&!['game:resume-control','game:next-hand','game:demo-win'].includes(name))throw Error('請先返回自己操作。');
    if(name.startsWith('game:')&&p.revision!==undefined&&p.revision!==this.room.revision)throw new Error('牌局已更新，請再操作。');
    switch(name){
     case 'room:reconnect':callback?.({ok:true,data:{playerId:id,room:this.manager.getPublicState(c)}});this.publish();this.schedule();return;
     case 'game:demo-win':this.reset();installDemoWin(this.manager,this.room,this.playerId,p.kind as DemoHand);break;
+    case 'game:resume-control':this.manager.resumeControl(c,id);break;
     case 'game:draw':this.manager.draw(c,id);break;
     case 'game:discard':this.manager.discard(c,id,p.tileId);break;
     case 'game:riichi-discard':this.manager.riichiDiscard(c,id,p.tileId);break;
@@ -56,8 +58,9 @@ const state=this.manager.getPlayerGameState(this.room.code,this.playerId);
   if(this.manager.completeCinematic(this.room.code)){this.room.revision++;this.publish();}
   const game=this.room.game!;if(['won','exhaustive_draw','abortive_draw'].includes(game.phase)){this.schedule();return;}
   let acted=false;
+  if(this.manager.advanceAutoPlay(this.room.code)){this.room.revision++;reserveTableMotion(this.room.code,this.room.revision);this.publish();this.schedule();return;}
   if(this.room.actionDeadline&&Date.now()>=this.room.actionDeadline){
-   const human=this.room.players.find(p=>!p.isBot)!;const before=JSON.stringify(game);this.manager.autoAct(this.room.code,human.id);
+   const human=this.room.players.find(p=>!p.isBot)!;const before=JSON.stringify(game);this.manager.expirePlayerTurn(this.room.code,human.id);
    if(before!==JSON.stringify(game)){this.room.revision++;reserveTableMotion(this.room.code,this.room.revision);this.publish();this.schedule();return;}
   }
   for(const bot of this.room.players.filter(p=>p.isBot)){

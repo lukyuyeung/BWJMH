@@ -3,7 +3,7 @@ import type {Game,Tile} from './main.js';
 export type RiichiReveal={active:boolean;tile:Tile|undefined;key:string;duration:number;deadline:number;complete:()=>void};
 /** Only the owner's actual drawn tile is exposed. The existing turn deadline stays authoritative. */
 export function useRiichiReveal(game:Game|null,_reduce:boolean):RiichiReveal{
- const ready=!!game&&!game.room.match.finished&&game.hand.riichi[game.you.seat]&&game.hand.currentSeat===game.you.seat&&game.hand.phase==='awaiting_discard'&&game.hand.actions.canDiscard;
+ const ready=!!game&&!game.room.players.find(p=>p.seat===game.you.seat)?.autoPlay&&!game.room.match.finished&&game.hand.riichi[game.you.seat]&&game.hand.currentSeat===game.you.seat&&game.hand.phase==='awaiting_discard'&&game.hand.actions.canDiscard;
  const tile=ready?game!.you.hand.find(t=>t.id===game!.you.drawnTileId):undefined;
  const key=tile?[game!.room.code,game!.hand.match.roundWind,game!.hand.match.handNumber,game!.hand.match.honba,tile.id].join(':'):'';
  const clock=useRef({key:'',deadline:0});
