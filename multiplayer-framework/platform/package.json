@@ -1,0 +1,11 @@
+{
+  "name": "@bunny-gala/platform",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bunny-gala/contract": "*",
+    "@fastify/websocket": "^11.3.4",
+    "fastify": "^5.12.7",
+    "ws": "^8.22.0"
+  }
+}
