@@ -1,25 +1,13 @@
 {
-  "name": "bunny-gala-kit",
-  "version": "0.18.0",
+  "name": "@bunny-gala/contract",
   "private": true,
   "type": "module",
-  "workspaces": [
-    "contract",
-    "platform",
-    "games/*"
-  ],
-  "scripts": {
-    "dev": "tsx platform/src/dev.ts",
-    "test": "vitest run",
-    "check": "tsx scripts/check.ts",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.web.json"
-  },
-  "devDependencies": {
-    "@types/node": "^22.20.5",
-    "@types/ws": "^8.18.2",
-    "tsx": "^4.23.15",
-    "typescript": "^5.9.3",
-    "vite": "^6.3.5",
-    "vitest": "^3.2.7"
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts",
+    "./shell": "./src/shell.ts",
+    "./audio": "./src/audio.ts",
+    "./landscape": "./src/landscape.ts",
+    "./back": "./src/back.ts"
   }
 }
