@@ -1,0 +1,47 @@
+{
+  "name": "Bunny seated voxel rig",
+  "bones": 32,
+  "vertices": 7752,
+  "triangles": 4292,
+  "materials": [
+    "black",
+    "jacket",
+    "highlight",
+    "grey",
+    "face",
+    "white",
+    "pink",
+    "inner",
+    "sole"
+  ],
+  "clips": {
+    "Idle": {
+      "frames": 120,
+      "duration": 1.9833333333333334
+    },
+    "Discard": {
+      "frames": 49,
+      "duration": 0.8
+    },
+    "Draw": {
+      "frames": 61,
+      "duration": 1.0
+    },
+    "Riichi": {
+      "frames": 85,
+      "duration": 1.4
+    }
+  },
+  "socket": "TileGrip_R",
+  "sockets": [
+    "TileGrip_R",
+    "TileGrip_L"
+  ],
+  "units": "meters",
+  "source": "V9 volumetric voxel head and thick torso, enlarged fixed-length arm segments, 32 named bones; separately rebaked Idle/Draw/Discard/Riichi",
+  "integration": "Independent 3D prototype. Not connected to production game state.",
+  "costume": "Thick black hoodie with hood ear openings",
+  "mouth": "Flat two-pixel pink nose, separate dark open U mouth with two ivory incisors; skinned to Head",
+  "version": 9,
+  "rendering": "Rough diffuse shaded material with low emissive floor; no glossy character surfaces"
+}

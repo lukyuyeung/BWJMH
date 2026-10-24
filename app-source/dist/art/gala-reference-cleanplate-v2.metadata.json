@@ -1,0 +1,23 @@
+{
+  "edition": "Bunny Riichi MVP v2.5.1 — Gala Reference Edition",
+  "reference": "User-supplied Mahjong2.png, 1536x1024",
+  "asset": "gala-reference-cleanplate-v2.png",
+  "sha256": "a3cc0676db93fca1a216c7e4274880193cf7ac1f4523ec3b445af444d4c00e77",
+  "method": "Built-in image generation edit; original reference layout retained, all baked game pieces/UI and material callout removed",
+  "static": [
+    "casino",
+    "three seated characters",
+    "table/felt/rim"
+  ],
+  "live": [
+    "own tiles",
+    "opponent backs",
+    "public rivers/melds",
+    "illustrative public-count walls",
+    "scores/profiles",
+    "Dora",
+    "HUD",
+    "actions"
+  ],
+  "original_locked_masters": "Unchanged under art/v5"
+}

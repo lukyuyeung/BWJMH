@@ -1,0 +1,21 @@
+{
+  "name": "BUNNY GALA Complete Design",
+  "revision": "2026-10-20-complete-table-arm-riichi",
+  "status": "design_and_preview_not_game_integration",
+  "assets": [
+    {"file":"complete-table.png","type":"concept","includes":["center-round-remaining","four-edge-riichi-trays","corner-counters","six-seat-local-cutins"]},
+    {"file":"continuous-arm.png","type":"concept","geometry_exported":false},
+    {"file":"carrot-riichi-sheet.png","type":"rgba_sprite_sheet","individual_sprites_cropped":false},
+    {"file":"../seat-cut-in/riichi-concept.png","type":"concept"},
+    {"file":"../seat-cut-in/tsumo-concept.png","type":"concept"}
+  ],
+  "previews": {
+    "center":"../table-center/",
+    "continuous_arm":"../art-library/hand/table-motion/"
+  },
+  "hand": {"palm_width_in_tiles_target":[3,4],"sleeve":"continuous_outside_viewport","existing_glb_is_legacy":true},
+  "cutin": {"same_action_equal_length_at_all_seats":true,"dim":false,"double_glyphs_same_height":true},
+  "central_core":["round","remaining"],
+  "counters_location":"table_corner",
+  "riichi_sticks_location":"central_frame_edges"
+}

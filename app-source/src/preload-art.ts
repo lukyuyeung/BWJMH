@@ -1,0 +1,10 @@
+const retained:HTMLImageElement[]=[];
+let loading:Promise<void>|undefined;
+/** Decode event art on table entry, rather than on the first claim or win. */
+export function preloadEventArt(){return loading??=Promise.all([
+ '/art/library-v1/motion/neutral/win-burst.webp',
+ ...['yellow','king','ninja','wizard'].map(n=>'/art/results/'+n+'-presentation.png'),
+ ...['01-ribbon','04-fx',...['chi','pon','kan','ron','riichi','tsumo'].map(n=>'03-'+n),...['king','ninja','wizard'].map(n=>n+'-character')].map(n=>'/art/ribbon-v2/'+n+'.png'),
+ ...['chi','pon','kan','ron','riichi','tsumo'].map(n=>'/art/ribbon-v2/en/03-'+n+'.svg'),
+ '/art/update-26/carrot-riichi.png'
+].map(async url=>{const image=new Image();retained.push(image);image.src=url;await image.decode()})).then(()=>{})}

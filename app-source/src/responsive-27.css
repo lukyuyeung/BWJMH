@@ -1,0 +1,5 @@
+.phone-shell{background:radial-gradient(ellipse at center,#174039,#17201f 70%,#201a20)}
+.phone-stage .phone-scene{left:calc(-1 * var(--side-extension,0px));width:calc(100% + 2 * var(--side-extension,0px))}
+.phone-stage .phone-scene>svg{position:absolute;left:var(--side-extension,0px);width:1125px;height:634px}
+.phone-stage .phone-menu,.phone-stage .demo-open{right:calc(15px - var(--hud-right-shift,0px))}
+.phone-stage .demo-menu{right:calc(15px - var(--hud-right-shift,0px))}

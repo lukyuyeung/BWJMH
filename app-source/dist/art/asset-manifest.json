@@ -1,0 +1,27 @@
+[
+  {
+    "asset": "gala-logo.png",
+    "source": "01_Official_References/Bunny_Gala_Official_Logo.png",
+    "sha256": "2aa9ccf0c5178154d5fa6efcac75e16af46898032cccecfc0e7fb08b3425841e"
+  },
+  {
+    "asset": "gala-interior.png",
+    "source": "03_Table_Environment/end1.png",
+    "sha256": "4938c5cf60c81176d041008be42d1c01e7513494e9c4f1d5fb374871dbabb7c2"
+  },
+  {
+    "asset": "wizard.jpeg",
+    "source": "02_Character_References/巫師兔(1).jpeg",
+    "sha256": "de7efd79d2692ce6b5cb71d282dfd8c3f18fc93bc2d0741487c7dd869a78d9d8"
+  },
+  {
+    "asset": "ninja.jpeg",
+    "source": "02_Character_References/忍者兔(3).jpeg",
+    "sha256": "5cae19029d007024611cf9229adf40457979516b80f300226586271e340e20f8"
+  },
+  {
+    "asset": "king.jpeg",
+    "source": "02_Character_References/King(1).jpeg",
+    "sha256": "83578b0275a5aa63cce133bab6db9b307c70c911d31b0737b935018310d8b37f"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "frameWidth": 128,
+  "frameHeight": 256,
+  "columns": 8,
+  "rows": 3,
+  "frameCount": 24,
+  "fps": 24,
+  "durationMs": 1000,
+  "loop": false,
+  "sheet": "score-transfer-sheet.png",
+  "reducedMotion": "Use final settled UI state; skip particle animation."
+}

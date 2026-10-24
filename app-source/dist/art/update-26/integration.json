@@ -1,0 +1,22 @@
+{
+  "sourceVersion": 26,
+  "sourceCommit": "a0ee2f0",
+  "implemented": [
+    "complete-ART-foreground-hand",
+    "central-round-and-remaining",
+    "dealer-relative-seat-scores",
+    "independent-active-player-frame",
+    "frame-edge-carrot-riichi-trays",
+    "six-seat-local-cutins-equal-size",
+    "continuous-open-sleeve",
+    "updated-motion-art",
+    "rank-art-gallery"
+  ],
+  "retained": [
+    "no-dice",
+    "no-physical-tile-walls",
+    "rose-gold-deep-emerald-table",
+    "approved-white-round-paw"
+  ],
+  "conceptsRebuiltAsComponents": true
+}

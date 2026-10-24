@@ -1,0 +1,1 @@
+export type Language='zh'|'en';export function getLanguage():Language;export function setLanguage(value:Language):void;export function subscribe(fn:()=>void):()=>void;export function translate(text:string):string;export function asset(path:string):string;export function registerAssets(map:Record<string,string>):void;export function localizeProps(type:unknown,props:any):any;

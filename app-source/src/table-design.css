@@ -1,0 +1,11 @@
+/* Preserve the original photographed casino, table frame and character artwork. */
+.scene-canvas{background:#110c0b}
+.scene-canvas:before{content:'';position:absolute;inset:0;background:url('/art/gala-reference-cleanplate-v2.png') center/100% 100% no-repeat;filter:brightness(.6) saturate(.75);pointer-events:none}
+.responsive-table-material{filter:brightness(.6) saturate(.75)}
+.scene-canvas .dora{width:300px;flex-direction:column;gap:8px;padding:10px}
+.dora-row{display:flex;align-items:center;gap:6px;width:100%}.dora-row>small{width:48px;font-size:14px;flex-shrink:0}
+.dora-unrevealed{display:flex;align-items:center;justify-content:center;width:29px;height:40px;border:1px dashed #8b7954;background:#231d16;border-radius:4px;color:#cbb58b;font-size:18px}.ura-hidden{border-style:solid;background:repeating-linear-gradient(45deg,#191610,#191610 4px,#2b251b 4px,#2b251b 5px)}
+.turn-carrot{font-style:normal;font-size:10px}.center-winds span.lit{box-shadow:0 0 7px #e8bd6755}
+.scene-actions button.start,.scene-actions button[data-action=riichi-select]{background:linear-gradient(#951b46,#4a0d25);color:#ffe7ee}
+
+.demo-restart{pointer-events:auto;margin-left:12px;padding:4px 10px;min-height:28px;border:1px solid #ad8b50;background:#24372b;color:#f5e5c7;border-radius:5px;font-size:13px}

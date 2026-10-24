@@ -1,0 +1,12 @@
+import React,{useState} from 'react';import {createRoot} from 'react-dom/client';
+import {RoomManager} from '../../rules/room';import {installScenario,type Scenario} from '../scenarios';
+import {ResultOverlay} from '../../src/results';import {ScoreTransition} from '../../src/score-transition';import {CenterHub} from '../../src/center-hub';import {ArtworkTile} from '../../src/phone-table';import {YakuGuide} from '../../src/yaku-guide';
+import type {Game,Seat} from '../../src/main';
+const manager=new RoomManager(),{room,player}=manager.createRoom('玩家');manager.fillWithBots(room.code,player.id);manager.setReady(room.code,player.id,true);manager.startGame(room.code,player.id);
+const characters={east:'yellow',south:'king',west:'ninja',north:'wizard'} as const,seats:Seat[]=['east','south','west','north'];
+function fixture(name:Scenario){installScenario(manager,room,name);if(room.cinematic)room.cinematic.phase='results';return manager.getPlayerGameState(room.code,player.id) as unknown as Game}
+function Harness(){const [view,setView]=useState(()=>({mode:'report',key:0,game:fixture('mobile-result'),ids:{} as Partial<Record<Seat,string>>}));
+ (window as any).review24=(mode:string)=>{const game=fixture(mode==='riichi'?'riichi':mode==='scores'?'result-rank-rise':'mobile-result');setView(v=>({mode,key:v.key+1,game,ids:{}}));return game};
+ (window as any).declareReviewRiichi=()=>{const id=view.game.hand.actions.riichiDiscardIds[0]!;manager.riichiDiscard(room.code,player.id,id);const game=manager.getPlayerGameState(room.code,player.id) as unknown as Game;setView(v=>({...v,game,ids:{east:id}}));return id};
+ return <div className="phone-stage" style={{left:0,top:0,position:'relative',transform:'none',width:1125,height:634,background:'#06483e'}}>{view.mode==='report'?<ResultOverlay key={view.key} game={view.game} characters={characters} pending={false} reduce={false} onNext={()=>{}} onRestart={()=>{}} renderTile={tile=><ArtworkTile key={tile.id} tile={tile}/>} renderMeld={()=>null}/>:view.mode==='scores'?<ScoreTransition key={view.key} game={view.game} ranking={false} reduce={false} onRanking={()=>{}} onClose={()=>{}} onNext={()=>{}} onRestart={()=>{}}/>:view.mode==='riichi'?<CenterHub key={view.key} game={view.game} order={seats} active={0} awaitingClaim={false} yourDecision={true} riichiTiles={view.ids} quiet={false}/>:<YakuGuide onClose={()=>{}}/>}</div>
+};createRoot(document.getElementById('root')!).render(<Harness/>);

@@ -1,0 +1,1 @@
+export const rankArt=[{"id": "rookie", "name": "見習兔"}, {"id": "bronze", "name": "銅耳兔"}, {"id": "silver", "name": "銀耳兔"}, {"id": "gold", "name": "金耳兔"}, {"id": "jade", "name": "翡翠兔"}, {"id": "diamond", "name": "鑽耀兔"}, {"id": "lunar", "name": "月冠兔"}, {"id": "stellar", "name": "星耀兔"}, {"id": "sovereign", "name": "兔皇"}];

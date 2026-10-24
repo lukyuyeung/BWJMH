@@ -1,0 +1,8 @@
+# Chinese / English display language
+EN / ZH controls are available in the game menu, result overlays, lobby and ready scene. The selection is stored under bunny-language and survives page navigation. Japanese audio and original special-win movies remain unchanged, explicitly requested by the owner. Mahjong tile artwork is never translated or replaced.
+
+public/i18n/en.js holds English UI strings and full yaku conditions. The localized JSX runtime translates only intrinsic DOM display properties (children strings, alt, aria-label, title, placeholder) and explicitly mapped art URLs. Component inputs, IDs, rule data, tile faces, user input values and event handlers are untouched. App subscribes through useSyncExternalStore so a toggle redraws existing screens without restarting the hand. The static lobby uses a reversible observer with original text/attribute records because its existing UI is generated with innerHTML.
+
+public/i18n/assets.json maps existing Chinese UI art to existing English art. Six new transparent pixel-letter SVG word layers live under public/art/ribbon-v2/en/. Ribbon geometry, character layers, particles and timing remain shared. Limit, rank, menu, badge and action assets reuse supplied English versions. Original Chinese video captions remain the explicit exception, along with tile markings. New gameplay UI strings must be added to the dictionary and checked in the English audit.
+
+QA: language63-audit checks table/settings/full yaku catalog/results/score/final; final-layout63 checks three viewports in both languages; english-assets63 checks actual Pon and six word layers. Static lobby/ready was checked for switching both ways, persistence and real game entry. Browser tests do not replace physical-device testing.

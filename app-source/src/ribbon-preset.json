@@ -1,0 +1,256 @@
+{
+  "version": "2.0-real-slanted-ribbon",
+  "canvas": {
+    "width": 1536,
+    "height": 640
+  },
+  "characterRect": {
+    "x": 130,
+    "y": 4,
+    "width": 608,
+    "height": 608
+  },
+  "typeVisualHeight": 350,
+  "durationMs": 720,
+  "timing": {
+    "enterMs": 100,
+    "holdMs": 500,
+    "exitMs": 120
+  },
+  "ribbon": {
+    "layer": "01",
+    "src": "../cutin-ribbon-v2/01-ribbon.png",
+    "rect": {
+      "x": 5.734,
+      "y": 124.703,
+      "width": 1525.938,
+      "height": 508.646
+    },
+    "meta": {
+      "canvas": [
+        2172,
+        724
+      ],
+      "bbox": [
+        26,
+        14,
+        2144,
+        705
+      ],
+      "sha256": "e9791bac1f49518e5bc1bbaf7b7ae813a6d86b3f519ab4f032d333e4079c89e3"
+    }
+  },
+  "fx": {
+    "layer": "04",
+    "src": "../cutin-ribbon-v2/04-fx.png",
+    "rect": {
+      "x": -25.691,
+      "y": 50.625,
+      "width": 1600.646,
+      "height": 533.549
+    },
+    "meta": {
+      "canvas": [
+        2172,
+        724
+      ],
+      "bbox": [
+        62,
+        67,
+        2092,
+        672
+      ],
+      "sha256": "c69e927e0aeba1a6559d2b1eacc990cbce376694439afd00c032f40f47d42f92"
+    }
+  },
+  "actions": {
+    "pon": {
+      "label": "碰",
+      "src": "../cutin-ribbon-v2/03-pon.png",
+      "rect": {
+        "x": 801.069,
+        "y": 187.081,
+        "width": 621.503,
+        "height": 414.335
+      },
+      "visualHeight": 350,
+      "visualWidth": 413.9306358381503,
+      "ribbonFilter": "none",
+      "meta": {
+        "canvas": [
+          1536,
+          1024
+        ],
+        "bbox": [
+          252,
+          69,
+          1275,
+          934
+        ],
+        "sha256": "cf66ebeecd06218244d3e76173aa8cc7c3501a4f686a0296f9fdc6cc3b0212e0"
+      }
+    },
+    "kan": {
+      "label": "槓",
+      "src": "../cutin-ribbon-v2/03-kan.png",
+      "rect": {
+        "x": 857.137,
+        "y": 160.802,
+        "width": 500.763,
+        "height": 457.634
+      },
+      "visualHeight": 350,
+      "visualWidth": 400.381679389313,
+      "ribbonFilter": "hue-rotate(-60deg)",
+      "meta": {
+        "canvas": [
+          1312,
+          1199
+        ],
+        "bbox": [
+          138,
+          142,
+          1187,
+          1059
+        ],
+        "sha256": "44c6336386c3c8861c8dc3eac8fdb86e4e52167151649f908ee0bca91843b920"
+      }
+    },
+    "chi": {
+      "label": "吃",
+      "src": "../cutin-ribbon-v2/03-chi.png",
+      "rect": {
+        "x": 849.835,
+        "y": 178.767,
+        "width": 513.234,
+        "height": 427.695
+      },
+      "visualHeight": 350,
+      "visualWidth": 398.55923159018147,
+      "ribbonFilter": "hue-rotate(-170deg)",
+      "meta": {
+        "canvas": [
+          1374,
+          1145
+        ],
+        "bbox": [
+          163,
+          97,
+          1230,
+          1034
+        ],
+        "sha256": "86e676a4768511dbc53f734b19dc6e19a425c0feeade522dd51a1cc90be58328"
+      }
+    },
+    "ron": {
+      "label": "和",
+      "src": "../cutin-ribbon-v2/03-ron.png",
+      "rect": {
+        "x": 871.079,
+        "y": 168.211,
+        "width": 480.789,
+        "height": 444.316
+      },
+      "visualHeight": 350,
+      "visualWidth": 385.7368421052631,
+      "ribbonFilter": "hue-rotate(60deg)",
+      "meta": {
+        "canvas": [
+          1305,
+          1206
+        ],
+        "bbox": [
+          125,
+          127,
+          1172,
+          1077
+        ],
+        "sha256": "b9f03533ee8750f7726e969dd2554ced6d9f28b593360b4f3c8c005e62ea188e"
+      }
+    },
+    "riichi": {
+      "label": "立直",
+      "src": "../cutin-ribbon-v2/03-riichi.png",
+      "rect": {
+        "x": 674.842,
+        "y": 156.75,
+        "width": 890.818,
+        "height": 445.409
+      },
+      "visualHeight": 350,
+      "visualWidth": 719.583931133429,
+      "ribbonFilter": "hue-rotate(75deg) saturate(.75) brightness(1.12)",
+      "meta": {
+        "canvas": [
+          1774,
+          887
+        ],
+        "bbox": [
+          170,
+          116,
+          1603,
+          813
+        ],
+        "sha256": "ac7e1c109b3a70ae362960dcc82b52d5e317f5b733722c2ed4a628ede466c610"
+      }
+    },
+    "tsumo": {
+      "label": "自摸",
+      "src": "../cutin-ribbon-v2/03-tsumo.png",
+      "rect": {
+        "x": 728.996,
+        "y": 144.219,
+        "width": 774.198,
+        "height": 484.24
+      },
+      "visualHeight": 350,
+      "visualWidth": 702.928870292887,
+      "ribbonFilter": "hue-rotate(65deg)",
+      "meta": {
+        "canvas": [
+          1586,
+          992
+        ],
+        "bbox": [
+          81,
+          145,
+          1521,
+          862
+        ],
+        "sha256": "3719b2677ac033b5dfc2cf546f0d45ec63d9c78fc7b0c9d18d9a7fc99eeb3ce2"
+      }
+    }
+  },
+  "characters": {
+    "king": {
+      "label": "國王兔",
+      "src": "../characters/layers/king-character.png"
+    },
+    "ninja": {
+      "label": "忍者兔",
+      "src": "../characters/layers/ninja-character.png"
+    },
+    "wizard": {
+      "label": "巫師兔",
+      "src": "../characters/layers/wizard-character.png"
+    }
+  },
+  "contract": {
+    "fixed_layers": [
+      "01",
+      "03",
+      "04"
+    ],
+    "replaceable_layer": "02",
+    "character_swap_preserves": [
+      "ribbon node, URL, rect and filter",
+      "type node, URL and rect",
+      "fx node, URL, rect and timing",
+      "canvas and seat scale"
+    ],
+    "uses_old_badge": false,
+    "ribbon_colors": "One true slanted ribbon master; per-action hue filter fixed in preset",
+    "fx_colors": "Shared gold/white/pink sparkle sprite remains untinted",
+    "status": "actual_transparent_layer_assets_and_component_not_game_integration"
+  }
+}

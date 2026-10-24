@@ -1,0 +1,154 @@
+{
+  "yellow": [
+    {
+      "id": "happy",
+      "url": "/art/emotes/yellow/0.webp"
+    },
+    {
+      "id": "angry",
+      "url": "/art/emotes/yellow/1.webp"
+    },
+    {
+      "id": "crying",
+      "url": "/art/emotes/yellow/2.webp"
+    },
+    {
+      "id": "surprised",
+      "url": "/art/emotes/yellow/3.webp"
+    },
+    {
+      "id": "thinking",
+      "url": "/art/emotes/yellow/4.webp"
+    },
+    {
+      "id": "sorry",
+      "url": "/art/emotes/yellow/5.webp"
+    },
+    {
+      "id": "victory",
+      "url": "/art/emotes/yellow/6.webp"
+    },
+    {
+      "id": "speechless",
+      "url": "/art/emotes/yellow/7.webp"
+    },
+    {
+      "id": "playful",
+      "url": "/art/emotes/yellow/8.webp"
+    }
+  ],
+  "king": [
+    {
+      "id": "happy",
+      "url": "/art/emotes/king/0.webp"
+    },
+    {
+      "id": "angry",
+      "url": "/art/emotes/king/1.webp"
+    },
+    {
+      "id": "crying",
+      "url": "/art/emotes/king/2.webp"
+    },
+    {
+      "id": "surprised",
+      "url": "/art/emotes/king/3.webp"
+    },
+    {
+      "id": "thinking",
+      "url": "/art/emotes/king/4.webp"
+    },
+    {
+      "id": "sorry",
+      "url": "/art/emotes/king/5.webp"
+    },
+    {
+      "id": "victory",
+      "url": "/art/emotes/king/6.webp"
+    },
+    {
+      "id": "speechless",
+      "url": "/art/emotes/king/7.webp"
+    },
+    {
+      "id": "playful",
+      "url": "/art/emotes/king/8.webp"
+    }
+  ],
+  "wizard": [
+    {
+      "id": "happy",
+      "url": "/art/emotes/wizard/0.webp"
+    },
+    {
+      "id": "angry",
+      "url": "/art/emotes/wizard/1.webp"
+    },
+    {
+      "id": "crying",
+      "url": "/art/emotes/wizard/2.webp"
+    },
+    {
+      "id": "surprised",
+      "url": "/art/emotes/wizard/3.webp"
+    },
+    {
+      "id": "thinking",
+      "url": "/art/emotes/wizard/4.webp"
+    },
+    {
+      "id": "sorry",
+      "url": "/art/emotes/wizard/5.webp"
+    },
+    {
+      "id": "victory",
+      "url": "/art/emotes/wizard/6.webp"
+    },
+    {
+      "id": "speechless",
+      "url": "/art/emotes/wizard/7.webp"
+    },
+    {
+      "id": "playful",
+      "url": "/art/emotes/wizard/8.webp"
+    }
+  ],
+  "ninja": [
+    {
+      "id": "happy",
+      "url": "/art/emotes/ninja/0.webp"
+    },
+    {
+      "id": "angry",
+      "url": "/art/emotes/ninja/1.webp"
+    },
+    {
+      "id": "crying",
+      "url": "/art/emotes/ninja/2.webp"
+    },
+    {
+      "id": "surprised",
+      "url": "/art/emotes/ninja/3.webp"
+    },
+    {
+      "id": "thinking",
+      "url": "/art/emotes/ninja/4.webp"
+    },
+    {
+      "id": "sorry",
+      "url": "/art/emotes/ninja/5.webp"
+    },
+    {
+      "id": "victory",
+      "url": "/art/emotes/ninja/6.webp"
+    },
+    {
+      "id": "speechless",
+      "url": "/art/emotes/ninja/7.webp"
+    },
+    {
+      "id": "playful",
+      "url": "/art/emotes/ninja/8.webp"
+    }
+  ]
+}

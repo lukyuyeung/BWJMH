@@ -1,0 +1,7 @@
+{
+  "source": "User first screenshot image(20261006-123710).png",
+  "method": "Built-in imagegen editing: remove baked tiles/UI/lettering; preserve scene composition and character presence",
+  "sha256": "15bd858a9a04891563e832393f233377cd5b5c4cd8d35f57584768048364a463",
+  "runtime": "scene.css, projective live React controls",
+  "limitations": "Static backplate; not animated 3D models"
+}
