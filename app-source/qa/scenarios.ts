@@ -5,7 +5,18 @@ export const SCENARIOS=['right-draw','draw-reveal','dora-shine','chi','pon','dai
 export type Scenario=typeof SCENARIOS[number];
 /** Allocate REAL physical tiles once from a single 136-tile wall, including melds/discards.
  * No synthetic IDs, no duplicated tile copies and no phantom future wall tiles. */
+let lightFixtureId=0;
 export function installScenario(manager:RoomManager,room:Room,name:Scenario):void{
+ if(String(name).startsWith('winner-light:')){
+  const [,tier,seatRaw,melds]=String(name).split(':');const winner=seatRaw as Seat;
+  if(!SEATS.includes(winner)||!['none','mangan','haneman','baiman','sanbaiman','yakuman'].includes(tier!))throw Error('Invalid visual fixture');
+  installScenario(manager,room,melds==='melds'?'result-four-melds':'chinitsu');
+  if(!room.settled)manager.tsumo(room.code,room.players.find(p=>p.seat==='east')!.id);
+  const g=room.game!;if(winner!=='east'){[g.hands.east,g.hands[winner]]=[g.hands[winner],g.hands.east];[g.melds.east,g.melds[winner]]=[g.melds[winner],g.melds.east]}
+  g.currentSeat=winner;g.result!.winner=winner;g.result!.score.limit=tier as NonNullable<typeof g.result>['score']['limit'];g.result!.evaluation.yakuman=tier==='yakuman'?1:0;
+  room.events=[];delete room.cinematic;room.match.honba=++lightFixtureId;room.handMatch={...room.match};room.revision++;assertPhysical(room);return;
+ }
+
 
  const rankRise=name==='result-rank-rise';if(rankRise)name='mobile-result';
  const finishResult=['result-four-melds','result-kakan','result-closed-kan'].includes(name);if(name==='result-four-melds')name='meld-layout';

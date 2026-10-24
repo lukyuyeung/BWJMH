@@ -3,7 +3,6 @@ import './win-impact.css';
 import {discardWaits} from './discard-waits';
 import './tile-indicators64.css';
 import {createPortal} from 'react-dom';
-import {WinRush,hasWinRush,WIN_RUSH_DELAY} from './win-rush';
 import {LanguageButton} from './language';
 import {RiichiScratch} from './riichi-scratch';
 import {useHandInspection} from './hand-inspection';
@@ -68,7 +67,7 @@ export function PhoneTable({riichiReveal,game,pending,options,onOptions,call,err
  const opening=false;
  const ended=['won','exhaustive_draw','abortive_draw'].includes(h.phase)||r.match.finished;
  const [resultReady,setResultReady]=useState(false);
- useEffect(()=>{setResultReady(false);if(!ended||h.cinematic?.phase==='playing')return;const timer=setTimeout(()=>setResultReady(true),options.reduceEffects?0:h.result?4400+(!options.skipAnimation&&!options.reduceEffects&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&hasWinRush(game)?WIN_RUSH_DELAY:0):h.phase==='exhaustive_draw'?2400:850);return()=>clearTimeout(timer)},[ended,handKey,h.cinematic?.phase,options.skipAnimation,options.reduceEffects]);
+ useEffect(()=>{setResultReady(false);if(!ended||h.cinematic?.phase==='playing')return;const timer=setTimeout(()=>setResultReady(true),options.reduceEffects?0:h.result?4400:h.phase==='exhaustive_draw'?2400:850);return()=>clearTimeout(timer)},[ended,handKey,h.cinematic?.phase,options.skipAnimation,options.reduceEffects]);
  const remaining=Math.max(0,Math.ceil(((h.timeout.deadline??clockNow)-clockNow)/1000));
  const wind=(seat:Seat)=>winds[(seats.indexOf(seat)-seats.indexOf(h.match.dealer)+4)%4];
  const awaitingClaim=h.phase==='awaiting_claim';
@@ -107,7 +106,6 @@ export function PhoneTable({riichiReveal,game,pending,options,onOptions,call,err
   {!!preview?.length&&!opening&&!ended&&<div className="phone-waits" aria-label={hoverPreview?'出牌後聽牌預覽':'聽牌提示'} data-preview={!!hoverPreview||undefined}><small><strong className="hand-state tenpai">{hoverPreview?'聽牌預覽':'聽牌'}</strong>{previewFuriten&&<strong className="hand-state furiten">振聽</strong>}<em>未見張數 · {preview.reduce((n,w)=>n+w.remaining,0)} 枚</em></small>{preview.map(w=><span key={w.face} data-empty={w.remaining===0||undefined}><ArtworkTile tile={{id:'wait',face:w.face,red:false}} className="waiting-face-lamp"/><b>{w.remaining}<i>枚</i></b></span>)}</div>}
 
   {riichiReveal.active&&riichiReveal.tile&&!motionBusy&&<RiichiScratch key={riichiReveal.key} reveal={riichiReveal} canTsumo={h.actions.canTsumo} reduce={options.reduceEffects}/>}
-  <WinRush game={game} enabled={!options.skipAnimation&&!options.reduceEffects&&!matchMedia('(prefers-reduced-motion: reduce)').matches}/>
   <CharacterPerformance relativeSeats={order} kanTypes={Object.fromEntries(seats.map(seat=>{const m=h.melds[seat].at(-1);return[seat,m?.type==='kan'?(!m.open?'Ankan':m.tiles.findIndex(t=>t.id===m.calledTile.id)<3?'Kakan':'Daiminkan'):undefined]}))} events={h.events??[]} characters={characters} skip={options.skipAnimation} suspended={h.cinematic?.phase==='playing'} reduce={options.reduceEffects} critical={false} handKey={handKey} settled={ended} onSkip={()=>{}}/>
   <GlobalCinematic state={h.cinematic} skip={options.skipAnimation&&!h.cinematic?.demo} reduce={options.reduceEffects&&!h.cinematic?.demo} winnerName={r.players.find(p=>p.seat===h.cinematic?.winner)?.name??''}/>
   {ended&&resultReady&&h.cinematic?.phase!=='playing'&&<ResultOverlay game={game} characters={characters} pending={pending} reduce={options.reduceEffects} renderTile={tile=><ArtworkTile key={tile.id} tile={tile}/>} renderMeld={(meld,seat,index)=><Meld key={index} meld={meld} seat={seat}/>} onNext={()=>doAction('game:next-hand')} onRestart={()=>window.dispatchEvent(new Event('demo:restart'))}/>}

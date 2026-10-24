@@ -1,4 +1,4 @@
-import {hasWinRush,WIN_RUSH_DELAY} from './win-rush';
+import {createWinnerLight,winImpactTier,WIN_FLIP_LEAD,WIN_FLIP_DURATION,WIN_LIGHT_END} from './win-impact';
 import {doraFromIndicator} from '../engine/deadwall.js';
 import {publishTableMotion,presentTableMotion,cancelTableMotion} from './motion-state.js';
 import React,{useEffect,useRef} from 'react';
@@ -42,6 +42,7 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
   const projection=camera.projectionMatrix.clone(),handProjection=handCamera.projectionMatrix.clone();
   const armLayer=document.createElement('div');armLayer.className='physical-hand-overlay';stage.append(armLayer);
   const marker=document.createElement('span');marker.className='physical-last-marker';marker.style.display='none';root.append(marker);
+  const winnerLight=createWinnerLight();stage.append(winnerLight);const meldLights:HTMLDivElement[]=[];
   let hands:Awaited<ReturnType<typeof loadTableHands>>|undefined,previousCounts:number[]|undefined;
   const lastHandPositions=new Map<string,T.Vector3>(),placedRiichi=new Set<string>(),drawMotions=new Map<Seat,string>();
   let stickMaterial:T.MeshBasicMaterial|undefined;
@@ -190,13 +191,14 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    const canReveal=!!winner&&winningHand.length>0&&h.cinematic?.phase!=='playing'||drawReveal;
    const revealIdentity=canReveal?key+':'+(drawReveal?'tenpai':winner):'';
    if(revealIdentity!==revealKey){revealKey=revealIdentity;revealStart=performance.now()}
-   const rushDelay=!drawReveal&&!reduce&&!localStorage.getItem('bunny-options')?.includes('"skipAnimation":true')&&hasWinRush(game)?WIN_RUSH_DELAY:0;
+   const impactTier=!drawReveal&&!reduce&&!localStorage.getItem('bunny-options')?.includes('"skipAnimation":true')&&canReveal?winImpactTier(game):null;
+   const revealLead=impactTier?WIN_FLIP_LEAD:900;
    const revealAge=canReveal?(performance.now()-revealStart):0;
-   const revealProgress=(i:number)=>reduce?1:Math.max(0,Math.min(1,(revealAge-(drawReveal?200:900+rushDelay))/650));
-   const revealing=canReveal&&!reduce&&revealAge<2300+rushDelay;
-   const impact=!drawReveal&&rushDelay>0&&canReveal&&!reduce;
-   stage!.dataset.winImpact=impact?(revealAge<900+rushDelay?'anticipation':revealAge<1550+rushDelay?'flip':revealAge<2300+rushDelay?'landing':'done'):'none';
-   root!.dataset.winnerReveal=canReveal?(revealAge<900+rushDelay&&!reduce?'waiting':revealing?'flipping':'shown'):'none';
+   const revealProgress=(_i:number)=>reduce?1:Math.max(0,Math.min(1,(revealAge-(drawReveal?200:revealLead))/WIN_FLIP_DURATION));
+   const revealing=canReveal&&!reduce&&revealAge<(impactTier?WIN_LIGHT_END:2300);
+   const impactPhase=!impactTier?'none':revealAge<revealLead?'anticipation':revealAge<revealLead+WIN_FLIP_DURATION?'flip':revealAge<WIN_LIGHT_END?'landing':'done';
+   stage!.dataset.winImpact=impactPhase;
+   root!.dataset.winnerReveal=canReveal?(revealAge<revealLead&&!reduce?'waiting':revealing?'flipping':'shown'):'none';
    root!.dataset.revealedWinner=winner??'';
    const movingHands=hands?.update()??false;
    marker.style.display='none';boardTiles.clear();handTiles.clear();
@@ -246,6 +248,14 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
     const sx=(rect.left-base.left+rect.width/2)/scale,sy=(rect.top-base.top+rect.height/2)/scale,a=new T.Vector3((sx+panorama)/renderWidth*2-1,1-sy/H*2,-1).unproject(camera),b=new T.Vector3((sx+panorama)/renderWidth*2-1,1-sy/H*2,1).unproject(camera),q=a.clone().lerp(b,(7-a.z)/(b.z-a.z));if(button.dataset.tileId)lastHandPositions.set(button.dataset.tileId,new T.Vector3(q.x,-q.y,7));
     tile(handTiles,(rect.left-base.left+rect.width/2)/scale,(rect.top-base.top+rect.height/2)/scale,-rect.width/scale*.22,button.dataset.tileId===concealedDrawId||h.phase==='exhaustive_draw'&&!h.settlement?.tenpai.includes(game.you.seat)?undefined:{id:button.dataset.tileId??'',face:element.dataset.face,red:element.dataset.red==='true'},0,false,rect.width/scale,rect.height/scale,rect.width/scale*.44,undefined,true,button.classList.contains('riichi-choice'));
    }
+   // Project only winner tile meshes, including their actual seat orientation.
+   const litTiles=boardTiles.children.filter(o=>o.name==='winning-hand'&&o.userData.seat===winner);
+   const bounds=(objects:T.Object3D[])=>{const points:{x:number;y:number}[]=[];for(const object of objects){object.updateWorldMatrix(true,true);const box=new T.Box3().setFromObject(object);for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const v=new T.Vector3(x,y,z).project(camera);points.push({x:(v.x+1)*renderWidth/2-panorama,y:(1-v.y)*H/2})}}if(!points.length)return null;return {left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))}};
+   const area=impactTier?bounds(litTiles):null,lit=!!area&&impactPhase!=='done';
+   winnerLight.dataset.active=String(lit);winnerLight.dataset.phase=impactPhase;winnerLight.dataset.tier=impactTier??'';winnerLight.dataset.seat=winner??'';
+   if(area){const vertical=order.indexOf(winner!)%2===1,w=area.right-area.left,h=area.bottom-area.top,long=vertical?h:w,short=vertical?w:h,height=short+100;Object.assign(winnerLight.style,{left:(area.left+area.right)/2+'px',top:(area.top+area.bottom)/2+'px',width:long+50+'px',height:height+'px',transform:`translate(-50%,-50%) rotate(${vertical?90:0}deg)`});winnerLight.style.setProperty('--tile-top',(50-short/height*50)+'%');winnerLight.style.setProperty('--tile-height',short/height*100+'%');}
+   const winnerMelds=impactTier?boardTiles.children.filter(o=>o.name==='meld'&&o.userData.seat===winner):[];
+   for(let i=0;i<Math.max(winnerMelds.length,meldLights.length);i++){if(!meldLights[i]){const el=document.createElement('div');el.className='winner-meld-light';el.setAttribute('aria-hidden','true');stage!.append(el);meldLights.push(el)}const el=meldLights[i]!,b=winnerMelds[i]?bounds([winnerMelds[i]!]):null;el.dataset.active=String(!!b&&impactPhase==='landing');el.dataset.seat=winner??'';if(b){Object.assign(el.style,{left:b.left-3+'px',top:b.top-3+'px',width:b.right-b.left+6+'px',height:b.bottom-b.top+6+'px'});el.style.setProperty('--light',impactTier==='baiman'?'#77e9ff':impactTier==='yakuman'?'#c7a0ff':'#ffe8a1')}}
    root!.dataset.doraShineCount=String([...boardTiles.children,...handTiles.children].filter(o=>o.userData.dora).length);root!.dataset.faceLitCount=String(boardTiles.children.filter(group=>group.userData.faceLit).length);root!.dataset.riichiLampCount=String(stage!.querySelectorAll('.phone-hand-tiles>button.riichi-choice').length);root!.dataset.handArtCount=String(handTiles.children.filter(group=>group.name!=='opposite-concealed').length);root!.dataset.handMoving=String(movingHands);if(import.meta.env.DEV){root!.dataset.doraFaces=JSON.stringify([...boardTiles.children,...handTiles.children].filter(o=>o.userData.dora).map(o=>o.userData.doraFace));root!.dataset.shinePhase=String(shine.uniforms.clock!.value)}if(import.meta.env.DEV)root!.dataset.handPose=JSON.stringify(hands?.debug()??[]);
    for(const object of [...armScene.children])if(object.name==='carried-riichi')armScene.remove(object);
    let carriedSticks=0;for(const [relative,seat] of order.entries()){const id=riichiTiles[seat];if(!id||!stickMaterial)continue;const pose=hands?.riichiPose('riichi:'+seat+':'+id);if(!pose)continue;const stick=new T.Mesh(planeGeometry(72,18),stickMaterial);stick.name='carried-riichi';stick.position.copy(pose);stick.rotation.z=yaws[relative]!;armScene.add(stick);carriedSticks++}root!.dataset.riichiCarried=String(carriedSticks);
@@ -270,11 +280,11 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
   function onRestored(){contextLost=false;schedule()}
   function schedule(){if(!disposed&&!frame)frame=requestAnimationFrame(render)}
   function interaction(){schedule();for(const ms of [60,130])setTimeout(()=>{if(!disposed)schedule()},ms)}
-  const observer=new MutationObserver(mutations=>{if(mutations.some(m=>{const e=m.target instanceof HTMLElement?m.target:m.target.parentElement;return e&&!e.closest('.phone-clock,.physical-renderer,.score-transition,.phone-result,.gala-result,.automatic-panel,.phone-panel,.phone-menu,.phone-options')&&!(e===stage&&m.attributeName==='data-tile-renderer')&&(m.type==='childList'||m.attributeName!=='class'||e!==stage)}))schedule()});
+  const observer=new MutationObserver(mutations=>{if(mutations.some(m=>{const e=m.target instanceof HTMLElement?m.target:m.target.parentElement;return e&&!e.closest('.winner-tile-light,.winner-meld-light,.phone-clock,.physical-renderer,.score-transition,.phone-result,.gala-result,.automatic-panel,.phone-panel,.phone-menu,.phone-options')&&!(e===stage&&m.attributeName==='data-tile-renderer')&&(m.type==='childList'||m.attributeName!=='class'||e!==stage)}))schedule()});
   function fallbackFrame(){if(disposed)return;requestAnimationFrame(()=>{if(disposed)return;const g=latest.current.game;presentTableMotion(g.room.code,g.hand.revision,false);fallbackTimer=window.setTimeout(fallbackFrame,50)})}
   let fallbackTimer:number|undefined;
   void prepare().catch(()=>{if(!disposed){stage.dataset.tileRenderer='fallback';stage.classList.remove('physical-ready');fallbackFrame()}});
-  return()=>{cancelAnimationFrame(shineFrame);clearTimeout(haloTimer);clearTimeout(shimmerTimer);clearTimeout(fallbackTimer);window.removeEventListener('bunny:cancel-motion',cancelMotion);publishTableMotion(false);disposed=true;cancelAnimationFrame(frame);observer.disconnect();stage.removeEventListener('pointerover',interaction);stage.removeEventListener('pointerout',interaction);window.removeEventListener('resize',schedule);delete stage.dataset.winImpact;stage.classList.remove('physical-ready');marker.remove();armLayer.remove();armRenderer?.dispose();armRenderer?.forceContextLoss();if(renderer){renderer.domElement.removeEventListener('webglcontextlost',onLost);renderer.domElement.removeEventListener('webglcontextrestored',onRestored);renderer.domElement.remove();renderer.dispose();renderer.forceContextLoss()}hands?.dispose();env?.dispose();for(const geo of geometries)geo.dispose();for(const m of materials)m.dispose();for(const t of textures)t.dispose();for(const s of [scene,handScene,armScene])s.traverse(o=>{if(o instanceof T.DirectionalLight)o.shadow.dispose()});redraw.current=()=>{}};
+  return()=>{cancelAnimationFrame(shineFrame);clearTimeout(haloTimer);clearTimeout(shimmerTimer);clearTimeout(fallbackTimer);window.removeEventListener('bunny:cancel-motion',cancelMotion);publishTableMotion(false);disposed=true;cancelAnimationFrame(frame);observer.disconnect();stage.removeEventListener('pointerover',interaction);stage.removeEventListener('pointerout',interaction);window.removeEventListener('resize',schedule);delete stage.dataset.winImpact;stage.classList.remove('physical-ready');marker.remove();winnerLight.remove();meldLights.forEach(el=>el.remove());armLayer.remove();armRenderer?.dispose();armRenderer?.forceContextLoss();if(renderer){renderer.domElement.removeEventListener('webglcontextlost',onLost);renderer.domElement.removeEventListener('webglcontextrestored',onRestored);renderer.domElement.remove();renderer.dispose();renderer.forceContextLoss()}hands?.dispose();env?.dispose();for(const geo of geometries)geo.dispose();for(const m of materials)m.dispose();for(const t of textures)t.dispose();for(const s of [scene,handScene,armScene])s.traverse(o=>{if(o instanceof T.DirectionalLight)o.shadow.dispose()});redraw.current=()=>{}};
  },[]);
  return <div className="physical-renderer" ref={node} aria-hidden="true"/>;
 }
