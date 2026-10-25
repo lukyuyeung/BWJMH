@@ -72,3 +72,7 @@ Object.assign(en,{'聽牌預覽':'Wait preview','出牌後聽牌預覽':'Waits a
 Object.assign(en,{'載入素材':'Loading art','正在準備牌桌':'Preparing table','重新載入':'Retry loading','素材載入未完成，請重試':'Some art could not load. Tap to retry.','四人對戰載入畫面':'Four-player loading screen'});
 
 Object.assign(en,{'逾時 · BOT 正在代你摸切':'Timed out · BOT is drawing and discarding for you','返回自己操作':'Take back control','請先返回自己操作。':'Take back control before playing.'});
+
+Object.assign(en,{'已收到選擇 · 等待其他玩家回應':'Choice received · Waiting for other players','三家榮和流局':'Triple Ron · Abortive draw','零點終局':'Match ends at zero points'});
+
+Object.assign(en,{'真人對戰 · 四人東':'Multiplayer · East match','25,000 點起始 · 任何人零點或負分即終局':'Start at 25,000 points · Zero or negative points ends the match','東風戰':'East match','真人配對接入中':'Matchmaking integration in progress','先試玩 Bot 對局 →':'Try a Bot match →','入場額按最終點數比例結算，最多輸入場額。真人配對與錢包未開放，現在不扣款。':'Settlement follows final points, with losses capped at entry. Matchmaking and wallets are not live; no charge.'});

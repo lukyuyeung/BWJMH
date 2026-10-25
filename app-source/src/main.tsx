@@ -28,12 +28,14 @@ export type Game={
  you:{playerId:string;seat:Seat;hand:Tile[];drawnTileId?:string};
  hand:{
   currentSeat:Seat;phase:'awaiting_discard'|'awaiting_draw'|'awaiting_claim'|'won'|'exhaustive_draw'|'abortive_draw';abortiveReason?:string;turnNumber:number;match:Room['match'];revision:number;discardTileIds:string[];wallRemaining:number;
-  cinematic?:SharedCinematic;wallSlots:{side:Seat;stack:number;level:0|1;occupied:boolean;dead:boolean;indicator?:Tile}[];timeout:{deadline:number|null;serverNow:number};events:PerformanceEvent[];assistance:{waits:{face:string;remaining:number}[];riichi:Record<string,{face:string;remaining:number}[]>};settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:Tile[];tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,Tile[]>>};
+  cinematic?:SharedCinematic;wallSlots:{side:Seat;stack:number;level:0|1;occupied:boolean;dead:boolean;indicator?:Tile}[];timeout:{deadline:number|null;serverNow:number};events:PerformanceEvent[];assistance:{waits:{face:string;remaining:number}[];riichi:Record<string,{face:string;remaining:number}[]>};settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:Tile[];winningHands?:Partial<Record<Seat,Tile[]>>;tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,Tile[]>>};
   opening?:{startedAt:number;dice:[number,number];breakSide:Seat;breakStack:number;dealer:Seat;dealSlots:number[]};uraIndicators?:Tile[];
   doraIndicators:Tile[];yourDora:{indicatorDora:number;akaDora:number;total:number};rinshanRemaining:number;
   discards:Record<Seat,Tile[]>;concealedCounts:Record<Seat,number>;
   actions:{canAbortiveDraw?:boolean;canDraw:boolean;canDiscard:boolean;canTsumo:boolean;canRon:boolean;canWinClaim:boolean;canPassClaim:boolean;canPon:boolean;canKan:boolean;ankanTileIds:string[];kakanTileIds:string[];chiSequences:string[][];riichiDiscardIds:string[]};
   melds:Record<Seat,Meld[]>;riichi:Record<Seat,boolean>;waits:string[];furiten:boolean;
+  claimResponse?:{kind:'pass'|'ron'|'pon'|'kan'|'chi';faces?:string[]};
+  results?:NonNullable<Game['hand']['result']>[];
   claim?:{discarder:Seat;tile:Tile};
   result?:{winner:Seat;method:'tsumo'|'ron';from?:Seat;evaluation:{han:number;yakuman:number;yaku:{name:string;han:number;yakuman?:number}[]};dora:{total:number;indicatorDora:number;akaDora:number;uraDora:number};score:{han:number;fu:number;limit:string;payment:{total:number;ron?:number;eachTsumo?:number;dealerTsumo?:number;nonDealerTsumo?:number}}};
  }

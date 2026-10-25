@@ -42,7 +42,7 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
   const projection=camera.projectionMatrix.clone(),handProjection=handCamera.projectionMatrix.clone();
   const armLayer=document.createElement('div');armLayer.className='physical-hand-overlay';stage.append(armLayer);
   const marker=document.createElement('span');marker.className='physical-last-marker';marker.style.display='none';root.append(marker);
-  const winnerLight=createWinnerLight();stage.append(winnerLight);const meldLights:HTMLDivElement[]=[];
+  const winnerLight=createWinnerLight();stage.append(winnerLight);const meldLights:HTMLDivElement[]=[],extraWinnerLights:HTMLDivElement[]=[];
   let hands:Awaited<ReturnType<typeof loadTableHands>>|undefined,previousCounts:number[]|undefined;
   const lastHandPositions=new Map<string,T.Vector3>(),placedRiichi=new Set<string>(),drawMotions=new Map<Seat,string>();
   let stickMaterial:T.MeshBasicMaterial|undefined;
@@ -186,12 +186,14 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    if(reduce||opening)hands?.stop();else if(previousCounts)for(let i=0;i<4;i++)if(counts[i]!>previousCounts[i]!){const point=i===2?[620-(counts[i]!-1)*31,-12]:i===1?[755,79]:i===3?[45,120+(counts[i]!-1)*31]:[655,720],id=i===0?(game.you.drawnTileId??'draw-0'):'draw-'+i+'-'+h.revision;drawMotions.set(order[i]!,id);root!.dataset.handGesture=i+':Draw';if(i===1)root!.dataset.rightDrawTarget=JSON.stringify(point);hands?.play(i,'Draw',point[0]!,point[1]!,{id,from:new T.Vector3(point[0]!,point[1]!,7)})}
 
    previousCounts=counts;
+   const wins=h.results??(h.result?[h.result]:[]),winningSeats=wins.map(r=>r.winner);
    const winner=h.result?.winner,rawWinningHand=h.settlement?.winningHand??[],winningHand=rawWinningHand.length?[...sortResultTiles(rawWinningHand.slice(0,-1)),rawWinningHand.at(-1)!]:[];
+   const winnerHands=Object.fromEntries(wins.map(r=>{const tiles=h.settlement?.winningHands?.[r.winner]??(r.winner===winner?winningHand:[]);return[r.winner,tiles.length?[...sortResultTiles(tiles.slice(0,-1)),tiles.at(-1)!]:[]]})) as Partial<Record<Seat,Tile[]>>;
    const drawHands=h.phase==='exhaustive_draw'?h.settlement?.tenpaiHands:undefined;const drawReveal=!!drawHands&&Object.keys(drawHands).length>0;
    const canReveal=!!winner&&winningHand.length>0&&h.cinematic?.phase!=='playing'||drawReveal;
    const revealIdentity=canReveal?key+':'+(drawReveal?'tenpai':winner):'';
    if(revealIdentity!==revealKey){revealKey=revealIdentity;revealStart=performance.now()}
-   const impactTier=!drawReveal&&!reduce&&!localStorage.getItem('bunny-options')?.includes('"skipAnimation":true')&&canReveal?winImpactTier(game):null;
+   const impactTier=!drawReveal&&!reduce&&!localStorage.getItem('bunny-options')?.includes('"skipAnimation":true')&&canReveal?wins.map(result=>winImpactTier({...game,hand:{...h,result}})).find(Boolean)??null:null;
    const revealLead=impactTier?WIN_FLIP_LEAD:900;
    const revealAge=canReveal?(performance.now()-revealStart):0;
    const revealProgress=(_i:number)=>reduce?1:Math.max(0,Math.min(1,(revealAge-(drawReveal?200:revealLead))/WIN_FLIP_DURATION));
@@ -206,7 +208,7 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    root!.dataset.wallTiles='0';root!.dataset.inspectedFace=hover??'';root!.dataset.doraShineCount=String([...boardTiles.children,...handTiles.children].filter(o=>o.userData.dora).length);root!.dataset.faceLitCount=String(Object.values(h.discards).flat().filter(t=>hover&&t.face===hover).length);
    for(const [relative,seat] of order.entries()){
     if(relative>0){
-     const revealed=!!drawHands?.[seat]||canReveal&&winner===seat,tiles=drawHands?.[seat]?sortResultTiles(drawHands[seat]!):(revealed?winningHand:[]),count=revealed?tiles.length:h.concealedCounts[seat];
+     const revealed=!!drawHands?.[seat]||canReveal&&winningSeats.includes(seat),tiles=drawHands?.[seat]?sortResultTiles(drawHands[seat]!):(revealed?winnerHands[seat]??[]:[]),count=revealed?tiles.length:h.concealedCounts[seat];
      for(let i=0;i<count;i++){
       if(!revealed&&hands?.drawPending(drawMotions.get(seat)??'')&&i===(relative===2||relative===1?0:count-1))continue;
       const finalGap=revealed&&i===count-1?11:0,x=relative===2?620-(count-1-i)*31+finalGap:relative===1?755:45,y=relative===2?-12:relative===1&&!revealed&&count%3===2?(i===0?79:120+(i-1)*31):120+i*31+finalGap;
@@ -233,14 +235,14 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    if(!opening)for(const m of ownMelds){const closed=!m.open,added=m.type==='kan'&&m.open&&m.tiles.findIndex(t=>t.id===m.calledTile.id)<3,count=added?3:m.tiles.length,width=count*32.5+(closed?0:12);ownCursor+=width;meld(boardTiles,m,game.you.seat,785-ownCursor,725,0,1);ownCursor+=10;}
    root!.dataset.oppositeHandAngle='upright-compensated-3d';
    // Independent foreground camera keeps the 3D hand exactly under its accessible hit targets.
-   const ownWin=canReveal&&winner===game.you.seat;
+   const ownWin=canReveal&&winningSeats.includes(game.you.seat);
    if(ownWin){
     const first=stage!.querySelector<HTMLButtonElement>('.phone-hand-tiles>button')?.getBoundingClientRect();
     const sx=first?(first.left-base.left+first.width/2)/scale:150,sy=first?(first.top-base.top+first.height/2)/scale:575;
     const a=new T.Vector3((sx+panorama)/renderWidth*2-1,1-sy/H*2,-1).unproject(camera),b=new T.Vector3((sx+panorama)/renderWidth*2-1,1-sy/H*2,1).unproject(camera),q=a.clone().lerp(b,(7-a.z)/(b.z-a.z));
-    for(const [i,t] of winningHand.entries()){
-     const progress=revealProgress(i),angle=-Math.PI/2*(1-progress),mesh=tile(boardTiles,q.x+i*32.5+(i===winningHand.length-1?11:0),-q.y,21.5*Math.abs(Math.sin(angle))+7.2*Math.cos(angle),t);
-     mesh.rotateX(angle);mesh.name='winning-hand';mesh.userData.seat=winner;mesh.userData.flipProgress=progress;mesh.userData.flipAngle=angle;
+    for(const [i,t] of (winnerHands[game.you.seat]??[]).entries()){
+     const progress=revealProgress(i),angle=-Math.PI/2*(1-progress),mesh=tile(boardTiles,q.x+i*32.5+(i===(winnerHands[game.you.seat]?.length??0)-1?11:0),-q.y,21.5*Math.abs(Math.sin(angle))+7.2*Math.cos(angle),t);
+     mesh.rotateX(angle);mesh.name='winning-hand';mesh.userData.seat=game.you.seat;mesh.userData.flipProgress=progress;mesh.userData.flipAngle=angle;
     }
    }
    for(const button of ownWin?[]:stage!.querySelectorAll<HTMLButtonElement>('.phone-hand-tiles>button')){
@@ -251,11 +253,15 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    // Project only winner tile meshes, including their actual seat orientation.
    const litTiles=boardTiles.children.filter(o=>o.name==='winning-hand'&&o.userData.seat===winner);
    const bounds=(objects:T.Object3D[])=>{const points:{x:number;y:number}[]=[];for(const object of objects){object.updateWorldMatrix(true,true);const box=new T.Box3().setFromObject(object);for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const v=new T.Vector3(x,y,z).project(camera);points.push({x:(v.x+1)*renderWidth/2-panorama,y:(1-v.y)*H/2})}}if(!points.length)return null;return {left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))}};
-   const area=impactTier?bounds(litTiles):null,lit=!!area&&impactPhase!=='done';
-   winnerLight.dataset.active=String(lit);winnerLight.dataset.phase=impactPhase;winnerLight.dataset.tier=impactTier??'';winnerLight.dataset.seat=winner??'';
-   if(area){const vertical=order.indexOf(winner!)%2===1,w=area.right-area.left,h=area.bottom-area.top,long=vertical?h:w,short=vertical?w:h,height=short+100;Object.assign(winnerLight.style,{left:(area.left+area.right)/2+'px',top:(area.top+area.bottom)/2+'px',width:long+50+'px',height:height+'px',transform:`translate(-50%,-50%) rotate(${vertical?90:0}deg)`});winnerLight.style.setProperty('--tile-top',(50-short/height*50)+'%');winnerLight.style.setProperty('--tile-height',short/height*100+'%');}
-   const winnerMelds=impactTier?boardTiles.children.filter(o=>o.name==='meld'&&o.userData.seat===winner):[];
-   for(let i=0;i<Math.max(winnerMelds.length,meldLights.length);i++){if(!meldLights[i]){const el=document.createElement('div');el.className='winner-meld-light';el.setAttribute('aria-hidden','true');stage!.append(el);meldLights.push(el)}const el=meldLights[i]!,b=winnerMelds[i]?bounds([winnerMelds[i]!]):null;el.dataset.active=String(!!b&&impactPhase==='landing');el.dataset.seat=winner??'';if(b){Object.assign(el.style,{left:b.left-3+'px',top:b.top-3+'px',width:b.right-b.left+6+'px',height:b.bottom-b.top+6+'px'});el.style.setProperty('--light',impactTier==='baiman'?'#77e9ff':impactTier==='yakuman'?'#c7a0ff':'#ffe8a1')}}
+   for(let index=0;index<Math.max(wins.length,1+extraWinnerLights.length);index++){
+    if(index>0&&!extraWinnerLights[index-1]){const light=createWinnerLight();stage!.append(light);extraWinnerLights.push(light)}
+    const light=index===0?winnerLight:extraWinnerLights[index-1]!,win=wins[index],tier=impactTier&&win?winImpactTier({...game,hand:{...h,result:win}}):null;
+    const area=tier?bounds(boardTiles.children.filter(o=>o.name==='winning-hand'&&o.userData.seat===win!.winner)):null;
+    light.dataset.active=String(!!area&&impactPhase!=='done');light.dataset.phase=impactPhase;light.dataset.tier=tier??'';light.dataset.seat=win?.winner??'';
+    if(area){const vertical=order.indexOf(win!.winner)%2===1,w=area.right-area.left,h=area.bottom-area.top,long=vertical?h:w,short=vertical?w:h,height=short+100;Object.assign(light.style,{left:(area.left+area.right)/2+'px',top:(area.top+area.bottom)/2+'px',width:long+50+'px',height:height+'px',transform:`translate(-50%,-50%) rotate(${vertical?90:0}deg)`});light.style.setProperty('--tile-top',(50-short/height*50)+'%');light.style.setProperty('--tile-height',short/height*100+'%');}
+   }
+   const winnerMelds=impactTier?boardTiles.children.filter(o=>o.name==='meld'&&winningSeats.includes(o.userData.seat)):[];
+   for(let i=0;i<Math.max(winnerMelds.length,meldLights.length);i++){if(!meldLights[i]){const el=document.createElement('div');el.className='winner-meld-light';el.setAttribute('aria-hidden','true');stage!.append(el);meldLights.push(el)}const el=meldLights[i]!,b=winnerMelds[i]?bounds([winnerMelds[i]!]):null;el.dataset.active=String(!!b&&impactPhase==='landing');el.dataset.seat=winnerMelds[i]?.userData.seat??'';if(b){Object.assign(el.style,{left:b.left-3+'px',top:b.top-3+'px',width:b.right-b.left+6+'px',height:b.bottom-b.top+6+'px'});el.style.setProperty('--light',impactTier==='baiman'?'#77e9ff':impactTier==='yakuman'?'#c7a0ff':'#ffe8a1')}}
    root!.dataset.doraShineCount=String([...boardTiles.children,...handTiles.children].filter(o=>o.userData.dora).length);root!.dataset.faceLitCount=String(boardTiles.children.filter(group=>group.userData.faceLit).length);root!.dataset.riichiLampCount=String(stage!.querySelectorAll('.phone-hand-tiles>button.riichi-choice').length);root!.dataset.handArtCount=String(handTiles.children.filter(group=>group.name!=='opposite-concealed').length);root!.dataset.handMoving=String(movingHands);if(import.meta.env.DEV){root!.dataset.doraFaces=JSON.stringify([...boardTiles.children,...handTiles.children].filter(o=>o.userData.dora).map(o=>o.userData.doraFace));root!.dataset.shinePhase=String(shine.uniforms.clock!.value)}if(import.meta.env.DEV)root!.dataset.handPose=JSON.stringify(hands?.debug()??[]);
    for(const object of [...armScene.children])if(object.name==='carried-riichi')armScene.remove(object);
    let carriedSticks=0;for(const [relative,seat] of order.entries()){const id=riichiTiles[seat];if(!id||!stickMaterial)continue;const pose=hands?.riichiPose('riichi:'+seat+':'+id);if(!pose)continue;const stick=new T.Mesh(planeGeometry(72,18),stickMaterial);stick.name='carried-riichi';stick.position.copy(pose);stick.rotation.z=yaws[relative]!;armScene.add(stick);carriedSticks++}root!.dataset.riichiCarried=String(carriedSticks);
@@ -284,7 +290,7 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
   function fallbackFrame(){if(disposed)return;requestAnimationFrame(()=>{if(disposed)return;const g=latest.current.game;presentTableMotion(g.room.code,g.hand.revision,false);fallbackTimer=window.setTimeout(fallbackFrame,50)})}
   let fallbackTimer:number|undefined;
   void prepare().catch(()=>{if(!disposed){stage.dataset.tileRenderer='fallback';stage.classList.remove('physical-ready');fallbackFrame()}});
-  return()=>{cancelAnimationFrame(shineFrame);clearTimeout(haloTimer);clearTimeout(shimmerTimer);clearTimeout(fallbackTimer);window.removeEventListener('bunny:cancel-motion',cancelMotion);publishTableMotion(false);disposed=true;cancelAnimationFrame(frame);observer.disconnect();stage.removeEventListener('pointerover',interaction);stage.removeEventListener('pointerout',interaction);window.removeEventListener('resize',schedule);delete stage.dataset.winImpact;stage.classList.remove('physical-ready');marker.remove();winnerLight.remove();meldLights.forEach(el=>el.remove());armLayer.remove();armRenderer?.dispose();armRenderer?.forceContextLoss();if(renderer){renderer.domElement.removeEventListener('webglcontextlost',onLost);renderer.domElement.removeEventListener('webglcontextrestored',onRestored);renderer.domElement.remove();renderer.dispose();renderer.forceContextLoss()}hands?.dispose();env?.dispose();for(const geo of geometries)geo.dispose();for(const m of materials)m.dispose();for(const t of textures)t.dispose();for(const s of [scene,handScene,armScene])s.traverse(o=>{if(o instanceof T.DirectionalLight)o.shadow.dispose()});redraw.current=()=>{}};
+  return()=>{cancelAnimationFrame(shineFrame);clearTimeout(haloTimer);clearTimeout(shimmerTimer);clearTimeout(fallbackTimer);window.removeEventListener('bunny:cancel-motion',cancelMotion);publishTableMotion(false);disposed=true;cancelAnimationFrame(frame);observer.disconnect();stage.removeEventListener('pointerover',interaction);stage.removeEventListener('pointerout',interaction);window.removeEventListener('resize',schedule);delete stage.dataset.winImpact;stage.classList.remove('physical-ready');marker.remove();winnerLight.remove();extraWinnerLights.forEach(el=>el.remove());meldLights.forEach(el=>el.remove());armLayer.remove();armRenderer?.dispose();armRenderer?.forceContextLoss();if(renderer){renderer.domElement.removeEventListener('webglcontextlost',onLost);renderer.domElement.removeEventListener('webglcontextrestored',onRestored);renderer.domElement.remove();renderer.dispose();renderer.forceContextLoss()}hands?.dispose();env?.dispose();for(const geo of geometries)geo.dispose();for(const m of materials)m.dispose();for(const t of textures)t.dispose();for(const s of [scene,handScene,armScene])s.traverse(o=>{if(o instanceof T.DirectionalLight)o.shadow.dispose()});redraw.current=()=>{}};
  },[]);
  return <div className="physical-renderer" ref={node} aria-hidden="true"/>;
 }

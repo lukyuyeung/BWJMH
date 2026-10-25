@@ -11,10 +11,10 @@ export class TurnClock{
   if(room.actionDeadline!==undefined&&room.actionDeadline!==turn.deadline)turn.deadline=room.actionDeadline;
   if(now>=turn.nextAutoAt&&this.manager.advanceAutoPlay(room.code)){turn.nextAutoAt=now+650;room.revision++;return true;}
   if(now<turn.deadline)return false;
-  const before=JSON.stringify(g);
+  const state=()=>JSON.stringify({game:g,pending:room.pendingClaims,auto:room.players.map(p=>p.autoPlay)});const before=state();
   const targets=room.players.filter(p=>!p.isBot&&(g.phase==='awaiting_claim'?this.manager.getPlayerGameState(room.code,p.id).hand.actions.canPassClaim:p.seat===g.currentSeat));
   for(const p of targets){if(room.settled)break;this.manager.expirePlayerTurn(room.code,p.id,now);}
-  const changed=before!==JSON.stringify(g);if(changed){room.revision++;turn.nextAutoAt=now+650;}return changed;
+  const changed=before!==state();if(changed){room.revision++;turn.nextAutoAt=now+650;}return changed;
  }
  forget(code:string){this.turns.delete(code);}
 }

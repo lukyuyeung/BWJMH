@@ -7,7 +7,7 @@ import { randomInt, randomUUID } from 'node:crypto';
 import { DEFAULT_RULESET, normalizeRuleset, type Ruleset } from './rules.js';
 import {getLegalDiscardIds,createStandardWall} from '@bunny/riichi-engine';
 import { createMatchState, advanceMatch, calculateNotenPayments, rankScores, type MatchState } from './match.js';
-import { createShuffledWall, dealInitialHands, createHandState, drawTile, discardTile, declareTsumo, declareRon, passRon, getTsumoEvaluation, getRiichiDiscardIds, getPlayerWaits, isFuriten, declareRiichiAndDiscard, getClaimOptions, claimChi, claimPon, claimKan, passClaim, declareAnkan, declareKakan, getAnkanTileIds, getKakanTileIds, getVisibleDora, getBonusDoraForSeat, SEATS, type HandState, type Seat } from '@bunny/riichi-engine';
+import { createShuffledWall, dealInitialHands, createHandState, drawTile, discardTile, declareTsumo, declareRon, declareRons, passRon, getTsumoEvaluation, getRiichiDiscardIds, getPlayerWaits, isFuriten, declareRiichiAndDiscard, getClaimOptions, claimChi, claimPon, claimKan, passClaim, declareAnkan, declareKakan, getAnkanTileIds, getKakanTileIds, getVisibleDora, visibleUraIndicators, getBonusDoraForSeat, SEATS, type HandState, type Seat } from '@bunny/riichi-engine';
 
 export interface Player {
   id: string;
@@ -24,6 +24,7 @@ export interface Player {
 
 export type RoomPhase = 'lobby' | 'playing';
 
+export type ClaimResponse={kind:'pass'|'ron'|'pon'|'kan'|'chi';faces?:import('@bunny/riichi-engine').TileFace[]};
 export interface Room {
   code: string;
   hostPlayerId: string;
@@ -31,6 +32,7 @@ export interface Room {
   players: Player[];
   game?: HandState;
   scores: Record<Seat, number>;
+  pendingClaims?:{tileId:string;responses:Partial<Record<Seat,ClaimResponse>>};
   pendingRiichi?:{seat:Seat;discardId:string};
   riichiPot: number;
   settled: boolean;
@@ -90,7 +92,7 @@ export interface PlayerGameState {
     events:PresentationEvent[];
     cinematic?:CinematicState;
     assistance:{waits:{face:import("@bunny/riichi-engine").TileFace;remaining:number}[];riichi:Record<string,{face:import("@bunny/riichi-engine").TileFace;remaining:number}[]>};
-    settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:import("@bunny/riichi-engine").Tile[];tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>};
+    settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:import("@bunny/riichi-engine").Tile[];winningHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>;tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>};
     doraIndicators: import('@bunny/riichi-engine').Tile[];
     yourDora: { indicatorDora:number; akaDora:number; total:number };
     rinshanRemaining: number;
@@ -101,6 +103,9 @@ export interface PlayerGameState {
     riichi: Record<Seat, boolean>;
     waits: import('@bunny/riichi-engine').TileFace[];
     furiten: boolean;
+    claimResponse?:ClaimResponse;
+    uraIndicators?:import('@bunny/riichi-engine').Tile[];
+    results?:import('@bunny/riichi-engine').WinResult[];
     claim?: { discarder: Seat; tile: import('@bunny/riichi-engine').Tile };
     result?: HandState['result'];
   };
@@ -221,12 +226,42 @@ export class RoomManager {
   }
 
   tsumo(code: string, playerId: string): Room { const room=this.requirePlayingRoom(code); const player=this.requirePlayer(room,playerId); declareTsumo(room.game!,player.seat); this.settleWin(room); return room; }
-  ron(code: string, playerId: string): Room { const room=this.requirePlayingRoom(code); const player=this.requirePlayer(room,playerId); declareRon(room.game!,player.seat); this.settleWin(room); return room; }
+  ron(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'ron'})}
   passRon(code:string,playerId:string):Room{return this.passClaim(code,playerId)}
-  passClaim(code:string,playerId:string):Room{const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);passClaim(room.game!,player.seat);this.settleIfExhaustive(room);return room;}
-  chi(code:string,playerId:string,faces:import('@bunny/riichi-engine').TileFace[]):Room{const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);claimChi(room.game!,player.seat,faces);delete room.pendingRiichi;this.record(room,'CHI',player.seat);return room;}
-  pon(code:string,playerId:string):Room{const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);claimPon(room.game!,player.seat);delete room.pendingRiichi;this.record(room,'PON',player.seat);return room;}
-  kan(code:string,playerId:string):Room{const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);claimKan(room.game!,player.seat);delete room.pendingRiichi;this.record(room,'KAN',player.seat);return room;}
+  passClaim(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'pass'})}
+  chi(code:string,playerId:string,faces:import('@bunny/riichi-engine').TileFace[]):Room{return this.submitClaim(code,playerId,{kind:'chi',faces})}
+  pon(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'pon'})}
+  kan(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'kan'})}
+  private submitClaim(code:string,playerId:string,response:ClaimResponse):Room{
+    const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId),g=room.game!,claim=g.claim;
+    const options=claim?.options[player.seat];
+    if(g.phase!=='awaiting_claim'||!claim||!options||claim.passed.includes(player.seat)||!(options.ron||options.pon||options.kan||options.chiSequences.length))throw new RoomError('NOT_ELIGIBLE','No claim is available.');
+    if(response.kind==='chi'&&!options.chiSequences.some(seq=>JSON.stringify([...seq].sort())===JSON.stringify([...(response.faces??[])].sort()))||response.kind!=='chi'&&response.kind!=='pass'&&!options[response.kind])throw new RoomError('CLAIM_NOT_AVAILABLE','That claim is not legal.');
+    if(room.pendingClaims?.tileId!==claim.tile.id)room.pendingClaims={tileId:claim.tile.id,responses:{}};
+    if(room.pendingClaims.responses[player.seat])throw new RoomError('ALREADY_RESPONDED','Your response has been received.');
+    room.pendingClaims.responses[player.seat]={...response,...(response.faces?{faces:[...response.faces]}:{})};
+    this.resolveClaims(room);return room;
+  }
+  private resolveClaims(room:Room):void{
+    const g=room.game!,claim=g.claim,pending=room.pendingClaims;if(!claim||!pending)return;
+    const eligible=SEATS.filter(s=>{const o=claim.options[s];return !claim.passed.includes(s)&&(o.ron||o.pon||o.kan||o.chiSequences.length)}),responses=pending.responses;
+    const unresolved=eligible.filter(s=>!responses[s]),rons=eligible.filter(s=>responses[s]?.kind==='ron');
+    if(unresolved.some(s=>claim.options[s].ron))return;
+    if(rons.length){
+      for(const seat of eligible.filter(s=>responses[s]?.kind!=='ron'))if(claim.options[seat].ron)passClaim(g,seat);
+      declareRons(g,rons);delete room.pendingClaims;if(g.phase==='abortive_draw')this.settleIfExhaustive(room);else this.settleWin(room);return;
+    }
+    const rank=(kind:ClaimResponse['kind'])=>kind==='pon'||kind==='kan'?2:kind==='chi'?1:0;
+    const order=[(SEATS.indexOf(claim.discarder)+1)%4,(SEATS.indexOf(claim.discarder)+2)%4,(SEATS.indexOf(claim.discarder)+3)%4].map(i=>SEATS[i]!);
+    const selected=eligible.filter(s=>responses[s]&&rank(responses[s]!.kind)>0).sort((a,b)=>rank(responses[b]!.kind)-rank(responses[a]!.kind)||order.indexOf(a)-order.indexOf(b))[0];
+    if(selected){const choice=responses[selected]!;
+      if(unresolved.some(s=>claim.options[s].pon||claim.options[s].kan||choice.kind==='chi'&&claim.options[s].ron))return;
+      for(const seat of eligible.filter(s=>s!==selected))passClaim(g,seat);
+      if(choice.kind==='chi')claimChi(g,selected,choice.faces!);else if(choice.kind==='pon')claimPon(g,selected);else claimKan(g,selected);
+      delete room.pendingClaims;delete room.pendingRiichi;this.record(room,choice.kind.toUpperCase() as 'CHI'|'PON'|'KAN',selected);this.finishOnBankruptcy(room);return;
+    }
+    if(!unresolved.length){for(const seat of eligible)passClaim(g,seat);delete room.pendingClaims;this.settleIfExhaustive(room);}
+  }
   ankan(code:string,playerId:string,tileId:string):Room{const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);declareAnkan(room.game!,player.seat,tileId);this.record(room,'KAN',player.seat);return room;}
   kakan(code:string,playerId:string,tileId:string):Room{const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);declareKakan(room.game!,player.seat,tileId);this.record(room,'KAN',player.seat);return room;}
 
@@ -234,7 +269,9 @@ export class RoomManager {
     const room = this.requirePlayingRoom(code);
     const player = this.requirePlayer(room, playerId);
     const game = room.game!;
-    const claimOptions=getClaimOptions(game,player.seat);
+    const response=room.pendingClaims?.tileId===game.claim?.tile.id?room.pendingClaims?.responses[player.seat]:undefined;
+    const raw=game.phase==='awaiting_claim'&&!game.claim?.passed.includes(player.seat)?game.claim?.options[player.seat]:undefined;
+    const claimOptions=!response&&raw&&(raw.ron||raw.pon||raw.kan||raw.chiSequences.length)?raw:null;
     const own=game.hands[player.seat],counts=visibleCounts(own,game.discards,game.melds,getVisibleDora(game));
     const riichiIds=room.scores[player.seat]>=1000?getRiichiDiscardIds(game,player.seat):[];
     const assistance={waits:own.length%3===1?waitPreview(own,game.melds[player.seat].length,counts,game.melds[player.seat]):[],riichi:Object.fromEntries(riichiIds.map(id=>[id,waitPreview(own.filter(t=>t.id!==id),game.melds[player.seat].length,counts,game.melds[player.seat])]))};
@@ -247,7 +284,8 @@ export class RoomManager {
         timeout:{deadline:room.actionDeadline??null,serverNow:Date.now()},
         events:(room.events??[]).map(e=>({...e})),assistance,
         ...(room.cinematic?{cinematic:{...room.cinematic,serverNow:Date.now()}}:{}),
-        ...(room.settled?{settlement:{awardedPot:room.awardedPot??0,scoreChanges:Object.fromEntries(SEATS.map(s=>[s,room.scores[s]-(room.handStartingScores?.[s]??25000)])) as Record<Seat,number>,tenpai:game.phase==='exhaustive_draw'?SEATS.filter(s=>getPlayerWaits(game,s).length>0):[],...(game.phase==='exhaustive_draw'?{tenpaiHands:Object.fromEntries(SEATS.filter(s=>getPlayerWaits(game,s).length>0).map(s=>[s,[...game.hands[s]]]))}:{}),...(game.result?{winningHand:game.result.method==='ron'?[...game.hands[game.result.winner],game.result.winningTile]:[...game.hands[game.result.winner]]}:{})}}:{}),
+        ...(room.settled?{settlement:{awardedPot:room.awardedPot??0,scoreChanges:Object.fromEntries(SEATS.map(s=>[s,room.scores[s]-(room.handStartingScores?.[s]??25000)])) as Record<Seat,number>,tenpai:game.phase==='exhaustive_draw'?SEATS.filter(s=>getPlayerWaits(game,s).length>0):[],...(game.phase==='exhaustive_draw'?{tenpaiHands:Object.fromEntries(SEATS.filter(s=>getPlayerWaits(game,s).length>0).map(s=>[s,[...game.hands[s]]]))}:{}),...(game.result?{winningHand:game.result.method==='ron'?[...game.hands[game.result.winner],game.result.winningTile]:[...game.hands[game.result.winner]],winningHands:Object.fromEntries((game.results??[game.result]).map(r=>[r.winner,r.method==='ron'?[...game.hands[r.winner],r.winningTile]:[...game.hands[r.winner]]]))}:{})}}:{}),
+        ...((game.results??(game.result?[game.result]:[])).some(r=>game.riichi[r.winner].declared)?{uraIndicators:visibleUraIndicators(game.deadWall)}:{}),
         doraIndicators: getVisibleDora(game),
         yourDora: getBonusDoraForSeat(game, player.seat),
         rinshanRemaining: game.deadWall.rinshan.length,
@@ -278,6 +316,8 @@ export class RoomManager {
         waits: getPlayerWaits(game, player.seat),
         furiten: isFuriten(game, player.seat),
         ...(game.phase === 'awaiting_claim' && game.claim ? {claim:{ discarder: game.claim.discarder, tile: game.claim.tile }} : {}),
+        ...(response?{claimResponse:{...response}}:{}),
+        ...(game.results?{results:game.results}:{}),
         ...(game.result ? {result:game.result} : {}),
       },
     };
@@ -286,7 +326,7 @@ export class RoomManager {
 
   autoAct(code:string,playerId:string):Room{
     const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);const g=room.game!;
-    const claim=getClaimOptions(g,player.seat);if(claim){passClaim(g,player.seat);this.settleIfExhaustive(room);return room;}
+    if(this.getPlayerGameState(code,playerId).hand.actions.canPassClaim){this.passClaim(code,playerId);return room;}
     if(g.currentSeat!==player.seat)return room;
     if(g.phase==='awaiting_draw'){this.draw(code,playerId);return room;}
     if(g.phase==='awaiting_discard'){const tileId=getLegalDiscardIds(g,player.seat).at(-1);if(tileId)discardTile(g,player.seat,tileId);this.settleIfExhaustive(room);return room;}
@@ -307,7 +347,7 @@ export class RoomManager {
     for(const player of room.players.filter(p=>!p.isBot&&p.autoPlay)){
       const state=this.getPlayerGameState(code,player.id);
       if(!state.hand.actions.canPassClaim&&!(g.currentSeat===player.seat&&['awaiting_draw','awaiting_discard'].includes(g.phase)))continue;
-      const before=JSON.stringify(g);this.autoAct(code,player.id);if(before!==JSON.stringify(g))return true;
+      const before=JSON.stringify({game:g,pending:room.pendingClaims});this.autoAct(code,player.id);if(before!==JSON.stringify({game:g,pending:room.pendingClaims}))return true;
     }return false;
   }
   resumeControl(code:string,playerId:string):Room{
@@ -335,38 +375,51 @@ export class RoomManager {
   getResumeToken(code:string,playerId:string):string{return this.requirePlayer(this.requireRoom(code),playerId).resumeToken}
   private settleIfExhaustive(room:Room):void{
     if(room.game?.phase!=='awaiting_claim')delete room.pendingRiichi;
-    if(room.settled||!room.game||!['exhaustive_draw','abortive_draw'].includes(room.game.phase))return;if(room.game.phase==='abortive_draw'){room.settled=true;advanceMatch(room.match,true,room.rules.matchLength,true);return;}const tenpai=SEATS.filter(s=>getPlayerWaits(room.game!,s).length>0);const payments=calculateNotenPayments(tenpai);for(const s of SEATS)room.scores[s]=(room.scores[s]??0)+(payments[s]??0);room.settled=true;advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);this.finishOnBankruptcy(room);if(room.match.finished)room.finalRanking=rankScores(room.scores);
+    if(room.settled||!room.game)return;if(!['exhaustive_draw','abortive_draw'].includes(room.game.phase)){this.finishOnBankruptcy(room);return;}if(room.game.phase==='abortive_draw'){room.settled=true;advanceMatch(room.match,true,room.rules.matchLength,true);this.finishOnBankruptcy(room);return;}const tenpai=SEATS.filter(s=>getPlayerWaits(room.game!,s).length>0);const payments=calculateNotenPayments(tenpai);for(const s of SEATS)room.scores[s]=(room.scores[s]??0)+(payments[s]??0);room.settled=true;advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);this.finishOnBankruptcy(room);if(room.match.finished)room.finalRanking=rankScores(room.scores);
   }
 
-  private finishOnBankruptcy(room:Room):void{if(room.rules.bankruptcyEnd&&Object.values(room.scores).some(score=>score<0))room.match.finished=true;}
+  private finishOnBankruptcy(room:Room):void{
+    if(room.rules.bankruptcyEnd&&!room.pendingRiichi&&Object.values(room.scores).some(score=>score<=0)){
+      room.match.finished=true;
+      if(!room.settled){room.settled=true;room.game!.phase='abortive_draw';room.game!.abortiveReason='bankruptcy';delete room.game!.claim;delete room.pendingClaims;}
+    }
+    if(room.match.finished){
+      // Close the point ledger as well as the match: no unowned sticks remain at cash settlement.
+      const first=rankScores(room.scores)[0]!;if(room.riichiPot){room.scores[first]+=room.riichiPot;room.awardedPot=(room.awardedPot??0)+room.riichiPot;room.riichiPot=0;}
+      room.finalRanking=rankScores(room.scores);
+    }
+  }
 
   private settleWin(room:Room):void{
     if(room.settled||!room.game?.result)return;
     const pending=room.pendingRiichi,result=room.game.result;
     if(pending&&result.method==='ron'&&result.from===pending.seat&&result.winningTile.id===pending.discardId){room.scores[pending.seat]+=1000;room.riichiPot-=1000;const declaration=room.game.riichi[pending.seat];declaration.declared=false;declaration.doubleRiichi=false;declaration.ippatsuEligible=false;delete declaration.declarationTurn;}
     delete room.pendingRiichi;
-    const r=room.game.result,p=r.score.payment,w=r.winner; const honba=room.match.honba;const finalDealerWin=w===room.match.dealer&&room.match.handNumber===4&&(room.rules.matchLength==='tonpuusen'||room.match.roundWind==='south');
-    if(r.method==='ron'&&r.from&&p.ron){const amount=p.ron+honba*300;room.scores[r.from]=(room.scores[r.from]??0)-amount;room.scores[w]=(room.scores[w]??0)+amount;}
-    else if(r.method==='tsumo'){for(const s of SEATS){if(s===w)continue;const base=w===room.match.dealer?p.eachTsumo:(s===room.match.dealer?p.dealerTsumo:p.nonDealerTsumo);if(base){const amount=base+honba*100;room.scores[s]=(room.scores[s]??0)-amount;room.scores[w]=(room.scores[w]??0)+amount;}}}
-    this.record(room,r.method==='ron'?'RON':'TSUMO',w);const limit=limitPresentation(r.score);if(limit)this.record(room,limit,w);
+    const all=room.game.results??[room.game.result];
+    const r=all[0]!,w=r.winner,honba=room.match.honba;
+    for(const win of all){const p=win.score.payment,w=win.winner;
+      if(win.method==='ron'&&win.from&&p.ron){const amount=p.ron+honba*300;room.scores[win.from]-=amount;room.scores[w]+=amount;}
+      else if(win.method==='tsumo')for(const seat of SEATS){if(seat===w)continue;const base=w===room.match.dealer?p.eachTsumo:seat===room.match.dealer?p.dealerTsumo:p.nonDealerTsumo;if(base){room.scores[seat]-=base+honba*100;room.scores[w]+=base+honba*100}}
+      this.record(room,win.method==='ron'?'RON':'TSUMO',w);const limit=limitPresentation(win.score);if(limit)this.record(room,limit,w);
+    }
     const trigger=cinematicTrigger(r.evaluation);
     if(trigger){const asset=CINEMATIC_ASSETS[trigger],now=Date.now();room.cinematic={id:room.eventSequence??0,trigger,winner:w,character:({east:'yellow',south:'king',west:'ninja',north:'wizard'} as const)[w],startedAt:now,endsAt:now+(asset?.durationMs??1800),phase:'playing',serverNow:now,...(asset?{video:asset.video,...(asset.voice?{voice:asset.voice}:{}),...(asset.sound?{sound:asset.sound}:{}),...(asset.image?{image:asset.image}:{}),...(asset.particles?{particles:true}:{})}:{})};}
     room.awardedPot=room.riichiPot;room.scores[w]=(room.scores[w]??0)+room.riichiPot; room.riichiPot=0; room.settled=true;
-    advanceMatch(room.match,w===room.match.dealer,room.rules.matchLength);
-    if(room.rules.agariYame&&finalDealerWin&&room.scores[w]>=30000&&rankScores(room.scores)[0]===w)room.match.finished=true;this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores);
+    advanceMatch(room.match,all.some(win=>win.winner===room.match.dealer),room.rules.matchLength);
+    if(room.rules.agariYame&&all.some(win=>win.winner===room.match.dealer)&&room.handMatch?.handNumber===4&&room.scores[room.match.dealer]>=30000&&rankScores(room.scores)[0]===room.match.dealer)room.match.finished=true;this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores);
   }
 
   settleExhaustiveDrawForTesting(code:string,tenpai:Seat[]):Room{
     const room=this.requirePlayingRoom(code); if(room.settled) return room;
     const payments=calculateNotenPayments(tenpai); for(const s of SEATS) room.scores[s]=(room.scores[s]??0)+(payments[s]??0);
     room.settled=true; advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);
-    if(room.match.finished) room.finalRanking=rankScores(room.scores); return room;
+    this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores); return room;
   }
 
   startNextHand(code:string):Room{
     const room=this.requirePlayingRoom(code); if(room.cinematic?.phase==='playing')throw new RoomError('CINEMATIC_ACTIVE','Wait for the synchronized result transition.'); if(!room.settled) throw new RoomError('HAND_NOT_SETTLED','Current hand has not ended.');
     if(room.match.finished) throw new RoomError('MATCH_FINISHED','The hanchan has finished.');
-    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
+    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.pendingClaims;delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
   }
 
   completeCinematic(code:string,now=Date.now()):boolean{const room=this.requireRoom(code);if(!room.cinematic||room.cinematic.phase!=='playing'||now<room.cinematic.endsAt)return false;room.cinematic.phase='results';return true;}
