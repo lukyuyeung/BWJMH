@@ -14,3 +14,7 @@ Timeline after any existing official cinematic finishes:
 Both cut-in and physical reveal share a clock started after initial paint. Existing official yaku videos keep their host-owned lifetime and finish before this reveal; small Chi/Pon/Kan/Riichi banners retain their existing behavior. Reduced-motion presentation suppresses motion and lighting.
 
 Tier differences: Mangan has one white spotlight; Haneman two warm shafts; Baiman three champagne shafts and a larger title; Sanbaiman stronger double gold edges; Yakuman ivory-gold contrast. Character identity always follows the winning seat.
+
+## Updated six-tier collection
+
+`tier-collection.png` contains six individually composed escalation designs. Runtime timing and geometry now vary by tier; the earlier fixed timeline above describes the initial v58 design only. See `docs/win-tiers60.md` for current tier timings, special-hand movie order, and Demo tests. Current report presentation has neither a second oversized title explosion nor a second limit-impact sound.

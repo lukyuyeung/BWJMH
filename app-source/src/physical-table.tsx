@@ -1,5 +1,5 @@
 import {winClockKey,winClockAge} from './win-visual-clock';
-import {createWinnerLight,winImpactTier,WIN_FLIP_LEAD,WIN_FLIP_DURATION,WIN_LIGHT_END} from './win-impact';
+import {createWinnerLight,winImpactTier,WIN_FLIP_LEAD,WIN_FLIP_DURATION,WIN_LIGHT_END,winTiming} from './win-impact';
 import {doraFromIndicator} from '../engine/deadwall.js';
 import {publishTableMotion,presentTableMotion,cancelTableMotion} from './motion-state.js';
 import React,{useEffect,useRef} from 'react';
@@ -195,11 +195,11 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    const revealIdentity=canReveal?key+':'+(drawReveal?'tenpai':winner):'';
    if(revealIdentity!==revealKey){revealKey=revealIdentity;revealStart=performance.now()}
    const impactTier=!drawReveal&&!reduce&&!localStorage.getItem('bunny-options')?.includes('"skipAnimation":true')&&canReveal?wins.map(result=>winImpactTier({...game,hand:{...h,result}})).find(Boolean)??null:null;
-   const revealLead=impactTier?WIN_FLIP_LEAD:900;
+   const timing=winTiming(game),revealLead=impactTier?timing.lead:900;
    const revealAge=canReveal?(impactTier?winClockAge(winClockKey(game)):performance.now()-revealStart):0;
    const revealProgress=(_i:number)=>reduce?1:Math.max(0,Math.min(1,(revealAge-(drawReveal?200:revealLead))/WIN_FLIP_DURATION));
-   const revealing=canReveal&&!reduce&&revealAge<(impactTier?WIN_LIGHT_END:2300);
-   const impactPhase=!impactTier?'none':revealAge<revealLead?'anticipation':revealAge<revealLead+WIN_FLIP_DURATION?'flip':revealAge<WIN_LIGHT_END?'landing':'done';
+   const revealing=canReveal&&!reduce&&revealAge<(impactTier?timing.end:2300);
+   const impactPhase=!impactTier?'none':revealAge<revealLead?'anticipation':revealAge<revealLead+WIN_FLIP_DURATION?'flip':revealAge<timing.end?'landing':'done';
    stage!.dataset.winImpact=impactPhase;
    root!.dataset.winnerReveal=canReveal?(revealAge<revealLead&&!reduce?'waiting':revealing?'flipping':'shown'):'none';
    root!.dataset.revealedWinner=winner??'';

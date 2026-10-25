@@ -9,7 +9,7 @@ export function limitPresentation(score:Pick<ScoreResult,'limit'|'yakuman'>):Pre
 
 export const CINEMATIC_TRIGGERS=['CHINITSU','KOKUSHI_MUSOU','SUUANKOU','DAISANGEN','DAISUUSHI','CHUUREN_POUTOU','OTHER_YAKUMAN','DOUBLE_YAKUMAN'] as const;
 export type CinematicTrigger=typeof CINEMATIC_TRIGGERS[number];
-export interface CinematicState {demo?:boolean;id:number;trigger:CinematicTrigger;winner:Seat;character:'yellow'|'king'|'ninja'|'wizard';startedAt:number;endsAt:number;phase:'playing'|'results';video?:string;voice?:string;sound?:string;image?:string;particles?:boolean;serverNow:number;}
+export interface CinematicState {method?:'tsumo'|'ron';demo?:boolean;id:number;trigger:CinematicTrigger;winner:Seat;character:'yellow'|'king'|'ninja'|'wizard';startedAt:number;endsAt:number;phase:'playing'|'results';video?:string;voice?:string;sound?:string;image?:string;particles?:boolean;serverNow:number;}
 /** Immutable official clip duration + decode grace; never waits for client acknowledgements. */
 export const CINEMATIC_ASSETS:Partial<Record<CinematicTrigger,{video:string;durationMs:number;voice?:string;sound?:string;image?:string;particles?:boolean}>>={CHINITSU:{video:'/cinematics/chinitsu.mp4',durationMs:5300},DAISANGEN:{video:'/cinematics/daisangen.mp4',durationMs:5300},SUUANKOU:{video:'/cinematics/suuankou.mp4',durationMs:5300},DAISUUSHI:{video:'/cinematics/daisuushi.mp4',durationMs:10350}};
 export function cinematicTrigger(e:{yakuman:number;yaku:{id:string}[]}):CinematicTrigger|null {

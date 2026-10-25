@@ -19,8 +19,8 @@ export function useWinReport(game:Game,character:Character,level:string,rowCount
     const speech=a?.speak(character,events[i]??'',scope,{onStart:reveal});if(speech)await speech;if(signal.aborted)return;if(!revealedAt)reveal();await pause(Math.max(180,850-(performance.now()-revealedAt)),signal);
    }
    if(signal.aborted)return;update({activeRow:-1});await pause(250,signal);if(signal.aborted)return;update({grade:true});await pause(350,signal);await visible(signal);if(signal.aborted)return;
-   if(levels.has(level)){update({stage:'limit',impact:!reduce});a?.sfx(level.includes('yakuman')?'win_yakuman':['baiman','sanbaiman'].includes(level)?'win_baiman':'win_mangan');const began=performance.now();await a?.speak(character,level.replaceAll('-','_'),scope);if(signal.aborted)return;await pause(Math.max(200,1600-(performance.now()-began)),signal);}
-   else{a?.sfx('win_small');await pause(250,signal);}
+   if(levels.has(level)){update({stage:'limit',impact:false});const began=performance.now();await a?.speak(character,level.replaceAll('-','_'),scope);if(signal.aborted)return;await pause(Math.max(200,1600-(performance.now()-began)),signal);}
+   else{await pause(250,signal);}
    if(signal.aborted)return;update({impact:false,points:true,stage:'complete'});completed.add(key);if(completed.size>80)completed.delete(completed.values().next().value!);
   };void run();return()=>{controller.abort();a?.stopVoices(scope);release?.()};
  },[key,level,rowCount,eventKey,reduce]);
