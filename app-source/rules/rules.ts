@@ -6,3 +6,6 @@ export function normalizeRuleset(x:Partial<Ruleset>={}):Ruleset{return{bankruptc
 
 /** Fixed variant choices are explicit. These are not switchable until implemented. */
 export const RULE_POLICY=Object.freeze({ron:'double-ron',kuitan:true,kiriageMangan:false,kazoe:'yakuman',doubleYakumanVariants:false,stackYakuman:true,doubleWindPairFu:4,riichiMinimumLiveTiles:4,postRiichiAnkan:true,kokushiAnkanRobbery:false,abortiveDraws:['nine_terminals','four_winds','four_riichi','four_kans','triple_ron'],tripleRonAbort:true,nagashiMangan:false,pao:false,kuikaeRestriction:true,bankruptcyEnd:true,agariYame:true,finalDrawPot:'first-place',initialPoints:25000} as const);
+
+export const TIER_TURN_MS={low:30000,medium:20000,high:10000} as const;
+export function turnMsForEntry(entry:number){const i=[2500,25000,250000].indexOf(entry);if(i<0)throw new Error('Unsupported carrot entry');return [30000,20000,10000][i]!;}

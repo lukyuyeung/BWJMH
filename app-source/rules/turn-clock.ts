@@ -1,12 +1,15 @@
 import type {Room,RoomManager} from './room';
+import {ResultClock} from './result-clock';
 /** Host-owned clock for multiplayer. Call from a server loop, never trust client deadlines. */
 export class TurnClock{
  private turns=new Map<string,{key:string;deadline:number;nextAutoAt:number}>();
- constructor(private manager:RoomManager){}
+ readonly results:ResultClock;
+ constructor(private manager:RoomManager){this.results=new ResultClock(manager);}
  tick(room:Room,now=Date.now()):boolean{
+  if(this.results.tick(room,now)){room.revision++;return true;}
   const g=room.game;if(!g||room.phase!=='playing'||room.settled||room.match.finished||room.cinematic?.phase==='playing'){this.turns.delete(room.code);delete room.actionDeadline;return false;}
   const key=[room.match.roundWind,room.match.handNumber,room.match.honba,g.turnNumber,g.phase,g.currentSeat,g.claim?.tile.id].join(':');let turn=this.turns.get(room.code);
-  if(!turn||turn.key!==key){turn={key,deadline:now+(g.phase==='awaiting_claim'?12000:30000),nextAutoAt:now};this.turns.set(room.code,turn);room.actionDeadline=turn.deadline;}
+  if(!turn||turn.key!==key){turn={key,deadline:now+(g.phase==='awaiting_claim'?12000:room.rules.actionTimeoutMs),nextAutoAt:now};this.turns.set(room.code,turn);room.actionDeadline=turn.deadline;}
   // A deliberate return-to-control may grant a fresh decision window once.
   if(room.actionDeadline!==undefined&&room.actionDeadline!==turn.deadline)turn.deadline=room.actionDeadline;
   if(now>=turn.nextAutoAt&&this.manager.advanceAutoPlay(room.code)){turn.nextAutoAt=now+650;room.revision++;return true;}

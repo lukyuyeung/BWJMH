@@ -43,6 +43,7 @@ export interface Room {
   handMatch?:MatchState;
   disconnectedAt?:number;
   actionDeadline?:number;
+  resultFlow?:{id:string;phase:"report"|"hold"|"scores"|"ranking";deadline:number;ready:string[]};
   events?:PresentationEvent[];
   eventSequence?:number;
   handStartingScores?:Record<Seat,number>;
@@ -72,6 +73,7 @@ export interface PublicRoomState {
   riichiPot: number;
   match: MatchState;
   finalRanking?: Seat[];
+  resultFlow?:{id:string;phase:"report"|"hold"|"scores"|"ranking";deadline:number};
   rules: Ruleset;
 }
 
@@ -145,7 +147,7 @@ export class RoomManager {
       }
     }
     this.rooms.clear();
-    for(const original of saved){const room=structuredClone(original);for(const player of room.players)if(!player.isBot)player.connected=false;room.disconnectedAt=Date.now();this.rooms.set(room.code,room);}
+    for(const original of saved){const room=structuredClone(original);for(const player of room.players)if(!player.isBot){player.connected=false;if(room.phase==='playing'&&!room.match.finished)player.autoPlay=true;}room.disconnectedAt=Date.now();this.rooms.set(room.code,room);}
   }
 
   createRoom(name: string): { room: Room; player: Player } {
@@ -353,7 +355,7 @@ export class RoomManager {
   resumeControl(code:string,playerId:string):Room{
     const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId);
     if(player.isBot||!player.connected)throw new RoomError('CONTROL_UNAVAILABLE','Player control is unavailable.');
-    if(player.autoPlay){player.autoPlay=false;if(room.game?.currentSeat===player.seat&&room.game.phase==='awaiting_discard'&&!room.settled)room.actionDeadline=Date.now()+30000;}
+    if(player.autoPlay){player.autoPlay=false;if(room.game?.currentSeat===player.seat&&room.game.phase==='awaiting_discard'&&!room.settled)room.actionDeadline=Date.now()+room.rules.actionTimeoutMs;}
     return room;
   }
 
@@ -370,8 +372,8 @@ export class RoomManager {
   }
 
   reconnect(rawCode:string, playerId:string, resumeToken:string):{room:Room;player:Player}{ const room=this.requireRoom(rawCode); const player=this.requirePlayer(room,playerId); if(player.resumeToken!==resumeToken) throw new RoomError('INVALID_RESUME_TOKEN','Reconnect token is invalid.'); player.connected=true;delete room.disconnectedAt; return {room,player}; }
-  disconnect(rawCode:string,playerId:string):void{ try{const room=this.requireRoom(rawCode);this.requirePlayer(room,playerId).connected=false;if(room.players.every(p=>p.isBot||!p.connected))room.disconnectedAt=Date.now();}catch{} }
-  cleanupDisconnectedRooms(ttlMs:number,now=Date.now()):string[]{const deleted:string[]=[];for(const room of this.rooms.values())if(room.disconnectedAt!==undefined&&now-room.disconnectedAt>=ttlMs){this.rooms.delete(room.code);deleted.push(room.code);}return deleted;}
+  disconnect(rawCode:string,playerId:string):void{ try{const room=this.requireRoom(rawCode);const player=this.requirePlayer(room,playerId);player.connected=false;if(room.phase==='playing'&&!room.match.finished)player.autoPlay=true;if(room.players.every(p=>p.isBot||!p.connected))room.disconnectedAt=Date.now();}catch{} }
+  cleanupDisconnectedRooms(ttlMs:number,now=Date.now()):string[]{const deleted:string[]=[];for(const room of this.rooms.values())if(room.disconnectedAt!==undefined&&(room.phase==='lobby'||room.match.finished)&&now-room.disconnectedAt>=ttlMs){this.rooms.delete(room.code);deleted.push(room.code);}return deleted;}
   getResumeToken(code:string,playerId:string):string{return this.requirePlayer(this.requireRoom(code),playerId).resumeToken}
   private settleIfExhaustive(room:Room):void{
     if(room.game?.phase!=='awaiting_claim')delete room.pendingRiichi;
@@ -417,9 +419,9 @@ export class RoomManager {
   }
 
   startNextHand(code:string):Room{
-    const room=this.requirePlayingRoom(code); if(room.cinematic?.phase==='playing')throw new RoomError('CINEMATIC_ACTIVE','Wait for the synchronized result transition.'); if(!room.settled) throw new RoomError('HAND_NOT_SETTLED','Current hand has not ended.');
+    const room=this.requirePlayingRoom(code); if(room.resultFlow)throw new RoomError('RESULT_FLOW_ACTIVE','Wait for the shared result clock.'); if(room.cinematic?.phase==='playing')throw new RoomError('CINEMATIC_ACTIVE','Wait for the synchronized result transition.'); if(!room.settled) throw new RoomError('HAND_NOT_SETTLED','Current hand has not ended.');
     if(room.match.finished) throw new RoomError('MATCH_FINISHED','The hanchan has finished.');
-    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.pendingClaims;delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
+    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.resultFlow;delete room.pendingClaims;delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
   }
 
   completeCinematic(code:string,now=Date.now()):boolean{const room=this.requireRoom(code);if(!room.cinematic||room.cinematic.phase!=='playing'||now<room.cinematic.endsAt)return false;room.cinematic.phase='results';return true;}
@@ -478,7 +480,7 @@ export function toPublicRoomState(room: Room): PublicRoomState {
       ...(player.botDifficulty?{botDifficulty:player.botDifficulty}:{}),
     })),
     canStart: room.phase === 'lobby' && room.players.length === 4 && room.players.every((p) => p.ready&&(p.connected||p.isBot)),
-    scores:{...room.scores}, riichiPot:room.riichiPot, match:{...room.match}, rules:{...room.rules}, ...(room.finalRanking?{finalRanking:[...room.finalRanking]}:{}),
+    ...(room.resultFlow?{resultFlow:{id:room.resultFlow.id,phase:room.resultFlow.phase,deadline:room.resultFlow.deadline}}:{}),scores:{...room.scores}, riichiPot:room.riichiPot, match:{...room.match}, rules:{...room.rules}, ...(room.finalRanking?{finalRanking:[...room.finalRanking]}:{}),
   };
 }
 
