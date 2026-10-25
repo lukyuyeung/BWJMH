@@ -22,3 +22,7 @@ Tier differences: Mangan has one white spotlight; Haneman two warm shafts; Baima
 ## Full-art Mangan Demo prototype
 
 `mangan-runtime.png` adapts the collection's Mangan panel into a complete screen with empty felt. The public Mangan Demo places the authoritative winning hand and melds on that surface, holds for 3 seconds, then proceeds directly to the yaku report. It bypasses the strip/flip/spotlight sequence for this one Demo only. See `docs/mangan-art61.md`.
+
+## Animated direction prototype
+
+The current Mangan Demo follows the four-shot storyboard: whole-table dim, diagonal eye close-up, actual winning-tile reveal, then complete artwork punch-in. The original `baiman-direction.png` now has its upper-left words removed. The Mangan runtime uses the same diagonal direction, with no baked tiles. See `docs/direction62.md` for timing and the dedicated-video exception (movie → report directly).

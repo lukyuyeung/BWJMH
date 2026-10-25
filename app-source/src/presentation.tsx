@@ -43,7 +43,7 @@ export function CharacterPerformance({relativeSeats,kanTypes,events,characters,s
 export type SharedCinematic={method?:'ron'|'tsumo';demo?:boolean;id:number;trigger:string;winner:string;character:Character;startedAt:number;endsAt:number;phase:'playing'|'results';video?:string;voice?:string;sound?:string;image?:string;particles?:boolean;serverNow:number};
 /** The server owns this layer's lifetime. Skip/reduce/error never advance the room. */
 export function GlobalCinematic({state,skip,reduce,winnerName}:{state?:SharedCinematic|undefined;skip:boolean;reduce:boolean;winnerName:string}){
- const [begun,setBegun]=useState(false);
+ const [begun,setBegun]=useState(!state||state.startedAt<=state.serverNow);
  useEffect(()=>{if(!state)return;const delay=Math.max(0,state.startedAt-state.serverNow);setBegun(delay===0);const timer=setTimeout(()=>setBegun(true),delay);return()=>clearTimeout(timer)},[state?.id,state?.startedAt]);
  const ambience=useRef<HTMLCanvasElement>(null);
  const video=useRef<HTMLVideoElement>(null),[dismissed,setDismissed]=useState(false),[failed,setFailed]=useState(false),[muted,setMuted]=useState(true);
