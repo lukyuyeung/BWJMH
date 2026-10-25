@@ -18,3 +18,7 @@ Tier differences: Mangan has one white spotlight; Haneman two warm shafts; Baima
 ## Updated six-tier collection
 
 `tier-collection.png` contains six individually composed escalation designs. Runtime timing and geometry now vary by tier; the earlier fixed timeline above describes the initial v58 design only. See `docs/win-tiers60.md` for current tier timings, special-hand movie order, and Demo tests. Current report presentation has neither a second oversized title explosion nor a second limit-impact sound.
+
+## Full-art Mangan Demo prototype
+
+`mangan-runtime.png` adapts the collection's Mangan panel into a complete screen with empty felt. The public Mangan Demo places the authoritative winning hand and melds on that surface, holds for 3 seconds, then proceeds directly to the yaku report. It bypasses the strip/flip/spotlight sequence for this one Demo only. See `docs/mangan-art61.md`.

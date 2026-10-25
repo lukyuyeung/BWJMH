@@ -28,7 +28,7 @@ export type Game={
  you:{playerId:string;seat:Seat;hand:Tile[];drawnTileId?:string};
  hand:{
   currentSeat:Seat;phase:'awaiting_discard'|'awaiting_draw'|'awaiting_claim'|'won'|'exhaustive_draw'|'abortive_draw';abortiveReason?:string;turnNumber:number;match:Room['match'];revision:number;discardTileIds:string[];wallRemaining:number;
-  cinematic?:SharedCinematic;wallSlots:{side:Seat;stack:number;level:0|1;occupied:boolean;dead:boolean;indicator?:Tile}[];timeout:{deadline:number|null;serverNow:number};events:PerformanceEvent[];assistance:{waits:{face:string;remaining:number}[];riichi:Record<string,{face:string;remaining:number}[]>};settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:Tile[];winningHands?:Partial<Record<Seat,Tile[]>>;tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,Tile[]>>};
+  demoPresentation?:'mangan-art';cinematic?:SharedCinematic;wallSlots:{side:Seat;stack:number;level:0|1;occupied:boolean;dead:boolean;indicator?:Tile}[];timeout:{deadline:number|null;serverNow:number};events:PerformanceEvent[];assistance:{waits:{face:string;remaining:number}[];riichi:Record<string,{face:string;remaining:number}[]>};settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:Tile[];winningHands?:Partial<Record<Seat,Tile[]>>;tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,Tile[]>>};
   opening?:{startedAt:number;dice:[number,number];breakSide:Seat;breakStack:number;dealer:Seat;dealSlots:number[]};uraIndicators?:Tile[];
   doraIndicators:Tile[];yourDora:{indicatorDora:number;akaDora:number;total:number};rinshanRemaining:number;
   discards:Record<Seat,Tile[]>;concealedCounts:Record<Seat,number>;

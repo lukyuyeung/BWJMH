@@ -1,6 +1,7 @@
 import {winClockKey,winClockAge} from './win-visual-clock';
 import {winTiming,winImpactTier} from './win-impact';
 import {DEMO_LABELS} from '../rules/demo-hands';
+import {ManganArt} from './mangan-art';
 import {WinCinematic} from './win-cinematic';
 import {Emotes} from './emotes';
 import './win-impact.css';
@@ -71,8 +72,8 @@ export function PhoneTable({riichiReveal,game,pending,options,onOptions,call,err
  const clockOffset=useMemo(()=>h.timeout.serverNow-Date.now(),[h.timeout.serverNow]);const clockNow=now+clockOffset;
  const opening=false;
  const ended=['won','exhaustive_draw','abortive_draw'].includes(h.phase)||r.match.finished;
- const [resultReady,setResultReady]=useState(false);
- useEffect(()=>{setResultReady(false);if(!ended||h.cinematic?.phase==='playing')return;let timer:ReturnType<typeof setTimeout>;const reveal=()=>{if(h.result&&winImpactTier(game)&&!options.reduceEffects&&winClockAge(winClockKey(game))<winTiming(game).end+200){timer=setTimeout(reveal,80);return;}setResultReady(true)};timer=setTimeout(reveal,options.reduceEffects?0:h.result?5000:h.phase==='exhaustive_draw'?2400:850);return()=>clearTimeout(timer)},[ended,handKey,h.cinematic?.phase,options.skipAnimation,options.reduceEffects]);
+ const [resultReady,setResultReady]=useState(false),artDemo=h.demoPresentation==='mangan-art';
+ useEffect(()=>{setResultReady(false);if(!ended||artDemo||h.cinematic?.phase==='playing')return;let timer:ReturnType<typeof setTimeout>;const reveal=()=>{if(h.result&&winImpactTier(game)&&!options.reduceEffects&&winClockAge(winClockKey(game))<winTiming(game).end+200){timer=setTimeout(reveal,80);return;}setResultReady(true)};timer=setTimeout(reveal,options.reduceEffects?0:h.result?5000:h.phase==='exhaustive_draw'?2400:850);return()=>clearTimeout(timer)},[ended,handKey,artDemo,h.cinematic?.phase,options.skipAnimation,options.reduceEffects]);
  const remaining=Math.max(0,Math.ceil(((h.timeout.deadline??clockNow)-clockNow)/1000));
  const wind=(seat:Seat)=>winds[(seats.indexOf(seat)-seats.indexOf(h.match.dealer)+4)%4];
  const awaitingClaim=h.phase==='awaiting_claim';
@@ -114,7 +115,8 @@ export function PhoneTable({riichiReveal,game,pending,options,onOptions,call,err
 
   {riichiReveal.active&&riichiReveal.tile&&!motionBusy&&<RiichiScratch key={riichiReveal.key} reveal={riichiReveal} canTsumo={h.actions.canTsumo} reduce={options.reduceEffects}/>}
   <CharacterPerformance relativeSeats={order} kanTypes={Object.fromEntries(seats.map(seat=>{const m=h.melds[seat].at(-1);return[seat,m?.type==='kan'?(!m.open?'Ankan':m.tiles.findIndex(t=>t.id===m.calledTile.id)<3?'Kakan':'Daiminkan'):undefined]}))} events={(h.events??[]).filter(e=>!(['MANGAN','HANEMAN','BAIMAN','SANBAIMAN','YAKUMAN','DOUBLE_YAKUMAN'].includes(e.kind)||!!winImpactTier(game)&&['RON','TSUMO'].includes(e.kind)))} characters={characters} skip={options.skipAnimation} suspended={h.cinematic?.phase==='playing'} reduce={options.reduceEffects} critical={false} handKey={handKey} settled={ended} onSkip={()=>{}}/>
-  <WinCinematic game={game} quiet={options.reduceEffects||options.skipAnimation}/>
+  {artDemo&&!resultReady&&<ManganArt key={handKey} game={game} onComplete={()=>setResultReady(true)}/>}
+  {!artDemo&&<WinCinematic game={game} quiet={options.reduceEffects||options.skipAnimation}/>}
   <GlobalCinematic key={r.code+':'+h.cinematic?.id} state={h.cinematic} skip={options.skipAnimation&&!h.cinematic?.demo} reduce={options.reduceEffects&&!h.cinematic?.demo} winnerName={r.players.find(p=>p.seat===h.cinematic?.winner)?.name??''}/>
   {ended&&resultReady&&h.cinematic?.phase!=='playing'&&<MultiWinResultOverlay game={game} characters={characters} pending={pending} reduce={options.reduceEffects} renderTile={tile=><ArtworkTile key={tile.id} tile={tile}/>} renderMeld={(meld,seat,index)=><Meld key={index} meld={meld} seat={seat}/>} onReportComplete={()=>call('game:report-complete',{id:r.resultFlow?.id})} onNext={()=>doAction('game:next-hand')} onRestart={()=>window.dispatchEvent(new Event('demo:restart'))}/>}
   {panel==='automatic'&&<AutomaticPanel options={options} onOptions={onOptions} onClose={()=>setPanel(null)}/>}

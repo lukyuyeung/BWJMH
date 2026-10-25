@@ -48,6 +48,7 @@ export interface Room {
   eventSequence?:number;
   handStartingScores?:Record<Seat,number>;
   awardedPot?:number;
+  demoPresentation?:'mangan-art';
   cinematic?:CinematicState;
 }
 
@@ -92,6 +93,7 @@ export interface PlayerGameState {
     wallSlots:PublicWallSlot[];
     timeout:{deadline:number|null;serverNow:number};
     events:PresentationEvent[];
+    demoPresentation?:'mangan-art';
     cinematic?:CinematicState;
     assistance:{waits:{face:import("@bunny/riichi-engine").TileFace;remaining:number}[];riichi:Record<string,{face:import("@bunny/riichi-engine").TileFace;remaining:number}[]>};
     settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:import("@bunny/riichi-engine").Tile[];winningHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>;tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>};
@@ -285,6 +287,7 @@ export class RoomManager {
         wallRemaining: game.liveWall.length,wallSlots:publicWallSlots(game),
         timeout:{deadline:room.actionDeadline??null,serverNow:Date.now()},
         events:(room.events??[]).map(e=>({...e})),assistance,
+        ...(room.demoPresentation?{demoPresentation:room.demoPresentation}:{}),
         ...(room.cinematic?{cinematic:{...room.cinematic,serverNow:Date.now()}}:{}),
         ...(room.settled?{settlement:{awardedPot:room.awardedPot??0,scoreChanges:Object.fromEntries(SEATS.map(s=>[s,room.scores[s]-(room.handStartingScores?.[s]??25000)])) as Record<Seat,number>,tenpai:game.phase==='exhaustive_draw'?SEATS.filter(s=>getPlayerWaits(game,s).length>0):[],...(game.phase==='exhaustive_draw'?{tenpaiHands:Object.fromEntries(SEATS.filter(s=>getPlayerWaits(game,s).length>0).map(s=>[s,[...game.hands[s]]]))}:{}),...(game.result?{winningHand:game.result.method==='ron'?[...game.hands[game.result.winner],game.result.winningTile]:[...game.hands[game.result.winner]],winningHands:Object.fromEntries((game.results??[game.result]).map(r=>[r.winner,r.method==='ron'?[...game.hands[r.winner],r.winningTile]:[...game.hands[r.winner]]]))}:{})}}:{}),
         ...((game.results??(game.result?[game.result]:[])).some(r=>game.riichi[r.winner].declared)?{uraIndicators:visibleUraIndicators(game.deadWall)}:{}),
@@ -421,7 +424,7 @@ export class RoomManager {
   startNextHand(code:string):Room{
     const room=this.requirePlayingRoom(code); if(room.resultFlow)throw new RoomError('RESULT_FLOW_ACTIVE','Wait for the shared result clock.'); if(room.cinematic?.phase==='playing')throw new RoomError('CINEMATIC_ACTIVE','Wait for the synchronized result transition.'); if(!room.settled) throw new RoomError('HAND_NOT_SETTLED','Current hand has not ended.');
     if(room.match.finished) throw new RoomError('MATCH_FINISHED','The hanchan has finished.');
-    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.resultFlow;delete room.pendingClaims;delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
+    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.demoPresentation;delete room.resultFlow;delete room.pendingClaims;delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
   }
 
   completeCinematic(code:string,now=Date.now()):boolean{const room=this.requireRoom(code);if(!room.cinematic||room.cinematic.phase!=='playing'||now<room.cinematic.endsAt)return false;room.cinematic.phase='results';return true;}
