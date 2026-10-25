@@ -1,0 +1,11 @@
+{
+  "passed": 24,
+  "checks": [
+    "4 roles x 6 tiers",
+    "eyes/tiles/impact/report",
+    "real tile IDs and melds",
+    "one shared score report",
+    "failed art fallback"
+  ],
+  "errors": []
+}

@@ -2,7 +2,7 @@ const retained:HTMLImageElement[]=[];
 let loading:Promise<void>|undefined;
 /** Decode event art on table entry, rather than on the first claim or win. */
 export function preloadEventArt(){return loading??=Promise.all([
- '/art/win-cinematic-v3/mangan-runtime.png?v=direction62',
+ ...['yellow','king','ninja','wizard'].map(role=>'/art/win-cinematic-v4/'+role+'/mangan.png'),
  '/art/library-v1/motion/neutral/win-burst.webp',
  ...['yellow','king','ninja','wizard'].map(n=>'/art/results/'+n+'-presentation.png'),
  ...['01-ribbon','04-fx',...['chi','pon','kan','ron','riichi','tsumo'].map(n=>'03-'+n),...['king','ninja','wizard'].map(n=>n+'-character')].map(n=>'/art/ribbon-v2/'+n+'.png'),

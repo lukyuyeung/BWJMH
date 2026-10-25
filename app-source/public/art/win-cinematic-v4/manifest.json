@@ -1,0 +1,170 @@
+[
+  {
+    "role": "yellow",
+    "tier": "mangan",
+    "file": "yellow/mangan.png",
+    "bytes": 2373042,
+    "sha256": "bdc8a9388ae2f2230c1c9958ece9404a65cd407962bef1d6fcd36b978cf4f21a"
+  },
+  {
+    "role": "yellow",
+    "tier": "haneman",
+    "file": "yellow/haneman.png",
+    "bytes": 2379322,
+    "sha256": "bc313b7bcab2da40f861ee4d9bfbd9448be52baf9b517e50688137e6a000cb81"
+  },
+  {
+    "role": "yellow",
+    "tier": "baiman",
+    "file": "yellow/baiman.png",
+    "bytes": 2437976,
+    "sha256": "b6d73aceeb4f744a164045c35c37cd598e6c727064bd455657de12b2112022ae"
+  },
+  {
+    "role": "yellow",
+    "tier": "sanbaiman",
+    "file": "yellow/sanbaiman.png",
+    "bytes": 2425584,
+    "sha256": "60eb7e5e3bced76e71fe8a4cb55e21bba054d8b29232af0a7a151529df892261"
+  },
+  {
+    "role": "yellow",
+    "tier": "yakuman",
+    "file": "yellow/yakuman.png",
+    "bytes": 2554751,
+    "sha256": "467cf8fd06b06fa3ce846efd80c2fbc40d6afe904ad7fc9f2bce7defaae6c7ed"
+  },
+  {
+    "role": "yellow",
+    "tier": "double-yakuman",
+    "file": "yellow/double-yakuman.png",
+    "bytes": 2775537,
+    "sha256": "15150d34b3a7f2d80a825c39f049c7d11e73c7c34a8775db828050de6c7788ea"
+  },
+  {
+    "role": "king",
+    "tier": "mangan",
+    "file": "king/mangan.png",
+    "bytes": 2303596,
+    "sha256": "f9c72684012c05ac95f7953e9183ad96758ed7ba28629475dea6974dd59ec869"
+  },
+  {
+    "role": "king",
+    "tier": "haneman",
+    "file": "king/haneman.png",
+    "bytes": 2348978,
+    "sha256": "782814bba5147c4d9b04698eb2e66310fe157aeab6f347338b470427182796b9"
+  },
+  {
+    "role": "king",
+    "tier": "baiman",
+    "file": "king/baiman.png",
+    "bytes": 2325553,
+    "sha256": "c62afbcbe368b96c682fd6ad13dda71287f2199178246d851e95f7d977b8a994"
+  },
+  {
+    "role": "king",
+    "tier": "sanbaiman",
+    "file": "king/sanbaiman.png",
+    "bytes": 2497325,
+    "sha256": "ff21adbb09c073814608149102d9c897018a64cc52e1c6c379121c979b39374d"
+  },
+  {
+    "role": "king",
+    "tier": "yakuman",
+    "file": "king/yakuman.png",
+    "bytes": 2474016,
+    "sha256": "4a9a204b74f711cd559ffead50680726adaae7d97cc99b89026dce601a03e157"
+  },
+  {
+    "role": "king",
+    "tier": "double-yakuman",
+    "file": "king/double-yakuman.png",
+    "bytes": 2512302,
+    "sha256": "f9dbd9f0efedf1cff253759a57bf9af5c1a72da5f9a61d02ed07e4fc698b01b1"
+  },
+  {
+    "role": "ninja",
+    "tier": "mangan",
+    "file": "ninja/mangan.png",
+    "bytes": 2285597,
+    "sha256": "1923b3a323f456f20ea4d5095ee62c072e9b56ce2cee31ec69b5f962e8b13e78"
+  },
+  {
+    "role": "ninja",
+    "tier": "haneman",
+    "file": "ninja/haneman.png",
+    "bytes": 2383511,
+    "sha256": "208915fab58bb9faa3a56265b274f6275997e83b4c4b6a88fcb8d00c9ac3af1b"
+  },
+  {
+    "role": "ninja",
+    "tier": "baiman",
+    "file": "ninja/baiman.png",
+    "bytes": 2375902,
+    "sha256": "5126361ae4c611854c9b002fee5ab55e312e758e1343c6bf761ec7f968b2412b"
+  },
+  {
+    "role": "ninja",
+    "tier": "sanbaiman",
+    "file": "ninja/sanbaiman.png",
+    "bytes": 2447023,
+    "sha256": "6afb73b4b5664709c232332887216b21db89a8497388954f94d049a1285013cb"
+  },
+  {
+    "role": "ninja",
+    "tier": "yakuman",
+    "file": "ninja/yakuman.png",
+    "bytes": 2457539,
+    "sha256": "e53188ba380ca4a0773fd4bfc732efdc254c0063dac1a72d79f51eb803c99da6"
+  },
+  {
+    "role": "ninja",
+    "tier": "double-yakuman",
+    "file": "ninja/double-yakuman.png",
+    "bytes": 2579640,
+    "sha256": "d5a0fada7a8f3b507137669c1604a935d9c7e93634de42c57c34d5acc2fbdbe2"
+  },
+  {
+    "role": "wizard",
+    "tier": "mangan",
+    "file": "wizard/mangan.png",
+    "bytes": 2334789,
+    "sha256": "870a08d9bb863ba1fbd6d76aaab3ce7ecbf6c089e0253e82898bbf42ad217ea7"
+  },
+  {
+    "role": "wizard",
+    "tier": "haneman",
+    "file": "wizard/haneman.png",
+    "bytes": 2318498,
+    "sha256": "06f3a5c9b2cce323ebd1bfe3f5a1417dded3258240ac5c60d0c7c957183fb9a0"
+  },
+  {
+    "role": "wizard",
+    "tier": "baiman",
+    "file": "wizard/baiman.png",
+    "bytes": 2392907,
+    "sha256": "3c5a80cf74dcebc5f3f13f3811ec817ed3a2e3feb081472c7a37202611022700"
+  },
+  {
+    "role": "wizard",
+    "tier": "sanbaiman",
+    "file": "wizard/sanbaiman.png",
+    "bytes": 2445729,
+    "sha256": "8f5e0909335368da5254d846a97213532dff1f8d8f1cf9d669151343803c3c25"
+  },
+  {
+    "role": "wizard",
+    "tier": "yakuman",
+    "file": "wizard/yakuman.png",
+    "bytes": 2512042,
+    "sha256": "e2976af255a40a6ff898c0650d890699ea3bef65dcb7129a0912c1a04181381a"
+  },
+  {
+    "role": "wizard",
+    "tier": "double-yakuman",
+    "file": "wizard/double-yakuman.png",
+    "bytes": 2607025,
+    "sha256": "ddfb417412c5d2beb3bb113d1225e6a11b56d928f4d9929d42699f228f030f11"
+  }
+]

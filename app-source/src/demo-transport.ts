@@ -35,7 +35,7 @@ const state=this.manager.getPlayerGameState(this.room.code,this.playerId);
    if(name.startsWith('game:')&&p.revision!==undefined&&p.revision!==this.room.revision)throw new Error('牌局已更新，請再操作。');
    switch(name){
     case 'room:reconnect':callback?.({ok:true,data:{playerId:id,room:this.manager.getPublicState(c)}});this.publish();this.schedule();return;
-    case 'game:demo-win':this.reset();installDemoWin(this.manager,this.room,this.playerId,p.kind as DemoHand);break;
+    case 'game:demo-win':this.reset();installDemoWin(this.manager,this.room,this.playerId,p.kind as DemoHand);this.room.demoCharacter=['yellow','king','ninja','wizard'].includes(p.character)?p.character:'yellow';if(this.room.cinematic)this.room.cinematic.character=this.room.demoCharacter!;break;
     case 'game:resume-control':this.manager.resumeControl(c,id);break;
     case 'game:draw':this.manager.draw(c,id);break;
     case 'game:discard':this.manager.discard(c,id,p.tileId);break;

@@ -1,3 +1,4 @@
+import {usesWinArtwork} from './win-art-config';
 import {winClockKey,winClockAge} from './win-visual-clock';
 import {createWinnerLight,winImpactTier,WIN_FLIP_LEAD,WIN_FLIP_DURATION,WIN_LIGHT_END,winTiming} from './win-impact';
 import {doraFromIndicator} from '../engine/deadwall.js';
@@ -191,7 +192,7 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    const winner=h.result?.winner,rawWinningHand=h.settlement?.winningHand??[],winningHand=rawWinningHand.length?[...sortResultTiles(rawWinningHand.slice(0,-1)),rawWinningHand.at(-1)!]:[];
    const winnerHands=Object.fromEntries(wins.map(r=>{const tiles=h.settlement?.winningHands?.[r.winner]??(r.winner===winner?winningHand:[]);return[r.winner,tiles.length?[...sortResultTiles(tiles.slice(0,-1)),tiles.at(-1)!]:[]]})) as Partial<Record<Seat,Tile[]>>;
    const drawHands=h.phase==='exhaustive_draw'?h.settlement?.tenpaiHands:undefined;const drawReveal=!!drawHands&&Object.keys(drawHands).length>0;
-   const canReveal=!h.demoPresentation&&!h.cinematic?.video&&!!winner&&winningHand.length>0&&h.cinematic?.phase!=='playing'||drawReveal;
+   const canReveal=!usesWinArtwork(game)&&!h.cinematic?.video&&!!winner&&winningHand.length>0&&h.cinematic?.phase!=='playing'||drawReveal;
    const revealIdentity=canReveal?key+':'+(drawReveal?'tenpai':winner):'';
    if(revealIdentity!==revealKey){revealKey=revealIdentity;revealStart=performance.now()}
    const impactTier=!drawReveal&&!reduce&&!localStorage.getItem('bunny-options')?.includes('"skipAnimation":true')&&canReveal?wins.map(result=>winImpactTier({...game,hand:{...h,result}})).find(Boolean)??null:null;
