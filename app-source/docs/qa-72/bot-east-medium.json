@@ -1,0 +1,13 @@
+{
+  "difficulty": "medium",
+  "matches": 3,
+  "hands": 16,
+  "actions": 1710,
+  "tsumo": 7,
+  "ron": 5,
+  "draws": 4,
+  "maxHands": 8,
+  "maxActions": 943,
+  "bankruptcies": 0,
+  "failures": []
+}

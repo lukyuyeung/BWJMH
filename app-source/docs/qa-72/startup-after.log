@@ -1,0 +1,2 @@
+STARTUP ready
+PASS missing portrait is nonblocking; touch timeout takeover/resume works

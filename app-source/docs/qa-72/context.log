@@ -1,0 +1,1 @@
+PASS mobile WebGL loss -> usable fallback -> restored WebGL; fallback polling stops and no browser errors

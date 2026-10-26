@@ -1,0 +1,19 @@
+STARTUP error
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Missing avatar must not prevent a playable table from opening
+
+'error' !== 'ready'
+
+    at file:///workspace/work/bunny-site/qa/startup72-browser.mjs:2:722 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'error',
+  expected: 'ready',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
