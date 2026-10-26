@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "nagashi river privacy",
+    "two video sequence",
+    "responsible payer report and edge",
+    "triple yakuman",
+    "video failure"
+  ],
+  "errors": []
+}

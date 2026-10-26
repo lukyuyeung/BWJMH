@@ -4,6 +4,7 @@ export class ResultClock{
  constructor(private manager:RoomManager){}
  tick(room:Room,now=Date.now()):boolean{
   if(!room.settled||room.players.filter(p=>!p.isBot).length<2)return false;
+  if(room.drawPresentation&&now<room.drawPresentation.endsAt)return false;
   if(room.cinematic?.phase==='playing'){if(!this.manager.completeCinematic(room.code,now))return false;}
   let flow=room.resultFlow;
   if(!flow){room.resultFlow={id:room.code+':'+room.revision+':'+now,phase:room.game?.result?'report':'hold',deadline:now+(room.game?.result?60000:3000),ready:[]};return true;}

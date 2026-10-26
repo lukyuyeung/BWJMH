@@ -1,5 +1,7 @@
+import {createWinSequence,sequenceCinematic,type WinSequence} from './win-sequence';
+import {responsibilities,winTransfers,nagashiWinners,nagashiTransfers,applyTransfers,type PointTransfer} from './special-settlement';
 import {canDeclareNineTerminals,declareNineTerminals,publicWallSlots,type PublicWallSlot} from '@bunny/riichi-engine';
-import { CINEMATIC_ASSETS, cinematicTrigger, type CinematicState } from './presentation.js';
+import { type CinematicState } from './presentation.js';
 import { chooseBotAction, type BotDifficulty, type BotProfile } from './bot.js';
 import { visibleCounts, waitPreview } from './assistance.js';
 import { limitPresentation, type PresentationEvent, type PresentationKind } from './presentation.js';
@@ -49,6 +51,8 @@ export interface Room {
   handStartingScores?:Record<Seat,number>;
   awardedPot?:number;
   demoPresentation?:'mangan-art';demoCharacter?:CinematicState['character'];
+  winSequence?:WinSequence;drawPresentation?:{startedAt:number;endsAt:number};
+  transfers?:PointTransfer[];nagashi?:Seat[];
   cinematic?:CinematicState;
 }
 
@@ -94,9 +98,11 @@ export interface PlayerGameState {
     timeout:{deadline:number|null;serverNow:number};
     events:PresentationEvent[];
     demoPresentation?:'mangan-art';demoCharacter?:CinematicState['character'];
+    winSequence?:WinSequence;drawPresentation?:{startedAt:number;endsAt:number;serverNow:number};
+    responsibilities?:import('./special-settlement').Responsibility[];
     cinematic?:CinematicState;
     assistance:{waits:{face:import("@bunny/riichi-engine").TileFace;remaining:number}[];riichi:Record<string,{face:import("@bunny/riichi-engine").TileFace;remaining:number}[]>};
-    settlement?:{awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:import("@bunny/riichi-engine").Tile[];winningHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>;tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>};
+    settlement?:{kind?:'win'|'nagashi_mangan'|'exhaustive_draw'|'abortive_draw';transfers?:PointTransfer[];nagashi?:Seat[];awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:import("@bunny/riichi-engine").Tile[];winningHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>;tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>};
     doraIndicators: import('@bunny/riichi-engine').Tile[];
     yourDora: { indicatorDora:number; akaDora:number; total:number };
     rinshanRemaining: number;
@@ -286,11 +292,13 @@ export class RoomManager {
         ...(game.abortiveReason?{abortiveReason:game.abortiveReason}:{}),currentSeat: game.currentSeat, phase: game.phase, turnNumber: game.turnNumber,revision:room.revision,match:{...(room.handMatch??room.match)},discardTileIds:getLegalDiscardIds(game,player.seat),
         wallRemaining: game.liveWall.length,wallSlots:publicWallSlots(game),
         timeout:{deadline:room.actionDeadline??null,serverNow:Date.now()},
-        events:(room.events??[]).map(e=>({...e})),assistance,
+        events:(room.events??[]).map(e=>({...e})),assistance,responsibilities:responsibilities(game),
         ...(room.demoCharacter?{demoCharacter:room.demoCharacter}:{}),
         ...(room.demoPresentation?{demoPresentation:room.demoPresentation}:{}),
+        ...(room.winSequence?{winSequence:{...room.winSequence,segments:room.winSequence.segments.map(s=>({...s})),serverNow:Date.now()}}:{}),
+        ...(room.drawPresentation?{drawPresentation:{...room.drawPresentation,serverNow:Date.now()}}:{}),
         ...(room.cinematic?{cinematic:{...room.cinematic,serverNow:Date.now()}}:{}),
-        ...(room.settled?{settlement:{awardedPot:room.awardedPot??0,scoreChanges:Object.fromEntries(SEATS.map(s=>[s,room.scores[s]-(room.handStartingScores?.[s]??25000)])) as Record<Seat,number>,tenpai:game.phase==='exhaustive_draw'?SEATS.filter(s=>getPlayerWaits(game,s).length>0):[],...(game.phase==='exhaustive_draw'?{tenpaiHands:Object.fromEntries(SEATS.filter(s=>getPlayerWaits(game,s).length>0).map(s=>[s,[...game.hands[s]]]))}:{}),...(game.result?{winningHand:game.result.method==='ron'?[...game.hands[game.result.winner],game.result.winningTile]:[...game.hands[game.result.winner]],winningHands:Object.fromEntries((game.results??[game.result]).map(r=>[r.winner,r.method==='ron'?[...game.hands[r.winner],r.winningTile]:[...game.hands[r.winner]]]))}:{})}}:{}),
+        ...(room.settled?{settlement:{kind:room.nagashi?.length?'nagashi_mangan':game.result?'win':game.phase==='abortive_draw'?'abortive_draw':'exhaustive_draw',transfers:room.transfers?.map(t=>({...t})),nagashi:room.nagashi?[...room.nagashi]:undefined,awardedPot:room.awardedPot??0,scoreChanges:Object.fromEntries(SEATS.map(s=>[s,room.scores[s]-(room.handStartingScores?.[s]??25000)])) as Record<Seat,number>,tenpai:game.phase==='exhaustive_draw'&&!room.nagashi?.length?SEATS.filter(s=>getPlayerWaits(game,s).length>0):[],...(game.phase==='exhaustive_draw'&&!room.nagashi?.length?{tenpaiHands:Object.fromEntries(SEATS.filter(s=>getPlayerWaits(game,s).length>0).map(s=>[s,[...game.hands[s]]]))}:{}),...(game.result?{winningHand:game.result.method==='ron'?[...game.hands[game.result.winner],game.result.winningTile]:[...game.hands[game.result.winner]],winningHands:Object.fromEntries((game.results??[game.result]).map(r=>[r.winner,r.method==='ron'?[...game.hands[r.winner],r.winningTile]:[...game.hands[r.winner]]]))}:{})}}:{}),
         ...((game.results??(game.result?[game.result]:[])).some(r=>game.riichi[r.winner].declared)?{uraIndicators:visibleUraIndicators(game.deadWall)}:{}),
         doraIndicators: getVisibleDora(game),
         yourDora: getBonusDoraForSeat(game, player.seat),
@@ -381,7 +389,22 @@ export class RoomManager {
   getResumeToken(code:string,playerId:string):string{return this.requirePlayer(this.requireRoom(code),playerId).resumeToken}
   private settleIfExhaustive(room:Room):void{
     if(room.game?.phase!=='awaiting_claim')delete room.pendingRiichi;
-    if(room.settled||!room.game)return;if(!['exhaustive_draw','abortive_draw'].includes(room.game.phase)){this.finishOnBankruptcy(room);return;}if(room.game.phase==='abortive_draw'){room.settled=true;advanceMatch(room.match,true,room.rules.matchLength,true);this.finishOnBankruptcy(room);return;}const tenpai=SEATS.filter(s=>getPlayerWaits(room.game!,s).length>0);const payments=calculateNotenPayments(tenpai);for(const s of SEATS)room.scores[s]=(room.scores[s]??0)+(payments[s]??0);room.settled=true;advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);this.finishOnBankruptcy(room);if(room.match.finished)room.finalRanking=rankScores(room.scores);
+    if(room.settled||!room.game)return;
+    if(!['exhaustive_draw','abortive_draw'].includes(room.game.phase)){this.finishOnBankruptcy(room);return;}
+    if(room.game.phase==='abortive_draw'){room.settled=true;advanceMatch(room.match,true,room.rules.matchLength,true);this.finishOnBankruptcy(room);return;}
+    const nagashi=nagashiWinners(room.game);
+    if(nagashi.length){
+      room.nagashi=nagashi;room.drawPresentation={startedAt:Date.now(),endsAt:Date.now()+4000};room.transfers=nagashiTransfers(room.game,nagashi,room.match.honba);applyTransfers(room.scores,room.transfers);
+      const dealer=room.match.dealer,ordered=Array.from({length:4},(_,i)=>SEATS[(SEATS.indexOf(dealer)+i)%4]!),potWinner=ordered.find(s=>nagashi.includes(s))!;
+      room.awardedPot=room.riichiPot;room.scores[potWinner]+=room.riichiPot;room.riichiPot=0;room.settled=true;
+      advanceMatch(room.match,nagashi.includes(dealer),room.rules.matchLength);
+      if(room.rules.agariYame&&nagashi.includes(dealer)&&room.handMatch?.handNumber===4&&room.scores[dealer]>=30000&&rankScores(room.scores)[0]===dealer)room.match.finished=true;
+      this.finishOnBankruptcy(room);return;
+    }
+    const tenpai=SEATS.filter(s=>getPlayerWaits(room.game!,s).length>0),payments=calculateNotenPayments(tenpai);
+    for(const s of SEATS)room.scores[s]+=payments[s];room.settled=true;
+    advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);this.finishOnBankruptcy(room);
+
   }
 
   private finishOnBankruptcy(room:Room):void{
@@ -402,18 +425,20 @@ export class RoomManager {
     if(pending&&result.method==='ron'&&result.from===pending.seat&&result.winningTile.id===pending.discardId){room.scores[pending.seat]+=1000;room.riichiPot-=1000;const declaration=room.game.riichi[pending.seat];declaration.declared=false;declaration.doubleRiichi=false;declaration.ippatsuEligible=false;delete declaration.declarationTurn;}
     delete room.pendingRiichi;
     const all=room.game.results??[room.game.result];
-    const r=all[0]!,w=r.winner,honba=room.match.honba;
-    for(const win of all){const p=win.score.payment,w=win.winner;
-      if(win.method==='ron'&&win.from&&p.ron){const amount=p.ron+honba*300;room.scores[win.from]-=amount;room.scores[w]+=amount;}
-      else if(win.method==='tsumo')for(const seat of SEATS){if(seat===w)continue;const base=w===room.match.dealer?p.eachTsumo:seat===room.match.dealer?p.dealerTsumo:p.nonDealerTsumo;if(base){room.scores[seat]-=base+honba*100;room.scores[w]+=base+honba*100}}
+    const w=all[0]!.winner,honba=room.match.honba;
+    room.transfers=all.flatMap(win=>winTransfers(room.game!,win,honba));applyTransfers(room.scores,room.transfers);
+    for(const win of all){const w=win.winner;
       this.record(room,win.method==='ron'?'RON':'TSUMO',w);const limit=limitPresentation(win.score);if(limit)this.record(room,limit,w);
     }
-    const trigger=cinematicTrigger(r.evaluation);
-    if(trigger){const asset=CINEMATIC_ASSETS[trigger],now=Date.now();room.cinematic={id:room.eventSequence??0,trigger,method:r.method,winner:w,character:({east:'yellow',south:'king',west:'ninja',north:'wizard'} as const)[w],startedAt:now+(asset?.video?0:900),endsAt:now+(asset?.video?0:900)+(asset?.durationMs??1800),phase:'playing',serverNow:now,...(asset?{video:asset.video,...(asset.voice?{voice:asset.voice}:{}),...(asset.sound?{sound:asset.sound}:{}),...(asset.image?{image:asset.image}:{}),...(asset.particles?{particles:true}:{})}:{})};}
+    room.winSequence=createWinSequence(room.game,room.code+':'+room.revision+':'+(room.eventSequence??0),Date.now());
+    if(room.winSequence)room.cinematic=sequenceCinematic(room.winSequence,all,room.eventSequence??0);
     room.awardedPot=room.riichiPot;room.scores[w]=(room.scores[w]??0)+room.riichiPot; room.riichiPot=0; room.settled=true;
     advanceMatch(room.match,all.some(win=>win.winner===room.match.dealer),room.rules.matchLength);
     if(room.rules.agariYame&&all.some(win=>win.winner===room.match.dealer)&&room.handMatch?.handNumber===4&&room.scores[room.match.dealer]>=30000&&rankScores(room.scores)[0]===room.match.dealer)room.match.finished=true;this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores);
   }
+
+  /** Host settlement entry: accepts only a genuinely completed draw and is idempotent. */
+  settleCompletedDraw(code:string):Room{const room=this.requirePlayingRoom(code);if(!room.game||!['exhaustive_draw','abortive_draw'].includes(room.game.phase))throw new RoomError('HAND_NOT_ENDED','Draw is not complete.');this.settleIfExhaustive(room);return room;}
 
   settleExhaustiveDrawForTesting(code:string,tenpai:Seat[]):Room{
     const room=this.requirePlayingRoom(code); if(room.settled) return room;
@@ -423,9 +448,9 @@ export class RoomManager {
   }
 
   startNextHand(code:string):Room{
-    const room=this.requirePlayingRoom(code); if(room.resultFlow)throw new RoomError('RESULT_FLOW_ACTIVE','Wait for the shared result clock.'); if(room.cinematic?.phase==='playing')throw new RoomError('CINEMATIC_ACTIVE','Wait for the synchronized result transition.'); if(!room.settled) throw new RoomError('HAND_NOT_SETTLED','Current hand has not ended.');
+    const room=this.requirePlayingRoom(code); if(room.drawPresentation&&Date.now()<room.drawPresentation.endsAt)throw new RoomError('PRESENTATION_ACTIVE','Wait for the draw presentation.'); if(room.resultFlow)throw new RoomError('RESULT_FLOW_ACTIVE','Wait for the shared result clock.'); if(room.cinematic?.phase==='playing')throw new RoomError('CINEMATIC_ACTIVE','Wait for the synchronized result transition.'); if(!room.settled) throw new RoomError('HAND_NOT_SETTLED','Current hand has not ended.');
     if(room.match.finished) throw new RoomError('MATCH_FINISHED','The hanchan has finished.');
-    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.demoCharacter;delete room.demoPresentation;delete room.resultFlow;delete room.pendingClaims;delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
+    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.winSequence;delete room.drawPresentation;delete room.transfers;delete room.nagashi;delete room.demoCharacter;delete room.demoPresentation;delete room.resultFlow;delete room.pendingClaims;delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
   }
 
   completeCinematic(code:string,now=Date.now()):boolean{const room=this.requireRoom(code);if(!room.cinematic||room.cinematic.phase!=='playing'||now<room.cinematic.endsAt)return false;room.cinematic.phase='results';return true;}
