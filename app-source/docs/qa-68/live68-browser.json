@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "renderer": "webgl",
+  "trace": [
+    {
+      "stage": "other",
+      "visible": false,
+      "loaded": false,
+      "at": 10440.5
+    },
+    {
+      "stage": "dim",
+      "visible": true,
+      "loaded": true,
+      "at": 11997.599999999627
+    },
+    {
+      "stage": "eyes",
+      "visible": true,
+      "loaded": true,
+      "at": 12436
+    },
+    {
+      "stage": "video",
+      "visible": false,
+      "loaded": false,
+      "at": 13478
+    }
+  ],
+  "errors": []
+}

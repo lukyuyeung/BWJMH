@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "6 calls while poses blocked",
+    "eyes visible while tier image blocked",
+    "6 tier timings",
+    "video eye prefix",
+    "4 live champion roles",
+    "real scoring and carrot estimate",
+    "full terminal result path",
+    "restart"
+  ],
+  "errors": []
+}

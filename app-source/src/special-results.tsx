@@ -5,6 +5,8 @@ export function SpecialWinSequence({game,onComplete,reduce}:{game:Game;onComplet
  const plan=game.hand.winSequence!,offset=useRef({received:performance.now(),age:plan.serverNow-plan.startedAt}),[age,setAge]=useState(offset.current.age),done=useRef(onComplete);done.current=onComplete;
  useEffect(()=>{offset.current={received:performance.now(),age:plan.serverNow-plan.startedAt}},[plan.serverNow,plan.id]);
  useEffect(()=>{const tick=()=>{const next=offset.current.age+performance.now()-offset.current.received;setAge(next);if(next>=plan.endsAt-plan.startedAt)done.current()};tick();const timer=setInterval(tick,25);return()=>clearInterval(timer)},[plan.id]);
+ const nextVideo=plan.segments.find(s=>s.kind==='video'&&s.end>age)?.video;
+ useEffect(()=>{if(!nextVideo)return;const preload=document.createElement('video');preload.preload='auto';preload.muted=true;preload.src=nextVideo;preload.load();return()=>{preload.pause();preload.removeAttribute('src');preload.load()}},[nextVideo]);
  const segment=plan.segments.find(s=>age>=s.start&&age<s.end),results=game.hand.results??[game.hand.result!];
  if(age>=plan.endsAt-plan.startedAt)return null;
  if(!segment)return <section className="special-result-intro" role="status"><small>BUNNY GALA</small><strong>雙響</strong><div>{results.map(r=><span key={r.winner}>{game.room.players.find(p=>p.seat===r.winner)?.name}</span>)}</div></section>;

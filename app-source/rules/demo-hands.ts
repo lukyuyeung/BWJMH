@@ -1,9 +1,10 @@
 import {createStandardWall,createDeadWall,createHandState,dealInitialHands,constructPhysicalWall,SEATS,type Tile,type Seat} from '@bunny/riichi-engine';
 import type {Room,RoomManager} from './room.js';
-export const DEMO_HANDS={pao:'P P P F F F C C C 2m 3m 4m 5p 5p','triple-yakuman':'E E E S S S W W W N N N P P',nagashi:'1m 2m 3m 2m 3m 4m 5m 6m 7m 6m 7m 8m 9m 9m','double-video':'1m 2m 3m 4m 5m 6m 2m 3m 4m 6m 7m 8m 9m 9m',mangan:'1m 2m 3m 2m 3m 4m 5m 6m 7m 6m 7m 8m 9m 9m',haneman:'1m 2m 3m 4m 5m 6m 7m 8m 9m P P P F F',baiman:'1m 2m 3m 2m 3m 4m 4m 5m 6m 7m 8m 9m 5m 5m',sanbaiman:'1m 2m 3m 1m 2m 3m 4m 5m 6m 7m 8m 9m 5m 5m',yakuman:'P P P F F F C C C 2m 3m 4m 5p 5p','double-yakuman':'E E E S S S W W W N N N 5p 5p',daisangen:'P P P F F F C C C 2m 3m 4m 5p 5p',suuankou:'2m 2m 2m 3p 3p 3p 4s 4s 4s 6s 6s 6s 5p 5p',daisuushi:'E E E S S S W W W N N N 5p 5p',kokushi:'1m 9m 1p 9p 1s 9s E S W N P F C C',chinitsu:'1m 2m 3m 1m 2m 3m 4m 5m 6m 7m 8m 9m 5m 5m'} as const;
+export const DEMO_HANDS={'final-ranking':'1m 2m 3m 2m 3m 4m 5m 6m 7m 6m 7m 8m 9m 9m',pao:'P P P F F F C C C 2m 3m 4m 5p 5p','triple-yakuman':'E E E S S S W W W N N N P P',nagashi:'1m 2m 3m 2m 3m 4m 5m 6m 7m 6m 7m 8m 9m 9m','double-video':'1m 2m 3m 4m 5m 6m 2m 3m 4m 6m 7m 8m 9m 9m',mangan:'1m 2m 3m 2m 3m 4m 5m 6m 7m 6m 7m 8m 9m 9m',haneman:'1m 2m 3m 4m 5m 6m 7m 8m 9m P P P F F',baiman:'1m 2m 3m 2m 3m 4m 4m 5m 6m 7m 8m 9m 5m 5m',sanbaiman:'1m 2m 3m 1m 2m 3m 4m 5m 6m 7m 8m 9m 5m 5m',yakuman:'P P P F F F C C C 2m 3m 4m 5p 5p','double-yakuman':'E E E S S S W W W N N N 5p 5p',daisangen:'P P P F F F C C C 2m 3m 4m 5p 5p',suuankou:'2m 2m 2m 3p 3p 3p 4s 4s 4s 6s 6s 6s 5p 5p',daisuushi:'E E E S S S W W W N N N 5p 5p',kokushi:'1m 9m 1p 9p 1s 9s E S W N P F C C',chinitsu:'1m 2m 3m 1m 2m 3m 4m 5m 6m 7m 8m 9m 5m 5m'} as const;
 export type DemoHand=keyof typeof DEMO_HANDS;
 /** Standalone demo only: allocate a complete, unique 136-tile wall, then use the real win/settlement path. */
 export function installDemoWin(manager:RoomManager,room:Room,playerId:string,kind:DemoHand){
+ if(kind==='final-ranking'){installDemoWin(manager,room,playerId,'mangan');room.match.finished=true;room.finalRanking=[...SEATS].sort((a,b)=>room.scores[b]-room.scores[a]||SEATS.indexOf(a)-SEATS.indexOf(b));room.resultFlow={id:'demo-final:'+room.code,phase:'ranking',deadline:0,ready:[]};return;}
  if(kind==='nagashi'){installNagashiDemo(manager,room,playerId);return;}
  if(kind==='double-video'){installDoubleVideo(manager,room,playerId);return;}
  if(!Object.hasOwn(DEMO_HANDS,kind))throw Error('未知示範牌型');
@@ -22,7 +23,7 @@ export function installDemoWin(manager:RoomManager,room:Room,playerId:string,kin
  if(tierDemo){delete settled.cinematic;delete settled.winSequence;}else if(settled.cinematic)settled.cinematic.demo=true;
 }
 
-export const DEMO_LABELS=[['pao','大三元 · 包牌支付'],['nagashi','流局滿貫 · 河牌演出'],['double-video','雙響 · 兩家清一色影片'],['triple-yakuman','三倍役滿 · 完整演出'],['mangan','滿貫'],['haneman','跳滿'],['baiman','倍滿'],['sanbaiman','三倍滿'],['yakuman','役滿'],['double-yakuman','雙倍役滿'],['daisangen','大三元 · 完整演出'],['suuankou','四暗刻 · 完整演出'],['daisuushi','大四喜 · 完整演出'],['chinitsu','清一色 · 完整演出'],['kokushi','國士無雙 · 無專屬影片']] as const;
+export const DEMO_LABELS=[['final-ranking','終局排名 · 實際遊戲版面'],['pao','大三元 · 包牌支付'],['nagashi','流局滿貫 · 河牌演出'],['double-video','雙響 · 兩家清一色影片'],['triple-yakuman','三倍役滿 · 完整演出'],['mangan','滿貫'],['haneman','跳滿'],['baiman','倍滿'],['sanbaiman','三倍滿'],['yakuman','役滿'],['double-yakuman','雙倍役滿'],['daisangen','大三元 · 完整演出'],['suuankou','四暗刻 · 完整演出'],['daisuushi','大四喜 · 完整演出'],['chinitsu','清一色 · 完整演出'],['kokushi','國士無雙 · 無專屬影片']] as const;
 
 function installDoubleVideo(manager:RoomManager,room:Room,playerId:string){
  const pool=createStandardWall(false),take=(face:string)=>{const i=pool.findIndex(t=>t.face===face);if(i<0)throw Error('Double demo tile exhausted');return pool.splice(i,1)[0]!};
