@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "roles": 4,
+  "checks": [
+    "transparent hoodie character",
+    "updated matching name and avatar",
+    "all role switches",
+    "no golden character in preview"
+  ],
+  "errors": []
+}
