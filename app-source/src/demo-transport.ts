@@ -30,13 +30,13 @@ const state=this.manager.getPlayerGameState(this.room.code,this.playerId);
   this.dispatch('room:state',this.manager.getPublicState(this.room.code));this.dispatch('game:state',state);}
  private perform(name:string,p:any,callback?:(result:any)=>void){
   try{const c=this.room.code,id=this.playerId;if(name==='game:report-complete'){new ResultClock(this.manager).reportComplete(this.room,id,p.id);callback?.({ok:true,data:{}});return;}if(window.__bunnyLoading&&name.startsWith('game:')){callback?.({ok:false,error:{code:'LOADING',message:'正在準備牌桌'}});return;}
-   if(name.startsWith('game:')&&name!=='game:demo-win'&&name!=='game:next-hand'&&tableMotionBusy()){callback?.({ok:true,data:{}});return;}
+   if(name.startsWith('game:')&&name!=='game:demo-win'&&name!=='game:next-hand'&&name!=='game:resume-control'&&tableMotionBusy()){callback?.({ok:true,data:{}});return;}
    if(name.startsWith('game:')&&this.room.players.find(player=>player.id===id)?.autoPlay&&!['game:resume-control','game:next-hand','game:demo-win'].includes(name))throw Error('請先返回自己操作。');
-   if(name.startsWith('game:')&&p.revision!==undefined&&p.revision!==this.room.revision)throw new Error('牌局已更新，請再操作。');
+   if(name.startsWith('game:')&&name!=='game:resume-control'&&p.revision!==undefined&&p.revision!==this.room.revision)throw new Error('牌局已更新，請再操作。');
    switch(name){
     case 'room:reconnect':callback?.({ok:true,data:{playerId:id,room:this.manager.getPublicState(c)}});this.publish();this.schedule();return;
     case 'game:demo-win':this.reset();installDemoWin(this.manager,this.room,this.playerId,p.kind as DemoHand);this.room.demoCharacter=['yellow','king','ninja','wizard'].includes(p.character)?p.character:'yellow';if(this.room.cinematic)this.room.cinematic.character=this.room.demoCharacter!;break;
-    case 'game:resume-control':this.manager.resumeControl(c,id);break;
+    case 'game:resume-control':this.manager.resumeControl(c,id);this.room.revision++;callback?.({ok:true,data:{}});this.publish();this.schedule();return;
     case 'game:draw':this.manager.draw(c,id);break;
     case 'game:discard':this.manager.discard(c,id,p.tileId);break;
     case 'game:riichi-discard':this.manager.riichiDiscard(c,id,p.tileId);break;

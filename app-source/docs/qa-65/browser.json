@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "four champion cutouts",
+    "phone touch resume during motion lock",
+    "four eye crops and video prefixes",
+    "both Double Ron hands flip",
+    "one complete report at a time"
+  ],
+  "errors": []
+}

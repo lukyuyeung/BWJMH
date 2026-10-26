@@ -10,7 +10,7 @@ function pause(ms:number,signal:AbortSignal){return new Promise<void>(resolve=>{
 function visible(signal:AbortSignal){if(!document.hidden||signal.aborted)return Promise.resolve();return new Promise<void>(resolve=>{const finish=()=>{if(document.hidden&&!signal.aborted)return;document.removeEventListener('visibilitychange',finish);signal.removeEventListener('abort',finish);resolve();};document.addEventListener('visibilitychange',finish);signal.addEventListener('abort',finish,{once:true});});}
 /** Each row waits for its own VO completion, including clips longer than the old fixed timer. */
 export function useWinReport(game:Game,character:Character,level:string,rowCount:number,reduce:boolean){
- const key=audioHandKey(game)+':'+character+':'+game.hand.result?.score.payment.total+':'+game.hand.result?.evaluation.yaku.map(y=>y.name).join(','),scope=key+':result',events=resultVoiceEvents(game),eventKey=events.join('|');
+ const key=audioHandKey(game)+':'+game.hand.result?.winner+':'+character+':'+game.hand.result?.score.payment.total+':'+game.hand.result?.evaluation.yaku.map(y=>y.name).join(','),scope=key+':result',events=resultVoiceEvents(game),eventKey=events.join('|');
  const [state,setState]=useState<ReportState>(initial);
  useEffect(()=>{const controller=new AbortController(),signal=controller.signal,a=gameAudio();let release:(()=>void)|undefined;const update=(patch:Partial<ReportState>)=>{if(!signal.aborted)setState(s=>({...s,...patch}));};
   const run=async()=>{if(completed.has(key)){setState({revealed:rowCount,activeRow:-1,grade:true,impact:false,points:true,stage:'complete'});return;}

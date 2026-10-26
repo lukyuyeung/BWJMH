@@ -4,7 +4,7 @@ import React,{useEffect,useLayoutEffect,useRef} from 'react';
 import type {Game,Seat} from './main';import type {Character} from './presentation';import {ResultTile,ResultMeld,sortResultTiles} from './result-tiles';import {yakuEnglishToChinese} from './yaku-catalog';import './win-banner.css';
 const A='/art/results/';
 function Digits({value,unit}:{value:number;unit:string}){return <span className="wb-digits" aria-label={value+' '+unit}>{String(value).split('').map((n,i)=><img key={i} src={A+'digits/'+n+'-ivory.svg'} alt={n}/>)}<small>{unit}</small></span>}
-export function WinBanner({game,character,name,level,onScores,onComplete,reduce=false}:{game:Game;character:Character;name:string;level:string;onScores:()=>void;onComplete?:()=>void;reduce?:boolean}){
+export function WinBanner({game,character,name,level,onScores,onComplete,reduce=false,allowScores=true}:{game:Game;character:Character;name:string;level:string;onScores:()=>void;onComplete?:()=>void;reduce?:boolean;allowScores?:boolean}){
  const result=game.hand.result!,h=game.hand,match=h.match;const reduced=reduce||matchMedia('(prefers-reduced-motion: reduce)').matches;
  const bonus=[['寶牌',result.dora.indicatorDora],['赤寶牌',result.dora.akaDora],['裏寶牌',result.dora.uraDora]] as const;
  const rows=[...result.evaluation.yaku.map(y=>({name:yakuEnglishToChinese[y.name]??y.name,value:y.yakuman??y.han,unit:y.yakuman?'役滿':'番'})),...bonus.filter(([,v])=>v>0&&!result.evaluation.yakuman).map(([name,value])=>({name,value,unit:'番'}))];
@@ -23,6 +23,6 @@ export function WinBanner({game,character,name,level,onScores,onComplete,reduce=
  <div className="wb-yaku" style={{gridTemplateColumns:`repeat(${Math.max(3,Math.ceil(rows.length/2))},minmax(0,1fr))`}} data-dense={rows.length>10||undefined}>{rows.map((row,i)=><div className="wb-yaku-row" key={i} data-visible={report.revealed>i||undefined} data-active={report.activeRow===i||undefined} style={{visibility:report.revealed>i?'visible':'hidden'}}><span>{row.name}</span><b>{row.value}<small>{row.unit}</small></b></div>)}</div>
  <div className="wb-grade" style={{visibility:report.grade?'visible':'hidden'}}><Digits value={result.evaluation.yakuman||result.score.han} unit={result.evaluation.yakuman?'役滿':'番'}/>{!result.evaluation.yakuman&&<Digits value={result.score.fu} unit="符"/>}</div>
  <div className="wb-total" style={{visibility:report.points?'visible':'hidden'}}>{result.evaluation.yakuman>2?<strong>{result.evaluation.yakuman}倍役滿</strong>:limit&&<img className="wb-limit-small" src={A+'limits/'+limit+'.png'} alt={limit}/>}<Digits value={result.score.payment.total} unit="點"/></div>
- </main><button hidden={!!game.room.resultFlow} className="wb-next" onClick={onScores}>查看點數　→</button>
+ </main><button hidden={!!game.room.resultFlow||!allowScores} className="wb-next" onClick={onScores}>查看點數　→</button>
  </div></section>
 }
