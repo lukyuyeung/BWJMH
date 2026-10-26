@@ -1,0 +1,13 @@
+{
+  "checks": 176,
+  "widths": [
+    1125,
+    1400,
+    1800,
+    2400
+  ],
+  "seats": 4,
+  "rearNeverInFrame": true,
+  "entryExitOffscreen": true,
+  "openEndedSleeves": true
+}

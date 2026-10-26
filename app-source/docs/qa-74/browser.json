@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "3 rendered design previews",
+    "each new style plays original discard",
+    "real mobile WebGL uses yellow/ninja/king/wizard by seat",
+    "actual touch discard settles and releases motion lock",
+    "opponent draw uses its role hand"
+  ],
+  "errors": []
+}
