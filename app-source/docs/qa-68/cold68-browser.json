@@ -1,0 +1,4 @@
+{
+  "passed": true,
+  "check": "Both portrait and action blocked: call starts using exact decoded 400px avatar"
+}

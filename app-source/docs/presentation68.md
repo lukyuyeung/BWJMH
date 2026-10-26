@@ -20,3 +20,5 @@ Preloading now prioritizes the player's eyes, portrait and small call layers. Op
 - TypeScript and production build pass. Evidence is in docs/qa-68.
 
 Existing ranking design-review notes describe older releases; the actual terminal layout is now integrated. Production multiplayer hosting and wallet settlement remain separate from this browser-local Bot Site.
+
+The final cold-cache check (`qa/cold68-browser.mjs`) additionally holds both the large character portrait and the action pose before the first call. The original decoded 400px avatar is used immediately, so even a completely cold character image cannot leave the call portrait empty. Evidence: docs/qa-68/cold68-browser.json.
