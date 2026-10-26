@@ -4,3 +4,5 @@
 
 .cutout[data-role=yellow]{left:14px;top:69px;width:390px;height:360px}.avatar-window{position:relative;display:block;overflow:hidden;width:36px;height:36px}.avatar-window .hoodie-avatar{position:absolute;width:68px;height:68px;max-width:none;left:-16px;top:-4px;object-fit:contain}
 .avatar-window .hoodie-avatar{width:96px;height:96px;left:-31px;top:-28px}
+
+.avatar-window .hoodie-avatar{position:static;width:36px;height:36px;object-fit:contain;image-rendering:pixelated}

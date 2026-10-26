@@ -2,39 +2,39 @@
   "yellow": [
     {
       "id": "happy",
-      "url": "/art/emotes/yellow/0.webp"
+      "url": "/art/hoodie-v3/emotes/0.png"
     },
     {
       "id": "angry",
-      "url": "/art/emotes/yellow/1.webp"
+      "url": "/art/hoodie-v3/emotes/1.png"
     },
     {
       "id": "crying",
-      "url": "/art/emotes/yellow/2.webp"
+      "url": "/art/hoodie-v3/emotes/2.png"
     },
     {
       "id": "surprised",
-      "url": "/art/emotes/yellow/3.webp"
+      "url": "/art/hoodie-v3/emotes/3.png"
     },
     {
       "id": "thinking",
-      "url": "/art/emotes/yellow/4.webp"
+      "url": "/art/hoodie-v3/emotes/4.png"
     },
     {
       "id": "sorry",
-      "url": "/art/emotes/yellow/5.webp"
+      "url": "/art/hoodie-v3/emotes/5.png"
     },
     {
       "id": "victory",
-      "url": "/art/emotes/yellow/6.webp"
+      "url": "/art/hoodie-v3/emotes/6.png"
     },
     {
       "id": "speechless",
-      "url": "/art/emotes/yellow/7.webp"
+      "url": "/art/hoodie-v3/emotes/7.png"
     },
     {
       "id": "playful",
-      "url": "/art/emotes/yellow/8.webp"
+      "url": "/art/hoodie-v3/emotes/8.png"
     }
   ],
   "king": [

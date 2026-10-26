@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "exact avatar hash",
+    "lobby and ready",
+    "9 emotes",
+    "6 cutins",
+    "6 tiers",
+    "report portrait",
+    "4 role preview switches"
+  ],
+  "errors": []
+}

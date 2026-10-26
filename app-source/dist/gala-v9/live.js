@@ -87,7 +87,7 @@ new ResizeObserver(fit).observe(document.querySelector('#viewport'));
 runtimeReady.then(async()=>{
  await document.fonts.load('700 172px "LXGW WenKai TC"','東南西北發中一二三四五六七八九萬').catch(()=>{});
  if(!R.ready)throw new Error('Gala rig did not load');
- R.setSkin('bottom','golden');
+ R.setSkin('bottom','hoodie');
  R.controls.enabled=false;R.controls.enableDamping=false;
  R.camera.position.set(0,3.95610332,4.57487068);
  R.controls.target.set(0,1.17875957,.41718362);R.controls.update();fit();

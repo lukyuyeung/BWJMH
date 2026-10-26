@@ -2,9 +2,9 @@
   {
     "character": "yellow",
     "path": "yellow-presentation.png",
-    "kind": "derived-presentation-cutout",
-    "note": "Background-removed presentation derived from existing references; original character masters unchanged.",
-    "sha256": "5d2dd5ffd3c71bf380b008e45a13fb81143b6e0f8e54a2f1c537776074bf4527"
+    "kind": "approved-bare-headed-hoodie-cutout",
+    "note": "Legacy yellow role key now maps to the approved black hoodie rabbit, hood down.",
+    "sha256": "65b5539e0d7c25f848f30d50200560686a9901d22416410576c4373c0bee65b4"
   },
   {
     "character": "wizard",

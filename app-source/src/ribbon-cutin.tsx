@@ -1,3 +1,4 @@
+import {characterCutin} from './character-art';
 import React,{useEffect,useRef,useState} from 'react';
 import preset from './ribbon-preset.json';
 import type {Character} from './presentation.js';
@@ -15,6 +16,6 @@ export function RibbonCutin({action,character,relative,reduce=false,onComplete}:
    <img data-layer="03" style={rect(a.rect)} src={'/art/ribbon-v2/03-'+action+'.png'} alt={a.label}/>
    <img data-layer="04" style={rect(preset.fx.rect)} src="/art/ribbon-v2/04-fx.png" alt=""/>
   </div>
-  <img data-layer="02" style={rect(preset.characterRect)} src={character==='yellow'?'/art/results/yellow-presentation.png':'/art/ribbon-v2/'+character+'-character.png'} alt=""/>
+  <img data-layer="02" style={rect(preset.characterRect)} src={characterCutin(character,action)} alt=""/>
  </aside>;
 }

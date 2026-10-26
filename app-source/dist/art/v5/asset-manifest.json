@@ -36,7 +36,8 @@
   },
   {
     "file": "CHARACTER_PLAYER_YELLOW_BUNNY_MASTER.png",
-    "source": "01_LOCKED_MASTERS/CHARACTER_PLAYER_YELLOW_BUNNY_MASTER.png",
-    "sha256": "4938c5cf60c81176d041008be42d1c01e7513494e9c4f1d5fb374871dbabb7c2"
+    "source": "approved-black-hoodie-v2/character.png",
+    "sha256": "65b5539e0d7c25f848f30d50200560686a9901d22416410576c4373c0bee65b4",
+    "note": "Legacy filename retained as compatibility alias for approved hoodie role."
   }
 ]

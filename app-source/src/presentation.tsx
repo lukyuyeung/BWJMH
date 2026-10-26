@@ -2,7 +2,7 @@ import {gameAudio} from './game-audio';
 import React,{useEffect,useRef,useState} from 'react';
 import './cinematic-fade46.css';
 import {RibbonCutin,type RibbonAction} from './ribbon-cutin.js';
-export const characterAssets={yellow:'/art/v5/CHARACTER_PLAYER_YELLOW_BUNNY_MASTER.png',wizard:'/art/v5/CHARACTER_WIZARD_MASTER.jpeg',ninja:'/art/v5/CHARACTER_NINJA_MASTER.jpeg',king:'/art/v5/CHARACTER_KING_MASTER.jpeg'};
+export const characterAssets={yellow:'/art/hoodie-v3/character.png',wizard:'/art/v5/CHARACTER_WIZARD_MASTER.jpeg',ninja:'/art/v5/CHARACTER_NINJA_MASTER.jpeg',king:'/art/v5/CHARACTER_KING_MASTER.jpeg'};
 export type Character=keyof typeof characterAssets;
 export type PerformanceKind='CHI'|'PON'|'KAN'|'RIICHI'|'RON'|'TSUMO'|'MANGAN'|'HANEMAN'|'BAIMAN'|'SANBAIMAN'|'YAKUMAN'|'DOUBLE_YAKUMAN';
 export type PerformanceEvent={id:number;kind:PerformanceKind;seat:string};

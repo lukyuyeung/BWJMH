@@ -88,7 +88,7 @@ function updateReach(dt){const s=state,p=s.player;s.elapsed+=dt;$('#motion-progr
 $('#zones').addEventListener('change',e=>zoneLayer.visible=e.target.checked);$('#reach-range').addEventListener('change',e=>reachLayer.visible=e.target.checked);$('#reach-target').addEventListener('change',refreshReach);$('#test-reach').addEventListener('click',()=>testReach(false));$('#transfer-reach').addEventListener('click',()=>testReach(true));$('#top-camera').addEventListener('click',()=>{cameraMove={from:camera.position.clone(),to:new THREE.Vector3(0,8.8,.001),fromTarget:controls.target.clone(),target:new THREE.Vector3(0,1,0),t:0};});
 
 export const runtimeReady=Promise.all([loader.loadAsync('rig-assets/bunny-hoodie-v9.glb'),loader.loadAsync('rig-assets/bunny-golden-v9.glb'),loadBack(),fetch('rig-assets/bunny-hoodie-v9.json').then(r=>r.json()),loader.loadAsync('rig-assets/gala-table-chairs.glb').catch(()=>null)]).then(([hoodie,golden,back,info,furniture])=>{
- skinSources.set('hoodie',hoodie);skinSources.set('golden',golden);
+ skinSources.set('hoodie',hoodie);skinSources.set('golden',hoodie);
  if(furniture){furnitureScene=furniture.scene;furnitureScene.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;for(const m of(Array.isArray(o.material)?o.material:[o.material])){m.roughness=Math.max(.65,m.roughness??.65);m.metalness=Math.min(.35,m.metalness??0);}}});scene.add(furnitureScene);for(const o of fallbackFurniture)scene.remove(o);}
  tileMats=[materials.ivory,materials.ivory,faceMat,back,materials.ivory,materials.ivory];
  for(const [id,seat]of Object.entries(seats)){

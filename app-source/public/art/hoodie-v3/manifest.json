@@ -1,0 +1,122 @@
+[
+  {
+    "path": "emotes/0.png",
+    "bytes": 1168370,
+    "sha256": "6db50da7bb025855ea76769d26a28434054f82a9b0e0bc5e55d9c014095c5ed4"
+  },
+  {
+    "path": "emotes/6.png",
+    "bytes": 1227032,
+    "sha256": "4bb36bfcb530b3683018e3d0a5448c4ab00f591ba418ddf164ead9fcf563cd6a"
+  },
+  {
+    "path": "emotes/7.png",
+    "bytes": 979368,
+    "sha256": "0ad80d76ba61910f343bd303fc0468ea1aad0faf96de9e77b748adbc6c697f47"
+  },
+  {
+    "path": "emotes/3.png",
+    "bytes": 1091051,
+    "sha256": "18b2df450c63700a871a66c1c0d27109174cd436181bfe3b15ddc173113953a9"
+  },
+  {
+    "path": "emotes/8.png",
+    "bytes": 1116130,
+    "sha256": "59ecf508a1e04fca2c2609dc10aa80d1d20238f66747c08e30acd14c919562f8"
+  },
+  {
+    "path": "emotes/5.png",
+    "bytes": 951651,
+    "sha256": "745ab06affb88718a790cf8e58b6d7dd26bc7b77b519aff8388bfb89ffff074f"
+  },
+  {
+    "path": "emotes/2.png",
+    "bytes": 1161230,
+    "sha256": "73fb53a5edcff6f7390183f0c84136ce0550139cf23dc2648c93e3f113e8d5e0"
+  },
+  {
+    "path": "emotes/4.png",
+    "bytes": 997572,
+    "sha256": "7cc9a81fb19d6a0c0f127e088fe000068a28ca27520187a09bc88851ca78d81e"
+  },
+  {
+    "path": "emotes/1.png",
+    "bytes": 1168177,
+    "sha256": "88d3aef676d574ac40b2d70010bfb1f07a42daebd6ebf62bb485923bc628adb9"
+  },
+  {
+    "path": "cutins/riichi.png",
+    "bytes": 1220536,
+    "sha256": "8ba1f8d60591d93d77182f8369e6ccf796353bb84ace2b447e93c18c2d90ae1b"
+  },
+  {
+    "path": "cutins/chi.png",
+    "bytes": 1155389,
+    "sha256": "6821f27e8d27e0e090f5488cf6d260192bf17d0e4f1ee151989780af397fcfb4"
+  },
+  {
+    "path": "cutins/kan.png",
+    "bytes": 1218974,
+    "sha256": "0dea827a782062b8660ce625d201ff52c835fc4e97ba1c817d3922c1b6788619"
+  },
+  {
+    "path": "cutins/ron.png",
+    "bytes": 1122531,
+    "sha256": "dae8200c68b45846a4a8233f6251f3de999cfc40172b7a86c5ac493db077bfd6"
+  },
+  {
+    "path": "cutins/pon.png",
+    "bytes": 1168777,
+    "sha256": "af158a2c68bdcd86a78ed52be1ccbda5902f7fab0f76db3a6d6d8cd1bdd2f054"
+  },
+  {
+    "path": "cutins/tsumo.png",
+    "bytes": 1195999,
+    "sha256": "1d8ab0e7374d1454819420d3932121ceceef62cec21b2453f6275cc0d6366a65"
+  },
+  {
+    "path": "tiers/baiman.png",
+    "bytes": 2419947,
+    "sha256": "3d4c06c2716346a9f66e9660e446088f770ba6d3f5b4d2c494b7780afe84adf3"
+  },
+  {
+    "path": "tiers/mangan.png",
+    "bytes": 2311970,
+    "sha256": "f79cd7c388ad86823757745bd45864c3682ebad1cec9dd96a5d7154a617d87d3"
+  },
+  {
+    "path": "tiers/yakuman.png",
+    "bytes": 2491995,
+    "sha256": "9fe20fa2018c1b6d6482261f47f51f8ee8134027169a8b77718442e3a3f842ba"
+  },
+  {
+    "path": "tiers/sanbaiman.png",
+    "bytes": 2410547,
+    "sha256": "d84bfa81c3c65c51fe5057edc589b50ef85396ff956ba335eecf7ee5e7c755b9"
+  },
+  {
+    "path": "tiers/double-yakuman.png",
+    "bytes": 2700947,
+    "sha256": "457a80591989d3574205fc412a02f19de581a7168d12e2d7539444a3a7643bf6"
+  },
+  {
+    "path": "tiers/haneman.png",
+    "bytes": 2323594,
+    "sha256": "0ec072cf9886296c801568228301ca741258a7f1b5b9acd60f816782c8dbdd6b"
+  },
+  {
+    "path": "character.png",
+    "bytes": 865484,
+    "sha256": "65b5539e0d7c25f848f30d50200560686a9901d22416410576c4373c0bee65b4"
+  },
+  {
+    "path": "avatar.jpg",
+    "bytes": 14222,
+    "sha256": "a564f0ef589f947a280c29264d46161401fd5cc13aea12973f6cd3403d8a3662"
+  },
+  {
+    "path": "lobby.png",
+    "bytes": 2667742,
+    "sha256": "dc896fe9ab1597ebefab1138a1cafbabd81a142ac828fdd7c1a77df9945f771b"
+  }
+]
