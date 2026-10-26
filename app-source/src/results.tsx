@@ -1,3 +1,4 @@
+import {resultYakuhaiDetails} from './result-yakuhai';
 import {getLanguage} from './language';
 import {useScoreAudio} from './game-audio';
 import React,{useEffect,useLayoutEffect,useRef,useMemo,useState} from 'react';
@@ -36,7 +37,8 @@ export function ResultOverlay({game,characters,pending,onNext,renderTile,renderM
  const ranked=useMemo(()=>room.finalRanking??[...seats].sort((a,b)=>room.scores[b]-room.scores[a]),[room.finalRanking,room.scores]);
  const seatName=(seat:Seat)=>language==='zh'?(['東','南','西','北'][(seats.indexOf(seat)-seats.indexOf(match.dealer)+4)%4]):seat.toUpperCase();
  const bonus=result?[{zh:'寶牌',en:'DORA',value:result.dora.indicatorDora},{zh:'赤寶牌',en:'AKA DORA',value:result.dora.akaDora},{zh:'裏寶牌',en:'URA DORA',value:result.dora.uraDora}]:[];
- const rows=result?[...result.evaluation.yaku.map(y=>({name:language==='zh'?(yakuEnglishToChinese[y.name]??yakuNames[y.name]??y.name):y.name,value:y.yakuman??y.han,unit:y.yakuman?t('役滿','YAKUMAN'):t('番','HAN'),bonus:false})),...bonus.filter(b=>b.value>0).map(b=>({name:t(b.zh,b.en),value:b.value,unit:t('番','HAN'),bonus:true}))]:[];
+ const yakuhai=resultYakuhaiDetails(game);
+ const rows=result?[...result.evaluation.yaku.map((y,i)=>({name:yakuhai[i]?(language==='zh'?yakuhai[i]!.zh:yakuhai[i]!.en):language==='zh'?(yakuEnglishToChinese[y.name]??yakuNames[y.name]??y.name):y.name,value:y.yakuman??y.han,unit:y.yakuman?t('役滿','YAKUMAN'):t('番','HAN'),bonus:false})),...bonus.filter(b=>b.value>0).map(b=>({name:t(b.zh,b.en),value:b.value,unit:t('番','HAN'),bonus:true}))]:[];
  const [revealedRows,setRevealedRows]=useState(0),[summaryReady,setSummaryReady]=useState(false);
  useEffect(()=>{if(reduce||matchMedia('(prefers-reduced-motion: reduce)').matches){setRevealedRows(rows.length);setSummaryReady(true);return}setRevealedRows(0);setSummaryReady(!result);const timers=rows.map((_,i)=>setTimeout(()=>setRevealedRows(i+1),1450+i*260));timers.push(setTimeout(()=>setSummaryReady(true),1650+rows.length*260));return()=>timers.forEach(clearTimeout)},[handKey,reduce,rows.length,phase]);
  const roundLabel=language==='zh'?`${match.roundWind==='east'?'東':'南'}${match.handNumber}局 · ${match.honba}本場`:`${match.roundWind.toUpperCase()} ${match.handNumber} · HONBA ${match.honba}`;

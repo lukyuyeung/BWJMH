@@ -1,3 +1,4 @@
+import {resultYakuhaiDetails} from './result-yakuhai';
 import {characterPortrait} from './character-art';
 import {getLanguage} from './language';
 import {useWinReport} from './win-report-timing';
@@ -8,7 +9,8 @@ function Digits({value,unit}:{value:number;unit:string}){return <span className=
 export function WinBanner({game,character,name,level,onScores,onComplete,reduce=false,allowScores=true}:{game:Game;character:Character;name:string;level:string;onScores:()=>void;onComplete?:()=>void;reduce?:boolean;allowScores?:boolean}){
  const result=game.hand.result!,h=game.hand,match=h.match;const reduced=reduce||matchMedia('(prefers-reduced-motion: reduce)').matches;
  const bonus=[['寶牌',result.dora.indicatorDora],['赤寶牌',result.dora.akaDora],['裏寶牌',result.dora.uraDora]] as const;
- const rows=[...result.evaluation.yaku.map(y=>({name:yakuEnglishToChinese[y.name]??y.name,value:y.yakuman??y.han,unit:y.yakuman?'役滿':'番'})),...bonus.filter(([,v])=>v>0&&!result.evaluation.yakuman).map(([name,value])=>({name,value,unit:'番'}))];
+ const yakuhai=resultYakuhaiDetails(game),language=getLanguage();
+ const rows=[...result.evaluation.yaku.map((y,i)=>({name:yakuhai[i]?(language==='en'?yakuhai[i]!.en:yakuhai[i]!.zh):yakuEnglishToChinese[y.name]??y.name,value:y.yakuman??y.han,unit:y.yakuman?'役滿':'番'})),...bonus.filter(([,v])=>v>0&&!result.evaluation.yakuman).map(([name,value])=>({name,value,unit:'番'}))];
  const available=['mangan','haneman','baiman','sanbaiman','yakuman','double-yakuman','counted-yakuman'];const limit=available.includes(level)?level==='counted-yakuman'?'yakuman':level:'';
  const report=useWinReport(game,character,level,rows.length,reduced);
  const notified=useRef(false);useEffect(()=>{if(report.stage==='complete'&&onComplete&&!notified.current){notified.current=true;onComplete()}},[report.stage,onComplete]);
