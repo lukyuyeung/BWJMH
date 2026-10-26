@@ -8,6 +8,8 @@
 
 四個角色已有各自手部外觀，沿用同一套摸牌、出牌及立直動作。設計圖與可重播的 3D 預覽：`/art/character-hands-v1/index.html`。
 
+v75：電腦局可先確認角色，三家 BOT 自動使用其餘三個角色；選擇會隨單人存檔保留。真人房共用 30 秒選角與補 BOT 的規則及介面已準備，公開版仍待接駁真人服務。詳見 `docs/presentation75.md`，設計圖在 `/art/character-selection-v1/`。
+
 執行 npm install && npm run build。
 
 ## 手機版修正

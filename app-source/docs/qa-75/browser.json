@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "Bot entry yellow: other three roles, own avatar/emotes/hand",
+    "Resume retains yellow",
+    "Bot entry king: other three roles, own avatar/emotes/hand",
+    "Selected King owns actual riichi voice and ribbon",
+    "Resume retains king",
+    "Bot entry ninja: other three roles, own avatar/emotes/hand",
+    "Resume retains ninja",
+    "Bot entry wizard: other three roles, own avatar/emotes/hand",
+    "Resume retains wizard"
+  ],
+  "errors": []
+}

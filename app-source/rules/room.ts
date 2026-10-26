@@ -1,3 +1,4 @@
+import {isCharacter,CHARACTERS,CHARACTER_NAMES,botCharacters,type CharacterId} from './characters';
 import {createWinSequence,sequenceCinematic,type WinSequence} from './win-sequence';
 import {responsibilities,winTransfers,nagashiWinners,nagashiTransfers,applyTransfers,type PointTransfer} from './special-settlement';
 import {canDeclareNineTerminals,declareNineTerminals,publicWallSlots,type PublicWallSlot} from '@bunny/riichi-engine';
@@ -6,7 +7,7 @@ import { chooseBotAction, type BotDifficulty, type BotProfile } from './bot.js';
 import { visibleCounts, waitPreview } from './assistance.js';
 import { limitPresentation, type PresentationEvent, type PresentationKind } from './presentation.js';
 import { randomInt, randomUUID } from 'node:crypto';
-import { DEFAULT_RULESET, normalizeRuleset, type Ruleset } from './rules.js';
+import { DEFAULT_RULESET, normalizeRuleset, TIER_TURN_MS, type Ruleset } from './rules.js';
 import {getLegalDiscardIds,createStandardWall} from '@bunny/riichi-engine';
 import { createMatchState, advanceMatch, calculateNotenPayments, rankScores, type MatchState } from './match.js';
 import { createShuffledWall, dealInitialHands, createHandState, drawTile, discardTile, declareTsumo, declareRon, declareRons, passRon, getTsumoEvaluation, getRiichiDiscardIds, getPlayerWaits, isFuriten, declareRiichiAndDiscard, getClaimOptions, claimChi, claimPon, claimKan, passClaim, declareAnkan, declareKakan, getAnkanTileIds, getKakanTileIds, getVisibleDora, visibleUraIndicators, getBonusDoraForSeat, SEATS, type HandState, type Seat } from '@bunny/riichi-engine';
@@ -22,6 +23,7 @@ export interface Player {
   autoPlay?:boolean;
   botProfile?:BotProfile;
   botDifficulty?:BotDifficulty;
+  character?:CharacterId;
 }
 
 export type RoomPhase = 'lobby' | 'playing';
@@ -45,6 +47,7 @@ export interface Room {
   handMatch?:MatchState;
   disconnectedAt?:number;
   actionDeadline?:number;
+  selectionDeadline?:number;
   resultFlow?:{id:string;phase:"report"|"hold"|"scores"|"ranking";deadline:number;ready:string[]};
   events?:PresentationEvent[];
   eventSequence?:number;
@@ -67,6 +70,7 @@ export interface PublicPlayer {
   autoPlay:boolean;
   botProfile?:BotProfile;
   botDifficulty?:BotDifficulty;
+  character?:CharacterId;
 }
 
 export interface PublicRoomState {
@@ -74,6 +78,7 @@ export interface PublicRoomState {
   phase: RoomPhase;
   players: PublicPlayer[];
   canStart: boolean;
+  selection?:{deadline:number;serverNow:number};
   scores: Record<Seat, number>;
   riichiPot: number;
   match: MatchState;
@@ -137,6 +142,7 @@ export function normalizeRoomCode(code: string): string {
 export class RoomManager {
   constructor(private readonly randomSource?: (max:number)=>number) {}
   private readonly rooms = new Map<string, Room>();
+  private entryFillCode?:string;
 
   snapshotRooms():Room[]{return structuredClone([...this.rooms.values()]);}
   restoreRooms(saved:Room[]):void{
@@ -145,7 +151,7 @@ export class RoomManager {
     for(const room of saved){
       if(!room||typeof room.code!=='string'||normalizeRoomCode(room.code)!==room.code||codes.has(room.code)||!Array.isArray(room.players)||room.players.length<1||room.players.length>4||!room.players.some(p=>p.id===room.hostPlayerId)||new Set(room.players.map(p=>p.seat)).size!==room.players.length||!Number.isInteger(room.revision)||room.revision<0||!room.rules||!room.match||!['lobby','playing'].includes(room.phase))throw new Error('Invalid recovered room');
       codes.add(room.code);
-      for(const player of room.players)if(!SEATS.includes(player.seat)||typeof player.id!=='string'||typeof player.resumeToken!=='string'||!player.resumeToken)throw new Error('Invalid recovered player');
+      for(const player of room.players)if(player.character!==undefined&&!isCharacter(player.character)||!SEATS.includes(player.seat)||typeof player.id!=='string'||typeof player.resumeToken!=='string'||!player.resumeToken)throw new Error('Invalid recovered player');
       if(!SEATS.every(seat=>Number.isFinite(room.scores[seat]))||Object.values(room.scores).reduce((a,b)=>a+b,0)+room.riichiPot!==100000)throw new Error('Recovered scores do not conserve points');
       if(room.phase==='playing'){
        const g=room.game;if(!g)throw new Error('Recovered hand is missing');
@@ -161,41 +167,72 @@ export class RoomManager {
   createRoom(name: string): { room: Room; player: Player } {
     const playerName = validateName(name);
     const code = this.generateUniqueCode();
-    const player: Player = { id: randomUUID(), name: playerName, seat: 'east', ready: false, connected: true, resumeToken: randomUUID() };
+    const player: Player = { id: randomUUID(), name: playerName, seat: 'east', character:'yellow', ready: false, connected: true, resumeToken: randomUUID() };
     const room: Room = { code, hostPlayerId: player.id, phase: 'lobby', players: [player], scores:{east:25000,south:25000,west:25000,north:25000}, riichiPot:0, settled:false, match:createMatchState(), rules:{...DEFAULT_RULESET},revision:0 };
     this.rooms.set(code, room);
     return { room, player };
   }
 
-  joinRoom(rawCode: string, name: string): { room: Room; player: Player } {
+  joinRoom(rawCode: string, name: string, now=Date.now()): { room: Room; player: Player } {
     const code = normalizeRoomCode(rawCode);
     const room = this.rooms.get(code);
     if (!room) throw new RoomError('ROOM_NOT_FOUND', 'Room not found.');
     if (room.phase !== 'lobby') throw new RoomError('GAME_ALREADY_STARTED', 'This game has already started.');
+    if(room.selectionDeadline!==undefined&&now>=room.selectionDeadline)throw new RoomError('SELECTION_CLOSED','Entry has ended.');
     if (room.players.length >= 4) throw new RoomError('ROOM_FULL', 'Room is full.');
     const playerName = validateName(name);
     const seat = SEATS.find((candidate) => !room.players.some((p) => p.seat === candidate));
     if (!seat) throw new RoomError('ROOM_FULL', 'Room is full.');
-    const player: Player = { id: randomUUID(), name: playerName, seat, ready: false, connected: true, resumeToken: randomUUID() };
+    const player: Player = { id: randomUUID(), name: playerName, seat, character:'yellow', ready: false, connected: true, resumeToken: randomUUID() };
     room.players.push(player);
     return { room, player };
   }
 
-  addBot(rawCode:string, playerId:string, name?:string,profile?:BotProfile,difficulty:BotDifficulty='medium'):{room:Room;player:Player}{
-    const room=this.requireRoom(rawCode); if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');
+  addBot(rawCode:string, playerId:string, name?:string,profile?:BotProfile,difficulty:BotDifficulty='medium',character?:CharacterId):{room:Room;player:Player}{
+    const room=this.requireRoom(rawCode); if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');if(room.selectionDeadline!==undefined&&this.entryFillCode!==room.code)throw new RoomError('TIMED_ENTRY_MANAGED','Bots are filled automatically at the entry deadline.');
     if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');
     if(room.players.length>=4)throw new RoomError('ROOM_FULL','Room is full.');
     const seat=SEATS.find(s=>!room.players.some(p=>p.seat===s)); if(!seat)throw new RoomError('ROOM_FULL','Room is full.');
-    const bot:Player={id:randomUUID(),name:name?.trim()||`Bunny Bot ${room.players.length}`,seat,ready:true,connected:true,resumeToken:randomUUID(),isBot:true,botDifficulty:difficulty,botProfile:profile??(['aggressive','balanced','defensive'] as const)[(room.players.length-1)%3]!}; room.players.push(bot); return{room,player:bot};
+    const bot:Player={id:randomUUID(),name:name?.trim()||`Bunny Bot ${room.players.length}`,seat,ready:true,connected:true,resumeToken:randomUUID(),isBot:true,...(character?{character}:{}),botDifficulty:difficulty,botProfile:profile??(['aggressive','balanced','defensive'] as const)[(room.players.length-1)%3]!}; room.players.push(bot); return{room,player:bot};
   }
 
-  fillWithBots(rawCode:string,playerId:string):Room{let room=this.requireRoom(rawCode);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');while(room.players.length<4)room=this.addBot(rawCode,playerId).room;return room;}
+  /** One server-owned pending room per available tier/seat pool; never reset a joining room's clock. */
+  matchTimedRoom(name:string,character:unknown='yellow',difficulty:BotDifficulty='medium',now=Date.now()):{room:Room;player:Player}{
+    if(!isCharacter(character))throw new RoomError('INVALID_CHARACTER','Unknown character.');
+    if(!['low','medium','high'].includes(difficulty))throw new RoomError('INVALID_TIER','Unknown room tier.');
+    const timeout=TIER_TURN_MS[difficulty],candidate=[...this.rooms.values()].find(r=>r.phase==='lobby'&&r.selectionDeadline!==undefined&&now<r.selectionDeadline&&r.rules.actionTimeoutMs===timeout&&r.players.length<4);
+    const joined=candidate?this.joinRoom(candidate.code,name,now):this.createRoom(name);
+    if(!candidate){this.setRules(joined.room.code,joined.player.id,{actionTimeoutMs:timeout});this.beginTimedEntry(joined.room.code,joined.player.id,now)}
+    this.setCharacter(joined.room.code,joined.player.id,character,now);joined.room.revision++;return joined;
+  }
+  setCharacter(code:string,playerId:string,character:unknown,now=Date.now()):Room{
+    const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Character selection closes when play starts.');
+    if(room.selectionDeadline!==undefined&&now>=room.selectionDeadline)throw new RoomError('SELECTION_CLOSED','Character selection has ended.');
+    if(!isCharacter(character))throw new RoomError('INVALID_CHARACTER','Unknown character.');
+    this.requirePlayer(room,playerId).character=character;return room;
+  }
+  /** Called by the authenticated room host/transport; joins never restart this shared clock. */
+  beginTimedEntry(code:string,hostId:string,now=Date.now()):Room{
+    const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Entry has ended.');
+    if(room.hostPlayerId!==hostId)throw new RoomError('HOST_ONLY','Only the host may initialize entry.');
+    room.selectionDeadline??=now+30000;return room;
+  }
+  /** Server-owned tick: current choices commit at the deadline, then empty seats become Bots. */
+  tickTimedEntry(code:string,now=Date.now()):boolean{
+    const room=this.requireRoom(code);if(room.phase!=='lobby'||room.selectionDeadline===undefined||now<room.selectionDeadline)return false;
+    this.entryFillCode=room.code;try{while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??'yellow')),role=CHARACTERS.find(c=>!used.has(c))??'yellow',ms=room.rules.actionTimeoutMs,difficulty=ms===10000?'high':ms===30000?'low':'medium';this.addBot(code,room.hostPlayerId,CHARACTER_NAMES[role],undefined,difficulty,role)}}finally{this.entryFillCode=undefined}
+    for(const p of room.players){p.character??='yellow';p.ready=true;if(!p.isBot&&!p.connected)p.autoPlay=true;}
+    this.startGame(code,room.hostPlayerId,now);room.revision++;return true;
+  }
+  tickTimedEntries(now=Date.now()):string[]{const changed:string[]=[];for(const room of this.rooms.values())if(this.tickTimedEntry(room.code,now))changed.push(room.code);return changed;}
+
+  fillWithBots(rawCode:string,playerId:string):Room{let room=this.requireRoom(rawCode);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??(p.isBot?({aggressive:'ninja',balanced:'king',defensive:'wizard'} as const)[p.botProfile??'balanced']:'yellow'))),own=room.players.find(p=>p.id===playerId)?.character??'yellow',role=botCharacters(own).find(c=>!used.has(c))??CHARACTERS.find(c=>!used.has(c))??'yellow';room=this.addBot(rawCode,playerId,CHARACTER_NAMES[role],undefined,'medium',role).room;}return room;}
 
   leaveLobby(code:string,playerId:string):Room|null{const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Cannot leave a playing room through lobby leave.');const i=room.players.findIndex(p=>p.id===playerId);if(i<0)throw new RoomError('PLAYER_NOT_FOUND','Player not found in room.');room.players.splice(i,1);if(room.players.length===0){this.rooms.delete(room.code);return null;}if(room.players.every(p=>p.isBot)){this.rooms.delete(room.code);return null;}if(room.hostPlayerId===playerId)room.hostPlayerId=(room.players.find(p=>!p.isBot)??room.players[0])!.id;return room;}
 
   deleteRoom(code:string,playerId:string):void{const room=this.requireRoom(code);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can close the room.');this.rooms.delete(room.code);}
 
-  setRules(code:string,playerId:string,patch:Partial<Ruleset>):Room{const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Rules are locked after start.');if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can change rules.');room.rules=normalizeRuleset({...room.rules,...patch});return room;}
+  setRules(code:string,playerId:string,patch:Partial<Ruleset>):Room{const room=this.requireRoom(code);if(room.selectionDeadline!==undefined)throw new RoomError('RULES_LOCKED','Rules are locked during matching.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Rules are locked after start.');if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can change rules.');room.rules=normalizeRuleset({...room.rules,...patch});return room;}
 
   setReady(code: string, playerId: string, ready: boolean): Room {
     const room = this.requireRoom(code);
@@ -205,15 +242,16 @@ export class RoomManager {
     return room;
   }
 
-  startGame(code: string, playerId: string): Room {
+  startGame(code: string, playerId: string, now=Date.now()): Room {
     const room = this.requireRoom(code);
     if (room.phase !== 'lobby') throw new RoomError('GAME_ALREADY_STARTED', 'Game has already started.');
+    if(room.selectionDeadline!==undefined&&now<room.selectionDeadline)throw new RoomError('ENTRY_COUNTDOWN','Wait for the shared 30-second entry countdown.');
     if (room.hostPlayerId !== playerId) throw new RoomError('HOST_ONLY', 'Only the host can start the game.');
     if (room.players.length !== 4) throw new RoomError('NEED_FOUR_PLAYERS', 'Exactly four players are required.');
-    if (!room.players.every((player) => player.ready&&(player.connected||player.isBot))) throw new RoomError('NOT_ALL_READY', 'All four players must be ready.');
+    if (!room.players.every((player) => player.ready&&(player.connected||player.isBot||player.autoPlay))) throw new RoomError('NOT_ALL_READY', 'All four players must be ready.');
     room.match=createMatchState();
     room.game = createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,'E');
-    room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];room.handMatch={...room.match};room.phase = 'playing'; room.settled=false;
+    room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];room.handMatch={...room.match};delete room.selectionDeadline;room.phase = 'playing'; room.settled=false;
     return room;
   }
 
@@ -505,10 +543,12 @@ export function toPublicRoomState(room: Room): PublicRoomState {
       autoPlay:!!player.autoPlay,
       isHost: player.id === room.hostPlayerId,
       isBot: Boolean(player.isBot),
+      character:player.character??(player.isBot?({aggressive:'ninja',balanced:'king',defensive:'wizard'} as const)[player.botProfile??'balanced']:'yellow'),
       ...(player.botProfile?{botProfile:player.botProfile}:{}),
       ...(player.botDifficulty?{botDifficulty:player.botDifficulty}:{}),
     })),
-    canStart: room.phase === 'lobby' && room.players.length === 4 && room.players.every((p) => p.ready&&(p.connected||p.isBot)),
+    ...(room.selectionDeadline!==undefined?{selection:{deadline:room.selectionDeadline,serverNow:Date.now()}}:{}),
+    canStart: (room.selectionDeadline===undefined||Date.now()>=room.selectionDeadline)&&room.phase === 'lobby' && room.players.length === 4 && room.players.every((p) => p.ready&&(p.connected||p.isBot||p.autoPlay)),
     ...(room.resultFlow?{resultFlow:{id:room.resultFlow.id,phase:room.resultFlow.phase,deadline:room.resultFlow.deadline}}:{}),scores:{...room.scores}, riichiPot:room.riichiPot, match:{...room.match}, rules:{...room.rules}, ...(room.finalRanking?{finalRanking:[...room.finalRanking]}:{}),
   };
 }

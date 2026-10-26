@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "Duplicate character selection stays available",
+    "Shared countdown reaches zero and disables late selection",
+    "UI does not fabricate matching",
+    "Authoritative room tick fills two empty seats and starts"
+  ],
+  "errors": []
+}
