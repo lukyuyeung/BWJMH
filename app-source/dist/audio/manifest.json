@@ -31,7 +31,11 @@
     "win_jingle": "/audio/sfx/sfx_win_jingle.mp3?v=vo52",
     "win_mangan": "/audio/sfx/sfx_win_mangan.mp3?v=vo52",
     "win_small": "/audio/sfx/sfx_win_small.mp3?v=vo52",
-    "win_yakuman": "/audio/sfx/sfx_win_yakuman.mp3?v=vo52"
+    "win_yakuman": "/audio/sfx/sfx_win_yakuman.mp3?v=vo52",
+    "cutin_silver": "/audio/sfx/cutin-silver.mp3?v=cutin70",
+    "cutin_gold": "/audio/sfx/cutin-gold.mp3?v=cutin70",
+    "cutin_divine": "/audio/sfx/cutin-divine.mp3?v=cutin70",
+    "cutin_eyes": "/audio/sfx/cutin-eyes.mp3?v=cutin70"
   },
   "voices": {
     "king": {
@@ -967,7 +971,11 @@
     "/audio/voices/king/tile_yonsou.mp3?v=tiles61": 0.967,
     "/audio/voices/ninja/tile_yonsou.mp3?v=tiles61": 0.784,
     "/audio/voices/wizard/tile_yonsou.mp3?v=tiles61": 1.28,
-    "/audio/voices/yellow/tile_yonsou.mp3?v=tiles61": 0.705
+    "/audio/voices/yellow/tile_yonsou.mp3?v=tiles61": 0.705,
+    "/audio/sfx/cutin-silver.mp3?v=cutin70": 5.2,
+    "/audio/sfx/cutin-gold.mp3?v=cutin70": 5.2,
+    "/audio/sfx/cutin-divine.mp3?v=cutin70": 5.2,
+    "/audio/sfx/cutin-eyes.mp3?v=cutin70": 1.45
   },
   "trimmedLeadSeconds": {
     "/audio/music/bgm_lobby.mp3?v=vo52": 0.0,

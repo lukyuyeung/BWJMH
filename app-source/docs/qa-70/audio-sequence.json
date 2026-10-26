@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "Actual engine win: score and grade voice remain audible through cinematic table hold",
+    "Dedicated movie gets only 1.45s eye score, no full-tier score overlap",
+    "Final ranking removes duplicate bottom carrots, preserves per-seat column",
+    "Late scene resumes at authoritative offset",
+    "Muted voice and SFX respected"
+  ],
+  "errors": []
+}

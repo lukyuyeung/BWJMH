@@ -12,7 +12,7 @@ export function SpecialWinSequence({game,onComplete,reduce}:{game:Game;onComplet
  if(!segment)return <section className="special-result-intro" role="status"><small>BUNNY GALA</small><strong>雙響</strong><div>{results.map(r=><span key={r.winner}>{game.room.players.find(p=>p.seat===r.winner)?.name}</span>)}</div></section>;
  const result=results.find(r=>r.winner===segment.winner)!,view={...game,hand:{...game.hand,result,settlement:game.hand.settlement?{...game.hand.settlement,winningHand:game.hand.settlement.winningHands?.[result.winner]??game.hand.settlement.winningHand}:undefined}},name=game.room.players.find(p=>p.seat===segment.winner)?.name??'',role=seatCharacter(view,segment.winner);
  if(segment.kind==='reveal')return <DoubleReveal game={game} age={age-segment.start} reduce={reduce}/>;
- if(segment.kind==='eyes')return <EyeCutin role={role} age={age-segment.start}/>;
+ if(segment.kind==='eyes')return <EyeCutin role={role} age={age-segment.start} audioKey={plan.id+':'+segment.winner+':eyes'}/>;
  if(segment.kind==='art')return <WinArt key={segment.winner} game={view} onComplete={()=>{}} timeline={{elapsed:age-segment.start,received:performance.now()}}/>;
  if(segment.kind==='video')return <SequenceVideo key={segment.winner} state={{id:plan.segments.indexOf(segment),trigger:segment.trigger??'',winner:segment.winner,character:role,method:result.method,startedAt:plan.startedAt+segment.start,endsAt:plan.startedAt+segment.end,serverNow:plan.startedAt+age,phase:'playing',video:segment.video,yakuman:segment.yakuman}} reduce={reduce} name={name}/>;
  return <section className="special-result-intro" role="status"><small>{name}</small><strong>榮和</strong></section>;
