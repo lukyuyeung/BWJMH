@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    "Entry requests no full-tier art or unseen emote pack",
+    "Emote artwork loads on opening picker",
+    "Actual baiman loads its own poster rather than every grade",
+    "Movie obeys global SFX mute/volume and its controls update the same setting",
+    "Blocked audible autoplay retries muted; user tap enables sound without losing video",
+    "Unused decoded images evicted while current image retained"
+  ],
+  "stats": {
+    "entries": 2,
+    "decodedBytes": 73398928,
+    "budget": 67108864,
+    "firstRetained": false,
+    "lastRetained": true
+  },
+  "errors": []
+}

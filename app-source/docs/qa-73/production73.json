@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "compiled mobile WebGL",
+    "developer hooks absent",
+    "actual discard + refresh continuation",
+    "lobby continue in production",
+    "storage quota failure reports warning without blocking table"
+  ],
+  "errors": []
+}

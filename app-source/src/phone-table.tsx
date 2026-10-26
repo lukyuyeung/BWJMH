@@ -45,7 +45,7 @@ import './ui-polish-33.css';
 import {YakuGuide} from './yaku-guide.js';
 import {CenterHub} from './center-hub.js';
 import {rankArt} from './rank-art.js';
-import {preloadEventArt} from './preload-art.js';
+import {preloadEventArt,preloadAvailableArt} from './preload-art.js';
 import type {RiichiReveal} from './riichi-reveal.js';
 import {completeTileUrl} from './approved-tile-art.js';
 const seats:Seat[]=['east','south','west','north'];
@@ -66,6 +66,7 @@ export function PhoneTable({riichiReveal,game,pending,options,onOptions,call,err
  const host=useRef<HTMLDivElement>(null),[scale,setScale]=useState(1),[extension,setExtension]=useState(0),[now,setNow]=useState(Date.now()),[riichi,setRiichi]=useState(false),[hover,setHover]=useState<string|null>(null),[panel,setPanel]=useState<'settings'|'rules'|'automatic'|null>(null);
  useEffect(()=>{const resize=()=>{const value=Math.min(innerWidth/1125,innerHeight/634,2);setScale(value);setExtension(Math.max(0,(innerWidth/value-1125)/2))};const onResize=()=>flushSync(resize);resize();window.addEventListener('resize',onResize);const timer=setInterval(()=>setNow(Date.now()),100);return()=>{clearInterval(timer);window.removeEventListener('resize',onResize)}},[]);
  useEffect(()=>{let live=true;void preloadEventArt().then(()=>{if(live&&host.current)host.current.dataset.eventArt='decoded'}).catch(()=>{if(live&&host.current)host.current.dataset.eventArt='unavailable'});return()=>{live=false}},[]);
+ useEffect(()=>{preloadAvailableArt(game)},[game]);
  const motionBusy=useTableMotionBusy();
  const h=game.hand,r=game.room,order=Array.from({length:4},(_,i)=>seats[(seats.indexOf(game.you.seat)+i)%4]!);
  const autoPlay=!!r.players.find(p=>p.seat===game.you.seat)?.autoPlay;
@@ -75,9 +76,10 @@ export function PhoneTable({riichiReveal,game,pending,options,onOptions,call,err
  const clockOffset=useMemo(()=>h.timeout.serverNow-Date.now(),[h.timeout.serverNow]);const clockNow=now+clockOffset;
  const opening=false;
  const ended=['won','exhaustive_draw','abortive_draw'].includes(h.phase)||r.match.finished;
+ const loading=!!window.__bunnyLoading;
  const [resultReady,setResultReady]=useState(false),artDemo=usesWinArtwork(game),showResult=resultReady||r.resultFlow?.phase==='scores'||r.resultFlow?.phase==='ranking';
  useEffect(()=>setResultReady(false),[handKey]);
- useEffect(()=>{if(h.winSequence)return;setResultReady(false);if(!ended||artDemo||h.settlement?.nagashi?.length||h.cinematic?.phase==='playing')return;let timer:ReturnType<typeof setTimeout>;const reveal=()=>{if(h.result&&!h.cinematic?.video&&winImpactTier(game)&&!options.reduceEffects&&winClockAge(winClockKey(game))<winTiming(game).end+200){timer=setTimeout(reveal,80);return;}setResultReady(true)};timer=setTimeout(reveal,options.reduceEffects||h.cinematic?.video?0:h.result?5000:h.phase==='exhaustive_draw'?2400:850);return()=>clearTimeout(timer)},[ended,handKey,artDemo,h.cinematic?.phase,options.skipAnimation,options.reduceEffects]);
+ useEffect(()=>{if(h.winSequence||loading)return;setResultReady(false);if(!ended||artDemo||h.settlement?.nagashi?.length||h.cinematic?.phase==='playing')return;let timer:ReturnType<typeof setTimeout>;const reveal=()=>{if(h.result&&!h.cinematic?.video&&winImpactTier(game)&&!options.reduceEffects&&winClockAge(winClockKey(game))<winTiming(game).end+200){timer=setTimeout(reveal,80);return;}setResultReady(true)};timer=setTimeout(reveal,options.reduceEffects||h.cinematic?.video?0:h.result?5000:h.phase==='exhaustive_draw'?2400:850);return()=>clearTimeout(timer)},[ended,handKey,artDemo,h.cinematic?.phase,options.skipAnimation,options.reduceEffects,loading]);
  const remaining=Math.max(0,Math.ceil(((h.timeout.deadline??clockNow)-clockNow)/1000));
  const wind=(seat:Seat)=>winds[(seats.indexOf(seat)-seats.indexOf(h.match.dealer)+4)%4];
  const awaitingClaim=h.phase==='awaiting_claim';
@@ -119,10 +121,10 @@ export function PhoneTable({riichiReveal,game,pending,options,onOptions,call,err
 
   {riichiReveal.active&&riichiReveal.tile&&!motionBusy&&<RiichiScratch key={riichiReveal.key} reveal={riichiReveal} canTsumo={h.actions.canTsumo} reduce={options.reduceEffects}/>}
   <CharacterPerformance relativeSeats={order} kanTypes={Object.fromEntries(seats.map(seat=>{const m=h.melds[seat].at(-1);return[seat,m?.type==='kan'?(!m.open?'Ankan':m.tiles.findIndex(t=>t.id===m.calledTile.id)<3?'Kakan':'Daiminkan'):undefined]}))} events={(h.events??[]).filter(e=>!(['MANGAN','HANEMAN','BAIMAN','SANBAIMAN','YAKUMAN','DOUBLE_YAKUMAN'].includes(e.kind)||(artDemo||!!h.cinematic?.video)&&['RON','TSUMO'].includes(e.kind)))} characters={characters} skip={options.skipAnimation} suspended={h.cinematic?.phase==='playing'} reduce={options.reduceEffects} critical={false} handKey={handKey} settled={ended} onSkip={()=>{}}/>
-  {artDemo&&!h.winSequence&&!showResult&&h.cinematic?.phase!=='playing'&&<WinArtSequence key={handKey} game={game} onComplete={()=>setResultReady(true)}/>}
-  {h.winSequence&&!showResult&&<SpecialWinSequence key={handKey} game={game} onComplete={()=>setResultReady(true)} reduce={options.reduceEffects}/>}
-  {!!h.settlement?.nagashi?.length&&!showResult&&<SpecialDraw key={handKey} game={game} onComplete={()=>setResultReady(true)}/>}
-  {!h.winSequence&&<GlobalCinematic key={r.code+':'+h.cinematic?.id} state={h.cinematic} skip={options.skipAnimation&&!h.cinematic?.demo} reduce={options.reduceEffects&&!h.cinematic?.demo} winnerName={r.players.find(p=>p.seat===h.cinematic?.winner)?.name??''}/>}
+  {!loading&&artDemo&&!h.winSequence&&!showResult&&h.cinematic?.phase!=='playing'&&<WinArtSequence key={handKey} game={game} onComplete={()=>setResultReady(true)}/>}
+  {!loading&&h.winSequence&&!showResult&&<SpecialWinSequence key={handKey} game={game} onComplete={()=>setResultReady(true)} reduce={options.reduceEffects}/>}
+  {!loading&&!!h.settlement?.nagashi?.length&&!showResult&&<SpecialDraw key={handKey} game={game} onComplete={()=>setResultReady(true)}/>}
+  {!loading&&!h.winSequence&&<GlobalCinematic key={r.code+':'+h.cinematic?.id} state={h.cinematic} skip={options.skipAnimation&&!h.cinematic?.demo} reduce={options.reduceEffects&&!h.cinematic?.demo} winnerName={r.players.find(p=>p.seat===h.cinematic?.winner)?.name??''}/>}
   {ended&&showResult&&(!!h.winSequence||h.cinematic?.phase!=='playing')&&<MultiWinResultOverlay game={game} characters={characters} pending={pending} reduce={options.reduceEffects} renderTile={tile=><ArtworkTile key={tile.id} tile={tile}/>} renderMeld={(meld,seat,index)=><Meld key={index} meld={meld} seat={seat}/>} onReportComplete={()=>call('game:report-complete',{id:r.resultFlow?.id})} onNext={()=>doAction('game:next-hand')} onRestart={()=>window.dispatchEvent(new Event('demo:restart'))}/>}
   {panel==='automatic'&&<AutomaticPanel options={options} onOptions={onOptions} onClose={()=>setPanel(null)}/>}
   {panel==='rules'&&<YakuGuide onClose={()=>setPanel(null)}/>}

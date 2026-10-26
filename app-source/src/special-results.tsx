@@ -17,7 +17,7 @@ export function SpecialWinSequence({game,onComplete,reduce}:{game:Game;onComplet
  if(segment.kind==='video')return <SequenceVideo key={segment.winner} state={{id:plan.segments.indexOf(segment),trigger:segment.trigger??'',winner:segment.winner,character:role,method:result.method,startedAt:plan.startedAt+segment.start,endsAt:plan.startedAt+segment.end,serverNow:plan.startedAt+age,phase:'playing',video:segment.video,yakuman:segment.yakuman}} reduce={reduce} name={name}/>;
  return <section className="special-result-intro" role="status"><small>{name}</small><strong>榮和</strong></section>;
 }
-function SequenceVideo({state,reduce,name}:{state:import('./presentation').SharedCinematic;reduce:boolean;name:string}){const initial=useRef(state);return <GlobalCinematic state={initial.current} skip={false} reduce={reduce} winnerName={name}/>}
+function SequenceVideo({state,reduce,name}:{state:import('./presentation').SharedCinematic;reduce:boolean;name:string}){const initial=useRef(state);if(initial.current.id!==state.id||initial.current.startedAt!==state.startedAt)initial.current=state;return <GlobalCinematic state={initial.current} skip={false} reduce={reduce} winnerName={name}/>}
 export function SpecialDraw({game,onComplete}:{game:Game;onComplete:()=>void}){
  const finish=useRef(onComplete);finish.current=onComplete;const presentation=game.hand.drawPresentation;
  useEffect(()=>{const timer=setTimeout(()=>finish.current(),presentation?Math.max(0,presentation.endsAt-presentation.serverNow):4000);return()=>clearTimeout(timer)},[presentation?.startedAt]);

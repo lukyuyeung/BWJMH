@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "Actual discard survives refresh with same physical wall/hands/scores",
+    "Lobby continue restores same match; one hour offline does not consume turn time",
+    "DEMO does not overwrite real saved match",
+    "Pending multi-seat claim window survives refresh",
+    "Riichi status and sideways declaration tile survive refresh",
+    "Explicit new match replaces save once; reload does not start another match",
+    "New tab claims ownership; old tab stops rather than overwriting save",
+    "Completed match resumes directly to final standings without re-settling",
+    "Corrupt save preserved as backup; playable new game starts"
+  ],
+  "errors": []
+}

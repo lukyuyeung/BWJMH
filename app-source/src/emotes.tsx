@@ -1,4 +1,4 @@
-import {useReadyImage,warmImagesInOrder} from './art-loading';
+import {useReadyImage} from './art-loading';
 import {characterAvatar} from './character-art';
 import React,{useEffect,useRef,useState} from 'react';
 import type {Character} from './presentation';
@@ -8,7 +8,6 @@ const zh=['開心','憤怒','哭泣','驚訝','思考','抱歉','勝利','無語
 const en=['Happy','Angry','Crying','Surprised','Thinking','Sorry','Victory','Speechless','Playful'];
 /** Local seat reactions. No network delivery is implied by the Bot demo. */
 export function Emotes({character,handKey,disabled,reduce}:{character:Character;handKey:string;disabled:boolean;reduce:boolean}){
- useEffect(()=>{if(character==='yellow')void warmImagesInOrder(Array.from({length:9},(_,i)=>'/art/hoodie-v3/emotes/'+i+'.png'))},[character]);
  const language=useLanguage(),labels=language==='en'?en:zh;
  const [open,setOpen]=useState(false),[sent,setSent]=useState<{index:number;id:number}|null>(null),[cooldown,setCooldown]=useState(false);
  const root=useRef<HTMLDivElement>(null),lastSent=useRef(0);
