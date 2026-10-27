@@ -1,0 +1,1 @@
+import {preview} from 'vite';const app=await preview({preview:{host:'127.0.0.1',port:5196,strictPort:true}});try{process.env.QA_BASE='http://127.0.0.1:5196';await import('./lesson91-browser.mjs');process.env.QA_DESKTOP='1';await import('./lesson91-browser.mjs?desktop')}finally{await new Promise(r=>app.httpServer.close(r))}

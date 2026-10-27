@@ -3,18 +3,18 @@ const api=()=> (window as any).BunnyAcademy;
 const titles=['第六課：吃、碰、槓與門前清','吃，只能接上家的牌','親手吃一組一二三萬','吃完不摸牌，先出一張','副露後，仍然需要有役','碰：任何一家都可以','親手碰出三張白','碰完，也要先出一張','有白這個役，可以榮和','看懂這次副露和牌','槓：四張相同的牌','親手明槓四張中','槓後補牌與新寶牌指示牌','鳴牌前，想清楚三件事','第六課完成！'];
 const descriptions=[
  '這課分三個固定教學例子，親手練習吃、碰與明槓，再了解它們怎樣影響門前清、立直與和牌。正式對局不一定要鳴牌，可以按跳過。',
- '吃是用上家打出的牌，配上自己兩張，組成同花色連續三張。你的上家在左方；自己是一二萬，只能用上家的三萬來吃成一二三萬。',
- '上家會打出三萬。看到「吃」後親手按下，將一、二、三萬攤開成一組副露。吃不能跨花色，也不能拿下家或對家的牌。',
- '吃完已經輪到你，不需要再摸一張。攤開的一組不能拆回手牌；現在請短按標亮的北，完成這次出牌。',
- '吃牌後失去門前清，不能立直。下家打出九筒後，這副牌雖然牌形完成，卻沒有役，因此不能榮和。寶牌同樣不能代替役。',
+ '吃只限左方上家。用自己的一、二萬接上家的三萬，組成同花色的連續三張。',
+ '先看左方上家打出的三萬，再按右下「吃」，組成一二三萬。吃不能接下家或對家的牌。',
+ '右下是一二三萬副露，不能拆回手牌。吃完不用再摸牌，請打出標亮的北。',
+ '下家打出九筒，牌形已齊，但吃牌後沒有役，仍不能榮和。寶牌也不能代替役。',
  '手上有兩張相同的牌，就可以碰別人打出的第三張，不限上家、下家或對家。這次用兩張白碰成三張白，取得「役牌・白」。',
- '下家會打出白。親手按「碰」，把三張白組成刻子。不是所有刻子都有役；這個例子因為是白，才有役牌一番。',
- '碰完也不會多摸一張；先打出標亮的北。吃、碰或明槓都會副露，不能再立直，但仍可以靠其他役和牌。',
- '現在下家會打出四索。你已經有白這個役，牌形也能完成，請親手按「和」榮和。副露不是不能和，而是要有副露後仍成立的役。',
+ '先看右方下家打出的白，再按「碰」。白的刻子有役牌一番；不是所有刻子都有役。',
+ '右下已攤開三張白。碰完不再摸牌，先打出北。副露後不能立直，但仍可靠其他役和牌。',
+ '看右方下家打出的四索。你已有白這個役，可以按「和」榮和；副露後仍需要有役。',
  '這次只有「役牌・白」一番，沒有立直或門前清自摸。攤開的白也會出現在真正的和牌牌組中，分數由正常規則引擎計算。',
  '槓是四張相同牌。本課練明槓：自己三張中，接別人打出的第四張。槓後會自動補一張嶺上牌，並翻開新的寶牌指示牌。暗槓是四張都在自己手上，仍保留門前清；加槓則是把已碰的一組補成四張。',
- '對家會打出第四張中。親手按「槓」，觀察四張中攤開、手牌自動補上一張，以及左上增加的寶牌指示牌。',
- '明槓完成後，已自動補入九索；左上指示牌由一張增加為兩張，兩張都會影響寶牌。九索不能和，現在把標亮的九索打出。槓本身不保證加番，也不是必定和牌。',
+ '先看對家打出的第四張中，再按「槓」。接著會攤開四張中、自動補牌，並增加寶牌指示牌。',
+ '左上指示牌已由一張變兩張，右下是明槓。自動補入的九索不能和，請把它打出；槓不保證和牌。',
  '吃只限上家；吃、碰、明槓會失去門前清，暗槓不會。搶同一張牌時，榮和優先於碰／槓，碰／槓又優先於吃。看清有沒有需要的役，再決定鳴牌或跳過。',
  '你已親手完成吃、碰、明槓與副露榮和，知道何時要出牌、何時會自動補牌，也明白副露後仍須有役。'
 ];
@@ -28,7 +28,10 @@ export function LessonSix({game,send,reportReady,busy,reduce}:{game:Game;send:(e
  const ready=meta?.stage===step&&!busy&&(step===1||step===4||step===13?correct&&(step!==4||meta.ready):step===12?meta?.discarded:report?done:true);
  const choose=(i:number)=>{if(i!==questions[q]!.answer){setFeedback('再想想：榮和最優先；吃、碰、明槓失去門前清，暗槓則保留。');return}if(q<2){setQ(q+1);setFeedback('答對了，再試下一題。')}else{setCorrect(true);setFeedback('答對了！可以繼續。')}};
  const action=step===2?'chi':step===6?'pon':step===11?'kan':'ron',legal=step===2?!!h.actions.chiSequences.length:step===6?h.actions.canPon:step===11?h.actions.canKan:h.actions.canRon;
- const boxes=discardStep?[{x:110,y:525,w:980,h:107},...(step===12?[{x:2,y:4,w:200,h:110}]:[])]:[2,6,8,11].includes(step)?[{x:765,y:430,w:170,h:90}]:[];
+ // Keep the centre rivers free; the call's source seat also stays visible.
+ const cardStyle=report?{left:20,top:60,width:300,height:385}:[0,14].includes(step)?undefined:[1,2,12].includes(step)?{left:795,top:65,width:310,height:'auto',maxHeight:step===1?440:340}:{left:20,top:125,width:350,height:'auto',maxHeight:380};
+ const sourceBox=step===2?{x:408,y:140,w:60,h:48}:[4,6,8].includes(step)?{x:674,y:267,w:68,h:57}:step===11?{x:618,y:125,w:70,h:53}:undefined;
+ const boxes=[...(sourceBox?[sourceBox]:[]),...(discardStep||step===4?[{x:110,y:525,w:980,h:107}]:[]),...(step===12?[{x:2,y:4,w:200,h:110}]:[]),...([2,6,8,11].includes(step)?[{x:765,y:430,w:170,h:90}]:[])];
  if(report&&(!h.result||!reportReady))return <div className="lesson-one lesson-six"><div className="lesson-top"><strong>第六課 · 榮和演出中</strong><span>接著查看副露後仍成立的役</span></div><div className="lesson-block" style={{inset:0}}/></div>;
  return <div className={'lesson-one lesson-six '+(report?'lesson-three-result':!play?'lesson-solid':'')} ref={root} role="dialog" aria-modal="true" aria-label="新手學堂第六課" data-step={step}>
  <div className="lesson-top"><strong>新手學堂 · 第六課</strong><span>吃・碰・槓・門前清 · 無倒數</span><a href="/design/lobby/index.html?screen=academy">離開・保存已完成小節 ×</a></div>
@@ -37,11 +40,11 @@ export function LessonSix({game,send,reportReady,busy,reduce}:{game:Game;send:(e
  {discardStep?<><div className="lesson-block" style={{left:0,top:0,right:0,height:525}}/><div className="lesson-block" style={{left:0,top:525,width:110,bottom:0}}/><div className="lesson-block" style={{left:1090,top:525,right:0,bottom:0}}/></>:<div className="lesson-block" style={{inset:0}}/>}
  {[2,6,8,11].includes(step)&&legal&&meta?.ready&&!h.result&&<button className="lesson-win-action" data-action={'academy-six-'+action} aria-label={action==='chi'?'吃':action==='pon'?'碰':action==='kan'?'明槓':'榮和'} disabled={busy} onClick={()=>latest.current(action==='ron'?'academy:six-win':'academy:six-call',action==='ron'?{}:{kind:action})}><ActionArt kind={action}/></button>}
  </>}
- <section className={'lesson-card '+(!play&&!report?'lesson-hero':'')} style={report?{left:20,top:60,width:300,height:385}:play?{left:245,top:65,width:620,height:step===4?420:step===12?350:325}:undefined}>
+ <section className={'lesson-card '+([0,14].includes(step)?'lesson-hero':'')+(cardStyle&&!report?' lesson-six-side':'')} style={cardStyle}>
  <small>{report?'真實副露役種與結果':`第六課 · ${step+1} / 15`}</small><h2>{titles[step]}</h2><p>{descriptions[step]}</p>
  {step===0&&<div className="lesson-reward">🥕 首次完成：100 體驗紅蘿蔔<small>三個獨立教學例子；進度保存在本瀏覽器。</small></div>}
  {step===1&&<div className="lesson-three-answers"><button onClick={()=>{setCorrect(true);setFeedback('答對了！只可以吃左方上家的牌。')}}>只可以吃上家的牌</button><button onClick={()=>setFeedback('吃只限上家；碰或明槓才不限哪一家。')}>任何一家都可以吃</button></div>}
- {step===4&&meta?.ready&&<><div className="lesson-six-shape">{[...game.you.hand,...h.melds.east.flatMap(m=>m.tiles.slice(0,3)),h.discards.south.at(-1)!].filter(Boolean).map(t=><img key={t.id} src={completeTileUrl(t.face,!!t.red)} alt={t.face}/>)}</div><div className="lesson-three-answers"><button onClick={()=>setFeedback('牌形完成仍要有役；這個吃牌例子沒有役。')}>牌形完成就可以和</button><button onClick={()=>{setCorrect(true);setFeedback('答對了！先有役，才可以和。')}}>沒有役，仍不能榮和</button></div></>}
+ {step===4&&meta?.ready&&<><div className="lesson-six-shape">{[...game.you.hand,...h.melds.east.flatMap(m=>m.tiles.slice(0,3)),h.discards.south.at(-1)!].filter(Boolean).map(t=><img key={t.id} src={completeTileUrl(t.face,!!t.red)} alt={t.face}/>)}</div><div className="lesson-three-answers"><button onClick={()=>setFeedback('牌形完成仍要有役；這個吃牌例子沒有役。')}>牌形齊就能和</button><button onClick={()=>{setCorrect(true);setFeedback('答對：先有役才能和。')}}>無役不能和</button></div></>}
  {step===12&&<div className="lesson-six-kan-count">指示牌：1 → <b>{h.doraIndicators.length}</b> 張　{meta?.discarded?'九索已打出 ✓':'請打出補入的九索'}</div>}
  {step===13&&<><h3>{questions[q]!.title}　{q+1}/3</h3><div className="lesson-three-answers">{questions[q]!.choices.map((text,i)=><button key={i} aria-label={'鳴牌答案 '+(i+1)} disabled={correct} onClick={()=>choose(i)}>{text}</button>)}</div></>}
  <div className="lesson-feedback" role="status">{feedback||([2,6,11].includes(step)?meta?.ready?'現在可以按右下鳴牌按鈕。':'等候對手打出教學牌…':step===12&&meta?.discarded?'補牌及出牌已完成，可以繼續。':discardStep?'請短按標亮的'+(step===12?'九索':'北')+'。':step===8?meta?.ready?'現在可以按「和」榮和。':'等候下家打出四索…':'')}</div>
