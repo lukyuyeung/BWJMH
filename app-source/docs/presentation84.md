@@ -1,0 +1,11 @@
+# Interactive third academy lesson
+
+Third course teaches completed shape plus one-yaku requirement, dragons, Ron versus Tsumo, and genuine yaku result rows. It is live from the academy and directly after course two. Fourth course remains explicitly coming soon.
+
+LessonThreeController creates three separate physical examples. No-yaku Ron candidate is 123456m 789p 234s EE, closed and not riichi; the engine verifies shape completion but rejects Ron. The other examples use 123m 789p 234s PPP EE, first by Ron (Yakuhai only), then ordinary closed Tsumo (Yakuhai plus Menzen Tsumo). Dora indicator 3p does not add bonus to these hands. Tiles prefer ordinary fives in the negative case to avoid distracting red-dora explanation. Every allocation and checkpoint preserves 136 unique IDs/four copies per face.
+
+Custom teaching action buttons use the real ActionArt; availability is from engine actions and lesson-local controller methods call actual RoomManager.ron/tsumo. Other claims are automatically passed, and unintroduced options are hidden. Actual character win performances/reveals precede real WinBanner narration and counts. The lesson annotates only the role rows and hides score-transfer navigation; it never fabricates results. The popup is separated from the target tile/button or result rows, and transparent blockers prevent touching underlying settings/cards during movies and reports.
+
+Ten checkpoints include actual result replay. Checkpoint recovery is reconstructed per teaching example; ordinary Bot save, owner and session remain untouched. Existing first/two learning records migrate; a third once-only 100 DEMO-carrot reward raises the current maximum to 300. This browser-local demo ledger remains separate from an authenticated wallet.
+
+Validation: physical/core tests at all checkpoints; completed-shape/no-yaku rejection; actual Ron and Tsumo IDs, no dora, no riichi; source mobile and compiled mobile/desktop complete flows; report-stage reload; normal result rows and yaku voice progress; target/action/role-area separation and visible next button; legacy record migration and reward quota/deduplication; ordinary Bot save/owner/session byte-preserved; fourth-course directory; no missing assets/page errors/developer QA API in production.

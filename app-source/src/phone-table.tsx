@@ -1,3 +1,4 @@
+import {LessonThree} from './lesson-three';
 import {LessonTwo} from './lesson-two';
 import {LessonOne,inAcademyLesson} from './lesson-one';
 import {BeginnerGuide,GUIDE_KEY} from './beginner-guide';
@@ -134,9 +135,10 @@ export function PhoneTable({riichiReveal,game,pending,options,onOptions,call,err
   {!loading&&h.winSequence&&!showResult&&<SpecialWinSequence key={handKey} game={game} onComplete={()=>setResultReady(true)} reduce={options.reduceEffects}/>}
   {!loading&&!!h.settlement?.nagashi?.length&&!showResult&&<SpecialDraw key={handKey} game={game} onComplete={()=>setResultReady(true)}/>}
   {!loading&&!h.winSequence&&<GlobalCinematic key={r.code+':'+h.cinematic?.id} state={h.cinematic} skip={options.skipAnimation&&!h.cinematic?.demo} reduce={options.reduceEffects&&!h.cinematic?.demo} winnerName={r.players.find(p=>p.seat===h.cinematic?.winner)?.name??''}/>}
-  {ended&&showResult&&(!!h.winSequence||h.cinematic?.phase!=='playing')&&<MultiWinResultOverlay game={game} characters={characters} pending={pending} reduce={options.reduceEffects} renderTile={tile=><ArtworkTile key={tile.id} tile={tile}/>} renderMeld={(meld,seat,index)=><Meld key={index} meld={meld} seat={seat}/>} onReportComplete={()=>call('game:report-complete',{id:r.resultFlow?.id})} onNext={()=>doAction('game:next-hand')} onRestart={()=>window.dispatchEvent(new Event('demo:restart'))}/>}
+  {lessonNumber!==3&&ended&&showResult&&(!!h.winSequence||h.cinematic?.phase!=='playing')&&<MultiWinResultOverlay game={game} characters={characters} pending={pending} reduce={options.reduceEffects} renderTile={tile=><ArtworkTile key={tile.id} tile={tile}/>} renderMeld={(meld,seat,index)=><Meld key={index} meld={meld} seat={seat}/>} onReportComplete={()=>call('game:report-complete',{id:r.resultFlow?.id})} onNext={()=>doAction('game:next-hand')} onRestart={()=>window.dispatchEvent(new Event('demo:restart'))}/>}
   {lessonNumber===1&&<LessonOne inspectedId={inspectedId}/>}
   {lessonNumber===2&&<LessonTwo game={game} send={call}/>}
+  {lessonNumber===3&&<LessonThree game={game} send={call} reportReady={showResult} busy={motionBusy||pending}/>}
   {panel==='automatic'&&<AutomaticPanel options={options} onOptions={onOptions} onClose={()=>setPanel(null)}/>}
   {panel==='guide'&&<BeginnerGuide initialTour={firstGuide} localBot={standalone} onClose={()=>{try{localStorage.setItem(GUIDE_KEY,'seen')}catch{}setPanel(null);setFirstGuide(false)}} onYaku={()=>{try{localStorage.setItem(GUIDE_KEY,'seen')}catch{}setFirstGuide(false);setPanel('rules')}}/>}
   {panel==='rules'&&<YakuGuide onClose={()=>setPanel(null)}/>}
