@@ -51,3 +51,6 @@
 
 /* Keep a held finger available for tile inspection instead of browser pan/selection. */
 .phone-hand-tiles>button{touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+
+.hand-inspection-info{position:absolute;left:50%;bottom:115px;transform:translateX(-50%);z-index:35;display:flex;align-items:center;gap:12px;padding:8px 18px;background:#10251ff2;border:1px solid #d5b87d;border-radius:8px;color:#f5e8ca;box-shadow:0 6px 20px #0007;pointer-events:none;font:18px system-ui;white-space:nowrap}.hand-inspection-info>.phone-tile{width:30px;height:42px}.hand-inspection-info strong{font-size:25px;color:#ffdc95;padding:0 4px}.phone-hand-tiles>button.selected{transform:translateY(-18px);z-index:2;outline:2px solid #f6d99b;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.phone-hand-tiles>button{transition:none}}

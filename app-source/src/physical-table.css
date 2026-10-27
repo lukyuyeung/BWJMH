@@ -17,3 +17,5 @@
 @media(prefers-reduced-motion:reduce){.turn-lamp{transition:none}}
 /* Leave room for the ivory body below the foreground faces. */
 .phone-hand{top:530px}
+
+@media(prefers-reduced-motion:reduce){.phone-stage .phone-hand-tiles>button{transition:none}}
