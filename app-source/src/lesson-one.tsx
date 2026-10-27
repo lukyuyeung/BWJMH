@@ -1,5 +1,6 @@
 import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
 import './lesson-one.css';
+export const inAcademyLesson=()=>['1','2'].includes(new URLSearchParams(location.search).get('lesson')??'');
 export const inLessonOne=()=>new URLSearchParams(location.search).get('lesson')==='1';
 type Box={x:number;y:number;w:number;h:number};
 const steps=[
@@ -34,6 +35,6 @@ export function LessonOne({inspectedId}:{inspectedId:string|null}){
  {step===0&&<div className="lesson-reward">🥕 首次完成：100 體驗紅蘿蔔<small>課程進度與體驗獎勵保存在此瀏覽器，正式錢包尚未開放。</small></div>}
  {step===6&&<div className="lesson-answers">{['自己的手牌','四家牌河','中央局況'].map((answer,i)=><button key={answer} onClick={()=>{if(i===1){setCorrect(true);setFeedback('答對了！牌河就是大家已打出的牌。')}else{setCorrect(false);setFeedback(i===0?'手牌是自己持有的牌；請找公開打出牌的位置。':'中央顯示局況與點數；已打出的牌在牌河。')}}}>{answer}</button>)}</div>}
  <div className="lesson-feedback" role="status" data-correct={correct}>{feedback|| (step===5?'按住後掃過兩張牌，再放手。':step>0&&step<6?'點一下金框內的區域。':'')}</div>
- {step===7?<><div className="lesson-reward">{claimed?awarded?`🥕 已領取 ${awarded} 體驗紅蘿蔔`:'已完成複習 · 獎勵不會重複領取':'🥕 首次完成獎勵：100 體驗紅蘿蔔'}<small>體驗紅蘿蔔保存在此瀏覽器，並非正式錢包餘額。</small></div><footer>{claimed?<><a href="/design/lobby/index.html?screen=academy">返回新手學堂</a><a className="lesson-primary" href="/art/academy-lesson-two-v1/index.html">前往第二課 →</a></>:<button className="lesson-primary" onClick={complete}>{api()?.read().lessonOne.completed?'完成複習':'完成本課・領取獎勵'}</button>}</footer></>:<footer><span>{step===5?'查看手牌不會打出':'本課不會改動你的電腦對局'}</span><button className="lesson-primary" disabled={step!==0&&!correct} onClick={advance}>{step===0?'開始學習 →':step===6?'完成第一課 →':'下一步 →'}</button></footer>}
+ {step===7?<><div className="lesson-reward">{claimed?awarded?`🥕 已領取 ${awarded} 體驗紅蘿蔔`:'已完成複習 · 獎勵不會重複領取':'🥕 首次完成獎勵：100 體驗紅蘿蔔'}<small>體驗紅蘿蔔保存在此瀏覽器，並非正式錢包餘額。</small></div><footer>{claimed?<><a href="/design/lobby/index.html?screen=academy">返回新手學堂</a><a className="lesson-primary" href="/?mode=bot&lesson=2">前往第二課 →</a></>:<button className="lesson-primary" onClick={complete}>{api()?.read().lessonOne.completed?'完成複習':'完成本課・領取獎勵'}</button>}</footer></>:<footer><span>{step===5?'查看手牌不會打出':'本課不會改動你的電腦對局'}</span><button className="lesson-primary" disabled={step!==0&&!correct} onClick={advance}>{step===0?'開始學習 →':step===6?'完成第一課 →':'下一步 →'}</button></footer>}
  </section></div>
 }

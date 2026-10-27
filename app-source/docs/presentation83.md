@@ -1,0 +1,11 @@
+# Interactive lesson two
+
+Course two is live from the lobby and first-course completion. There is no draw button: the actual rules engine advances South, West, North, then automatically draws for the learner at East. Each opponent draw and discard is published separately, using the existing hand animations. A fixed physical wall reserves the learner's first 3m draw and later 9s/4p practice draws.
+
+Flow: four face-family questions; observe a counterclockwise round; auto draw from 13 to 14; manually discard North back to 13; three separate shape questions (sequence/triplet/pair); two minimally guided normal auto-draw/manual-discard cycles; 14/13 count quiz; completion and third-course directory entry. North is explicitly a guided practice choice, not general strategy advice. Calls/wins are excluded from this lesson; opponents pass claims in this simplified exercise.
+
+LessonTwoController gates discards and stage transitions. Normal Bot automation, the ordinary auto-draw hook and normal Bot saves are bypassed in academy mode; the lesson controller performs the actual draws. The learning ledger migrates existing first-course records, adds a second one-time 100 DEMO-carrot award and derives total balance from completed lessons (up to 200 currently). Existing Bot save, active-tab owner and reconnect session are untouched. This remains browser-local demo credit, not a wallet authority.
+
+Completed sections persist. On reload an unfinished section replays from its checkpoint, rather than restoring arbitrary intermediate decisions. The UI describes this explicitly. Fixed checkpoint replay validates all physical tiles and uses normal engine transitions. Third course remains marked coming soon; completion does not send players to Bot matches.
+
+Verification: physical 136 unique tiles, 34x4 faces after all transitions and every checkpoint; observed South/West/North/East order; automatic drawn faces; first North restriction; premature-stage rejection; two legal practice discards; mobile source and compiled production full flows; compiled desktop full flow; no manual draw button; prompt/target non-overlap and visible footer; saved Bot state byte-preserved; old progress migration and reward retry deduplication; no missing assets/page errors or developer QA API in production.
