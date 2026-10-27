@@ -27,7 +27,7 @@ export function LessonOne({inspectedId}:{inspectedId:string|null}){
  const solid=step===0||step>=6;
  return <div className={'lesson-one '+(solid?'lesson-solid':'')} ref={root} role="dialog" aria-modal="true" aria-label="新手學堂第一課">
  <div className="lesson-top"><strong>新手學堂 · 第一課</strong><span>獨立教學牌桌 · 不計時</span><a href="/design/lobby/index.html?screen=academy">離開並保存進度 ×</a></div>
- {!solid&&box&&<><svg className="lesson-shade" viewBox="0 0 1125 634" aria-hidden="true"><defs><mask id="lesson-hole"><rect width="1125" height="634" fill="white"/><rect x={box.x} y={box.y} width={box.w} height={box.h} rx="10" fill="black"/></mask></defs><rect width="1125" height="634" fill="#03110e" opacity=".79" mask="url(#lesson-hole)"/><rect x={box.x} y={box.y} width={box.w} height={box.h} rx="10" fill="none" stroke={correct?'#b8e3ad':'#f4d595'} strokeWidth="3"/></svg>
+ {!solid&&box&&<><svg className="lesson-shade" viewBox="0 0 1125 634" aria-hidden="true"><rect x={box.x} y={box.y} width={box.w} height={box.h} rx="10" fill="none" stroke={correct?'#b8e3ad':'#f4d595'} strokeWidth="3"/></svg>
  <div className="lesson-block" style={{left:0,top:0,width:'100%',height:box.y}}/><div className="lesson-block" style={{left:0,top:box.y+box.h,width:'100%',bottom:0}}/><div className="lesson-block" style={{left:0,top:box.y,width:box.x,height:box.h}}/><div className="lesson-block" style={{left:box.x+box.w,top:box.y,right:0,height:box.h}}/>
  {step!==5&&<button className="lesson-target" aria-label={'選擇'+current.title.replace('找出','')} onClick={hit} style={{left:box.x,top:box.y,width:box.w,height:box.h}}/>}</>}
  <section ref={cardRef} className={'lesson-card '+(solid?'lesson-hero':'')} style={solid?undefined:{left:card.x,top:card.y}}>
