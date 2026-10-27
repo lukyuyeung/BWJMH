@@ -1,17 +1,17 @@
-import {createStandardWall,createDeadWall,constructPhysicalWall,createHandState,dealInitialHands,detectAgari,evaluateWin,SEATS,type Tile,type Seat} from '@bunny/riichi-engine';
+import {createStandardWall,createDeadWall,constructPhysicalWall,createHandState,dealInitialHands,detectAgari,evaluateWin,SEATS,type Tile,type Seat,type TileFace} from '@bunny/riichi-engine';
 import {RoomManager,type Room} from './room';
 type Example='no-yaku'|'ron'|'tsumo';
-export function installLessonThree(room:Room,example:Example){
- const pool=createStandardWall(room.rules.akaDora),take=(faces:string)=>faces.split(' ').map(f=>{const i=pool.findIndex(t=>t.face===f&&!t.red);if(i<0)throw Error('Lesson three tile allocation');return pool.splice(i,1)[0]!});
- const own=take(example==='no-yaku'?'1m 2m 3m 4m 5m 6m 7p 8p 9p 2s 3s E E':'1m 2m 3m 7p 8p 9p 2s 3s 4s P P E E');
- const target=take(example==='no-yaku'?'4s':'P')[0]!,indicator=take('3p')[0]!;
+export function installLessonThree(room:Room,example:Example,options:{ownFaces?:string;indicator?:TileFace;redFace?:TileFace;handNumber?:1|2|3|4}={}){
+ const pool=createStandardWall(room.rules.akaDora),take=(faces:string)=>faces.split(' ').map(f=>{const i=pool.findIndex(t=>t.face===f&&(f===options.redFace?t.red:!t.red));if(i<0)throw Error('Lesson three tile allocation');return pool.splice(i,1)[0]!});
+ const own=take(options.ownFaces??(example==='no-yaku'?'1m 2m 3m 4m 5m 6m 7p 8p 9p 2s 3s E E':'1m 2m 3m 7p 8p 9p 2s 3s 4s P P E E'));
+ const target=take(example==='no-yaku'?'4s':'P')[0]!,indicator=take(options.indicator??'3p')[0]!;
  const hands={east:own,south:[],west:[],north:[]} as Record<Seat,Tile[]>;
  for(const s of SEATS)while(hands[s].length<13)hands[s].push(pool.shift()!);
  if(example!=='tsumo')hands.south.push(target);
  const dead=pool.splice(-13);dead.splice(4,0,indicator);const live=example==='tsumo'?[target,...pool]:pool,physical=[...SEATS.flatMap(s=>hands[s]),...live,...dead];
  if(physical.length!==136||new Set(physical.map(t=>t.id)).size!==136)throw Error('Lesson three wall');
  const g=createHandState(dealInitialHands(physical));g.hands=hands;g.discards={east:[],south:[],west:[],north:[]};g.discardedFaces={east:[],south:[],west:[],north:[]};g.liveWall=live;g.deadWall=createDeadWall(dead);g.physicalWall=constructPhysicalWall(physical,'east',[3,4]);g.currentSeat=example==='tsumo'?'east':'south';g.phase=example==='tsumo'?'awaiting_draw':'awaiting_discard';g.lastDrawSeat=g.currentSeat;g.lastDrawSource='live';g.turnNumber=8;g.firstTurnYakumanEnabled=false;room.game=g;
- room.settled=false;room.scores={east:25000,south:25000,west:25000,north:25000};room.handStartingScores={...room.scores};room.riichiPot=0;room.match={roundWind:'east',handNumber:example==='no-yaku'?1:example==='ron'?2:3,dealer:'east',honba:0,handsPlayed:0,finished:false};room.handMatch={...room.match};room.events=[];delete room.pendingClaims;delete room.pendingRiichi;delete room.cinematic;delete room.winSequence;delete room.transfers;delete room.awardedPot;delete room.resultFlow;delete room.finalRanking;
+ room.settled=false;room.scores={east:25000,south:25000,west:25000,north:25000};room.handStartingScores={...room.scores};room.riichiPot=0;room.match={roundWind:'east',handNumber:options.handNumber??(example==='no-yaku'?1:example==='ron'?2:3),dealer:'east',honba:0,handsPlayed:0,finished:false};room.handMatch={...room.match};room.events=[];delete room.pendingClaims;delete room.pendingRiichi;delete room.cinematic;delete room.winSequence;delete room.transfers;delete room.awardedPot;delete room.resultFlow;delete room.finalRanking;
  return target;
 }
 export class LessonThreeController{
