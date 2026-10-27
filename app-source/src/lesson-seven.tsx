@@ -1,9 +1,9 @@
 import React,{useEffect,useRef,useState} from 'react';import type {Game} from './main';import {ActionArt} from './action-art';import {WinBanner} from './win-banner';import {seatCharacter} from './seat-character';import './lesson-seven.css';
 const api=()=> (window as any).BunnyAcademy;
-const titles=['第七課：為甚麼不能和？','無役，不等於振聽','自己打過一索，四索也不能榮和','振聽仍然可以自摸','看懂這次振聽自摸','未立直：親手放過榮和','下一家出牌，暫時不能榮和','等到自己摸牌，限制解除','四索再來，榮和已恢復','立直後，再放過一次榮和','立直後的振聽，會維持本局','副露後，役也會改變','上桌前，先分清原因','第七課完成！'];
+const titles=['第七課：為甚麼不能和？','無役與振聽可以同時存在','自己打過一索，四索也不能榮和','振聽仍然可以自摸','看懂這次振聽自摸','未立直：親手放過榮和','下一家出牌，暫時不能榮和','等到自己摸牌，限制解除','四索再來，榮和已恢復','立直後，再放過一次榮和','立直後的振聽，會維持本局','副露後，役也會改變','上桌前，先分清原因','第七課完成！'];
 const descriptions=[
  '用四個固定牌例分清無役、自家牌河振聽、同巡振聽及立直後振聽。你會親手跳過榮和，再觀察實際規則如何限制和牌。',
- '牌形已齊、寶牌兩枚，卻沒有役，仍不能榮和。寶牌不能代替役。這次不是振聽，而是無役。',
+ '牌形已齊卻無役，不能榮和。放過這張完成牌形的出牌，也會同巡振聽；兩種原因可同時存在。',
  '自己打過一索，現在聽一索／四索。即使下家打四索，整組聽牌也不能榮和，不是只禁一索；只等下一次摸牌也不會自動解除。',
  '自己打過聽牌，只限制榮和，不禁止自摸。等其他三家輪轉，遊戲會自動摸入四索，請親手按「自摸」。',
  '這次靠自己摸到四索和牌。真正結果有門前清自摸和及役牌白，沒有立直，也不會因為自家牌河振聽而禁止自摸。',
@@ -17,7 +17,7 @@ const descriptions=[
  '振聽仍可自摸。自家牌河振聽要改變聽牌，全部避開自己打過的牌；同巡振聽等自己摸牌解除。立直後放過榮和則維持本局。',
  '你已懂得分辨不能和的原因，親手體驗放過榮和及振聽自摸，也知道副露會影響哪些役。下一課會練習出牌與防守。'
 ];
-const checks:Record<number,{question:string;choices:string[];answer:number}>={1:{question:'兩枚寶牌，沒有役，能榮和嗎？',choices:['有番就可以和','沒有役，不能和'],answer:1},2:{question:'自己打過一索，現在的四索呢？',choices:['四索仍可榮和','整組聽牌都振聽'],answer:1},6:{question:'下一家出牌後，同巡振聽解除嗎？',choices:['要等自己摸牌','已經解除'],answer:0},8:{question:'現在下家的四索，可以榮和嗎？',choices:['可以，資格已恢復','仍要等到下一局'],answer:0},10:{question:'自己摸牌，會解除立直後振聽嗎？',choices:['會，與未立直一樣','不會，本局維持'],answer:1},11:{question:'混一色副露後值幾番？',choices:['副露後2番','仍是門前的3番'],answer:0}};
+const checks:Record<number,{question:string;choices:string[];answer:number}>={1:{question:'無役的完成牌被放過，會怎樣？',choices:['無役，不會振聽','無役也會同巡振聽'],answer:1},2:{question:'自己打過一索，現在的四索呢？',choices:['四索仍可榮和','整組聽牌都振聽'],answer:1},6:{question:'下一家出牌後，同巡振聽解除嗎？',choices:['要等自己摸牌','已經解除'],answer:0},8:{question:'現在下家的四索，可以榮和嗎？',choices:['可以，資格已恢復','仍要等到下一局'],answer:0},10:{question:'自己摸牌，會解除立直後振聽嗎？',choices:['會，與未立直一樣','不會，本局維持'],answer:1},11:{question:'混一色副露後值幾番？',choices:['副露後2番','仍是門前的3番'],answer:0}};
 const finalQuestions=[{question:'振聽時，仍可自摸嗎？',choices:['可以自摸','所有和牌都禁止'],answer:0},{question:'自己打過目前任何一種聽牌，會怎樣？',choices:['只禁那一張牌','全部聽牌不能榮和'],answer:1},{question:'想維持平和或立直，能先吃牌嗎？',choices:['可以，牌形齊就好','不可以，要門前清'],answer:1}];
 export function LessonSeven({game,send,reportReady,busy,reduce}:{game:Game;send:(e:string,p:any)=>void;reportReady:boolean;busy:boolean;reduce:boolean}){
  const [step,setStep]=useState<number>(()=>{const s=api()?.read().lessonSeven;return s?.completed?0:s?.step??0}),[q,setQ]=useState(0),[correct,setCorrect]=useState(false),[feedback,setFeedback]=useState(''),[reportDone,setReportDone]=useState(false),[claimed,setClaimed]=useState(false),[reward,setReward]=useState(0);const latest=useRef(send);latest.current=send;const root=useRef<HTMLDivElement>(null),h=game.hand,meta=(h as any).academySeven,report=step===4,overview=[0,13].includes(step),quiz=checks[step],manual=[3,5,7,9].includes(step);
@@ -30,7 +30,7 @@ export function LessonSeven({game,send,reportReady,busy,reduce}:{game:Game;send:
  const ownBox={x:440,y:330,w:100,h:65},southBox={x:670,y:240,w:80,h:90},westBox={x:618,y:125,w:70,h:53},handBox={x:110,y:525,w:980,h:107},actionBox={x:765,y:430,w:170,h:90};
  const boxes=step===1?[southBox]:step===2?[ownBox,southBox]:step===3?[ownBox,handBox,actionBox]:[5,9].includes(step)?[southBox,actionBox]:step===6?[westBox]:step===7?[handBox]:[8,10].includes(step)?[southBox]:[];
  const cardStyle=report?{left:20,top:60,width:300,height:385}:overview?undefined:{left:20,top:[2,6,8,10,11,12].includes(step)?65:125,width:350,height:'auto',maxHeight:[2,6,8,10,11,12].includes(step)?440:380};
- const status=step===1?'無役：不能榮和':[2,3].includes(step)?'自家牌河振聽：不能榮和，可自摸':[5,9].includes(step)?h.actions.canRon?'現在可以榮和：本步練習跳過':'等待可榮和的一索…':step===6?'同巡振聽：尚未輪到自己摸牌':step===7?meta?.phase==='own-draw'?'已自己摸牌：同巡振聽解除':'等待自己摸牌…':step===8?h.actions.canRon?'榮和資格已恢復 ✓':'等待下家的四索…':step===10?'立直後振聽：摸牌後仍不能榮和':'';
+ const status=step===1?h.winStatus?.furitenReasons.includes('temporary')?'無役＋同巡振聽：不能榮和':'等待完成牌形的出牌…':[2,3].includes(step)?'自家牌河振聽：不能榮和，可自摸':[5,9].includes(step)?h.actions.canRon?'現在可以榮和：本步練習跳過':'等待可榮和的一索…':step===6?'同巡振聽：尚未輪到自己摸牌':step===7?meta?.phase==='own-draw'?'已自己摸牌：同巡振聽解除':'等待自己摸牌…':step===8?h.actions.canRon?'榮和資格已恢復 ✓':'等待下家的四索…':step===10?'立直後振聽：摸牌後仍不能榮和':'';
  if(report&&(!h.result||!reportReady))return <div className="lesson-one lesson-seven"><div className="lesson-top"><strong>第七課 · 振聽自摸演出中</strong><span>接著查看真正役種結果</span></div><div className="lesson-block" style={{inset:0}}/></div>;
  return <div className={'lesson-one lesson-seven '+(report?'lesson-three-result':overview?'lesson-solid':'')} ref={root} role="dialog" aria-modal="true" aria-label="新手學堂第七課" data-step={step}>
  <div className="lesson-top"><strong>新手學堂 · 第七課</strong><span>無役・振聽・副露 · 無倒數</span><a href="/design/lobby/index.html?screen=academy">離開・保存已完成小節 ×</a></div>

@@ -3,7 +3,7 @@ import type {AutomaticOptions} from './gameplay.js';
 import './automatic-help.css';
 const rows=[
  ['autoSort','理','自動理牌','按花色及數字整理手牌。'],
- ['autoRon','和','自動和牌','可和牌時自動食糊。'],
+ ['autoRon','和','自動和牌','可和牌時稍候自動和牌，期間可手動跳過。'],
  ['disableCalls','鳴','不鳴牌','略過吃碰槓，保留和牌。'],
  ['autoDiscard','切','摸切','新摸即打，和牌時保留。'],
 ] as const;

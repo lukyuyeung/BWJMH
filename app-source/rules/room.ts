@@ -10,7 +10,7 @@ import { randomInt, randomUUID } from 'node:crypto';
 import { DEFAULT_RULESET, normalizeRuleset, TIER_TURN_MS, type Ruleset } from './rules.js';
 import {getLegalDiscardIds,createStandardWall} from '@bunny/riichi-engine';
 import { createMatchState, advanceMatch, calculateNotenPayments, rankScores, type MatchState } from './match.js';
-import { createShuffledWall, dealInitialHands, createHandState, drawTile, discardTile, declareTsumo, declareRon, declareRons, passRon, getTsumoEvaluation, getRiichiDiscardIds, getPlayerWaits, isFuriten, declareRiichiAndDiscard, getClaimOptions, claimChi, claimPon, claimKan, passClaim, declareAnkan, declareKakan, getAnkanTileIds, getKakanTileIds, getVisibleDora, visibleUraIndicators, getBonusDoraForSeat, SEATS, type HandState, type Seat } from '@bunny/riichi-engine';
+import { createShuffledWall, dealInitialHands, createHandState, drawTile, discardTile, declareTsumo, declareRon, declareRons, passRon, getTsumoEvaluation, getRiichiDiscardIds, getPlayerWaits, getWinRestrictions, isFuriten, declareRiichiAndDiscard, getClaimOptions, claimChi, claimPon, claimKan, passClaim, declareAnkan, declareKakan, getAnkanTileIds, getKakanTileIds, getVisibleDora, visibleUraIndicators, getBonusDoraForSeat, SEATS, type HandState, type Seat } from '@bunny/riichi-engine';
 
 export interface Player {
   id: string;
@@ -118,6 +118,7 @@ export interface PlayerGameState {
     riichi: Record<Seat, boolean>;
     waits: import('@bunny/riichi-engine').TileFace[];
     furiten: boolean;
+    winStatus: import('@bunny/riichi-engine').WinRestrictions;
     claimResponse?:ClaimResponse;
     uraIndicators?:import('@bunny/riichi-engine').Tile[];
     results?:import('@bunny/riichi-engine').WinResult[];
@@ -275,6 +276,7 @@ export class RoomManager {
 
   tsumo(code: string, playerId: string): Room { const room=this.requirePlayingRoom(code); const player=this.requirePlayer(room,playerId); declareTsumo(room.game!,player.seat); this.settleWin(room); return room; }
   ron(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'ron'})}
+  passTsumo(code:string,playerId:string):Room{const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId);if(!getTsumoEvaluation(room.game!,player.seat)?.legal)throw new RoomError('NO_TSUMO_TO_PASS','There is no legal Tsumo to pass.');return this.discard(code,playerId,room.game!.hands[player.seat].at(-1)!.id)}
   passRon(code:string,playerId:string):Room{return this.passClaim(code,playerId)}
   passClaim(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'pass'})}
   chi(code:string,playerId:string,faces:import('@bunny/riichi-engine').TileFace[]):Room{return this.submitClaim(code,playerId,{kind:'chi',faces})}
@@ -322,7 +324,8 @@ export class RoomManager {
     const claimOptions=!response&&raw&&(raw.ron||raw.pon||raw.kan||raw.chiSequences.length)?raw:null;
     const own=game.hands[player.seat],counts=visibleCounts(own,game.discards,game.melds,getVisibleDora(game));
     const riichiIds=room.scores[player.seat]>=1000?getRiichiDiscardIds(game,player.seat):[];
-    const assistance={waits:own.length%3===1?waitPreview(own,game.melds[player.seat].length,counts,game.melds[player.seat]):[],riichi:Object.fromEntries(riichiIds.map(id=>[id,waitPreview(own.filter(t=>t.id!==id),game.melds[player.seat].length,counts,game.melds[player.seat])]))};
+    const winStatus=getWinRestrictions(game,player.seat),waitingOwn=own.length%3===2&&game.lastDrawSeat===player.seat&&game.phase==='awaiting_discard'?own.slice(0,-1):own;
+    const assistance={waits:waitingOwn.length%3===1?waitPreview(waitingOwn,game.melds[player.seat].length,counts,game.melds[player.seat]):[],riichi:Object.fromEntries(riichiIds.map(id=>[id,waitPreview(own.filter(t=>t.id!==id),game.melds[player.seat].length,counts,game.melds[player.seat])]))};
     return {
       room: toPublicRoomState(room),
       you: { playerId: player.id, seat: player.seat, hand: [...game.hands[player.seat]], drawnTileId: game.lastDrawSeat===player.seat&&game.phase==='awaiting_discard'?game.hands[player.seat].at(-1)?.id:undefined },
@@ -366,7 +369,7 @@ export class RoomManager {
         melds:{east:[...game.melds.east],south:[...game.melds.south],west:[...game.melds.west],north:[...game.melds.north]},
         riichi: { east:game.riichi.east.declared, south:game.riichi.south.declared, west:game.riichi.west.declared, north:game.riichi.north.declared },
         waits: getPlayerWaits(game, player.seat),
-        furiten: isFuriten(game, player.seat),
+        furiten: isFuriten(game, player.seat),winStatus,
         ...(game.phase === 'awaiting_claim' && game.claim ? {claim:{ discarder: game.claim.discarder, tile: game.claim.tile }} : {}),
         ...(response?{claimResponse:{...response}}:{}),
         ...(game.results?{results:game.results}:{}),

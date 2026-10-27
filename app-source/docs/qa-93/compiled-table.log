@@ -1,0 +1,17 @@
+PASS compiled phone no-yaku-before: real saved-room restore, eligibility labels and safe choices
+PASS compiled phone no-yaku: real saved-room restore, eligibility labels and safe choices
+PASS compiled phone discard: real saved-room restore, eligibility labels and safe choices
+PASS compiled phone temporary: real saved-room restore, eligibility labels and safe choices
+PASS compiled phone riichi-blocked: real saved-room restore, eligibility labels and safe choices
+PASS compiled phone partial: real saved-room restore, eligibility labels and safe choices
+PASS compiled phone riichi-ron: real saved-room restore, eligibility labels and safe choices
+PASS compiled phone riichi-tsumo: real saved-room restore, eligibility labels and safe choices
+PASS compiled desktop no-yaku-before: real saved-room restore, eligibility labels and safe choices
+PASS compiled desktop no-yaku: real saved-room restore, eligibility labels and safe choices
+PASS compiled desktop discard: real saved-room restore, eligibility labels and safe choices
+PASS compiled desktop temporary: real saved-room restore, eligibility labels and safe choices
+PASS compiled desktop riichi-blocked: real saved-room restore, eligibility labels and safe choices
+PASS compiled desktop partial: real saved-room restore, eligibility labels and safe choices
+PASS compiled desktop riichi-ron: real saved-room restore, eligibility labels and safe choices
+
+Last desktop self-draw case separately tested with delayed image decoding (12 seconds) and a fixture-only 120-second action deadline, to isolate startup gating from legitimate timeout takeover. See compiled-slow-start.log.
