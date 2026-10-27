@@ -1,6 +1,6 @@
 import {chromium} from 'playwright';import assert from 'node:assert/strict';
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--enable-unsafe-swiftshader']});
-const page=await browser.newPage({viewport:{width:956,height:440},hasTouch:true,isMobile:true});
+const page=await browser.newPage({viewport:{width:956,height:440},hasTouch:true,isMobile:true});await page.addInitScript(()=>localStorage.setItem('bunny-interface-guide-v1','seen'));
 if(!process.env.QA_WEBGL)await page.addInitScript(()=>{HTMLCanvasElement.prototype.getContext=()=>null});const errors=[];page.on('pageerror',e=>errors.push(e.message));
 try{
  await page.goto('http://127.0.0.1:5182/?mode=bot');await page.waitForFunction(()=>window.__bunnyQA);await page.evaluate(()=>window.__bunnyQA.pause());await page.waitForFunction(()=>document.documentElement.dataset.startupState==='ready');await page.locator('#startup-curtain').waitFor({state:'detached'});

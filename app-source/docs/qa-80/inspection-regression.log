@@ -1,0 +1,1 @@
+PASS native touch: idle scrub highlight, release clears, hold/move-out/cancel never discard, quick tap exactly once; desktop hover preserved

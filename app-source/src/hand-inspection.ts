@@ -10,6 +10,7 @@ export function useHandInspection(host:RefObject<HTMLDivElement>,setHover:(face:
   const tileAt=(e:PointerEvent)=>Array.from(stage.querySelectorAll<HTMLElement>('.phone-hand-tiles>button')).find(el=>{const r=el.getBoundingClientRect();return e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom+24});
   const show=(el:HTMLElement|undefined)=>{if(el?.querySelector('.phone-back'))el=undefined;setHover(el?.querySelector<HTMLElement>('.phone-tile')?.dataset.face??null);setSelected(el?.dataset.tileId??null)};
   const down=(e:PointerEvent)=>{
+   if(!(e.target as Element).closest('.phone-hand-tiles>button')||(e.target as Element).closest('[role=dialog]'))return;
    if(e.pointerType==='mouse'){show(tileAt(e));return;}
    if(gesture){gesture.inspect=true;return;}
    const tile=tileAt(e);if(!tile||!e.isPrimary)return;
@@ -17,6 +18,7 @@ export function useHandInspection(host:RefObject<HTMLDivElement>,setHover:(face:
    suppressUntil=Infinity;show(tile);stage.setPointerCapture(e.pointerId);
   };
   const move=(e:PointerEvent)=>{
+   if(!gesture&&(e.target as Element).closest('[role=dialog]')){show(undefined);return;}
    if(e.pointerType==='mouse'){show(tileAt(e));return;}
    if(!gesture||gesture.pointer!==e.pointerId)return;
    const tile=tileAt(e);
