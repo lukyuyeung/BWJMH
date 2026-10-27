@@ -67,3 +67,6 @@ Simplified table pass: remove the dice/break/deal presentation and its six-secon
 
 
 v87：第五課「立直！等到你的自摸」已開放：親手宣告立直、1000點立直棒、一次不能和的刮牌摸切、再刮出自摸及裏寶牌，使用真正引擎的4番30符結果。教學刮牌無倒數，正式遊戲仍保留十秒自動揭曉；首次100本機體驗紅蘿蔔，五課最多500。完成後前往第六課目錄。設計及截圖：`/art/academy-lesson-five-v1/index.html`。
+
+
+v90：第六課「吃、碰、槓與門前清」已開放：三個固定牌例，親手吃、碰、明槓與副露榮和，認識門前清、無役不能和、槓後自動補牌及新寶牌指示牌。首次100本機體驗紅蘿蔔，六課累計600；沒有暗色教學遮罩。ART：`/art/academy-lesson-six-v1/index.html`。
