@@ -26,7 +26,7 @@ export function LessonFive({game,send,reportReady,busy,reveal,reduce}:{game:Game
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key!=='Tab'||!root.current)return;const list=[...root.current.querySelectorAll<HTMLElement>('button:not(:disabled):not([hidden]),a[href]')];if(step===3&&meta?.armed)list.push(...root.current.closest('.phone-stage')!.querySelectorAll<HTMLElement>('.phone-hand-tiles>button.lesson-discard-choice'));e.preventDefault();if(!list.length)return;const i=list.indexOf(document.activeElement as HTMLElement);list[(i+(e.shiftKey?-1:1)+list.length)%list.length]?.focus({preventScroll:true})};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key)},[step,meta?.armed]);
  const ready=meta?.stage===step&&!busy&&(step===2||step===10?correct:report?reportDone:true);
  const choose=(i:number)=>{const item=questions[q]!;if(i!==item.answer){setFeedback('再想想：立直會鎖定手牌，但不保證和牌；裏寶牌只屬於立直和牌。');return}if(q<2){setQ(n=>n+1);setFeedback('答對了，再試下一題。')}else{setCorrect(true);setFeedback('答對了！可以繼續。')}};
- const boxes=step===1?[{x:420,y:448,w:430,h:78}]:step===3?[{x:110,y:525,w:855,h:107},{x:765,y:430,w:170,h:90}]:step===4?[{x:434,y:338,w:230,h:152}]:step===6?[{x:434,y:338,w:230,h:152},{x:420,y:448,w:430,h:78}]:[];
+ const boxes=step===1?[{x:484,y:434,w:224,h:92}]:step===3?[{x:110,y:525,w:855,h:107},{x:765,y:430,w:170,h:90}]:step===4?[{x:516,y:316,w:99,h:27},{x:448,y:331,w:62,h:47}]:step===6?[{x:448,y:331,w:100,h:50},{x:484,y:434,w:224,h:92}]:[];
  const tile=(face:string)=><img src={completeTileUrl(face,false)} alt={face}/>;
  if([8,9].includes(step)&&(!h.result||!reportReady))return <div className="lesson-one lesson-five" ref={root}><div className="lesson-top"><strong>第五課 · 立直自摸演出中</strong><span>接著揭曉裏寶牌與真正的役種結算</span></div><div className="lesson-block" style={{inset:0}}/></div>;
  return <div className={'lesson-one lesson-five '+(report?'lesson-three-result':!play?'lesson-solid':'')} ref={root} role="dialog" aria-modal="true" aria-label="新手學堂第五課" data-step={step}>
@@ -37,7 +37,7 @@ export function LessonFive({game,send,reportReady,busy,reveal,reduce}:{game:Game
  {step===3&&<button className="lesson-win-action" data-action="academy-five-riichi" aria-label={meta?.armed?'取消立直':'立直'} disabled={busy||meta?.stage!==3} onClick={()=>latest.current('academy:five-arm',{})}><ActionArt kind={meta?.armed?'cancel':'riichi'}/></button>}
  {step===7&&!scratch&&meta?.ready&&h.actions.canTsumo&&!h.result&&<button className="lesson-win-action" data-action="academy-five-tsumo" aria-label="自摸" disabled={busy} onClick={()=>latest.current('academy:five-win',{})}><ActionArt kind="tsumo"/></button>}
  </>}
- <section className={'lesson-card '+(!play&&!report?'lesson-hero':'')} style={report?{left:20,top:60,width:300,height:385}:[5,7].includes(step)?{left:25,top:80,width:310,height:390}:play?{left:245,top:65,width:620,height:255}:undefined}>
+ <section className={'lesson-card '+(!play&&!report?'lesson-hero':'')} style={report?{left:20,top:60,width:300,height:385}:[5,7].includes(step)?{left:25,top:80,width:310,height:390}:play?{left:245,top:65,width:620,height:step===4?235:255}:undefined}>
  <small>{report?'真實役種與裏寶牌結果':`第五課 · ${step+1} / 12`}</small><h2>{titles[step]}</h2><p>{descriptions[step]}</p>
  {step===0&&<div className="lesson-reward">🥕 首次完成：100 體驗紅蘿蔔<small>保存在本瀏覽器；未完成的小節重新練習。</small></div>}
  {step===1&&<div className="lesson-five-waits"><span>打出</span>{tile('N')}<span>→ 等</span>{tile('8p')}{tile('E')}</div>}
