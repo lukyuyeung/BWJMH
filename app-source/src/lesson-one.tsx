@@ -1,6 +1,6 @@
 import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
 import './lesson-one.css';
-export const inAcademyLesson=()=>['1','2','3','4','5','6'].includes(new URLSearchParams(location.search).get('lesson')??'');
+export const inAcademyLesson=()=>['1','2','3','4','5','6','7'].includes(new URLSearchParams(location.search).get('lesson')??'');
 export const inLessonOne=()=>new URLSearchParams(location.search).get('lesson')==='1';
 type Box={x:number;y:number;w:number;h:number};
 const steps=[
