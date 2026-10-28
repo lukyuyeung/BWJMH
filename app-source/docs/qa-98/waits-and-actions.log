@@ -1,0 +1,6 @@
+PASS pre-tenpai/riichi discard preview on hold; selected tile and no numeric river popup
+PASS partial wait strip restored with correct no-yaku/furiten status
+PASS riichi-blocked wait strip restored with correct no-yaku/furiten status
+PASS riichi-ron hides waits while Ron/Tsumo/Pass stay at normal baseline on phone and desktop
+PASS riichi-tsumo hides waits while Ron/Tsumo/Pass stay at normal baseline on phone and desktop
+PASS no page errors

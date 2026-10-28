@@ -778,7 +778,7 @@ export const academyEn={
   "家": " ",
   "按住下方任一張手牌，滑到另一張牌，再放手。手牌會抬起，牌河中的同款牌會亮起紫色提示；放手不會出牌。": "Hold a hand tile, slide to another, then release. The selected tile lifts and matching river tiles glow purple. Releasing does not discard.",
   "短按手牌會直接打出；按住再左右掃牌，手牌會抬起，牌河中的同款牌會亮起紫色提示。放手不會出牌。": "Tap to discard. Hold and slide to lift a tile and highlight matching river tiles in purple. Releasing does not discard.",
-  "打出北後，這副牌只差八筒或東便完成。下方牌例示範這兩種聽牌；牌桌不再常駐顯示聽牌欄。聽牌也不保證能和。": "Discarding North leaves a wait on 8 Dots or East, illustrated below. There is no persistent wait strip on the table. Tenpai does not guarantee a win.",
+  "打出北後，這副牌只差八筒或東便完成。下方牌例及聽牌欄會顯示這兩種聽牌；聽牌也不保證能和。": "Discarding North leaves a wait on 8 Dots or East, shown in the example and wait strip. Tenpai does not guarantee a win.",
   "練習保留搭子、按住掃牌，再觀察對手立直後的牌河。這是獨立教學牌局，不計時，也不會改動你的電腦局存檔。": "Practice useful shapes, holding and sliding, then defense against riichi. This untimed lesson has its own table and will not change your Bot save.",
   "按住掃牌，辨認同款牌": "Hold and slide to find matches",
   "從牌形理解聽牌": "Understand waits from tile shapes",
