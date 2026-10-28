@@ -3,25 +3,25 @@ import type {Game} from './main';
 import './lesson-eight.css';
 const api=()=> (window as any).BunnyAcademy;
 type Box={x:number;y:number;w:number;h:number;label:string};
-const titles=['第八課：出牌與防守入門','先留容易組合的牌','孤張打出，搭子保留','按住掃牌，比較聽牌','親手打出六索','未見的牌，不一定在牌山','有人立直，先看他的牌河','找出立直者的現物','親手打一張現物','只對這位玩家安全','離聽牌遠，先考慮防守','已聽牌，也要比較風險','上桌前，再想一想','第八課完成！'];
+const titles=['第八課：出牌與防守入門','先留容易組合的牌','孤張打出，搭子保留','按住掃牌，辨認同款牌','親手打出六索','從牌形理解聽牌','有人立直，先看他的牌河','找出立直者的現物','親手打一張現物','只對這位玩家安全','離聽牌遠，先考慮防守','已聽牌，也要比較風險','上桌前，再想一想','第八課完成！'];
 const descriptions=[
- '練習保留搭子、查看聽牌，再觀察對手立直後的牌河。這是獨立教學牌局，不計時，也不會改動你的電腦局存檔。',
+ '練習保留搭子、按住掃牌，再觀察對手立直後的牌河。這是獨立教學牌局，不計時，也不會改動你的電腦局存檔。',
  '二、三萬相鄰，容易與一萬或四萬組成順子。九筒在這手牌沒有同花色搭子；這次請短按九筒，把它打出。',
  '九筒已進入自己的牌河，二、三萬仍留在手上。這是這副練習牌的選擇，不代表任何時候都要先打九筒。',
- '按住二索，再滑到六索，分別看聽牌提示。手機放手不會出牌；桌面可把游標移到牌上。請查看這兩張牌，並閱讀下方問題。',
- '這次打六索，留下二、三、四、五索，可以聽二索／五索。另一種打法不一定錯；本例先比較可見資訊，請短按六索出牌。',
- '現在真的聽二索與五索，手上三張白也提供役。提示枚數扣除了自己手牌及公開牌；未見的牌也可能在別人手上或王牌裡。',
+ '按住二索，再滑到六索，觀察手牌抬起及牌河紫色提示。放手不會出牌；桌面可把游標移到牌上。這一步只查看，不需數字小框。',
+ '這次打六索，留下二、三、四、五索，可以聽二索／五索。另一種打法不一定錯；本例先理解這個牌形，請短按六索出牌。',
+ '現在聽二索與五索，手上三張白也提供役。兩種牌都能完成牌形，不代表一定摸得到；未見牌也可能在別人手上或王牌裡。',
  '右方下家已支付1,000點並立直，橫放的是宣告牌九筒。不要只看自己的手牌，先看這位玩家打過甚麼。',
  '現物是這位玩家自己打過的牌。他受自家牌河振聽限制，不能榮和同一種牌。請點一下框內、右方牌河橫放的九筒。',
  '你手上也有九筒。這次請把九筒打出，作為對右方立直者的現物；一索等其他牌並沒有這個保證。',
  '九筒已打出。現物只保證這位立直者不能榮和；其他兩家仍須分別判斷，不能把它當作全桌安全牌。',
  '這副手牌還未聽牌，對手已立直。這個入門例子先選現物防守，避免只顧湊牌；也不用為了出牌就強行吃碰。',
  '換成已聽一索／四索、並有役牌白的例子。對手仍立直：可以考慮進攻，但要比較自己的牌值、可和機會與放銃風險，不是聽牌就一定衝。',
- '先看自己的組合與聽牌，再觀察對手牌河。現物只對指定玩家安全；筋與壁留待進階學習，它們也不是保證安全。',
- '你已親手出牌、比較聽牌提示、找出現物並練習防守。第九課會把前八課串成一場引導實戰。'
+ '先看自己的組合，再用按住掃牌的紫色提示觀察同款牌。現物只對指定玩家安全；筋與壁留待進階學習，它們也不是保證安全。',
+ '你已親手出牌、按住掃牌、找出現物並練習防守。第九課會把前八課串成一場引導實戰。'
 ];
-const checks:Record<number,{q:string;choices:string[];answer:number}>={3:{q:'提示的剩餘枚數，代表甚麼？',choices:['這些牌全部在牌山','還沒看見，不保證能摸到'],answer:1},9:{q:'這張九筒，對誰有安全保證？',choices:['四家都不能榮和','這位已打過九筒的立直者'],answer:1},10:{q:'本例未聽牌、對手已立直，先怎樣做？',choices:['先找現物，考慮防守','不看牌河，一直進攻'],answer:0},11:{q:'已聽牌、有役，就一定要進攻嗎？',choices:['一定，聽牌就要衝','仍要比較牌值與風險'],answer:1}};
-const finals=[{q:'二三萬與孤立九筒，哪個較容易接成順子？',choices:['二三萬搭子','孤立九筒'],answer:0},{q:'現物保證對全桌都安全嗎？',choices:['保證全桌安全','只對打過它的玩家'],answer:1},{q:'未見的四張牌，都一定在牌山嗎？',choices:['一定在牌山','也可能在對手手上或王牌'],answer:1}];
+const checks:Record<number,{q:string;choices:string[];answer:number}>={3:{q:'按住掃牌時，紫色提示代表甚麼？',choices:['這張牌一定安全','牌河中相同的牌'],answer:1},9:{q:'這張九筒，對誰有安全保證？',choices:['四家都不能榮和','這位已打過九筒的立直者'],answer:1},10:{q:'本例未聽牌、對手已立直，先怎樣做？',choices:['先找現物，考慮防守','不看牌河，一直進攻'],answer:0},11:{q:'已聽牌、有役，就一定要進攻嗎？',choices:['一定，聽牌就要衝','仍要比較牌值與風險'],answer:1}};
+const finals=[{q:'二三萬與孤立九筒，哪個較容易接成順子？',choices:['二三萬搭子','孤立九筒'],answer:0},{q:'現物保證對全桌都安全嗎？',choices:['保證全桌安全','只對打過它的玩家'],answer:1},{q:'放開長按掃牌，會自動打出嗎？',choices:['會，自動打出','不會，只是查看'],answer:1}];
 export function LessonEight({game,send,busy,inspectedId,hoverFace}:{game:Game;send:(e:string,p:any)=>void;busy:boolean;inspectedId:string|null;hoverFace:string|null}){
  const [step,setStep]=useState<number>(()=>{const s=api()?.read().lessonEight;return s?.completed?0:s?.step??0}),[correct,setCorrect]=useState(false),[feedback,setFeedback]=useState(''),[seen,setSeen]=useState<string[]>([]),[q,setQ]=useState(0),[claimed,setClaimed]=useState(false),[reward,setReward]=useState(0),[boxes,setBoxes]=useState<Box[]>([]),[cardPos,setCardPos]=useState({left:20,top:65});
  const root=useRef<HTMLDivElement>(null),card=useRef<HTMLElement>(null),latest=useRef(send);latest.current=send;const meta=(game.hand as any).academyEight,manual=[1,4,8].includes(step),overview=[0,13].includes(step),quiz=checks[step],question=step===12?finals[q]:quiz;
@@ -35,7 +35,7 @@ export function LessonEight({game,send,busy,inspectedId,hoverFace}:{game:Game;se
   const river=(seat:string,id:string|undefined,label:string)=>{let data:any[]=[];try{data=JSON.parse(stage.querySelector<HTMLElement>('.physical-renderer')?.dataset.teachingLayout??'[]')}catch{}const rs=data.filter(b=>b.seat===seat&&(!id||b.id===id));if(rs.length)out.push({x:Math.min(...rs.map(r=>r.left))-7,y:Math.min(...rs.map(r=>r.top))-7,w:Math.max(...rs.map(r=>r.right))-Math.min(...rs.map(r=>r.left))+14,h:Math.max(...rs.map(r=>r.bottom))-Math.min(...rs.map(r=>r.top))+14,label});else dom('.river-'+(['east','south','west','north'].indexOf(seat))+' .phone-tile'+(id?'[data-face="9p"]':''),label)};
   if([1,2].includes(step)){dom('.phone-hand-tiles>button:has([data-face="2m"]),.phone-hand-tiles>button:has([data-face="3m"])','二三萬搭子');if(step===1)dom('.phone-hand-tiles>button:has([data-face="9p"])','孤立九筒');else river('east',undefined,'已打出的九筒')}
   if([3,4].includes(step)){dom('.phone-hand-tiles>button:has([data-face="2s"])','查看二索');dom('.phone-hand-tiles>button:has([data-face="6s"])','查看六索')}
-  if([3,5,11].includes(step))dom('.phone-waits','聽牌提示');
+  if(step===5)dom('.phone-hand-tiles>button:has([data-face="2s"]),.phone-hand-tiles>button:has([data-face="3s"]),.phone-hand-tiles>button:has([data-face="4s"]),.phone-hand-tiles>button:has([data-face="5s"])','二三四五索');
   if(step===6)river('south',undefined,'立直者的牌河');
   if([7,8,9,10,11].includes(step))river('south',meta?.evidenceId,'立直者打過的九筒');
   if(step===8)dom('.phone-hand-tiles>button:has([data-face="9p"])','手上的現物九筒');
@@ -44,10 +44,10 @@ export function LessonEight({game,send,busy,inspectedId,hoverFace}:{game:Game;se
   const height=card.current?.offsetHeight??350,width=330,positions=[{left:20,top:65},{left:775,top:65},{left:20,top:160},{left:775,top:160}];const good=positions.find(p=>p.top+height<520&&out.every(b=>p.left+width+14<b.x||p.left>b.x+b.w+14||p.top+height+14<b.y||p.top>b.y+b.h+14));if(good)setCardPos(old=>old.left===good.left&&old.top===good.top?old:good);
  };measure();const timer=setInterval(measure,120);window.addEventListener('resize',measure);return()=>{clearInterval(timer);window.removeEventListener('resize',measure)}},[step,meta?.stage,meta?.evidenceId]);
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key!=='Tab'||!root.current)return;const list=[...root.current.querySelectorAll<HTMLElement>('button:not(:disabled),a[href]')];if(manual||step===3)list.push(...root.current.closest('.phone-stage')!.querySelectorAll<HTMLElement>('.phone-hand-tiles>button'));e.preventDefault();if(list.length)list[(list.indexOf(document.activeElement as HTMLElement)+(e.shiftKey?-1:1)+list.length)%list.length]?.focus({preventScroll:true})};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key)},[manual,step]);
- const choose=(i:number)=>{if(!question)return;if(i!==question.answer){setFeedback(step===9?'現物只對打過它的那家安全。':step===10?'本例離聽牌仍遠，先觀察立直者的現物。':'再看提示：未見枚數不是牌山保證，聽牌也不代表必須進攻。');return}if(step===12&&q<2){setQ(q+1);setFeedback('答對了，再試下一題。')}else{setCorrect(true);setFeedback('答對了，可以繼續。')}};
+ const choose=(i:number)=>{if(!question)return;if(i!==question.answer){setFeedback(step===9?'現物只對打過它的那家安全。':step===10?'本例離聽牌仍遠，先觀察立直者的現物。':'再看提示：紫色只標示同款牌，不保證安全；聽牌也不代表必須進攻。');return}if(step===12&&q<2){setQ(q+1);setFeedback('答對了，再試下一題。')}else{setCorrect(true);setFeedback('答對了，可以繼續。')}};
  const ready=meta?.stage===step&&!busy&&(step===3?correct&&seen.length===2:step===7?meta.phase==='found':question?correct:true),riverBox=boxes.find(b=>b.label==='立直者打過的九筒');
  return <div className={'lesson-one lesson-eight'+(overview?' lesson-solid':'')} ref={root} role="dialog" aria-modal="true" aria-label="新手學堂第八課" data-step={step}>
- <div className="lesson-top"><strong>新手學堂 · 第八課</strong><span>出牌・聽牌提示・現物 · 無倒數</span><a href="/design/lobby/index.html?screen=academy">離開・保存已完成小節 ×</a></div>
+ <div className="lesson-top"><strong>新手學堂 · 第八課</strong><span>出牌・掃牌・現物 · 無倒數</span><a href="/design/lobby/index.html?screen=academy">離開・保存已完成小節 ×</a></div>
  {!overview&&<svg className="lesson-shade" viewBox="0 0 1125 634" aria-hidden="true">{boxes.map((b,i)=><rect key={i} data-target={b.label} x={b.x} y={b.y} width={b.w} height={b.h} rx="7" fill="none" stroke="#efd18c" strokeWidth="3"/>)}</svg>}
  {manual||step===3?<><div className="lesson-block" style={{left:0,top:0,right:0,height:525}}/><div className="lesson-block" style={{left:0,top:525,width:110,bottom:0}}/><div className="lesson-block" style={{left:1090,top:525,right:0,bottom:0}}/></>:<div className="lesson-block" style={{inset:0}}/>}
  {step===7&&riverBox&&<button className="lesson-target lesson-eight-evidence" style={{left:riverBox.x-4,top:riverBox.y-4,width:riverBox.w+8,height:riverBox.h+8}} aria-label="指出立直者的九筒" disabled={busy||meta?.phase==='found'} onClick={()=>latest.current('academy:eight-evidence',{tileId:meta.evidenceId})}/>}

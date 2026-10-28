@@ -1,0 +1,6 @@
+PASS UI pon no number popup or wait strip; normal action baseline
+PASS UI riichi no number popup or wait strip; normal action baseline
+PASS UI furiten no number popup or wait strip; normal action baseline
+PASS UI inspect-idle no number popup or wait strip; normal action baseline
+PASS UI riichi-ron no number popup or wait strip; normal action baseline
+PASS UI riichi-tsumo no number popup or wait strip; normal action baseline

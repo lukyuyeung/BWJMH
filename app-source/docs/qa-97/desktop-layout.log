@@ -1,0 +1,8 @@
+PASS desktop course1 step5 
+FAIL desktop course5 step1 card overflows 278/253; FOOTER outside card: 已完成小節會保存下一步 →; BUTTON outside card: 下一步 →
+PASS desktop course5 step6 
+PASS desktop course8 step3 
+PASS desktop course8 step5 
+PASS desktop course8 step11 
+
+The Lesson5 step1 overflow was corrected; see lesson-five-layout-fix.log.

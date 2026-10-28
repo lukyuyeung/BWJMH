@@ -1,5 +1,6 @@
 import {type HandState,type Seat,type WinResult} from '../engine/index';
 import {CINEMATIC_ASSETS,cinematicTrigger,type CinematicState} from './presentation';
+export const WIN_CALL_MS=1200;
 export type WinSegment={winner:Seat;start:number;end:number;kind:'reveal'|'eyes'|'video'|'art'|'call';video?:string;trigger?:string;yakuman:number};
 export interface WinSequence {id:string;startedAt:number;endsAt:number;serverNow:number;segments:WinSegment[];doubleRon:boolean}
 export function createWinSequence(game:HandState,id:string,now:number):WinSequence|undefined{
@@ -10,10 +11,11 @@ export function createWinSequence(game:HandState,id:string,now:number):WinSequen
  const append=(r:WinResult,kind:WinSegment['kind'],duration:number,video?:string,trigger?:string)=>{const start=cursor;cursor+=duration;segments.push({winner:r.winner,start,end:cursor,kind,video,trigger,yakuman:r.evaluation.yakuman})};
  if(results.length>1)append(results[0]!,'reveal',2200);
  for(const r of results){
+  append(r,'call',WIN_CALL_MS);
   const trigger=cinematicTrigger(r.evaluation),asset=trigger?CINEMATIC_ASSETS[trigger]:undefined;
   if(asset?.video){append(r,'eyes',1450);append(r,'video',asset.durationMs,asset.video,trigger??undefined);}
   else if(r.score.limit!=='none')append(r,'art',r.score.yakuman>=2?6900:({mangan:5500,haneman:5700,baiman:5900,sanbaiman:6100,yakuman:6500,none:1000}[r.score.limit]));
-  else if(results.length===1)append(r,'call',1000);
+
  }
 
  return{id,startedAt:now,endsAt:now+cursor,serverNow:now,segments,doubleRon:results.length>1};

@@ -5,7 +5,7 @@ Design preview only. The interactive lesson and its reward are not released yet.
 Estimated time: about two minutes, without a timer. First completion will award 300 practice carrots. Two short scenarios combine the first eight lessons; this is not a full East-only match.
 
 1. **Defend with genbutsu (about 25 seconds).** An opponent declares riichi. Start with one goal, without revealing the answer. Inspect their river, find a tile they discarded and discard your copy. Show target frames only when the learner requests a hint. Safety applies to that opponent only.
-2. **Find waits and a yaku (about 20 seconds).** Switch to a near-ready hand. Inspect discard previews, choose which tiles to keep and check the riichi requirements. Dora adds han but cannot replace a yaku.
+2. **Find waits and a yaku (about 20 seconds).** Switch to a near-ready hand. Inspect tile shapes and matching-discard highlights, choose which tiles to keep and check the riichi requirements. Dora adds han but cannot replace a yaku.
 3. **Declare riichi (about 15 seconds).** Press Riichi and discard a suitable tile. Pay the actual 1,000 points and show the sideways declaration tile and stick. This practices the action; real games still require weighing hand value against deal-in risk.
 4. **Scratch, tsumogiri, then tsumo (about 30 seconds).** Reveal a nonwinning draw and watch it discarded automatically. Reveal the next winning draw, then press Tsumo yourself. The button must not reveal the answer before scratching.
 5. **Understand yaku and point transfers (about 20 seconds).** Use the real scoring engine, not fixed scores. Briefly identify the actual yaku and dora bonuses, then show the point transfer. Memorizing han and fu is not required.
