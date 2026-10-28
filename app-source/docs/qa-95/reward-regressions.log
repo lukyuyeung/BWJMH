@@ -1,0 +1,7 @@
+PASS local practice rewards: progress checkpoints, incomplete claim rejected, quota failure stays unclaimed, completion dismisses old intro, reward once across retries/reviews
+PASS legacy first-lesson progress retained; second reward requires completion; two one-time demo rewards total 600; replay/retry cannot duplicate
+PASS first/two legacy progress retained; third checkpoints 0..9; incomplete and quota-failed claims do not credit; three one-time rewards total 900; repeats/reviews cannot duplicate
+PASS first-three progress migrated; fourth checkpoints 0..10; incomplete/failed claims do not credit; four one-time rewards total 1200; reviews/retries cannot duplicate
+PASS legacy four-course migration; fifth checkpoints 0..11; incomplete/failed award does not credit; five one-time browser rewards total1500; replay cannot duplicate
+PASS five-course migration, six-course total1800, one-time reward, incomplete/quota-failed claims cannot credit
+PASS six-course migration, seven-course total2100, once-only reward, incomplete/quota-failed claims cannot credit
