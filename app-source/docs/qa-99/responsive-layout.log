@@ -1,0 +1,6 @@
+PASS zh desktop three equal cards in one row; approved images loaded; no flat tile overlays, clipped text or page overflow; all entrances reachable
+PASS zh landscape three equal cards in one row; approved images loaded; no flat tile overlays, clipped text or page overflow; all entrances reachable
+PASS zh portrait three equal cards in one row; approved images loaded; no flat tile overlays, clipped text or page overflow; all entrances reachable
+PASS en desktop three equal cards in one row; approved images loaded; no flat tile overlays, clipped text or page overflow; all entrances reachable
+PASS en landscape three equal cards in one row; approved images loaded; no flat tile overlays, clipped text or page overflow; all entrances reachable
+PASS en portrait three equal cards in one row; approved images loaded; no flat tile overlays, clipped text or page overflow; all entrances reachable

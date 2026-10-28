@@ -798,5 +798,11 @@ export const academyEn={
   "找到牌桌區域，按住掃牌辨認牌河同款牌。": "Find table areas; hold and slide to highlight matching river tiles.",
   "換一副接近聽牌的牌。觀察牌形與紫色同款牌提示，想清楚保留甚麼，再確認立直條件。": "Try a near-ready hand. Check tile shapes and matching-discard highlights, choose what to keep and check the riichi requirements.",
   "二三四五索": "2-3-4-5 Bamboo",
-  "和牌宣告": "Win declaration"
+  "和牌宣告": "Win declaration",
+  "遊戲入口": "Game modes",
+  "紅色目鏡機器兔與十三張立體黑金麻雀": "Red-visor robot rabbit with thirteen solid black-and-gold mahjong tiles",
+  "四隻兔仔圍枱，每邊十三張立體麻雀，近處手牌背面朝上": "Four rabbits at a mahjong table, thirteen solid tiles per side, with near-side hands face down",
+  "巫師兔老師教黑帽T兔、國王兔及忍者兔打麻雀": "Wizard rabbit teaching mahjong to Hoodie, King and Ninja rabbits",
+  "四人東 · 對戰三位電腦玩家": "East match \u00b7 Play against three bots",
+  "選擇角色與難度，隨時開局": "Choose your character and difficulty"
 };
