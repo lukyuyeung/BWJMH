@@ -227,7 +227,7 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
     }
     if(!opening){for(let row=0;row<Math.ceil(h.discards[seat].length/6);row++){let cursor=0;for(const [col,t] of h.discards[seat].slice(row*6,row*6+6).entries()){
      const sideways=riichiTiles[seat]===t.id,advance=sideways?38:28,[x,y]=place(relative,cursor+advance/2,row*40+19);cursor+=advance+1.5;
-     const carried=hands?.discardPose(t.id);tile(boardTiles,carried?.x??x,carried?.y??y,carried?.z??7.2,t,yaws[relative]!+(sideways?Math.PI/2:0),false,28,38,13.6,undefined,false,!!hover&&t.face===hover).name='river';
+     const carried=hands?.discardPose(t.id);const riverMesh=tile(boardTiles,carried?.x??x,carried?.y??y,carried?.z??7.2,t,yaws[relative]!+(sideways?Math.PI/2:0),false,28,38,13.6,undefined,false,!!hover&&t.face===hover);riverMesh.name='river';riverMesh.userData.seat=seat;riverMesh.userData.tileId=t.id;
      if(lastDiscardId===t.id){root!.dataset.discardCarried=String(!!carried)}
      if(lastDiscardId===t.id&&!carried){if(!lastHaloAt){lastHaloAt=Date.now();clearTimeout(haloTimer);haloTimer=window.setTimeout(schedule,420)}haloMaterial.opacity=!reduceShine&&Date.now()-lastHaloAt<400?1:.78;const markYaw=yaws[relative]!+(sideways?Math.PI/2:0),glow=new T.Mesh(roundedFaceGeometry(13,3.2),haloMaterial);glow.position.set(x-Math.sin(markYaw)*24,y+Math.cos(markYaw)*24,.5);glow.rotation.z=markYaw;glow.name='last-discard-marker';glow.renderOrder=1;boardTiles.add(glow)}
     }}
@@ -259,6 +259,7 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    // Project only winner tile meshes, including their actual seat orientation.
    const litTiles=boardTiles.children.filter(o=>o.name==='winning-hand'&&o.userData.seat===winner);
    const bounds=(objects:T.Object3D[])=>{const points:{x:number;y:number}[]=[];for(const object of objects){object.updateWorldMatrix(true,true);const box=new T.Box3().setFromObject(object);for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const v=new T.Vector3(x,y,z).project(camera);points.push({x:(v.x+1)*renderWidth/2-panorama,y:(1-v.y)*H/2})}}if(!points.length)return null;return {left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))}};
+   if((h as any).academyEight){root!.dataset.teachingLayout=JSON.stringify(boardTiles.children.filter(o=>o.name==='river').map(o=>({id:o.userData.tileId,seat:o.userData.seat,...bounds([o])})));}
    for(let index=0;index<Math.max(wins.length,1+extraWinnerLights.length);index++){
     if(index>0&&!extraWinnerLights[index-1]){const light=createWinnerLight();stage!.append(light);extraWinnerLights.push(light)}
     const light=index===0?winnerLight:extraWinnerLights[index-1]!,win=wins[index],tier=impactTier&&win?winImpactTier({...game,hand:{...h,result:win}}):null;
