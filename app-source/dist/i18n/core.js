@@ -1,4 +1,6 @@
-import {en} from './en.js';
+import {en as baseEn} from './en.js';
+import {academyEn} from './academy-en.js?v=96';
+const en={...baseEn,...academyEn};
 let language='zh';try{language=localStorage.getItem('bunny-language')==='en'?'en':'zh'}catch{}
 const listeners=new Set();export const getLanguage=()=>language;export const subscribe=fn=>{listeners.add(fn);return()=>listeners.delete(fn)};
 export function setLanguage(next){language=next==='en'?'en':'zh';try{localStorage.setItem('bunny-language',language)}catch{}document.documentElement.lang=language==='en'?'en':'zh-Hant';document.documentElement.dataset.language=language;for(const fn of listeners)fn();window.dispatchEvent(new CustomEvent('bunny:language',{detail:language}))}

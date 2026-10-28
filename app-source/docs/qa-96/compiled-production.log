@@ -1,0 +1,14 @@
+PASS desktop course1 step4 
+PASS desktop course8 step3 
+PASS English dynamic lesson5 step5 scratch: actual action, translated art/text, panels fit and no CJK
+PASS English dynamic lesson5 step7 tsumo: actual action, translated art/text, panels fit and no CJK
+PASS English dynamic lesson6 step2 chi: actual action, translated art/text, panels fit and no CJK
+PASS English dynamic lesson6 step6 pon: actual action, translated art/text, panels fit and no CJK
+PASS English dynamic lesson6 step11 kan: actual action, translated art/text, panels fit and no CJK
+PASS English dynamic lesson7 step5 pass: actual action, translated art/text, panels fit and no CJK
+PASS English dynamic lesson7 step9 pass: actual action, translated art/text, panels fit and no CJK
+PASS English full Lesson8 touch flow, translated wrong-choice feedback, questions, actual discards and ron-defense evidence, mid-course EN/ZH/EN switch preserves hand and stage,300 once-only reward; no errors
+portrait PASS English lobby and Lesson9 design; no CJK text or horizontal overflow; hints clear targets; English full design link
+phone PASS English lobby and Lesson9 design; no CJK text or horizontal overflow; hints clear targets; English full design link
+desktop PASS English lobby and Lesson9 design; no CJK text or horizontal overflow; hints clear targets; English full design link
+PASS compiled English desktop layout, dynamic actions, phone full flow and responsive static pages
