@@ -1,12 +1,14 @@
+import {asset} from '../public/i18n/core.js';
 import {warmImage} from './art-loading';
-import {characterCutin} from './character-art';
+import {characterPortrait,characterCutin} from './character-art';
 import {seatCharacter} from './seat-character';
 import {winArtUrl} from './win-art-config';
 import {winImpactTier} from './win-impact';
 import type {Game} from './main';
 let loading:Promise<void>|undefined;
-/** No speculative full-tier galleries, nine-emote packs, or six-pose packs on entry. */
-export function preloadEventArt(){return loading??=Promise.all(['/art/hoodie-v3/character.png','/art/hoodie-v3/avatar.jpg','/art/ribbon-v2/01-ribbon.png','/art/ribbon-v2/04-fx.png',...['chi','pon','kan','ron','riichi','tsumo'].map(n=>'/art/ribbon-v2/03-'+n+'.png')].map(url=>warmImage(url,'high'))).then(()=>{})}
+/** Shared portraits, ribbons and action lettering are decoded before entry. */
+export function eventArtUrls(){return ['/art/hoodie-v3/character.png',...(['king','ninja','wizard'] as const).map(characterPortrait),'/art/ribbon-v2/01-ribbon.png','/art/ribbon-v2/04-fx.png',...['chi','pon','kan','ron','riichi','tsumo'].map(n=>asset('/art/ribbon-v2/03-'+n+'.png')),...['pon','kan','ron','tsumo','chi','pass','nine-terminals','riichi','cancel','confirm','continue'].map(n=>asset('/art/library-v1/buttons/zh/'+n+'.png'))]}
+export function preloadEventArt(){return loading??=Promise.all(eventArtUrls().map(url=>warmImage(url,'high'))).then(()=>{})}
 export function preloadAvailableArt(game:Game){
  const a=game.hand.actions,role=seatCharacter(game,game.you.seat),calls=[...(a.canPon?['pon']:[]),...(a.canRon?['ron']:[]),...(a.canTsumo?['tsumo']:[]),...(a.canKan||a.ankanTileIds.length||a.kakanTileIds.length?['kan']:[]),...(a.chiSequences.length?['chi']:[]),...(a.riichiDiscardIds.length?['riichi']:[])];
  for(const call of calls)void warmImage(characterCutin(role,call),'high');

@@ -21,3 +21,8 @@ html[data-pref-dim=false] .win-call-screen{background:transparent!important}
 html[data-pref-dim=false] .phone-stage .win-call-announcement{background:transparent!important}
 
 .global-cinematic[data-cinematic=false]>img,.global-cinematic[data-cinematic=false] .cinematic-winner{display:none}.global-cinematic[data-cinematic=false]{background:#111b19ed}.global-cinematic[data-cinematic=false] .cinematic-title{animation:none!important;opacity:1!important}html[data-pref-dim=false] .global-cinematic[data-cinematic=false]{background:transparent}
+
+.mangan-art-screen[data-stage=call] .mangan-art-dim{opacity:0!important}
+
+.action-text-fallback{position:absolute;inset:0;display:grid;place-items:center;color:#ffe5ab;font:700 24px/1.2 system-ui;text-shadow:0 2px 4px #000;pointer-events:none}
+.plain-call-status[data-relative="0"]{left:450px;top:400px;transform:none}.plain-call-status[data-relative="1"]{left:800px;top:220px;transform:none}.plain-call-status[data-relative="2"]{left:540px;top:70px;transform:none}.plain-call-status[data-relative="3"]{left:100px;top:220px;transform:none}

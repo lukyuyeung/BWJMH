@@ -1,3 +1,4 @@
+import {calculateShanten} from './shanten.js';
 import type {PhysicalWall} from './physical-wall.js';
 import type { InitialDeal, Seat } from './deal.js';
 import { SEATS } from './deal.js';
@@ -145,7 +146,7 @@ function buildWinResult(state:HandState,seat:Seat,method:'tsumo'|'ron',winningTi
 }
 
 export function getTsumoEvaluation(state:HandState,seat:Seat):WinEvaluation|null{if(state.phase!=='awaiting_discard'||state.currentSeat!==seat||state.lastDrawSeat!==seat)return null;const all=tilesForWin(state,seat);if(all.length!==14)return null;const winningTile=state.hands[seat][state.hands[seat].length-1]!;return evaluateWin(all,{method:'tsumo',bonusHan:bonusHanForWin(state,seat),...firstTurnWinContext(state,seat),winningFace:winningTile.face,seatWind:getSeatWind(state,seat),roundWind:state.roundWind,closed:state.melds[seat].every(m=>m.open===false),melds:state.melds[seat],riichi:state.riichi[seat].declared,doubleRiichi:state.riichi[seat].doubleRiichi,ippatsu:state.riichi[seat].ippatsuEligible,haitei:state.lastDrawSource==='live'&&state.lastDrawWasLastLive,rinshan:state.lastDrawSource==='rinshan'})}
-export function getRiichiDiscardIds(state:HandState,seat:Seat):string[]{if(state.melds[seat].some(m=>m.open!==false)||state.phase!=='awaiting_discard'||state.currentSeat!==seat||state.riichi[seat].declared||state.liveWall.length<4)return[];return state.hands[seat].filter((_,i)=>waitsForHand(state,seat,state.hands[seat].filter((__,j)=>j!==i)).length>0).map(t=>t.id)}
+export function getRiichiDiscardIds(state:HandState,seat:Seat):string[]{if(state.melds[seat].some(m=>m.open!==false)||state.phase!=='awaiting_discard'||state.currentSeat!==seat||state.riichi[seat].declared||state.liveWall.length<4)return[];const hand=state.hands[seat],memo=new Map<TileFace,boolean>();return hand.filter((t,i)=>{if(!memo.has(t.face)){const rest=hand.filter((_,j)=>j!==i);memo.set(t.face,calculateShanten(rest.map(t=>t.face),state.melds[seat].length)===0&&waitsForHand(state,seat,rest).length>0)}return memo.get(t.face)}).map(t=>t.id)}
 function waitsForHand(state:HandState,seat:Seat,hand:Tile[]):TileFace[]{const ms=state.melds[seat];if(!ms.length)return getWaits(hand);if(hand.length!==(4-ms.length)*3+1)return[];const all=[...hand,...ms.flatMap(m=>m.tiles)];return ALL_TILE_FACES.filter(face=>all.filter(t=>t.face===face).length<4&&decomposeStandardFaces([...hand.map(t=>t.face),face],4-ms.length).length>0);}
 export function getPlayerWaits(state:HandState,seat:Seat):TileFace[]{return waitsForHand(state,seat,state.hands[seat])}
 export type FuritenReason='discard'|'temporary'|'riichi-pass';

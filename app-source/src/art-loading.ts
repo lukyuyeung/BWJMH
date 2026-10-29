@@ -12,7 +12,10 @@ export function warmImage(url:string,priority:'high'|'low'='low'):Promise<boolea
  entry.promise=image.decode().then(()=>{entry.ready=true;entry.bytes=image.naturalWidth*image.naturalHeight*4;trim(url);return true},()=>{if(images.get(url)===entry)images.delete(url);return false});return entry.promise;
 }
 export function useReadyImage(url:string,priority:'high'|'low'='high'){
- const [ready,setReady]=useState(()=>imageReady(url));
- useEffect(()=>{let live=true;setReady(imageReady(url));const promise=warmImage(url,priority),entry=images.get(url);if(entry)entry.refs++;void promise.then(value=>{if(live)setReady(value)});return()=>{live=false;if(entry)entry.refs--;trim()};},[url,priority]);return ready;
+ const [state,setReady]=useState(()=>({url,ready:imageReady(url)}));
+ useEffect(()=>{let live=true;setReady({url,ready:imageReady(url)});const promise=warmImage(url,priority),entry=images.get(url);if(entry)entry.refs++;void promise.then(value=>{if(live)setReady({url,ready:value})});return()=>{live=false;if(entry)entry.refs--;trim()};},[url,priority]);return state.url===url?state.ready:imageReady(url);
 }
 export async function warmImagesInOrder(urls:string[],concurrency=2){let next=0;await Promise.all(Array.from({length:concurrency},async()=>{while(next<urls.length)await warmImage(urls[next++]!,'low')}))}
+
+/** Keep shared call art decoded for the lifetime of the table. */
+export function retainImages(urls:string[]){const entries=urls.map(url=>{void warmImage(url,'high');const e=images.get(url);if(e)e.refs++;return e});return()=>{for(const e of entries)if(e)e.refs--;trim()}}

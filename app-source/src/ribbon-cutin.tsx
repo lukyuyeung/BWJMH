@@ -1,6 +1,6 @@
 import {pref,usePreferences} from './preferences';
 import {useReadyImage} from './art-loading';
-import {characterPortrait,characterAvatar} from './character-art';
+import {characterPortrait} from './character-art';
 import {characterCutin} from './character-art';
 import React,{useEffect,useRef,useState} from 'react';
 import preset from './ribbon-preset.json';
@@ -9,7 +9,7 @@ export type RibbonAction=keyof typeof preset.actions;
 const rect=(r:{x:number;y:number;width:number;height:number})=>({left:r.x/15.36+'%',top:r.y/6.4+'%',width:r.width/15.36+'%',height:r.height/6.4+'%'});
 export function RibbonCutin({action,character,relative,reduce=false,onComplete}:{action:RibbonAction;character:Character;relative:number;reduce?:boolean;onComplete?:()=>void}){
  usePreferences();const enabled=pref(action==='ron'||action==='tsumo'?'winCall':'calls');
- const portrait=characterPortrait(character),portraitReady=useReadyImage(portrait),pose=characterCutin(character,action),poseReady=useReadyImage(pose),a=preset.actions[action],root=useRef<HTMLElement>(null),done=useRef(onComplete),[ready,setReady]=useState(false);done.current=onComplete;
+ const portrait=characterPortrait(character),pose=characterCutin(character,action),poseReady=useReadyImage(pose),a=preset.actions[action],root=useRef<HTMLElement>(null),done=useRef(onComplete),[ready,setReady]=useState(false);done.current=onComplete;
  useEffect(()=>{let live=true,frame=0,animation:Animation|undefined;setReady(true);const el=root.current!;
   frame=requestAnimationFrame(()=>{if(!live)return;animation=el.animate(reduce?[{opacity:1},{opacity:1}]:[{opacity:.6,offset:0},{opacity:1,offset:100/720},{opacity:1,offset:600/720},{opacity:0,offset:1}],{duration:reduce?675:preset.durationMs*1.5,easing:'linear'});void animation.finished.then(()=>{if(live)done.current?.()}).catch(()=>{});});
   return()=>{live=false;cancelAnimationFrame(frame);animation?.cancel()};
@@ -21,7 +21,7 @@ export function RibbonCutin({action,character,relative,reduce=false,onComplete}:
    <img data-layer="03" style={rect(a.rect)} src={'/art/ribbon-v2/03-'+action+'.png'} alt={a.label}/>
    <img data-layer="04" style={rect(preset.fx.rect)} src="/art/ribbon-v2/04-fx.png" alt=""/>
   </div>
-  {!poseReady&&<img className="ribbon-pose-backup" style={rect(preset.characterRect)} src={portraitReady?portrait:characterAvatar(character)} onError={e=>{const url=characterAvatar(character);if(e.currentTarget.getAttribute('src')!==url)e.currentTarget.src=url}} alt=""/>}
+  {!poseReady&&<img className="ribbon-pose-backup" style={rect(preset.characterRect)} src={portrait} onError={e=>{e.currentTarget.style.visibility='hidden'}} alt=""/>}
   <img data-layer="02" style={{...rect(preset.characterRect),opacity:poseReady?1:0}} src={pose} decoding="async" alt=""/>
  </>}</aside>;
 }

@@ -26,13 +26,20 @@ export function calculateNotenPayments(tenpai:readonly Seat[]):Record<Seat,numbe
 export function settleExhaustiveDraw(match:MatchState,tenpai:readonly Seat[]):DrawSettlement{
  return{payments:calculateNotenPayments(tenpai),tenpai:[...tenpai],dealerContinues:tenpai.includes(match.dealer)};
 }
-/** Advance after a completed hand. Dealer repeats on a win, or on exhaustive draw while tenpai. */
-export function advanceMatch(match:MatchState,dealerContinues:boolean,matchLength:'tonpuusen'|'hanchan'='hanchan',exhaustiveDraw=false):void{
+export interface MatchEndPolicy{scores:Record<Seat,number>;target?:number;agariYame?:boolean}
+/** Dealer repeats take priority over the 30k extension threshold. No West round in East-only. */
+export function advanceMatch(match:MatchState,dealerContinues:boolean,matchLength:'tonpuusen'|'hanchan'='hanchan',exhaustiveDraw=false,policy?:MatchEndPolicy):void{
  match.handsPlayed+=1;
- if(dealerContinues){match.honba+=1;return;}
- match.honba=exhaustiveDraw?match.honba+1:0; match.dealer=rotateSeat(match.dealer);
+ const target=policy?.target??30000,extension=matchLength==='tonpuusen'&&match.roundWind==='south',regularLast=match.handNumber===4&&(matchLength==='tonpuusen'?match.roundWind==='east':match.roundWind==='south'),first=policy?rankScores(policy.scores)[0]!:undefined,reached=!!policy&&policy.scores[first!]>=target;
+ if(dealerContinues){match.honba+=1;if(policy?.agariYame&&(regularLast||extension)&&first===match.dealer&&reached)match.finished=true;return;}
+ match.honba=exhaustiveDraw?match.honba+1:0;match.dealer=rotateSeat(match.dealer);
+ if(extension&&reached){match.finished=true;return;}
  if(match.handNumber<4){match.handNumber=(match.handNumber+1) as 1|2|3|4;return;}
- if(match.roundWind==='east'){if(matchLength==='tonpuusen'){match.finished=true;return;}match.roundWind='south';match.handNumber=1;return;}
+ if(match.roundWind==='east'){
+  if(matchLength==='tonpuusen'&&(!policy||reached)){match.finished=true;return;}
+  match.roundWind='south';match.handNumber=1;return;
+ }
+ // South4 dealer retirement is the hard cap, even if everyone remains below the target.
  match.finished=true;
 }
 export function rankScores(scores:Record<Seat,number>):Seat[]{return [...SEATS].sort((a,b)=>(scores[b]??0)-(scores[a]??0)||SEATS.indexOf(a)-SEATS.indexOf(b))}

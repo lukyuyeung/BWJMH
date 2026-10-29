@@ -364,7 +364,7 @@ export class RoomManager {
           ankanTileIds:getAnkanTileIds(game,player.seat),
           kakanTileIds:getKakanTileIds(game,player.seat),
           chiSequences:claimOptions?.chiSequences??[],
-          riichiDiscardIds: room.scores[player.seat]>=1000?getRiichiDiscardIds(game, player.seat):[],
+          riichiDiscardIds:riichiIds,
         },
         melds:{east:[...game.melds.east],south:[...game.melds.south],west:[...game.melds.west],north:[...game.melds.north]},
         riichi: { east:game.riichi.east.declared, south:game.riichi.south.declared, west:game.riichi.west.declared, north:game.riichi.north.declared },
@@ -432,19 +432,18 @@ export class RoomManager {
     if(room.game?.phase!=='awaiting_claim')delete room.pendingRiichi;
     if(room.settled||!room.game)return;
     if(!['exhaustive_draw','abortive_draw'].includes(room.game.phase)){this.finishOnBankruptcy(room);return;}
-    if(room.game.phase==='abortive_draw'){room.settled=true;advanceMatch(room.match,true,room.rules.matchLength,true);this.finishOnBankruptcy(room);return;}
+    if(room.game.phase==='abortive_draw'){room.settled=true;advanceMatch(room.match,true,room.rules.matchLength,true,{scores:room.scores,agariYame:false});this.finishOnBankruptcy(room);return;}
     const nagashi=nagashiWinners(room.game);
     if(nagashi.length){
       room.nagashi=nagashi;room.drawPresentation={startedAt:Date.now(),endsAt:Date.now()+4000};room.transfers=nagashiTransfers(room.game,nagashi,room.match.honba);applyTransfers(room.scores,room.transfers);
       const dealer=room.match.dealer,ordered=Array.from({length:4},(_,i)=>SEATS[(SEATS.indexOf(dealer)+i)%4]!),potWinner=ordered.find(s=>nagashi.includes(s))!;
       room.awardedPot=room.riichiPot;room.scores[potWinner]+=room.riichiPot;room.riichiPot=0;room.settled=true;
-      advanceMatch(room.match,nagashi.includes(dealer),room.rules.matchLength);
-      if(room.rules.agariYame&&nagashi.includes(dealer)&&room.handMatch?.handNumber===4&&room.scores[dealer]>=30000&&rankScores(room.scores)[0]===dealer)room.match.finished=true;
+      advanceMatch(room.match,nagashi.includes(dealer),room.rules.matchLength,false,{scores:room.scores,agariYame:room.rules.agariYame});
       this.finishOnBankruptcy(room);return;
     }
     const tenpai=SEATS.filter(s=>getPlayerWaits(room.game!,s).length>0),payments=calculateNotenPayments(tenpai);
     for(const s of SEATS)room.scores[s]+=payments[s];room.settled=true;
-    advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);this.finishOnBankruptcy(room);
+    advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true,{scores:room.scores,agariYame:false});this.finishOnBankruptcy(room);
 
   }
 
@@ -474,8 +473,8 @@ export class RoomManager {
     room.winSequence=createWinSequence(room.game,room.code+':'+room.revision+':'+(room.eventSequence??0),Date.now());
     if(room.winSequence)room.cinematic=sequenceCinematic(room.winSequence,all,room.eventSequence??0);
     room.awardedPot=room.riichiPot;room.scores[w]=(room.scores[w]??0)+room.riichiPot; room.riichiPot=0; room.settled=true;
-    advanceMatch(room.match,all.some(win=>win.winner===room.match.dealer),room.rules.matchLength);
-    if(room.rules.agariYame&&all.some(win=>win.winner===room.match.dealer)&&room.handMatch?.handNumber===4&&room.scores[room.match.dealer]>=30000&&rankScores(room.scores)[0]===room.match.dealer)room.match.finished=true;this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores);
+    advanceMatch(room.match,all.some(win=>win.winner===room.match.dealer),room.rules.matchLength,false,{scores:room.scores,agariYame:room.rules.agariYame});
+    this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores);
   }
 
   /** Host settlement entry: accepts only a genuinely completed draw and is idempotent. */
@@ -484,7 +483,7 @@ export class RoomManager {
   settleExhaustiveDrawForTesting(code:string,tenpai:Seat[]):Room{
     const room=this.requirePlayingRoom(code); if(room.settled) return room;
     const payments=calculateNotenPayments(tenpai); for(const s of SEATS) room.scores[s]=(room.scores[s]??0)+(payments[s]??0);
-    room.settled=true; advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);
+    room.settled=true; advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true,{scores:room.scores,agariYame:false});
     this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores); return room;
   }
 

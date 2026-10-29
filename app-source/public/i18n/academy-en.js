@@ -1,4 +1,6 @@
 export const academyEn={
+ "對局終局規則":"Match ending rules",
+ "25,000 點起始；東四結束無人達 30,000 點時南入延長。連莊優先；延長場退莊時有人達 30,000 點便終局，最遲南四退莊結束。任何人零點或負分立即終局。":"Start at 25,000 points. If nobody reaches 30,000 after East 4, extend into South. Dealer repeats take priority. On dealer retirement during South, end if anyone has 30,000; otherwise stop after South 4. Zero or negative points ends the match immediately.",
  "請先完成第 1 課":"Complete Lesson 1 first",
  "請先完成第 2 課":"Complete Lesson 2 first",
  "請先完成第 3 課":"Complete Lesson 3 first",

@@ -8,3 +8,5 @@ export function presentTableMotion(room:string,revision:number,busy:boolean){if(
 export function publishTableMotion(busy:boolean){animating=busy;notify()}
 export function cancelTableMotion(){ticket=undefined;animating=false;notify()}
 export function useTableMotionBusy(){const [busy,setBusy]=useState(tableMotionBusy);useEffect(()=>{const update=()=>setBusy(tableMotionBusy());window.addEventListener('bunny:table-motion',update);update();return()=>window.removeEventListener('bunny:table-motion',update)},[]);return busy}
+
+export function finishTableMotion(){window.dispatchEvent(new Event('bunny:finish-motion'));if(tableMotionBusy())cancelTableMotion()}

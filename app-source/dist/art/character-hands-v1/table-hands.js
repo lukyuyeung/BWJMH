@@ -168,6 +168,22 @@ export async function loadTableHands(scene, onFrame, outside = (p, m) => p.x < -
             start(queue.shift());
             active = true;
         } return active; },
+        finish() { for (const r of rigs)
+            if (r.motion && !r.motion.released) {
+                if (r.motion.kind === 'Draw')
+                    onDrawn(r.motion.id);
+                else
+                    onSettled(r.motion.id);
+            } for (const q of queue)
+            if (q.discard) {
+                if (q.kind === 'Draw')
+                    onDrawn(q.discard.id);
+                else
+                    onSettled(q.discard.id);
+            } queue.length = 0; for (const r of rigs) {
+            r.root.visible = false;
+            delete r.motion;
+        } },
         stop() { queue.length = 0; for (const r of rigs) {
             r.root.visible = false;
             delete r.motion;
