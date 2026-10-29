@@ -1,0 +1,34 @@
+/* Keep portraits outside the concealed hands, on the felt between tiles and rail. */
+.phone-stage .player-1,.phone-stage .player-3{width:68px;min-width:68px;height:91px;top:242px}
+.phone-stage .player-1{left:1010px}.phone-stage .player-3{left:60px}
+.phone-stage :is(.player-1,.player-3)>.jade-avatar{width:68px;height:68px}
+.phone-stage :is(.player-1,.player-3)>.jade-player-info{width:68px;height:23px}
+.phone-stage :is(.player-1,.player-3) .player-dealer-art{left:32px;top:50px}
+/* ART preset has a fixed canvas and four interleaved layers. All seats use one scale. */
+.fixed-ribbon-cutin{position:absolute;width:420px;height:175px;left:300px;top:335px;z-index:28;isolation:isolate;pointer-events:none;overflow:visible;animation:ribbon-life 720ms linear both}
+.fixed-ribbon-cutin[data-relative="1"]{left:690px;top:180px}.fixed-ribbon-cutin[data-relative="2"]{left:425px;top:0}.fixed-ribbon-cutin[data-relative="3"]{left:15px;top:180px}
+.ribbon-fixed-group{position:absolute;inset:0;pointer-events:none}
+.fixed-ribbon-cutin img{position:absolute;max-width:none;object-fit:fill;pointer-events:none}
+.fixed-ribbon-cutin [data-layer="01"]{z-index:1}.fixed-ribbon-cutin [data-layer="02"]{z-index:2;object-fit:contain}.fixed-ribbon-cutin [data-layer="03"]{z-index:3}.fixed-ribbon-cutin [data-layer="04"]{z-index:4;animation:ribbon-sparkle 720ms ease-out both}
+@keyframes ribbon-life{0%{opacity:0}13.889%,83.333%{opacity:1}100%{opacity:0}}
+@keyframes ribbon-sparkle{0%{opacity:0}24%{opacity:1}72%{opacity:.7}100%{opacity:0}}
+.fixed-ribbon-cutin.reduce-effects{animation:none}.fixed-ribbon-cutin.reduce-effects [data-layer="04"]{display:none}
+/* The report sums the ledger at its foot, after the final yaku row. */
+.phone-stage .gala-result .gr-yaku-list{flex:0 1 auto;min-height:0}
+.gala-result .gr-yaku-panel .gr-hand-grade{display:flex;justify-content:flex-end;align-items:baseline;gap:7px;border-left:0;border-top:1px solid #d1b68c;padding:12px 0 0;margin-top:10px;min-height:48px;flex-shrink:0;animation:report-total-in .5s both}
+.gr-yaku-panel .gr-hand-grade:before{content:'合計';font-size:13px;letter-spacing:3px;margin-right:auto;color:#d8c5a9}.gr-yaku-panel .gr-hand-grade>strong{font-size:35px}.gr-yaku-panel .gr-hand-grade>small{font:500 14px 'Noto Sans TC',sans-serif;margin:0 0 0 12px;color:#dfcdb8}
+/* A single quiet score layer, with fixed deltas and light travelling between players. */
+.phone-stage .simple-score-overlay{background:radial-gradient(ellipse at 50% 48%,#071511a8,#080e12dc);backdrop-filter:none}
+.simple-score-overlay .simple-score-title{left:447px;top:267px;width:231px;gap:8px}.simple-score-title>strong{font-size:23px;letter-spacing:6px;font-weight:500}.simple-score-title>span{font-size:13px;letter-spacing:5px;color:#c5ad8b}
+.simple-score-title:after{content:'';width:48px;height:1px;background:linear-gradient(90deg,transparent,#c7a97c,transparent);margin-top:7px}
+.simple-score-seat{gap:8px}.simple-score-seat>strong{font-size:40px;letter-spacing:1px;font-weight:500;line-height:1.15;font-variant-numeric:tabular-nums;transition:color .4s}
+.simple-score-person{font-size:13px;letter-spacing:.3px;color:#c1b7a7}.simple-score-person>b{font-size:15px;color:#d5bb92}
+.simple-score-seat .live-rank{font-size:12px;margin-right:5px;color:#b9a58c}.simple-score-seat>em{font-size:23px;letter-spacing:1px;line-height:1.2;font-weight:500;transition:opacity .25s;min-height:29px}
+.simple-score-seat.score-winner>strong{color:#f4dcad;text-shadow:0 0 22px #dfbc6a30}.simple-score-seat.score-winner>em.positive{color:#c7f2d9}
+.simple-score-overlay .simple-seat-0{left:448px;top:409px}.simple-score-overlay .simple-seat-2{left:448px;top:105px}.simple-score-overlay .simple-seat-1{left:795px;top:259px}.simple-score-overlay .simple-seat-3{left:100px;top:259px}
+.simple-score-overlay .score-transfer{z-index:0}.simple-score-seat,.simple-score-title{z-index:1}
+.simple-score-overlay header{font-size:13px;color:#d7c5a9;letter-spacing:1px;top:23px}.simple-score-overlay header button{font-size:12px;min-height:34px;border:0;color:#bcae9c}
+.simple-score-overlay footer{bottom:23px;font-size:12px}.simple-score-overlay footer button{background:linear-gradient(115deg,#e8d1a9,#bd9a6d);border-radius:2px;font-weight:600;min-width:145px}
+@media(prefers-reduced-motion:reduce){.fixed-ribbon-cutin,.fixed-ribbon-cutin [data-layer="04"]{animation:none}}
+
+.phone-stage .player-2{left:805px;top:8px}

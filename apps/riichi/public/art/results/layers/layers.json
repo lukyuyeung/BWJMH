@@ -1,0 +1,151 @@
+{
+  "palette": {
+    "plum": "#211626",
+    "champagne": "#eac78c",
+    "ivory": "#fff0d5",
+    "gain": "#a7e6d0",
+    "loss": "#f3a3bb"
+  },
+  "components": [
+    {
+      "id": "winning-hand-rail",
+      "svg": "winning-hand-rail.svg",
+      "png": "winning-hand-rail.png",
+      "width": 1000,
+      "height": 150,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "points-card",
+      "svg": "points-card.svg",
+      "png": "points-card.png",
+      "width": 520,
+      "height": 430,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "player-nameplate",
+      "svg": "player-nameplate.svg",
+      "png": "player-nameplate.png",
+      "width": 450,
+      "height": 130,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "yaku-row",
+      "svg": "yaku-row.svg",
+      "png": "yaku-row.png",
+      "width": 440,
+      "height": 64,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "balance-row",
+      "svg": "balance-row.svg",
+      "png": "balance-row.png",
+      "width": 1000,
+      "height": 116,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "balance-row-winner",
+      "svg": "balance-row-winner.svg",
+      "png": "balance-row-winner.png",
+      "width": 1000,
+      "height": 116,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "ranking-row",
+      "svg": "ranking-row.svg",
+      "png": "ranking-row.png",
+      "width": 1000,
+      "height": 120,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "versus-center",
+      "svg": "versus-center.svg",
+      "png": "versus-center.png",
+      "width": 360,
+      "height": 180,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "claim-focus",
+      "svg": "claim-focus.svg",
+      "png": "claim-focus.png",
+      "width": 380,
+      "height": 440,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    },
+    {
+      "id": "loading-track",
+      "svg": "loading-track.svg",
+      "png": "loading-track.png",
+      "width": 800,
+      "height": 36,
+      "nineSlice": {
+        "top": 20,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "text": "none; render dynamic text separately"
+    }
+  ]
+}

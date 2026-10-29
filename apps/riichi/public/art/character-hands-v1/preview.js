@@ -1,0 +1,15 @@
+import * as T from 'three';import {loadTableHands} from './table-hands.js';
+const roles={ninja:['忍者兔','炭黑手套 · 棕色束帶 · 銀色護腕片'],king:['國王兔','奶油色兔掌 · 酒紅袖 · 白皮草金邊皇冠扣'],wizard:['巫師兔','銀白兔掌 · 深紫袖 · 青綠寶石金邊']},only=new URLSearchParams(location.search).get('role');if(only&&roles[only])document.body.classList.add('single');window.handStylePreview={};
+for(const [role,[name,description]] of Object.entries(roles)){if(only&&roles[only]&&only!==role)continue;
+ const card=document.createElement('article');card.className='card';card.dataset.role=role;card.innerHTML=`<h2>${name}</h2><p>${description}</p><div class="view"></div><div class="actions"><button data-motion="Draw">摸牌</button><button data-motion="Discard">出牌</button><button data-motion="Riichi">立直</button></div><small class="meta">同一兔掌骨架 · 相同放牌時點 · 連續袖身</small>`;document.querySelector('#cards').append(card);
+ const view=card.querySelector('.view'),scene=new T.Scene();scene.scale.y=-1;const camera=new T.OrthographicCamera(-100,100,100,-100,1,2000);camera.position.set(510,-530,800);camera.lookAt(400,-325,0);
+ const renderer=new T.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=T.SRGBColorSpace;renderer.setSize(view.clientWidth,view.clientHeight);view.append(renderer.domElement);
+ scene.add(new T.HemisphereLight('#fff2db','#152724',1.25));const light=new T.DirectionalLight('#fff0cf',2);light.position.set(-200,100,650);scene.add(light);const fill=new T.DirectionalLight('#c0d7ed',.5);fill.position.set(600,-500,500);scene.add(fill);
+ let frame=0,idleTimer;const paint=()=>renderer.render(scene,camera),animate=()=>{frame=0;const active=hands.update();paint();if(active)frame=requestAnimationFrame(animate);else idleTimer=setTimeout(idle,250)};
+ const outside=(point,margin)=>{const p=new T.Vector3(point.x,-point.y,point.z).project(camera),x=(p.x+1)*view.clientWidth/2,y=(1-p.y)*view.clientHeight/2;return x< -margin||x>view.clientWidth+margin||y< -margin||y>view.clientHeight+margin};
+ const hands=await loadTableHands(scene,()=>{if(!frame)frame=requestAnimationFrame(animate)},outside,()=>{},()=>{},[role,'yellow','yellow','yellow']);
+ function idle(){hands.stop();const root=scene.getObjectByName('approved-round-paw-0');root.visible=true;root.position.set(400,300,30);const sleeve=root.getObjectByName('continuous-open-sleeve');sleeve.position.set(0,2.5,.03);sleeve.scale.set(1,4,.85);paint()}
+ function play(kind){clearTimeout(idleTimer);cancelAnimationFrame(frame);frame=0;hands.stop();hands.play(0,kind,400,330,{id:role+'-'+kind+'-'+performance.now(),from:new T.Vector3(400,470,7)})}
+ for(const button of card.querySelectorAll('button'))button.onclick=()=>play(button.dataset.motion);
+ new ResizeObserver(()=>{renderer.setSize(view.clientWidth,view.clientHeight);const half=100*view.clientWidth/view.clientHeight;camera.left=-half;camera.right=half;camera.updateProjectionMatrix();paint()}).observe(view);idle();card.dataset.ready='true';window.handStylePreview[role]={hands,scene,play,idle};
+}

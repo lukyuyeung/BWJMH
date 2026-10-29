@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {RoomManager} from '../rules/room';import {chooseBotAction,CHARACTER_BOT_PROFILE,BOT_MISTAKE_RATE,BOT_PROFILES,type BotDifficulty,type BotProfile} from '../rules/bot';import{installScenario,assertPhysical}from'./scenarios';
+const m=new RoomManager(),{room:r,player:p}=m.createRoom('Bot privacy');m.fillWithBots(r.code,p.id);m.setReady(r.code,p.id,true);m.startGame(r.code,p.id);installScenario(m,r,'riichi');
+const before=m.getPlayerGameState(r.code,p.id),g=r.game!;[g.hands.south,g.hands.west]=[g.hands.west,g.hands.south];g.liveWall.reverse();g.deadWall.uraIndicators.reverse();const after=m.getPlayerGameState(r.code,p.id);
+// Every private change is invisible to the actor, including derived safety / waits.
+for(const state of[before,after])state.hand.timeout.serverNow=0;
+assert.deepEqual(after,before);assertPhysical(r);
+for(const profile of Object.keys(BOT_PROFILES)as BotProfile[])for(const difficulty of Object.keys(BOT_MISTAKE_RATE)as BotDifficulty[])for(const random of[()=>0,()=>.999999]){assert.deepEqual(chooseBotAction(before,profile,difficulty,random),chooseBotAction(after,profile,difficulty,random))}
+assert.deepEqual(CHARACTER_BOT_PROFILE,{yellow:'balanced',king:'aggressive',ninja:'defensive',wizard:'value'});assert(BOT_PROFILES.aggressive.defendAt>BOT_PROFILES.defensive.defendAt);assert(BOT_PROFILES.aggressive.riichiUkeire<BOT_PROFILES.defensive.riichiUkeire);
+const state=before;for(const tier of Object.keys(BOT_MISTAKE_RATE)as BotDifficulty[]){const best=chooseBotAction(state,'balanced',tier,()=>.999999);const mistaken=chooseBotAction(state,'balanced',tier,()=>0);assert.notDeepEqual(mistaken,best,'fixture has a legal alternative');assert(mistaken&&'tileId'in mistaken&&state.hand.discardTileIds.includes(mistaken.tileId));const boundary=BOT_MISTAKE_RATE[tier];assert.deepEqual(chooseBotAction(state,'balanced',tier,()=>boundary),best);assert.notDeepEqual(chooseBotAction(state,'balanced',tier,()=>boundary-.00001),best)}
+for(const scenario of['ron','tsumo']as const){installScenario(m,r,scenario);for(const tier of Object.keys(BOT_MISTAKE_RATE)as BotDifficulty[])assert.equal(chooseBotAction(m.getPlayerGameState(r.code,p.id),'value',tier,()=>0)?.type,scenario)}
+console.log('PASS hidden opponent hands/live-wall order/unrevealed ura never change serialized BOT input or decisions; four role profiles; exact20/12/5/2% boundaries; legal alternative mistakes; all tiers always accept legal wins');

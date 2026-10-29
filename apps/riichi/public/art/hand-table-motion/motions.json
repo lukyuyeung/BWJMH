@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "rig": false,
+  "note": "ART動作排演，非正式遊戲邏輯；每段重置場景。",
+  "actions": [
+    {
+      "id": "discard",
+      "label": "選牌打出",
+      "duration": 1.35,
+      "description": "由手牌位置帶牌前移，落枱後收手。",
+      "evidence": "出牌影片參考",
+      "events": [
+        {
+          "phase": "帶牌",
+          "normalizedTime": 0.22,
+          "time": 0.297
+        },
+        {
+          "phase": "落牌／釋放",
+          "normalizedTime": 0.63,
+          "time": 0.851
+        },
+        {
+          "phase": "收手",
+          "normalizedTime": 0.84,
+          "time": 1.134
+        }
+      ]
+    }
+  ],
+  "noHand": [
+    "跳過",
+    "倒數",
+    "流局",
+    "點數結算"
+  ]
+}

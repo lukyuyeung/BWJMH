@@ -1,0 +1,76 @@
+{
+  "version": 7,
+  "tile_faces": {
+    "source": "Bunny_Gala_Riichi_v2.7.2/client/src/tiles3d.ts faceCanvas, ported to tile-art.js",
+    "typeface": "Original LXGW WenKai TC bold subset fonts, included with licence",
+    "one_bamboo": "Peacock motif reconstructed from supplied gameplay reference, not an original standalone illustration file",
+    "face_texture_rotation": "180 degrees to match tile +Y face UV and seated owner orientation"
+  },
+  "back": {
+    "source": "Original TILE_BACK_MASTER__BLACK_GOLD_NO_LOGO.png",
+    "crop": [
+      184,
+      122,
+      342,
+      400
+    ]
+  },
+  "body": {
+    "width": 0.105,
+    "thickness": 0.0462,
+    "thickness_width_ratio": 0.44,
+    "material": "matte ivory"
+  },
+  "carrot": {
+    "source": "Reconstructed voxel model from carrot-deposit screenshot and supplied gameplay reference",
+    "standalone_original_model_found": false
+  },
+  "camera": {
+    "position": [
+      0,
+      3.95610332,
+      4.57487068
+    ],
+    "target": [
+      0,
+      1.17875957,
+      0.41718362
+    ],
+    "vertical_fov": 29.33348264,
+    "aspect": 1.7777777777777777,
+    "table_projected_height": 0.82,
+    "table_projected_area_approx": 0.697
+  },
+  "images": "Blender-rendered composition references, not browser WebGL screenshots",
+  "capacity": {
+    "tiles": 352,
+    "legal_game_snapshot": false,
+    "rivers": "6 columns x 4 rows, far to near for each owner"
+  },
+  "settlement": {
+    "repository": "https://github.com/lukyuyeung/BWJMH",
+    "main_tsx_blob": "915148dc96b8195ee849f80f671b0ce189fc15a5",
+    "source": "Bunny_Gala_Riichi_v2.7.2/client/src/main.tsx result-overlay + product.css",
+    "illustration": "Original accepted design.png",
+    "data": "Demonstration payload; not connected to scoring server"
+  },
+  "call_art": {
+    "status": "Approved C implemented",
+    "files": "game-art/c-calls/*.png",
+    "playerLabel": "Runtime overlay",
+    "slots": "Self bottom-left, left/right above players, opposite right of character"
+  },
+  "push": "Single character instance and continuous skeleton, remote model scale .55; no detached arm rig/avatar shell. Both actual outermost fourteen-tile endpoints braced.",
+  "riichi_deposits": "No withdrawal animation; remain stationary while settlement updates points",
+  "settlement_design_v7": {
+    "status": "Visual study only, not applied to gameplay result overlay",
+    "files": [
+      "settlement-ron-v7.png",
+      "settlement-tsumo-v7.png",
+      "settlement-style-v7.png"
+    ],
+    "art": "Original accepted design.png plus approved C declaration sprites",
+    "information_type": "Noto Sans CJK Bold / Source Han Sans design",
+    "render": "Canvas UI artwork, not browser screenshot"
+  }
+}

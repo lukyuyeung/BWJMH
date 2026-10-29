@@ -1,0 +1,14 @@
+{
+  "style": "Approved concept C",
+  "actions": [
+    "Chi",
+    "Pon",
+    "Daiminkan",
+    "Ankan",
+    "Ron",
+    "Tsumo",
+    "Kakan"
+  ],
+  "alpha": true,
+  "playerLabel": "Runtime overlay; no baked player identity"
+}

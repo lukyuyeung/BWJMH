@@ -1,0 +1,12 @@
+{
+  "frameWidth": 384,
+  "frameHeight": 192,
+  "columns": 8,
+  "rows": 4,
+  "frameCount": 32,
+  "fps": 24,
+  "durationMs": 1333,
+  "loop": false,
+  "sheet": "win-burst-sheet.png",
+  "reducedMotion": "Use final settled UI state; skip particle animation."
+}

@@ -1,0 +1,14 @@
+import {chromium} from 'playwright';import assert from 'node:assert/strict';import {writeFileSync} from 'node:fs';
+const b=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader']});const p=await b.newPage({viewport:{width:1125,height:634}});p.setDefaultTimeout(60000);const errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url())});
+try{
+ await p.goto('http://127.0.0.1:5182');await p.waitForFunction(()=>window.__bunnyQA);await p.evaluate(()=>window.__bunnyQA.pause());await p.waitForSelector('.physical-renderer[data-hand-art="complete-art-master"]');await p.waitForSelector('.phone-stage[data-event-art="decoded"]');
+ assert.equal(Number(await p.locator('.physical-renderer').getAttribute('data-hand-art-count')),await p.locator('.phone-hand-tiles>button').count());assert(Number(await p.locator('.physical-renderer').getAttribute('data-hand-art-count'))>0);assert.equal(await p.locator('.hub-seat').count(),4);assert.equal(await p.locator('.hub-riichi-tray').count(),4);assert.equal(await p.locator('.hub-seat.active').count(),1);assert.equal(await p.locator('.hub-core').innerText().then(s=>/供託|本場/.test(s)),false);
+ await p.screenshot({path:'work/qa/art26-table.png',timeout:60000});
+ await p.evaluate(()=>window.__bunnyQA.scenario('riichi-draw'));await p.waitForSelector('.hub-riichi-tray.occupied img');assert.equal(await p.locator('.hub-seat [aria-label="莊家"]').count(),1);
+ await p.screenshot({path:'work/qa/art26-riichi.png',timeout:60000});
+ await p.evaluate(()=>window.__bunnyQA.scenario('pon'));await p.locator('button[data-action="pon"]').click();await p.waitForSelector('.seat-art-cutin[data-kind="PON"]');assert.equal(await p.locator('.win-cutin-frame').count(),0);
+ const box=await p.locator('.seat-art-cutin').boundingBox();assert.equal(await p.locator('.seat-art-cutin').evaluate(e=>getComputedStyle(e).width),'310px');await p.screenshot({path:'work/qa/art26-pon.png',timeout:60000});
+ await p.getByRole('button',{name:'役種',exact:true}).click();await p.waitForSelector('.rank-art-gallery img');assert.equal(await p.locator('.rank-art-gallery figure').count(),9);await p.locator('.phone-close').click();
+ await p.evaluate(()=>{window.__bunnyQA.scenario('mobile-result');window.__bunnyQA.finishCinematic()});await p.waitForSelector('.gala-result');assert(await p.locator('.gala-result .phone-tile img[src^="/art/tiles/complete/"]').count()>0);
+ await p.screenshot({path:'work/qa/art26-results.png',timeout:60000});assert.deepEqual(errors,[]);writeFileSync('work/qa/art26-report.json',JSON.stringify({completeArtHand:true,decodedEventArt:true,centralSeats:4,independentDealer:true,carrotTrays:4,localPon:true,rankGallery:9,results:true,errors},null,2));console.log('ART26 INTEGRATION PASSED');
+}finally{await b.close()}

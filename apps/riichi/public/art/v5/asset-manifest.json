@@ -1,0 +1,43 @@
+[
+  {
+    "file": "TABLE_MATERIAL_MASTER__NOT_GEOMETRY.png",
+    "source": "01_LOCKED_MASTERS/TABLE_MATERIAL_MASTER__NOT_GEOMETRY.png",
+    "sha256": "bd71ef20f901335b626c0a3ef2de02751068f33d9d9c1c6bcd5bfc166989e3a9"
+  },
+  {
+    "file": "CHARACTER_WIZARD_MASTER.jpeg",
+    "source": "01_LOCKED_MASTERS/CHARACTER_WIZARD_MASTER.jpeg",
+    "sha256": "de7efd79d2692ce6b5cb71d282dfd8c3f18fc93bc2d0741487c7dd869a78d9d8"
+  },
+  {
+    "file": "ENVIRONMENT_MASTER__STYLE_ONLY.png",
+    "source": "01_LOCKED_MASTERS/ENVIRONMENT_MASTER__STYLE_ONLY.png",
+    "sha256": "f59ac3066b48d11dbebbcf5323e32ee4072b4d7d522615cfa6fe93709169a607"
+  },
+  {
+    "file": "CHARACTER_KING_MASTER.jpeg",
+    "source": "01_LOCKED_MASTERS/CHARACTER_KING_MASTER.jpeg",
+    "sha256": "83578b0275a5aa63cce133bab6db9b307c70c911d31b0737b935018310d8b37f"
+  },
+  {
+    "file": "LOGO_MASTER__DO_NOT_REDRAW.png",
+    "source": "01_LOCKED_MASTERS/LOGO_MASTER__DO_NOT_REDRAW.png",
+    "sha256": "2aa9ccf0c5178154d5fa6efcac75e16af46898032cccecfc0e7fb08b3425841e"
+  },
+  {
+    "file": "CHARACTER_NINJA_MASTER.jpeg",
+    "source": "01_LOCKED_MASTERS/CHARACTER_NINJA_MASTER.jpeg",
+    "sha256": "5cae19029d007024611cf9229adf40457979516b80f300226586271e340e20f8"
+  },
+  {
+    "file": "TILE_BACK_MASTER__BLACK_GOLD_NO_LOGO.png",
+    "source": "01_LOCKED_MASTERS/TILE_BACK_MASTER__BLACK_GOLD_NO_LOGO.png",
+    "sha256": "88cf45e58f6e9dd0cb9d0d7d542c1e0fefd8b07534879a7045e198ff7831e826"
+  },
+  {
+    "file": "CHARACTER_PLAYER_YELLOW_BUNNY_MASTER.png",
+    "source": "approved-black-hoodie-v2/character.png",
+    "sha256": "65b5539e0d7c25f848f30d50200560686a9901d22416410576c4373c0bee65b4",
+    "note": "Legacy filename retained as compatibility alias for approved hoodie role."
+  }
+]
