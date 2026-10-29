@@ -1,0 +1,12 @@
+/* One landscape-only gate shared by the lobby, ready room and game. */
+(()=>{
+ if(window.top!==window.self)return;
+ const portrait=matchMedia('(orientation: portrait)');let guard,busy=false;
+ const en=()=>document.documentElement.dataset.language==='en'||localStorage.getItem('bunny-language')==='en';
+ function labels(){if(!guard)return;const english=en();guard.querySelector('h1').textContent=english?'Turn your device sideways':'請將裝置轉為橫向';guard.querySelector('p').textContent=english?'Bunny Gala uses landscape controls. Rotate your device to continue.':'遊戲統一使用橫向操作，轉橫後即可繼續。';guard.querySelector('button').textContent=english?'Start in landscape':'以橫向開始';guard.querySelector('small').textContent=english?'If your browser cannot rotate automatically, turn off rotation lock and rotate your device.':'若瀏覽器未能自動轉向，請關閉裝置的旋轉鎖定並將裝置轉橫。'}
+ async function lock(){if(typeof screen.orientation?.lock!=='function')return false;try{await screen.orientation.lock('landscape');return true}catch{return false}}
+ function sync(){document.documentElement.dataset.orientation=portrait.matches?'portrait':'landscape';if(!guard)return;if(portrait.matches){labels();if(!guard.open)guard.showModal()}else if(guard.open)guard.close()}
+ function mount(){guard=document.createElement('dialog');guard.id='orientation-guard';guard.dataset.languageSwitch='true';guard.setAttribute('aria-labelledby','orientation-heading');guard.innerHTML='<div class="orientation-card"><div class="rotate-device" aria-hidden="true"><span>↻</span></div><h1 id="orientation-heading"></h1><p></p><button type="button"></button><small role="status"></small></div>';document.body.append(guard);guard.addEventListener('cancel',e=>{if(portrait.matches)e.preventDefault()});guard.querySelector('button').onclick=async()=>{if(busy)return;busy=true;try{if(document.documentElement.requestFullscreen&&!document.fullscreenElement)await document.documentElement.requestFullscreen();await lock()}catch{/* Safari and unsupported browsers retain the manual rotation gate. */}finally{busy=false;sync()}};sync();void lock()}
+ portrait.addEventListener('change',sync);window.addEventListener('resize',sync);window.addEventListener('bunny:language',labels);document.addEventListener('fullscreenchange',()=>{if(document.fullscreenElement)void lock();sync()});window.addEventListener('pageshow',sync);
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
+})();
