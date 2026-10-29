@@ -1,0 +1,7 @@
+/** Fetch every shipped media asset into persistent compressed storage, not decoded RAM. */
+export async function preloadAll(onProgress:(n:number)=>void){
+ if(!('serviceWorker'in navigator)||!('caches'in window))throw Error('Asset cache unavailable');
+ await navigator.serviceWorker.register('/preload-sw.js',{scope:'/',updateViaCache:'none'});await navigator.serviceWorker.ready;
+ if(!navigator.serviceWorker.controller)await new Promise<void>((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Asset cache did not activate')),10000);const ready=()=>{clearTimeout(timer);navigator.serviceWorker.removeEventListener('controllerchange',ready);resolve()};navigator.serviceWorker.addEventListener('controllerchange',ready);if(navigator.serviceWorker.controller)ready()});
+ await new Promise<void>((resolve,reject)=>{const channel=new MessageChannel();let timer:number;const reset=()=>{clearTimeout(timer);timer=window.setTimeout(()=>{channel.port1.close();reject(Error('Asset preload timed out'))},60000)};reset();channel.port1.onmessage=e=>{reset();const d=e.data;if(d.type==='progress')onProgress(d.bytes/Math.max(1,d.totalBytes));if(d.type==='done'||d.type==='error'){clearTimeout(timer);channel.port1.close();if(d.type==='done'&&!d.failed.length)resolve();else reject(Error(d.type==='done'?d.failed.length+' assets failed':d.message))}};navigator.serviceWorker.controller!.postMessage({type:'preload-all'},[channel.port2])});
+}

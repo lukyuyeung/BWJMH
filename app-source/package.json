@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-character-catalog.mjs && node scripts/build-hand-preview.mjs && vite build",
+    "build": "node scripts/build-character-catalog.mjs && node scripts/build-hand-preview.mjs && node scripts/build-preload-manifest.mjs && vite build",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
