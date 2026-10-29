@@ -1,0 +1,22 @@
+{
+  "source": "https://bunny-gala-table-demo.almondcrab34.chatgpt.site",
+  "version": 103,
+  "commit": "8da9729cb0e6ef62dcd957f5f9eb93ae5c8cef6d",
+  "importedDirectories": [
+    "src",
+    "engine",
+    "rules",
+    "public",
+    "assets",
+    "scripts",
+    "qa"
+  ],
+  "excluded": [
+    ".git",
+    ".openai",
+    "dist",
+    "node_modules",
+    ".env*"
+  ],
+  "capability": "single-player bot practice; no real-money wallet or production multiplayer"
+}

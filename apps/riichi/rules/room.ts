@@ -1,0 +1,564 @@
+import {isCharacter,CHARACTERS,CHARACTER_NAMES,botCharacters,type CharacterId} from './characters';
+import {createWinSequence,sequenceCinematic,type WinSequence} from './win-sequence';
+import {responsibilities,winTransfers,nagashiWinners,nagashiTransfers,applyTransfers,type PointTransfer} from './special-settlement';
+import {canDeclareNineTerminals,declareNineTerminals,publicWallSlots,type PublicWallSlot} from '@bunny/riichi-engine';
+import { type CinematicState } from './presentation.js';
+import { chooseBotAction, CHARACTER_BOT_PROFILE, type BotDifficulty, type BotProfile } from './bot.js';
+import { visibleCounts, waitPreview } from './assistance.js';
+import { limitPresentation, type PresentationEvent, type PresentationKind } from './presentation.js';
+import { randomInt, randomUUID } from 'node:crypto';
+import { DEFAULT_RULESET, normalizeRuleset, TIER_TURN_MS, roomTier, ROOM_TIERS, type Ruleset } from './rules.js';
+import {getLegalDiscardIds,createStandardWall} from '@bunny/riichi-engine';
+import { createMatchState, advanceMatch, calculateNotenPayments, rankScores, type MatchState } from './match.js';
+import { createShuffledWall, dealInitialHands, createHandState, drawTile, discardTile, declareTsumo, declareRon, declareRons, passRon, getTsumoEvaluation, getRiichiDiscardIds, getPlayerWaits, getWinRestrictions, isFuriten, declareRiichiAndDiscard, getClaimOptions, claimChi, claimPon, claimKan, passClaim, declareAnkan, declareKakan, getAnkanTileIds, getKakanTileIds, getVisibleDora, visibleUraIndicators, getBonusDoraForSeat, SEATS, type HandState, type Seat } from '@bunny/riichi-engine';
+
+export interface Player {
+  id: string;
+  name: string;
+  seat: Seat;
+  ready: boolean;
+  connected: boolean;
+  resumeToken: string;
+  isBot?: boolean;
+  autoPlay?:boolean;
+  botProfile?:BotProfile;
+  botDifficulty?:BotDifficulty;
+  character?:CharacterId;
+}
+
+export type RoomPhase = 'lobby' | 'playing';
+
+export type ClaimResponse={kind:'pass'|'ron'|'pon'|'kan'|'chi';faces?:import('@bunny/riichi-engine').TileFace[]};
+export interface Room {
+  code: string;
+  hostPlayerId: string;
+  phase: RoomPhase;
+  players: Player[];
+  game?: HandState;
+  scores: Record<Seat, number>;
+  pendingClaims?:{tileId:string;responses:Partial<Record<Seat,ClaimResponse>>};
+  pendingRiichi?:{seat:Seat;discardId:string};
+  riichiPot: number;
+  settled: boolean;
+  match: MatchState;
+  finalRanking?: Seat[];
+  rules: Ruleset;
+  revision:number;
+  handMatch?:MatchState;
+  disconnectedAt?:number;
+  actionDeadline?:number;
+  selectionDeadline?:number;
+  resultFlow?:{id:string;phase:"report"|"hold"|"scores"|"ranking";deadline:number;ready:string[]};
+  events?:PresentationEvent[];
+  eventSequence?:number;
+  handStartingScores?:Record<Seat,number>;
+  awardedPot?:number;
+  demoPresentation?:'mangan-art';demoCharacter?:CinematicState['character'];
+  winSequence?:WinSequence;drawPresentation?:{startedAt:number;endsAt:number};
+  transfers?:PointTransfer[];nagashi?:Seat[];
+  cinematic?:CinematicState;
+}
+
+export interface PublicPlayer {
+  id: string;
+  name: string;
+  seat: Seat;
+  ready: boolean;
+  connected: boolean;
+  isHost: boolean;
+  isBot: boolean;
+  autoPlay:boolean;
+  botProfile?:BotProfile;
+  botDifficulty?:BotDifficulty;
+  character?:CharacterId;
+}
+
+export interface PublicRoomState {
+  code: string;
+  phase: RoomPhase;
+  players: PublicPlayer[];
+  canStart: boolean;
+  selection?:{deadline:number;serverNow:number};
+  scores: Record<Seat, number>;
+  riichiPot: number;
+  match: MatchState;
+  finalRanking?: Seat[];
+  resultFlow?:{id:string;phase:"report"|"hold"|"scores"|"ranking";deadline:number};
+  rules: Ruleset;
+}
+
+export interface PlayerGameState {
+  room: PublicRoomState;
+  you: { playerId: string; seat: Seat; hand: import('@bunny/riichi-engine').Tile[]; drawnTileId?:string|undefined };
+  hand: {
+    currentSeat: Seat;
+    abortiveReason?:import('@bunny/riichi-engine').AbortiveReason;
+    phase: HandState['phase'];
+    turnNumber: number;
+    revision:number;
+    match:MatchState;
+    discardTileIds:string[];
+    wallRemaining: number;
+    wallSlots:PublicWallSlot[];
+    timeout:{deadline:number|null;serverNow:number};
+    events:PresentationEvent[];
+    demoPresentation?:'mangan-art';demoCharacter?:CinematicState['character'];
+    winSequence?:WinSequence;drawPresentation?:{startedAt:number;endsAt:number;serverNow:number};
+    responsibilities?:import('./special-settlement').Responsibility[];
+    cinematic?:CinematicState;
+    assistance:{waits:{face:import("@bunny/riichi-engine").TileFace;remaining:number}[];riichi:Record<string,{face:import("@bunny/riichi-engine").TileFace;remaining:number}[]>};
+    settlement?:{kind?:'win'|'nagashi_mangan'|'exhaustive_draw'|'abortive_draw';transfers?:PointTransfer[];nagashi?:Seat[];awardedPot?:number;scoreChanges:Record<Seat,number>;winningHand?:import("@bunny/riichi-engine").Tile[];winningHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>;tenpai:Seat[];tenpaiHands?:Partial<Record<Seat,import("@bunny/riichi-engine").Tile[]>>};
+    doraIndicators: import('@bunny/riichi-engine').Tile[];
+    yourDora: { indicatorDora:number; akaDora:number; total:number };
+    rinshanRemaining: number;
+    discards: Record<Seat, import('@bunny/riichi-engine').Tile[]>;
+    concealedCounts: Record<Seat, number>;
+    actions: { canAbortiveDraw?:boolean;canDraw:boolean; canDiscard:boolean; canTsumo:boolean; canRon:boolean; canWinClaim:boolean; canPassClaim:boolean; canPon:boolean; canKan:boolean; ankanTileIds:string[]; kakanTileIds:string[]; chiSequences:import('@bunny/riichi-engine').TileFace[][]; riichiDiscardIds:string[] };
+    melds: Record<Seat, import('@bunny/riichi-engine').Meld[]>;
+    riichi: Record<Seat, boolean>;
+    waits: import('@bunny/riichi-engine').TileFace[];
+    furiten: boolean;
+    winStatus: import('@bunny/riichi-engine').WinRestrictions;
+    claimResponse?:ClaimResponse;
+    uraIndicators?:import('@bunny/riichi-engine').Tile[];
+    results?:import('@bunny/riichi-engine').WinResult[];
+    claim?: { discarder: Seat; tile: import('@bunny/riichi-engine').Tile };
+    result?: HandState['result'];
+  };
+}
+
+export class RoomError extends Error {
+  constructor(public readonly code: string, message: string) {
+    super(message);
+  }
+}
+
+const CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+export function normalizeRoomCode(code: string): string {
+  if(typeof code!=='string')throw new RoomError('INVALID_CODE','Room code must be a string.');
+  return code.trim().toUpperCase();
+}
+
+export class RoomManager {
+  constructor(private readonly randomSource?: (max:number)=>number) {}
+  private readonly rooms = new Map<string, Room>();
+  private entryFillCode?:string;
+
+  snapshotRooms():Room[]{return structuredClone([...this.rooms.values()]);}
+  restoreRooms(saved:Room[]):void{
+    if(!Array.isArray(saved))throw new Error('Invalid room recovery snapshot');
+    const codes=new Set<string>();
+    for(const room of saved){
+      if(!room||typeof room.code!=='string'||normalizeRoomCode(room.code)!==room.code||codes.has(room.code)||!Array.isArray(room.players)||room.players.length<1||room.players.length>4||!room.players.some(p=>p.id===room.hostPlayerId)||new Set(room.players.map(p=>p.seat)).size!==room.players.length||!Number.isInteger(room.revision)||room.revision<0||!room.rules||!room.match||!['lobby','playing'].includes(room.phase))throw new Error('Invalid recovered room');
+      codes.add(room.code);
+      for(const player of room.players)if(player.character!==undefined&&!isCharacter(player.character)||!SEATS.includes(player.seat)||typeof player.id!=='string'||typeof player.resumeToken!=='string'||!player.resumeToken)throw new Error('Invalid recovered player');
+      if(!SEATS.every(seat=>Number.isFinite(room.scores[seat]))||Object.values(room.scores).reduce((a,b)=>a+b,0)+room.riichiPot!==100000)throw new Error('Recovered scores do not conserve points');
+      if(room.phase==='playing'){
+       const g=room.game;if(!g)throw new Error('Recovered hand is missing');
+       const physical=[...Object.values(g.hands).flat(),...Object.values(g.melds).flatMap(ms=>ms.flatMap(m=>m.tiles)),...Object.values(g.discards).flat(),...g.liveWall,...g.deadWall.tiles];
+       if(physical.length!==136||new Set(physical.map(t=>t.id)).size!==136)throw new Error('Recovered physical wall is invalid');
+       const expected=new Map(createStandardWall(room.rules.akaDora).map(t=>[t.id,t]));if(physical.some(t=>{const e=expected.get(t.id);return !e||e.face!==t.face||e.copy!==t.copy||e.red!==t.red;}))throw new Error('Recovered tile identity is invalid');
+      }
+    }
+    this.rooms.clear();
+    for(const original of saved){const room=structuredClone(original);for(const player of room.players)if(!player.isBot){player.connected=false;if(room.phase==='playing'&&!room.match.finished)player.autoPlay=true;}room.disconnectedAt=Date.now();this.rooms.set(room.code,room);}
+  }
+
+  createRoom(name: string): { room: Room; player: Player } {
+    const playerName = validateName(name);
+    const code = this.generateUniqueCode();
+    const player: Player = { id: randomUUID(), name: playerName, seat: 'east', character:'yellow', ready: false, connected: true, resumeToken: randomUUID() };
+    const room: Room = { code, hostPlayerId: player.id, phase: 'lobby', players: [player], scores:{east:25000,south:25000,west:25000,north:25000}, riichiPot:0, settled:false, match:createMatchState(), rules:{...DEFAULT_RULESET},revision:0 };
+    this.rooms.set(code, room);
+    return { room, player };
+  }
+
+  joinRoom(rawCode: string, name: string, now=Date.now()): { room: Room; player: Player } {
+    const code = normalizeRoomCode(rawCode);
+    const room = this.rooms.get(code);
+    if (!room) throw new RoomError('ROOM_NOT_FOUND', 'Room not found.');
+    if (room.phase !== 'lobby') throw new RoomError('GAME_ALREADY_STARTED', 'This game has already started.');
+    if(room.selectionDeadline!==undefined&&now>=room.selectionDeadline)throw new RoomError('SELECTION_CLOSED','Entry has ended.');
+    if (room.players.length >= 4) throw new RoomError('ROOM_FULL', 'Room is full.');
+    const playerName = validateName(name);
+    const seat = SEATS.find((candidate) => !room.players.some((p) => p.seat === candidate));
+    if (!seat) throw new RoomError('ROOM_FULL', 'Room is full.');
+    const player: Player = { id: randomUUID(), name: playerName, seat, character:'yellow', ready: false, connected: true, resumeToken: randomUUID() };
+    room.players.push(player);
+    return { room, player };
+  }
+
+  addBot(rawCode:string, playerId:string, name?:string,profile?:BotProfile,difficulty:BotDifficulty='medium',character?:CharacterId):{room:Room;player:Player}{
+    const room=this.requireRoom(rawCode); if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');if(room.selectionDeadline!==undefined&&this.entryFillCode!==room.code)throw new RoomError('TIMED_ENTRY_MANAGED','Bots are filled automatically at the entry deadline.');
+    if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');
+    if(room.players.length>=4)throw new RoomError('ROOM_FULL','Room is full.');
+    const seat=SEATS.find(s=>!room.players.some(p=>p.seat===s)); if(!seat)throw new RoomError('ROOM_FULL','Room is full.');
+    const bot:Player={id:randomUUID(),name:name?.trim()||`Bunny Bot ${room.players.length}`,seat,ready:true,connected:true,resumeToken:randomUUID(),isBot:true,...(character?{character}:{}),botDifficulty:difficulty,botProfile:profile??(character?CHARACTER_BOT_PROFILE[character]:(['aggressive','balanced','defensive'] as const)[(room.players.length-1)%3]!)}; room.players.push(bot); return{room,player:bot};
+  }
+
+  /** One server-owned pending room per available tier/seat pool; never reset a joining room's clock. */
+  matchTimedRoom(name:string,character:unknown='yellow',difficulty:BotDifficulty='medium',now=Date.now()):{room:Room;player:Player}{
+    if(!isCharacter(character))throw new RoomError('INVALID_CHARACTER','Unknown character.');
+    if(!ROOM_TIERS.includes(difficulty))throw new RoomError('INVALID_TIER','Unknown room tier.');
+    const timeout=TIER_TURN_MS[difficulty],candidate=[...this.rooms.values()].find(r=>r.phase==='lobby'&&r.selectionDeadline!==undefined&&now<r.selectionDeadline&&roomTier(r.rules)===difficulty&&r.players.length<4);
+    const joined=candidate?this.joinRoom(candidate.code,name,now):this.createRoom(name);
+    if(!candidate){this.setRules(joined.room.code,joined.player.id,{actionTimeoutMs:timeout,tier:difficulty});this.beginTimedEntry(joined.room.code,joined.player.id,now)}
+    this.setCharacter(joined.room.code,joined.player.id,character,now);joined.room.revision++;return joined;
+  }
+  setCharacter(code:string,playerId:string,character:unknown,now=Date.now()):Room{
+    const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Character selection closes when play starts.');
+    if(room.selectionDeadline!==undefined&&now>=room.selectionDeadline)throw new RoomError('SELECTION_CLOSED','Character selection has ended.');
+    if(!isCharacter(character))throw new RoomError('INVALID_CHARACTER','Unknown character.');
+    this.requirePlayer(room,playerId).character=character;return room;
+  }
+  /** Called by the authenticated room host/transport; joins never restart this shared clock. */
+  beginTimedEntry(code:string,hostId:string,now=Date.now()):Room{
+    const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Entry has ended.');
+    if(room.hostPlayerId!==hostId)throw new RoomError('HOST_ONLY','Only the host may initialize entry.');
+    room.selectionDeadline??=now+30000;return room;
+  }
+  /** Server-owned tick: current choices commit at the deadline, then empty seats become Bots. */
+  tickTimedEntry(code:string,now=Date.now()):boolean{
+    const room=this.requireRoom(code);if(room.phase!=='lobby'||room.selectionDeadline===undefined||now<room.selectionDeadline)return false;
+    this.entryFillCode=room.code;try{while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??'yellow')),role=CHARACTERS.find(c=>!used.has(c))??'yellow',difficulty=roomTier(room.rules);this.addBot(code,room.hostPlayerId,CHARACTER_NAMES[role],undefined,difficulty,role)}}finally{this.entryFillCode=undefined}
+    for(const p of room.players){p.character??='yellow';p.ready=true;if(!p.isBot&&!p.connected)p.autoPlay=true;}
+    this.startGame(code,room.hostPlayerId,now);room.revision++;return true;
+  }
+  tickTimedEntries(now=Date.now()):string[]{const changed:string[]=[];for(const room of this.rooms.values())if(this.tickTimedEntry(room.code,now))changed.push(room.code);return changed;}
+
+  fillWithBots(rawCode:string,playerId:string):Room{let room=this.requireRoom(rawCode);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??(p.isBot?({aggressive:'king',balanced:'yellow',defensive:'ninja',value:'wizard'} as const)[p.botProfile??'balanced']:'yellow'))),own=room.players.find(p=>p.id===playerId)?.character??'yellow',role=botCharacters(own).find(c=>!used.has(c))??CHARACTERS.find(c=>!used.has(c))??'yellow';room=this.addBot(rawCode,playerId,CHARACTER_NAMES[role],undefined,roomTier(room.rules),role).room;}return room;}
+
+  leaveLobby(code:string,playerId:string):Room|null{const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Cannot leave a playing room through lobby leave.');const i=room.players.findIndex(p=>p.id===playerId);if(i<0)throw new RoomError('PLAYER_NOT_FOUND','Player not found in room.');room.players.splice(i,1);if(room.players.length===0){this.rooms.delete(room.code);return null;}if(room.players.every(p=>p.isBot)){this.rooms.delete(room.code);return null;}if(room.hostPlayerId===playerId)room.hostPlayerId=(room.players.find(p=>!p.isBot)??room.players[0])!.id;return room;}
+
+  deleteRoom(code:string,playerId:string):void{const room=this.requireRoom(code);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can close the room.');this.rooms.delete(room.code);}
+
+  setRules(code:string,playerId:string,patch:Partial<Ruleset>):Room{const room=this.requireRoom(code);if(room.selectionDeadline!==undefined)throw new RoomError('RULES_LOCKED','Rules are locked during matching.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Rules are locked after start.');if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can change rules.');room.rules=normalizeRuleset({...room.rules,...patch});return room;}
+
+  setReady(code: string, playerId: string, ready: boolean): Room {
+    const room = this.requireRoom(code);
+    if (room.phase !== 'lobby') throw new RoomError('GAME_ALREADY_STARTED', 'Ready state cannot change after start.');
+    const player = this.requirePlayer(room, playerId);
+    player.ready = Boolean(ready);
+    return room;
+  }
+
+  startGame(code: string, playerId: string, now=Date.now()): Room {
+    const room = this.requireRoom(code);
+    if (room.phase !== 'lobby') throw new RoomError('GAME_ALREADY_STARTED', 'Game has already started.');
+    if(room.selectionDeadline!==undefined&&now<room.selectionDeadline)throw new RoomError('ENTRY_COUNTDOWN','Wait for the shared 30-second entry countdown.');
+    if (room.hostPlayerId !== playerId) throw new RoomError('HOST_ONLY', 'Only the host can start the game.');
+    if (room.players.length !== 4) throw new RoomError('NEED_FOUR_PLAYERS', 'Exactly four players are required.');
+    if (!room.players.every((player) => player.ready&&(player.connected||player.isBot||player.autoPlay))) throw new RoomError('NOT_ALL_READY', 'All four players must be ready.');
+    room.match=createMatchState();
+    room.game = createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,'E');
+    room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];room.handMatch={...room.match};delete room.selectionDeadline;room.phase = 'playing'; room.settled=false;
+    return room;
+  }
+
+
+  abortiveDraw(code:string,playerId:string):Room{const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId);declareNineTerminals(room.game!,player.seat);this.settleIfExhaustive(room);return room;}
+
+  draw(code: string, playerId: string): Room {
+    const room = this.requirePlayingRoom(code);
+    const player = this.requirePlayer(room, playerId);
+    drawTile(room.game!, player.seat); return room;
+  }
+
+  riichiDiscard(code: string, playerId: string, tileId: string): Room { const room=this.requirePlayingRoom(code); const player=this.requirePlayer(room,playerId); if((room.scores[player.seat]??0)<1000) throw new RoomError('INSUFFICIENT_POINTS','At least 1,000 points are required to declare Riichi.'); declareRiichiAndDiscard(room.game!,player.seat,tileId); room.scores[player.seat]=room.scores[player.seat]!-1000; room.riichiPot+=1000;if(room.game!.claim&&SEATS.some(s=>room.game!.claim!.options[s].ron))room.pendingRiichi={seat:player.seat,discardId:tileId};this.record(room,'RIICHI',player.seat); this.settleIfExhaustive(room); return room; }
+
+  discard(code: string, playerId: string, tileId: string): Room {
+    const room = this.requirePlayingRoom(code);
+    const player = this.requirePlayer(room, playerId);
+    discardTile(room.game!, player.seat, tileId); this.settleIfExhaustive(room);
+    return room;
+  }
+
+  tsumo(code: string, playerId: string): Room { const room=this.requirePlayingRoom(code); const player=this.requirePlayer(room,playerId); declareTsumo(room.game!,player.seat); this.settleWin(room); return room; }
+  ron(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'ron'})}
+  passTsumo(code:string,playerId:string):Room{const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId);if(!getTsumoEvaluation(room.game!,player.seat)?.legal)throw new RoomError('NO_TSUMO_TO_PASS','There is no legal Tsumo to pass.');return this.discard(code,playerId,room.game!.hands[player.seat].at(-1)!.id)}
+  passRon(code:string,playerId:string):Room{return this.passClaim(code,playerId)}
+  passClaim(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'pass'})}
+  chi(code:string,playerId:string,faces:import('@bunny/riichi-engine').TileFace[]):Room{return this.submitClaim(code,playerId,{kind:'chi',faces})}
+  pon(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'pon'})}
+  kan(code:string,playerId:string):Room{return this.submitClaim(code,playerId,{kind:'kan'})}
+  private submitClaim(code:string,playerId:string,response:ClaimResponse):Room{
+    const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId),g=room.game!,claim=g.claim;
+    const options=claim?.options[player.seat];
+    if(g.phase!=='awaiting_claim'||!claim||!options||claim.passed.includes(player.seat)||!(options.ron||options.pon||options.kan||options.chiSequences.length))throw new RoomError('NOT_ELIGIBLE','No claim is available.');
+    if(response.kind==='chi'&&!options.chiSequences.some(seq=>JSON.stringify([...seq].sort())===JSON.stringify([...(response.faces??[])].sort()))||response.kind!=='chi'&&response.kind!=='pass'&&!options[response.kind])throw new RoomError('CLAIM_NOT_AVAILABLE','That claim is not legal.');
+    if(room.pendingClaims?.tileId!==claim.tile.id)room.pendingClaims={tileId:claim.tile.id,responses:{}};
+    if(room.pendingClaims.responses[player.seat])throw new RoomError('ALREADY_RESPONDED','Your response has been received.');
+    room.pendingClaims.responses[player.seat]={...response,...(response.faces?{faces:[...response.faces]}:{})};
+    this.resolveClaims(room);return room;
+  }
+  private resolveClaims(room:Room):void{
+    const g=room.game!,claim=g.claim,pending=room.pendingClaims;if(!claim||!pending)return;
+    const eligible=SEATS.filter(s=>{const o=claim.options[s];return !claim.passed.includes(s)&&(o.ron||o.pon||o.kan||o.chiSequences.length)}),responses=pending.responses;
+    const unresolved=eligible.filter(s=>!responses[s]),rons=eligible.filter(s=>responses[s]?.kind==='ron');
+    if(unresolved.some(s=>claim.options[s].ron))return;
+    if(rons.length){
+      for(const seat of eligible.filter(s=>responses[s]?.kind!=='ron'))if(claim.options[seat].ron)passClaim(g,seat);
+      declareRons(g,rons);delete room.pendingClaims;if(g.phase==='abortive_draw')this.settleIfExhaustive(room);else this.settleWin(room);return;
+    }
+    const rank=(kind:ClaimResponse['kind'])=>kind==='pon'||kind==='kan'?2:kind==='chi'?1:0;
+    const order=[(SEATS.indexOf(claim.discarder)+1)%4,(SEATS.indexOf(claim.discarder)+2)%4,(SEATS.indexOf(claim.discarder)+3)%4].map(i=>SEATS[i]!);
+    const selected=eligible.filter(s=>responses[s]&&rank(responses[s]!.kind)>0).sort((a,b)=>rank(responses[b]!.kind)-rank(responses[a]!.kind)||order.indexOf(a)-order.indexOf(b))[0];
+    if(selected){const choice=responses[selected]!;
+      if(unresolved.some(s=>claim.options[s].pon||claim.options[s].kan||choice.kind==='chi'&&claim.options[s].ron))return;
+      for(const seat of eligible.filter(s=>s!==selected))passClaim(g,seat);
+      if(choice.kind==='chi')claimChi(g,selected,choice.faces!);else if(choice.kind==='pon')claimPon(g,selected);else claimKan(g,selected);
+      delete room.pendingClaims;delete room.pendingRiichi;this.record(room,choice.kind.toUpperCase() as 'CHI'|'PON'|'KAN',selected);this.finishOnBankruptcy(room);return;
+    }
+    if(!unresolved.length){for(const seat of eligible)passClaim(g,seat);delete room.pendingClaims;this.settleIfExhaustive(room);}
+  }
+  ankan(code:string,playerId:string,tileId:string):Room{const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);declareAnkan(room.game!,player.seat,tileId);this.record(room,'KAN',player.seat);return room;}
+  kakan(code:string,playerId:string,tileId:string):Room{const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);declareKakan(room.game!,player.seat,tileId);this.record(room,'KAN',player.seat);return room;}
+
+  getPlayerGameState(code: string, playerId: string): PlayerGameState {
+    const room = this.requirePlayingRoom(code);
+    const player = this.requirePlayer(room, playerId);
+    const game = room.game!;
+    const response=room.pendingClaims?.tileId===game.claim?.tile.id?room.pendingClaims?.responses[player.seat]:undefined;
+    const raw=game.phase==='awaiting_claim'&&!game.claim?.passed.includes(player.seat)?game.claim?.options[player.seat]:undefined;
+    const claimOptions=!response&&raw&&(raw.ron||raw.pon||raw.kan||raw.chiSequences.length)?raw:null;
+    const own=game.hands[player.seat],counts=visibleCounts(own,game.discards,game.melds,getVisibleDora(game));
+    const riichiIds=room.scores[player.seat]>=1000?getRiichiDiscardIds(game,player.seat):[];
+    const winStatus=getWinRestrictions(game,player.seat),waitingOwn=own.length%3===2&&game.lastDrawSeat===player.seat&&game.phase==='awaiting_discard'?own.slice(0,-1):own;
+    const assistance={waits:waitingOwn.length%3===1?waitPreview(waitingOwn,game.melds[player.seat].length,counts,game.melds[player.seat]):[],riichi:Object.fromEntries(riichiIds.map(id=>[id,waitPreview(own.filter(t=>t.id!==id),game.melds[player.seat].length,counts,game.melds[player.seat])]))};
+    return {
+      room: toPublicRoomState(room),
+      you: { playerId: player.id, seat: player.seat, hand: [...game.hands[player.seat]], drawnTileId: game.lastDrawSeat===player.seat&&game.phase==='awaiting_discard'?game.hands[player.seat].at(-1)?.id:undefined },
+      hand: {
+        ...(game.abortiveReason?{abortiveReason:game.abortiveReason}:{}),currentSeat: game.currentSeat, phase: game.phase, turnNumber: game.turnNumber,revision:room.revision,match:{...(room.handMatch??room.match)},discardTileIds:getLegalDiscardIds(game,player.seat),
+        wallRemaining: game.liveWall.length,wallSlots:publicWallSlots(game),
+        timeout:{deadline:room.actionDeadline??null,serverNow:Date.now()},
+        events:(room.events??[]).map(e=>({...e})),assistance,responsibilities:responsibilities(game),
+        ...(room.demoCharacter?{demoCharacter:room.demoCharacter}:{}),
+        ...(room.demoPresentation?{demoPresentation:room.demoPresentation}:{}),
+        ...(room.winSequence?{winSequence:{...room.winSequence,segments:room.winSequence.segments.map(s=>({...s})),serverNow:Date.now()}}:{}),
+        ...(room.drawPresentation?{drawPresentation:{...room.drawPresentation,serverNow:Date.now()}}:{}),
+        ...(room.cinematic?{cinematic:{...room.cinematic,serverNow:Date.now()}}:{}),
+        ...(room.settled?{settlement:{kind:room.nagashi?.length?'nagashi_mangan':game.result?'win':game.phase==='abortive_draw'?'abortive_draw':'exhaustive_draw',transfers:room.transfers?.map(t=>({...t})),nagashi:room.nagashi?[...room.nagashi]:undefined,awardedPot:room.awardedPot??0,scoreChanges:Object.fromEntries(SEATS.map(s=>[s,room.scores[s]-(room.handStartingScores?.[s]??25000)])) as Record<Seat,number>,tenpai:game.phase==='exhaustive_draw'&&!room.nagashi?.length?SEATS.filter(s=>getPlayerWaits(game,s).length>0):[],...(game.phase==='exhaustive_draw'&&!room.nagashi?.length?{tenpaiHands:Object.fromEntries(SEATS.filter(s=>getPlayerWaits(game,s).length>0).map(s=>[s,[...game.hands[s]]]))}:{}),...(game.result?{winningHand:game.result.method==='ron'?[...game.hands[game.result.winner],game.result.winningTile]:[...game.hands[game.result.winner]],winningHands:Object.fromEntries((game.results??[game.result]).map(r=>[r.winner,r.method==='ron'?[...game.hands[r.winner],r.winningTile]:[...game.hands[r.winner]]]))}:{})}}:{}),
+        ...((game.results??(game.result?[game.result]:[])).some(r=>game.riichi[r.winner].declared)?{uraIndicators:visibleUraIndicators(game.deadWall)}:{}),
+        doraIndicators: getVisibleDora(game),
+        yourDora: getBonusDoraForSeat(game, player.seat),
+        rinshanRemaining: game.deadWall.rinshan.length,
+        discards: {
+          east: [...game.discards.east], south: [...game.discards.south],
+          west: [...game.discards.west], north: [...game.discards.north],
+        },
+        concealedCounts: {
+          east: game.hands.east.length, south: game.hands.south.length,
+          west: game.hands.west.length, north: game.hands.north.length,
+        },
+        actions: {
+          canAbortiveDraw:canDeclareNineTerminals(game,player.seat),
+          canDraw: game.currentSeat === player.seat && game.phase === 'awaiting_draw',
+          canDiscard: game.currentSeat === player.seat && game.phase === 'awaiting_discard',
+          canTsumo: Boolean(getTsumoEvaluation(game, player.seat)?.legal),
+          canRon:Boolean(claimOptions?.ron),canWinClaim:Boolean(claimOptions&&game.claim?.options[player.seat]?.ron),
+          canPassClaim:Boolean(claimOptions),
+          canPon:Boolean(claimOptions?.pon),
+          canKan:Boolean(claimOptions?.kan),
+          ankanTileIds:getAnkanTileIds(game,player.seat),
+          kakanTileIds:getKakanTileIds(game,player.seat),
+          chiSequences:claimOptions?.chiSequences??[],
+          riichiDiscardIds: room.scores[player.seat]>=1000?getRiichiDiscardIds(game, player.seat):[],
+        },
+        melds:{east:[...game.melds.east],south:[...game.melds.south],west:[...game.melds.west],north:[...game.melds.north]},
+        riichi: { east:game.riichi.east.declared, south:game.riichi.south.declared, west:game.riichi.west.declared, north:game.riichi.north.declared },
+        waits: getPlayerWaits(game, player.seat),
+        furiten: isFuriten(game, player.seat),winStatus,
+        ...(game.phase === 'awaiting_claim' && game.claim ? {claim:{ discarder: game.claim.discarder, tile: game.claim.tile }} : {}),
+        ...(response?{claimResponse:{...response}}:{}),
+        ...(game.results?{results:game.results}:{}),
+        ...(game.result ? {result:game.result} : {}),
+      },
+    };
+  }
+
+
+  autoAct(code:string,playerId:string):Room{
+    const room=this.requirePlayingRoom(code);const player=this.requirePlayer(room,playerId);const g=room.game!;
+    if(this.getPlayerGameState(code,playerId).hand.actions.canPassClaim){this.passClaim(code,playerId);return room;}
+    if(g.currentSeat!==player.seat)return room;
+    if(g.phase==='awaiting_draw'){this.draw(code,playerId);return room;}
+    if(g.phase==='awaiting_discard'){const tileId=getLegalDiscardIds(g,player.seat).at(-1);if(tileId)discardTile(g,player.seat,tileId);this.settleIfExhaustive(room);return room;}
+    return room;
+  }
+
+  /** Invoke only from the authoritative turn timer, never a client-supplied timeout. */
+  expirePlayerTurn(code:string,playerId:string,now=Date.now()):Room{
+    const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId),g=room.game!;
+    if(room.settled||room.match.finished||room.cinematic?.phase==='playing'||room.actionDeadline===undefined||now<room.actionDeadline)return room;
+    if(!player.isBot&&g.currentSeat===player.seat&&g.phase==='awaiting_discard')player.autoPlay=true;
+    return this.autoAct(code,playerId);
+  }
+  /** One legal action per tick. The host retains revision, animation and clock ownership. */
+  advanceAutoPlay(code:string):boolean{
+    const room=this.requirePlayingRoom(code),g=room.game!;
+    if(room.settled||room.match.finished||room.cinematic?.phase==='playing')return false;
+    for(const player of room.players.filter(p=>!p.isBot&&p.autoPlay)){
+      const state=this.getPlayerGameState(code,player.id);
+      if(!state.hand.actions.canPassClaim&&!(g.currentSeat===player.seat&&['awaiting_draw','awaiting_discard'].includes(g.phase)))continue;
+      const before=JSON.stringify({game:g,pending:room.pendingClaims});this.autoAct(code,player.id);if(before!==JSON.stringify({game:g,pending:room.pendingClaims}))return true;
+    }return false;
+  }
+  resumeControl(code:string,playerId:string):Room{
+    const room=this.requirePlayingRoom(code),player=this.requirePlayer(room,playerId);
+    if(player.isBot||!player.connected)throw new RoomError('CONTROL_UNAVAILABLE','Player control is unavailable.');
+    if(player.autoPlay){player.autoPlay=false;if(room.game?.currentSeat===player.seat&&room.game.phase==='awaiting_discard'&&!room.settled)room.actionDeadline=Date.now()+room.rules.actionTimeoutMs;}
+    return room;
+  }
+
+  getBotPlayerIds(code:string):string[]{return this.requireRoom(code).players.filter(p=>p.isBot).map(p=>p.id)}
+
+  actBot(code:string,playerId:string):Room{
+    const player=this.requirePlayer(this.requireRoom(code),playerId); if(!player.isBot)throw new RoomError('NOT_BOT','Player is not a bot.');
+    const decision=chooseBotAction(this.getPlayerGameState(code,playerId),player.botProfile,player.botDifficulty);if(!decision)return this.requireRoom(code);
+    switch(decision.type){
+      case 'tsumo':return this.tsumo(code,playerId);case 'ron':return this.ron(code,playerId);case 'pass':return this.passClaim(code,playerId);case 'draw':return this.draw(code,playerId);
+      case 'chi':return this.chi(code,playerId,decision.faces);case 'pon':return this.pon(code,playerId);case 'kan':return this.kan(code,playerId);
+      case 'riichi':return this.riichiDiscard(code,playerId,decision.tileId);case 'discard':return this.discard(code,playerId,decision.tileId);case 'ankan':return this.ankan(code,playerId,decision.tileId);case 'kakan':return this.kakan(code,playerId,decision.tileId);
+    }
+  }
+
+  reconnect(rawCode:string, playerId:string, resumeToken:string):{room:Room;player:Player}{ const room=this.requireRoom(rawCode); const player=this.requirePlayer(room,playerId); if(player.resumeToken!==resumeToken) throw new RoomError('INVALID_RESUME_TOKEN','Reconnect token is invalid.'); player.connected=true;delete room.disconnectedAt; return {room,player}; }
+  disconnect(rawCode:string,playerId:string):void{ try{const room=this.requireRoom(rawCode);const player=this.requirePlayer(room,playerId);player.connected=false;if(room.phase==='playing'&&!room.match.finished)player.autoPlay=true;if(room.players.every(p=>p.isBot||!p.connected))room.disconnectedAt=Date.now();}catch{} }
+  cleanupDisconnectedRooms(ttlMs:number,now=Date.now()):string[]{const deleted:string[]=[];for(const room of this.rooms.values())if(room.disconnectedAt!==undefined&&(room.phase==='lobby'||room.match.finished)&&now-room.disconnectedAt>=ttlMs){this.rooms.delete(room.code);deleted.push(room.code);}return deleted;}
+  getResumeToken(code:string,playerId:string):string{return this.requirePlayer(this.requireRoom(code),playerId).resumeToken}
+  private settleIfExhaustive(room:Room):void{
+    if(room.game?.phase!=='awaiting_claim')delete room.pendingRiichi;
+    if(room.settled||!room.game)return;
+    if(!['exhaustive_draw','abortive_draw'].includes(room.game.phase)){this.finishOnBankruptcy(room);return;}
+    if(room.game.phase==='abortive_draw'){room.settled=true;advanceMatch(room.match,true,room.rules.matchLength,true);this.finishOnBankruptcy(room);return;}
+    const nagashi=nagashiWinners(room.game);
+    if(nagashi.length){
+      room.nagashi=nagashi;room.drawPresentation={startedAt:Date.now(),endsAt:Date.now()+4000};room.transfers=nagashiTransfers(room.game,nagashi,room.match.honba);applyTransfers(room.scores,room.transfers);
+      const dealer=room.match.dealer,ordered=Array.from({length:4},(_,i)=>SEATS[(SEATS.indexOf(dealer)+i)%4]!),potWinner=ordered.find(s=>nagashi.includes(s))!;
+      room.awardedPot=room.riichiPot;room.scores[potWinner]+=room.riichiPot;room.riichiPot=0;room.settled=true;
+      advanceMatch(room.match,nagashi.includes(dealer),room.rules.matchLength);
+      if(room.rules.agariYame&&nagashi.includes(dealer)&&room.handMatch?.handNumber===4&&room.scores[dealer]>=30000&&rankScores(room.scores)[0]===dealer)room.match.finished=true;
+      this.finishOnBankruptcy(room);return;
+    }
+    const tenpai=SEATS.filter(s=>getPlayerWaits(room.game!,s).length>0),payments=calculateNotenPayments(tenpai);
+    for(const s of SEATS)room.scores[s]+=payments[s];room.settled=true;
+    advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);this.finishOnBankruptcy(room);
+
+  }
+
+  private finishOnBankruptcy(room:Room):void{
+    if(room.rules.bankruptcyEnd&&!room.pendingRiichi&&Object.values(room.scores).some(score=>score<=0)){
+      room.match.finished=true;
+      if(!room.settled){room.settled=true;room.game!.phase='abortive_draw';room.game!.abortiveReason='bankruptcy';delete room.game!.claim;delete room.pendingClaims;}
+    }
+    if(room.match.finished){
+      // Close the point ledger as well as the match: no unowned sticks remain at cash settlement.
+      const first=rankScores(room.scores)[0]!;if(room.riichiPot){room.scores[first]+=room.riichiPot;room.awardedPot=(room.awardedPot??0)+room.riichiPot;room.riichiPot=0;}
+      room.finalRanking=rankScores(room.scores);
+    }
+  }
+
+  private settleWin(room:Room):void{
+    if(room.settled||!room.game?.result)return;
+    const pending=room.pendingRiichi,result=room.game.result;
+    if(pending&&result.method==='ron'&&result.from===pending.seat&&result.winningTile.id===pending.discardId){room.scores[pending.seat]+=1000;room.riichiPot-=1000;const declaration=room.game.riichi[pending.seat];declaration.declared=false;declaration.doubleRiichi=false;declaration.ippatsuEligible=false;delete declaration.declarationTurn;}
+    delete room.pendingRiichi;
+    const all=room.game.results??[room.game.result];
+    const w=all[0]!.winner,honba=room.match.honba;
+    room.transfers=all.flatMap(win=>winTransfers(room.game!,win,honba));applyTransfers(room.scores,room.transfers);
+    for(const win of all){const w=win.winner;
+      this.record(room,win.method==='ron'?'RON':'TSUMO',w);const limit=limitPresentation(win.score);if(limit)this.record(room,limit,w);
+    }
+    room.winSequence=createWinSequence(room.game,room.code+':'+room.revision+':'+(room.eventSequence??0),Date.now());
+    if(room.winSequence)room.cinematic=sequenceCinematic(room.winSequence,all,room.eventSequence??0);
+    room.awardedPot=room.riichiPot;room.scores[w]=(room.scores[w]??0)+room.riichiPot; room.riichiPot=0; room.settled=true;
+    advanceMatch(room.match,all.some(win=>win.winner===room.match.dealer),room.rules.matchLength);
+    if(room.rules.agariYame&&all.some(win=>win.winner===room.match.dealer)&&room.handMatch?.handNumber===4&&room.scores[room.match.dealer]>=30000&&rankScores(room.scores)[0]===room.match.dealer)room.match.finished=true;this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores);
+  }
+
+  /** Host settlement entry: accepts only a genuinely completed draw and is idempotent. */
+  settleCompletedDraw(code:string):Room{const room=this.requirePlayingRoom(code);if(!room.game||!['exhaustive_draw','abortive_draw'].includes(room.game.phase))throw new RoomError('HAND_NOT_ENDED','Draw is not complete.');this.settleIfExhaustive(room);return room;}
+
+  settleExhaustiveDrawForTesting(code:string,tenpai:Seat[]):Room{
+    const room=this.requirePlayingRoom(code); if(room.settled) return room;
+    const payments=calculateNotenPayments(tenpai); for(const s of SEATS) room.scores[s]=(room.scores[s]??0)+(payments[s]??0);
+    room.settled=true; advanceMatch(room.match,tenpai.includes(room.match.dealer),room.rules.matchLength,true);
+    this.finishOnBankruptcy(room);if(room.match.finished) room.finalRanking=rankScores(room.scores); return room;
+  }
+
+  startNextHand(code:string):Room{
+    const room=this.requirePlayingRoom(code); if(room.drawPresentation&&Date.now()<room.drawPresentation.endsAt)throw new RoomError('PRESENTATION_ACTIVE','Wait for the draw presentation.'); if(room.resultFlow)throw new RoomError('RESULT_FLOW_ACTIVE','Wait for the shared result clock.'); if(room.cinematic?.phase==='playing')throw new RoomError('CINEMATIC_ACTIVE','Wait for the synchronized result transition.'); if(!room.settled) throw new RoomError('HAND_NOT_SETTLED','Current hand has not ended.');
+    if(room.match.finished) throw new RoomError('MATCH_FINISHED','The hanchan has finished.');
+    room.game=createHandState(dealInitialHands(createShuffledWall(this.randomSource,room.rules.akaDora),room.match.dealer,[1+(this.randomSource?.(6)??randomInt(6)),1+(this.randomSource?.(6)??randomInt(6))]),room.match.dealer,room.match.roundWind==='east'?'E':'S');room.game.abortiveEnabled=room.rules.abortiveDraws;room.game.kuikaeEnabled=true;room.game.postRiichiAnkanEnabled=true;room.game.doubleRiichiEnabled=true;room.game.firstTurnYakumanEnabled=true;room.handStartingScores={...room.scores};room.events=[];delete room.winSequence;delete room.drawPresentation;delete room.transfers;delete room.nagashi;delete room.demoCharacter;delete room.demoPresentation;delete room.resultFlow;delete room.pendingClaims;delete room.cinematic;delete room.pendingRiichi;delete room.awardedPot;room.handMatch={...room.match}; room.settled=false; return room;
+  }
+
+  completeCinematic(code:string,now=Date.now()):boolean{const room=this.requireRoom(code);if(!room.cinematic||room.cinematic.phase!=='playing'||now<room.cinematic.endsAt)return false;room.cinematic.phase='results';return true;}
+
+  private record(room:Room,kind:PresentationKind,seat:Seat):void{room.eventSequence=(room.eventSequence??0)+1;room.events=[...(room.events??[]),{id:room.eventSequence,kind,seat}].slice(-24);}
+
+  private requirePlayingRoom(rawCode: string): Room {
+    const room = this.requireRoom(rawCode);
+    if (room.phase !== 'playing' || !room.game) throw new RoomError('GAME_NOT_STARTED', 'Game has not started.');
+    return room;
+  }
+  getPublicState(code: string): PublicRoomState {
+    return toPublicRoomState(this.requireRoom(code));
+  }
+
+  getRoomForTesting(code: string): Room | undefined {
+    return this.rooms.get(normalizeRoomCode(code));
+  }
+
+  private requireRoom(rawCode: string): Room {
+    const room = this.rooms.get(normalizeRoomCode(rawCode));
+    if (!room) throw new RoomError('ROOM_NOT_FOUND', 'Room not found.');
+    return room;
+  }
+
+  private requirePlayer(room: Room, playerId: string): Player {
+    const player = room.players.find((candidate) => candidate.id === playerId);
+    if (!player) throw new RoomError('PLAYER_NOT_FOUND', 'Player not found in room.');
+    return player;
+  }
+
+  private generateUniqueCode(): string {
+    for (let attempt = 0; attempt < 100; attempt++) {
+      let code = '';
+      for (let i = 0; i < 6; i++) code += CODE_ALPHABET[randomInt(CODE_ALPHABET.length)];
+      if (!this.rooms.has(code)) return code;
+    }
+    throw new Error('Unable to allocate a unique room code.');
+  }
+}
+
+export function toPublicRoomState(room: Room): PublicRoomState {
+  return {
+    code: room.code,
+    phase: room.phase,
+    players: room.players.map((player) => ({
+      id: player.id,
+      name: player.name,
+      seat: player.seat,
+      ready: player.ready,
+      connected: player.connected,
+      autoPlay:!!player.autoPlay,
+      isHost: player.id === room.hostPlayerId,
+      isBot: Boolean(player.isBot),
+      character:player.character??(player.isBot?({aggressive:'king',balanced:'yellow',defensive:'ninja',value:'wizard'} as const)[player.botProfile??'balanced']:'yellow'),
+      ...(player.botProfile?{botProfile:player.botProfile}:{}),
+      ...(player.botDifficulty?{botDifficulty:player.botDifficulty}:{}),
+    })),
+    ...(room.selectionDeadline!==undefined?{selection:{deadline:room.selectionDeadline,serverNow:Date.now()}}:{}),
+    canStart: (room.selectionDeadline===undefined||Date.now()>=room.selectionDeadline)&&room.phase === 'lobby' && room.players.length === 4 && room.players.every((p) => p.ready&&(p.connected||p.isBot||p.autoPlay)),
+    ...(room.resultFlow?{resultFlow:{id:room.resultFlow.id,phase:room.resultFlow.phase,deadline:room.resultFlow.deadline}}:{}),scores:{...room.scores}, riichiPot:room.riichiPot, match:{...room.match}, rules:{...room.rules}, ...(room.finalRanking?{finalRanking:[...room.finalRanking]}:{}),
+  };
+}
+
+function validateName(name: string): string {
+  if(typeof name!=='string')throw new RoomError('INVALID_NAME','Name must be a string.');
+  const value = name.trim();
+  if (value.length < 1 || value.length > 20) throw new RoomError('INVALID_NAME', 'Name must be 1–20 characters.');
+  return value;
+}

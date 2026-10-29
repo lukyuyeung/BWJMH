@@ -1,0 +1,60 @@
+# 共用日麻核心：Bunny Gala / TYC∞N
+
+同一份遊戲核心、兩個獨立建置、兩個部署網址。原有 Bunny Gala 的規則、牌面、角色、教學與存檔行為保持；TYC∞N 加入墨綠金色外觀及獨立進度。
+
+## 來源與原版保留
+
+本目錄匯入公開 Bunny Gala **v103** 的完整遊戲源碼與共用素材，來源 commit `8da9729cb0e6ef62dcd957f5f9eb93ae5c8cef6d`；見 [docs/UPSTREAM.json](docs/UPSTREAM.json)。這修正了 `handover/2026-10-24/README.md` 記錄的「GitHub 舊版與公開版不同步」問題。
+
+- 原 GitHub `Bunny_Gala_Riichi_v2.7.2/`、`multiplayer-framework/` 及 handover 檔案均保留，不作覆蓋。
+- 現有原版公開網站未重新部署或更換來源。
+- 原版 profile 為預設；TYC∞N 必須明確指定建置模式。
+- `src/`、`engine/`、`rules/` 共用，不複製成兩套遊戲。原版主 JS/CSS 的建置雜湊與 v103 發布版本一致；見 `docs/VERIFICATION.md`。
+- 上游部署身份、Git metadata、node_modules、dist 及環境秘密均不從舊站匯入。`.openai/hosting.json` **只指向新 TYC∞N 試玩站**。
+
+## 開發與建置
+
+Node.js 22 或更新版本：
+
+```bash
+cd apps/riichi
+npm ci
+npm run dev:bunny     # http://127.0.0.1:5185
+npm run dev:tycoon    # http://127.0.0.1:5186
+```
+
+另擇一個終端啟動對應版本，不需要啟動舊專案的 server。
+
+```bash
+npm run typecheck
+npm run test:brands
+npm run build              # 同時建置兩個版本
+npm run test:built-brands
+npm run preview:bunny      # http://127.0.0.1:4185
+npm run preview:tycoon     # http://127.0.0.1:4186
+```
+
+`dist/bunny/` 與 `dist/tycoon/` 必須分別部署在**不同 origin 的根目錄**。現有來源使用 `/art/`、`/audio/` 等絕對路徑，不能直接當同一網域的兩個子目錄部署。請勿把其中一個產物覆蓋另一個。
+
+## 主題與資料邊界
+
+| 項目 | 原版 | TYC∞N |
+|---|---|---|
+| 建置模式 | `bunny` | `tycoon` |
+| 輸出 | `dist/bunny` | `dist/tycoon` |
+| 存檔／教學／角色／語言／音效 | 原有 `bunny-*` keys | `tycoon-riichi-*` keys |
+| 大廳 | 原版素材與顏色 | 墨綠金色、TYC∞N Logo、返回賭場入口 |
+| 遊戲核心 | 共用 `src/`、`engine/`、`rules/` | 同一份 |
+| 錢包、真人伺服器 | 未連接 | 未連接 |
+
+主題設定在 `branding/profiles.mjs`；建置套用在 `branding/vite-plugin.mjs`。原版不轉換字串；TYC∞N 只轉換 UI 與已列明的儲存鍵，保留內部事件名稱及角色識別。既有瀏覽器進度不會自動搬到 TYC∞N，也不會把原版進度當成賭場積分。
+
+`public/brand/tycoon.css`、`tycoon.js` 與 `public/brand/` 圖片是換皮入口。現階段重用原有角色、牌桌及教學圖片；燒錄在舊圖／影片上的文字並未冒充已全部換成 TYC∞N。沒有重新生成原日麻角色或改動規則引擎。
+
+## 下一階段：真正接入賭場
+
+目前 v103 是瀏覽器本地 **單人 Bot 練習**，包含原有九課教學。真人入口仍保持未開放，不會扣 USDT / $BUNNY、不產生 $TYCOON 或 Season 1 積分。
+
+正式接入需要另外設計：Privy 身份換取遊戲 session、服務端權威牌局／配桌、資金凍結及結算、事件防重放與對帳，以及由服務端認定的 Season 活動事件。`postMessage`、query string、localStorage 與這個本機 Bot 引擎都不是資金或空投的可信來源。
+
+請在服務端、帳戶、資金帳本及環境設定分開後，再安排正式資產整合；本 PR 不宣稱已完成這些服務。

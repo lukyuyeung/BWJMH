@@ -1,0 +1,7 @@
+import fs from 'node:fs';import ts from 'typescript';import * as T from 'three';import assert from 'node:assert/strict';
+fs.writeFileSync('work/qa/hand-visible.mjs',ts.transpileModule(fs.readFileSync('src/table-hands.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText);
+let now=0;Object.defineProperty(globalThis,'performance',{value:{now:()=>now},configurable:true});globalThis.fetch=async()=>({ok:true,json:async()=>JSON.parse(fs.readFileSync('public/art/hand-table-motion/motions.json','utf8'))});const {loadTableHands}=await import('../work/qa/hand-visible.mjs');const scene=new T.Scene(),hands=await loadTableHands(scene,()=>{});
+for(let seat=0;seat<4;seat++){
+ hands.play(seat,'Draw',400,325);hands.update();now+=200;assert(hands.update());assert.equal(hands.debug()[0].kind,'Draw');assert(hands.debug()[0].visible);assert(!hands.debug()[0].palmOutside);assert.equal(hands.discardPose('draw-'+seat),undefined);now+=400;hands.update();assert.equal(hands.debug().length,0);
+ hands.play(seat,'Discard',400,325,{id:'tile',from:new T.Vector3(400,735,7)});hands.update();now+=200;assert(hands.update());assert(hands.discardPose('tile'));now+=2000;hands.update();assert.equal(hands.debug().length,0,'stale gestures catch up rather than replaying slowly');hands.stop();
+}hands.dispose();console.log('DRAW VISIBILITY + WALL-CLOCK CATCH-UP PASSED: four seats');

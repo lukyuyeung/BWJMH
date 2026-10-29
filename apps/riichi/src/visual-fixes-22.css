@@ -1,0 +1,24 @@
+/* Custom Bunny Gala metalwork, with clear engraved seat panels. */
+.phone-stage .phone-round.art26-hub{background:transparent url('/art/table/hub-bunny-luxe.svg') center/100% 100%!important;border:0!important;border-radius:0!important;box-shadow:none!important;filter:drop-shadow(0 5px 5px #0008)}
+.art26-hub .hub-core{background:radial-gradient(ellipse,#34263688,#15172155);border:0;clip-path:none}
+.art26-hub .hub-seat{background:linear-gradient(135deg,#52344044,#15131c66);border-color:#ad887449;border-radius:0;box-shadow:inset 0 1px #ead2a618}
+.art26-hub .hub-seat.active{border-color:#c6edc6;box-shadow:inset 0 -2px #9bddbb,0 0 7px #a0e3c52b;background:linear-gradient(135deg,#2f5244aa,#172d27aa)}
+.art26-hub .hub-seat .hub-wind{color:#e0bc99}.art26-hub .hub-seat.active .hub-wind{color:#e6ffe4}.art26-hub .hub-core>strong{color:#f6ddae}.art26-hub .hub-core b{color:#e4efe4}
+.art26-hub .hub-riichi-tray{border-color:#bf9c715c;background:#06090b;box-shadow:inset 0 1px 3px #000;border-radius:5px}.art26-hub .hub-riichi-tray.occupied{border-color:#c69e66}
+/* Reference-sized cut-ins: about 37% of the table width, portrait breaks above ribbon. */
+.phone-stage .seat-art-cutin{width:420px!important;height:180px!important;left:300px!important;top:335px!important}
+.phone-stage .seat-art-cutin[data-relative="1"]{left:690px!important;top:180px!important}.phone-stage .seat-art-cutin[data-relative="2"]{left:425px!important;top:0!important}.phone-stage .seat-art-cutin[data-relative="3"]{left:15px!important;top:180px!important}
+.seat-art-cutin .seat-ribbon{top:65px;height:102px}.seat-art-cutin .seat-call-character{left:12px;top:0;width:172px;height:174px}.seat-art-cutin .seat-call-lettering{left:85px;top:25px;height:152px;max-width:none;width:auto}.seat-art-cutin .seat-call-particles{inset:-14px -8px;width:436px;height:208px}
+/* Settlement owns its layout; no table-meld transforms or clipped child images. */
+.gala-result .gr-winning-hand{--result-tile-w:32px;display:flex;flex-wrap:nowrap;align-items:flex-end;gap:10px;min-height:70px;padding:12px 0 5px;overflow:visible}
+.gala-result .gr-concealed,.gala-result .gr-melds{display:flex;flex:none;align-items:flex-end;gap:2px}.gala-result .gr-melds{gap:9px}.gala-result .result-art-tile{display:block;position:relative;flex:none;width:var(--result-tile-w);height:calc(var(--result-tile-w)*278/188);border:0;background:none;box-shadow:none;overflow:visible}
+.gala-result .result-art-tile>img{display:block;width:100%;height:100%;max-width:none;object-fit:fill;transform:none;clip-path:none}
+.gala-result .result-art-meld{display:flex;flex:none;align-items:flex-end;gap:2px;min-height:calc(var(--result-tile-w)*278/188)}
+.gala-result .result-art-slot{display:block;position:relative;flex:none;width:var(--result-tile-w);height:calc(var(--result-tile-w)*278/188)}
+.gala-result .result-sideways{width:calc(var(--result-tile-w)*278/188);height:var(--result-tile-w)}
+.gala-result .result-sideways>.result-art-tile,.gala-result .result-added-kan>.result-art-tile{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(90deg)}
+.gala-result .result-added-kan{position:absolute;bottom:calc(100% + 1px);left:0;width:100%;height:var(--result-tile-w)}
+.gala-result .gr-final-tile{flex:none;margin-left:4px;padding-bottom:0;border:0;position:relative}.gala-result .gr-final-tile>span:first-child{top:-15px;font:700 10px/1 'Noto Sans TC',sans-serif;color:#ebcd8c}
+.gala-result .gr-tile-panel{min-height:117px;overflow:visible}
+
+.physical-hand-overlay{position:absolute;left:0;top:0;width:1125px;height:634px;z-index:9;pointer-events:none;overflow:hidden;background:transparent}.physical-hand-overlay canvas{display:block;max-width:none}

@@ -1,0 +1,33 @@
+{
+  "name": "bwjmh-riichi-shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:bunny && npm run build:tycoon",
+    "typecheck": "tsc --noEmit",
+    "dev": "vite --mode bunny --host 127.0.0.1 --port 5185",
+    "dev:bunny": "vite --mode bunny --host 127.0.0.1 --port 5185",
+    "dev:tycoon": "vite --mode tycoon --host 127.0.0.1 --port 5186",
+    "build:bunny": "node scripts/build-character-catalog.mjs && node scripts/build-hand-preview.mjs && vite build --mode bunny",
+    "build:tycoon": "node scripts/build-character-catalog.mjs && node scripts/build-hand-preview.mjs && vite build --mode tycoon",
+    "preview:bunny": "vite preview --mode bunny --host 127.0.0.1 --port 4185",
+    "preview:tycoon": "vite preview --mode tycoon --host 127.0.0.1 --port 4186",
+    "test:brands": "node --test branding/branding.test.mjs",
+    "test:built-brands": "node branding/check-builds.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.186.1",
+    "vite": "^6.1.0",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.186.0"
+  }
+}

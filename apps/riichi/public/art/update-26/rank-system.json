@@ -1,0 +1,115 @@
+{
+  "name": "BUNNY GALA Rabbit Ranks",
+  "tiers": [
+    {
+      "tier": 1,
+      "id": "rookie",
+      "zh": "見習兔",
+      "en": "ROOKIE BUNNY",
+      "accent": "#f6d6c1",
+      "icon": "assets/ranks/neutral/rookie.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/rookie.png",
+        "en": "assets/rank-nameplates/en/rookie.png"
+      }
+    },
+    {
+      "tier": 2,
+      "id": "bronze",
+      "zh": "銅耳兔",
+      "en": "BRONZE BUNNY",
+      "accent": "#dba06b",
+      "icon": "assets/ranks/neutral/bronze.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/bronze.png",
+        "en": "assets/rank-nameplates/en/bronze.png"
+      }
+    },
+    {
+      "tier": 3,
+      "id": "silver",
+      "zh": "銀耳兔",
+      "en": "SILVER BUNNY",
+      "accent": "#d9e4f2",
+      "icon": "assets/ranks/neutral/silver.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/silver.png",
+        "en": "assets/rank-nameplates/en/silver.png"
+      }
+    },
+    {
+      "tier": 4,
+      "id": "gold",
+      "zh": "金耳兔",
+      "en": "GOLD BUNNY",
+      "accent": "#edc680",
+      "icon": "assets/ranks/neutral/gold.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/gold.png",
+        "en": "assets/rank-nameplates/en/gold.png"
+      }
+    },
+    {
+      "tier": 5,
+      "id": "jade",
+      "zh": "翡翠兔",
+      "en": "JADE BUNNY",
+      "accent": "#5ce6bb",
+      "icon": "assets/ranks/neutral/jade.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/jade.png",
+        "en": "assets/rank-nameplates/en/jade.png"
+      }
+    },
+    {
+      "tier": 6,
+      "id": "diamond",
+      "zh": "鑽耀兔",
+      "en": "DIAMOND BUNNY",
+      "accent": "#8de9ff",
+      "icon": "assets/ranks/neutral/diamond.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/diamond.png",
+        "en": "assets/rank-nameplates/en/diamond.png"
+      }
+    },
+    {
+      "tier": 7,
+      "id": "lunar",
+      "zh": "月冠兔",
+      "en": "LUNAR BUNNY",
+      "accent": "#d9b9ff",
+      "icon": "assets/ranks/neutral/lunar.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/lunar.png",
+        "en": "assets/rank-nameplates/en/lunar.png"
+      }
+    },
+    {
+      "tier": 8,
+      "id": "stellar",
+      "zh": "星耀兔",
+      "en": "STELLAR BUNNY",
+      "accent": "#f69de8",
+      "icon": "assets/ranks/neutral/stellar.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/stellar.png",
+        "en": "assets/rank-nameplates/en/stellar.png"
+      }
+    },
+    {
+      "tier": 9,
+      "id": "sovereign",
+      "zh": "兔皇",
+      "en": "BUNNY SOVEREIGN",
+      "accent": "#fff0c4",
+      "icon": "assets/ranks/neutral/sovereign.png",
+      "nameplates": {
+        "zh": "assets/rank-nameplates/zh/sovereign.png",
+        "en": "assets/rank-nameplates/en/sovereign.png"
+      }
+    }
+  ],
+  "visualDesignComplete": true,
+  "progressionRules": "Not defined by artwork; game rules can assign thresholds independently."
+}

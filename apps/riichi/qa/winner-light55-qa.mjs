@@ -1,0 +1,17 @@
+import {writeFileSync} from 'node:fs';
+import {chromium} from 'playwright';import assert from 'node:assert/strict';
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--enable-unsafe-swiftshader']});
+try{const p=await browser.newPage({viewport:{width:1125,height:634}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://127.0.0.1:5195/?mode=bot');await p.locator('#startup-curtain').waitFor({state:'detached',timeout:30000});await p.evaluate(()=>window.__bunnyQA.pause());await p.evaluate(()=>window.__bunnyQA.scenario('winner-light:mangan:south'));await p.locator('.win-banner-overlay').waitFor({timeout:20000});
+ for(const [tier,seat,melds] of [['mangan','east'],['haneman','south'],['baiman','west'],['sanbaiman','north'],['yakuman','east','melds']]){
+ await p.evaluate(name=>window.__bunnyQA.scenario(name),`winner-light:${tier}:${seat}:${melds??''}`);const light=p.locator('.winner-tile-light');await p.waitForFunction(()=>document.querySelector('.winner-tile-light')?.dataset.phase==='landing');
+ assert.equal(await light.getAttribute('data-tier'),tier);assert.equal(await light.getAttribute('data-seat'),seat);assert.equal(await light.getAttribute('data-active'),'true');assert.equal(await p.locator('.win-rush-host').count(),0);
+ const geometry=await p.evaluate(()=>{const stage=document.querySelector('.phone-stage'),r=stage.getBoundingClientRect(),el=document.querySelector('.winner-tile-light'),b=el.getBoundingClientRect(),layout=JSON.parse(document.querySelector('.physical-renderer').dataset.layout),winner=el.dataset.seat;return {area:b.width*b.height/(r.width*r.height),x:b.x,y:b.y,w:b.width,h:b.height,tiles:layout.filter(t=>t.kind==='winning-hand'),allMelds:[...document.querySelectorAll('.winner-meld-light[data-active=true]')].map(t=>t.dataset.seat),before:getComputedStyle(stage,'::before').content,after:getComputedStyle(stage,'::after').content,winner}});
+ assert(geometry.area>0&&geometry.area<.32,'Effects stay local to winner row');assert(geometry.tiles.length>0);assert(geometry.tiles.every(t=>t.seat===seat));assert(geometry.allMelds.every(s=>s===seat));assert(['none','normal'].includes(geometry.before));assert.equal(geometry.after,'""','Full table dimming retained');
+ await p.evaluate(()=>{for(const animation of document.getAnimations())if(animation.effect?.target?.closest('.winner-tile-light')){animation.pause();animation.currentTime=1000}});const shot=await (await p.context().newCDPSession(p)).send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});writeFileSync(`/workspace/work/winner-${tier}-${seat}.png`,Buffer.from(shot.data,'base64'));
+ if(melds)assert(geometry.allMelds.length>0,'Winner meld tiles are lit');
+ console.log('PASS',tier,seat,'winner-only projected light',Math.round(geometry.area*100)+'% table area');
+ }
+ await p.locator('.win-banner-overlay').waitFor({timeout:15000});
+ await p.evaluate(()=>window.__bunnyQA.scenario('winner-light:none:south'));await p.waitForTimeout(1100);assert.equal(await p.locator('.winner-tile-light').getAttribute('data-active'),'false');
+ await p.emulateMedia({reducedMotion:'reduce'});await p.evaluate(()=>window.__bunnyQA.scenario('winner-light:mangan:east'));await p.waitForTimeout(1000);assert.equal(await p.locator('.winner-tile-light').getAttribute('data-active'),'false');assert.deepEqual(errors,[]);console.log('PASS result handoff, low hand exclusion, reduced-motion exclusion, no browser errors');
+}finally{await browser.close()}
