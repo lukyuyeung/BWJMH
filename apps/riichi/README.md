@@ -34,6 +34,10 @@ npm run preview:bunny      # http://127.0.0.1:4185
 npm run preview:tycoon     # http://127.0.0.1:4186
 ```
 
+Sites 發布使用 `npm run build:deploy`，將 TYC∞N 產物準備到標準的 `dist/client/`；預設雙版本 build 也會完成此步驟。原版發布請自行使用 `dist/bunny/`，不會部署到新 TYC∞N 站。
+
+TYC∞N 部署包排除未被遊戲引用的 `bunny-gala-mahjong-master.svg` 美術母版，以符合 Sites 256 MiB 展開上限；該原檔仍保留於源碼。原版產物不打包未使用的 `public/brand/` 新主題素材。實際遊戲牌面、音效與影片保持。
+
 `dist/bunny/` 與 `dist/tycoon/` 必須分別部署在**不同 origin 的根目錄**。現有來源使用 `/art/`、`/audio/` 等絕對路徑，不能直接當同一網域的兩個子目錄部署。請勿把其中一個產物覆蓋另一個。
 
 ## 主題與資料邊界

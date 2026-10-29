@@ -12,3 +12,5 @@
 - Vite reports an existing >500 kB main-bundle warning; code splitting is outside this theme change.
 - Browser screenshot / real-device visual acceptance is not completed in this environment.
 - Real wallets, production authentication, real-time multiplayer and airdrop event settlement are not connected.
+
+- Deployment packaging: TYCOON omits the unreferenced 4.19 MiB authoring master SVG (retained in source) and stages only the TYCOON build at `dist/client`; Bunny output omits unused new-brand assets.

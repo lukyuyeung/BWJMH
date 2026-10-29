@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "npm run build:bunny && npm run build:tycoon",
+    "build": "npm run build:bunny && npm run build:tycoon && npm run stage:tycoon",
     "typecheck": "tsc --noEmit",
     "dev": "vite --mode bunny --host 127.0.0.1 --port 5185",
     "dev:bunny": "vite --mode bunny --host 127.0.0.1 --port 5185",
@@ -14,7 +14,9 @@
     "preview:bunny": "vite preview --mode bunny --host 127.0.0.1 --port 4185",
     "preview:tycoon": "vite preview --mode tycoon --host 127.0.0.1 --port 4186",
     "test:brands": "node --test branding/branding.test.mjs",
-    "test:built-brands": "node branding/check-builds.mjs"
+    "test:built-brands": "node branding/check-builds.mjs",
+    "stage:tycoon": "node branding/stage-tycoon.mjs",
+    "build:deploy": "npm run build:tycoon && npm run stage:tycoon"
   },
   "dependencies": {
     "react": "^18.3.1",
