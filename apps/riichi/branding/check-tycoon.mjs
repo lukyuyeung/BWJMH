@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';import {readFileSync,writeFileSync,mkdirSync,cpSync,symlinkSync,existsSync,readdirSync,rmSync} from 'node:fs';import {resolve} from 'node:path';import {execFileSync} from 'node:child_process';import {tycoonSource} from './tycoon-source.mjs';import {transformBrandText,getProfile} from './profiles.mjs';
+const temporary=resolve('../../../..','work/tycoon-compiled-check');rmSync(temporary,{recursive:true,force:true});mkdirSync(temporary,{recursive:true});
+for(const dir of ['src','rules','engine','qa'])cpSync(dir,temporary+'/'+dir,{recursive:true});mkdirSync(temporary+'/public',{recursive:true});cpSync('public/i18n',temporary+'/public/i18n',{recursive:true});cpSync('tsconfig.json',temporary+'/tsconfig.json');symlinkSync(resolve('node_modules'),temporary+'/node_modules','dir');
+function visit(dir){for(const item of readdirSync(dir,{withFileTypes:true})){const path=dir+'/'+item.name;if(item.isDirectory())visit(path);else if(/\.(ts|tsx)$/.test(path))writeFileSync(path,transformBrandText(tycoonSource(readFileSync(path,'utf8'),path),getProfile('tycoon')))}}
+visit(temporary+'/src');visit(temporary+'/rules');execFileSync(resolve('node_modules/.bin/tsc'),['--noEmit','-p',temporary+'/tsconfig.json'],{stdio:'inherit'});
+console.log('PASS: materialized TYCOON source typechecks independently of original source.');

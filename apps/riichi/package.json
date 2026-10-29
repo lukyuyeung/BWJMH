@@ -16,7 +16,8 @@
     "test:brands": "node --test branding/branding.test.mjs",
     "test:built-brands": "node branding/check-builds.mjs",
     "stage:tycoon": "node branding/stage-tycoon.mjs",
-    "build:deploy": "npm run build:tycoon && npm run stage:tycoon"
+    "build:deploy": "npm run build:tycoon && npm run stage:tycoon",
+    "test:tycoon": "node branding/check-tycoon.mjs && node branding/tycoon-game.test.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

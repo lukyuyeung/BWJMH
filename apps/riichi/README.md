@@ -36,7 +36,7 @@ npm run preview:tycoon     # http://127.0.0.1:4186
 
 Sites 發布使用 `npm run build:deploy`，將 TYC∞N 產物準備到標準的 `dist/client/`；預設雙版本 build 也會完成此步驟。原版發布請自行使用 `dist/bunny/`，不會部署到新 TYC∞N 站。
 
-TYC∞N 部署包排除未被遊戲引用的 `bunny-gala-mahjong-master.svg` 美術母版，以符合 Sites 256 MiB 展開上限；該原檔仍保留於源碼。原版產物不打包未使用的 `public/brand/` 新主題素材。實際遊戲牌面、音效與影片保持。
+TYC∞N 部署包排除未被遊戲引用的 `bunny-gala-mahjong-master.svg` 美術母版，以符合 Sites 256 MiB 展開上限；該原檔仍保留於源碼。原版產物不打包未使用的 `public/brand/` 新主題素材。實際遊戲牌面與音效保持；TYC∞N 不播放兔子角色影片。
 
 `dist/bunny/` 與 `dist/tycoon/` 必須分別部署在**不同 origin 的根目錄**。現有來源使用 `/art/`、`/audio/` 等絕對路徑，不能直接當同一網域的兩個子目錄部署。請勿把其中一個產物覆蓋另一個。
 
@@ -47,17 +47,21 @@ TYC∞N 部署包排除未被遊戲引用的 `bunny-gala-mahjong-master.svg` 美
 | 建置模式 | `bunny` | `tycoon` |
 | 輸出 | `dist/bunny` | `dist/tycoon` |
 | 存檔／教學／角色／語言／音效 | 原有 `bunny-*` keys | `tycoon-riichi-*` keys |
-| 大廳 | 原版素材與顏色 | 墨綠金色、TYC∞N Logo、返回賭場入口 |
+| 入口 | 原版大廳 | 直接進牌桌等候補位，無導流大廳 |
 | 遊戲核心 | 共用 `src/`、`engine/`、`rules/` | 同一份 |
 | 錢包、真人伺服器 | 未連接 | 未連接 |
 
-主題設定在 `branding/profiles.mjs`；建置套用在 `branding/vite-plugin.mjs`。原版不轉換字串；TYC∞N 只轉換 UI 與已列明的儲存鍵，保留內部事件名稱及角色識別。既有瀏覽器進度不會自動搬到 TYC∞N，也不會把原版進度當成賭場積分。
+主題設定在 `branding/profiles.mjs`；建置套用在 `branding/vite-plugin.mjs`。原版不轉換字串；TYC∞N 使用獨立入口、UI／素材與和牌展示時間線，並隔離已列明的儲存鍵，保留內部事件名稱及角色識別。既有瀏覽器進度不會自動搬到 TYC∞N，也不會把原版進度當成賭場積分。
 
-`public/brand/tycoon.css`、`tycoon.js` 與 `public/brand/` 圖片是換皮入口。現階段重用原有角色、牌桌及教學圖片；燒錄在舊圖／影片上的文字並未冒充已全部換成 TYC∞N。沒有重新生成原日麻角色或改動規則引擎。
+TYC∞N 入口在 `src/tycoon-entry.ts`。同一房間保留獨立存檔；空位每 3 秒加入一個雀聖級 AI，正常載入下約 10.5 秒開始準備開局，網絡／WebGL 失敗會顯示重試。對手隨機中文名字、保留 AI 標示、頭像空白。僅東風局，未接真人配對或資產。
+
+`branding/tycoon-source.mjs` 在建置時套用 TYC∞N 專屬呈現：移除兔掌、角色／表情／截圖教學與影片；保留非角色宣告旗幟、牌面、實際役種與分數。立體桌框使用古銅及香檳金，墨綠桌氈；自摸／榮和 → 實際手牌翻開 → 級別演出 → 原有逐項計役。原版模組原檔、原版時間線與素材不改動。
+
+Casino 與遊戲透過受限 `postMessage` 回報本機牌桌座位。僅接受指定遊戲 origin 及已開啟視窗的 source；回報逾 7 秒失效歸零。這是此瀏覽器的房間狀態，並非全球線上人數，不可作錢包、空投或多人同步的可信來源。好友房代碼也僅隔離本機牌桌，跨裝置連線尚未實作。
 
 ## 下一階段：真正接入賭場
 
-目前 v103 是瀏覽器本地 **單人 Bot 練習**，包含原有九課教學。真人入口仍保持未開放，不會扣 USDT / $BUNNY、不產生 $TYCOON 或 Season 1 積分。
+共用 v103 核心仍是瀏覽器本地 **單人 Bot 對局**；原版保留九課教學，TYC∞N 只提供簡潔文字操作指南。真人入口仍保持未開放，不會扣 USDT / $BUNNY、不產生 $TYCOON 或 Season 1 積分。
 
 正式接入需要另外設計：Privy 身份換取遊戲 session、服務端權威牌局／配桌、資金凍結及結算、事件防重放與對帳，以及由服務端認定的 Season 活動事件。`postMessage`、query string、localStorage 與這個本機 Bot 引擎都不是資金或空投的可信來源。
 
