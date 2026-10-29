@@ -259,7 +259,7 @@ export function PhysicalTable({game,hover,riichiTiles,opening,concealedDrawId}:{
    // Project only winner tile meshes, including their actual seat orientation.
    const litTiles=boardTiles.children.filter(o=>o.name==='winning-hand'&&o.userData.seat===winner);
    const bounds=(objects:T.Object3D[])=>{const points:{x:number;y:number}[]=[];for(const object of objects){object.updateWorldMatrix(true,true);const box=new T.Box3().setFromObject(object);for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const v=new T.Vector3(x,y,z).project(camera);points.push({x:(v.x+1)*renderWidth/2-panorama,y:(1-v.y)*H/2})}}if(!points.length)return null;return {left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))}};
-   if((h as any).academyEight){root!.dataset.teachingLayout=JSON.stringify(boardTiles.children.filter(o=>o.name==='river').map(o=>({id:o.userData.tileId,seat:o.userData.seat,...bounds([o])})));}
+   if((h as any).academyEight||(h as any).academyNine){root!.dataset.teachingLayout=JSON.stringify(boardTiles.children.filter(o=>o.name==='river').map(o=>({id:o.userData.tileId,seat:o.userData.seat,...bounds([o])})));}
    for(let index=0;index<Math.max(wins.length,1+extraWinnerLights.length);index++){
     if(index>0&&!extraWinnerLights[index-1]){const light=createWinnerLight();stage!.append(light);extraWinnerLights.push(light)}
     const light=index===0?winnerLight:extraWinnerLights[index-1]!,win=wins[index],tier=impactTier&&win?winImpactTier({...game,hand:{...h,result:win}}):null;

@@ -8,7 +8,7 @@ import type {Game,Seat} from './main.js';
 const seats:Seat[]=['east','south','west','north'];
 const names=['玩家','黑帽T兔','忍者兔','魔法兔'];
 const portraits=['CHARACTER_PLAYER_YELLOW_BUNNY_MASTER.png','CHARACTER_KING_MASTER.jpeg','CHARACTER_NINJA_MASTER.jpeg','CHARACTER_WIZARD_MASTER.jpeg'];
-export function ScoreTransition({game,ranking,onRanking,onClose,onNext,onRestart,reduce=false}:{game:Game;ranking:boolean;reduce?:boolean;onRanking:()=>void;onClose:()=>void;onNext:()=>void;onRestart:()=>void}){
+export function ScoreTransition({game,ranking,onRanking,onClose,onNext,onRestart,reduce=false,nextLabel='下一局 →'}:{game:Game;ranking:boolean;reduce?:boolean;nextLabel?:string;onRanking:()=>void;onClose:()=>void;onNext:()=>void;onRestart:()=>void}){
  useScoreAudio(game,ranking);
  const r=game.room,h=game.hand,order=Array.from({length:4},(_,i)=>seats[(seats.indexOf(game.you.seat)+i)%4]!),ranked=r.finalRanking??[...seats].sort((a,b)=>r.scores[b]-r.scores[a]||seats.indexOf(a)-seats.indexOf(b));
  const [progress,setProgress]=useState(0);
@@ -31,7 +31,7 @@ export function ScoreTransition({game,ranking,onRanking,onClose,onNext,onRestart
   })}</svg>}
 
   {order.map((seat,i)=>{const delta=h.settlement?.scoreChanges[seat]??0,oldRank=beforeRank.indexOf(seat)+1,newRank=ranked.indexOf(seat)+1,shownRank=rankReady?newRank:oldRank;return <article className={'simple-score-seat simple-seat-'+i+((h.results??(h.result?[h.result]:[])).some(r=>r.winner===seat)?' score-winner':'')} data-you={seat===game.you.seat||undefined} data-seat={seat} data-rank={shownRank} key={seat} aria-label={label(seat)+'點數變動'}><span key={shownRank} className={'live-rank'+(rankReady&&oldRank!==newRank?' rank-changed':'')} aria-label={'第'+shownRank+'位'}><img src={'/art/results/rankings/place-'+shownRank+'.svg'} alt={shownRank+'位'}/></span><img className="score-portrait" src={characterAvatar(seatCharacter(game,seat))} alt=""/><span className="simple-score-person"><b>{wind(seat)}</b>{label(seat)}</span>{!h.result&&<span className={'draw-seat-status '+(h.abortiveReason?'neutral':h.settlement?.tenpai.includes(seat)?'tenpai':'noten')}>{h.settlement?.nagashi?.length?(h.settlement.nagashi.includes(seat)?'流局滿貫':'支付滿貫'):h.abortiveReason==='triple_ron'?'三家榮和流局':h.abortiveReason==='bankruptcy'?'零點終局':h.abortiveReason?'中途流局':h.settlement?.tenpai.includes(seat)?'聽牌':'未聽牌'}</span>}<strong>{Math.round(r.scores[seat]-delta*(1-countProgress)).toLocaleString()}</strong><em style={{opacity:progress>.1?1:0}} className={delta>0?'positive':delta<0?'negative':''}>{delta>0?'+':''}{delta.toLocaleString()}</em></article>})}
-  <footer><span>{progress<.72?'點數轉移中':progress<1?'名次更新中':'點數已更新'}{(h.settlement?.awardedPot??0)>0?' · 供託 '+(h.settlement?.awardedPot??0).toLocaleString():''}</span>{r.resultFlow?<span>等待同步進入{r.match.finished?'終局排名':'下一局'}</span>:r.match.finished?<button data-action="show-ranking" disabled={progress<1} onClick={onRanking}>終局排名 →</button>:<button data-action="next-hand" disabled={progress<1} onClick={onNext}>下一局 →</button>}</footer>
+  <footer><span>{progress<.72?'點數轉移中':progress<1?'名次更新中':'點數已更新'}{(h.settlement?.awardedPot??0)>0?' · 供託 '+(h.settlement?.awardedPot??0).toLocaleString():''}</span>{r.resultFlow?<span>等待同步進入{r.match.finished?'終局排名':'下一局'}</span>:r.match.finished?<button data-action="show-ranking" disabled={progress<1} onClick={onRanking}>終局排名 →</button>:<button data-action="next-hand" disabled={progress<1} onClick={onNext}>{nextLabel}</button>}</footer>
  </section>;
  return <FinalRanking game={game} onRestart={onRestart}/>;
 }

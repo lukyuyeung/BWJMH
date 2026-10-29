@@ -1,0 +1,18 @@
+
+> bunny-gala-table-demo@1.0.0 build
+> node scripts/build-character-catalog.mjs && node scripts/build-hand-preview.mjs && vite build
+
+vite v6.4.5 building for production...
+transforming...
+✓ 189 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     1.45 kB │ gzip:   0.90 kB
+dist/assets/index-DINZUMVj.css    365.39 kB │ gzip:  90.50 kB
+dist/assets/index-tE3RME7y.js   1,229.24 kB │ gzip: 359.99 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.56s

@@ -1,6 +1,6 @@
 # Lesson 9 design: Graduation — Your Turn to Play
 
-Design preview only. The interactive lesson and its reward are not released yet.
+The interactive lesson is live at `/?mode=bot&lesson=9`, including saved checkpoints and a once-only300-carrot practice reward.
 
 Estimated time: about two minutes, without a timer. First completion will award 300 practice carrots. Two short scenarios combine the first eight lessons; this is not a full East-only match.
 
@@ -15,4 +15,4 @@ Hints start with a single objective. Requested hints can reveal the source area,
 
 Use the actual hand positions and projected public-river bounds. Keep hint cards clear of their targets, the center rivers, wait strip and action buttons. Frames must not overlap each other. Do not dim the table.
 
-Completion requires the necessary actions in both scenarios, a manual tsumo declaration and viewing settlement. Checkpoints can be resumed. Lesson progress and Bot saves remain separate. This release provides only the design preview, without a playable Lesson 9 route or completion record.
+Completion requires the necessary actions in both scenarios, a manual tsumo declaration and viewing settlement. Checkpoints can be resumed. Lesson progress and Bot saves remain separate. The playable Lesson9 route includes saved progress, a once-only completion record and a link to beginner character selection.

@@ -3,11 +3,11 @@ import {createWinSequence,sequenceCinematic,type WinSequence} from './win-sequen
 import {responsibilities,winTransfers,nagashiWinners,nagashiTransfers,applyTransfers,type PointTransfer} from './special-settlement';
 import {canDeclareNineTerminals,declareNineTerminals,publicWallSlots,type PublicWallSlot} from '@bunny/riichi-engine';
 import { type CinematicState } from './presentation.js';
-import { chooseBotAction, type BotDifficulty, type BotProfile } from './bot.js';
+import { chooseBotAction, CHARACTER_BOT_PROFILE, type BotDifficulty, type BotProfile } from './bot.js';
 import { visibleCounts, waitPreview } from './assistance.js';
 import { limitPresentation, type PresentationEvent, type PresentationKind } from './presentation.js';
 import { randomInt, randomUUID } from 'node:crypto';
-import { DEFAULT_RULESET, normalizeRuleset, TIER_TURN_MS, type Ruleset } from './rules.js';
+import { DEFAULT_RULESET, normalizeRuleset, TIER_TURN_MS, roomTier, ROOM_TIERS, type Ruleset } from './rules.js';
 import {getLegalDiscardIds,createStandardWall} from '@bunny/riichi-engine';
 import { createMatchState, advanceMatch, calculateNotenPayments, rankScores, type MatchState } from './match.js';
 import { createShuffledWall, dealInitialHands, createHandState, drawTile, discardTile, declareTsumo, declareRon, declareRons, passRon, getTsumoEvaluation, getRiichiDiscardIds, getPlayerWaits, getWinRestrictions, isFuriten, declareRiichiAndDiscard, getClaimOptions, claimChi, claimPon, claimKan, passClaim, declareAnkan, declareKakan, getAnkanTileIds, getKakanTileIds, getVisibleDora, visibleUraIndicators, getBonusDoraForSeat, SEATS, type HandState, type Seat } from '@bunny/riichi-engine';
@@ -194,16 +194,16 @@ export class RoomManager {
     if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');
     if(room.players.length>=4)throw new RoomError('ROOM_FULL','Room is full.');
     const seat=SEATS.find(s=>!room.players.some(p=>p.seat===s)); if(!seat)throw new RoomError('ROOM_FULL','Room is full.');
-    const bot:Player={id:randomUUID(),name:name?.trim()||`Bunny Bot ${room.players.length}`,seat,ready:true,connected:true,resumeToken:randomUUID(),isBot:true,...(character?{character}:{}),botDifficulty:difficulty,botProfile:profile??(['aggressive','balanced','defensive'] as const)[(room.players.length-1)%3]!}; room.players.push(bot); return{room,player:bot};
+    const bot:Player={id:randomUUID(),name:name?.trim()||`Bunny Bot ${room.players.length}`,seat,ready:true,connected:true,resumeToken:randomUUID(),isBot:true,...(character?{character}:{}),botDifficulty:difficulty,botProfile:profile??(character?CHARACTER_BOT_PROFILE[character]:(['aggressive','balanced','defensive'] as const)[(room.players.length-1)%3]!)}; room.players.push(bot); return{room,player:bot};
   }
 
   /** One server-owned pending room per available tier/seat pool; never reset a joining room's clock. */
   matchTimedRoom(name:string,character:unknown='yellow',difficulty:BotDifficulty='medium',now=Date.now()):{room:Room;player:Player}{
     if(!isCharacter(character))throw new RoomError('INVALID_CHARACTER','Unknown character.');
-    if(!['low','medium','high'].includes(difficulty))throw new RoomError('INVALID_TIER','Unknown room tier.');
-    const timeout=TIER_TURN_MS[difficulty],candidate=[...this.rooms.values()].find(r=>r.phase==='lobby'&&r.selectionDeadline!==undefined&&now<r.selectionDeadline&&r.rules.actionTimeoutMs===timeout&&r.players.length<4);
+    if(!ROOM_TIERS.includes(difficulty))throw new RoomError('INVALID_TIER','Unknown room tier.');
+    const timeout=TIER_TURN_MS[difficulty],candidate=[...this.rooms.values()].find(r=>r.phase==='lobby'&&r.selectionDeadline!==undefined&&now<r.selectionDeadline&&roomTier(r.rules)===difficulty&&r.players.length<4);
     const joined=candidate?this.joinRoom(candidate.code,name,now):this.createRoom(name);
-    if(!candidate){this.setRules(joined.room.code,joined.player.id,{actionTimeoutMs:timeout});this.beginTimedEntry(joined.room.code,joined.player.id,now)}
+    if(!candidate){this.setRules(joined.room.code,joined.player.id,{actionTimeoutMs:timeout,tier:difficulty});this.beginTimedEntry(joined.room.code,joined.player.id,now)}
     this.setCharacter(joined.room.code,joined.player.id,character,now);joined.room.revision++;return joined;
   }
   setCharacter(code:string,playerId:string,character:unknown,now=Date.now()):Room{
@@ -221,13 +221,13 @@ export class RoomManager {
   /** Server-owned tick: current choices commit at the deadline, then empty seats become Bots. */
   tickTimedEntry(code:string,now=Date.now()):boolean{
     const room=this.requireRoom(code);if(room.phase!=='lobby'||room.selectionDeadline===undefined||now<room.selectionDeadline)return false;
-    this.entryFillCode=room.code;try{while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??'yellow')),role=CHARACTERS.find(c=>!used.has(c))??'yellow',ms=room.rules.actionTimeoutMs,difficulty=ms===10000?'high':ms===30000?'low':'medium';this.addBot(code,room.hostPlayerId,CHARACTER_NAMES[role],undefined,difficulty,role)}}finally{this.entryFillCode=undefined}
+    this.entryFillCode=room.code;try{while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??'yellow')),role=CHARACTERS.find(c=>!used.has(c))??'yellow',difficulty=roomTier(room.rules);this.addBot(code,room.hostPlayerId,CHARACTER_NAMES[role],undefined,difficulty,role)}}finally{this.entryFillCode=undefined}
     for(const p of room.players){p.character??='yellow';p.ready=true;if(!p.isBot&&!p.connected)p.autoPlay=true;}
     this.startGame(code,room.hostPlayerId,now);room.revision++;return true;
   }
   tickTimedEntries(now=Date.now()):string[]{const changed:string[]=[];for(const room of this.rooms.values())if(this.tickTimedEntry(room.code,now))changed.push(room.code);return changed;}
 
-  fillWithBots(rawCode:string,playerId:string):Room{let room=this.requireRoom(rawCode);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??(p.isBot?({aggressive:'ninja',balanced:'king',defensive:'wizard'} as const)[p.botProfile??'balanced']:'yellow'))),own=room.players.find(p=>p.id===playerId)?.character??'yellow',role=botCharacters(own).find(c=>!used.has(c))??CHARACTERS.find(c=>!used.has(c))??'yellow';room=this.addBot(rawCode,playerId,CHARACTER_NAMES[role],undefined,'medium',role).room;}return room;}
+  fillWithBots(rawCode:string,playerId:string):Room{let room=this.requireRoom(rawCode);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??(p.isBot?({aggressive:'ninja',balanced:'king',defensive:'wizard'} as const)[p.botProfile??'balanced']:'yellow'))),own=room.players.find(p=>p.id===playerId)?.character??'yellow',role=botCharacters(own).find(c=>!used.has(c))??CHARACTERS.find(c=>!used.has(c))??'yellow';room=this.addBot(rawCode,playerId,CHARACTER_NAMES[role],undefined,roomTier(room.rules),role).room;}return room;}
 
   leaveLobby(code:string,playerId:string):Room|null{const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Cannot leave a playing room through lobby leave.');const i=room.players.findIndex(p=>p.id===playerId);if(i<0)throw new RoomError('PLAYER_NOT_FOUND','Player not found in room.');room.players.splice(i,1);if(room.players.length===0){this.rooms.delete(room.code);return null;}if(room.players.every(p=>p.isBot)){this.rooms.delete(room.code);return null;}if(room.hostPlayerId===playerId)room.hostPlayerId=(room.players.find(p=>!p.isBot)??room.players[0])!.id;return room;}
 

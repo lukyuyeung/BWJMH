@@ -26,7 +26,7 @@ import {automaticIntent,defaultOptions,matchingOpponentDiscard,calledPosition,ty
 export type Seat='east'|'south'|'west'|'north';
 export type Tile={id:string;face:string;red:boolean};
 type Player={id:string;name:string;seat:Seat;ready:boolean;connected:boolean;isHost:boolean;isBot:boolean;autoPlay?:boolean;character?:Character;botProfile?:'aggressive'|'balanced'|'defensive'};
-type Room={selection?:{deadline:number;serverNow:number};resultFlow?:{id:string;phase:'report'|'hold'|'scores'|'ranking';deadline:number};rules?:{actionTimeoutMs:number};code:string;phase:'lobby'|'playing';players:Player[];canStart:boolean;scores:Record<Seat,number>;riichiPot:number;match:{roundWind:'east'|'south';handNumber:number;dealer:Seat;honba:number;finished:boolean};finalRanking?:Seat[]};
+type Room={selection?:{deadline:number;serverNow:number};resultFlow?:{id:string;phase:'report'|'hold'|'scores'|'ranking';deadline:number};rules?:{actionTimeoutMs:number;tier?:import('../rules/rules').RoomTier};code:string;phase:'lobby'|'playing';players:Player[];canStart:boolean;scores:Record<Seat,number>;riichiPot:number;match:{roundWind:'east'|'south';handNumber:number;dealer:Seat;honba:number;finished:boolean};finalRanking?:Seat[]};
 export type Game={
  room:Room;
  you:{playerId:string;seat:Seat;hand:Tile[];drawnTileId?:string};

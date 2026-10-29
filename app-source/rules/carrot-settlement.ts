@@ -1,5 +1,5 @@
 import {SEATS,type Seat} from '../engine/deal';
-export const CARROT_ENTRIES=[2500,25000,250000] as const;
+export const CARROT_ENTRIES=[1000,10000,100000,1000000] as const;
 export type CarrotEntry=typeof CARROT_ENTRIES[number];
 /** Pure calculation only. Real lock/pay must be done once by the platform ledger. */
 export function carrotSettlement(entry:CarrotEntry,scores:Record<Seat,number>){
@@ -13,5 +13,5 @@ export function carrotSettlement(entry:CarrotEntry,scores:Record<Seat,number>){
  const payouts=Object.fromEntries(SEATS.map((seat,i)=>[seat,Number(paid[i])])) as Record<Seat,number>,net=Object.fromEntries(SEATS.map(s=>[s,payouts[s]-entry])) as Record<Seat,number>;
  return {entry,totalLocked:entry*4,payouts,net};
 }
-/** 250 units fits the platform's 300-unit per-seat cap in the three supported rooms. */
+/** Lock250 platform units per seat; four room units map to the supported carrot entries. */
 export function entryForUnit(unit:number):CarrotEntry{const entry=unit*250;if(!CARROT_ENTRIES.includes(entry as CarrotEntry))throw Error('Unsupported mahjong room');return entry as CarrotEntry}

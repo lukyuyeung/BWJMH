@@ -1,0 +1,3 @@
+PASS Lesson9 physical136-tile walls; all11 resume checkpoints; wrong/early action guards; real defense,1000-point riichi,9s tsumogiri,8p tsumo, actual yaku/ura and conserved settlement
+PASS four separate matching pools including high/master;30/20/10/10 timeouts; unchanged30s entry; per-tier bot fills and fixed role profiles; pure private/public input; old save inference
+PASS four entry amounts1000/10000/100000/1000000; proportional payout, loss cap and exact zero-sum rounding

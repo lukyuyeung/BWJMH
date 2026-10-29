@@ -1,3 +1,4 @@
+import {roomTier,TIER_ENTRY,TIER_NAME} from '../rules/rules';
 import React from 'react';
 import type {Game,Seat} from './main';
 import {characterAvatar,characterPortrait} from './character-art';
@@ -7,7 +8,7 @@ import './final-ranking-live.css';
 const seats:Seat[]=['east','south','west','north'];
 /** Actual match results use the approved champion-left design. Bot carrots are explicitly estimates. */
 export function FinalRanking({game,onRestart}:{game:Game;onRestart:()=>void}){
- const room=game.room,ranked=room.finalRanking??[...seats].sort((a,b)=>room.scores[b]-room.scores[a]||seats.indexOf(a)-seats.indexOf(b)),winner=ranked[0]!,role=seatCharacter(game,winner),ms=room.rules?.actionTimeoutMs??30000,entry:CarrotEntry=ms===10000?250000:ms===20000?25000:2500,tier=ms===10000?'高級場':ms===20000?'中級場':'新手場';
+ const room=game.room,ranked=room.finalRanking??[...seats].sort((a,b)=>room.scores[b]-room.scores[a]||seats.indexOf(a)-seats.indexOf(b)),winner=ranked[0]!,role=seatCharacter(game,winner),level=roomTier(room.rules??{}),entry:CarrotEntry=TIER_ENTRY[level],tier=TIER_NAME[level];
  let settlement:ReturnType<typeof carrotSettlement>|undefined;try{settlement=carrotSettlement(entry,room.scores)}catch{/* A host must close outstanding deposits before financial estimates. */}
  const name=(s:Seat)=>room.players.find(p=>p.seat===s)?.name??s,signed=(n:number)=>(n>0?'+':'')+n.toLocaleString();
  return <section className="final-ranking-screen" role="dialog" aria-modal="true" aria-label="終局排名" data-design="champion-v2" data-champion={winner}>

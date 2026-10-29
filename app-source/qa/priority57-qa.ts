@@ -21,12 +21,12 @@ for(const order of [['south','east'],['east','south']] as const){const {manager:
  const {manager:m,room:r,id}=fixture('triple');m.ron(r.code,id('east'));m.ron(r.code,id('south'));m.passClaim(r.code,id('west'));assert.equal(r.game!.results!.length,2);assert.equal(r.game!.phase,'won');assertPhysical(r);
 }
 let seed=123456;const random=(max:number)=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed%max};
-for(let i=0;i<2000;i++){const a=random(180000)-40000,b=random(140000)-30000,c=random(120000)-20000;const scores={east:a,south:b,west:c,north:100000-a-b-c};const entry=CARROT_ENTRIES[i%3]!;const result=carrotSettlement(entry,scores);assert.equal(Object.values(result.payouts).reduce((a,b)=>a+b,0),4*entry);assert(Object.values(result.payouts).every(n=>Number.isSafeInteger(n)&&n>=0&&n<=entry*4));}
+for(let i=0;i<2000;i++){const a=random(180000)-40000,b=random(140000)-30000,c=random(120000)-20000;const scores={east:a,south:b,west:c,north:100000-a-b-c};const entry=CARROT_ENTRIES[i%CARROT_ENTRIES.length]!;const result=carrotSettlement(entry,scores);assert.equal(Object.values(result.payouts).reduce((a,b)=>a+b,0),4*entry);assert(Object.values(result.payouts).every(n=>Number.isSafeInteger(n)&&n>=0&&n<=entry*4));}
 {
  const {manager:m,room:r}=fixture('competition');r.players[0]!.autoPlay=true;assert(m.advanceAutoPlay(r.code),'A queued automatic pass is a host-visible change');assert.equal(r.pendingClaims!.responses.east!.kind,'pass');assert.equal(r.game!.phase,'awaiting_claim');assert.equal(m.advanceAutoPlay(r.code),false,'One response only');
 }
 for(const entry of CARROT_ENTRIES){const normal=carrotSettlement(entry,{east:30000,south:20000,west:25000,north:25000});assert.equal(normal.payouts.east,entry*1.2);assert.equal(normal.payouts.south,entry*.8);for(const scores of [{east:-15000,south:15000,west:40000,north:60000},{east:25100,south:24900,west:25000,north:25000},{east:0,south:33333,west:33333,north:33334}]){const p=carrotSettlement(entry,scores);assert.equal(Object.values(p.payouts).reduce((a,b)=>a+b,0),4*entry);assert(Object.values(p.payouts).every(n=>Number.isSafeInteger(n)&&n>=0));assert(Object.values(p.net).every(n=>n>=-entry));}assert.equal(entryForUnit(entry/250),entry)}
-assert.throws(()=>carrotSettlement(2500,{east:24000,south:25000,west:25000,north:25000}),/100000/);
+assert.throws(()=>carrotSettlement(1000,{east:24000,south:25000,west:25000,north:25000}),/100000/);
 {
  const {manager:m,room:r,id}=fixture('double');installScenario(m,r,'timer');r.scores={east:1000,south:49000,west:25000,north:25000};r.handStartingScores={...r.scores};m.settleExhaustiveDrawForTesting(r.code,['south']);assert.equal(r.scores.east,0);assert(r.match.finished);assert.throws(()=>m.startNextHand(r.code),/finished/);
 }
