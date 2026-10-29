@@ -11,3 +11,13 @@
 .mangan-eye-band[data-eye-role=yellow]{--eye-y:-44%}.mangan-eye-band[data-eye-role=yellow] img{width:140%;left:-26%;transform:translateY(-44%);transform-origin:50% 44%;animation-name:hoodie-eyes-track!important}@keyframes hoodie-eyes-track{from{transform:translate(12px,-44%) scale(1.025)}to{transform:translate(-5px,-44%)}}
 .mangan-eye-band[data-eye-role=yellow]{--eye-y:-41.5%}.mangan-eye-band[data-eye-role=yellow] img{left:-30%;transform:translateY(-41.5%)}@keyframes hoodie-eyes-track{from{transform:translate(12px,-41.5%) scale(1.025)}to{transform:translate(-5px,-41.5%)}}
 .mangan-eye-band .eye-backup{width:180%!important;left:-47%!important;top:50%!important;height:auto;transform:translateY(-53%)!important;animation:none!important;image-rendering:pixelated}.ribbon-pose-backup{position:absolute;object-fit:contain;pointer-events:none}
+
+.plain-call-status{position:absolute;z-index:1700;left:50%;top:36%;transform:translate(-50%,-50%);padding:12px 28px;background:#171c1eeb;border:1px solid #d8b56b;color:#ffecd0;font-size:30px;border-radius:8px;pointer-events:none}
+.mangan-art-screen[data-cinematic=false] .mangan-art-background,.mangan-art-screen[data-cinematic=false] .mangan-art-hit{display:none!important}
+.mangan-art-screen[data-cinematic=false] .mangan-art-hand{opacity:1!important;transform:none!important;animation:none!important}
+html[data-pref-flash=false] .mangan-art-background,html[data-pref-flash=false] .mangan-art-hand,html[data-pref-flash=false] .mangan-eye-band{animation:none!important}
+html[data-pref-dim=false] .win-call-screen{background:transparent!important}
+
+html[data-pref-dim=false] .phone-stage .win-call-announcement{background:transparent!important}
+
+.global-cinematic[data-cinematic=false]>img,.global-cinematic[data-cinematic=false] .cinematic-winner{display:none}.global-cinematic[data-cinematic=false]{background:#111b19ed}.global-cinematic[data-cinematic=false] .cinematic-title{animation:none!important;opacity:1!important}html[data-pref-dim=false] .global-cinematic[data-cinematic=false]{background:transparent}

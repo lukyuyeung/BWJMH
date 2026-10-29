@@ -1,4 +1,5 @@
 export const academyEn={
+  "動畫與音效逐項設定":"Animation and sound preferences",
   "第八課：出牌與防守入門": "Lesson 8: Discards and Defense",
   "先留容易組合的牌": "Keep useful tile shapes",
   "孤張打出，搭子保留": "Discard the isolated tile",

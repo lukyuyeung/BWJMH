@@ -1,3 +1,4 @@
+import {pref,usePreferences} from './preferences';
 import {FinalRanking} from './final-ranking';
 import {characterAvatar,characterPortrait} from './character-art';
 import {useScoreAudio} from './game-audio';
@@ -14,7 +15,7 @@ export function ScoreTransition({game,ranking,onRanking,onClose,onNext,onRestart
  const [progress,setProgress]=useState(0);
  useEffect(()=>{if(reduce||ranking||matchMedia('(prefers-reduced-motion: reduce)').matches){setProgress(1);return}const start=performance.now(),offset=h.timeout.serverNow-Date.now();let frame=0;const step=()=>{const t=r.resultFlow?Math.max(0,Math.min(1,(Date.now()+offset-(r.resultFlow.deadline-3000))/2800)):Math.min(1,(performance.now()-start)/3200);setProgress(t);if(t<1)frame=requestAnimationFrame(step)};setProgress(0);frame=requestAnimationFrame(step);const finish=window.setTimeout(()=>setProgress(1),r.resultFlow?2850:3300);return()=>{cancelAnimationFrame(frame);clearTimeout(finish)}},[ranking,h.match.roundWind,h.match.handNumber,h.match.honba,reduce]);
  const label=(seat:Seat)=>r.players.find(p=>p.seat===seat)?.name??names[order.indexOf(seat)],relative=(seat:Seat)=>order.indexOf(seat),wind=(seat:Seat)=>['東','南','西','北'][(seats.indexOf(seat)-seats.indexOf(h.match.dealer)+4)%4];
- const quiet=reduce||matchMedia('(prefers-reduced-motion: reduce)').matches;
+ usePreferences();const quiet=reduce||!pref('scoreMotion')||matchMedia('(prefers-reduced-motion: reduce)').matches;
  const countTime=Math.max(0,Math.min(1,(progress-.18)/.52)),countProgress=quiet?1:1-Math.pow(1-countTime,3);
  const rankReady=quiet||progress>=.86;
  const beforeRank=[...seats].sort((a,b)=>(r.scores[b]-(h.settlement?.scoreChanges[b]??0))-(r.scores[a]-(h.settlement?.scoreChanges[a]??0))||seats.indexOf(a)-seats.indexOf(b));

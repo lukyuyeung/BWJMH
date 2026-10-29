@@ -227,7 +227,7 @@ export class RoomManager {
   }
   tickTimedEntries(now=Date.now()):string[]{const changed:string[]=[];for(const room of this.rooms.values())if(this.tickTimedEntry(room.code,now))changed.push(room.code);return changed;}
 
-  fillWithBots(rawCode:string,playerId:string):Room{let room=this.requireRoom(rawCode);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??(p.isBot?({aggressive:'ninja',balanced:'king',defensive:'wizard'} as const)[p.botProfile??'balanced']:'yellow'))),own=room.players.find(p=>p.id===playerId)?.character??'yellow',role=botCharacters(own).find(c=>!used.has(c))??CHARACTERS.find(c=>!used.has(c))??'yellow';room=this.addBot(rawCode,playerId,CHARACTER_NAMES[role],undefined,roomTier(room.rules),role).room;}return room;}
+  fillWithBots(rawCode:string,playerId:string):Room{let room=this.requireRoom(rawCode);if(room.hostPlayerId!==playerId)throw new RoomError('HOST_ONLY','Only the host can add bots.');if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Bots can only be added in the lobby.');while(room.players.length<4){const used=new Set(room.players.map(p=>p.character??(p.isBot?({aggressive:'king',balanced:'yellow',defensive:'ninja',value:'wizard'} as const)[p.botProfile??'balanced']:'yellow'))),own=room.players.find(p=>p.id===playerId)?.character??'yellow',role=botCharacters(own).find(c=>!used.has(c))??CHARACTERS.find(c=>!used.has(c))??'yellow';room=this.addBot(rawCode,playerId,CHARACTER_NAMES[role],undefined,roomTier(room.rules),role).room;}return room;}
 
   leaveLobby(code:string,playerId:string):Room|null{const room=this.requireRoom(code);if(room.phase!=='lobby')throw new RoomError('GAME_ALREADY_STARTED','Cannot leave a playing room through lobby leave.');const i=room.players.findIndex(p=>p.id===playerId);if(i<0)throw new RoomError('PLAYER_NOT_FOUND','Player not found in room.');room.players.splice(i,1);if(room.players.length===0){this.rooms.delete(room.code);return null;}if(room.players.every(p=>p.isBot)){this.rooms.delete(room.code);return null;}if(room.hostPlayerId===playerId)room.hostPlayerId=(room.players.find(p=>!p.isBot)??room.players[0])!.id;return room;}
 
@@ -546,7 +546,7 @@ export function toPublicRoomState(room: Room): PublicRoomState {
       autoPlay:!!player.autoPlay,
       isHost: player.id === room.hostPlayerId,
       isBot: Boolean(player.isBot),
-      character:player.character??(player.isBot?({aggressive:'ninja',balanced:'king',defensive:'wizard'} as const)[player.botProfile??'balanced']:'yellow'),
+      character:player.character??(player.isBot?({aggressive:'king',balanced:'yellow',defensive:'ninja',value:'wizard'} as const)[player.botProfile??'balanced']:'yellow'),
       ...(player.botProfile?{botProfile:player.botProfile}:{}),
       ...(player.botDifficulty?{botDifficulty:player.botDifficulty}:{}),
     })),
