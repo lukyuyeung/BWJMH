@@ -1,5 +1,5 @@
 import {en as baseEn} from './en.js';
-import {academyEn} from './academy-en.js?v=101';
+import {academyEn} from './academy-en.js?v=102';
 const en={...baseEn,...academyEn};
 let language='zh';try{language=localStorage.getItem('bunny-language')==='en'?'en':'zh'}catch{}
 const listeners=new Set();export const getLanguage=()=>language;export const subscribe=fn=>{listeners.add(fn);return()=>listeners.delete(fn)};

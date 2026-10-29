@@ -1,4 +1,17 @@
 export const academyEn={
+ "請先完成第 1 課":"Complete Lesson 1 first",
+ "請先完成第 2 課":"Complete Lesson 2 first",
+ "請先完成第 3 課":"Complete Lesson 3 first",
+ "請先完成第 4 課":"Complete Lesson 4 first",
+ "請先完成第 5 課":"Complete Lesson 5 first",
+ "請先完成第 6 課":"Complete Lesson 6 first",
+ "請先完成第 7 課":"Complete Lesson 7 first",
+ "請先完成第 8 課":"Complete Lesson 8 first",
+
+ "左右滑動瀏覽課程":"Swipe left or right to browse lessons",
+ "上一頁課程":"Previous lessons",
+ "下一頁課程":"Next lessons",
+ "橫向課程列表":"Horizontal lesson list",
   "動畫與音效逐項設定":"Animation and sound preferences",
   "第八課：出牌與防守入門": "Lesson 8: Discards and Defense",
   "先留容易組合的牌": "Keep useful tile shapes",
