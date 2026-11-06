@@ -1,13 +1,17 @@
 # 額外狀態、方向及來源保留檔
 
-主清單以外的獨立狀態與來源檔；橫屏稿目前擱置。
+[最新牌桌與發牌器修正](PORTRAIT_GRID_UPDATE.md)。橫屏稿維持擱置。
 
 |檔案|原生尺寸|預覽|
 |---|---|---|
 |[brand/bunny-gala-logo.png](brand/bunny-gala-logo.png)|1536×1024|<img src="brand/bunny-gala-logo.png" width="150" alt="獨立檔案">|
+|[cards/back-dealer-fit.png](cards/back-dealer-fit.png)|1536×1024|<img src="cards/back-dealer-fit.png" width="150" alt="獨立檔案">|
+|[cards/layers/card-slot-rim-v2.png](cards/layers/card-slot-rim-v2.png)|1085×1449|<img src="cards/layers/card-slot-rim-v2.png" width="150" alt="獨立檔案">|
+|[dealer/outlet-rim-v2.png](dealer/outlet-rim-v2.png)|1536×1024|<img src="dealer/outlet-rim-v2.png" width="150" alt="獨立檔案">|
 |[presentation/game-tile/official-brand.png](presentation/game-tile/official-brand.png)|1536×1024|<img src="presentation/game-tile/official-brand.png" width="150" alt="獨立檔案">|
 |[presentation/loading-screen/official-brand.png](presentation/loading-screen/official-brand.png)|1536×1024|<img src="presentation/loading-screen/official-brand.png" width="150" alt="獨立檔案">|
 |[presentation/share-cover/official-brand.png](presentation/share-cover/official-brand.png)|1536×1024|<img src="presentation/share-cover/official-brand.png" width="150" alt="獨立檔案">|
+|[scene/board-inset.png](scene/board-inset.png)|1213×1296|<img src="scene/board-inset.png" width="150" alt="獨立檔案">|
 |[screens/auto-settings/layout-landscape.png](screens/auto-settings/layout-landscape.png)|1672×941|<img src="screens/auto-settings/layout-landscape.png" width="150" alt="獨立檔案">|
 |[screens/bet-selector/layout-landscape.png](screens/bet-selector/layout-landscape.png)|1672×941|<img src="screens/bet-selector/layout-landscape.png" width="150" alt="獨立檔案">|
 |[screens/calculation-example/layout-landscape.png](screens/calculation-example/layout-landscape.png)|1672×941|<img src="screens/calculation-example/layout-landscape.png" width="150" alt="獨立檔案">|

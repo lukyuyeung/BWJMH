@@ -69,7 +69,7 @@ ART-067,場景與盤面,遠景柔光,scene/ambient-light.png,各方向對應尺�
 ART-068,場景與盤面,左側BUNNY GALA旗,scene/flag-left.png,按1080直屏／1920橫屏版面定稿,旗布／旗杆／字樣,標準／方向適配,,獨立設計候選稿；未正式驗收,本批尚未整批實裝,P0,移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA,../07_Independent_Art/scene/flag-left.png,獨立設計候選稿
 ART-069,場景與盤面,右側BUNNY GALA旗,scene/flag-right.png,與左旗視覺重量一致,旗布／旗杆／字樣,標準／方向適配,,獨立設計候選稿；未正式驗收,本批尚未整批實裝,P0,移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA,../07_Independent_Art/scene/flag-right.png,獨立設計候選稿
 ART-070,場景與盤面,盤面外框,scene/board-frame.png,5×4盤面，19張牌框＋CARROT名義格,透明框，中心透明,標準／方向適配,,獨立設計候選稿；未正式驗收,本批尚未整批實裝,P0,移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA,../07_Independent_Art/scene/board-frame.png,獨立設計候選稿
-ART-071,場景與盤面,盤面內襯,scene/board-inset.png,與外框對齊,紫黑底，不用綠色,標準／方向適配,,獨立設計候選稿；未正式驗收,本批尚未整批實裝,P0,移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA,../07_Independent_Art/scene/board-inset.png,獨立設計候選稿
+ART-071,場景與盤面,盤面內襯,scene/board-inset.png,與外框對齊,紫黑底，不用綠色,標準／方向適配,,獨立設計候選稿；未正式驗收,與20個獨立卡槽及共同五欄座標組合,P0,移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA,../07_Independent_Art/scene/board-felt-v2.png,新底板已實裝直屏
 ART-072,場景與盤面,盤面遮罩,scene/board-mask.png,與盤框對齊,發牌與補牌裁切遮罩,標準／方向適配,,獨立設計候選稿；未正式驗收,本批尚未整批實裝,P0,移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA,../07_Independent_Art/scene/board-mask.png,獨立設計候選稿
 ART-073,發牌器,機身,dealer/housing.png,五口橫條；按主畫面定稿尺寸×2輸出,獨立透明層；附5個出牌錨點,待機,,獨立設計候選稿；未正式驗收,本批尚未整批實裝,P0,卡槽對齊五列；不加人類荷官；使用原BACK,../07_Independent_Art/dealer/housing.png,獨立設計候選稿
 ART-074,發牌器,上蓋,dealer/lid.png,五口橫條；按主畫面定稿尺寸×2輸出,獨立透明層；附5個出牌錨點,待機／啟動,,獨立設計候選稿；未正式驗收,本批尚未整批實裝,P0,卡槽對齊五列；不加人類荷官；使用原BACK,../07_Independent_Art/dealer/lid.png,獨立設計候選稿

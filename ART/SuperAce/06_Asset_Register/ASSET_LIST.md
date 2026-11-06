@@ -118,7 +118,7 @@
 |ART-068 · 左側BUNNY GALA旗 · P0|[檔案](../07_Independent_Art/scene/flag-left.png)|按1080直屏／1920橫屏版面定稿<br>旗布／旗杆／字樣<br>標準／方向適配|獨立設計候選稿；未正式驗收<br>本批尚未整批實裝|
 |ART-069 · 右側BUNNY GALA旗 · P0|[檔案](../07_Independent_Art/scene/flag-right.png)|與左旗視覺重量一致<br>旗布／旗杆／字樣<br>標準／方向適配|獨立設計候選稿；未正式驗收<br>本批尚未整批實裝|
 |ART-070 · 盤面外框 · P0|[檔案](../07_Independent_Art/scene/board-frame.png)|5×4盤面，19張牌框＋CARROT名義格<br>透明框，中心透明<br>標準／方向適配|獨立設計候選稿；未正式驗收<br>本批尚未整批實裝|
-|ART-071 · 盤面內襯 · P0|[檔案](../07_Independent_Art/scene/board-inset.png)|與外框對齊<br>紫黑底，不用綠色<br>標準／方向適配|獨立設計候選稿；未正式驗收<br>本批尚未整批實裝|
+|ART-071 · 盤面內襯 · P0|[檔案](../07_Independent_Art/scene/board-felt-v2.png)|與外框對齊<br>紫黑底，不用綠色<br>標準／方向適配|獨立設計候選稿；未正式驗收<br>本批尚未整批實裝|
 |ART-072 · 盤面遮罩 · P0|[檔案](../07_Independent_Art/scene/board-mask.png)|與盤框對齊<br>發牌與補牌裁切遮罩<br>標準／方向適配|獨立設計候選稿；未正式驗收<br>本批尚未整批實裝|
 
 ## 發牌器

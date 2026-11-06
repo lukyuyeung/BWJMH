@@ -1,0 +1,50 @@
+[
+  {
+    "parent_id": "ART-002",
+    "file": "cards/back-dealer-fit.png",
+    "runtime_file": "assets/art/v2/dealer-back-fit.png",
+    "source_generated_file": "exec-43a309fa-fac7-4f68-9005-307147c0e045.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGB",
+    "sha256": "9455d81b5da565adfd0d78888961a0f76de5e5a35f3e7c4170b8ff8d3fed3283"
+  },
+  {
+    "parent_id": "ART-071",
+    "file": "scene/board-felt-v2.png",
+    "runtime_file": "assets/art/v2/board-felt.png",
+    "source_generated_file": "exec-f9472e15-063e-4f96-a136-495ef3ecdad5.png",
+    "width": 1196,
+    "height": 1315,
+    "mode": "RGB",
+    "sha256": "ad828de14f51a8998009c3ee486652396af3f95603037e6cf342b0824b7ba6fd"
+  },
+  {
+    "parent_id": "ART-026",
+    "file": "cards/layers/card-slot-rim-v2.png",
+    "runtime_file": "assets/art/v2/card-slot-rim.png",
+    "source_generated_file": "exec-976c987e-f8cf-4d15-8235-483964422e86.png",
+    "width": 1085,
+    "height": 1449,
+    "mode": "RGBA",
+    "sha256": "64b948daf3f5b5667c2585463dbf6a66bac658832c358c5a88bc0fa9a23d440d",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "parent_id": "ART-075",
+    "file": "dealer/outlet-rim-v2.png",
+    "runtime_file": "assets/art/v2/dealer-outlet-rim.png",
+    "source_generated_file": "exec-50dd5346-ec1c-4840-bb46-6024c6d49a27.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "sha256": "f28a4e15ca1bcf508495350b9a830ec38b19060fa2cc69ab8c06664815b4d58e",
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  }
+]

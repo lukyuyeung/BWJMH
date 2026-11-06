@@ -1779,29 +1779,26 @@
     "id": "ART-071",
     "group": "場景與盤面",
     "name": "盤面內襯",
-    "file": "scene/board-inset.png",
-    "status": "獨立設計候選稿",
-    "implementation": "尚未把本批全部資產實裝到遊戲",
-    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 1213x1296; mode RGBA. Alpha range (0, 255); bbox (0, 0, 1212, 1296).",
-    "sha256": "ecfe336d77e650e2a923930e04cafb4a728224b7d383d759dbe462c67bd82733",
-    "bytes": 2097587,
+    "file": "scene/board-felt-v2.png",
+    "status": "新底板已實裝直屏",
+    "implementation": "深梅紫毛氈底板；20卡槽由獨立邊框組成",
+    "notes": "材質不烘焙格線；每格位置、尺寸及間距以共同五欄座標排版，原版board-inset另存。",
+    "sha256": "ad828de14f51a8998009c3ee486652396af3f95603037e6cf342b0824b7ba6fd",
+    "bytes": 2396727,
     "expected_size": "與外框對齊",
     "registered_file": "scene/board-inset.png",
     "source": "exec-7827995b-1834-418c-be9d-19649dac7a74.png",
-    "width": 1213,
-    "height": 1296,
-    "mode": "RGBA",
-    "alpha_extrema": [
-      0,
-      255
-    ],
+    "width": 1196,
+    "height": 1315,
+    "mode": "RGB",
+    "alpha_extrema": null,
     "visible_bounds": [
       0,
       0,
-      1212,
-      1296
+      1196,
+      1315
     ],
-    "has_transparent_pixels": true
+    "has_transparent_pixels": false
   },
   {
     "id": "ART-072",

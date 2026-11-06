@@ -111,7 +111,7 @@
     ],
     "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
     "layoutFit": "contain",
-    "activeInPortrait": true
+    "activeInPortrait": false
   },
   {
     "id": "ART-073",
@@ -130,7 +130,7 @@
     ],
     "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
     "layoutFit": "fill-ui-surface",
-    "activeInPortrait": true
+    "activeInPortrait": false
   },
   {
     "id": "ART-089",
@@ -206,7 +206,7 @@
     ],
     "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
     "layoutFit": "fill-ui-surface",
-    "activeInPortrait": true
+    "activeInPortrait": false
   },
   {
     "id": "ART-083",
@@ -1135,5 +1135,45 @@
     "activeInPortrait": true,
     "note": "Overlaid inside the same card bounds; normal-card geometry is unchanged.",
     "viewportUrl": "assets/art/card-gold-overlay.png"
+  },
+  {
+    "id": "ART-002",
+    "source": "cards/back-dealer-fit.png",
+    "url": "assets/art/v2/dealer-back-fit.png",
+    "viewportUrl": "assets/art/v2/dealer-back-fit.png",
+    "activeInPortrait": true,
+    "note": "Shared board width, 4% side padding and identical 4–6px grid gutters. Rim PNGs are embedded unchanged in viewport SVGs."
+  },
+  {
+    "id": "ART-071",
+    "source": "scene/board-felt-v2.png",
+    "url": "assets/art/v2/board-felt.png",
+    "viewportUrl": "assets/art/v2/board-felt.png",
+    "activeInPortrait": true,
+    "note": "Shared board width, 4% side padding and identical 4–6px grid gutters. Rim PNGs are embedded unchanged in viewport SVGs."
+  },
+  {
+    "id": "ART-026",
+    "source": "cards/layers/card-slot-rim-v2.png",
+    "url": "assets/art/v2/card-slot-rim.svg",
+    "viewportUrl": "assets/art/v2/card-slot-rim.svg",
+    "activeInPortrait": true,
+    "note": "Shared board width, 4% side padding and identical 4–6px grid gutters. Rim PNGs are embedded unchanged in viewport SVGs."
+  },
+  {
+    "id": "ART-075",
+    "source": "dealer/outlet-rim-v2.png",
+    "url": "assets/art/v2/dealer-outlet-rim.svg",
+    "viewportUrl": "assets/art/v2/dealer-outlet-rim.svg",
+    "activeInPortrait": true,
+    "note": "Shared board width, 4% side padding and identical 4–6px grid gutters. Rim PNGs are embedded unchanged in viewport SVGs."
+  },
+  {
+    "id": "ART-074",
+    "source": "dealer/lid.png",
+    "url": "assets/art/v2/dealer-carrier.svg",
+    "viewportUrl": "assets/art/v2/dealer-carrier.svg",
+    "activeInPortrait": true,
+    "note": "Unsegmented original carrier artwork; five independent outlets are positioned on the shared grid."
   }
 ]

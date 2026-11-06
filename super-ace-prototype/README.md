@@ -4,7 +4,7 @@
 
 ```sh
 python -m http.server 4173 --directory dist
-node --test engine.test.mjs
+node --test engine.test.mjs playback-clock.test.mjs
 ```
 
 瀏覽http://localhost:4173。已安裝Playwright與Chromium時可執行`node qa/portrait-layout.cjs`；以`PLAYWRIGHT_MODULE`、`CHROMIUM_PATH`及`QA_ORIGIN`指定現有安裝與預覽位置。
@@ -12,3 +12,5 @@ node --test engine.test.mjs
 6個手機視窗尺寸已驗證20張牌、8個可點擊按鈕、至少44px觸控範圍及無頁面捲動；另驗證大額餘額不溢出。AUTO有停止條件，SPEED三段，說明可重看教學；設定可重設本機試玩蘿蔔。
 
 [實裝及驗收紀錄](../ART/SuperAce/07_Independent_Art/IMPLEMENTATION.md)。155項為設計候選交付，完整動畫、共同畫布及全部功能畫面尚需驗收。賠率與隨機權重未經官方核對或商用校準，蘿蔔僅存於localStorage。
+
+[最新牌桌、發牌器與速度修正](../ART/SuperAce/07_Independent_Art/PORTRAIT_GRID_UPDATE.md)。速度驗證請獨立執行`node qa/speed-play.cjs`，避免同時跑其他瀏覽器工作影響時間量測。

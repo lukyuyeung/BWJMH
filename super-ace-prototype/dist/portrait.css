@@ -128,3 +128,23 @@ dialog.auto-modal{height:min(94dvh,540px);padding:20px 18px}
 .auto-modal .form-row input[type=number]{width:74px;min-height:44px}
 .auto-modal .modal-note{padding:0;margin:0;font-size:11px;line-height:1.5}
 .auto-modal .btn-row{margin:0;min-height:44px}
+/* Shared five-column geometry, modular dealer art, and readable card gutters. */
+.game{--card-gap:clamp(4px,1.28vw,6px);--board-pad:4%}
+.multipliers .active{background-image:none;color:#fff7cf;text-shadow:0 0 6px #fff2a6,0 0 14px #ffc34d;position:relative;isolation:isolate}
+.multipliers .active:before{content:'';position:absolute;inset:5% 0;background:radial-gradient(ellipse at center,#ffd26b65 0%,#e49b2730 40%,transparent 72%);z-index:-1;pointer-events:none}
+.dealer{width:var(--board-width,100%);background-image:url('assets/art/v2/dealer-carrier.svg');background-size:100% 100%;position:relative;margin:0 auto}
+.mouths{inset:0 var(--board-pad);gap:var(--card-gap);height:100%;align-items:center}
+.mouth{position:relative;width:100%;height:auto;aspect-ratio:3/2;overflow:hidden;border-radius:3px;background:none;box-shadow:none}
+.mouth img{display:block;width:100%;max-width:none;height:100%;margin:0;object-fit:fill;object-position:center;transform:none;aspect-ratio:auto;image-rendering:auto}
+.mouth:after{content:'';position:absolute;inset:0;background:url('assets/art/v2/dealer-outlet-rim.svg') center/100% 100% no-repeat;pointer-events:none}
+.dealer.dealing .mouth img{animation-name:backFeed}
+@keyframes backFeed{50%{transform:translateY(5%)}}
+.board{padding:var(--board-pad);column-gap:var(--card-gap);row-gap:var(--card-gap);background-image:url('assets/art/v2/board-felt.png');background-size:cover;border-radius:8px}
+.cell:before{content:'';position:absolute;inset:0;background:url('assets/art/v2/card-slot-rim.svg') center/100% 100% no-repeat;pointer-events:none;z-index:5}
+.card{position:absolute;inset:1px;width:auto;height:auto;border-radius:3px;overflow:hidden}
+.card img.art-card{width:100%;height:100%;object-fit:cover}
+.card.special{inset:0;overflow:visible}
+.card.special img.art-card{object-fit:contain}
+.cell.carrot .card img.art-card{width:116%;height:113%;max-width:none;margin-left:-8%;margin-top:-7%;object-fit:contain}
+.card{transition-duration:calc(160ms * var(--motion-scale,1))}
+.cell.anticipate img{animation-duration:calc(1100ms * var(--motion-scale,1))}

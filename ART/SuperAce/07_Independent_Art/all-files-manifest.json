@@ -26,6 +26,15 @@
     ]
   },
   {
+    "file": "cards/back-dealer-fit.png",
+    "bytes": 1089527,
+    "sha256": "9455d81b5da565adfd0d78888961a0f76de5e5a35f3e7c4170b8ff8d3fed3283",
+    "primary_registered_file": false,
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGB"
+  },
+  {
     "file": "cards/back.png",
     "bytes": 371800,
     "sha256": "787cabefd43d50d3892fe042d4d63595b6dc6bcdff1ad4fb5f4b0b60ec28ef58",
@@ -134,6 +143,19 @@
     "alpha_extrema": [
       0,
       144
+    ]
+  },
+  {
+    "file": "cards/layers/card-slot-rim-v2.png",
+    "bytes": 193527,
+    "sha256": "64b948daf3f5b5667c2585463dbf6a66bac658832c358c5a88bc0fa9a23d440d",
+    "primary_registered_file": false,
+    "width": 1085,
+    "height": 1449,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
     ]
   },
   {
@@ -500,6 +522,19 @@
     ]
   },
   {
+    "file": "dealer/outlet-rim-v2.png",
+    "bytes": 1103231,
+    "sha256": "f28a4e15ca1bcf508495350b9a830ec38b19060fa2cc69ab8c06664815b4d58e",
+    "primary_registered_file": false,
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
     "file": "dealer/release-mask.png",
     "bytes": 632169,
     "sha256": "719366cbb5f38f3ebd915d7154203049f06f62931770ff299af641d184ccaa3f",
@@ -809,6 +844,15 @@
     ]
   },
   {
+    "file": "scene/board-felt-v2.png",
+    "bytes": 2396727,
+    "sha256": "ad828de14f51a8998009c3ee486652396af3f95603037e6cf342b0824b7ba6fd",
+    "primary_registered_file": true,
+    "width": 1196,
+    "height": 1315,
+    "mode": "RGB"
+  },
+  {
     "file": "scene/board-frame.png",
     "bytes": 314808,
     "sha256": "0b9a3b0b211c8b73ac6a8b75418ad949d4548a9c764d4358176a583a3bd83592",
@@ -825,7 +869,7 @@
     "file": "scene/board-inset.png",
     "bytes": 2097587,
     "sha256": "ecfe336d77e650e2a923930e04cafb4a728224b7d383d759dbe462c67bd82733",
-    "primary_registered_file": true,
+    "primary_registered_file": false,
     "width": 1213,
     "height": 1296,
     "mode": "RGBA",

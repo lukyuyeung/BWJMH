@@ -1129,11 +1129,11 @@
     "states": "標準／方向適配",
     "source": "",
     "status": "獨立設計候選稿；未正式驗收",
-    "implementation": "本批尚未整批實裝",
+    "implementation": "與20個獨立卡槽及共同五欄座標組合",
     "priority": "P0",
     "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
-    "independent_file": "../07_Independent_Art/scene/board-inset.png",
-    "independent_status": "獨立設計候選稿"
+    "independent_file": "../07_Independent_Art/scene/board-felt-v2.png",
+    "independent_status": "新底板已實裝直屏"
   },
   {
     "id": "ART-072",
