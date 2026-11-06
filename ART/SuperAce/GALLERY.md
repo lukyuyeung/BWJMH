@@ -89,3 +89,7 @@
 ## 90_History/10-initial-ui-board.png
 
 ![10-initial-ui-board](90_History/10-initial-ui-board.png)
+
+## 舊版方形牌布局（已取代）
+
+![舊版](90_History/11-superseded-square-card-layout.png)

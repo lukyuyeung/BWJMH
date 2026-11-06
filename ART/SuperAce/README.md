@@ -12,7 +12,7 @@
 | [WILD 採用方向](01_Cards/03-approved-wild-direction.png) | 金底、天使黑框金字／惡魔紅框金字，同尺寸 | 使用者已確認方向 |
 | [金框與 CARROT](01_Cards/04-gold-overlay-and-carrot-study.png) | 金框疊在牌內、獨立大金蘿蔔 | 舊圖仍寫 SCATTER，正式名稱已改 CARROT；舊 WILD 配色不採用 |
 | [發牌器](02_Dealer/01-dealer-and-motion-study.png) | 五口發牌器與初版動作 | 造型提案；補牌以後續分鏡為準 |
-| [直屏主畫面](04_UI/01-portrait-layout-proposal.png) | 紫金主畫面整合 | 新提案未確認，有已知問題，見下方 |
+| [直屏主畫面](04_UI/01-portrait-layout-proposal.png) | 紫金主畫面、直向長方形牌面 | 已修正方形牌與CARROT底框；仍為視覺提案 |
 | [設定、玩法與教學](04_UI/02-settings-help-tutorial-proposal.png) | 六組視窗 | 新提案；不是正式規則或賠付表 |
 | [免費遊戲與得獎](04_UI/03-free-game-and-rewards-proposal.png) | 六個畫面狀態 | 新提案；盤面縮圖不作規則依據 |
 
@@ -38,7 +38,7 @@
 
 ## 新提案已知問題／待修
 
-- 直屏生成稿的 CARROT 仍被加上矩形底框，與已確認方向不符；正式整合需移除。
+- 直屏已改為直向長方形牌面，CARROT底框已移除；設計目標625:835，正式素材須精準鎖定，生成圖不是像素尺寸驗收依據。
 - 直屏的普通／金牌框與元素比例有漂移；正式版應重用同一底圖，疊加內框。
 - 直屏 WIN0 與示意牌面尚未用判獎程式一致性驗證，不是有效結果範例。
 - 免費遊戲與設定／教學提案的小盤面格數不一致；教學高亮並非有效中獎示範，需用固定5×4盤面重排。

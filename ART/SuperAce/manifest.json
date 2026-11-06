@@ -463,9 +463,9 @@
   },
   {
     "file": "04_UI/01-portrait-layout-proposal.png",
-    "width": 992,
-    "height": 1586,
-    "sha256": "1a74bbeb1403599155bebe51c8c84b381f92059488d96ebd3067ca7bcc79c891",
+    "width": 916,
+    "height": 1717,
+    "sha256": "d3df5b3168e85b37b9a2ca9f57b515cbe3ec1d989a73f5c526df3dd32a1428a5",
     "status": "design-review-not-production"
   },
   {
@@ -550,6 +550,13 @@
     "width": 1536,
     "height": 1024,
     "sha256": "2db5c7c34a271fad250e613eded8d2d116e500f020480fbe0743aa1f9a330d0c",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/11-superseded-square-card-layout.png",
+    "width": 992,
+    "height": 1586,
+    "sha256": "1a74bbeb1403599155bebe51c8c84b381f92059488d96ebd3067ca7bcc79c891",
     "status": "superseded"
   }
 ]
