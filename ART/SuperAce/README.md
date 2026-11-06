@@ -72,3 +72,7 @@
 [試玩版原始碼](../../super-ace-prototype/README.md) · [獨立WILD與CARROT透明PNG](05_Independent_Assets/)
 
 主介面已移除SUPER ACE標題和錯誤底部兔子圖案，旗幟統一BUNNY GALA，CARROT圖與字加大。原型並非所有ART或48項動畫全部完成，詳見原型README。
+
+## 新增獨立資產
+
+[155項獨立設計檔及分類預覽](07_Independent_Art/README.md)。均有實際檔案／字體套件；尚未全部驗收或實裝。

@@ -8,10 +8,12 @@
     "layer": "原檔＋透明輸出版",
     "states": "標準／深色背景",
     "source": "../../../Bunny_Gala_Riichi_v2.7.2/client/public/art/v5/LOGO_MASTER__DO_NOT_REDRAW.png",
-    "status": "原檔存在；正式輸出版待驗收",
-    "implementation": "原型已引用",
+    "status": "原檔保留；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不重畫、不創造替代兔子LOGO"
+    "note": "不重畫、不創造替代兔子LOGO",
+    "independent_file": "../07_Independent_Art/brand/bunny-gala-logo.png",
+    "independent_status": "原檔保留"
   },
   {
     "id": "ART-002",
@@ -22,10 +24,12 @@
     "layer": "原檔；獨立PNG",
     "states": "標準／翻面／發牌時引用",
     "source": "../00_Source/poker/back.png",
-    "status": "原檔存在；正式顯示待驗收",
-    "implementation": "原型已引用",
+    "status": "原檔保留；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "粉黑棋盤、黑蘿蔔及Bunny Warriors原標誌；不改成Bunny Gala卡背"
+    "note": "粉黑棋盤、黑蘿蔔及Bunny Warriors原標誌；不改成Bunny Gala卡背",
+    "independent_file": "../07_Independent_Art/cards/back.png",
+    "independent_status": "原檔保留"
   },
   {
     "id": "ART-003",
@@ -36,10 +40,12 @@
     "layer": "原檔",
     "states": "來源",
     "source": "../00_Source/currency/carrot.png",
-    "status": "原檔存在",
-    "implementation": "原型已引用",
+    "status": "原檔保留；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "貨幣圖示不是免費遊戲大金蘿蔔"
+    "note": "貨幣圖示不是免費遊戲大金蘿蔔",
+    "independent_file": "../07_Independent_Art/currency/carrot-source.png",
+    "independent_status": "原檔保留"
   },
   {
     "id": "ART-004",
@@ -50,10 +56,12 @@
     "layer": "牌底／原角色／左上角字級；另交合成PNG",
     "states": "標準",
     "source": "../00_Source/poker/spades/11.png",
-    "status": "來源存在；正式排版未製作",
-    "implementation": "原型引用來源＋CSS遮蓋，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理"
+    "note": "保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理",
+    "independent_file": "../07_Independent_Art/cards/normal/J.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-005",
@@ -64,10 +72,12 @@
     "layer": "牌底／原角色／左上角字級；另交合成PNG",
     "states": "標準",
     "source": "../00_Source/poker/spades/12.png",
-    "status": "來源存在；正式排版未製作",
-    "implementation": "原型引用來源＋CSS遮蓋，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理"
+    "note": "保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理",
+    "independent_file": "../07_Independent_Art/cards/normal/Q.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-006",
@@ -78,10 +88,12 @@
     "layer": "牌底／原角色／左上角字級；另交合成PNG",
     "states": "標準",
     "source": "../00_Source/poker/spades/13.png",
-    "status": "來源存在；正式排版未製作",
-    "implementation": "原型引用來源＋CSS遮蓋，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理"
+    "note": "保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理",
+    "independent_file": "../07_Independent_Art/cards/normal/K.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-007",
@@ -92,10 +104,12 @@
     "layer": "牌底／原角色／左上角字級；另交合成PNG",
     "states": "標準",
     "source": "../00_Source/poker/spades/1.png",
-    "status": "來源存在；正式排版未製作",
-    "implementation": "原型引用來源＋CSS遮蓋，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理"
+    "note": "保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理",
+    "independent_file": "../07_Independent_Art/cards/normal/A.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-008",
@@ -106,10 +120,12 @@
     "layer": "牌底／花色；合成PNG",
     "states": "標準",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型為文字符號，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "只顯示花色，不帶A；使用正式美術，不依賴系統字體花色"
+    "note": "只顯示花色，不帶A；使用正式美術，不依賴系統字體花色",
+    "independent_file": "../07_Independent_Art/cards/normal/S.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-009",
@@ -120,10 +136,12 @@
     "layer": "牌底／花色；合成PNG",
     "states": "標準",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型為文字符號，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "只顯示花色，不帶A；使用正式美術，不依賴系統字體花色"
+    "note": "只顯示花色，不帶A；使用正式美術，不依賴系統字體花色",
+    "independent_file": "../07_Independent_Art/cards/normal/H.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-010",
@@ -134,10 +152,12 @@
     "layer": "牌底／花色；合成PNG",
     "states": "標準",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型為文字符號，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "只顯示花色，不帶A；使用正式美術，不依賴系統字體花色"
+    "note": "只顯示花色，不帶A；使用正式美術，不依賴系統字體花色",
+    "independent_file": "../07_Independent_Art/cards/normal/C.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-011",
@@ -148,10 +168,12 @@
     "layer": "牌底／花色；合成PNG",
     "states": "標準",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型為文字符號，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "只顯示花色，不帶A；使用正式美術，不依賴系統字體花色"
+    "note": "只顯示花色，不帶A；使用正式美術，不依賴系統字體花色",
+    "independent_file": "../07_Independent_Art/cards/normal/D.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-012",
@@ -162,10 +184,12 @@
     "layer": "共用普通牌主圖／金底／內疊框；合成PNG",
     "states": "標準／中獎掃光",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型CSS混色與內框，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列"
+    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列",
+    "independent_file": "../07_Independent_Art/cards/gold/J.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-013",
@@ -176,10 +200,12 @@
     "layer": "共用普通牌主圖／金底／內疊框；合成PNG",
     "states": "標準／中獎掃光",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型CSS混色與內框，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列"
+    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列",
+    "independent_file": "../07_Independent_Art/cards/gold/Q.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-014",
@@ -190,10 +216,12 @@
     "layer": "共用普通牌主圖／金底／內疊框；合成PNG",
     "states": "標準／中獎掃光",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型CSS混色與內框，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列"
+    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列",
+    "independent_file": "../07_Independent_Art/cards/gold/K.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-015",
@@ -204,10 +232,12 @@
     "layer": "共用普通牌主圖／金底／內疊框；合成PNG",
     "states": "標準／中獎掃光",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型CSS混色與內框，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列"
+    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列",
+    "independent_file": "../07_Independent_Art/cards/gold/A.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-016",
@@ -218,10 +248,12 @@
     "layer": "共用普通牌主圖／金底／內疊框；合成PNG",
     "states": "標準／中獎掃光",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型CSS混色與內框，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列"
+    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列",
+    "independent_file": "../07_Independent_Art/cards/gold/S.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-017",
@@ -232,10 +264,12 @@
     "layer": "共用普通牌主圖／金底／內疊框；合成PNG",
     "states": "標準／中獎掃光",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型CSS混色與內框，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列"
+    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列",
+    "independent_file": "../07_Independent_Art/cards/gold/H.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-018",
@@ -246,10 +280,12 @@
     "layer": "共用普通牌主圖／金底／內疊框；合成PNG",
     "states": "標準／中獎掃光",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型CSS混色與內框，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列"
+    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列",
+    "independent_file": "../07_Independent_Art/cards/gold/C.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-019",
@@ -260,10 +296,12 @@
     "layer": "共用普通牌主圖／金底／內疊框；合成PNG",
     "states": "標準／中獎掃光",
     "source": "",
-    "status": "只有設計稿；正式獨立檔未製作",
-    "implementation": "原型CSS混色與內框，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列"
+    "note": "ON TOP；框不得外延；主圖座標、字級、縮放不得改；金牌只第2–4列",
+    "independent_file": "../07_Independent_Art/cards/gold/D.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-020",
@@ -274,10 +312,12 @@
     "layer": "象牙白底與邊緣",
     "states": "靜態／動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "部分CSS近似，未按正式ART實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/cards/layers/normal-base.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-021",
@@ -288,10 +328,12 @@
     "layer": "金色材質，不污染角色顏色",
     "states": "靜態／動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "部分CSS近似，未按正式ART實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/cards/layers/gold-base.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-022",
@@ -302,10 +344,12 @@
     "layer": "透明內疊框，外尺寸與牌相同",
     "states": "靜態／動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "部分CSS近似，未按正式ART實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/cards/layers/gold-overlay.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-023",
@@ -316,10 +360,12 @@
     "layer": "獨立透明FX",
     "states": "靜態／動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "部分CSS近似，未按正式ART實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/cards/layers/normal-win-glow.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-024",
@@ -330,10 +376,12 @@
     "layer": "獨立遮罩",
     "states": "靜態／動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "部分CSS近似，未按正式ART實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/cards/layers/gold-sweep-mask.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-025",
@@ -344,10 +392,12 @@
     "layer": "陰影獨立",
     "states": "靜態／動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "部分CSS近似，未按正式ART實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/cards/layers/card-shadow.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-026",
@@ -358,10 +408,12 @@
     "layer": "側面薄卡材質",
     "states": "靜態／動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "部分CSS近似，未按正式ART實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/cards/layers/card-edge.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-027",
@@ -372,10 +424,12 @@
     "layer": "金底／黑金內框／角色／字牌",
     "states": "靜態",
     "source": "../05_Independent_Assets/angel.png",
-    "status": "獨立透明PNG候選存在；未正式驗收",
-    "implementation": "原型已引用候選",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "黑框金字；金底不變；不能僅以object-fit掩蓋兩圖內容尺度差異"
+    "note": "黑框金字；金底不變；不能僅以object-fit掩蓋兩圖內容尺度差異",
+    "independent_file": "../07_Independent_Art/wild/angel/card.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-028",
@@ -386,10 +440,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/01.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-029",
@@ -400,10 +456,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/02.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-030",
@@ -414,10 +472,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/03.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-031",
@@ -428,10 +488,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/04.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-032",
@@ -442,10 +504,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/05.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-033",
@@ -456,10 +520,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/06.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-034",
@@ -470,10 +536,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/07.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-035",
@@ -484,10 +552,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/08.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-036",
@@ -498,10 +568,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/09.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-037",
@@ -512,10 +584,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/10.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-038",
@@ -526,10 +600,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/angel/layers/11.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-039",
@@ -540,10 +616,12 @@
     "layer": "金底／黑金內框／角色／字牌",
     "states": "靜態",
     "source": "../05_Independent_Assets/devil.png",
-    "status": "獨立透明PNG候選存在；未正式驗收",
-    "implementation": "原型已引用候選",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "紅框金字；金底不變；不能僅以object-fit掩蓋兩圖內容尺度差異"
+    "note": "紅框金字；金底不變；不能僅以object-fit掩蓋兩圖內容尺度差異",
+    "independent_file": "../07_Independent_Art/wild/devil/card.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-040",
@@ -554,10 +632,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/01.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-041",
@@ -568,10 +648,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/02.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-042",
@@ -582,10 +664,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/03.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-043",
@@ -596,10 +680,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/04.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-044",
@@ -610,10 +696,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/05.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-045",
@@ -624,10 +712,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/06.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-046",
@@ -638,10 +728,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/07.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-047",
@@ -652,10 +744,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/08.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-048",
@@ -666,10 +760,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/09.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-049",
@@ -680,10 +776,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/10.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-050",
@@ -694,10 +792,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/11.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-051",
@@ -708,10 +808,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/12.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-052",
@@ -722,10 +824,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/13.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-053",
@@ -736,10 +840,12 @@
     "layer": "單獨可動圖層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "角色沿用已確認設計，兩者同樣大小及立體質感"
+    "note": "角色沿用已確認設計，兩者同樣大小及立體質感",
+    "independent_file": "../07_Independent_Art/wild/devil/layers/14.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-054",
@@ -750,10 +856,12 @@
     "layer": "本體／葉冠／CARROT字／高光",
     "states": "標準",
     "source": "../05_Independent_Assets/carrot-bonus.png",
-    "status": "獨立透明PNG候選存在；未正式驗收",
-    "implementation": "原型已引用並放大",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不帶撲克牌底框；需在相鄰牌測試後鎖定溢出區"
+    "note": "不帶撲克牌底框；需在相鄰牌測試後鎖定溢出區",
+    "independent_file": "../07_Independent_Art/carrot/bonus.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-055",
@@ -764,10 +872,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/body.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-056",
@@ -778,10 +888,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/leaves.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-057",
@@ -792,10 +904,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/wordmark.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-058",
@@ -806,10 +920,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/gem.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-059",
@@ -820,10 +936,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/contact-shadow.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-060",
@@ -834,10 +952,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/glint-mask.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-061",
@@ -848,10 +968,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/aura.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-062",
@@ -862,10 +984,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/trail.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-063",
@@ -876,10 +1000,12 @@
     "layer": "獨立透明層",
     "states": "動畫引用",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "一律CARROT，不使用SCATTER舊字樣"
+    "note": "一律CARROT，不使用SCATTER舊字樣",
+    "independent_file": "../07_Independent_Art/carrot/layers/trigger-burst.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-064",
@@ -890,10 +1016,12 @@
     "layer": "場景原畫；UI下留靜區",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/portrait-background.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-065",
@@ -904,10 +1032,12 @@
     "layer": "重新構圖，不拉伸直屏",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/landscape-background.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-066",
@@ -918,10 +1048,12 @@
     "layer": "獨立前景",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/foreground.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-067",
@@ -932,10 +1064,12 @@
     "layer": "透明光層",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/ambient-light.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-068",
@@ -946,10 +1080,12 @@
     "layer": "旗布／旗杆／字樣",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/flag-left.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-069",
@@ -960,10 +1096,12 @@
     "layer": "旗布／旗杆／字樣",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/flag-right.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-070",
@@ -974,10 +1112,12 @@
     "layer": "透明框，中心透明",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/board-frame.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-071",
@@ -988,10 +1128,12 @@
     "layer": "紫黑底，不用綠色",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/board-inset.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-072",
@@ -1002,10 +1144,12 @@
     "layer": "發牌與補牌裁切遮罩",
     "states": "標準／方向適配",
     "source": "",
-    "status": "設計稿或來源存在；正式獨立檔未製作",
-    "implementation": "原型圖片背景＋CSS框與旗，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA"
+    "note": "移除SUPER ACE標題、錯誤底部兔子LOGO；旗幟寫BUNNY GALA",
+    "independent_file": "../07_Independent_Art/scene/board-mask.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-073",
@@ -1016,10 +1160,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "待機",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/housing.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-074",
@@ -1030,10 +1176,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "待機／啟動",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/lid.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-075",
@@ -1044,10 +1192,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "發牌遮擋",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/slot-front.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-076",
@@ -1058,10 +1208,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "待機",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/slot-inset.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-077",
@@ -1072,10 +1224,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "待機／減少／補充",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/deck-stack.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-078",
@@ -1086,10 +1240,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "待機",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/deck-edge.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-079",
@@ -1100,10 +1256,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "出牌",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/release-mask.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-080",
@@ -1114,10 +1272,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "熄／待機／啟動",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/indicator.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-081",
@@ -1128,10 +1288,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "待機低頻",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/metal-glint.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-082",
@@ -1142,10 +1304,12 @@
     "layer": "獨立透明層；附5個出牌錨點",
     "states": "卡片穿出",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS近似，需全數替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "卡槽對齊五列；不加人類荷官；使用原BACK"
+    "note": "卡槽對齊五列；不加人類荷官；使用原BACK",
+    "independent_file": "../07_Independent_Art/dealer/front-occluder.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-083",
@@ -1156,10 +1320,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/balance-panel.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-084",
@@ -1170,10 +1336,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/bet-panel.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-085",
@@ -1184,10 +1352,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/win-panel.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-086",
@@ -1198,10 +1368,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/multiplier-rail.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-087",
@@ -1212,10 +1384,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/multiplier-active.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-088",
@@ -1226,10 +1400,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/free-counter.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-089",
@@ -1240,10 +1416,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/status-panel.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-090",
@@ -1254,10 +1432,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/auto-count-badge.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-091",
@@ -1268,10 +1448,12 @@
     "layer": "底板／邊框／圖示；數值用獨立文字",
     "states": "標準／高亮",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔"
+    "note": "數字與文字不烘焙在背景；不得有金幣貨幣替代蘿蔔",
+    "independent_file": "../07_Independent_Art/ui/hud/bet-limit-tooltip.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-092",
@@ -1282,10 +1464,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/spin/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-093",
@@ -1296,10 +1480,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/stop/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-094",
@@ -1310,10 +1496,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/bet-plus/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-095",
@@ -1324,10 +1512,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/bet-minus/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-096",
@@ -1338,10 +1528,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/auto/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-097",
@@ -1352,10 +1544,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/speed-normal/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-098",
@@ -1366,10 +1560,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/speed-fast/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-099",
@@ -1380,10 +1576,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/speed-max/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-100",
@@ -1394,10 +1592,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/info/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-101",
@@ -1408,10 +1608,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P0",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/settings/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-102",
@@ -1422,10 +1624,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/sound-on/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-103",
@@ -1436,10 +1640,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/sound-off/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-104",
@@ -1450,10 +1656,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/close/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-105",
@@ -1464,10 +1672,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/back/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-106",
@@ -1478,10 +1688,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/primary/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-107",
@@ -1492,10 +1704,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/cancel/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-108",
@@ -1506,10 +1720,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/next/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-109",
@@ -1520,10 +1736,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/skip/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-110",
@@ -1534,10 +1752,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/replay/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-111",
@@ -1548,10 +1768,12 @@
     "layer": "底板／圖示；可重用文字層",
     "states": "normal／pressed／disabled／selected（不適用者註明）",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS或系統字元，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "不能以emoji或字元代替正式圖示"
+    "note": "不能以emoji或字元代替正式圖示",
+    "independent_file": "../07_Independent_Art/ui/buttons/retry/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-112",
@@ -1562,10 +1784,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/modal/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-113",
@@ -1576,10 +1800,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/scrim/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-114",
@@ -1590,10 +1816,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/tabs/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-115",
@@ -1604,10 +1832,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/checkbox/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-116",
@@ -1618,10 +1848,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/toggle/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-117",
@@ -1632,10 +1864,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/input/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-118",
@@ -1646,10 +1880,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/stepper/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-119",
@@ -1660,10 +1896,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/spin-preset/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-120",
@@ -1674,10 +1912,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/scroll-indicator/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-121",
@@ -1688,10 +1928,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/toast/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-122",
@@ -1702,10 +1944,12 @@
     "layer": "獨立元件ART＋狀態",
     "states": "標準／互動狀態",
     "source": "",
-    "status": "未製作",
-    "implementation": "原型CSS，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": ""
+    "note": "",
+    "independent_file": "../07_Independent_Art/ui/components/loading/normal.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-123",
@@ -1716,10 +1960,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/auto-settings/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-124",
@@ -1730,10 +1976,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/bet-selector/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-125",
@@ -1744,10 +1992,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/settings/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-126",
@@ -1758,10 +2008,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/rules/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-127",
@@ -1772,10 +2024,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/paytable/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-128",
@@ -1786,10 +2040,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/calculation-example/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-129",
@@ -1800,10 +2056,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/reconnect/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-130",
@@ -1814,10 +2072,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/insufficient-balance/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-131",
@@ -1828,10 +2088,12 @@
     "layer": "版面稿＋所用元件對照，文字另存",
     "states": "完整／長文字／小螢幕",
     "source": "",
-    "status": "只有整合提案；正式元件未製作",
-    "implementation": "已有功能原型，美術未驗收",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值"
+    "note": "玩法／賠付表不能把尚未核實的參考值標成官方值",
+    "independent_file": "../07_Independent_Art/screens/reset-confirm/layout-portrait.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-132",
@@ -1842,10 +2104,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/free-entry/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-133",
@@ -1856,10 +2120,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/free-hud/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-134",
@@ -1870,10 +2136,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/free-extra/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-135",
@@ -1884,10 +2152,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/free-last/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-136",
@@ -1898,10 +2168,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/free-summary/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-137",
@@ -1912,10 +2184,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/win-small/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-138",
@@ -1926,10 +2200,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/win-big/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-139",
@@ -1940,10 +2216,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/win-epic/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-140",
@@ -1954,10 +2232,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/win-counter/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-141",
@@ -1968,10 +2248,12 @@
     "layer": "底板／標題／角色或蘿蔔／FX，文字數值分離",
     "states": "進入／停留／跳過／收尾",
     "source": "",
-    "status": "只有分鏡或提案；正式素材未製作",
-    "implementation": "部分功能用CSS及文字，需替換",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法"
+    "note": "大獎門檻與字樣仍需另確認；不新增未授權玩法",
+    "independent_file": "../07_Independent_Art/features/reward-carrot-particles/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-142",
@@ -1982,10 +2264,12 @@
     "layer": "透明提示層＋正式牌面引用",
     "states": "進入／下一步／跳過／重播",
     "source": "",
-    "status": "未製作",
-    "implementation": "已有文字與簡單示意原型，正式ART未製作",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面"
+    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面",
+    "independent_file": "../07_Independent_Art/tutorial/spotlight/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-143",
@@ -1996,10 +2280,12 @@
     "layer": "透明提示層＋正式牌面引用",
     "states": "進入／下一步／跳過／重播",
     "source": "",
-    "status": "未製作",
-    "implementation": "已有文字與簡單示意原型，正式ART未製作",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面"
+    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面",
+    "independent_file": "../07_Independent_Art/tutorial/arrow/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-144",
@@ -2010,10 +2296,12 @@
     "layer": "透明提示層＋正式牌面引用",
     "states": "進入／下一步／跳過／重播",
     "source": "",
-    "status": "未製作",
-    "implementation": "已有文字與簡單示意原型，正式ART未製作",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面"
+    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面",
+    "independent_file": "../07_Independent_Art/tutorial/tap/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-145",
@@ -2024,10 +2312,12 @@
     "layer": "透明提示層＋正式牌面引用",
     "states": "進入／下一步／跳過／重播",
     "source": "",
-    "status": "未製作",
-    "implementation": "已有文字與簡單示意原型，正式ART未製作",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面"
+    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面",
+    "independent_file": "../07_Independent_Art/tutorial/progress/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-146",
@@ -2038,10 +2328,12 @@
     "layer": "透明提示層＋正式牌面引用",
     "states": "進入／下一步／跳過／重播",
     "source": "",
-    "status": "未製作",
-    "implementation": "已有文字與簡單示意原型，正式ART未製作",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面"
+    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面",
+    "independent_file": "../07_Independent_Art/tutorial/win-example/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-147",
@@ -2052,10 +2344,12 @@
     "layer": "透明提示層＋正式牌面引用",
     "states": "進入／下一步／跳過／重播",
     "source": "",
-    "status": "未製作",
-    "implementation": "已有文字與簡單示意原型，正式ART未製作",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面"
+    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面",
+    "independent_file": "../07_Independent_Art/tutorial/wild-example/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-148",
@@ -2066,10 +2360,12 @@
     "layer": "透明提示層＋正式牌面引用",
     "states": "進入／下一步／跳過／重播",
     "source": "",
-    "status": "未製作",
-    "implementation": "已有文字與簡單示意原型，正式ART未製作",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面"
+    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面",
+    "independent_file": "../07_Independent_Art/tutorial/carrot-example/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-149",
@@ -2080,10 +2376,12 @@
     "layer": "透明提示層＋正式牌面引用",
     "states": "進入／下一步／跳過／重播",
     "source": "",
-    "status": "未製作",
-    "implementation": "已有文字與簡單示意原型，正式ART未製作",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面"
+    "note": "目標約一分鐘；示範不扣蘿蔔；有效5×4盤面",
+    "independent_file": "../07_Independent_Art/tutorial/tutorial-layout/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-150",
@@ -2094,10 +2392,12 @@
     "layer": "獨立PNG/SVG或字體規範",
     "states": "標準／縮小／長字串",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART"
+    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART",
+    "independent_file": "../07_Independent_Art/presentation/carrot-ui/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-151",
@@ -2108,10 +2408,12 @@
     "layer": "獨立PNG/SVG或字體規範",
     "states": "標準／縮小／長字串",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART"
+    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART",
+    "independent_file": "../07_Independent_Art/presentation/numerals/specimen.svg",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-152",
@@ -2122,10 +2424,12 @@
     "layer": "獨立PNG/SVG或字體規範",
     "states": "標準／縮小／長字串",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART"
+    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART",
+    "independent_file": "../07_Independent_Art/presentation/typography/specimen.svg",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-153",
@@ -2136,10 +2440,12 @@
     "layer": "獨立PNG/SVG或字體規範",
     "states": "標準／縮小／長字串",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P1",
-    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART"
+    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART",
+    "independent_file": "../07_Independent_Art/presentation/loading-screen/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-154",
@@ -2150,10 +2456,12 @@
     "layer": "獨立PNG/SVG或字體規範",
     "states": "標準／縮小／長字串",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P2",
-    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART"
+    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART",
+    "independent_file": "../07_Independent_Art/presentation/game-tile/main.png",
+    "independent_status": "獨立設計候選稿"
   },
   {
     "id": "ART-155",
@@ -2164,9 +2472,11 @@
     "layer": "獨立PNG/SVG或字體規範",
     "states": "標準／縮小／長字串",
     "source": "",
-    "status": "未製作",
-    "implementation": "未實裝",
+    "status": "獨立設計候選稿；未正式驗收",
+    "implementation": "本批尚未整批實裝",
     "priority": "P2",
-    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART"
+    "note": "SVG限正式向量原稿，不以程式幾何代替未設計ART",
+    "independent_file": "../07_Independent_Art/presentation/share-cover/main.png",
+    "independent_status": "獨立設計候選稿"
   }
 ]
