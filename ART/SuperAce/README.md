@@ -64,3 +64,9 @@
 - [ ] 橫屏按最新紫金方向重排；舊綠色版本只供歷史比較
 
 [全部圖片瀏覽](GALLERY.md) · [圖片尺寸及SHA256清單](manifest.json) · [舊版／不採用方案](90_History/)
+
+## 可玩原型與獨立素材
+
+[試玩版原始碼](../../super-ace-prototype/README.md) · [獨立WILD與CARROT透明PNG](05_Independent_Assets/)
+
+主介面已移除SUPER ACE標題和錯誤底部兔子圖案，旗幟統一BUNNY GALA，CARROT圖與字加大。原型並非所有ART或48項動畫全部完成，詳見原型README。

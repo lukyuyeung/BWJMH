@@ -1,0 +1,1 @@
+{"name":"bunny-gala-carrot","private":true,"type":"module","scripts":{"test":"node --test engine.test.mjs"}}
