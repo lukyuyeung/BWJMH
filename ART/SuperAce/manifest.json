@@ -1,0 +1,555 @@
+[
+  {
+    "file": "00_Source/currency/carrot.png",
+    "width": 48,
+    "height": 48,
+    "sha256": "3ecf46060f66cb169065d8dcd5d201bdc701f35473db9d7a9710e6e6fbd4035e",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/currency/reward-carrots.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "544b26d1e58224e241d069dba00f39f95e3367fd285d898d0351af59ec4b2d7e",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/JOKER_1.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "ffff4186abb4c91d198f82e3c94b7e818bd2f00424b8e4af6ebb5067e80d7998",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/JOKER_2.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "5e37ef9e0c68433df8526c57a3aa3119ea1021627b1d7d1700d03a7d02ec965c",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/back.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "787cabefd43d50d3892fe042d4d63595b6dc6bcdff1ad4fb5f4b0b60ec28ef58",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/1.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "a0c85257714c1dd873230cba28a0ff37afa0c1984bc486418029790b7ec024c6",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/10.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "414f716ec73d4b068a7bad786a387e36b7e39f38721133f6a51cc1c2afa3d6fe",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/11.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "24e1cc5502c9f6c41c6e25178e50086a927876d8419a15b7000f31304ec24a84",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/12.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "67a8cf326c186e2fad902e841a0fc02ebbf7d490c486e7c8a52b0455b977dfef",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/13.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "409259468acd841b156d65a9354fcc9510f55072db6ccb34bade0765270223c2",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/2.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "6b7fc54ca6f479a7e77795df1f2270fde058e1cadb3b9a7ef5ec8aa087120832",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/3.png",
+    "width": 626,
+    "height": 835,
+    "sha256": "96cf6742cb5b7faefb1ec474c626f8815b383ac6e13d438510e11db50ad941ef",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/4.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "3ca3db1fc386710ac63e45d72724d82909e01b783213114deca7b6874450692f",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/5.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "798650bbcc85855d35b4cbcbf18ab435d75ed58da86e3b90eb5eb6dd2f557408",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/6.png",
+    "width": 626,
+    "height": 835,
+    "sha256": "d4b20f41efd4dcaa89be7208bea1853ace79953aa715d4bfaaa1a2c015d9c0b8",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/7.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "6f3da479f80f65519ba559573c4d6be317d373838f7fd01870b7d8c3ced4a4ae",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/8.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "501cb860392d8f77e9ba98063ea84b434b8202434fdb5499c7062cbe0adb7cc7",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/clubs/9.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "a9b5e95e5549c00da9d890e80c8754932a5235c94f4c5bb4192da1ff3279959a",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/1.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "6a5888853885542534277c0e0c2e5058040f72c525e9d50d45b83ac87aaef3dd",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/10.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "ce5644c24f49018cfa8b586f6d45bff9540742c2f303fa923dbfa32015e897e8",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/11.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "a40987303b35208f7c758016dd4ceddb9cd7bd3123577a878f137f87805c6d46",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/12.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "63bcf6daca4cb889fa630a3db4b417c1402ff49155ba9c7c76a7a7493f997783",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/13.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "b7d29c5b2f1bdf0a65c035142c412976ee33f51db73f06f547ca28a91e59acc2",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/2.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "5a80c25ce5503833aa57ec769f5ee28c98de85b93eb37cd17c3f9e56b989e4f2",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/3.png",
+    "width": 626,
+    "height": 835,
+    "sha256": "89f27472c92c1fe0702e2854a6f7cb9aa775be94420a9be222795732fa5f56d6",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/4.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "ea5614a965d05848f2e6fafd9460f2749784d46239f69317afbd49fa011b3fc9",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/5.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "36f53b4cbd4508c843b3868ee39a113d0f8ef5c11334e5fb1ea3063063d0d665",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/6.png",
+    "width": 626,
+    "height": 835,
+    "sha256": "55a9eeadf50fc7b3f734860f07f6eba28a352434441c612421403f88ed6ef0cd",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/7.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "716b0a87ed2597ac21c32c35d40095aafddbb945aa33ca76603c8937e06af6a3",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/8.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "d8e7064ae10ebe2688fc8465d3fcfb97c28f1890e40171b47e4b533f6c970a81",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/diamonds/9.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "932aa43b6e7a82b9a96968fcbd62e7e1d5c21f60fa6b3cc6a99443783b516c8c",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/1.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "ce9bb0b578d731284b7606d363c250eb97899cfde7cc599edeff9336d1e7a1dc",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/10.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "4532c1459f54839fb7409800a3df1f9a7301ca9e8b098d788386948e6272cc53",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/11.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "64c10a8a08606d0710ea6e0f2534904e1eaaa41d62f0ee36c24bf84de6d052c2",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/12.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "8bff249482f6d6746a5400ea1d186da51decd5cb221c4eef3c943cd6524ad49f",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/13.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "f09f3c8b1133de4033f93927d7d85aea7e3616a7021de420c351af23bf8bab32",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/2.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "434c57773613752ad943271affaaf017357c4894fd7a1af356efc23279d1f6aa",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/3.png",
+    "width": 626,
+    "height": 835,
+    "sha256": "d8d491a83226156ef8156380ccbba30dcee7fda0669942e20f9ffd9c2bef67b5",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/4.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "63283ddf7cc632569b3e1c792880ff8a634f1eb0d45664bc825ec45b9df29ef8",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/5.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "e9bbdcfe0cb3851ea2c77083c573d01e213e698bbecb440f20fb65a68b4caed2",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/6.png",
+    "width": 626,
+    "height": 835,
+    "sha256": "89c27b807c19763bb77e3562115d122d232c0945e387bf51eb0adc224fa59242",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/7.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "15101a866702a9c0064a5e453548a1fe99e7924da0dc752a040fa9714336c990",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/8.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "64511968c9489262c1b364a4d0ba7ba88caf90e5faaddd95d97e5c6646e92a12",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/hearts/9.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "fda66cdb4c472100118c64c16c910dc35e36fe9bbb149fa656f2c2fc5e20bdf0",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/1.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "faa9827ad23e4746c52b6f3aebd42c13dd5ab383a71c081f528b1affe5074a67",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/10.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "b00134727f343c559464d475044d51acf25c0bda130e77e3d60ea2dc8bec1989",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/11.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "d5db0b2cd76f264b3dc67e63f35a776f2b6d50f3465fb964b14c3b3f9dc79a0f",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/12.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "6b792f9e5fff93ebbb6bd11d13266bade2cac3f6a61ca7b6f4aec40662b4abdd",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/13.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "b2444553acde4cb5e96322351b86365bc82328106b6b3ddbba790c2f3d6ff36b",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/2.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "5b63caca0c9962da0d2cfa1f44967d65137fd09c729e85d1a67add92c5554e2a",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/3.png",
+    "width": 626,
+    "height": 835,
+    "sha256": "492877cd4b8f293138d8f7517390076b14ab747a4d7177e5d6258ba433ea0efa",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/4.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "efce124a53bcdcfe6d683507eaab8106dab4317ece329ae65cc3f10544e7431a",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/5.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "1f113e208509e20e7819a5f99f3fad6a7c6ec442483a0156f4bc7de4cd96001e",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/6.png",
+    "width": 626,
+    "height": 835,
+    "sha256": "a694f6134902285fdc75bacc2118cda2a089cf304414e0b8b19ba98ceabcbf5d",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/7.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "225a20c07ad844b8f259cfdf6987ba6a52e7155fbbf55baa4f2526a13a774ce3",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/8.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "08c7e0e0c2b5ea5cf1cd192bdb7b06a5a04beeb84c3e272b39153b6eb00ff952",
+    "status": "original-source"
+  },
+  {
+    "file": "00_Source/poker/spades/9.png",
+    "width": 625,
+    "height": 835,
+    "sha256": "2a28706fb49bcec638dfd5c4e2de670994a8d6764299954d1e4eb32c5a62133d",
+    "status": "original-source"
+  },
+  {
+    "file": "01_Cards/01-normal-card-study.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "92dea884f4fffd1409e24952af383fd929404d93ac3bfccd3cfeb8a62abbd3c9",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "01_Cards/02-complete-card-review.png",
+    "width": 1024,
+    "height": 1536,
+    "sha256": "0d79aa8a75f5f17dcbe8a024f549cd8bf30fa9ff053e0b149a616186517215d2",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "01_Cards/03-approved-wild-direction.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "fa6b363d06c99d6c7751830e445ed46142e6f5906ab0b41010fbfeafd5e0547a",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "01_Cards/04-gold-overlay-and-carrot-study.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "0fa2496e74a2e9d75a7b3b15ca228feca2ff15ea162a1aa416b92ad7c1688ad3",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "02_Dealer/01-dealer-and-motion-study.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "078f8092428a379f8a9b170d43a9a173533856b846f9f09b0e21385ff886f3c3",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "03_Storyboards/01-deal-win-chain.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "dc0fbd9a291ca02f93b4ff44ecde4ec1c271a79c2aeace3ad61610ba28640cfd",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "03_Storyboards/02-gold-wild.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "227c4643ead192ae04c31fc5fa6f97bd6af783fe64a1a621a09833dbed676539",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "03_Storyboards/03-carrot-free-game.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "f23e84723642f77c0f606d2c974e075d46c16a7067b395197d18899d7fc6163e",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "03_Storyboards/04-reward-controls-tutorial.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "821ce260557dd3e154e053b63195ca4bc0b4cb8b0d024b6b57f793825bc159fd",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "04_UI/01-portrait-layout-proposal.png",
+    "width": 992,
+    "height": 1586,
+    "sha256": "1a74bbeb1403599155bebe51c8c84b381f92059488d96ebd3067ca7bcc79c891",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "04_UI/02-settings-help-tutorial-proposal.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "16f3ce7b87eb1c7615f590f711e1895d0e7eceafac6d3656b5b0c9b76aa16ca5",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "04_UI/03-free-game-and-rewards-proposal.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "c6702a98fbb5d65a14b37a67f5475ee31c48f91a7135c98e73687914abd462d2",
+    "status": "design-review-not-production"
+  },
+  {
+    "file": "90_History/01-superseded-main.png",
+    "width": 941,
+    "height": 1672,
+    "sha256": "e14e0f06ab0536f652ca2e1c51e0ead2156097a00874582655d85b445512110d",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/02-superseded-symbols.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "8a18b311cd2cdcfbd6e0ee2b1b3dea30f6e01b12c5e6fcbadab85d06aca57a55",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/03-superseded-green-portrait.png",
+    "width": 941,
+    "height": 1672,
+    "sha256": "27c9eebb20dae647246693a8bbfd7113a96d7b6a6dc726ddbbbbbc1b0dd1768c",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/04-superseded-green-landscape.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "707720ceae3c24317a68610f6eb09fd0f5408c3f8559682538d1806f527cb392",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/05-superseded-plain-gold.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "4e8b6e7388394169815015d6699c32e63282ea6a70b074e7470e102bad9af396",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/06-superseded-specials.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "da6ac1afde6514cbdfc793ca8f8a9839a229cf029530a35bdb5c2e900e08e748",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/07-initial-chain-board.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "56f2ee56849465e4b6adf758e1302a0bc27263a439b5d6b3f2bc05c9c65392ea",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/08-initial-wild-board.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "a7586e0b927cf0f9785a1775e5892630925bcedee1176e022d8a4146826af79d",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/09-initial-carrot-board.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "45a176ec0443ead79059752eccbe18dc745030ae198d161b500fd77298ea3471",
+    "status": "superseded"
+  },
+  {
+    "file": "90_History/10-initial-ui-board.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "2db5c7c34a271fad250e613eded8d2d116e500f020480fbe0743aa1f9a330d0c",
+    "status": "superseded"
+  }
+]
