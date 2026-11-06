@@ -1,0 +1,1005 @@
+[
+  {
+    "id": "ART-064",
+    "source": "scene/portrait-background.png",
+    "url": "assets/art/scene/portrait-background.svg",
+    "viewportUrl": "assets/art/scene/portrait-background.svg",
+    "nativeSize": [
+      941,
+      1672
+    ],
+    "viewport": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-065",
+    "source": "scene/landscape-background.png",
+    "url": "assets/art/scene/landscape-background.svg",
+    "viewportUrl": "assets/art/scene/landscape-background.svg",
+    "nativeSize": [
+      1672,
+      941
+    ],
+    "viewport": [
+      0,
+      0,
+      1672,
+      941
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-068",
+    "source": "scene/flag-left.png",
+    "url": "assets/art/scene/flag-left.svg",
+    "viewportUrl": "assets/art/scene/flag-left.svg",
+    "nativeSize": [
+      1138,
+      1382
+    ],
+    "viewport": [
+      110,
+      13,
+      1048,
+      1353
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-069",
+    "source": "scene/flag-right.png",
+    "url": "assets/art/scene/flag-right.svg",
+    "viewportUrl": "assets/art/scene/flag-right.svg",
+    "nativeSize": [
+      1024,
+      1536
+    ],
+    "viewport": [
+      23,
+      46,
+      1005,
+      1427
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-070",
+    "source": "scene/board-frame.png",
+    "url": "assets/art/scene/board-frame.svg",
+    "viewportUrl": "assets/art/scene/board-frame.svg",
+    "nativeSize": [
+      1213,
+      1296
+    ],
+    "viewport": [
+      31,
+      53,
+      1182,
+      1251
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-071",
+    "source": "scene/board-inset.png",
+    "url": "assets/art/scene/board-inset.svg",
+    "viewportUrl": "assets/art/scene/board-inset.svg",
+    "nativeSize": [
+      1213,
+      1296
+    ],
+    "viewport": [
+      38,
+      40,
+      1175,
+      1257
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-073",
+    "source": "dealer/housing.png",
+    "url": "assets/art/dealer/housing.svg",
+    "viewportUrl": "assets/art/dealer/housing.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      44,
+      118,
+      2128,
+      584
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-089",
+    "source": "ui/hud/status-panel.png",
+    "url": "assets/art/ui/hud/status-panel.svg",
+    "viewportUrl": "assets/art/ui/hud/status-panel.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      73,
+      180,
+      2097,
+      534
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-088",
+    "source": "ui/hud/free-counter.png",
+    "url": "assets/art/ui/hud/free-counter.svg",
+    "viewportUrl": "assets/art/ui/hud/free-counter.svg",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "viewport": [
+      42,
+      282,
+      1731,
+      599
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-086",
+    "source": "ui/hud/multiplier-rail.png",
+    "url": "assets/art/ui/hud/multiplier-rail.svg",
+    "viewportUrl": "assets/art/ui/hud/multiplier-rail.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      70,
+      176,
+      2102,
+      537
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-087",
+    "source": "ui/hud/multiplier-active.png",
+    "url": "assets/art/ui/hud/multiplier-active.svg",
+    "viewportUrl": "assets/art/ui/hud/multiplier-active.svg",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "viewport": [
+      45,
+      262,
+      1727,
+      622
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-083",
+    "source": "ui/hud/balance-panel.png",
+    "url": "assets/art/ui/hud/balance-panel.svg",
+    "viewportUrl": "assets/art/ui/hud/balance-panel.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      73,
+      183,
+      2089,
+      535
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-102",
+    "source": "ui/buttons/sound-on/pressed.png",
+    "url": "assets/art/ui/buttons/sound-on/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/sound-on/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      230,
+      190,
+      1056,
+      987
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-102",
+    "source": "ui/buttons/sound-on/normal.png",
+    "url": "assets/art/ui/buttons/sound-on/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/sound-on/normal.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      234,
+      193,
+      1055,
+      986
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-106",
+    "source": "ui/buttons/primary/pressed.png",
+    "url": "assets/art/ui/buttons/primary/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/primary/pressed.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      172,
+      81,
+      1997,
+      647
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-106",
+    "source": "ui/buttons/primary/normal.png",
+    "url": "assets/art/ui/buttons/primary/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/primary/normal.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      176,
+      87,
+      1992,
+      644
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-106",
+    "source": "ui/buttons/primary/disabled.png",
+    "url": "assets/art/ui/buttons/primary/disabled.svg",
+    "viewportUrl": "assets/art/ui/buttons/primary/disabled.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      172,
+      83,
+      1998,
+      647
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-095",
+    "source": "ui/buttons/bet-minus/pressed.png",
+    "url": "assets/art/ui/buttons/bet-minus/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/bet-minus/pressed.svg",
+    "nativeSize": [
+      1263,
+      1246
+    ],
+    "viewport": [
+      218,
+      203,
+      1035,
+      1010
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-095",
+    "source": "ui/buttons/bet-minus/normal.png",
+    "url": "assets/art/ui/buttons/bet-minus/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/bet-minus/normal.svg",
+    "nativeSize": [
+      1263,
+      1246
+    ],
+    "viewport": [
+      221,
+      204,
+      1035,
+      1011
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-095",
+    "source": "ui/buttons/bet-minus/disabled.png",
+    "url": "assets/art/ui/buttons/bet-minus/disabled.svg",
+    "viewportUrl": "assets/art/ui/buttons/bet-minus/disabled.svg",
+    "nativeSize": [
+      1263,
+      1246
+    ],
+    "viewport": [
+      215,
+      205,
+      1035,
+      1011
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-093",
+    "source": "ui/buttons/stop/pressed.png",
+    "url": "assets/art/ui/buttons/stop/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/stop/pressed.svg",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      379,
+      122,
+      1150,
+      898
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-093",
+    "source": "ui/buttons/stop/normal.png",
+    "url": "assets/art/ui/buttons/stop/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/stop/normal.svg",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      380,
+      122,
+      1149,
+      898
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-097",
+    "source": "ui/buttons/speed-normal/pressed.png",
+    "url": "assets/art/ui/buttons/speed-normal/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/speed-normal/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      233,
+      191,
+      1055,
+      989
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-097",
+    "source": "ui/buttons/speed-normal/normal.png",
+    "url": "assets/art/ui/buttons/speed-normal/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/speed-normal/normal.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      235,
+      193,
+      1054,
+      987
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-092",
+    "source": "ui/buttons/spin/pressed.png",
+    "url": "assets/art/ui/buttons/spin/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/spin/pressed.svg",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      342,
+      80,
+      1186,
+      930
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-092",
+    "source": "ui/buttons/spin/normal.png",
+    "url": "assets/art/ui/buttons/spin/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/spin/normal.svg",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      341,
+      80,
+      1184,
+      930
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-092",
+    "source": "ui/buttons/spin/disabled.png",
+    "url": "assets/art/ui/buttons/spin/disabled.svg",
+    "viewportUrl": "assets/art/ui/buttons/spin/disabled.svg",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      342,
+      79,
+      1185,
+      929
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-103",
+    "source": "ui/buttons/sound-off/pressed.png",
+    "url": "assets/art/ui/buttons/sound-off/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/sound-off/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      227,
+      159,
+      1066,
+      1013
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-103",
+    "source": "ui/buttons/sound-off/normal.png",
+    "url": "assets/art/ui/buttons/sound-off/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/sound-off/normal.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      229,
+      163,
+      1065,
+      1012
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-094",
+    "source": "ui/buttons/bet-plus/pressed.png",
+    "url": "assets/art/ui/buttons/bet-plus/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/bet-plus/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      232,
+      191,
+      1055,
+      988
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-094",
+    "source": "ui/buttons/bet-plus/normal.png",
+    "url": "assets/art/ui/buttons/bet-plus/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/bet-plus/normal.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      235,
+      194,
+      1054,
+      985
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-094",
+    "source": "ui/buttons/bet-plus/disabled.png",
+    "url": "assets/art/ui/buttons/bet-plus/disabled.svg",
+    "viewportUrl": "assets/art/ui/buttons/bet-plus/disabled.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      235,
+      194,
+      1055,
+      987
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-101",
+    "source": "ui/buttons/settings/pressed.png",
+    "url": "assets/art/ui/buttons/settings/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/settings/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      242,
+      179,
+      1055,
+      999
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-101",
+    "source": "ui/buttons/settings/normal.png",
+    "url": "assets/art/ui/buttons/settings/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/settings/normal.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      243,
+      183,
+      1055,
+      999
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-101",
+    "source": "ui/buttons/settings/disabled.png",
+    "url": "assets/art/ui/buttons/settings/disabled.svg",
+    "viewportUrl": "assets/art/ui/buttons/settings/disabled.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      241,
+      180,
+      1057,
+      999
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-100",
+    "source": "ui/buttons/info/pressed.png",
+    "url": "assets/art/ui/buttons/info/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/info/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      229,
+      168,
+      1065,
+      1015
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-100",
+    "source": "ui/buttons/info/normal.png",
+    "url": "assets/art/ui/buttons/info/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/info/normal.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      232,
+      171,
+      1064,
+      1013
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-100",
+    "source": "ui/buttons/info/disabled.png",
+    "url": "assets/art/ui/buttons/info/disabled.svg",
+    "viewportUrl": "assets/art/ui/buttons/info/disabled.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      230,
+      167,
+      1063,
+      1017
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-104",
+    "source": "ui/buttons/close/pressed.png",
+    "url": "assets/art/ui/buttons/close/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/close/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      254,
+      184,
+      1043,
+      984
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-104",
+    "source": "ui/buttons/close/normal.png",
+    "url": "assets/art/ui/buttons/close/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/close/normal.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      255,
+      186,
+      1043,
+      984
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-098",
+    "source": "ui/buttons/speed-fast/pressed.png",
+    "url": "assets/art/ui/buttons/speed-fast/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/speed-fast/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      232,
+      190,
+      1055,
+      992
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-098",
+    "source": "ui/buttons/speed-fast/selected.png",
+    "url": "assets/art/ui/buttons/speed-fast/selected.svg",
+    "viewportUrl": "assets/art/ui/buttons/speed-fast/selected.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      193,
+      150,
+      1090,
+      1027
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-099",
+    "source": "ui/buttons/speed-max/pressed.png",
+    "url": "assets/art/ui/buttons/speed-max/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/speed-max/pressed.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      231,
+      188,
+      1055,
+      989
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-099",
+    "source": "ui/buttons/speed-max/selected.png",
+    "url": "assets/art/ui/buttons/speed-max/selected.svg",
+    "viewportUrl": "assets/art/ui/buttons/speed-max/selected.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      194,
+      140,
+      1093,
+      1025
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-107",
+    "source": "ui/buttons/cancel/pressed.png",
+    "url": "assets/art/ui/buttons/cancel/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/cancel/pressed.svg",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "viewport": [
+      142,
+      135,
+      1620,
+      749
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-107",
+    "source": "ui/buttons/cancel/normal.png",
+    "url": "assets/art/ui/buttons/cancel/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/cancel/normal.svg",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "viewport": [
+      144,
+      138,
+      1619,
+      748
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-107",
+    "source": "ui/buttons/cancel/disabled.png",
+    "url": "assets/art/ui/buttons/cancel/disabled.svg",
+    "viewportUrl": "assets/art/ui/buttons/cancel/disabled.svg",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "viewport": [
+      139,
+      135,
+      1624,
+      750
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-096",
+    "source": "ui/buttons/auto/pressed.png",
+    "url": "assets/art/ui/buttons/auto/pressed.svg",
+    "viewportUrl": "assets/art/ui/buttons/auto/pressed.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      430,
+      91,
+      1733,
+      631
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-096",
+    "source": "ui/buttons/auto/normal.png",
+    "url": "assets/art/ui/buttons/auto/normal.svg",
+    "viewportUrl": "assets/art/ui/buttons/auto/normal.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      432,
+      95,
+      1728,
+      626
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-096",
+    "source": "ui/buttons/auto/selected.png",
+    "url": "assets/art/ui/buttons/auto/selected.svg",
+    "viewportUrl": "assets/art/ui/buttons/auto/selected.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      392,
+      51,
+      1768,
+      673
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-096",
+    "source": "ui/buttons/auto/disabled.png",
+    "url": "assets/art/ui/buttons/auto/disabled.svg",
+    "viewportUrl": "assets/art/ui/buttons/auto/disabled.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      427,
+      92,
+      1745,
+      630
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-121",
+    "source": "ui/components/toast/normal.png",
+    "url": "assets/art/ui/components/toast/normal.svg",
+    "viewportUrl": "assets/art/ui/components/toast/normal.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      47,
+      174,
+      2121,
+      500
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-112",
+    "source": "ui/components/modal/normal.png",
+    "url": "assets/art/ui/components/modal/normal.svg",
+    "viewportUrl": "assets/art/ui/components/modal/normal.svg",
+    "nativeSize": [
+      1064,
+      1478
+    ],
+    "viewport": [
+      73,
+      88,
+      991,
+      1390
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-115",
+    "source": "ui/components/checkbox/normal.png",
+    "url": "assets/art/ui/components/checkbox/normal.svg",
+    "viewportUrl": "assets/art/ui/components/checkbox/normal.svg",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      531,
+      290,
+      1006,
+      735
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-115",
+    "source": "ui/components/checkbox/unchecked.png",
+    "url": "assets/art/ui/components/checkbox/unchecked.svg",
+    "viewportUrl": "assets/art/ui/components/checkbox/unchecked.svg",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      509,
+      245,
+      1032,
+      767
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-119",
+    "source": "ui/components/spin-preset/normal.png",
+    "url": "assets/art/ui/components/spin-preset/normal.svg",
+    "viewportUrl": "assets/art/ui/components/spin-preset/normal.svg",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "viewport": [
+      296,
+      266,
+      1469,
+      639
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-117",
+    "source": "ui/components/input/normal.png",
+    "url": "assets/art/ui/components/input/normal.svg",
+    "viewportUrl": "assets/art/ui/components/input/normal.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      133,
+      176,
+      2039,
+      547
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-114",
+    "source": "ui/components/tabs/normal.png",
+    "url": "assets/art/ui/components/tabs/normal.svg",
+    "viewportUrl": "assets/art/ui/components/tabs/normal.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      66,
+      166,
+      2106,
+      549
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  },
+  {
+    "id": "ART-114",
+    "source": "ui/components/tabs/selected.png",
+    "url": "assets/art/ui/components/tabs/selected.svg",
+    "viewportUrl": "assets/art/ui/components/tabs/selected.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      63,
+      164,
+      2111,
+      551
+    ],
+    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+  }
+]

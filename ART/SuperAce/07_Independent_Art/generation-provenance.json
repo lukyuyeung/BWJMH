@@ -1,0 +1,2742 @@
+[
+  {
+    "id": "ART-001",
+    "status": "original-source-preserved",
+    "notes": "原始來源原樣複製；尚未標為正式驗收",
+    "file": "brand/bunny-gala-logo.png",
+    "source_file": "bunny-gala.png"
+  },
+  {
+    "id": "ART-002",
+    "status": "original-source-preserved",
+    "notes": "原始來源原樣複製；尚未標為正式驗收",
+    "file": "cards/back.png",
+    "source_file": "back.png"
+  },
+  {
+    "id": "ART-003",
+    "status": "original-source-preserved",
+    "notes": "原始來源原樣複製；尚未標為正式驗收",
+    "file": "currency/carrot-source.png",
+    "source_file": "carrot.png"
+  },
+  {
+    "id": "ART-005",
+    "status": "independent-art-candidate",
+    "notes": "角色忠實方向；生成檔像素與625:835精準座標仍需核對",
+    "file": "cards/normal/Q.png",
+    "source_file": "exec-87b443e1-c7d3-4fb1-b5af-05e3f451e86b.png"
+  },
+  {
+    "id": "ART-006",
+    "status": "independent-art-candidate",
+    "notes": "角色忠實方向；生成檔像素與625:835精準座標仍需核對",
+    "file": "cards/normal/K.png",
+    "source_file": "exec-f3588dbd-573a-4968-a3fb-fbcd5904906c.png"
+  },
+  {
+    "id": "ART-007",
+    "status": "independent-art-candidate",
+    "notes": "角色忠實方向；生成檔像素與625:835精準座標仍需核對",
+    "file": "cards/normal/A.png",
+    "source_file": "exec-951a39ac-70aa-46b5-b947-1b5d22d0d440.png"
+  },
+  {
+    "id": "ART-004",
+    "status": "independent-art-candidate",
+    "notes": "獨立不透明牌面；正式比例與對齊需驗收",
+    "file": "cards/normal/J.png",
+    "source_file": "exec-54a4b398-af32-4ea0-b19a-e228a31a2e96.png"
+  },
+  {
+    "id": "ART-008",
+    "status": "independent-art-candidate",
+    "notes": "獨立不透明牌面；正式比例與對齊需驗收",
+    "file": "cards/normal/S.png",
+    "source_file": "exec-9cb1c91e-e966-43af-bed8-6d02680d567c.png"
+  },
+  {
+    "id": "ART-009",
+    "status": "independent-art-candidate",
+    "notes": "獨立不透明牌面；正式比例與對齊需驗收",
+    "file": "cards/normal/H.png",
+    "source_file": "exec-587a8260-4602-4253-b7bd-c8aa220bffbf.png"
+  },
+  {
+    "id": "ART-010",
+    "status": "independent-art-candidate",
+    "notes": "獨立不透明牌面；正式比例與對齊需驗收",
+    "file": "cards/normal/C.png",
+    "source_file": "exec-a5427b22-9aed-4aad-a24e-5c4d6cd8d4c0.png"
+  },
+  {
+    "id": "ART-011",
+    "status": "independent-art-candidate",
+    "notes": "獨立不透明牌面；正式比例與對齊需驗收",
+    "file": "cards/normal/D.png",
+    "source_file": "exec-03780828-5b9f-405f-bc2c-d30d2a925232.png"
+  },
+  {
+    "id": "ART-012",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/gold/J.png",
+    "source_file": "exec-6855e0fe-bcbc-4d7e-bf46-12dcfabb9cd9.png"
+  },
+  {
+    "id": "ART-013",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/gold/Q.png",
+    "source_file": "exec-01477575-7311-49bd-8b4f-42d27fdf3d2d.png"
+  },
+  {
+    "id": "ART-014",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/gold/K.png",
+    "source_file": "exec-9f62aad8-92e3-4c85-9052-f1586e33cc5b.png"
+  },
+  {
+    "id": "ART-015",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/gold/A.png",
+    "source_file": "exec-69db0694-cdc1-4a44-9d6a-603865931729.png"
+  },
+  {
+    "id": "ART-016",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/gold/S.png",
+    "source_file": "exec-3582c8b0-2fd7-4d23-be4f-9bdfcb1d3df7.png"
+  },
+  {
+    "id": "ART-017",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/gold/H.png",
+    "source_file": "exec-82b9e9f9-354f-45b0-bf6f-c7a94ff09012.png"
+  },
+  {
+    "id": "ART-018",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/gold/C.png",
+    "source_file": "exec-74037916-69fe-4c24-a794-f0229360da1a.png"
+  },
+  {
+    "id": "ART-019",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/gold/D.png",
+    "source_file": "exec-f2a11218-2a9f-47da-bc06-afd642131be2.png"
+  },
+  {
+    "id": "ART-020",
+    "status": "independent-art-candidate",
+    "notes": "已自檢修正；獨立底層／陰影，不含非要求框體；仍需對齊驗收",
+    "file": "cards/layers/normal-base.png",
+    "source_file": "exec-a3bfa67f-b49a-4c32-962b-e2c69bbf6368.png"
+  },
+  {
+    "id": "ART-021",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/layers/gold-base.png",
+    "source_file": "exec-8d43e90e-194b-49b8-8724-8a1d0a43ef12.png"
+  },
+  {
+    "id": "ART-022",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/layers/gold-overlay.png",
+    "source_file": "exec-0177f52c-38f3-4542-8ed6-bf7fc9ee036a.png"
+  },
+  {
+    "id": "ART-023",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/layers/normal-win-glow.png",
+    "source_file": "exec-784d9a23-06f0-4f9d-acc7-e9ae89db41cf.png"
+  },
+  {
+    "id": "ART-024",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/layers/gold-sweep-mask.png",
+    "source_file": "exec-b64ce7d8-3c22-43d0-a0e3-80171bcca004.png"
+  },
+  {
+    "id": "ART-025",
+    "status": "independent-art-candidate",
+    "notes": "已自檢修正；獨立底層／陰影，不含非要求框體；仍需對齊驗收",
+    "file": "cards/layers/card-shadow.png",
+    "source_file": "exec-32a150b4-5e7d-44e1-86c6-598a23246b16.png"
+  },
+  {
+    "id": "ART-026",
+    "status": "independent-art-candidate",
+    "notes": "獨立生成候選；與普通牌精準疊圖及共同畫布尚未正式驗收",
+    "file": "cards/layers/card-edge.png",
+    "source_file": "exec-9152b9d1-05a1-46df-9e1d-125154c5f7c1.png"
+  },
+  {
+    "id": "ART-064",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 941x1672; mode RGB.",
+    "file": "scene/portrait-background.png",
+    "source_file": "exec-3f4960fe-8aea-4a7b-9511-d02bb2599131.png"
+  },
+  {
+    "id": "ART-065",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 1672x941; mode RGB.",
+    "file": "scene/landscape-background.png",
+    "source_file": "exec-51746733-7588-4c92-815a-e70eb07e7b26.png"
+  },
+  {
+    "id": "ART-066",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 255); bbox (19, 37, 2156, 724).",
+    "file": "scene/foreground.png",
+    "source_file": "exec-0993a8d5-602d-4de2-b11d-fd4a56246fd4.png"
+  },
+  {
+    "id": "ART-067",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 941x1671; mode RGBA. Alpha range (0, 252); bbox (0, 0, 941, 1671).",
+    "file": "scene/ambient-light.png",
+    "source_file": "exec-72493ab1-fab0-4567-886f-e2a3832f47fa.png"
+  },
+  {
+    "id": "ART-068",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 1138x1382; mode RGBA. Alpha range (0, 255); bbox (0, 0, 1134, 1382). BUNNY GALA text candidate; lettering needs visual review.",
+    "file": "scene/flag-left.png",
+    "source_file": "exec-b3323437-fa20-4b29-90db-660d2d81ad28.png"
+  },
+  {
+    "id": "ART-069",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 1024x1536; mode RGBA. Alpha range (0, 254); bbox (0, 20, 1014, 1514). BUNNY GALA text candidate; lettering needs visual review.",
+    "file": "scene/flag-right.png",
+    "source_file": "exec-c395c491-5c77-4b45-811d-f7a3435d0277.png"
+  },
+  {
+    "id": "ART-070",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 1213x1296; mode RGBA. Alpha range (0, 255); bbox (23, 44, 1193, 1266).",
+    "file": "scene/board-frame.png",
+    "source_file": "exec-1c9ca05a-a94f-4e5f-ba74-2f86b2e09827.png"
+  },
+  {
+    "id": "ART-071",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 1213x1296; mode RGBA. Alpha range (0, 255); bbox (0, 0, 1212, 1296).",
+    "file": "scene/board-inset.png",
+    "source_file": "exec-7827995b-1834-418c-be9d-19649dac7a74.png"
+  },
+  {
+    "id": "ART-072",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 1214x1295; mode RGBA. Alpha range (0, 255); bbox (0, 0, 1214, 1295). Uncalibrated generated alpha silhouette; integration mask alignment must be verified against final canvas.",
+    "file": "scene/board-mask.png",
+    "source_file": "exec-697de3a1-8184-4e81-bf29-001cb755e8c3.png"
+  },
+  {
+    "id": "ART-073",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 255); bbox (34, 0, 2154, 724).",
+    "file": "dealer/housing.png",
+    "source_file": "exec-11f26e18-5560-4e0d-a8f3-1e7ea5518a5f.png"
+  },
+  {
+    "id": "ART-074",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 255); bbox (9, 0, 2160, 708).",
+    "file": "dealer/lid.png",
+    "source_file": "exec-dee5ca8c-87a5-43b4-b83e-8cf2c5287d5b.png"
+  },
+  {
+    "id": "ART-075",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 255); bbox (31, 7, 2154, 700).",
+    "file": "dealer/slot-front.png",
+    "source_file": "exec-393b7701-ecdf-4d76-b1dc-e7c9ca876805.png"
+  },
+  {
+    "id": "ART-076",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 255); bbox (19, 48, 2140, 698).",
+    "file": "dealer/slot-inset.png",
+    "source_file": "exec-7629567e-3c5b-4d80-a8bf-213c70058231.png"
+  },
+  {
+    "id": "ART-077",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 1230x1278; mode RGBA. Alpha range (0, 255); bbox (33, 21, 1186, 1278). BACK referenced to original, but generated lettering/geometry fidelity needs review before replacing exact texture.",
+    "file": "dealer/deck-stack.png",
+    "source_file": "exec-f9f87737-b4c5-4b0d-a9c2-cad4822943d6.png"
+  },
+  {
+    "id": "ART-078",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 255); bbox (96, 32, 2166, 724).",
+    "file": "dealer/deck-edge.png",
+    "source_file": "exec-915fd3c2-1491-422c-b955-4984f09a3c6a.png"
+  },
+  {
+    "id": "ART-079",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 255); bbox (0, 21, 2160, 700). Uncalibrated generated alpha silhouette; integration mask alignment must be verified against final canvas.",
+    "file": "dealer/release-mask.png",
+    "source_file": "exec-8e0c93de-c7f0-4fdc-9e83-047628433f28.png"
+  },
+  {
+    "id": "ART-080",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 254); bbox (19, 17, 2166, 724).",
+    "file": "dealer/indicator.png",
+    "source_file": "exec-2c1fd0dd-12a0-4764-9819-47967274859e.png"
+  },
+  {
+    "id": "ART-081",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 254); bbox (43, 9, 2148, 707).",
+    "file": "dealer/metal-glint.png",
+    "source_file": "exec-3765cf3b-8e80-4889-b536-a3595abbd48f.png"
+  },
+  {
+    "id": "ART-082",
+    "status": "independent-art-candidate",
+    "notes": "Independent image-generated art candidate; final visual approval, shared canvas alignment and production export not verified. Native dimensions 2172x724; mode RGBA. Alpha range (0, 255); bbox (0, 81, 2142, 682).",
+    "file": "dealer/front-occluder.png",
+    "source_file": "exec-3906a4e7-0592-4e0e-bee0-423e073a0e00.png"
+  },
+  {
+    "id": "ART-027",
+    "status": "independent-art-candidate",
+    "notes": "Existing full-symbol candidate preserved; not formally approved. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1071,
+    "height": 1469,
+    "alpha_zero_fraction": 0.103,
+    "alpha_opaque_fraction": 0.0011,
+    "alpha_nearopaque_nonzero_fraction": 0.978,
+    "file": "wild/angel/card.png",
+    "source_file": "angel.png"
+  },
+  {
+    "id": "ART-028",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1449,
+    "alpha_zero_fraction": 0.3714,
+    "alpha_opaque_fraction": 0.0001,
+    "alpha_nearopaque_nonzero_fraction": 0.9716,
+    "file": "wild/angel/layers/01.png",
+    "source_file": "exec-3f1008ef-7481-4089-b97e-c510aa78c3bb.png"
+  },
+  {
+    "id": "ART-029",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1086,
+    "height": 1449,
+    "alpha_zero_fraction": 0.7974,
+    "alpha_opaque_fraction": 0.0003,
+    "alpha_nearopaque_nonzero_fraction": 0.6834,
+    "file": "wild/angel/layers/02.png",
+    "source_file": "exec-85647edc-f58d-4d12-9ec5-05ef858bc718.png"
+  },
+  {
+    "id": "ART-030",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.8443,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.9255,
+    "file": "wild/angel/layers/03.png",
+    "source_file": "exec-36bf009a-3862-433c-83e0-69826db85e3b.png"
+  },
+  {
+    "id": "ART-031",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.7868,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.9651,
+    "file": "wild/angel/layers/04.png",
+    "source_file": "exec-7f251de2-8b45-450f-bbfa-d72ccca0f2b7.png"
+  },
+  {
+    "id": "ART-032",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.8191,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.8716,
+    "file": "wild/angel/layers/05.png",
+    "source_file": "exec-b37ce249-a78e-4948-82d4-4e82b94fbc5e.png"
+  },
+  {
+    "id": "ART-033",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1450,
+    "alpha_zero_fraction": 0.7956,
+    "alpha_opaque_fraction": 0.0007,
+    "alpha_nearopaque_nonzero_fraction": 0.9621,
+    "file": "wild/angel/layers/06.png",
+    "source_file": "exec-6eb3d254-71b5-427b-9978-5d96ae20c495.png"
+  },
+  {
+    "id": "ART-034",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1086,
+    "height": 1449,
+    "alpha_zero_fraction": 0.7947,
+    "alpha_opaque_fraction": 0.0003,
+    "alpha_nearopaque_nonzero_fraction": 0.9591,
+    "file": "wild/angel/layers/07.png",
+    "source_file": "exec-b23b2a83-181f-4e44-a2ce-01c5e8c37d5a.png"
+  },
+  {
+    "id": "ART-035",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1450,
+    "alpha_zero_fraction": 0.6914,
+    "alpha_opaque_fraction": 0.0002,
+    "alpha_nearopaque_nonzero_fraction": 0.961,
+    "file": "wild/angel/layers/08.png",
+    "source_file": "exec-84e13cc3-fdf7-4189-bfcd-d372b9c58f0c.png"
+  },
+  {
+    "id": "ART-036",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1774,
+    "height": 887,
+    "alpha_zero_fraction": 0.6665,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.9081,
+    "file": "wild/angel/layers/09.png",
+    "source_file": "exec-35c7213a-b75d-4a18-8fd7-6cf4844951f8.png"
+  },
+  {
+    "id": "ART-037",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1774,
+    "height": 887,
+    "alpha_zero_fraction": 0.7451,
+    "alpha_opaque_fraction": 0.001,
+    "alpha_nearopaque_nonzero_fraction": 0.8154,
+    "file": "wild/angel/layers/10.png",
+    "source_file": "exec-79f8fbe6-12c1-4ffe-908c-fd89fc0f1e24.png"
+  },
+  {
+    "id": "ART-038",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1449,
+    "alpha_zero_fraction": 0.8446,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.8286,
+    "file": "wild/angel/layers/11.png",
+    "source_file": "exec-49b23adb-ca45-4541-a6dc-bf78530330f9.png"
+  },
+  {
+    "id": "ART-039",
+    "status": "independent-art-candidate",
+    "notes": "Existing full-symbol candidate preserved; not formally approved. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1113,
+    "height": 1413,
+    "alpha_zero_fraction": 0.214,
+    "alpha_opaque_fraction": 0.0002,
+    "alpha_nearopaque_nonzero_fraction": 0.9842,
+    "file": "wild/devil/card.png",
+    "source_file": "devil.png"
+  },
+  {
+    "id": "ART-040",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1449,
+    "alpha_zero_fraction": 0.3714,
+    "alpha_opaque_fraction": 0.0001,
+    "alpha_nearopaque_nonzero_fraction": 0.9716,
+    "file": "wild/devil/layers/01.png",
+    "source_file": "exec-3f1008ef-7481-4089-b97e-c510aa78c3bb.png"
+  },
+  {
+    "id": "ART-041",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1086,
+    "height": 1449,
+    "alpha_zero_fraction": 0.7974,
+    "alpha_opaque_fraction": 0.0003,
+    "alpha_nearopaque_nonzero_fraction": 0.6834,
+    "file": "wild/devil/layers/02.png",
+    "source_file": "exec-85647edc-f58d-4d12-9ec5-05ef858bc718.png"
+  },
+  {
+    "id": "ART-042",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1449,
+    "alpha_zero_fraction": 0.7816,
+    "alpha_opaque_fraction": 0.0001,
+    "alpha_nearopaque_nonzero_fraction": 0.9565,
+    "file": "wild/devil/layers/03.png",
+    "source_file": "exec-37b53a8d-774b-4e35-9d7f-d1a161a0ca80.png"
+  },
+  {
+    "id": "ART-043",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1086,
+    "height": 1448,
+    "alpha_zero_fraction": 0.641,
+    "alpha_opaque_fraction": 0.0007,
+    "alpha_nearopaque_nonzero_fraction": 0.9503,
+    "file": "wild/devil/layers/04.png",
+    "source_file": "exec-6ba73e30-0094-4ba4-988e-0a66e27d9cf4.png"
+  },
+  {
+    "id": "ART-044",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1086,
+    "height": 1448,
+    "alpha_zero_fraction": 0.5895,
+    "alpha_opaque_fraction": 0.0001,
+    "alpha_nearopaque_nonzero_fraction": 0.9719,
+    "file": "wild/devil/layers/05.png",
+    "source_file": "exec-9cf3b863-37b4-4540-8cfd-f481abcb21a3.png"
+  },
+  {
+    "id": "ART-045",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1449,
+    "alpha_zero_fraction": 0.6921,
+    "alpha_opaque_fraction": 0.0005,
+    "alpha_nearopaque_nonzero_fraction": 0.9745,
+    "file": "wild/devil/layers/06.png",
+    "source_file": "exec-79996166-f9f3-4112-b486-85dbf7f9c6cb.png"
+  },
+  {
+    "id": "ART-046",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1086,
+    "height": 1448,
+    "alpha_zero_fraction": 0.7115,
+    "alpha_opaque_fraction": 0.0004,
+    "alpha_nearopaque_nonzero_fraction": 0.9609,
+    "file": "wild/devil/layers/07.png",
+    "source_file": "exec-5467bc64-3089-4b22-8572-8bce0c217f2b.png"
+  },
+  {
+    "id": "ART-047",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1086,
+    "height": 1448,
+    "alpha_zero_fraction": 0.7316,
+    "alpha_opaque_fraction": 0.0004,
+    "alpha_nearopaque_nonzero_fraction": 0.9714,
+    "file": "wild/devil/layers/08.png",
+    "source_file": "exec-d4357cd4-22f4-44ed-abdd-8318434ea0dc.png"
+  },
+  {
+    "id": "ART-048",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1086,
+    "height": 1448,
+    "alpha_zero_fraction": 0.7921,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.9022,
+    "file": "wild/devil/layers/09.png",
+    "source_file": "exec-c23fdadc-98cd-4f1e-8f5d-84f774e47dfa.png"
+  },
+  {
+    "id": "ART-049",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1774,
+    "height": 887,
+    "alpha_zero_fraction": 0.7451,
+    "alpha_opaque_fraction": 0.001,
+    "alpha_nearopaque_nonzero_fraction": 0.8154,
+    "file": "wild/devil/layers/10.png",
+    "source_file": "exec-79f8fbe6-12c1-4ffe-908c-fd89fc0f1e24.png"
+  },
+  {
+    "id": "ART-050",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1450,
+    "alpha_zero_fraction": 0.812,
+    "alpha_opaque_fraction": 0.0003,
+    "alpha_nearopaque_nonzero_fraction": 0.9566,
+    "file": "wild/devil/layers/11.png",
+    "source_file": "exec-31876de4-212d-4c75-bb14-e745ed0199a2.png"
+  },
+  {
+    "id": "ART-051",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Gold base/frame/lettering intentionally shared between WILD variants. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1085,
+    "height": 1450,
+    "alpha_zero_fraction": 0.8532,
+    "alpha_opaque_fraction": 0.0003,
+    "alpha_nearopaque_nonzero_fraction": 0.9576,
+    "file": "wild/devil/layers/12.png",
+    "source_file": "exec-26894530-7413-4709-8c83-29cbbff2e86e.png"
+  },
+  {
+    "id": "ART-052",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.8258,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.9695,
+    "file": "wild/devil/layers/13.png",
+    "source_file": "exec-5ef37da8-797a-4c4f-9ebb-fe47de14f6d4.png"
+  },
+  {
+    "id": "ART-053",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.6886,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.9536,
+    "file": "wild/devil/layers/14.png",
+    "source_file": "exec-953936a1-28c2-4347-a03e-2176d9c5e4e5.png"
+  },
+  {
+    "id": "ART-054",
+    "status": "independent-art-candidate",
+    "notes": "Existing full-symbol candidate preserved; not formally approved. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1254,
+    "height": 1254,
+    "alpha_zero_fraction": 0.5196,
+    "alpha_opaque_fraction": 0.0004,
+    "alpha_nearopaque_nonzero_fraction": 0.8907,
+    "file": "carrot/bonus.png",
+    "source_file": "carrot-bonus.png"
+  },
+  {
+    "id": "ART-055",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.7905,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.959,
+    "file": "carrot/layers/body.png",
+    "source_file": "exec-255cb7bc-e695-4790-99ba-6e7b50be3627.png"
+  },
+  {
+    "id": "ART-056",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.7586,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.919,
+    "file": "carrot/layers/leaves.png",
+    "source_file": "exec-b2c13836-c470-4f4a-ac55-2608008e7c3f.png"
+  },
+  {
+    "id": "ART-057",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 2172,
+    "height": 724,
+    "alpha_zero_fraction": 0.4971,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.9651,
+    "file": "carrot/layers/wordmark.png",
+    "source_file": "exec-59805ad0-3f79-41bc-af6a-5ee5c65c6d29.png"
+  },
+  {
+    "id": "ART-058",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1024,
+    "height": 1536,
+    "alpha_zero_fraction": 0.7491,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.9402,
+    "file": "carrot/layers/gem.png",
+    "source_file": "exec-2407b0ec-7fc2-4d45-aac6-5e2c63203171.png"
+  },
+  {
+    "id": "ART-059",
+    "status": "independent-art-candidate",
+    "notes": "Regenerated without source reference after QA rejected unwanted full carrot. Standalone contact shadow candidate, tune opacity during compositing. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 2172,
+    "height": 724,
+    "alpha_zero_fraction": 0.6371,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.0,
+    "file": "carrot/layers/contact-shadow.png",
+    "source_file": "exec-0fb0c2b1-2bca-4c95-96bd-093590367b4c.png"
+  },
+  {
+    "id": "ART-060",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.8535,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.1137,
+    "file": "carrot/layers/glint-mask.png",
+    "source_file": "exec-659da599-2caf-41eb-a015-82b992c67b07.png"
+  },
+  {
+    "id": "ART-061",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.3558,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.0758,
+    "file": "carrot/layers/aura.png",
+    "source_file": "exec-2f029181-e249-477a-8652-5bd12e493f08.png"
+  },
+  {
+    "id": "ART-062",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.3159,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.101,
+    "file": "carrot/layers/trail.png",
+    "source_file": "exec-32829d22-d2d7-4304-bbad-f602f8951ead.png"
+  },
+  {
+    "id": "ART-063",
+    "status": "independent-art-candidate",
+    "notes": "Raw transparent standalone component; generated canvas differs from625x835 and requires production alignment. Alpha predominantly252–253 on solid forms, not literal255; some raw generator edge fringes remain and need production cleanup. No exact parent-coordinate registration claimed.",
+    "width": 1536,
+    "height": 1024,
+    "alpha_zero_fraction": 0.473,
+    "alpha_opaque_fraction": 0.0,
+    "alpha_nearopaque_nonzero_fraction": 0.4194,
+    "file": "carrot/layers/trigger-burst.png",
+    "source_file": "exec-176a2d23-58e6-449f-ab5c-d6164ceaea93.png"
+  },
+  {
+    "id": "ART-083",
+    "generatedsource": "/workspace/generated_images/exec-6b92e99e-0469-468f-99d9-d3f1bff5b3ce.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/hud/balance-panel.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-084",
+    "generatedsource": "/workspace/generated_images/exec-bc724400-7be1-4867-ace3-61855b6b536b.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/hud/bet-panel.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-085",
+    "generatedsource": "/workspace/generated_images/exec-31e8e35c-b348-4f69-abc8-48d3e7ff8e81.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/hud/win-panel.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-086",
+    "generatedsource": "/workspace/generated_images/exec-ec7380cc-8c03-463f-a038-126543b8d310.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/hud/multiplier-rail.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-087",
+    "generatedsource": "/workspace/generated_images/exec-09e1fed4-4a63-4231-8e8c-19e7fac190b9.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/hud/multiplier-active.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-088",
+    "generatedsource": "/workspace/generated_images/exec-42f27bbf-4603-4550-9ce5-0b32b6ea80bb.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/hud/free-counter.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-089",
+    "generatedsource": "/workspace/generated_images/exec-333eb414-45df-4eea-8990-3775c9bb522c.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/hud/status-panel.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-090",
+    "generatedsource": "/workspace/generated_images/exec-f76df28f-99fd-4572-abbc-f00577a8e809.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/hud/auto-count-badge.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-091",
+    "generatedsource": "/workspace/generated_images/exec-056c449e-4c0a-4bc4-a1fc-fcc5592d6b20.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Additional interaction states not generated; 9slice/resolution integration QA required.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/hud/bet-limit-tooltip.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-092",
+    "generatedsource": "/workspace/generated_images/exec-9f8c7e88-20dd-4826-a113-51d524c68bf3.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Pressed/disabled/selected states included as distinct generated images; pixel alignment needs integration QA.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/spin/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-093",
+    "generatedsource": "/workspace/generated_images/exec-88f97155-4956-4641-acb6-76e0136eabf7.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/stop/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-094",
+    "generatedsource": "/workspace/generated_images/exec-3873c49f-3c0b-4d56-8422-942e2029cc22.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Pressed/disabled/selected states included as distinct generated images; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/bet-plus/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-095",
+    "generatedsource": "/workspace/generated_images/exec-c96b94fa-8ee5-4533-9231-8389849efeb2.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Pressed/disabled/selected states included as distinct generated images; pixel alignment needs integration QA.",
+    "dimensions": [
+      1263,
+      1246
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/bet-minus/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-096",
+    "generatedsource": "/workspace/generated_images/exec-8dc5fd0b-5000-42a7-bb3b-8aa603bb9e91.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Pressed/disabled/selected states included as distinct generated images; pixel alignment needs integration QA.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/auto/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-097",
+    "generatedsource": "/workspace/generated_images/exec-9cd22700-d6d7-4531-81d0-50f7b51d87f8.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Pressed/disabled/selected states included as distinct generated images; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-normal/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-098",
+    "generatedsource": "/workspace/generated_images/exec-8ca499e4-b491-4771-bcdb-f8c3a745cd9c.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Pressed/disabled/selected states included as distinct generated images; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-fast/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-099",
+    "generatedsource": "/workspace/generated_images/exec-8c2bbc32-807d-4bf8-8991-f4e57be2866b.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal-state generated art; runtime text separate. Pressed/disabled/selected states included as distinct generated images; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-max/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-100",
+    "generatedsource": "/workspace/generated_images/exec-2be3ae68-dc15-498b-b9cf-638a8ce885bf.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/info/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-101",
+    "generatedsource": "/workspace/generated_images/exec-1250135c-0683-4d3f-943b-8df5873e934a.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/settings/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-102",
+    "generatedsource": "/workspace/generated_images/exec-01a5acb4-87b4-4177-acf4-eed14985e52f.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/sound-on/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-103",
+    "generatedsource": "/workspace/generated_images/exec-ebb27982-0c04-49c0-b835-c63ae1b3c135.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/sound-off/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-104",
+    "generatedsource": "/workspace/generated_images/exec-ff8ad982-a52d-4267-9b46-57682717af88.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/close/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-105",
+    "generatedsource": "/workspace/generated_images/exec-25c2b748-dc02-4dd8-a506-5285e010636b.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/back/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-106",
+    "generatedsource": "/workspace/generated_images/exec-96c0e155-e8b7-4985-904f-46e36f001ec3.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/primary/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-107",
+    "generatedsource": "/workspace/generated_images/exec-ee9fc4bd-4982-4816-8110-63e042f2d70f.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/cancel/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-108",
+    "generatedsource": "/workspace/generated_images/exec-1b766baa-6c5a-4cf5-be0a-51270c2f8dc5.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/next/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-109",
+    "generatedsource": "/workspace/generated_images/exec-7798758c-5f5d-4ab7-b359-85c505a7defe.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/skip/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-110",
+    "generatedsource": "/workspace/generated_images/exec-bb46ea12-cd8f-4754-be30-1bf4bb6f7b8a.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/replay/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-111",
+    "generatedsource": "/workspace/generated_images/exec-5edd0368-2b6a-4541-873e-8952f67c1b79.png",
+    "status": "independent-art-candidate",
+    "notes": "Independent normal art; pressed and disabled included as distinct generated images. Selected not applicable to momentary control. Pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/retry/normal.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-092",
+    "generatedsource": "/workspace/generated_images/exec-e59752ed-72d4-4517-b30d-689887d0fc4d.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/spin/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-092",
+    "generatedsource": "/workspace/generated_images/exec-d712ca6d-7565-422c-aba0-9bb8492f5ed8.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/spin/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-092",
+    "generatedsource": "/workspace/generated_images/exec-b90f9c00-21ab-494c-9604-ab38946c3992.png",
+    "state": "selected",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      253
+    ],
+    "file": "ui/buttons/spin/selected.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-094",
+    "generatedsource": "/workspace/generated_images/exec-ac0ac48b-592e-4ecf-9702-632780b738bd.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/bet-plus/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-094",
+    "generatedsource": "/workspace/generated_images/exec-b6c55796-7cd4-41b7-9b31-3b401d30b6f2.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/bet-plus/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-094",
+    "generatedsource": "/workspace/generated_images/exec-659c752f-cfc9-4057-9656-0065486d3924.png",
+    "state": "selected",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/bet-plus/selected.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-095",
+    "generatedsource": "/workspace/generated_images/exec-5d6afb02-c425-4865-a10f-1f6fdfc0c55b.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1263,
+      1246
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/bet-minus/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-095",
+    "generatedsource": "/workspace/generated_images/exec-09d93561-1e2c-4fde-ba23-440063bb97da.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1263,
+      1246
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/bet-minus/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-095",
+    "generatedsource": "/workspace/generated_images/exec-58d330e2-655e-44d4-9567-e8270f72f6a9.png",
+    "state": "selected",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1263,
+      1246
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/bet-minus/selected.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-096",
+    "generatedsource": "/workspace/generated_images/exec-9662a2a6-38c7-4c78-a620-04ace94ff5df.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/auto/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-096",
+    "generatedsource": "/workspace/generated_images/exec-e1cd9482-9d66-47f2-bc0b-6cab6c34847c.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/auto/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-096",
+    "generatedsource": "/workspace/generated_images/exec-fbec3e76-0d4f-49a9-8a0c-27bfe87e42ca.png",
+    "state": "selected",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/auto/selected.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-097",
+    "generatedsource": "/workspace/generated_images/exec-b4270afb-c178-4c6d-9961-d6ff9c9c2cd2.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-normal/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-097",
+    "generatedsource": "/workspace/generated_images/exec-422a369d-0dbb-4b34-8144-a712fb501404.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-normal/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-097",
+    "generatedsource": "/workspace/generated_images/exec-d9a70f31-08f7-49e1-8277-c66a942c3cdc.png",
+    "state": "selected",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/speed-normal/selected.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-098",
+    "generatedsource": "/workspace/generated_images/exec-974698e2-d15d-405e-ad0a-34799468ed42.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-fast/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-098",
+    "generatedsource": "/workspace/generated_images/exec-e78f5039-8ce7-48d0-ab24-b210b3ef7cf0.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-fast/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-098",
+    "generatedsource": "/workspace/generated_images/exec-5641ef69-2709-41a1-ac61-e9e1054f6b6a.png",
+    "state": "selected",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/speed-fast/selected.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-099",
+    "generatedsource": "/workspace/generated_images/exec-b74c830a-b85d-48ef-b062-5d9fde2586e2.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-max/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-099",
+    "generatedsource": "/workspace/generated_images/exec-690b77b6-83a7-40bb-99f2-b4e05fc5aad0.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/speed-max/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-099",
+    "generatedsource": "/workspace/generated_images/exec-0bd5753d-2760-4098-b441-713176ae7a85.png",
+    "state": "selected",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; pixel alignment needs integration QA.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/speed-max/selected.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-093",
+    "generatedsource": "/workspace/generated_images/exec-48819a84-bea8-4cdc-bc51-e8e4bee811bc.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; alignment requires integration QA. Selected state not applicable to momentary control.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/stop/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-093",
+    "generatedsource": "/workspace/generated_images/exec-385fca58-5962-4241-bfce-1aba90a62f78.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; alignment requires integration QA. Selected state not applicable to momentary control.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/buttons/stop/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-100",
+    "generatedsource": "/workspace/generated_images/exec-3a36a77d-df0d-4675-ae7a-33d023f8f6fd.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; alignment requires integration QA. Selected state not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/info/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-100",
+    "generatedsource": "/workspace/generated_images/exec-8a4d6f56-5311-40f4-bf6c-b282e0f68070.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; alignment requires integration QA. Selected state not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/info/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-101",
+    "generatedsource": "/workspace/generated_images/exec-94447977-44ea-4d8f-b4b4-671c9ca92a84.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; alignment requires integration QA. Selected state not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/settings/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-101",
+    "generatedsource": "/workspace/generated_images/exec-e5c92b10-b04e-4bf8-9ff7-984306edb72f.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated interaction state; alignment requires integration QA. Selected state not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/settings/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-102",
+    "generatedsource": "/workspace/generated_images/exec-d45c0f33-3cd3-4fc2-b6fe-96340a002d5d.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; pixel alignment needs QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/sound-on/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-102",
+    "generatedsource": "/workspace/generated_images/exec-1a42da8f-9384-4f41-ac91-940df541a6b8.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; pixel alignment needs QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/sound-on/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-103",
+    "generatedsource": "/workspace/generated_images/exec-3c963b1e-e64e-4f61-b788-a7cd289256bf.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; pixel alignment needs QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/sound-off/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-103",
+    "generatedsource": "/workspace/generated_images/exec-c221f417-556a-47d1-8261-4a9ed615c29e.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; pixel alignment needs QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/sound-off/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-104",
+    "generatedsource": "/workspace/generated_images/exec-d0c63403-bc87-4472-b398-e4f1aaeb2222.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; pixel alignment needs QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/close/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-104",
+    "generatedsource": "/workspace/generated_images/exec-fdc2312f-8368-4371-a98d-6ba0f2ed9cdd.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; pixel alignment needs QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/close/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-105",
+    "generatedsource": "/workspace/generated_images/exec-9f615fad-03c2-49d8-87b5-7ebef51d45a6.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/back/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-105",
+    "generatedsource": "/workspace/generated_images/exec-0febf911-8007-49cb-9def-15558e26052c.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/back/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-106",
+    "generatedsource": "/workspace/generated_images/exec-dd715884-f7be-41ba-80b7-9df6b1be01d8.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/primary/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-106",
+    "generatedsource": "/workspace/generated_images/exec-2fb47391-887a-4fc7-a73a-1b27b0c30306.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/primary/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-107",
+    "generatedsource": "/workspace/generated_images/exec-d03a3f75-8137-45ad-bd71-7c8b9d169e0d.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/cancel/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-107",
+    "generatedsource": "/workspace/generated_images/exec-2fba7241-21cd-413c-96fc-2c6b0d923400.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/cancel/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-108",
+    "generatedsource": "/workspace/generated_images/exec-44319ca4-de30-4eb2-b130-b01de0e8ffaf.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/next/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-108",
+    "generatedsource": "/workspace/generated_images/exec-7fd63246-8c74-49c4-95ec-d112f1da2d09.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/next/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-109",
+    "generatedsource": "/workspace/generated_images/exec-5fa71b4c-549d-4849-86e3-1109a3981a08.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/skip/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-109",
+    "generatedsource": "/workspace/generated_images/exec-59e836d8-110e-4ae7-a4b0-5c7250f98c0a.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/skip/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-110",
+    "generatedsource": "/workspace/generated_images/exec-57791d2f-46ea-45e4-af71-cddfb98339b3.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/replay/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-110",
+    "generatedsource": "/workspace/generated_images/exec-18283a80-d8dc-46e7-9c77-a5154ce6b1ca.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/replay/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-111",
+    "generatedsource": "/workspace/generated_images/exec-3b3a2d35-5b51-4b60-9064-cced90179bc9.png",
+    "state": "pressed",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/retry/pressed.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-111",
+    "generatedsource": "/workspace/generated_images/exec-895ffd97-660f-4f9c-aa46-48b9694f7bf8.png",
+    "state": "disabled",
+    "status": "independent-art-candidate",
+    "notes": "Distinct generated state; alignment requires QA. Selected not applicable to momentary control.",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/buttons/retry/disabled.png",
+    "source_file": ""
+  },
+  {
+    "id": "ART-112",
+    "status": "independent-art-candidate",
+    "notes": "Blank portrait modal backplate; normal state only; no nine-slice metadata yet.",
+    "dimensions": [
+      1064,
+      1478
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/modal/normal.png",
+    "source_file": "exec-4578cdae-0b37-4173-95a0-732f275f00ad.png"
+  },
+  {
+    "id": "ART-113",
+    "status": "independent-art-candidate",
+    "notes": "Scrim transparency needs runtime opacity calibration.",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      229,
+      247
+    ],
+    "file": "ui/components/scrim/normal.png",
+    "source_file": "exec-766dcd8f-3786-4666-b932-44193950285b.png"
+  },
+  {
+    "id": "ART-114",
+    "status": "independent-art-candidate",
+    "notes": "Single normal/selected art state; other interaction states remain.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/tabs/normal.png",
+    "source_file": "exec-01b48022-c17a-412b-b29e-fa2934b76eff.png"
+  },
+  {
+    "id": "ART-115",
+    "status": "independent-art-candidate",
+    "notes": "Single normal/selected art state; other interaction states remain.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/components/checkbox/normal.png",
+    "source_file": "exec-1bdb03d0-c388-4987-9c4a-2a4dd7ec0712.png"
+  },
+  {
+    "id": "ART-116",
+    "status": "independent-art-candidate",
+    "notes": "Single normal/selected art state; other interaction states remain.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/toggle/normal.png",
+    "source_file": "exec-8b1e19f2-0544-46e5-9670-b21ba5b4caa5.png"
+  },
+  {
+    "id": "ART-117",
+    "status": "independent-art-candidate",
+    "notes": "Single normal/selected art state; other interaction states remain.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/input/normal.png",
+    "source_file": "exec-67fc6df8-9217-499c-8c86-e3820aaa512f.png"
+  },
+  {
+    "id": "ART-118",
+    "status": "independent-art-candidate",
+    "notes": "Single normal/selected art state; other interaction states remain.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/stepper/normal.png",
+    "source_file": "exec-e6a9181e-8d65-4408-8702-8ca12d6aae68.png"
+  },
+  {
+    "id": "ART-119",
+    "status": "independent-art-candidate",
+    "notes": "Single normal/selected art state; other interaction states remain.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/spin-preset/normal.png",
+    "source_file": "exec-55c0fe51-a385-4c8d-a605-75f26decbf43.png"
+  },
+  {
+    "id": "ART-120",
+    "status": "independent-art-candidate",
+    "notes": "Single normal/selected art state; other interaction states remain.",
+    "dimensions": [
+      887,
+      1774
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/scroll-indicator/normal.png",
+    "source_file": "exec-e2c7db0d-e571-437c-b235-e429660ee8ca.png"
+  },
+  {
+    "id": "ART-121",
+    "status": "independent-art-candidate",
+    "notes": "Single normal/selected art state; other interaction states remain.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/toast/normal.png",
+    "source_file": "exec-32fb6c31-cdca-41f8-8e69-b011b98c1e7c.png"
+  },
+  {
+    "id": "ART-122",
+    "status": "independent-art-candidate",
+    "notes": "Static spinner keyframe; animation runtime rotation needed.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/components/loading/normal.png",
+    "source_file": "exec-01a52222-bd94-4671-8bab-a579b7eda3a0.png"
+  },
+  {
+    "id": "ART-123",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      1051,
+      1496
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/auto-settings/layout-portrait.png",
+    "source_file": "exec-43bf1b72-d152-4c7c-a472-4754a83bfca8.png"
+  },
+  {
+    "id": "ART-124",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      992,
+      1586
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/bet-selector/layout-portrait.png",
+    "source_file": "exec-7db13280-c23b-48f4-8dd5-eabbf82e4d37.png"
+  },
+  {
+    "id": "ART-125",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      941,
+      1672
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/settings/layout-portrait.png",
+    "source_file": "exec-8e5a4a2b-5eb5-4896-be60-f28d96042600.png"
+  },
+  {
+    "id": "ART-126",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      941,
+      1672
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/rules/layout-portrait.png",
+    "source_file": "exec-538d521c-063b-4116-9f26-d5a9bfa4bd93.png"
+  },
+  {
+    "id": "ART-127",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      941,
+      1672
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/paytable/layout-portrait.png",
+    "source_file": "exec-f9b6d219-8576-4068-9000-efe98badd14a.png"
+  },
+  {
+    "id": "ART-128",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      1051,
+      1496
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/calculation-example/layout-portrait.png",
+    "source_file": "exec-cc8640da-fcf4-46a2-aa60-f0d8545ca2e8.png"
+  },
+  {
+    "id": "ART-129",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      1052,
+      1494
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/reconnect/layout-portrait.png",
+    "source_file": "exec-1c93bc60-d211-4a63-8526-584d95d35b65.png"
+  },
+  {
+    "id": "ART-130",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      941,
+      1672
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/insufficient-balance/layout-portrait.png",
+    "source_file": "exec-705e60bc-4385-48e2-9476-fd59b8bd7860.png"
+  },
+  {
+    "id": "ART-131",
+    "status": "independent-art-candidate",
+    "notes": "Portrait screen design proof only; landscape separately supplied. Text requires live/localized UI; small-screen/long-text variants remain.",
+    "dimensions": [
+      941,
+      1672
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/reset-confirm/layout-portrait.png",
+    "source_file": "exec-d236d1c9-ad69-4470-ab62-4c378916d7d6.png"
+  },
+  {
+    "id": "ART-126",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/rules/layout-landscape.png",
+    "source_file": "exec-0c8945b5-b6f4-4fcb-a886-fff0d540e716.png"
+  },
+  {
+    "id": "ART-125",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/settings/layout-landscape.png",
+    "source_file": "exec-65ddd31f-3844-4d04-84d0-7fdfccd0fcb3.png"
+  },
+  {
+    "id": "ART-124",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/bet-selector/layout-landscape.png",
+    "source_file": "exec-7d84516e-bd5e-43ed-a3dc-c8756be955b0.png"
+  },
+  {
+    "id": "ART-123",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/auto-settings/layout-landscape.png",
+    "source_file": "exec-d24548a1-40ca-44c2-b488-83c649d8ccae.png"
+  },
+  {
+    "id": "ART-127",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/paytable/layout-landscape.png",
+    "source_file": "exec-5bbd8139-78db-4fc0-b182-365becd5fa17.png"
+  },
+  {
+    "id": "ART-131",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/reset-confirm/layout-landscape.png",
+    "source_file": "exec-0f0d1f89-14ad-4d2c-add3-1ede04e8495c.png"
+  },
+  {
+    "id": "ART-128",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/calculation-example/layout-landscape.png",
+    "source_file": "exec-07c7b1da-ddeb-46b3-be06-c99c5c3428a9.png"
+  },
+  {
+    "id": "ART-129",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/reconnect/layout-landscape.png",
+    "source_file": "exec-32385ae9-6fc7-4f25-986c-9ae81ff0e229.png"
+  },
+  {
+    "id": "ART-130",
+    "status": "independent-art-candidate",
+    "notes": "Standalone landscape screen design proof. Text requires live/localized UI; small-screen variant remains.",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_extrema": null,
+    "file": "screens/insufficient-balance/layout-landscape.png",
+    "source_file": "exec-9e744aa3-237c-4fff-a067-e0c684781d56.png"
+  },
+  {
+    "id": "ART-114",
+    "status": "independent-art-candidate",
+    "notes": "Independent alternate state; nine-slice/runtime hit area metadata remains.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/tabs/selected.png",
+    "source_file": "exec-3713f7d5-1bec-4e54-adec-a7be4350b368.png"
+  },
+  {
+    "id": "ART-116",
+    "status": "independent-art-candidate",
+    "notes": "Independent alternate state; nine-slice/runtime hit area metadata remains.",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/toggle/off.png",
+    "source_file": "exec-f71bee36-a6a8-4ac7-813b-463529f33f6a.png"
+  },
+  {
+    "id": "ART-115",
+    "status": "independent-art-candidate",
+    "notes": "Independent alternate state; nine-slice/runtime hit area metadata remains.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "file": "ui/components/checkbox/unchecked.png",
+    "source_file": "exec-f2c91c69-511c-4f64-9ac5-c99c842d4883.png"
+  },
+  {
+    "id": "ART-117",
+    "status": "independent-art-candidate",
+    "notes": "Independent alternate state; nine-slice/runtime hit area metadata remains.",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "file": "ui/components/input/focused.png",
+    "source_file": "exec-9ca8f4ba-90be-4d7c-afc8-2e20d0d381c6.png"
+  },
+  {
+    "id": "ART-132",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/free-entry/main.png",
+    "source_file": "exec-7eabe203-efe4-4b37-97ea-f5851ee19f78.png"
+  },
+  {
+    "id": "ART-133",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/free-hud/main.png",
+    "source_file": "exec-07bafacd-0d28-469a-9018-c82abf89c33c.png"
+  },
+  {
+    "id": "ART-134",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/free-extra/main.png",
+    "source_file": "exec-1148ae6c-0c00-4082-869a-c22f63c00957.png"
+  },
+  {
+    "id": "ART-135",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/free-last/main.png",
+    "source_file": "exec-5673794d-5f39-4b91-b310-27ea80ce3db2.png"
+  },
+  {
+    "id": "ART-136",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/free-summary/main.png",
+    "source_file": "exec-f96de4ec-39ed-4a5e-be60-06bba2b9cc76.png"
+  },
+  {
+    "id": "ART-137",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/win-small/main.png",
+    "source_file": "exec-90592284-099b-40fd-8552-88205e5e6921.png"
+  },
+  {
+    "id": "ART-138",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/win-big/main.png",
+    "source_file": "exec-eb1939bf-f1c6-4bc5-80cb-5bfdfb1870b2.png"
+  },
+  {
+    "id": "ART-139",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/win-epic/main.png",
+    "source_file": "exec-2b2ecfb3-66c5-476b-b09f-2e84199de4dd.png"
+  },
+  {
+    "id": "ART-140",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/win-counter/main.png",
+    "source_file": "exec-8e48fed2-dd83-48a8-9e07-429cf511b99d.png"
+  },
+  {
+    "id": "ART-141",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "features/reward-carrot-particles/main.png",
+    "source_file": "exec-e1857184-9c49-4bf6-a700-112a02f84767.png"
+  },
+  {
+    "id": "ART-142",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "tutorial/spotlight/main.png",
+    "source_file": "exec-9c1836d4-67da-4a16-9f08-1bd9367886b2.png"
+  },
+  {
+    "id": "ART-143",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "tutorial/arrow/main.png",
+    "source_file": "exec-c47a64be-989f-4145-bd09-edb598093ea3.png"
+  },
+  {
+    "id": "ART-144",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "tutorial/tap/main.png",
+    "source_file": "exec-7df68dac-1a13-419f-9e15-b6b76d7704c0.png"
+  },
+  {
+    "id": "ART-145",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "tutorial/progress/main.png",
+    "source_file": "exec-07f675b7-2a91-4240-bcca-8e11927f3484.png"
+  },
+  {
+    "id": "ART-146",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。 教學僅示意首三欄相同黑桃，不表示必須同一行，無賠率值。",
+    "file": "tutorial/win-example/main.png",
+    "source_file": "exec-58fb56fb-e0e1-4550-81dd-5794534715ed.png"
+  },
+  {
+    "id": "ART-147",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。 教學示意金牌中獎後轉為WILD；非所有金牌立即轉換。",
+    "file": "tutorial/wild-example/main.png",
+    "source_file": "exec-26c4b30f-af5f-4bec-89bd-74dcec2ef26a.png"
+  },
+  {
+    "id": "ART-148",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "tutorial/carrot-example/main.png",
+    "source_file": "exec-d04072e2-d796-4f0e-946c-978430ddfc87.png"
+  },
+  {
+    "id": "ART-149",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "tutorial/tutorial-layout/main.png",
+    "source_file": "exec-ae4e7386-b2f8-4fa4-94d9-bb1e3987b0c3.png"
+  },
+  {
+    "id": "ART-150",
+    "status": "independent-art-candidate",
+    "notes": "原始蘿蔔貨幣圖示逐位元複製，非重繪。",
+    "file": "presentation/carrot-ui/main.png",
+    "source_file": "carrot.png"
+  },
+  {
+    "id": "ART-151",
+    "status": "independent-art-candidate",
+    "notes": "真正可安裝的字型、原授權及SVG排版示例；不是AI生成的假字型。",
+    "file": "presentation/numerals/specimen.svg",
+    "source_file": "DejaVuSans-Bold.ttf"
+  },
+  {
+    "id": "ART-152",
+    "status": "independent-art-candidate",
+    "notes": "真正可安裝的字型、原授權及SVG排版示例；不是AI生成的假字型。",
+    "file": "presentation/typography/specimen.svg",
+    "source_file": "DejaVuSans-Bold.ttf"
+  },
+  {
+    "id": "ART-153",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "presentation/loading-screen/main.png",
+    "source_file": "exec-c0234d99-5422-42c9-8a8f-b88627f6fcbc.png"
+  },
+  {
+    "id": "ART-154",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "presentation/game-tile/main.png",
+    "source_file": "exec-e7b10688-7b05-4db3-a2a4-ded8194c3879.png"
+  },
+  {
+    "id": "ART-155",
+    "status": "independent-art-candidate",
+    "notes": "獨立美術候選；非動畫成品。可變數字與本地化文字由實作層覆蓋，未設定獎項門檻。",
+    "file": "presentation/share-cover/main.png",
+    "source_file": "exec-f26c6318-22fe-4b29-aeee-ecbb2f053397.png"
+  }
+]

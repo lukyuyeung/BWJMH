@@ -20,3 +20,7 @@ node --test engine.test.mjs
 - 儲存只有瀏覽器localStorage，沒有伺服器帳戶、多人、付費或正式安全錢包。
 - 引擎7項測試通過，Chromium手機與桌面基礎操作通過。
 - 未完成所有48項正式動畫，也未完成全部獨立ART；現有透明圖與CSS組合可供試玩。
+
+## 獨立美術實裝
+
+背景、旗幟、發牌器、桌框、牌面與操作區均使用獨立美術，CSS負責排版、文字與互動。`dist/assets/art/ui-asset-mapping.json`記錄原始素材與顯示視窗；原圖保存於`ART/SuperAce/07_Independent_Art`。155項為設計候選交付，完整動畫、共同畫布及所有功能畫面尚需逐項驗收。

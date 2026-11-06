@@ -4,7 +4,7 @@
 
 原始Logo、BACK及貨幣來源保留原檔；其餘為本批獨立設計候選。可編輯PSD／AI、精準共同畫布、出牌錨點、九宮格、完整按鈕狀態與48項正式動畫，不因已有PNG而視為完成。
 
-[逐項CSV](ASSETS.csv) · [尺寸、透明通道與來源紀錄](assets-manifest.json) · [驗證及待修清單](QA.md)
+[遊戲實裝與驗收](IMPLEMENTATION.md) · [額外狀態與橫屏預覽](VARIANTS.md) · [逐項CSV](ASSETS.csv) · [尺寸、透明通道與來源紀錄](assets-manifest.json) · [驗證及待修清單](QA.md)
 
 ## 分類瀏覽
 
@@ -38,3 +38,8 @@
 - 48個動畫分鏡仍需要正式時間軸、可播放動畫及整合驗證，沒有以單張圖冒充動畫完成。
 
 [原始完整製作規範](../06_Asset_Register/README.md) · [原美術總覽](../README.md)
+## 補充交付
+
+主要7組按鈕各有4張不同狀態圖，共28張；9個功能視窗各有直屏／橫屏版面稿，另含4個共用元件補充狀態。這些包含於[全部檔案紀錄](all-files-manifest.json)，仍需共同畫布、實際縮小及互動驗收。
+
+20組操作按鈕已分別交付：7組四狀態，13組normal／pressed／disabled。13組瞬時按鈕的selected不適用。
