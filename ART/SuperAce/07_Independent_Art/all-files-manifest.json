@@ -1,9 +1,22 @@
 [
   {
+    "file": "brand/bunny-gala-logo-transparent.png",
+    "bytes": 2006942,
+    "sha256": "78b964383c2bd267dca8589e14af5dae78da38ddd47d905814f2c34b5329d598",
+    "primary_registered_file": true,
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
     "file": "brand/bunny-gala-logo.png",
     "bytes": 2442291,
     "sha256": "2aa9ccf0c5178154d5fa6efcac75e16af46898032cccecfc0e7fb08b3425841e",
-    "primary_registered_file": true,
+    "primary_registered_file": false,
     "width": 1536,
     "height": 1024,
     "mode": "RGBA",

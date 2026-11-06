@@ -1,0 +1,8 @@
+{
+  "source": "brand/bunny-gala-logo.png",
+  "output": "brand/bunny-gala-logo-transparent.png",
+  "operation": "imagegen background-removal edit; original retained unchanged",
+  "generated_file": "exec-e87cc3bf-e688-435d-b5c1-76417ef4a217.png",
+  "verification": "RGBA with clear alpha background; browser rendered against a light solid surface; no rectangular background",
+  "sha256": "78b964383c2bd267dca8589e14af5dae78da38ddd47d905814f2c34b5329d598"
+}

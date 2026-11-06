@@ -1,5 +1,5 @@
 ﻿id,group,name,file,size,layer,states,source,status,implementation,priority,note,independent_file,independent_status
-ART-001,品牌與來源,Bunny Gala 官方標誌,brand/bunny-gala-logo.png,保留原始比例；另供2x/3x輸出,原檔＋透明輸出版,標準／深色背景,../../../Bunny_Gala_Riichi_v2.7.2/client/public/art/v5/LOGO_MASTER__DO_NOT_REDRAW.png,原檔保留；未正式驗收,本批尚未整批實裝,P0,不重畫、不創造替代兔子LOGO,../07_Independent_Art/brand/bunny-gala-logo.png,原檔保留
+ART-001,品牌與來源,Bunny Gala 官方標誌,brand/bunny-gala-logo.png,保留原始比例；另供2x/3x輸出,原檔＋透明輸出版,標準／深色背景,../../../Bunny_Gala_Riichi_v2.7.2/client/public/art/v5/LOGO_MASTER__DO_NOT_REDRAW.png,原檔保留；去背版已接入直屏,直屏已實裝,P0,不重畫、不創造替代兔子LOGO,../07_Independent_Art/brand/bunny-gala-logo-transparent.png,去背顯示版已接入直屏；原始檔保留
 ART-002,品牌與來源,官方卡背 BACK,cards/back.png,625×835；寬高比625:835,原檔；獨立PNG,標準／翻面／發牌時引用,../00_Source/poker/back.png,原檔保留；未正式驗收,本批尚未整批實裝,P0,粉黑棋盤、黑蘿蔔及Bunny Warriors原標誌；不改成Bunny Gala卡背,../07_Independent_Art/cards/back.png,原檔保留
 ART-003,品牌與來源,蘿蔔貨幣原圖,currency/carrot-source.png,保留原始比例,原檔,來源,../00_Source/currency/carrot.png,原檔保留；未正式驗收,本批尚未整批實裝,P0,貨幣圖示不是免費遊戲大金蘿蔔,../07_Independent_Art/currency/carrot-source.png,原檔保留
 ART-004,普通牌,J 角色牌,cards/normal/J.png,625×835；2x=1250×1670,牌底／原角色／左上角字級；另交合成PNG,標準,../00_Source/poker/spades/11.png,獨立設計候選稿；未正式驗收,本批尚未整批實裝,P0,保留角色；不得以低解析放大或生成漂移替代；取消右上角花色須在正式檔處理,../07_Independent_Art/cards/normal/J.png,獨立設計候選稿

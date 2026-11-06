@@ -8,7 +8,7 @@
 
 | ID／項目 | 獨立檔案 | 交付要求 | 狀態 |
 |---|---|---|---|
-|ART-001 · Bunny Gala 官方標誌 · P0|[檔案](../07_Independent_Art/brand/bunny-gala-logo.png)|保留原始比例；另供2x/3x輸出<br>原檔＋透明輸出版<br>標準／深色背景|原檔保留；未正式驗收<br>本批尚未整批實裝|
+|ART-001 · Bunny Gala 官方標誌 · P0|[檔案](../07_Independent_Art/brand/bunny-gala-logo-transparent.png)|保留原始比例；另供2x/3x輸出<br>原檔＋透明輸出版<br>標準／深色背景|原檔保留；去背版已接入直屏<br>直屏已實裝|
 |ART-002 · 官方卡背 BACK · P0|[檔案](../07_Independent_Art/cards/back.png)|625×835；寬高比625:835<br>原檔；獨立PNG<br>標準／翻面／發牌時引用|原檔保留；未正式驗收<br>本批尚未整批實裝|
 |ART-003 · 蘿蔔貨幣原圖 · P0|[檔案](../07_Independent_Art/currency/carrot-source.png)|保留原始比例<br>原檔<br>來源|原檔保留；未正式驗收<br>本批尚未整批實裝|
 

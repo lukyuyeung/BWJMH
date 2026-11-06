@@ -14,7 +14,9 @@
       941,
       1672
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-065",
@@ -31,7 +33,9 @@
       1672,
       941
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": false
   },
   {
     "id": "ART-068",
@@ -48,7 +52,9 @@
       1048,
       1353
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": false
   },
   {
     "id": "ART-069",
@@ -65,7 +71,9 @@
       1005,
       1427
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": false
   },
   {
     "id": "ART-070",
@@ -82,7 +90,9 @@
       1182,
       1251
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
   },
   {
     "id": "ART-071",
@@ -99,7 +109,9 @@
       1175,
       1257
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-073",
@@ -116,7 +128,9 @@
       2128,
       584
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
   },
   {
     "id": "ART-089",
@@ -133,7 +147,9 @@
       2097,
       534
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-088",
@@ -150,7 +166,9 @@
       1731,
       599
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-086",
@@ -167,7 +185,9 @@
       2102,
       537
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
   },
   {
     "id": "ART-087",
@@ -184,7 +204,9 @@
       1727,
       622
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
   },
   {
     "id": "ART-083",
@@ -201,7 +223,9 @@
       2089,
       535
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": false
   },
   {
     "id": "ART-102",
@@ -218,7 +242,9 @@
       1056,
       987
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-102",
@@ -235,7 +261,9 @@
       1055,
       986
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-106",
@@ -252,7 +280,9 @@
       1997,
       647
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": false
   },
   {
     "id": "ART-106",
@@ -269,7 +299,9 @@
       1992,
       644
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": false
   },
   {
     "id": "ART-106",
@@ -286,7 +318,9 @@
       1998,
       647
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": false
   },
   {
     "id": "ART-095",
@@ -303,7 +337,9 @@
       1035,
       1010
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-095",
@@ -320,7 +356,9 @@
       1035,
       1011
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-095",
@@ -337,7 +375,9 @@
       1035,
       1011
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-093",
@@ -354,7 +394,9 @@
       1150,
       898
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-093",
@@ -371,7 +413,9 @@
       1149,
       898
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-097",
@@ -388,7 +432,9 @@
       1055,
       989
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-097",
@@ -405,7 +451,9 @@
       1054,
       987
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-092",
@@ -422,7 +470,9 @@
       1186,
       930
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-092",
@@ -439,7 +489,9 @@
       1184,
       930
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-092",
@@ -456,7 +508,9 @@
       1185,
       929
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-103",
@@ -473,7 +527,9 @@
       1066,
       1013
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-103",
@@ -490,7 +546,9 @@
       1065,
       1012
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-094",
@@ -507,7 +565,9 @@
       1055,
       988
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-094",
@@ -524,7 +584,9 @@
       1054,
       985
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-094",
@@ -541,7 +603,9 @@
       1055,
       987
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-101",
@@ -558,7 +622,9 @@
       1055,
       999
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-101",
@@ -575,7 +641,9 @@
       1055,
       999
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-101",
@@ -592,7 +660,9 @@
       1057,
       999
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-100",
@@ -609,7 +679,9 @@
       1065,
       1015
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-100",
@@ -626,7 +698,9 @@
       1064,
       1013
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-100",
@@ -643,7 +717,9 @@
       1063,
       1017
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-104",
@@ -660,7 +736,9 @@
       1043,
       984
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-104",
@@ -677,7 +755,9 @@
       1043,
       984
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-098",
@@ -694,7 +774,9 @@
       1055,
       992
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-098",
@@ -711,7 +793,9 @@
       1090,
       1027
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-099",
@@ -728,7 +812,9 @@
       1055,
       989
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-099",
@@ -745,7 +831,9 @@
       1093,
       1025
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-107",
@@ -762,7 +850,9 @@
       1620,
       749
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": false
   },
   {
     "id": "ART-107",
@@ -779,7 +869,9 @@
       1619,
       748
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": false
   },
   {
     "id": "ART-107",
@@ -796,7 +888,9 @@
       1624,
       750
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": false
   },
   {
     "id": "ART-096",
@@ -813,7 +907,9 @@
       1733,
       631
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-096",
@@ -830,7 +926,9 @@
       1728,
       626
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-096",
@@ -847,7 +945,9 @@
       1768,
       673
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-096",
@@ -864,7 +964,9 @@
       1745,
       630
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-121",
@@ -881,7 +983,9 @@
       2121,
       500
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
   },
   {
     "id": "ART-112",
@@ -898,7 +1002,9 @@
       991,
       1390
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
   },
   {
     "id": "ART-115",
@@ -915,7 +1021,9 @@
       1006,
       735
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-115",
@@ -932,7 +1040,9 @@
       1032,
       767
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "contain",
+    "activeInPortrait": true
   },
   {
     "id": "ART-119",
@@ -949,7 +1059,9 @@
       1469,
       639
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": false
   },
   {
     "id": "ART-117",
@@ -966,7 +1078,9 @@
       2039,
       547
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
   },
   {
     "id": "ART-114",
@@ -983,7 +1097,9 @@
       2106,
       549
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
   },
   {
     "id": "ART-114",
@@ -1000,6 +1116,24 @@
       2111,
       551
     ],
-    "note": "Original PNG copied unchanged; SVG sets viewport only. Generated alpha fringes remain."
+    "note": "Original PNG remains embedded unchanged. UI viewports fit their layout rectangles; card dimensions are handled separately at 625:835.",
+    "layoutFit": "fill-ui-surface",
+    "activeInPortrait": true
+  },
+  {
+    "id": "ART-001",
+    "source": "brand/bunny-gala-logo-transparent.png",
+    "url": "assets/bunny-gala-transparent.png",
+    "activeInPortrait": true,
+    "note": "Transparent display derivative; original logo retained separately.",
+    "viewportUrl": "assets/bunny-gala-transparent.png"
+  },
+  {
+    "id": "ART-022",
+    "source": "cards/layers/gold-overlay.png",
+    "url": "assets/art/card-gold-overlay.png",
+    "activeInPortrait": true,
+    "note": "Overlaid inside the same card bounds; normal-card geometry is unchanged.",
+    "viewportUrl": "assets/art/card-gold-overlay.png"
   }
 ]

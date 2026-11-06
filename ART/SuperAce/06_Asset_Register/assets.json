@@ -8,12 +8,12 @@
     "layer": "原檔＋透明輸出版",
     "states": "標準／深色背景",
     "source": "../../../Bunny_Gala_Riichi_v2.7.2/client/public/art/v5/LOGO_MASTER__DO_NOT_REDRAW.png",
-    "status": "原檔保留；未正式驗收",
-    "implementation": "本批尚未整批實裝",
+    "status": "原檔保留；去背版已接入直屏",
+    "implementation": "直屏已實裝",
     "priority": "P0",
     "note": "不重畫、不創造替代兔子LOGO",
-    "independent_file": "../07_Independent_Art/brand/bunny-gala-logo.png",
-    "independent_status": "原檔保留"
+    "independent_file": "../07_Independent_Art/brand/bunny-gala-logo-transparent.png",
+    "independent_status": "去背顯示版已接入直屏；原始檔保留"
   },
   {
     "id": "ART-002",

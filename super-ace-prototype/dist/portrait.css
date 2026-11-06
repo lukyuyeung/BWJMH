@@ -1,0 +1,116 @@
+/* Portrait stage. Existing standalone artwork supplies all decorative surfaces. */
+html,body{width:100%;height:100%;margin:0;overflow:hidden;overscroll-behavior:none}
+body{position:fixed;inset:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.ambient{background-image:url('assets/art/scene/portrait-background.png');background-position:center;background-size:cover;filter:brightness(.3) saturate(.7)}
+.app{position:relative;width:min(100%,440px);height:100dvh;max-width:none;margin:0 auto;padding:calc(4px + env(safe-area-inset-top)) 12px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-rows:54px minmax(0,1fr);gap:4px;overflow:hidden}
+.topbar{width:100%;height:auto;min-height:0;display:grid;grid-template-columns:88px minmax(0,1fr) 44px;gap:4px;border:0}
+.header-tools{display:flex;align-items:center;gap:0}
+.brand{display:grid;place-items:center;height:100%;min-width:0}
+.brand img{display:block;width:128px;max-width:100%;height:52px;object-fit:contain}
+.round,.secondary-controls .round{width:44px;height:44px;padding:0;background-size:30px 30px;flex-shrink:0}
+.game{width:100%;height:100%;min-height:0;margin:0;display:grid;grid-template-rows:40px 52px minmax(0,1fr) 26px auto 82px;gap:4px;align-content:stretch}
+.mode-heading{position:absolute;width:1px;height:1px;min-height:0;overflow:hidden;clip-path:inset(50%);padding:0}
+.multipliers{height:40px;min-height:0;aspect-ratio:auto;margin:0;align-items:stretch;padding:3px 3%;background-size:100% 100%}
+.multipliers span{display:grid;place-items:center;padding:0;font-family:inherit;font-size:22px;font-weight:600;color:#d6b98f;transition:none}
+.multipliers .active{color:#fff5cf;background-image:url('assets/art/ui/components/input/normal.svg?v=portrait-20261107');background-size:96% 90%;background-position:center}
+.dealer{width:88%;height:52px;min-height:0;aspect-ratio:auto;justify-self:center;margin:0;padding:0;background-size:100% 100%}
+.mouths{inset:24% 9% 17%;gap:6%;align-items:center}
+.mouth{width:100%;height:100%;overflow:hidden}
+.mouth img{display:block;width:76%;height:90%;margin:0 auto;object-fit:cover;object-position:center 28%;transform:perspective(150px) rotateX(24deg);image-rendering:pixelated}
+.board-zone{min-width:0;min-height:0;width:100%;height:100%;container-type:size;display:grid;place-items:center;overflow:visible}
+.board-shell{width:min(100cqw,calc(100cqh * .938));min-height:0;padding:0;margin:0;place-self:center;background:none;border:0;box-shadow:none}
+.board-shell:before{background-size:100% 100%}
+.board{width:100%;padding:3%;gap:3px;background-size:100% 100%;border-radius:0}
+.cell{aspect-ratio:625/835;min-width:0;min-height:0}
+.card img.art-card{image-rendering:pixelated}
+.cell.carrot .card img.art-card{image-rendering:auto;width:116%;height:113%;margin-left:-8%;margin-top:-7%}
+.cell .card.special img.art-card{image-rendering:auto}
+.status{width:100%;height:26px;min-height:0;margin:0;padding:0 3%;font-size:11px;letter-spacing:0;line-height:1.2;background-image:none;color:#ead7c6;overflow:hidden}
+#message{text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.free-pill{flex-shrink:0;font-size:11px;line-height:1.2}
+.balance-bar{width:100%;height:auto;aspect-ratio:5.45/1;min-height:0;margin:0;grid-template-columns:1.2fr 1fr 1fr;padding:2% 3% 2% 17%;background-size:100% 100%;align-items:center}
+.balance-bar label{font-size:11px;letter-spacing:0;white-space:nowrap;color:#dfc6ce}
+.balance-bar strong{font-size:21px;line-height:1.15;font-weight:600;margin-top:3px;white-space:nowrap}
+.controls{width:100%;height:82px;min-height:0;display:flex;align-items:center;justify-content:space-between;margin:0;padding:0 4px;gap:4px}
+.spin-controls{gap:2px;flex-shrink:0}.secondary-controls{gap:2px;flex-shrink:0}
+.spin{width:78px;height:78px;background-size:contain;flex-shrink:0}
+.bet-adjust{width:44px;height:48px;background-size:32px 32px;flex-shrink:0}
+.tool{position:relative;width:52px;height:62px;padding:0 0 16px;justify-content:flex-end;background-size:48px 40px;background-position:center 2px}
+.tool small{font-size:11px;line-height:14px;letter-spacing:0;margin:0;transform:none;color:#f2d9af;position:absolute;bottom:2px;left:0;right:0;text-align:center}
+.tool>span{display:none}
+.spin:focus-visible,.tool:focus-visible,.round:focus-visible,.bet-adjust:focus-visible{outline-offset:-2px}
+/* Popups can scroll internally; the game stage itself never scrolls. */
+dialog{width:min(92vw,430px);height:min(82dvh,610px);max-height:calc(100dvh - 24px);aspect-ratio:auto;padding:28px 24px;background-size:100% 100%;margin:auto;overscroll-behavior:contain}
+.modal-head{height:32px;margin-bottom:12px}.modal-head button{width:44px;height:44px;background-size:30px 30px;flex-shrink:0}
+#modalContent{overflow:auto;overscroll-behavior:contain;min-height:0;padding:0 2px 8px;scrollbar-width:thin}
+h2{font-family:inherit;font-size:23px;line-height:1.35;margin:2px 0 16px;font-weight:600}
+p,li{font-size:13px;line-height:1.8}.form-row{font-size:13px;gap:6px}.form-row label{font-size:12px;letter-spacing:0;justify-content:flex-start;text-align:left}
+.form-row input[type=number]{width:82px;min-height:44px;padding:8px;font-size:14px}
+.tabs button,.chips button{min-height:44px;font-size:13px}.chips{gap:5px}.chips button{padding:8px 12px}
+.btn,.btn.primary{min-height:44px;font-size:14px}.btn-row{gap:8px;margin-top:18px;flex-wrap:wrap}
+.feature-title{font-family:inherit;font-size:27px}.feature-carrots img{height:110px}.tutorial-cards{margin:14px 0}
+.toast{bottom:calc(10px + env(safe-area-inset-bottom));font-size:12px;max-width:calc(100vw - 24px);min-height:40px;display:grid;place-items:center;background-size:100% 100%}
+@media(max-height:700px){
+ .app{padding-top:env(safe-area-inset-top);padding-bottom:calc(4px + env(safe-area-inset-bottom));grid-template-rows:44px minmax(0,1fr);gap:2px}
+ .brand img{height:42px;width:108px}
+ .game{grid-template-rows:32px 36px minmax(0,1fr) 22px auto 66px;gap:3px}
+ .multipliers{height:32px}.multipliers span{font-size:19px}
+ .dealer{height:36px;width:82%}
+ .status{height:22px;font-size:10px}
+ .controls{height:66px;padding:0 2px}.spin{width:64px;height:64px}
+ .balance-bar label{font-size:10px}.balance-bar strong{font-size:18px}
+ .tool{height:58px;width:48px;background-size:43px 35px}.tool small{font-size:10px;bottom:1px}
+ dialog{padding:24px 22px}.feature-carrots img{height:90px}
+}
+@media(max-width:350px){.app{padding-left:8px;padding-right:8px}.balance-bar strong{font-size:17px}.balance-bar label{font-size:10px}.controls{padding:0}.spin-controls{gap:0}.tool{width:46px}.bet-adjust{width:44px}.secondary-controls{gap:0}}
+/* UI surfaces fit their allocated rectangles; card art keeps its original ratio. */
+.multipliers .active{background-image:url('assets/art/ui/hud/multiplier-active.svg?v=portrait-20261107');background-size:96% 96%}
+.mouths{inset:24% 8% 17%;gap:3.5%}
+.mouth img{width:58%;height:96%;object-fit:cover;object-position:center 25%;transform:perspective(150px) rotateX(24deg)}
+/* Keep the dealer next to the table; leave any surplus room below the cards. */
+.board-zone{place-items:start center}.board-shell{place-self:start center}
+/* Size the table from remaining height, then keep every game row together. */
+.game{display:flex;flex-direction:column;justify-content:center;container-type:size}
+.game>*{flex-shrink:0}
+.board-zone{height:min(calc(100cqh - 220px - 100cqw / 5.45),calc(100cqw / .938));place-items:center}
+.board-shell{place-self:center}
+@media(max-height:700px){.board-zone{height:min(calc(100cqh - 171px - 100cqw / 5.45),calc(100cqw / .938))}}
+.card .gold-frame-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;image-rendering:auto;pointer-events:none}
+.topbar{position:relative;grid-template-columns:minmax(0,1fr) 44px}
+.brand{position:absolute;left:50%;top:0;transform:translateX(-50%);width:118px;height:54px;pointer-events:none}
+@media(max-height:700px){.brand{height:44px}}
+.dealer{height:72px}
+.mouth img{width:auto;max-width:75%;height:96%;aspect-ratio:625/835;object-fit:contain}
+.board-zone{height:min(calc(100cqh - 240px - 100cqw / 5.45),calc(100cqw / .938))}
+.controls{display:grid;grid-template-columns:48px 48px minmax(64px,1fr) 48px 48px;gap:0;justify-items:center;padding:0}
+.spin-controls,.secondary-controls.right{display:contents}
+#minus{grid-column:1;grid-row:1}#plus{grid-column:2;grid-row:1}#spin{grid-column:3;grid-row:1}#auto{grid-column:4;grid-row:1}#speed{grid-column:5;grid-row:1}
+@media(max-height:700px){.dealer{height:44px}.board-zone{height:min(calc(100cqh - 179px - 100cqw / 5.45),calc(100cqw / .938))}}
+@media(max-width:350px){.controls{grid-template-columns:44px 44px minmax(64px,1fr) 44px 44px}}
+.form-row input[type=number]{background-size:100% 80%}
+.chips button{background-size:100% 72%}
+.tabs button,.tabs button.active{background-size:100% 90%}
+.btn,.btn.primary{background-size:100% 90%}
+table{font-size:12px}th,td{padding:8px 4px}
+/* Blank independent panels keep dynamic labels free of baked artwork text/icons. */
+.chips button,.btn{background-image:url('assets/art/ui/components/tabs/normal.svg?v=portrait-20261107')}
+.chips button.selected,.btn.primary{background-image:url('assets/art/ui/components/tabs/selected.svg?v=portrait-20261107')}
+.btn:active,.btn.primary:active{background-image:url('assets/art/ui/components/input/normal.svg?v=portrait-20261107')}
+.btn:disabled,.btn.primary:disabled{background-image:url('assets/art/ui/components/tabs/normal.svg?v=portrait-20261107')}
+@keyframes fall{0%{transform:translate(var(--deal-shift,0px),var(--drop-start,-260%));opacity:0}12%{opacity:1}80%{transform:translate(0,3%)}100%{transform:translate(0,0)}}
+.chips button.selected{background-size:100% 72%}
+.balance-bar>div{min-width:0}.balance-bar strong{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.cell.out .card{animation-duration:calc(240ms * var(--motion-scale,1))}
+.cell.turn .card{animation-duration:calc(360ms * var(--motion-scale,1))}
+.cell.copy .card{animation-duration:calc(480ms * var(--motion-scale,1))}
+.cell.bounce img{animation-duration:calc(600ms * var(--motion-scale,1))}
+.cell.hit .card,.cell.hit:after{animation-duration:calc(500ms * var(--motion-scale,1))}
+.win-pop.show{animation-duration:calc(650ms * var(--motion-scale,1))}
+.ray{animation-duration:calc(500ms * var(--motion-scale,1))}
+.dealer.dealing .mouth img{animation-duration:calc(350ms * var(--motion-scale,1))}
+.balance-bar{position:relative;background-image:url('assets/art/ui/components/tabs/normal.svg?v=portrait-20261107')}
+.balance-currency{position:absolute;left:4%;top:50%;width:32px;height:32px;object-fit:contain;transform:translateY(-50%)}
+.currency-inline{display:inline-block;width:32px;height:32px;object-fit:contain;vertical-align:middle}
+.reward-amount{display:flex;align-items:center;justify-content:center;gap:6px;text-align:center;font-size:clamp(22px,7vw,32px);color:#f8dba2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.reward-amount .currency-inline{flex-shrink:0}
+.chips button.selected,.tabs button.active{background-repeat:no-repeat;background-position:center}

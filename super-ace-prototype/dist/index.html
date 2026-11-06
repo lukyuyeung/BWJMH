@@ -1,16 +1,33 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#201024"><title>Bunny Gala · CARROT</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="art-style.css"><link rel="stylesheet" href="cards-art.css"></head><body>
-<div class="ambient"></div><main class="app">
-<header class="topbar"><a class="brand" href="#" aria-label="Bunny Gala"><img src="assets/bunny-gala.png" alt="Bunny Gala"></a><span class="edition">THE GALA COLLECTION <b>01</b></span><button class="round" id="sound" aria-label="切換音效">♫</button></header>
-<section class="game" aria-label="Bunny Gala 撲克牌遊戲">
-<div class="flag flag-left"><span>BUNNY<br>GALA</span><i>✦</i></div><div class="flag flag-right"><span>BUNNY<br>GALA</span><i>✦</i></div>
-<div class="mode-heading"><span id="modeLabel">LET THE CARROTS FALL</span><small id="freeLabel">1024 WAYS · 金牌連鎖</small></div>
-<div class="multipliers" id="multipliers"><span class="active">×1</span><span>×2</span><span>×3</span><span>×5</span></div>
-<div class="dealer" aria-hidden="true"><div class="dealer-top"><i></i><span>BUNNY GALA</span><i></i></div><div class="mouths"></div></div>
-<div class="board-shell"><div class="board" id="board" aria-label="五列四行撲克牌盤面"></div><div class="rays" id="rays"></div><div class="win-pop" id="winPop"></div></div>
-<div class="status"><span class="status-dot"></span><span id="message" aria-live="polite">準備好了嗎？讓幸運登場。</span><span class="free-pill" id="freePill" hidden></span></div>
-<div class="balance-bar"><div><label><img src="assets/carrot.png" alt="">蘿蔔餘額</label><strong id="balance">2,000</strong></div><div><label>每次下注</label><strong id="bet">20</strong></div><div><label>本局獎勵</label><strong id="win">0</strong></div></div>
-<div class="controls"><div class="secondary-controls"><button class="round" id="help" aria-label="玩法與計算">ⓘ</button><button class="round" id="settings" aria-label="設定">⚙</button></div><div class="spin-controls"><button class="bet-adjust" id="minus" aria-label="減少下注">−</button><button class="spin" id="spin"><span class="spin-arrow">↻</span><span class="spin-word">SPIN</span></button><button class="bet-adjust" id="plus" aria-label="增加下注">＋</button></div><div class="secondary-controls right"><button class="tool" id="auto"><span>⟳</span><small>AUTO</small></button><button class="tool" id="speed"><span>ϟ</span><small>正常</small></button></div></div>
-<div class="game-footer"><span>✦</span><span>BUNNY GALA</span><span>✦</span></div></section>
-<footer class="page-footer"><span>一場屬於兔子的華麗冒險</span><button id="demo">動畫試映</button><button id="reset">重設試玩</button><span class="prototype">PRIVATE PLAYTEST · 測試蘿蔔</span></footer></main>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#180d1b"><title>Bunny Gala · CARROT</title>
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="art-style.css"><link rel="stylesheet" href="cards-art.css"><link rel="stylesheet" href="portrait.css">
+</head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+<main class="app">
+<header class="topbar">
+<div class="header-tools"><button class="round" id="help" aria-label="玩法與計算">ⓘ</button><button class="round" id="settings" aria-label="設定">⚙</button></div>
+<div class="brand"><img src="assets/bunny-gala-transparent.png" alt="Bunny Gala"></div>
+<button class="round" id="sound" aria-label="切換音效">♫</button>
+</header>
+<section class="game" aria-label="Bunny Gala 直屏撲克牌遊戲">
+<div class="mode-heading" aria-live="polite"><span id="modeLabel">LET THE CARROTS FALL</span><small id="freeLabel">1024 WAYS · 金牌連鎖</small></div>
+<div class="multipliers" id="multipliers" aria-label="連鎖倍率"><span class="active">×1</span><span>×2</span><span>×3</span><span>×5</span></div>
+<div class="dealer" aria-hidden="true"><div class="mouths"></div></div>
+<div class="board-zone"><div class="board-shell"><div class="board" id="board" aria-label="五列四行撲克牌盤面"></div><div class="rays" id="rays"></div><div class="win-pop" id="winPop"></div></div></div>
+<div class="status"><span id="message" aria-live="polite">由最左列連續三列相同符號即可中獎</span><span class="free-pill" id="freePill" hidden></span></div>
+<div class="balance-bar"><img class="balance-currency" src="assets/carrot.png" alt="蘿蔔"><div><label>蘿蔔餘額</label><strong id="balance">2,000</strong></div><div><label>每次下注</label><strong id="bet">20</strong></div><div><label>本局獎勵</label><strong id="win">0</strong></div></div>
+<div class="controls">
+<div class="spin-controls"><button class="bet-adjust" id="minus" aria-label="減少下注">−</button><button class="bet-adjust" id="plus" aria-label="增加下注">＋</button><button class="spin" id="spin" aria-label="開始旋轉"><span class="spin-arrow">↻</span><span class="spin-word">SPIN</span></button></div>
+<div class="secondary-controls right"><button class="tool" id="auto" aria-label="自動遊戲設定"><span>⟳</span><small>AUTO</small></button><button class="tool" id="speed" aria-label="切換遊戲速度"><span>ϟ</span><small>正常</small></button></div>
+</div>
+</section>
+</main>
 <dialog id="modal"><div class="modal-head"><span class="eyebrow">BUNNY GALA</span><button id="closeModal" aria-label="關閉">×</button></div><div id="modalContent"></div></dialog>
-<div class="toast" id="toast" role="status"></div><script type="module" src="app.js"></script></body></html>
+<div class="toast" id="toast" role="status"></div>
+<script type="module" src="app.js?v=portrait-20261107"></script>
+</body>
+</html>

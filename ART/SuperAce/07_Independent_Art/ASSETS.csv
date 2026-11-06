@@ -1,5 +1,5 @@
 ﻿id,group,name,file,status,implementation,expected_size,width,height,mode,has_transparent_pixels,notes,sha256
-ART-001,品牌與來源,Bunny Gala 官方標誌,brand/bunny-gala-logo.png,原檔保留,尚未把本批全部資產實裝到遊戲,保留原始比例；另供2x/3x輸出,1536,1024,RGBA,False,原始來源原樣複製；尚未標為正式驗收,2aa9ccf0c5178154d5fa6efcac75e16af46898032cccecfc0e7fb08b3425841e
+ART-001,品牌與來源,Bunny Gala 官方標誌,brand/bunny-gala-logo-transparent.png,去背顯示版；原檔另存,已接入直屏試玩,保留原始比例；另供2x/3x輸出,1536,1024,RGBA,True,去背顯示版已在淺色底驗證。原始Logo保留於brand/bunny-gala-logo.png；去背來源見brand/logo-cutout-provenance.json。,78b964383c2bd267dca8589e14af5dae78da38ddd47d905814f2c34b5329d598
 ART-002,品牌與來源,官方卡背 BACK,cards/back.png,原檔保留,尚未把本批全部資產實裝到遊戲,625×835；寬高比625:835,625,835,RGBA,True,原始來源原樣複製；尚未標為正式驗收,787cabefd43d50d3892fe042d4d63595b6dc6bcdff1ad4fb5f4b0b60ec28ef58
 ART-003,品牌與來源,蘿蔔貨幣原圖,currency/carrot-source.png,原檔保留,尚未把本批全部資產實裝到遊戲,保留原始比例,48,48,RGBA,True,原始來源原樣複製；尚未標為正式驗收,3ecf46060f66cb169065d8dcd5d201bdc701f35473db9d7a9710e6e6fbd4035e
 ART-004,普通牌,J 角色牌,cards/normal/J.png,獨立設計候選稿,尚未把本批全部資產實裝到遊戲,625×835；2x=1250×1670,1085,1450,RGB,False,獨立不透明牌面；正式比例與對齊需驗收；生成原生畫布未強制重採樣，正式625×835及前景疊圖對齊未驗收,93c615b5b1da6a27aeb70fcb14dceecd895c1a661ac0a8738f85f43419135a6b

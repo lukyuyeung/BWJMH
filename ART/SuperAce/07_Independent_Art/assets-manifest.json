@@ -3,12 +3,12 @@
     "id": "ART-001",
     "group": "品牌與來源",
     "name": "Bunny Gala 官方標誌",
-    "file": "brand/bunny-gala-logo.png",
-    "status": "原檔保留",
-    "implementation": "尚未把本批全部資產實裝到遊戲",
-    "notes": "原始來源原樣複製；尚未標為正式驗收",
-    "sha256": "2aa9ccf0c5178154d5fa6efcac75e16af46898032cccecfc0e7fb08b3425841e",
-    "bytes": 2442291,
+    "file": "brand/bunny-gala-logo-transparent.png",
+    "status": "去背顯示版；原檔另存",
+    "implementation": "已接入直屏試玩",
+    "notes": "去背顯示版已在淺色底驗證。原始Logo保留於brand/bunny-gala-logo.png；去背來源見brand/logo-cutout-provenance.json。",
+    "sha256": "78b964383c2bd267dca8589e14af5dae78da38ddd47d905814f2c34b5329d598",
+    "bytes": 2006942,
     "expected_size": "保留原始比例；另供2x/3x輸出",
     "registered_file": "brand/bunny-gala-logo.png",
     "source": "bunny-gala.png",
@@ -16,16 +16,16 @@
     "height": 1024,
     "mode": "RGBA",
     "alpha_extrema": [
-      255,
-      255
+      0,
+      254
     ],
     "visible_bounds": [
       0,
-      0,
-      1536,
+      18,
+      1514,
       1024
     ],
-    "has_transparent_pixels": false
+    "has_transparent_pixels": true
   },
   {
     "id": "ART-002",
