@@ -22,7 +22,11 @@ const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4173';
    for(const r of result.cards){assert(r.x>=0&&r.y>=0&&r.right<=width&&r.bottom<=height);assert(Math.abs(r.width/r.height-625/835)<.001)}
    for(const r of result.buttons){assert(r.width>=44&&r.height>=44,r.id+' hit target');assert(r.x>=0&&r.y>=0&&r.right<=width&&r.bottom<=height,r.id+' bounds');assert(r.hit,r.id+' covered')}
    await page.evaluate(()=>scrollTo(0,500));await page.mouse.wheel(0,500);assert.equal(await page.evaluate(()=>scrollY),0);
-   console.log(`${width}x${height}: 20 cards, 8 reachable buttons, no page scroll`);await page.close();
+   await page.locator('#auto').click();
+   const auto=await page.locator('#modalContent').evaluate(e=>({scroll:e.scrollHeight,height:e.clientHeight}));assert(auto.scroll<=auto.height+1,'Auto requires scrolling');
+   for(const id of ['autoStart','autoCancel']){const r=await page.locator('#'+id).boundingBox();assert(r.y>=0&&r.y+r.height<=height,id+' hidden')}
+   assert.equal(await page.locator('.chips button.selected').evaluate(e=>getComputedStyle(e).backgroundRepeat),'no-repeat');await page.locator('#autoCancel').click();
+   console.log(`${width}x${height}: 20 cards, 8 reachable buttons, main stage and Auto fit`);await page.close();
   }
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});
