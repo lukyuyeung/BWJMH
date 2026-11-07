@@ -1,0 +1,18 @@
+{
+  "id": "ANIM-22",
+  "trigger": "devil.copy",
+  "api": "galaDebug.effects.preview('ANIM-22')",
+  "recorded_scene": "runtime-effect-preview",
+  "recorded_events": [
+    {
+      "id": "ANIM-22",
+      "at": 3213.699999988079,
+      "indices": [
+        6
+      ],
+      "preview": true
+    }
+  ],
+  "preview_uses_ephemeral_art": true,
+  "model_wallet_unchanged": true
+}

@@ -1,0 +1,22 @@
+{
+  "id": "ANIM-40",
+  "trigger": "reward.fast_forward",
+  "api": "galaDebug.effects.preview('ANIM-40')",
+  "recorded_scene": "actual-reward-counter-and-taps",
+  "recorded_events": [
+    {
+      "id": "ANIM-40",
+      "at": 1762.9000000059605,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-40",
+      "at": 2163.5,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "preview_uses_ephemeral_art": false,
+  "model_wallet_unchanged": true
+}

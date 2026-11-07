@@ -1,0 +1,18 @@
+{
+  "id": "ANIM-30",
+  "trigger": "carrot.third_land",
+  "api": "galaDebug.effects.preview('ANIM-30')",
+  "recorded_scene": "runtime-effect-preview",
+  "recorded_events": [
+    {
+      "id": "ANIM-30",
+      "at": 1340.800000011921,
+      "indices": [
+        9
+      ],
+      "preview": true
+    }
+  ],
+  "preview_uses_ephemeral_art": true,
+  "model_wallet_unchanged": true
+}

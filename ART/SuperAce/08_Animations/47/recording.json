@@ -1,0 +1,35 @@
+{
+  "id": "ANIM-47",
+  "nominal": 3270,
+  "kind": "actual-tutorial",
+  "elapsed": 3290.2999999970198,
+  "history": [
+    {
+      "id": "ANIM-47",
+      "at": 2045.2000000029802,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-47",
+      "at": 2776.2000000029802,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-47",
+      "at": 3507,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "font": "\"DM Sans\", system-ui, sans-serif",
+  "capture": "actual browser screenshot frames with measured time intervals",
+  "capturedFrames": 77,
+  "distinctBrowserFrames": 75,
+  "video": {
+    "duration": "3.280000",
+    "size": "183571"
+  },
+  "errors": []
+}

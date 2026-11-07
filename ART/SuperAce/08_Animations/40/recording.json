@@ -1,0 +1,29 @@
+{
+  "id": "ANIM-40",
+  "nominal": 1200,
+  "kind": "actual-reward-counter-and-taps",
+  "elapsed": 1192.4000000059605,
+  "history": [
+    {
+      "id": "ANIM-40",
+      "at": 1762.9000000059605,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-40",
+      "at": 2163.5,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "font": "\"DM Sans\", system-ui, sans-serif",
+  "capture": "actual browser screenshot frames with measured time intervals",
+  "capturedFrames": 25,
+  "distinctBrowserFrames": 22,
+  "video": {
+    "duration": "1.160000",
+    "size": "79633"
+  },
+  "errors": []
+}

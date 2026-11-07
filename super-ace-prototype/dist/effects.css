@@ -1,0 +1,22 @@
+/* Motion uses the supplied individual ART; CSS supplies placement, lighting and type. */
+.app{--fx-numeric-font:'DM Sans',system-ui,sans-serif}
+.fx-stage{position:absolute;inset:0;z-index:35;overflow:hidden;pointer-events:none;contain:strict}
+.fx-art,.fx-slot-light{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:8;user-select:none}
+.fx-slot-light{object-fit:fill}
+.fx-flight{position:absolute;object-fit:contain;pointer-events:none;z-index:10}
+.fx-credit-carrot{position:absolute;width:24px;height:24px;object-fit:contain;z-index:10;pointer-events:none}
+.fx-celebration-carrot{position:absolute;width:24px;height:30px;object-fit:contain;pointer-events:none;z-index:4}
+#modalContent{position:relative}
+.fx-number-host,.reward-amount,.fx-counter-value{font-family:var(--fx-numeric-font)!important;font-variant-numeric:tabular-nums lining-nums;position:relative;z-index:3}
+#winPop{animation:none!important;pointer-events:none}
+#winPop.fx-win-amount{position:absolute;inset:auto;z-index:45;display:flex;align-items:center;justify-content:center;gap:2px;padding:5px 18px;line-height:1;font-family:var(--fx-numeric-font)!important;font-size:30px;font-weight:700;font-variant-numeric:tabular-nums lining-nums;color:#fff7d6;-webkit-text-stroke:.5px #624219;text-shadow:0 2px 1px #170d17,0 0 4px #170d17,0 0 8px #170d17;background:url('assets/art/ui/components/tabs/normal.svg') center/100% 100% no-repeat;filter:drop-shadow(0 3px 5px #130919c0)}
+.fx-win-prefix{font-size:.75em;line-height:1;opacity:.95}
+.fx-counter-value{white-space:nowrap}
+.fx-preview-symbol{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:7}
+.fx-preview-panel{position:absolute;z-index:80;left:6%;right:6%;top:22%;min-height:250px;max-height:65%;padding:35px 25px;background:url('assets/art/ui/components/modal/normal.svg') center/100% 100% no-repeat;text-align:center;pointer-events:none;overflow:hidden}
+.fx-preview-panel h2{font-family:var(--fx-numeric-font);font-size:25px;position:relative;z-index:3}.fx-preview-panel p{position:relative;z-index:3}.fx-preview-panel .btn{position:relative;z-index:3;min-width:100px}
+@media(max-width:350px){#winPop.fx-win-amount{padding:5px 14px;font-size:26px}.fx-preview-panel{padding:28px 20px;min-height:220px}}
+@media(prefers-reduced-motion:reduce){.fx-art,.fx-slot-light{filter:none}}
+#winPop.fx-win-amount{background-color:#1d1024;border-radius:9px;font-weight:600;-webkit-text-stroke:.7px #271523;text-shadow:0 2px 1px #07040b,0 0 4px #07040b}
+#winPop .fx-counter-value,#winPop .fx-win-prefix{flex-shrink:0}
+.reveal-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:20;pointer-events:none}

@@ -1,0 +1,29 @@
+{
+  "id": "ANIM-48",
+  "nominal": 1400,
+  "kind": "browser-offline-online-presentation-events",
+  "elapsed": 1413,
+  "history": [
+    {
+      "id": "ANIM-48",
+      "at": 1332.4000000059605,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-48",
+      "at": 1994.2000000029802,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "font": "\"DM Sans\", system-ui, sans-serif",
+  "capture": "actual browser screenshot frames with measured time intervals",
+  "capturedFrames": 35,
+  "distinctBrowserFrames": 14,
+  "video": {
+    "duration": "1.440000",
+    "size": "88370"
+  },
+  "errors": []
+}

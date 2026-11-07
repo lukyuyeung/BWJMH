@@ -1,0 +1,20 @@
+{
+  "id": "ANIM-04",
+  "trigger": "dealer.feed",
+  "api": "galaDebug.effects.preview('ANIM-04')",
+  "recorded_scene": "runtime-effect-preview",
+  "recorded_events": [
+    {
+      "id": "ANIM-04",
+      "at": 1310.7000000029802,
+      "indices": [
+        0,
+        6,
+        12
+      ],
+      "preview": true
+    }
+  ],
+  "preview_uses_ephemeral_art": true,
+  "model_wallet_unchanged": true
+}

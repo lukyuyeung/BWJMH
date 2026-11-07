@@ -1,0 +1,33 @@
+{
+  "id": "ANIM-01",
+  "nominal": 1800,
+  "kind": "runtime-effect-preview",
+  "elapsed": 2002.2000000029802,
+  "history": [
+    {
+      "id": "ANIM-01",
+      "at": 642.7000000029802,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-01",
+      "at": 1298.4000000059605,
+      "indices": [
+        0,
+        6,
+        12
+      ],
+      "preview": true
+    }
+  ],
+  "font": "\"DM Sans\", system-ui, sans-serif",
+  "capture": "actual browser screenshot frames with measured time intervals",
+  "capturedFrames": 50,
+  "distinctBrowserFrames": 38,
+  "video": {
+    "duration": "2.040000",
+    "size": "54609"
+  },
+  "errors": []
+}

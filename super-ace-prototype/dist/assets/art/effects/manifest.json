@@ -1,0 +1,92 @@
+[
+  {
+    "file": "burst.svg",
+    "source": "carrot/layers/trigger-burst.png",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      305,
+      11,
+      1215,
+      948
+    ],
+    "note": "Original PNG pixels preserved; viewport crops transparent safety margins only."
+  },
+  {
+    "file": "aura.svg",
+    "source": "carrot/layers/aura.png",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      153,
+      213,
+      1372,
+      805
+    ],
+    "note": "Original PNG pixels preserved; viewport crops transparent safety margins only."
+  },
+  {
+    "file": "trail.svg",
+    "source": "carrot/layers/trail.png",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      315,
+      0,
+      1378,
+      918
+    ],
+    "note": "Original PNG pixels preserved; viewport crops transparent safety margins only."
+  },
+  {
+    "file": "sweep.svg",
+    "source": "cards/layers/gold-sweep-mask.png",
+    "nativeSize": [
+      1085,
+      1450
+    ],
+    "viewport": [
+      0,
+      0,
+      1085,
+      1450
+    ],
+    "note": "Original PNG pixels preserved; viewport crops transparent safety margins only."
+  },
+  {
+    "file": "bubble.svg",
+    "source": "wild/devil/layers/13.png",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "viewport": [
+      419,
+      218,
+      1087,
+      786
+    ],
+    "note": "Original PNG pixels preserved; viewport crops transparent safety margins only."
+  },
+  {
+    "file": "halo.svg",
+    "source": "wild/angel/layers/11.png",
+    "nativeSize": [
+      1085,
+      1449
+    ],
+    "viewport": [
+      123,
+      584,
+      959,
+      925
+    ],
+    "note": "Original PNG pixels preserved; viewport crops transparent safety margins only."
+  }
+]

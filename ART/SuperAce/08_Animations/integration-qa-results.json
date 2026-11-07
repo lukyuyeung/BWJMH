@@ -1,0 +1,607 @@
+{
+  "layouts": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "buttons": [
+        {
+          "id": "minus",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        },
+        {
+          "id": "plus",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        },
+        {
+          "id": "betEntry",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        },
+        {
+          "id": "auto",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        },
+        {
+          "id": "speed",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        }
+      ],
+      "doc": [
+        320,
+        568
+      ],
+      "amount": {
+        "font": "\"DM Sans\", system-ui, sans-serif",
+        "reference": "\"DM Sans\", system-ui, sans-serif",
+        "color": "rgb(255, 247, 214)",
+        "background": "rgb(29, 16, 36)",
+        "inBoard": true,
+        "text": "＋1,234.56"
+      }
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "buttons": [
+        {
+          "id": "minus",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        },
+        {
+          "id": "plus",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        },
+        {
+          "id": "betEntry",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        },
+        {
+          "id": "auto",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        },
+        {
+          "id": "speed",
+          "width": 44,
+          "height": 44,
+          "bg": "url(\"http://127.0.0.1:4173/assets/art/control-square.svg\")"
+        }
+      ],
+      "doc": [
+        390,
+        844
+      ],
+      "amount": {
+        "font": "\"DM Sans\", system-ui, sans-serif",
+        "reference": "\"DM Sans\", system-ui, sans-serif",
+        "color": "rgb(255, 247, 214)",
+        "background": "rgb(29, 16, 36)",
+        "inBoard": true,
+        "text": "＋1,234.56"
+      }
+    }
+  ],
+  "rounds": [
+    {
+      "seed": 1,
+      "balance": 1983,
+      "free": 0,
+      "board": [
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": true
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": true
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": true
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "balance": 1980,
+      "free": 0,
+      "board": [
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "balance": 2310,
+      "free": 0,
+      "board": [
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": true
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": true
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "balance": 2198,
+      "free": 0,
+      "board": [
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "ANGEL",
+          "gold": true
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": true
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        }
+      ]
+    },
+    {
+      "seed": 29,
+      "balance": 8554,
+      "free": 0,
+      "board": [
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": true
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": true
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        }
+      ]
+    }
+  ],
+  "recovery": [
+    {
+      "mode": "reload-mid-round",
+      "id": "4ab03663-19c4-4692-b288-aee5d761f977",
+      "balance": 2310
+    },
+    {
+      "mode": "reload-after-credit",
+      "balance": 2310
+    },
+    {
+      "mode": "offline-resume",
+      "balance": 1980
+    }
+  ],
+  "events": [
+    "ANIM-01",
+    "ANIM-02",
+    "ANIM-03",
+    "ANIM-04",
+    "ANIM-05",
+    "ANIM-06",
+    "ANIM-07",
+    "ANIM-08",
+    "ANIM-09",
+    "ANIM-10",
+    "ANIM-11",
+    "ANIM-12",
+    "ANIM-13",
+    "ANIM-14",
+    "ANIM-15",
+    "ANIM-16",
+    "ANIM-17",
+    "ANIM-18",
+    "ANIM-19",
+    "ANIM-20",
+    "ANIM-21",
+    "ANIM-22",
+    "ANIM-23",
+    "ANIM-24",
+    "ANIM-25",
+    "ANIM-26",
+    "ANIM-27",
+    "ANIM-28",
+    "ANIM-29",
+    "ANIM-30",
+    "ANIM-31",
+    "ANIM-32",
+    "ANIM-33",
+    "ANIM-34",
+    "ANIM-35",
+    "ANIM-36",
+    "ANIM-37",
+    "ANIM-38",
+    "ANIM-39",
+    "ANIM-40",
+    "ANIM-41",
+    "ANIM-42",
+    "ANIM-43",
+    "ANIM-44",
+    "ANIM-45",
+    "ANIM-46",
+    "ANIM-47",
+    "ANIM-48"
+  ],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "ANIM-42",
+  "trigger": "auto.dialog",
+  "api": "galaDebug.effects.preview('ANIM-42')",
+  "recorded_scene": "actual-auto-dialog",
+  "recorded_events": [
+    {
+      "id": "ANIM-42",
+      "at": 1350.2999999970198,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-42",
+      "at": 1951.5,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "preview_uses_ephemeral_art": false,
+  "model_wallet_unchanged": true
+}

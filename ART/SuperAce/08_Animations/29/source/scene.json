@@ -1,0 +1,19 @@
+{
+  "id": "ANIM-29",
+  "trigger": "carrot.miss",
+  "api": "galaDebug.effects.preview('ANIM-29')",
+  "recorded_scene": "runtime-effect-preview",
+  "recorded_events": [
+    {
+      "id": "ANIM-29",
+      "at": 1312.2000000029802,
+      "indices": [
+        5,
+        7
+      ],
+      "preview": true
+    }
+  ],
+  "preview_uses_ephemeral_art": true,
+  "model_wallet_unchanged": true
+}

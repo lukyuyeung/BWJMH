@@ -1,0 +1,22 @@
+{
+  "id": "ANIM-48",
+  "trigger": "presentation.pause_resume",
+  "api": "galaDebug.effects.preview('ANIM-48')",
+  "recorded_scene": "browser-offline-online-presentation-events",
+  "recorded_events": [
+    {
+      "id": "ANIM-48",
+      "at": 1332.4000000059605,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-48",
+      "at": 1994.2000000029802,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "preview_uses_ephemeral_art": false,
+  "model_wallet_unchanged": true
+}

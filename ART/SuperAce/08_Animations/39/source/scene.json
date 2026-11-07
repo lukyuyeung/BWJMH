@@ -1,0 +1,20 @@
+{
+  "id": "ANIM-39",
+  "trigger": "reward.epic",
+  "api": "galaDebug.effects.preview('ANIM-39')",
+  "recorded_scene": "runtime-effect-preview",
+  "recorded_events": [
+    {
+      "id": "ANIM-39",
+      "at": 1473.4000000059605,
+      "indices": [
+        0,
+        6,
+        12
+      ],
+      "preview": true
+    }
+  ],
+  "preview_uses_ephemeral_art": true,
+  "model_wallet_unchanged": true
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ANIM-43",
+  "trigger": "auto.remaining_stop",
+  "api": "galaDebug.effects.preview('ANIM-43')",
+  "recorded_scene": "runtime-effect-preview",
+  "recorded_events": [
+    {
+      "id": "ANIM-43",
+      "at": 1437.2000000029802,
+      "indices": [
+        0,
+        6,
+        12
+      ],
+      "preview": true
+    }
+  ],
+  "preview_uses_ephemeral_art": true,
+  "model_wallet_unchanged": true
+}

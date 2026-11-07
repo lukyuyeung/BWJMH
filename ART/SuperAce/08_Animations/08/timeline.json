@@ -1,0 +1,51 @@
+{
+  "id": "ANIM-08",
+  "name": "單次獎勵數字",
+  "group": "發牌與連鎖",
+  "trigger": "ways.amount",
+  "runtime": "../../../../super-ace-prototype/dist/effects.js",
+  "runtime_api": "galaDebug.effects.play('ANIM-08', detail)",
+  "preview_api": "galaDebug.effects.preview('ANIM-08')",
+  "implementation_status": "48項前端效果已接入並通過功能驗證；正常影片已錄製",
+  "preview_kind": "browser-rendered runtime effect; preview may use ephemeral representative ART without changing game outcome",
+  "profiles": {
+    "normal": {
+      "scale": 1,
+      "duration_ms": 820
+    },
+    "fast": {
+      "scale": 0.5,
+      "duration_ms": 410.0
+    },
+    "max": {
+      "scale": 0,
+      "duration_ms": 0,
+      "skip_presentation_only": true,
+      "preserves_game_events": true
+    },
+    "reduced_motion": {
+      "duration_ms": 820,
+      "avoid_large_transforms": true,
+      "decorative_particles_hidden": true,
+      "preserve_information": true
+    }
+  },
+  "acceptance": "正常／快速／極速三版時間軸；事件與狀態不可因速度改變；減少動態版本另列",
+  "required_assets": "場景與盤面／發牌器／普通牌／金牌／HUD",
+  "shared_runtime": "../source/effects.js",
+  "duration_ms": 820,
+  "source_sha256": "ba7a3300e6e6f6bf673f23d2c7d7f91c3ce32240ebbf1207b8eb3e2164f39981",
+  "preview": {
+    "file": "preview.mp4",
+    "capture": "actual browser screenshot frames with measured time intervals",
+    "scene_kind": "runtime-effect-preview",
+    "width": 390,
+    "height": 844,
+    "fps": 25,
+    "duration_seconds": 1.16,
+    "captured_browser_frames": 18,
+    "distinct_browser_frames": 14,
+    "wallet_changed": false
+  },
+  "runtime_keyframes_source": "case 8:add(numberPlaque(detail,d));break;"
+}

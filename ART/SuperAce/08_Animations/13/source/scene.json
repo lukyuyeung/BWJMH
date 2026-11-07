@@ -1,0 +1,26 @@
+{
+  "id": "ANIM-13",
+  "trigger": "gold.idle",
+  "api": "galaDebug.effects.preview('ANIM-13')",
+  "recorded_scene": "runtime-effect-preview",
+  "recorded_events": [
+    {
+      "id": "ANIM-13",
+      "at": 1508.2000000029802,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-13",
+      "at": 3151,
+      "indices": [
+        1,
+        12,
+        18
+      ],
+      "preview": true
+    }
+  ],
+  "preview_uses_ephemeral_art": true,
+  "model_wallet_unchanged": true
+}

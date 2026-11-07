@@ -1,0 +1,28 @@
+{
+  "id": "ANIM-47",
+  "trigger": "tutorial.step",
+  "api": "galaDebug.effects.preview('ANIM-47')",
+  "recorded_scene": "actual-tutorial",
+  "recorded_events": [
+    {
+      "id": "ANIM-47",
+      "at": 2045.2000000029802,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-47",
+      "at": 2776.2000000029802,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-47",
+      "at": 3507,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "preview_uses_ephemeral_art": false,
+  "model_wallet_unchanged": true
+}

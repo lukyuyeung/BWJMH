@@ -1,0 +1,27 @@
+{
+  "id": "ANIM-37",
+  "nominal": 650,
+  "kind": "runtime-effect-preview",
+  "elapsed": 1061.9000000059605,
+  "history": [
+    {
+      "id": "ANIM-37",
+      "at": 3228,
+      "indices": [
+        0,
+        6,
+        12
+      ],
+      "preview": true
+    }
+  ],
+  "font": "\"DM Sans\", system-ui, sans-serif",
+  "capture": "actual browser screenshot frames with measured time intervals",
+  "capturedFrames": 23,
+  "distinctBrowserFrames": 17,
+  "video": {
+    "duration": "1.080000",
+    "size": "55520"
+  },
+  "errors": []
+}

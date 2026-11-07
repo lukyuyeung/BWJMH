@@ -1,0 +1,29 @@
+{
+  "id": "ANIM-44",
+  "nominal": 950,
+  "kind": "actual-speed-controls",
+  "elapsed": 957.2999999970198,
+  "history": [
+    {
+      "id": "ANIM-44",
+      "at": 1379,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-44",
+      "at": 1881.9000000059605,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "font": "\"DM Sans\", system-ui, sans-serif",
+  "capture": "actual browser screenshot frames with measured time intervals",
+  "capturedFrames": 24,
+  "distinctBrowserFrames": 9,
+  "video": {
+    "duration": "1.000000",
+    "size": "53631"
+  },
+  "errors": []
+}

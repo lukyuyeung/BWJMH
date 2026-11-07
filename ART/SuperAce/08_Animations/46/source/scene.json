@@ -1,0 +1,28 @@
+{
+  "id": "ANIM-46",
+  "trigger": "help.tabs",
+  "api": "galaDebug.effects.preview('ANIM-46')",
+  "recorded_scene": "actual-help-and-tabs",
+  "recorded_events": [
+    {
+      "id": "ANIM-46",
+      "at": 1767.0999999940395,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-46",
+      "at": 2218.199999988079,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-46",
+      "at": 2668.8999999910593,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "preview_uses_ephemeral_art": false,
+  "model_wallet_unchanged": true
+}

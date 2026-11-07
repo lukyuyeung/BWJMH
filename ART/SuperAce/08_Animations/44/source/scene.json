@@ -1,0 +1,22 @@
+{
+  "id": "ANIM-44",
+  "trigger": "speed.change",
+  "api": "galaDebug.effects.preview('ANIM-44')",
+  "recorded_scene": "actual-speed-controls",
+  "recorded_events": [
+    {
+      "id": "ANIM-44",
+      "at": 1379,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-44",
+      "at": 1881.9000000059605,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "preview_uses_ephemeral_art": false,
+  "model_wallet_unchanged": true
+}

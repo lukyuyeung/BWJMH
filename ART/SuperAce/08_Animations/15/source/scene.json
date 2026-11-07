@@ -1,0 +1,18 @@
+{
+  "id": "ANIM-15",
+  "trigger": "gold.flip",
+  "api": "galaDebug.effects.preview('ANIM-15')",
+  "recorded_scene": "runtime-effect-preview",
+  "recorded_events": [
+    {
+      "id": "ANIM-15",
+      "at": 3042.2000000029802,
+      "indices": [
+        6
+      ],
+      "preview": true
+    }
+  ],
+  "preview_uses_ephemeral_art": true,
+  "model_wallet_unchanged": true
+}

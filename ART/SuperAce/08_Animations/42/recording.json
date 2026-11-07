@@ -1,0 +1,29 @@
+{
+  "id": "ANIM-42",
+  "nominal": 1150,
+  "kind": "actual-auto-dialog",
+  "elapsed": 1176.0999999940395,
+  "history": [
+    {
+      "id": "ANIM-42",
+      "at": 1350.2999999970198,
+      "indices": [],
+      "preview": false
+    },
+    {
+      "id": "ANIM-42",
+      "at": 1951.5,
+      "indices": [],
+      "preview": false
+    }
+  ],
+  "font": "\"DM Sans\", system-ui, sans-serif",
+  "capture": "actual browser screenshot frames with measured time intervals",
+  "capturedFrames": 24,
+  "distinctBrowserFrames": 10,
+  "video": {
+    "duration": "1.120000",
+    "size": "91732"
+  },
+  "errors": []
+}

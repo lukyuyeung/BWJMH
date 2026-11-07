@@ -148,3 +148,18 @@ dialog.auto-modal{height:min(94dvh,540px);padding:20px 18px}
 .cell.carrot .card img.art-card{width:116%;height:113%;max-width:none;margin-left:-8%;margin-top:-7%;object-fit:contain}
 .card{transition-duration:calc(160ms * var(--motion-scale,1))}
 .cell.anticipate img{animation-duration:calc(1100ms * var(--motion-scale,1))}
+/* The same independent 44px button surface for every secondary control. */
+#minus,#plus,#auto,#speed,#betEntry{width:44px;height:44px;min-width:44px;min-height:44px;border:0;padding:0;box-shadow:none;border-radius:5px;background:transparent url('assets/art/control-square.svg') center/100% 100% no-repeat;color:#ffe4a4;position:relative;display:grid;place-items:center;font-family:inherit}
+#minus,#plus{font-size:26px;line-height:1}
+#auto.on,#auto:active,#auto.on:active,#speed[data-speed='1'],#speed[data-speed='2'],#speed:active,#speed[data-speed='1']:active,#speed[data-speed='2']:active,#plus:active,#minus:active,#plus:disabled,#minus:disabled{background-image:url('assets/art/control-square.svg')}
+#auto.on,#speed[data-speed='1'],#speed[data-speed='2']{filter:brightness(1.2)}
+#auto>span,#speed>span{display:block;visibility:visible;position:absolute;top:3px;left:0;right:0;text-align:center;font-size:21px;line-height:22px}
+#auto small,#speed small{position:absolute;bottom:4px;left:0;right:0;margin:0;font-size:9px;line-height:11px;transform:none;color:#ffe4a4}
+#betEntry{justify-self:center;align-self:center}
+#betEntry>span{position:absolute;top:4px;left:0;right:0;text-align:center;font-size:8px;line-height:10px;letter-spacing:.5px;color:#dfc6ce}
+#betEntry strong{position:absolute;left:3px;right:3px;bottom:5px;font-size:17px;line-height:21px;max-width:none;margin:0}
+.controls{grid-template-columns:48px 48px minmax(64px,1fr) 48px 48px}
+#minus:disabled,#plus:disabled,#betEntry:disabled{opacity:.45}
+.game.free-mode .multipliers{filter:drop-shadow(0 0 6px #ffd16066)}
+html[data-playback-paused] .app *,html[data-playback-paused] #modal *{animation-play-state:paused!important}
+#connectionDialog{height:auto;min-height:180px;max-height:80dvh;padding:35px 28px;text-align:center}
