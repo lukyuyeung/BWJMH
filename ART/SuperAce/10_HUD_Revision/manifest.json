@@ -1,0 +1,50 @@
+[
+  {
+    "name": "multiplier-base",
+    "png": "multiplier-base.png",
+    "svg": "multiplier-base.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      8,
+      210,
+      2156,
+      300
+    ],
+    "note": "PNG pixels untouched. SVG viewport skips almost transparent canvas padding; no raster redraw."
+  },
+  {
+    "name": "dealer-carrier",
+    "png": "dealer-carrier.png",
+    "svg": "dealer-carrier.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      25,
+      210,
+      2120,
+      300
+    ],
+    "note": "PNG pixels untouched. SVG viewport skips almost transparent canvas padding; no raster redraw."
+  },
+  {
+    "name": "numeric-hud",
+    "png": "numeric-hud.png",
+    "svg": "numeric-hud.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      25,
+      210,
+      2120,
+      300
+    ],
+    "note": "PNG pixels untouched. SVG viewport skips almost transparent canvas padding; no raster redraw."
+  }
+]

@@ -14,7 +14,7 @@ const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4173';
    await page.evaluate(()=>document.fonts.ready);
    const result=await page.evaluate(()=>{
     const rect=e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,right:r.right,bottom:r.bottom,width:r.width,height:r.height}};
-    const buttons=[...document.querySelectorAll('.topbar button,.controls button,#betEntry')];
+    const buttons=[...document.querySelectorAll('.topbar button:not(#sound),.controls button,.balance-bar button')];
     return{backs:[...document.querySelectorAll('.mouth')].map(e=>({box:rect(e),image:rect(e.querySelector('img'))})),amounts:[...document.querySelectorAll('.balance-bar strong')].map(e=>({width:e.clientWidth,scroll:e.scrollWidth})),document:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],cards:[...document.querySelectorAll('.cell')].map(rect),buttons:buttons.map(e=>({id:e.id,...rect(e),hit:document.elementFromPoint(e.getBoundingClientRect().x+e.getBoundingClientRect().width/2,e.getBoundingClientRect().y+e.getBoundingClientRect().height/2)?.closest('button')===e})),broken:[...document.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src),flags:document.querySelectorAll('.flag').length};
    });
    assert.deepEqual(result.document,[width,height]);assert.equal(result.cards.length,20);assert.equal(result.flags,0);assert.deepEqual(result.broken,[]);assert.deepEqual(errors,[]);
@@ -28,7 +28,7 @@ const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4173';
    const auto=await page.locator('#modalContent').evaluate(e=>({scroll:e.scrollHeight,height:e.clientHeight}));assert(auto.scroll<=auto.height+1,'Auto requires scrolling');
    for(const id of ['autoStart','autoCancel']){const r=await page.locator('#'+id).boundingBox();assert(r.y>=0&&r.y+r.height<=height,id+' hidden')}
    assert.equal(await page.locator('.chips button.selected').evaluate(e=>getComputedStyle(e).backgroundRepeat),'no-repeat');await page.locator('#autoCancel').click();
-   console.log(`${width}x${height}: 20 cards, 9 reachable buttons, main stage and Auto fit`);await page.close();
+   console.log(`${width}x${height}: 20 cards, 10 reachable buttons, main stage and Auto fit`);await page.close();
   }
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

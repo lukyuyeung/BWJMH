@@ -1,3 +1,4 @@
+import {compactMoney} from './money.js?v=hud-v3';
 export const ANIMATION_DEFINITIONS = Object.freeze([
   {
     "id": "ANIM-01",
@@ -579,7 +580,7 @@ export const ANIMATION_DEFINITIONS = Object.freeze([
 
 const ASSET_BASE='assets/art/effects/';
 const profile=[1,.5,0];
-const formatting=n=>Number(n||0).toLocaleString('en-US',{maximumFractionDigits:2});
+const formatting=compactMoney;
 const key=id=>typeof id==='number'?`ANIM-${String(id).padStart(2,'0')}`:id;
 export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  const doc=root.ownerDocument||root;const q=s=>root.querySelector(s),all=s=>[...root.querySelectorAll(s)];
@@ -658,7 +659,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    case 7:add(glow(nodes,d));add(cardMotion(nodes,[{filter:'brightness(1)'},{filter:'brightness(1.18)',offset:.45},{filter:'brightness(1)'}],d));break;
    case 8:add(numberPlaque(detail,d));break;
    case 9:add(cardMotion(nodes,[{opacity:1,transform:'scale(1)'},{opacity:.8,transform:'scale(1.03)',offset:.25},{opacity:0,transform:'scale(.7) rotateY(70deg)'}],d));nodes.forEach(el=>add(burst(el,d,.65)));break;
-   case 11:add(pulse(target||q('#multipliers .active'),d,1.12));add(sweep(target||q('#multipliers .active'),d));break;
+   case 11:{add(pulse(target||q('#multipliers .active'),d,1.12));add(sweep(q('.multipliers'),d));add(sweep(q('.dealer'),d));if(q('.app')?.dataset.heat==='3'){const b=q('.board-shell')?.getBoundingClientRect(),s=stage.getBoundingClientRect();if(b){const img=art(stage,'burst','fx-flight',{left:`${b.left-s.left-10}px`,top:`${b.top-s.top-10}px`,width:'20px',height:'20px'});add(track(img,[{opacity:0,transform:'translate(0,0)'},{opacity:1,transform:`translate(${b.width}px,0)`,offset:.25},{opacity:1,transform:`translate(${b.width}px,${b.height}px)`,offset:.5},{opacity:1,transform:`translate(0,${b.height}px)`,offset:.75},{opacity:0,transform:'translate(0,0)'}],900,{cleanup:()=>img.remove()}))}}break;}
    case 12:add(track(q('#multipliers'),[{filter:'brightness(1.15)'},{filter:'brightness(1)'}],d));add(track(q('#message'),[{opacity:.4},{opacity:1}],d));break;
    case 13:nodes.forEach(el=>add(sweep(el.querySelector('.card')||el,d)));break;
    case 14:add(glow(nodes,d));nodes.forEach(el=>add(sweep(el,d)));break;
@@ -714,7 +715,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
   const detail={preview:true,indices:[0,6,12],amount:n===39?2400:n===37?80:280,from:0,to:2280,copies:[{source:6,index:8},{source:6,index:13}]};
   const temporary=[],restore=[],timers=[];let cleaned=false;
   function clean(){if(cleaned)return;cleaned=true;timers.forEach(clearTimeout);temporary.forEach(el=>el.remove());restore.forEach(fn=>fn())}
-  function symbol(index,src,carrot=false){const el=cells([index])[0];if(!el)return null;const card=el.querySelector('.card');if(card){const prior=card.style.visibility;card.style.visibility='hidden';restore.push(()=>card.style.visibility=prior)}const img=doc.createElement('img');img.className='fx-preview-symbol';img.src=src;img.alt='動畫示意';if(carrot)Object.assign(img.style,{inset:'auto',left:'-8%',top:'-7%',width:'116%',height:'113%'});el.append(img);temporary.push(img);return img}
+  function symbol(index,src,carrot=false){const el=cells([index])[0];if(!el)return null;const card=el.querySelector('.card');if(card){const prior=card.style.visibility;card.style.visibility='hidden';restore.push(()=>card.style.visibility=prior)}const img=doc.createElement('img');img.className='fx-preview-symbol';img.src=src;img.alt='動畫示意';if(carrot)Object.assign(img.style,{inset:'auto',left:'-18%',top:'-6%',width:'136%',height:'116%'});if(carrot||src.includes('wild-')){const original=el.className;el.classList.add(carrot?'carrot':'wild');restore.push(()=>el.className=original)}if(src.includes('wild-'))img.style.objectFit='fill';el.append(img);temporary.push(img);return img}
   function setPill(text){const pill=q('#freePill'),hidden=pill.hidden,original=pill.textContent;pill.hidden=false;pill.textContent=text;restore.push(()=>{pill.hidden=hidden;pill.textContent=original});return pill}
   if(n===13)detail.indices=[1,12,18];
   if([3,5].includes(n))detail.indices=Array.from({length:20},(_,i)=>i);
@@ -722,13 +723,13 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    // A valid left-to-right three-reel J combination; only the middle J is gold.
    for(const index of [0,6,12])symbol(index,`assets/art/card-${index===6&&n>=14?'gold':'normal'}-J.png`);
    if(n===14||n===15)detail.indices=[6];
-   if(n===15){const img=cells([6])[0].querySelector('.fx-preview-symbol');timers.push(setTimeout(()=>{if(!cleaned)img.src='assets/art/wild-angel.png'},Math.max(0,durationForPreview(id)*scale()*.5)))}
+   if(n===15){const img=cells([6])[0].querySelector('.fx-preview-symbol');timers.push(setTimeout(()=>{if(!cleaned)img.src='assets/art/wild-angel-fitted.svg'},Math.max(0,durationForPreview(id)*scale()*.5)))}
   }
   if(n>=16&&n<=23){
    detail.indices=[6,12,18];
-   if(n<=18)detail.indices.forEach(index=>symbol(index,'assets/art/wild-angel.png'));
-   else if(n===21||n===22){symbol(6,'assets/art/wild-devil.png');detail.indices=n===21?[8,13]:[6]}
-   else {if(n===20)detail.indices=[6];detail.indices.forEach(index=>symbol(index,'assets/art/wild-devil.png'))}
+   if(n<=18)detail.indices.forEach(index=>symbol(index,'assets/art/wild-angel-fitted.svg'));
+   else if(n===21||n===22){symbol(6,'assets/art/wild-devil-fitted.svg');detail.indices=n===21?[8,13]:[6]}
+   else {if(n===20)detail.indices=[6];detail.indices.forEach(index=>symbol(index,'assets/art/wild-devil-fitted.svg'))}
   }
   if(n>=25&&n<=31){
    const indices=n===25?[5]:n<=29?[5,7]:[5,7,9];indices.forEach(index=>symbol(index,'assets/art/carrot-bonus.png',true));detail.indices=indices;

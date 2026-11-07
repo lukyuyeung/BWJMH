@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test engine.test.mjs playback-clock.test.mjs round-plan.test.mjs"
+    "test": "node --test engine.test.mjs playback-clock.test.mjs round-plan.test.mjs money.test.mjs"
   }
 }

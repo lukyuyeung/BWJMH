@@ -1,3 +1,5 @@
+最新介面修訂：[獨立資產、直屏示意與驗證](10_HUD_Revision/README.md)。
+
 # Super Ace — ART 美術總覽
 
 **最新：[48項已接入效果、影片與時間軸](08_Animations/README.md)**

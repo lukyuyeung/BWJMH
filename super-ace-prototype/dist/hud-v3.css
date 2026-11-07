@@ -1,0 +1,60 @@
+/* v3 independent PNG surfaces. CSS only arranges artwork, text, and lighting. */
+.topbar{grid-template-columns:88px minmax(0,1fr) 104px;gap:2px}
+.brand img{width:110px;max-width:100%}
+#sessionTotal{padding:0 2px;border:0;background:none;align-self:center;min-height:44px;min-width:0;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:3px;color:#f6dcaa;font-family:inherit}
+#sessionTotal span{font-size:10px;color:#ddc6d0;line-height:1.2}
+#sessionTotal strong{font-size:17px;font-weight:600;line-height:1.2;white-space:nowrap;font-variant-numeric:tabular-nums}
+#sessionTotal[data-sign=positive] strong{color:#ffe4a2}#sessionTotal[data-sign=negative] strong{color:#ffabc9}
+.game{grid-template-rows:40px 52px minmax(0,1fr) 70px 82px;position:relative}
+.multipliers{height:40px;background:transparent url('assets/art/v3/multiplier-base.svg') center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;padding:2px 5%;overflow:hidden}
+.multipliers span{border:0;background:none}
+.multipliers .active{background:none!important}
+.dealer{height:52px;width:var(--board-width,100%);border-radius:0;background:transparent url('assets/art/v3/dealer-carrier.svg') center/100% 100% no-repeat;overflow:hidden}
+.mouths{height:auto;top:9px;bottom:9px;align-items:stretch}
+.mouth{height:100%;aspect-ratio:auto;border-radius:0;overflow:hidden}
+.mouth img{width:100%;height:100%;object-fit:fill}
+.mouth:after{background:none}
+.balance-bar{height:70px;aspect-ratio:auto;padding:5px 2%;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;background:transparent url('assets/art/v3/numeric-hud.svg') center/100% 100% no-repeat}
+.balance-bar .money-field,#betEntry.money-field{position:static;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:100%;height:100%;min-width:0;min-height:44px;padding:0 3px;margin:0;border:0;border-radius:0;box-shadow:none;background:none;color:#fff3d9;font-family:inherit}
+.balance-bar .money-field label{position:static;display:block;font-size:11px;line-height:1.2;pointer-events:none;color:#e0c6d0}
+.balance-bar .money-field strong,#betEntry.money-field strong{position:static;display:block;max-width:none;width:auto;overflow:visible;text-overflow:clip;margin:0;font-size:21px;font-weight:600;line-height:1.2;white-space:nowrap;letter-spacing:0;font-variant-numeric:tabular-nums}
+.money-field:focus-visible,#sessionTotal:focus-visible{outline:2px solid #ff9bcc;outline-offset:-4px}
+.status{display:none}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#freePill{position:absolute;right:7px;top:calc(40px + 52px + 8px);z-index:15;min-height:24px;padding:4px 9px;font-size:11px;color:#fff2c2;background:#271227 url('assets/art/ui/hud/free-counter.svg') center/100% 100% no-repeat;pointer-events:none}
+#freePill[hidden]{display:none}
+.cell.wild:before{display:none}
+.cell.wild .card{inset:1px;overflow:visible}
+.cell.wild .art-card{width:100%;height:100%;object-fit:fill}
+.cell.carrot .card img.art-card{width:136%;height:116%;margin-left:-18%;margin-top:-6%;max-width:none;object-fit:contain;position:relative;z-index:6}
+.exact-amount{font-size:21px;font-weight:600;overflow-wrap:anywhere;text-align:center}
+.bet-ratios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:14px 0}
+.bet-ratios button{min-width:0;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px}
+.bet-ratios b{font-weight:600}.bet-ratios small{font-size:11px}
+.exact-bet-label{display:block;font-size:11px;line-height:1.5;margin-top:10px}
+#exactBet{display:block;width:100%;min-height:48px;margin:5px 0;padding:8px 12px;border:1px solid #b78e52;background:#1c1023;color:#fff2d6;font:600 19px 'DM Sans',sans-serif;border-radius:4px}
+#betError{min-height:18px;font-size:11px;color:#ffbad5;margin:4px 0}
+/* The same four heat levels accompany base and free multipliers; cards retain their original colours. */
+.app{--heat-gold:0;--heat-pink:0}
+.app[data-heat='1']{--heat-gold:.25}
+.app[data-heat='2']{--heat-gold:.35;--heat-pink:.28}
+.app[data-heat='3']{--heat-gold:.6;--heat-pink:.45}
+.app[data-heat='1'] .multipliers{filter:drop-shadow(0 0 4px #ffc65c70)}
+.app[data-heat='2'] .multipliers{filter:drop-shadow(0 0 5px #ff81bfa0)}
+.app[data-heat='3'] .multipliers{filter:drop-shadow(0 0 7px #ffc456b0)}
+.app[data-heat='1'] .dealer{filter:drop-shadow(0 0 3px #ffc65c50)}
+.app[data-heat='2'] .dealer{filter:drop-shadow(0 0 4px #ff81bf60)}
+.app[data-heat='3'] .dealer{filter:drop-shadow(0 0 6px #ffc45690)}
+.app[data-heat='1'] .board-shell:before{filter:drop-shadow(0 0 3px #ffc65c60)}
+.app[data-heat='2'] .board-shell:before{filter:drop-shadow(0 0 5px #ff81bf80)}
+.app[data-heat='3'] .board-shell:before{filter:drop-shadow(0 0 7px #ffc456a0)}
+@media(max-height:700px){.game{grid-template-rows:32px 40px minmax(0,1fr) 62px 66px}.multipliers{height:32px}.dealer{height:40px}.mouths{top:7px;bottom:7px}.balance-bar{height:62px}.balance-bar .money-field strong,#betEntry.money-field strong{font-size:18px}.balance-bar .money-field label{font-size:10px}#freePill{top:78px}}
+@media(max-width:350px){.balance-bar .money-field strong,#betEntry.money-field strong{font-size:17px}#sessionTotal strong{font-size:17px}.topbar{grid-template-columns:88px minmax(0,1fr) 96px}}
+@media(prefers-reduced-motion:reduce){.app .multipliers,.app .dealer,.app .board-shell:before{filter:none}}
+.brand{position:static;left:auto;top:auto;transform:none;width:auto;height:100%;grid-column:2}
+#sessionTotal{grid-column:3}
+body[data-heat='1'] .ambient{filter:brightness(.32) saturate(.8)}
+body[data-heat='2'] .ambient{filter:brightness(.28) saturate(.9)}
+body[data-heat='3'] .ambient{filter:brightness(.22) saturate(.9)}
+.game{display:flex;justify-content:center}
+.board-zone{height:min(calc(100cqh - 260px),calc(100cqw / .938))}
+@media(max-height:700px){.board-zone{height:min(calc(100cqh - 212px),calc(100cqw / .938))}}

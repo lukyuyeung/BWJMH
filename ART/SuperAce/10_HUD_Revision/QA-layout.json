@@ -1,0 +1,215 @@
+{
+  "report": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "values": [
+        {
+          "id": "balance",
+          "text": "111.111B",
+          "font": "17px",
+          "parentWidth": 97,
+          "width": 75,
+          "scroll": 75
+        },
+        {
+          "id": "bet",
+          "text": "111.000M",
+          "font": "17px",
+          "parentWidth": 97,
+          "width": 79,
+          "scroll": 79
+        },
+        {
+          "id": "win",
+          "text": "111.111M",
+          "font": "17px",
+          "parentWidth": 97,
+          "width": 79,
+          "scroll": 79
+        }
+      ],
+      "dealerAligned": true,
+      "wildsFullSize": true,
+      "betStep": 111111000
+    },
+    {
+      "viewport": [
+        360,
+        640
+      ],
+      "values": [
+        {
+          "id": "balance",
+          "text": "111.111B",
+          "font": "18px",
+          "parentWidth": 108,
+          "width": 79,
+          "scroll": 79
+        },
+        {
+          "id": "bet",
+          "text": "111.000M",
+          "font": "18px",
+          "parentWidth": 108,
+          "width": 84,
+          "scroll": 84
+        },
+        {
+          "id": "win",
+          "text": "111.111M",
+          "font": "18px",
+          "parentWidth": 108,
+          "width": 84,
+          "scroll": 84
+        }
+      ],
+      "dealerAligned": true,
+      "wildsFullSize": true,
+      "betStep": 111111000
+    },
+    {
+      "viewport": [
+        375,
+        667
+      ],
+      "values": [
+        {
+          "id": "balance",
+          "text": "111.111B",
+          "font": "18px",
+          "parentWidth": 112,
+          "width": 79,
+          "scroll": 79
+        },
+        {
+          "id": "bet",
+          "text": "111.000M",
+          "font": "18px",
+          "parentWidth": 112,
+          "width": 84,
+          "scroll": 84
+        },
+        {
+          "id": "win",
+          "text": "111.111M",
+          "font": "18px",
+          "parentWidth": 112,
+          "width": 84,
+          "scroll": 84
+        }
+      ],
+      "dealerAligned": true,
+      "wildsFullSize": true,
+      "betStep": 111111000
+    },
+    {
+      "viewport": [
+        390,
+        701
+      ],
+      "values": [
+        {
+          "id": "balance",
+          "text": "111.111B",
+          "font": "21px",
+          "parentWidth": 117,
+          "width": 92,
+          "scroll": 92
+        },
+        {
+          "id": "bet",
+          "text": "111.000M",
+          "font": "21px",
+          "parentWidth": 117,
+          "width": 98,
+          "scroll": 98
+        },
+        {
+          "id": "win",
+          "text": "111.111M",
+          "font": "21px",
+          "parentWidth": 117,
+          "width": 98,
+          "scroll": 98
+        }
+      ],
+      "dealerAligned": true,
+      "wildsFullSize": true,
+      "betStep": 111111000
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "values": [
+        {
+          "id": "balance",
+          "text": "111.111B",
+          "font": "21px",
+          "parentWidth": 117,
+          "width": 92,
+          "scroll": 92
+        },
+        {
+          "id": "bet",
+          "text": "111.000M",
+          "font": "21px",
+          "parentWidth": 117,
+          "width": 98,
+          "scroll": 98
+        },
+        {
+          "id": "win",
+          "text": "111.111M",
+          "font": "21px",
+          "parentWidth": 117,
+          "width": 98,
+          "scroll": 98
+        }
+      ],
+      "dealerAligned": true,
+      "wildsFullSize": true,
+      "betStep": 111111000
+    },
+    {
+      "viewport": [
+        430,
+        932
+      ],
+      "values": [
+        {
+          "id": "balance",
+          "text": "111.111B",
+          "font": "21px",
+          "parentWidth": 130,
+          "width": 92,
+          "scroll": 92
+        },
+        {
+          "id": "bet",
+          "text": "111.000M",
+          "font": "21px",
+          "parentWidth": 130,
+          "width": 98,
+          "scroll": 98
+        },
+        {
+          "id": "win",
+          "text": "111.111M",
+          "font": "21px",
+          "parentWidth": 130,
+          "width": 98,
+          "scroll": 98
+        }
+      ],
+      "dealerAligned": true,
+      "wildsFullSize": true,
+      "betStep": 111111000
+    }
+  ],
+  "errors": []
+}
