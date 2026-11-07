@@ -20,3 +20,19 @@
 #winPop.fx-win-amount{background-color:#1d1024;border-radius:9px;font-weight:600;-webkit-text-stroke:.7px #271523;text-shadow:0 2px 1px #07040b,0 0 4px #07040b}
 #winPop .fx-counter-value,#winPop .fx-win-prefix{flex-shrink:0}
 .reveal-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:20;pointer-events:none}
+/* CARROT remains a free-standing symbol, with no card-slot rim. */
+.cell.carrot:before{display:none!important}
+.cell.carrot .card{background:none!important;border:0!important;box-shadow:none!important}
+.cell.carrot .art-card{position:relative;z-index:6}
+#modal.reward-modal{width:min(100vw,440px);height:100dvh;max-height:100dvh;aspect-ratio:auto;margin:auto;padding:env(safe-area-inset-top) 18px env(safe-area-inset-bottom);background:none;border:0;box-shadow:none;overflow:hidden}
+#modal.reward-modal::backdrop{background:#100715df}
+.reward-modal .modal-head{height:48px;margin:0;position:relative;z-index:20}
+.reward-modal .modal-head .eyebrow{visibility:hidden}
+.reward-modal #modalContent{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:visible;padding:0 0 40px;isolation:isolate}
+.reward-modal .feature-title{width:100%;height:150px;font-size:0;background:url('assets/art/reward-big.svg') center/contain no-repeat;z-index:5;flex-shrink:0}
+.reward-modal:has(.feature-title[data-epic]) .feature-title{background-image:url('assets/art/reward-epic.svg')}
+.reward-modal .reward-amount{font-size:clamp(30px,9vw,44px);font-weight:600;white-space:nowrap;max-width:100%;margin:12px 0 30px;padding:18px 24px;background:#1d1024 url('assets/art/ui/components/tabs/normal.svg') center/100% 100% no-repeat;border-radius:12px;color:#fff6cb;text-shadow:0 2px 3px #000;z-index:10}
+.reward-modal .reward-amount img{width:30px;height:36px;object-fit:contain}
+.reward-modal .btn-row{position:relative;z-index:10;width:80%;margin-top:24px}
+.reward-modal .fx-celebration-carrot{z-index:2}
+.reward-modal .feature-title,.reward-modal .btn{position:relative}
