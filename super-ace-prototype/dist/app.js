@@ -1,8 +1,8 @@
-import {createCarrotScenes} from './carrot-scenes.js?v=carrot-v5';
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,createSessionTotal} from './money.js?v=carrot-v5';
-import {createPlaybackClock} from './playback-clock.js?v=carrot-v5';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=carrot-v5';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=carrot-v5';
+import {createCarrotScenes} from './carrot-scenes.js?v=deal-speed-v6';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,createSessionTotal} from './money.js?v=deal-speed-v6';
+import {createPlaybackClock} from './playback-clock.js?v=deal-speed-v6';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=deal-speed-v6';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=deal-speed-v6';
 import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,maxBet} from './engine.js';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
@@ -47,15 +47,15 @@ async function runRecord(record,{recovering=false}={}){
    effect(2);effect(3,{indices:board.map((_,i)=>i)});await wait(260);
    board=structuredClone(plan.initialBoard);render();
    const covers=board.map((_,index)=>{const img=document.createElement('img');img.className='reveal-cover';img.src='assets/back.png';img.alt='待揭牌';$$('#board .cell')[index].querySelector('.card').append(img);return img});
-   $$('#board .cell').forEach(el=>el.classList.add('feed-waiting'));const revealedCarrots=[];effect(4);
+   $$('#board .cell').forEach(el=>el.classList.add('feed-waiting'));const revealedCarrots=[],feeds=[];effect(4);
    for(let col=0;col<5;col++){
     const indices=[col,col+5,col+10,col+15],anticipating=revealedCarrots.length===2;
     if(anticipating){msg('再一個 CARROT，開啟免費遊戲');effect(27,{indices:revealedCarrots});effect(28,{indices});await wait(650)}
-    indices.forEach(index=>covers[index].remove());const feed=effect(5,{indices});await feed.finished;
-    const landed=indices.filter(i=>board[i].symbol==='CARROT');if(landed.length){const before=revealedCarrots.length;revealedCarrots.push(...landed);effect(25,{indices:landed});if(before<3&&revealedCarrots.length>=3){effect(30,{indices:[revealedCarrots[2]]});await wait(400)}}
+    indices.forEach(index=>covers[index].remove());const feed=effect(5,{indices,slow:anticipating});feeds.push(feed.finished);
+    const landed=indices.filter(i=>board[i].symbol==='CARROT');if(anticipating||landed.length)await feed.finished;else await wait(70);if(landed.length){const before=revealedCarrots.length;revealedCarrots.push(...landed);effect(25,{indices:landed});if(before<3&&revealedCarrots.length>=3){effect(30,{indices:[revealedCarrots[2]]});await wait(400)}}
     if(anticipating&&revealedCarrots.length===2&&col===4)effect(29);
    }
-   await wait(450);
+   await Promise.all(feeds);await wait(80);
    const carrotIndices=()=>board.flatMap((c,i)=>c.symbol==='CARROT'?[i]:[]);
    for(const step of plan.steps){board=structuredClone(step.board);render();setMultiplier(step.index,plan.isFree);if(step.index)effect(11,{target:$('#multipliers .active')});
     if(step.award){const state={balance,free,freeTotal};const fresh=applyBonus(state,record);applyState(state);if(fresh){if(auto?.onFeature){auto=null;effect(43,{stopped:true})}save();effect(34,{target:$('#freePill')})}update();if(!record.featureAcknowledged){effect(31,{indices:carrotIndices()});await wait(500);await feature(step.award,plan.isFree);record.featureAcknowledged=true;save();effect(33)}}
@@ -65,7 +65,7 @@ async function runRecord(record,{recovering=false}={}){
     const next=step.next;if(wild.length)effect(23,{indices:wild});effect(9,{indices:next.replacements.map(c=>c.index)});if(next.conversions.length)effect(15,{indices:next.conversions.map(c=>c.index)});await wait(260);
     const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();const refill=next.replacements.length?effect(10,{indices:next.replacements.map(c=>c.index)}):null;
     const landedCarrots=next.replacements.filter(c=>board[c.index].symbol==='CARROT').map(c=>c.index);if(landedCarrots.length){effect(25,{indices:landedCarrots});if(board.filter(c=>c.symbol==='CARROT').length>=3)effect(30,{indices:landedCarrots})}
-    for(const conversion of next.conversions)effect(conversion.card.symbol==='ANGEL'?16:19,{indices:[conversion.index]});await Promise.all([wait(650),refill?.finished]);
+    for(const conversion of next.conversions)effect(conversion.card.symbol==='ANGEL'?16:19,{indices:[conversion.index]});await Promise.all([wait(next.conversions.length?650:280),refill?.finished]);
     if(next.copies.length){const sources=[...new Set(next.copies.map(c=>c.source))];effect(20,{indices:sources});await wait(280);effect(21,{indices:next.copies.map(c=>c.index)});effect(22,{copies:next.copies});await wait(650);board=structuredClone(next.board);render();effect(19,{indices:next.copies.map(c=>c.index)});await wait(400)}
     effect(24);await wait(150);
    }
