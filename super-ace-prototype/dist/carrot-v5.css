@@ -1,0 +1,59 @@
+/* Original art is composited in independent layers; opacity crossfades use the pausable game clock. */
+.ambient,.atmosphere-light{display:none!important}
+.scene-stack{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#180d1b}
+.scene-layer{position:absolute;inset:0;opacity:0;background:url('assets/art/scene/portrait-background.png') center top/cover no-repeat}
+.scene-base-0{filter:brightness(.35) saturate(.85)}
+.scene-base-1{filter:brightness(.62) sepia(.3) saturate(1.1)}
+.scene-base-2{filter:brightness(.55) saturate(1.5) hue-rotate(315deg)}
+.scene-base-3,.scene-free-0,.scene-free-1,.scene-free-2,.scene-free-3{background-image:url('assets/art/v5/carrot-world.png');background-position:center}
+.scene-base-3{filter:brightness(.7) saturate(1.15)}
+.scene-free-0{filter:brightness(.38) saturate(1.05)}
+.scene-free-1{filter:brightness(.53) sepia(.2) saturate(1.15)}
+.scene-free-2{filter:brightness(.58) saturate(1.3) hue-rotate(320deg)}
+.scene-free-3{filter:brightness(.88) saturate(1.2)}
+.app .multipliers,.app .mouth,.app .board-shell:before{transition:filter calc(1100ms * var(--motion-scale,1)) ease}
+.perimeter-runner{position:absolute;left:-11px;top:-11px;width:22px;height:22px;object-fit:contain;z-index:9;pointer-events:none}
+.app[data-heat='3'] .board-shell:before{animation:framePower 1.8s ease-in-out infinite}
+.app[data-heat='3'][data-scene-free='true'] .board-shell:before{animation-duration:1.25s}
+@keyframes framePower{0%,100%{opacity:.78}50%{opacity:1}}
+.feed-waiting>.card{visibility:hidden}
+.feed-viewport{position:absolute;overflow:hidden;pointer-events:none;z-index:20}
+.feed-card{position:absolute!important;left:0;top:0;perspective:none;aspect-ratio:auto;pointer-events:none}
+.feed-card:before{display:none!important}
+.feed-card>.card{visibility:visible!important}
+.mouth>.dealer-outlet-art{position:absolute;inset:0;z-index:2}
+.dealer-ready-window{position:absolute;left:10%;right:10%;top:68%;bottom:8%;overflow:hidden;z-index:3;pointer-events:none}
+.mouth .dealer-ready-window img{display:block;width:100%;height:auto;aspect-ratio:625/835;object-fit:cover;object-position:top}
+.dealer-front-lip{position:absolute;left:0;right:0;bottom:0;height:10%;overflow:hidden;z-index:4;pointer-events:none}
+.mouth .dealer-front-lip img{position:absolute;left:0;bottom:0;width:100%;height:1000%;object-fit:fill}
+#modal.feature-modal{width:min(100vw,440px);height:100dvh;max-height:100dvh;aspect-ratio:auto;margin:auto;padding:env(safe-area-inset-top) 22px env(safe-area-inset-bottom);background:#1b0b21 url('assets/art/v5/carrot-world.png') center/cover no-repeat;border:0;box-shadow:none;overflow:hidden}
+.feature-modal:before{content:'';position:absolute;inset:0;background:#1a082263;pointer-events:none}
+.feature-modal .modal-head{z-index:5;position:relative;height:44px;flex-shrink:0;margin:0}
+.feature-modal .eyebrow{visibility:hidden}
+.feature-modal #modalContent{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;overflow:visible;padding:0 0 24px;isolation:isolate}
+.free-feature-art{height:clamp(140px,28dvh,260px);width:100%;position:relative;z-index:2}
+.free-feature-art img{width:100%;height:100%;object-fit:contain}
+.free-feature-title{font-size:clamp(22px,6.5vw,29px);line-height:1.1;text-align:center;color:#ffe7a0;text-shadow:0 3px 2px #290b22,0 0 15px #f39c35;margin:0;position:relative;z-index:3;font-weight:800;letter-spacing:.3px}
+.free-award-count{font-size:clamp(52px,12dvh,92px);font-weight:700;color:#fff0b0;text-shadow:0 3px 3px #341029;line-height:1.05;text-align:center;z-index:3;font-variant-numeric:tabular-nums}
+.free-award-count small{display:block;font-size:15px;letter-spacing:3px;margin:8px 0}
+.free-feature-multipliers{margin:5px 0 14px;color:#fff2c5;font-size:21px;font-weight:600;z-index:3;text-shadow:0 2px 3px #180817}
+.feature-modal .btn-row{position:relative;z-index:5;width:85%;margin-top:8px}
+#modal.feature-modal.retrigger{width:min(92vw,400px);height:min(80dvh,540px);border-radius:14px}
+.retrigger .free-feature-art{height:130px}.retrigger .free-award-count{font-size:50px}.retrigger .free-feature-title{font-size:23px}
+.carrot-waterfall{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;contain:layout paint}
+.waterfall-carrot{position:absolute;object-fit:contain;pointer-events:none}
+.waterfall-burst{position:absolute;left:50%;top:85%;width:36px;height:36px;object-fit:contain;z-index:3}
+.reward-modal #modalContent{z-index:5}
+.reward-modal .reward-pile{position:fixed;left:0;bottom:-2%;width:100%;height:24%;object-fit:contain;object-position:center bottom;z-index:1;pointer-events:none}
+.reward-modal.is-mega .feature-title{background-image:url('assets/art/v5/mega-win.svg')!important;height:165px}
+.reward-modal .btn-row{z-index:12}
+@media(max-height:700px){.free-feature-art{height:26dvh}.free-award-count{font-size:60px}.free-feature-title{font-size:22px}.free-feature-multipliers{font-size:18px;margin:4px 0}.feature-modal #modalContent{gap:5px;padding-bottom:15px}.reward-modal.is-mega .feature-title{height:130px}.reward-modal .reward-amount{margin:8px 0 16px}.reward-modal .btn-row{margin-top:8px}}
+@media(prefers-reduced-motion:reduce){.app .board-shell:before{animation:none}.perimeter-runner,.waterfall-carrot,.waterfall-burst{display:none}.app .multipliers,.app .mouth,.app .board-shell:before{transition-duration:140ms}}
+#modal.feature-modal,#modal.reward-modal{max-width:100vw}
+.feature-modal #closeModal,.reward-modal #closeModal{border-radius:50%;outline-offset:-4px}
+.reward-modal .reward-pile{animation:carrotPileGrow calc(2400ms * var(--motion-scale,1)) ease-out both}
+@keyframes carrotPileGrow{from{opacity:.2;transform:translateY(70%)}to{opacity:1;transform:translateY(0)}}
+html[data-playback-paused] .board-shell:before{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.reward-modal .reward-pile{animation:none}}
+
+.reward-modal.is-total .feature-title{background:none!important;font-size:34px;height:90px;display:grid;place-items:center;color:#fff0b0;text-shadow:0 3px 2px #291025,0 0 14px #e2a34d}

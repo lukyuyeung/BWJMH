@@ -1,0 +1,27 @@
+{
+  "report": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "blend": true,
+      "highestScenes": true,
+      "freeIntro": true,
+      "waterfall": 180,
+      "retrigger": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "blend": true,
+      "highestScenes": true,
+      "freeIntro": true,
+      "waterfall": 180,
+      "retrigger": true
+    }
+  ],
+  "errors": []
+}

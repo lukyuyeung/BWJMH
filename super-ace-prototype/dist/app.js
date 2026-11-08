@@ -1,7 +1,8 @@
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,createSessionTotal} from './money.js?v=hud-v4';
-import {createPlaybackClock} from './playback-clock.js?v=hud-v4';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=hud-v4';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=hud-v4';
+import {createCarrotScenes} from './carrot-scenes.js?v=carrot-v5';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,createSessionTotal} from './money.js?v=carrot-v5';
+import {createPlaybackClock} from './playback-clock.js?v=carrot-v5';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=carrot-v5';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=carrot-v5';
 import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,maxBet} from './engine.js';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
@@ -11,6 +12,7 @@ let balance=saved?.balance??(Number.isFinite(legacy.balance)?legacy.balance:2000
 const sessionTotal=createSessionTotal(reviewMode?sessionStorageAdapter:sessionStorage,balance);
 const fmt=compactMoney,suits={S:'♠',H:'♥',C:'♣',D:'♦'},durations=[1,.5],playback=createPlaybackClock(),effects=createEffects({clock:playback,getSpeed:()=>speed});
 const wait=ms=>playback.wait(ms),effect=(id,detail={})=>effects.play('ANIM-'+String(id).padStart(2,'0'),detail);
+const scenes=createCarrotScenes(effects);
 const pauseReasons=new Set();
 function msg(t){$('#message').textContent=t}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),2800)}
@@ -20,15 +22,21 @@ function cardHTML(c){const special=['CARROT','ANGEL','DEVIL'].includes(c.symbol)
 function render(){const nodes=$$('#board .cell');board.forEach((c,i)=>{let n=nodes[i];if(!n){n=document.createElement('div');$('#board').append(n)}n.className='cell '+(c.symbol==='CARROT'?'carrot':['ANGEL','DEVIL'].includes(c.symbol)?'wild':'');n.dataset.index=i;n.setAttribute('aria-label',`${Math.floor(i/5)+1}行${i%5+1}列 ${c.symbol}`);const key=c.symbol+':'+Number(c.gold);if(n.dataset.face!==key){n.innerHTML=cardHTML(c);n.dataset.face=key}});update()}
 function fitAmounts(){for(const[id,value]of[['balance',balance],['bet',bet],['win',lastWin]]){const el=$('#'+id);el.title=exactMoney(value);el.setAttribute('aria-label',exactMoney(value)+' 蘿蔔');const field=el.closest('.money-field');if(field){delete field.dataset.stacked;const row=el.closest('.amount-value');if(row&&row.scrollWidth>field.clientWidth-2)field.dataset.stacked='true'}}}
 function update(){playback.setScale(durations[speed]);effects.setPlaybackRate(speed);document.documentElement.style.setProperty('--motion-scale',durations[speed]);$('#speed').dataset.speed=String(speed);$('#sound').setAttribute('aria-pressed',String(soundOn));if(!busy&&!free&&!activeRound)bet=clampBet(bet,balance);const net=sessionTotal.net(balance);$('#sessionValue').textContent=(net>0?'＋':net<0?'−':'')+fmt(Math.abs(net));$('#sessionLabel').textContent=net>0?'本次淨贏':net<0?'本次淨輸':'本次淨輸贏';$('#sessionTotal').dataset.sign=net>0?'positive':net<0?'negative':'neutral';$('#sessionTotal').title=exactMoney(net)+' 蘿蔔';$('#balance').textContent=fmt(balance);$('#bet').textContent=fmt(bet);$('#win').textContent=fmt(lastWin);fitAmounts();$('#spin').disabled=busy||free>0||!!activeRound||bet<.01||bet>maxBet(balance);for(const id of ['plus','minus','betEntry'])$('#'+id).disabled=busy||free>0||!!activeRound;$('#auto').classList.toggle('on',!!auto);$('#auto small').textContent=auto?String(auto.left):'AUTO';$('#auto').setAttribute('aria-label',auto?'停止自動遊戲':'自動遊戲設定');$('#speed small').textContent=['正常','2×'][speed];$('#speed').setAttribute('aria-label','切換速度，目前'+['正常','快速'][speed]);$('#freePill').hidden=!(free>0||(busy&&activeRound?.plan.isFree));$('#freePill').textContent=free?`免費 ${free} 次`:'最後免費局';$('#modeLabel').textContent=free?'THE CARROT CELEBRATION':'LET THE CARROTS FALL';$('#freeLabel').textContent=free?'FREE GAME':'1024 WAYS';$('.game').classList.toggle('free-mode',free>0||(busy&&!!activeRound?.plan.isFree))}
-function setMultiplier(step,isFree){$('.app').dataset.heat=String(Math.min(step,3));document.body.dataset.heat=String(Math.min(step,3));const vals=isFree?FREE_MULTIPLIERS:BASE_MULTIPLIERS;$('#multipliers').innerHTML=vals.map((v,i)=>`<span class="${i===Math.min(step,3)?'active':''}">×${v}</span>`).join('')}
-function openModal(html,animation=46){modalVersion++;closing=false;$('#modal').classList.remove('auto-modal','reward-modal');$('#modalContent').innerHTML=html;if(!$('#modal').open)$('#modal').showModal();if(animation)effect(animation,{target:$('#modalContent')})}
-let modalVersion=0,closing=false;
-async function close(){if(recoveryPrompt){resumeRecovery();return}if(closing)return;closing=true;const version=modalVersion,resolver=featureResolver,id=$('#modal').classList.contains('auto-modal')?42:46;effect(id,{target:$('#modalContent'),closing:true});await wait(effects.durationFor(id));if(version!==modalVersion){closing=false;return}$('#modal').close();if(featureResolver===resolver){featureResolver=null;resolver?.()}closing=false}
+function setMultiplier(step,isFree){scenes.set(Math.min(step,3),isFree);const vals=isFree?FREE_MULTIPLIERS:BASE_MULTIPLIERS;$('#multipliers').innerHTML=vals.map((v,i)=>`<span class="${i===Math.min(step,3)?'active':''}">×${v}</span>`).join('')}
+function openModal(html,animation=46){waterfall?.stop();waterfall=null;modalVersion++;closing=false;$('#modal').classList.remove('auto-modal','reward-modal','feature-modal','retrigger','is-mega','is-total');$('#modalContent').innerHTML=html;if(!$('#modal').open)$('#modal').showModal();if(animation)effect(animation,{target:$('#modalContent')})}
+let modalVersion=0,closing=false,waterfall=null;
+async function close(){if(recoveryPrompt){resumeRecovery();return}if(closing)return;closing=true;const version=modalVersion,resolver=featureResolver,id=$('#modal').classList.contains('auto-modal')?42:46;effect(id,{target:$('#modalContent'),closing:true});await wait(effects.durationFor(id));if(version!==modalVersion){closing=false;return}waterfall?.stop();waterfall=null;$('#modal').close();if(featureResolver===resolver){featureResolver=null;resolver?.()}closing=false}
 $('#closeModal').onclick=close;$('#modal').addEventListener('cancel',e=>{e.preventDefault();close()});
 function confirmation(id){return new Promise(resolve=>{featureResolver=resolve;$('#'+id).onclick=()=>{effect(40,{target:$('#'+id)});if(effects.finishCounters())return;close()}})}
 function idle(){effects.startIdle()}
-async function feature(n,extra=false){openModal(`<div class="feature-carrots">${[1,2,3].map(()=>'<img src="assets/art/carrot-bonus.png" alt="CARROT">').join('')}</div><div class="feature-title">${extra?'＋'+n:n} FREE SPINS</div><p>免費倍率：×2、×4、×6、×10</p><div class="btn-row"><button class="btn primary" id="featureGo">${extra?'繼續':'開始免費遊戲'}</button></div>`,32);await confirmation('featureGo')}
-async function prize(title,amount,id,animation){openModal(`<div class="feature-title">${title}</div><p class="reward-amount"><img class="currency-inline" src="assets/carrot.png" alt="蘿蔔"> ${fmt(amount)}</p><div class="btn-row"><button class="btn primary" id="${id}">收下獎勵</button></div>`,0);$('#modal').classList.add('reward-modal');if(title==='EPIC WIN')$('.feature-title').dataset.epic='1';effect(animation,{amount,from:0,target:$('.reward-amount')});await confirmation(id)}
+async function feature(n,extra=false){
+ openModal(`<div class="free-feature-art"><img id="featureHero" src="assets/art/v5/free-carrot-hero.svg" alt="金色蘿蔔慶典"></div><h2 class="free-feature-title">${extra?'MORE CARROTS!':'FREE CARROT SPIN'}</h2><div class="free-award-count">${extra?'＋':''}${n}<small>FREE SPINS</small></div><p class="free-feature-multipliers">×2　×4　×6　×10</p><div class="btn-row"><button class="btn primary" id="featureGo">${extra?'繼續免費遊戲':'開始免費遊戲'}</button></div>`,0);
+ $('#modal').classList.add('feature-modal');if(extra)$('#modal').classList.add('retrigger');effect(32,{target:$('#featureHero')});await confirmation('featureGo');
+}
+async function prize(title,amount,id,animation){
+ const mega=title==='MEGA WIN';openModal(`<img class="reward-pile" src="assets/art/v5/carrot-pile.svg" alt=""><div class="feature-title">${title}</div><p class="reward-amount"><img class="currency-inline" src="assets/carrot.png" alt="蘿蔔"> ${fmt(amount)}</p><div class="btn-row"><button class="btn primary" id="${id}">收下獎勵</button></div>`,0);
+ $('#modal').classList.add('reward-modal');if(mega)$('#modal').classList.add('is-mega');if(title==='TOTAL WIN')$('#modal').classList.add('is-total');waterfall=effects.startWaterfall($('#modal'),{mega});effect(animation,{amount,from:0,target:$('.reward-amount')});await confirmation(id);
+}
 function applyState(state){balance=state.balance;free=state.free;freeTotal=state.freeTotal}
 async function runRecord(record,{recovering=false}={}){
  busy=true;isDemo=!!record.demo;activeRound=record.demo?null:record;effects.stopIdle();const plan=record.plan,roundBet=plan.bet;lastWin=0;setMultiplier(0,plan.isFree);update();
@@ -39,11 +47,11 @@ async function runRecord(record,{recovering=false}={}){
    effect(2);effect(3,{indices:board.map((_,i)=>i)});await wait(260);
    board=structuredClone(plan.initialBoard);render();
    const covers=board.map((_,index)=>{const img=document.createElement('img');img.className='reveal-cover';img.src='assets/back.png';img.alt='待揭牌';$$('#board .cell')[index].querySelector('.card').append(img);return img});
-   const revealedCarrots=[];effect(4);
+   $$('#board .cell').forEach(el=>el.classList.add('feed-waiting'));const revealedCarrots=[];effect(4);
    for(let col=0;col<5;col++){
     const indices=[col,col+5,col+10,col+15],anticipating=revealedCarrots.length===2;
     if(anticipating){msg('再一個 CARROT，開啟免費遊戲');effect(27,{indices:revealedCarrots});effect(28,{indices});await wait(650)}
-    indices.forEach(index=>covers[index].remove());effect(5,{indices});await wait(anticipating?620:180);
+    indices.forEach(index=>covers[index].remove());const feed=effect(5,{indices});await feed.finished;
     const landed=indices.filter(i=>board[i].symbol==='CARROT');if(landed.length){const before=revealedCarrots.length;revealedCarrots.push(...landed);effect(25,{indices:landed});if(before<3&&revealedCarrots.length>=3){effect(30,{indices:[revealedCarrots[2]]});await wait(400)}}
     if(anticipating&&revealedCarrots.length===2&&col===4)effect(29);
    }
@@ -55,16 +63,16 @@ async function runRecord(record,{recovering=false}={}){
     const winning=result.positions,angel=winning.filter(i=>board[i].symbol==='ANGEL'),wild=winning.filter(i=>['ANGEL','DEVIL'].includes(board[i].symbol)),gold=winning.filter(i=>board[i].gold&&!['ANGEL','DEVIL'].includes(board[i].symbol));
     lastWin=Math.round((lastWin+result.total)*100)/100;msg(`連鎖 ${step.index+1} · ×${step.multiplier}`);$$('#board .cell').forEach((n,i)=>n.classList.toggle('dim',!winning.includes(i)));effect(7,{indices:winning});if(gold.length)effect(14,{indices:gold});if(angel.length)effect(18,{indices:angel});effect(8,{indices:winning,amount:result.total});update();await wait(Math.max(850,effects.durationFor(8)));
     const next=step.next;if(wild.length)effect(23,{indices:wild});effect(9,{indices:next.replacements.map(c=>c.index)});if(next.conversions.length)effect(15,{indices:next.conversions.map(c=>c.index)});await wait(260);
-    const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();effect(10,{indices:next.replacements.map(c=>c.index)});
+    const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();const refill=next.replacements.length?effect(10,{indices:next.replacements.map(c=>c.index)}):null;
     const landedCarrots=next.replacements.filter(c=>board[c.index].symbol==='CARROT').map(c=>c.index);if(landedCarrots.length){effect(25,{indices:landedCarrots});if(board.filter(c=>c.symbol==='CARROT').length>=3)effect(30,{indices:landedCarrots})}
-    for(const conversion of next.conversions)effect(conversion.card.symbol==='ANGEL'?16:19,{indices:[conversion.index]});await wait(650);
+    for(const conversion of next.conversions)effect(conversion.card.symbol==='ANGEL'?16:19,{indices:[conversion.index]});await Promise.all([wait(650),refill?.finished]);
     if(next.copies.length){const sources=[...new Set(next.copies.map(c=>c.source))];effect(20,{indices:sources});await wait(280);effect(21,{indices:next.copies.map(c=>c.index)});effect(22,{copies:next.copies});await wait(650);board=structuredClone(next.board);render();effect(19,{indices:next.copies.map(c=>c.index)});await wait(400)}
     effect(24);await wait(150);
    }
    board=structuredClone(plan.finalBoard);const before=balance,state={balance,free,freeTotal};if(!record.demo)settleRound(state,record);else record.credited=true;applyState(state);lastWin=plan.total;save();render();effect(41,{from:before,to:balance,target:$('#balance')});
   }else{board=structuredClone(plan.finalBoard);lastWin=plan.total;render()}
   // Per-cascade amounts remain; the round total is shown once in the HUD.
-  if(plan.total>=roundBet*10&&!record.rewardAcknowledged){await prize(plan.total>=roundBet*30?'EPIC WIN':'BIG WIN',plan.total,'rewardGo',plan.total>=roundBet*30?39:38);record.rewardAcknowledged=true;save()}
+  if(plan.total>=roundBet*10&&!record.rewardAcknowledged){await prize(plan.total>=roundBet*30?'MEGA WIN':'BIG WIN',plan.total,'rewardGo',plan.total>=roundBet*30?39:38);record.rewardAcknowledged=true;save()}
   if(plan.isFree&&free===0&&!record.totalAcknowledged){await prize('TOTAL WIN',freeTotal,'totalGo',36);record.totalAcknowledged=true;freeTotal=0;save();effect(33)}
   if(auto&&!plan.isFree&&!record.autoApplied){auto.left--;record.autoApplied=true;effect(43,{target:$('#auto')});if(auto.left<=0||plan.total/roundBet>=auto.ratio||balance<auto.lower||balance>auto.upper||roundBet>maxBet(balance)){auto=null;effect(43,{stopped:true})}}
   activeRound=null;msg(plan.total?`本局獲得 ${fmt(plan.total)} 蘿蔔`:'本局沒有中獎。');save();effect(12);
@@ -89,8 +97,8 @@ const lessons=[['不同位置，也能連成幸運','由最左列開始，至少
 function tutorial(i){const [title,text,art]=lessons[i];openModal(`<h2>${title}</h2>${art}<p>${text}</p><div class="tutorial-progress">${lessons.map((_,j)=>`<i class="${j===i?'active':''}"></i>`).join('')}</div><div class="btn-row"><button class="btn" id="skipLesson">跳過</button><button class="btn primary" id="nextLesson">${i===3?'開始遊戲':'下一步'}</button></div>`,47);const done=()=>{localStorage.setItem('gala-carrot-tutorial','1');close()};$('#skipLesson').onclick=done;$('#nextLesson').onclick=()=>i===3?done():tutorial(i+1)}
 const resetPlaytest=()=>{if(busy||free||activeRound){toast('請先完成目前遊戲');return}openModal('<h2>重新開始試玩？</h2><p>將本瀏覽器的測試蘿蔔重設為 2,000，並停止 Auto。</p><div class="btn-row"><button class="btn" id="cancelReset">取消</button><button class="btn primary" id="confirmReset">重設</button></div>');$('#cancelReset').onclick=close;$('#confirmReset').onclick=()=>{auto=null;balance=2000;bet=20;lastWin=0;sessionTotal.reset(balance);save();render();close();msg('新的金色時刻，開始吧。')}};
 const demoAnimation=()=>{if(busy||free||activeRound){toast('請先完成目前遊戲');return}auto=null;spin({demo:true})};
-$('.mouths').innerHTML=Array.from({length:5},()=>'<div class="mouth"><img src="assets/art/v4/dealer-outlet.svg" alt=""></div>').join('');
-function alignDealer(){$('.game').style.setProperty('--board-width',$('.board-shell').getBoundingClientRect().width+'px')}
+$('.mouths').innerHTML=Array.from({length:5},()=>'<div class="mouth"><img class="dealer-outlet-art" src="assets/art/v4/dealer-outlet.svg" alt=""><div class="dealer-ready-window"><img src="assets/back.png" alt=""></div><div class="dealer-front-lip"><img src="assets/art/v4/dealer-outlet.svg" alt=""></div></div>').join('');
+function alignDealer(){$('.game').style.setProperty('--board-width',$('.board-shell').getBoundingClientRect().width+'px');scenes.resize()}
 new ResizeObserver(alignDealer).observe($('.board-shell'));window.addEventListener('resize',()=>{fitAmounts();alignDealer()});document.fonts.ready.then(fitAmounts);
 function pausePresentation(reason){if(pauseReasons.has(reason))return;pauseReasons.add(reason);effect(48,{target:$('.game')});playback.pause();effects.pause();document.documentElement.dataset.playbackPaused='true';save();if(reason==='offline'&&!$('#connectionDialog').open)$('#connectionDialog').showModal()}
 function resumePresentation(reason){pauseReasons.delete(reason);if(reason==='offline')$('#connectionDialog').close();if(pauseReasons.size)return;delete document.documentElement.dataset.playbackPaused;playback.resume();effects.resume();effect(48,{resuming:true,target:$('.game')})}
@@ -100,4 +108,4 @@ $('#connectionDialog').addEventListener('cancel',e=>e.preventDefault());if(!navi
 async function resumeRecovery(){recoveryPrompt=false;$('#modal').close();if(activeRound)return runRecord(activeRound,{recovering:true});if(free)return spin()}
 render();setMultiplier(0,free>0||!!activeRound?.plan.isFree);alignDealer();idle();
 if(activeRound||free){recoveryPrompt=true;openModal('<h2>繼續已保存的牌局</h2><p>本局結果已保留，恢復不會重新扣除下注或重複發放獎勵。</p><div class="btn-row"><button class="btn primary" id="resumeRound">繼續牌局</button></div>',48);$('#resumeRound').onclick=resumeRecovery}else if(!reviewMode&&!localStorage.getItem('gala-carrot-tutorial'))setTimeout(()=>tutorial(0),700);
-window.galaDebug={getState:()=>({balance,bet,sessionNet:sessionTotal.net(balance),board:structuredClone(board),free,busy,speed,auto,activeRound:activeRound?{id:activeRound.id,credited:activeRound.credited,bonusApplied:activeRound.bonusApplied}:null}),spin,help,tutorial,demoAnimation,resetPlaytest,effects,definitions:ANIMATION_DEFINITIONS,previewAnimation:id=>effects.preview(id),setReviewState:state=>{if(!reviewMode)return;if(Number.isFinite(state.balance))balance=state.balance;if(Number.isFinite(state.bet))bet=state.bet;if(Number.isFinite(state.lastWin))lastWin=state.lastWin;if(state.board)board=structuredClone(state.board);if(Number.isInteger(state.heat))setMultiplier(state.heat,false);render()},setReviewSpeed:mode=>{if(reviewMode){speed=Number(mode)===1?1:0;update()}},previewReward:(amount=280)=>prize(amount>=600?'EPIC WIN':'BIG WIN',amount,'rewardGo',amount>=600?39:38),pause:()=>pausePresentation('review'),resume:()=>resumePresentation('review')};
+window.galaDebug={getState:()=>({scene:scenes.state,balance,bet,sessionNet:sessionTotal.net(balance),board:structuredClone(board),free,busy,speed,auto,activeRound:activeRound?{id:activeRound.id,credited:activeRound.credited,bonusApplied:activeRound.bonusApplied}:null}),spin,help,tutorial,demoAnimation,resetPlaytest,effects,scenes,previewFeature:(n=10,extra=false)=>feature(n,extra),definitions:ANIMATION_DEFINITIONS,previewAnimation:id=>effects.preview(id),setReviewState:state=>{if(!reviewMode)return;if(Number.isFinite(state.balance))balance=state.balance;if(Number.isFinite(state.bet))bet=state.bet;if(Number.isFinite(state.lastWin))lastWin=state.lastWin;if(state.board)board=structuredClone(state.board);if(Number.isInteger(state.heat))setMultiplier(state.heat,!!state.isFree);render()},setReviewSpeed:mode=>{if(reviewMode){speed=Number(mode)===1?1:0;update()}},previewReward:(amount=280)=>prize(amount>=600?'MEGA WIN':'BIG WIN',amount,'rewardGo',amount>=600?39:38),pause:()=>pausePresentation('review'),resume:()=>resumePresentation('review')};

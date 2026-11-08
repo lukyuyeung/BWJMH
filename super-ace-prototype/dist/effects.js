@@ -632,18 +632,25 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  function flyCopies(copies,duration=650){const entries=[];const sr=stage.getBoundingClientRect();for(const{source,index}of copies){const a=cells([source])[0],b=cells([index])[0];if(!a||!b)continue;const ar=a.getBoundingClientRect(),br=b.getBoundingClientRect(),dx=br.x-ar.x,dy=br.y-ar.y;const img=art(stage,'trail','fx-flight',{left:`${ar.x+ar.width/2-sr.x-24}px`,top:`${ar.y+ar.height/2-sr.y-18}px`,width:'48px',height:'36px'});entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.4)'},{opacity:1,transform:`translate(${dx*.48}px,${dy*.48-18}px) scale(1)`,offset:.48},{opacity:0,transform:`translate(${dx}px,${dy}px) scale(.6)`}],duration,{cleanup:()=>img.remove()}));entries.push(burst(b,duration,.7));}return entries}
  function coinsToBalance(detail,d=650){const src=element(detail.target,'.board-shell'),dest=q('#balance');if(!src||!dest)return[];const a=src.getBoundingClientRect(),b=dest.getBoundingClientRect(),sr=stage.getBoundingClientRect();const entries=[];for(let i=0;i<8;i++){const img=doc.createElement('img');img.src='assets/carrot.png';img.className='fx-credit-carrot';img.alt='';const x=a.x+a.width*(.25+(i%4)*.16)-sr.x,y=a.y+a.height*.6-sr.y;Object.assign(img.style,{left:x+'px',top:y+'px'});stage.append(img);entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${(i-4)*7}px,-24px) scale(1)`,offset:.23},{opacity:0,transform:`translate(${b.x+b.width/2-sr.x-x}px,${b.y+b.height/2-sr.y-y}px) scale(.5)`}],d,{delay:i*24,cleanup:()=>img.remove()}))}return entries}
  function celebrate(detail,d,level=1){
-  const host=element(detail.target,'.reward-amount')||q('#modalContent');if(!host)return[];
-  const entries=[],parent=host.parentElement;host.classList.add('fx-number-host');
-  entries.push(counter(host,detail.from??0,detail.amount??detail.to??280,d*.8,{preview:detail.preview}));entries.push(pulse(host,500,1.04));
-  entries.push(overlay(parent,'aura',[{opacity:0,transform:'scale(.7)'},{opacity:.8,transform:'scale(1)',offset:.2},{opacity:.4,transform:'scale(1.12)'}],d,{top:'-20%',height:'140%',zIndex:'0'}));
-  const title=parent.querySelector('.feature-title');if(title)entries.push(track(title,[{opacity:0,transform:'scale(.65) translateY(18px)'},{opacity:1,transform:'scale(1.07)',offset:.65},{opacity:1,transform:'scale(1)'}],500));
-  const count=level===2?44:28;
-  for(let i=0;i<count;i++){
-   const img=doc.createElement('img');img.src='assets/carrot.png';img.className='fx-celebration-carrot';img.alt='';img.style.left='50%';img.style.top='85%';img.style.width=(22+i%5*5)+'px';img.style.height=(30+i%5*7)+'px';parent.append(img);
-   const side=i%2?1:-1,dx=side*(65+(i*37)%130),rise=190+(i*29)%170,rotation=side*(100+i*21);
-   entries.push(track(img,[{opacity:0,transform:'translate(-50%,0) rotate(0deg) scale(.4)'},{opacity:1,transform:`translate(${dx*.45}px,${-rise*.8}px) rotate(${rotation*.4}deg) scale(1)`,offset:.28},{opacity:1,transform:`translate(${dx}px,${-rise}px) rotate(${rotation*.7}deg) scale(1)`,offset:.5},{opacity:0,transform:`translate(${dx*1.3}px,100px) rotate(${rotation}deg) scale(.7)`}],d,{delay:Math.floor(i/14)*180+(i%7)*22,cleanup:()=>img.remove()}));
+  const host=element(detail.target,'.reward-amount')||q('#modalContent');if(!host)return[];const parent=host.parentElement,entries=[];host.classList.add('fx-number-host');
+  entries.push(counter(host,detail.from??0,detail.amount??detail.to??280,level===2?3600:2600,{preview:detail.preview}));
+  entries.push(overlay(parent,'aura',[{opacity:0,transform:'scale(.6)'},{opacity:.85,transform:'scale(1)',offset:.3},{opacity:.3,transform:'scale(1.15)'}],1500,{top:'-20%',height:'140%',zIndex:'0'}));
+  const title=parent.querySelector('.feature-title');if(title)entries.push(track(title,[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1.07)',offset:.7},{opacity:1,transform:'scale(1)'}],550));return entries;
+ }
+ function startWaterfall(host,{mega=false}={}){
+  const layer=doc.createElement('div');layer.className='carrot-waterfall';layer.setAttribute('aria-hidden','true');host.prepend(layer);const entries=[],count=reduced()?0:mega?180:110;let stopped=false;
+  const width=host.clientWidth,height=host.clientHeight;
+  for(let i=0;i<count;i++){const img=doc.createElement('img');img.src='assets/carrot.png';img.alt='';img.className='waterfall-carrot';const depth=i%3,size=depth===0?12+i%7:depth===1?24+i%11:38+i%17;
+   // Near particles favour the sides, preserving the title and amount in front.
+   const fraction=depth===2?(i%2?.77+(i%13)/65:.04+(i%13)/65):((i*47)%101)/100,x=fraction*width;
+   Object.assign(img.style,{width:size+'px',height:size+'px',left:x+'px',top:'-70px',opacity:depth===0?'.4':depth===1?'.75':'1',zIndex:String(depth)});layer.append(img);
+   const duration=depth===0?3300+(i%5)*160:depth===1?2400+(i%5)*100:1800+(i%5)*100;
+   entries.push(track(img,[{transform:`translate(0,0) rotate(${i*29%180}deg)`},{transform:`translate(${(i%7-3)*9}px,${height+155}px) rotate(${260+i*37%300}deg)`}],duration,{iterations:Infinity,delay:-(i*137%duration),easing:'linear',cleanup:()=>img.remove()}));
   }
-  return entries;
+  layer.style.opacity='0';entries.push(track(layer,[{opacity:0},{opacity:1}],500,{delay:200,cleanup:()=>{if(!stopped)layer.style.opacity='1'}}));
+  for(let i=0;i<(reduced()?0:12);i++){const img=doc.createElement('img');img.src='assets/carrot.png';img.alt='';img.className='waterfall-burst';layer.append(img);const dx=(i-5.5)*29;entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${dx*.6}px,-220px) scale(1)`,offset:.45},{opacity:0,transform:`translate(${dx}px,-110px) rotate(${dx}deg) scale(.7)`}],850,{delay:i%4*35,cleanup:()=>img.remove()}))}
+  history.push({id:'CARROT-WATERFALL',count,mega,at:performance.now()});
+  return{count,stop(){if(stopped)return;stopped=true;entries.forEach(e=>e?.animation.cancel());layer.remove()}};
  }
  const idles={1:()=>track(q('.dealer'),[{filter:'brightness(1)'},{filter:'brightness(1.08)',offset:.5},{filter:'brightness(1)'}],1800,{persistent:true,iterations:Infinity}),13:()=>all('.card.gold:not(.special)').map((n,i)=>sweep(n,3000,{persistent:true,iterations:Infinity,delay:i*140})),17:()=>all('.cell[data-face^="ANGEL"] .card').map(n=>pulse(n,2000,1.012,{persistent:true,iterations:Infinity})),26:()=>all('.cell.carrot .art-card').map(n=>track(n,[{transform:'translateY(0) rotate(-1deg)'},{transform:'translateY(-3px) rotate(1deg)'},{transform:'translateY(0) rotate(-1deg)'}],2400,{persistent:true,iterations:Infinity}))};
  function play(input,detail={}){
@@ -653,8 +660,16 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    case 1:add(track(target||q('.dealer'),[{filter:'brightness(1)'},{filter:'brightness(1.1)',offset:.5},{filter:'brightness(1)'}],d));add(sweep(q('.dealer'),d));break;
    case 2:add(track(target||q('#spin'),[{transform:'scale(1)'},{transform:'scale(.9)',offset:.35},{transform:'scale(1)'}],d));break;
    case 3:add(cardMotion(nodes,[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(12px) scale(.92)'}],d));break;
-   case 4:all('.mouth img').forEach((el,i)=>add(track(el,[{filter:'brightness(1)'},{filter:'brightness(1.45)',offset:.55},{filter:'brightness(1)'}],d,{delay:i*35})));add(sweep(q('.dealer'),d));break;
-   case 5:case 10:nodes.forEach((el,i)=>{const card=el.querySelector('.card')||el;const targetBox=el.getBoundingClientRect(),outlet=all('.mouth')[Number(el.dataset.index)%5]?.getBoundingClientRect();const drop=outlet?outlet.bottom-targetBox.top-targetBox.height:-targetBox.height*3;add(track(card,[{opacity:0,transform:`translateY(${drop}px) rotateX(7deg)`},{opacity:1,transform:'translateY(3px) rotateX(0deg)',offset:.83},{opacity:1,transform:'translateY(0) rotateX(0deg)'}],d-100,{delay:(Number(el.dataset.index)%5)*18}));});break;
+   case 4:all('.mouth>.dealer-outlet-art').forEach((el,i)=>add(track(el,[{filter:'brightness(1)'},{filter:'brightness(1.45)',offset:.55},{filter:'brightness(1)'}],d,{delay:i*35})));add(sweep(q('.dealer'),d));break;
+   case 5:case 10:{
+    const sr=stage.getBoundingClientRect();
+    nodes.forEach(el=>{const card=el.querySelector('.card');if(!card)return;const index=Number(el.dataset.index),box=el.getBoundingClientRect(),outlet=all('.mouth')[index%5]?.getBoundingClientRect();if(!outlet)return;
+     const top=outlet.bottom-2,travel=box.top-top,token=String(performance.now())+':'+index;el.dataset.feedToken=token;el.classList.add('feed-waiting');
+     const viewport=doc.createElement('div');viewport.className='feed-viewport';Object.assign(viewport.style,{left:`${box.left-sr.left}px`,top:`${top-sr.top}px`,width:`${box.width}px`,height:`${travel+box.height+5}px`});
+     const flight=doc.createElement('div');flight.className='cell feed-card'+(el.classList.contains('carrot')?' carrot':el.classList.contains('wild')?' wild':'');Object.assign(flight.style,{width:`${box.width}px`,height:`${box.height}px`});flight.append(card.cloneNode(true));viewport.append(flight);stage.append(viewport);
+     add(track(flight,[{transform:`translateY(${-box.height+5}px)`,opacity:1},{transform:`translateY(${travel+3}px)`,opacity:1,offset:.88},{transform:`translateY(${travel}px)`,opacity:1}],480,{delay:(3-Math.floor(index/5))*40+(n===10?index%5*12:0),easing:'cubic-bezier(.3,.02,.35,1)',cleanup:()=>{viewport.remove();if(el.dataset.feedToken===token){el.classList.remove('feed-waiting');delete el.dataset.feedToken}}}));
+    });break;
+   }
    case 6:add(track(q('#message'),[{opacity:.4,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}],d));break;
    case 7:add(glow(nodes,d));add(cardMotion(nodes,[{filter:'brightness(1)'},{filter:'brightness(1.18)',offset:.45},{filter:'brightness(1)'}],d));break;
    case 8:add(numberPlaque(detail,d));break;
@@ -757,5 +772,5 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  }
  function durationForPreview(id){const d=ANIMATION_DEFINITIONS.find(a=>a.id===id)?.duration??0;return reduced()?Math.min(d,140):d}
 
- return{ready,play,setReducedMotion,startIdle,stopIdle,clear,setPlaybackRate,pause,resume,finishCounters,get isCounting(){return counters.size>0},history,durationFor:input=>ANIMATION_DEFINITIONS.find(d=>d.id===key(input))?.duration??0,previews:()=>ANIMATION_DEFINITIONS.map(a=>({...a})),preview};
+ return{startWaterfall,animate:track,get reducedMotion(){return reduced()},ready,play,setReducedMotion,startIdle,stopIdle,clear,setPlaybackRate,pause,resume,finishCounters,get isCounting(){return counters.size>0},history,durationFor:input=>ANIMATION_DEFINITIONS.find(d=>d.id===key(input))?.duration??0,previews:()=>ANIMATION_DEFINITIONS.map(a=>({...a})),preview};
 }

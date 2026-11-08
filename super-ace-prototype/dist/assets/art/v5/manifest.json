@@ -1,0 +1,70 @@
+[
+  {
+    "name": "carrot-world",
+    "png": "carrot-world.png",
+    "svg": "carrot-world.svg",
+    "nativeSize": [
+      941,
+      1672
+    ],
+    "viewport": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "transparent": false,
+    "note": "Original PNG pixels preserved; SVG viewport trims transparent padding only."
+  },
+  {
+    "name": "mega-win",
+    "png": "mega-win.png",
+    "svg": "mega-win.svg",
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "viewport": [
+      4,
+      10,
+      1246,
+      1200
+    ],
+    "transparent": true,
+    "note": "Original PNG pixels preserved; SVG viewport trims transparent padding only."
+  },
+  {
+    "name": "carrot-pile",
+    "png": "carrot-pile.png",
+    "svg": "carrot-pile.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      1,
+      162,
+      2171,
+      559
+    ],
+    "transparent": true,
+    "note": "Original PNG pixels preserved; SVG viewport trims transparent padding only."
+  },
+  {
+    "name": "free-carrot-hero",
+    "png": "free-carrot-hero.png",
+    "svg": "free-carrot-hero.svg",
+    "nativeSize": [
+      1312,
+      1199
+    ],
+    "viewport": [
+      58,
+      5,
+      1212,
+      1127
+    ],
+    "transparent": true,
+    "note": "Original PNG pixels preserved; SVG viewport trims transparent padding only."
+  }
+]

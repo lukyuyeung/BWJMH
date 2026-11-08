@@ -1,3 +1,5 @@
+最新修訂：[蘿蔔慶典、免費模式與瀑布大獎](12_Carrot_Feature/README.md)。
+
 最新修訂：[新發牌器、貨幣圖示、WILD 與四階氣氛](11_Dealer_Atmosphere/README.md)。
 
 最新介面修訂：[獨立資產、直屏示意與驗證](10_HUD_Revision/README.md)。
