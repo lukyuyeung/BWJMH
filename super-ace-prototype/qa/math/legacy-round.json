@@ -1,0 +1,529 @@
+{
+  "mathVersion": "legacy-unversioned",
+  "initialBoard": [
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "H",
+      "gold": true
+    },
+    {
+      "symbol": "C",
+      "gold": false
+    },
+    {
+      "symbol": "CARROT",
+      "gold": false
+    },
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "S",
+      "gold": false
+    },
+    {
+      "symbol": "Q",
+      "gold": false
+    },
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "Q",
+      "gold": true
+    },
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "H",
+      "gold": false
+    },
+    {
+      "symbol": "A",
+      "gold": false
+    },
+    {
+      "symbol": "D",
+      "gold": false
+    },
+    {
+      "symbol": "D",
+      "gold": false
+    },
+    {
+      "symbol": "A",
+      "gold": false
+    },
+    {
+      "symbol": "D",
+      "gold": false
+    },
+    {
+      "symbol": "D",
+      "gold": false
+    },
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "A",
+      "gold": false
+    },
+    {
+      "symbol": "C",
+      "gold": false
+    }
+  ],
+  "finalBoard": [
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "H",
+      "gold": true
+    },
+    {
+      "symbol": "C",
+      "gold": false
+    },
+    {
+      "symbol": "CARROT",
+      "gold": false
+    },
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "S",
+      "gold": false
+    },
+    {
+      "symbol": "Q",
+      "gold": false
+    },
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "Q",
+      "gold": true
+    },
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "H",
+      "gold": false
+    },
+    {
+      "symbol": "A",
+      "gold": false
+    },
+    {
+      "symbol": "J",
+      "gold": false
+    },
+    {
+      "symbol": "C",
+      "gold": true
+    },
+    {
+      "symbol": "A",
+      "gold": false
+    },
+    {
+      "symbol": "J",
+      "gold": false
+    },
+    {
+      "symbol": "Q",
+      "gold": false
+    },
+    {
+      "symbol": "K",
+      "gold": false
+    },
+    {
+      "symbol": "A",
+      "gold": false
+    },
+    {
+      "symbol": "C",
+      "gold": false
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "board": [
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": true
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": true
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        }
+      ],
+      "multiplier": 1,
+      "result": {
+        "total": 3,
+        "wins": [
+          {
+            "symbol": "D",
+            "reels": 4,
+            "ways": 1,
+            "pay": 0.15,
+            "amount": 3,
+            "positions": [
+              15,
+              16,
+              12,
+              13
+            ]
+          }
+        ],
+        "positions": [
+          12,
+          13,
+          15,
+          16
+        ]
+      },
+      "award": 0,
+      "next": {
+        "evaluation": {
+          "total": 3,
+          "wins": [
+            {
+              "symbol": "D",
+              "reels": 4,
+              "ways": 1,
+              "pay": 0.15,
+              "amount": 3,
+              "positions": [
+                15,
+                16,
+                12,
+                13
+              ]
+            }
+          ],
+          "positions": [
+            12,
+            13,
+            15,
+            16
+          ]
+        },
+        "winPositions": [
+          12,
+          13,
+          15,
+          16
+        ],
+        "convertedPositions": [],
+        "copiedPositions": [],
+        "board": [
+          {
+            "symbol": "K",
+            "gold": false
+          },
+          {
+            "symbol": "H",
+            "gold": true
+          },
+          {
+            "symbol": "C",
+            "gold": false
+          },
+          {
+            "symbol": "CARROT",
+            "gold": false
+          },
+          {
+            "symbol": "K",
+            "gold": false
+          },
+          {
+            "symbol": "S",
+            "gold": false
+          },
+          {
+            "symbol": "Q",
+            "gold": false
+          },
+          {
+            "symbol": "K",
+            "gold": false
+          },
+          {
+            "symbol": "Q",
+            "gold": true
+          },
+          {
+            "symbol": "K",
+            "gold": false
+          },
+          {
+            "symbol": "H",
+            "gold": false
+          },
+          {
+            "symbol": "A",
+            "gold": false
+          },
+          {
+            "symbol": "J",
+            "gold": false
+          },
+          {
+            "symbol": "C",
+            "gold": true
+          },
+          {
+            "symbol": "A",
+            "gold": false
+          },
+          {
+            "symbol": "J",
+            "gold": false
+          },
+          {
+            "symbol": "Q",
+            "gold": false
+          },
+          {
+            "symbol": "K",
+            "gold": false
+          },
+          {
+            "symbol": "A",
+            "gold": false
+          },
+          {
+            "symbol": "C",
+            "gold": false
+          }
+        ],
+        "replacements": [
+          {
+            "index": 12,
+            "fromRow": -1,
+            "card": {
+              "symbol": "J",
+              "gold": false
+            }
+          },
+          {
+            "index": 13,
+            "fromRow": -1,
+            "card": {
+              "symbol": "C",
+              "gold": true
+            }
+          },
+          {
+            "index": 15,
+            "fromRow": -1,
+            "card": {
+              "symbol": "J",
+              "gold": false
+            }
+          },
+          {
+            "index": 16,
+            "fromRow": -1,
+            "card": {
+              "symbol": "Q",
+              "gold": false
+            }
+          }
+        ],
+        "conversions": [],
+        "copies": []
+      }
+    },
+    {
+      "index": 1,
+      "board": [
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": true
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": true
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": true
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        }
+      ],
+      "multiplier": 2,
+      "result": {
+        "total": 0,
+        "wins": [],
+        "positions": []
+      },
+      "award": 0,
+      "next": null
+    }
+  ],
+  "total": 3,
+  "bonus": 0,
+  "bet": 20,
+  "isFree": false
+}

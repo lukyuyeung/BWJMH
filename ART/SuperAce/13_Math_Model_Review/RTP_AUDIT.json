@@ -1,0 +1,70 @@
+{
+  "modelVersion": "bunny-ace-2026-11-09-v1",
+  "engineSHA256": "29c2450576a70eeede358247b26bc99c671200dac8f24deea3642513904e179e",
+  "paidRounds": 1000000,
+  "bet": 20,
+  "freeRounds": 106525,
+  "rtpEstimatePercent": 96.553245,
+  "approximate95ConfidenceIntervalPercent": [
+    95.5507467002758,
+    97.55574329972421
+  ],
+  "paidHitRatePercent": 38.1393,
+  "featureTriggerPercent": 1.0118,
+  "profitablePackagePercent": 14.2495,
+  "batches": [
+    {
+      "seed": 721,
+      "paidRounds": 250000,
+      "freeRounds": 26550,
+      "baseHitPercent": 38.1332,
+      "profitablePackagePercent": 14.3176,
+      "featureTriggerPercent": 1.012,
+      "baseRTP": 80.84186,
+      "freeRTP": 16.74224,
+      "totalRTP": 97.58409999999999,
+      "standardErrorPercentagePoints": 0.9938779835113919
+    },
+    {
+      "seed": 1337,
+      "paidRounds": 250000,
+      "freeRounds": 26010,
+      "baseHitPercent": 38.0444,
+      "profitablePackagePercent": 14.1284,
+      "featureTriggerPercent": 0.9875999999999999,
+      "baseRTP": 77.41838,
+      "freeRTP": 16.93704,
+      "totalRTP": 94.35542,
+      "standardErrorPercentagePoints": 1.0247727026352824
+    },
+    {
+      "seed": 8191,
+      "paidRounds": 250000,
+      "freeRounds": 27615,
+      "baseHitPercent": 38.232,
+      "profitablePackagePercent": 14.3428,
+      "featureTriggerPercent": 1.0492,
+      "baseRTP": 80.90126,
+      "freeRTP": 17.59528,
+      "totalRTP": 98.49654,
+      "standardErrorPercentagePoints": 1.092664110709239
+    },
+    {
+      "seed": 42317,
+      "paidRounds": 250000,
+      "freeRounds": 26350,
+      "baseHitPercent": 38.1476,
+      "profitablePackagePercent": 14.2092,
+      "featureTriggerPercent": 0.9984,
+      "baseRTP": 79.5244,
+      "freeRTP": 16.25252,
+      "totalRTP": 95.77692,
+      "standardErrorPercentagePoints": 0.9766782327773942
+    }
+  ],
+  "limitations": [
+    "Monte Carlo estimate, not certified theoretical RTP",
+    "Custom weights, not JILI proprietary math",
+    "Approved paytable and maximum-win-cap scope remain unverified"
+  ]
+}

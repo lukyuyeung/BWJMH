@@ -1,4 +1,4 @@
-import {compactMoney} from './money.js?v=hud-v4';
+import {compactMoney} from './money.js?v=math-v1';
 export const ANIMATION_DEFINITIONS = Object.freeze([
   {
     "id": "ANIM-01",

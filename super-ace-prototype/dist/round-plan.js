@@ -1,4 +1,4 @@
-import {BASE_MULTIPLIERS,FREE_MULTIPLIERS} from './engine.js';
+import {BASE_MULTIPLIERS,FREE_MULTIPLIERS} from './engine.js?v=math-v1';
 const clone=x=>structuredClone(x),money=n=>Math.round(n*100)/100;
 /** Commit the random result once; animation and reloads only replay this plan. */
 export function buildRoundPlan(engine,{bet,isFree=false,initialBoard=engine.deal(),limit=1000}){
@@ -8,7 +8,7 @@ export function buildRoundPlan(engine,{bet,isFree=false,initialBoard=engine.deal
   const award=!bonus&&board.filter(c=>c.symbol==='CARROT').length>=3?(isFree?5:10):0;if(award)bonus=award;
   total=money(total+result.total);const next=result.total>0?engine.resolveStep(board,bet,multiplier):null;
   steps.push({index,board:clone(board),multiplier,result:clone(result),award,next:next?clone(next):null});
-  if(!next)return{initialBoard:clone(initialBoard),finalBoard:clone(board),steps,total,bonus,bet,isFree};board=next.board;
+  if(!next)return{mathVersion:engine.mathVersion??'legacy-unversioned',initialBoard:clone(initialBoard),finalBoard:clone(board),steps,total,bonus,bet,isFree};board=next.board;
  }
  throw new Error('Round exceeds presentation limit');
 }

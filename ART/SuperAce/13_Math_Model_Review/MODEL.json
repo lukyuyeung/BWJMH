@@ -1,0 +1,38 @@
+{
+  "id": "bunny-ace-2026-11-09-v1",
+  "betUnit": 0.2,
+  "carrotProbabilityPerPosition": 0.02,
+  "goldProbabilityConditionalOnEligibleOrdinaryCard": 0.03,
+  "devilProbabilityConditionalOnGoldConversion": 0.1,
+  "symbols": [
+    "J",
+    "Q",
+    "K",
+    "A",
+    "S",
+    "H",
+    "C",
+    "D"
+  ],
+  "favouredSymbolsPerReel": [
+    "S",
+    "H",
+    "C",
+    "D",
+    "J"
+  ],
+  "favouredProbabilityConditionalOnNonCarrot": 0.32625,
+  "otherSymbolProbabilityConditionalOnNonCarrot": 0.09625,
+  "baseMultipliers": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "freeMultipliers": [
+    2,
+    4,
+    6,
+    10
+  ]
+}

@@ -31,8 +31,17 @@ test('new devil spreads at most four copies, preserves source, avoids first reel
 test('free award and 10 percent balance ceiling',()=>{
  const b=board('J');[0,3,9].forEach(i=>b[i]={symbol:'CARROT'});
  assert.equal(freeSpinAward(b),10);assert.equal(freeSpinAward(b,true),5);
- assert.equal(maxBet(123.45),12.34);assert.deepEqual(allowedBets(123.45),[1,2,5,10]);assert.deepEqual(allowedBets(9),[]);
+ assert.equal(maxBet(123.45),12.2);assert.deepEqual(allowedBets(123.45),[1,2,5,10]);assert.deepEqual(allowedBets(9),[]);
 });
 test('invalid board and invalid random values fail clearly',()=>{
  assert.throws(()=>evaluate([],1),TypeError);assert.throws(()=>createEngine({rng:()=>1}).deal(),RangeError);
+});
+test('released model uses fixed reel-specific weights and configured special-symbol rates',()=>{
+ const engine=createEngine({rng:createRng(39291)}),fav=['S','H','C','D','J'],normal=Array(5).fill(0),preferred=Array(5).fill(0);let carrots=0,gold=0,eligible=0;
+ for(let n=0;n<10000;n++)for(const[c,i]of engine.deal().map((c,i)=>[c,i])){const col=i%5;if(c.symbol==='CARROT'){carrots++;continue}normal[col]++;if(c.symbol===fav[col])preferred[col]++;if(col>=1&&col<=3){eligible++;if(c.gold)gold++}}
+ for(let col=0;col<5;col++)assert(Math.abs(preferred[col]/normal[col]-.32625)<.015);assert(Math.abs(carrots/200000-.02)<.002);assert(Math.abs(gold/eligible-.03)<.003);
+});
+test('supported minimum stake preserves winning positions and payout scaling',()=>{
+ const small=createEngine({rng:createRng(8231)}),large=createEngine({rng:createRng(8231)});
+ for(let n=0;n<300;n++){let a=small.deal(),b=large.deal();assert.deepEqual(a,b);for(let step=0;step<100;step++){const m=[1,2,3,5][Math.min(step,3)],x=small.evaluate(a,.2,m),y=large.evaluate(b,20,m);assert.deepEqual(x.positions,y.positions);assert(Math.abs(x.total*100-y.total)<1e-6);if(!x.total)break;a=small.resolveStep(a,.2,m).board;b=large.resolveStep(b,20,m).board;assert.deepEqual(a,b)}}
 });

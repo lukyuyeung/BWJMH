@@ -1,8 +1,11 @@
-/** Prototype reference rules. Paytable is provisional, not a verified official JILI table. */
+/** Bunny Gala custom simulation model; not JILI's proprietary mathematics. */
 export const SYMBOLS = Object.freeze(['J','Q','K','A','S','H','C','D']);
 export const BASE_MULTIPLIERS = Object.freeze([1,2,3,5]);
 export const FREE_MULTIPLIERS = Object.freeze([2,4,6,10]);
 export const DEFAULT_PAYTABLE = Object.freeze({A:[.5,1.5,2.5],K:[.4,1.2,2],Q:[.3,.9,1.5],J:[.2,.6,1],S:[.1,.3,.5],H:[.1,.3,.5],C:[.05,.15,.25],D:[.05,.15,.25]});
+export const BET_UNIT=.2;
+export const MATH_VERSION='bunny-ace-2026-11-09-v1';
+export const MATH_MODEL=Object.freeze({id:MATH_VERSION,betUnit:BET_UNIT,goldChance:.03,carrotChance:.02,devilChance:.10,reelBias:.23,favouredSymbols:Object.freeze(['S','H','C','D','J'])});
 export const BET_TIERS = Object.freeze([1,2,5,10,20,25,50,100,200,500,1000,2000,5000,10000]);
 const wild = c => c.symbol === 'ANGEL' || c.symbol === 'DEVIL';
 const money = n => Math.round((n + Number.EPSILON)*100)/100;
@@ -14,7 +17,7 @@ export function createRng(seed=Date.now()) {
   let a=typeof seed==='number'?seed>>>0:[...String(seed)].reduce((h,c)=>Math.imul(h^c.charCodeAt(0),16777619),2166136261)>>>0;
   return ()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};
 }
-export function maxBet(balance) { return Math.max(0,Math.floor((Number(balance)||0)*10+1e-8)/100); }
+export function maxBet(balance) { return Math.max(0,Math.round(Math.floor(((Number(balance)||0)*10+1e-6)/20)*20)/100); }
 export function allowedBets(balance) { return BET_TIERS.filter(b=>b<=maxBet(balance)); }
 export function freeSpinAward(board,isFree=false) {check(board);return board.filter(c=>c.symbol==='CARROT').length>=3?(isFree?5:10):0;}
 export function evaluate(board,bet,multiplier=1,paytable=DEFAULT_PAYTABLE) {
@@ -36,12 +39,15 @@ export function evaluate(board,bet,multiplier=1,paytable=DEFAULT_PAYTABLE) {
   }
   return {total:money(wins.reduce((n,w)=>n+w.amount,0)),wins,positions:[...all].sort((a,b)=>a-b)};
 }
-export function createEngine({rng=Math.random,paytable=DEFAULT_PAYTABLE,goldChance=.12,carrotChance=.035,devilChance=.25}={}) {
-  for(const p of [goldChance,carrotChance,devilChance])if(!(p>=0&&p<=1))throw new RangeError('Probabilities must be between zero and one.');
+export function createEngine({rng=Math.random,paytable=DEFAULT_PAYTABLE,goldChance=MATH_MODEL.goldChance,carrotChance=MATH_MODEL.carrotChance,devilChance=MATH_MODEL.devilChance,reelBias=MATH_MODEL.reelBias}={}) {
+  for(const p of [goldChance,carrotChance,devilChance,reelBias])if(!(p>=0&&p<=1))throw new RangeError('Probabilities must be between zero and one.');
   const random=()=>{const n=rng();if(!(n>=0&&n<1))throw new RangeError('RNG must return a number in [0,1).');return n;};
   const cardAt=index=>{
     if(random()<carrotChance)return {symbol:'CARROT',gold:false};
-    const symbol=SYMBOLS[Math.floor(random()*SYMBOLS.length)],col=index%5;
+    const col=index%5,draw=random(),fav=SYMBOLS.indexOf(MATH_MODEL.favouredSymbols[col]),p=(1-reelBias)/8;
+    let cumulative=0,pick=7;
+    for(let j=0;j<SYMBOLS.length;j++){cumulative+=p+(j===fav?reelBias:0);if(draw<cumulative){pick=j;break}}
+    const symbol=SYMBOLS[pick];
     return {symbol,gold:col>=1&&col<=3&&random()<goldChance};
   };
   function deal(){return Array.from({length:20},(_,i)=>cardAt(i));}
@@ -64,5 +70,5 @@ export function createEngine({rng=Math.random,paytable=DEFAULT_PAYTABLE,goldChan
     board.forEach((c,index)=>{if(!c){const card=cardAt(index);board[index]=card;replacements.push({index,fromRow:-1,card:{...card}});}});
     return {evaluation,winPositions:evaluation.positions,convertedPositions:conversions.map(c=>c.index),copiedPositions:copies.map(c=>c.index),board,replacements,conversions,copies};
   }
-  return {deal,resolveStep,evaluate:(board,bet,multiplier=1)=>evaluate(board,bet,multiplier,paytable)};
+  return {mathVersion:MATH_VERSION,deal,resolveStep,evaluate:(board,bet,multiplier=1)=>evaluate(board,bet,multiplier,paytable)};
 }
