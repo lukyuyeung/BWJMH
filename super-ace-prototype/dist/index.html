@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#180d1b"><title>Bunny Gala · CARROT</title>
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="art-style.css"><link rel="stylesheet" href="cards-art.css"><link rel="stylesheet" href="portrait.css?v=hud-v3"><link rel="stylesheet" href="effects.css?v=hud-v3">
-<link rel="stylesheet" href="hud-v3.css?v=hud-v3">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="art-style.css"><link rel="stylesheet" href="cards-art.css"><link rel="stylesheet" href="portrait.css?v=hud-v4"><link rel="stylesheet" href="effects.css?v=hud-v4">
+<link rel="stylesheet" href="hud-v3.css?v=hud-v4">
+<link rel="stylesheet" href="hud-v4.css?v=hud-v4">
 </head>
 <body>
-<div class="ambient" aria-hidden="true"></div>
+<div class="ambient" aria-hidden="true"></div><div class="atmosphere-light" aria-hidden="true"></div>
 <main class="app">
 <header class="topbar">
 <div class="header-tools"><button class="round" id="help" aria-label="玩法與計算">ⓘ</button><button class="round" id="settings" aria-label="設定">⚙</button></div>
 <div class="brand"><img src="assets/bunny-gala-transparent.png" alt="Bunny Gala"></div>
-<button id="sessionTotal" aria-label="查看本次淨輸贏完整金額"><span id="sessionLabel">本次淨輸贏</span><strong id="sessionValue">0</strong></button><button id="sound" style="display:none" aria-label="切換音效">♫</button>
+<button id="sessionTotal" aria-label="查看本次淨輸贏完整金額"><span id="sessionLabel">本次淨輸贏</span><span class="amount-value"><img class="amount-carrot" src="assets/carrot.png" alt=""><strong id="sessionValue">0</strong></span></button><button id="sound" style="display:none" aria-label="切換音效">♫</button>
 </header>
 <section class="game" aria-label="Bunny Gala 直屏撲克牌遊戲">
 <div class="mode-heading" aria-live="polite"><span id="modeLabel">LET THE CARROTS FALL</span><small id="freeLabel">1024 WAYS · 金牌連鎖</small></div>
@@ -20,7 +21,7 @@
 <div class="dealer" aria-hidden="true"><div class="mouths"></div></div>
 <div class="board-zone"><div class="board-shell"><div class="board" id="board" aria-label="五列四行撲克牌盤面"></div><div class="rays" id="rays"></div><div class="win-pop" id="winPop"></div></div></div>
 <span id="message" class="sr-only" aria-live="polite"></span><span class="free-pill" id="freePill" hidden></span>
-<div class="balance-bar"><button id="balanceEntry" class="money-field" aria-label="查看完整蘿蔔餘額"><label>蘿蔔餘額</label><strong id="balance">2,000</strong></button><button id="betEntry" class="money-field" aria-label="選擇下注"><label>BET</label><strong id="bet">20</strong></button><button id="winEntry" class="money-field" aria-label="查看完整本局獎勵"><label>本局獎勵</label><strong id="win">0</strong></button></div>
+<div class="balance-bar"><button id="balanceEntry" class="money-field" aria-label="查看完整蘿蔔餘額"><label>蘿蔔餘額</label><span class="amount-value"><img class="amount-carrot" src="assets/carrot.png" alt=""><strong id="balance">2,000</strong></span></button><button id="betEntry" class="money-field" aria-label="選擇下注"><label>BET</label><span class="amount-value"><img class="amount-carrot" src="assets/carrot.png" alt=""><strong id="bet">20</strong></span></button><button id="winEntry" class="money-field" aria-label="查看完整本局獎勵"><label>本局獎勵</label><span class="amount-value"><img class="amount-carrot" src="assets/carrot.png" alt=""><strong id="win">0</strong></span></button></div>
 <div class="controls">
 <div class="spin-controls"><button class="bet-adjust" id="minus" aria-label="減少下注">−</button><button class="bet-adjust" id="plus" aria-label="增加下注">＋</button><button class="spin" id="spin" aria-label="開始旋轉"><span class="spin-arrow">↻</span><span class="spin-word">SPIN</span></button></div>
 <div class="secondary-controls right"><button class="tool" id="auto" aria-label="自動遊戲設定"><span>⟳</span><small>AUTO</small></button><button class="tool" id="speed" aria-label="切換遊戲速度"><span>ϟ</span><small>正常</small></button></div>
@@ -30,6 +31,6 @@
 <dialog id="modal"><div class="modal-head"><span class="eyebrow">BUNNY GALA</span><button id="closeModal" aria-label="關閉">×</button></div><div id="modalContent"></div></dialog>
 <dialog id="connectionDialog"><h2>牌局已暫停</h2><p>連線恢復後，繼續同一局已保存的結果。</p></dialog>
 <div class="toast" id="toast" role="status"></div>
-<script type="module" src="app.js?v=hud-v3"></script>
+<script type="module" src="app.js?v=hud-v4"></script>
 </body>
 </html>

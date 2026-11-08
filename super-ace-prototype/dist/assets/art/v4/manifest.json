@@ -1,0 +1,50 @@
+[
+  {
+    "name": "dealer-housing",
+    "png": "dealer-housing.png",
+    "svg": "dealer-housing.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      0,
+      57,
+      2172,
+      610
+    ],
+    "note": "Original PNG bytes unchanged. SVG only sets viewport and stretches to runtime panel geometry."
+  },
+  {
+    "name": "dealer-outlet",
+    "png": "dealer-outlet.png",
+    "svg": "dealer-outlet.svg",
+    "nativeSize": [
+      1685,
+      934
+    ],
+    "viewport": [
+      16,
+      106,
+      1654,
+      724
+    ],
+    "note": "Original PNG bytes unchanged. SVG only sets viewport and stretches to runtime panel geometry."
+  },
+  {
+    "name": "multiplier-base",
+    "png": "multiplier-base.png",
+    "svg": "multiplier-base.svg",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "viewport": [
+      0,
+      199,
+      2172,
+      314
+    ],
+    "note": "Original PNG bytes unchanged. SVG only sets viewport and stretches to runtime panel geometry."
+  }
+]

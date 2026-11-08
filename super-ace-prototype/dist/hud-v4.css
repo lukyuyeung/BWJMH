@@ -1,0 +1,47 @@
+/* Independent machine and rail artwork; CSS supplies currency layout and lighting only. */
+.topbar{grid-template-columns:88px minmax(0,1fr) 120px}
+#sessionTotal .amount-value,.amount-value{display:inline-flex;align-items:center;justify-content:center;gap:3px;width:max-content;max-width:none;line-height:1.2;white-space:nowrap}
+.amount-carrot{display:block;flex:none;width:14px;height:18px;object-fit:contain}
+.balance-bar .money-field,#betEntry.money-field{padding-left:0;padding-right:0}
+.balance-bar .money-field[data-stacked='true'] .amount-value{display:flex;flex-direction:column;gap:0}
+.balance-bar .money-field[data-stacked='true'] .amount-carrot{height:12px;width:11px;align-self:flex-start}
+#sessionTotal>span.amount-value{font-size:inherit;color:inherit}
+#sessionTotal .amount-carrot{width:13px;height:17px}
+/* Crop and sizing must apply to the visible plate, rather than letterboxing the SVG. */
+.cell.wild .card.special{inset:1px}
+.cell.wild .card.special img.art-card{object-fit:fill;width:100%;height:100%;max-width:none;margin:0}
+/* CARROT participates above the table frame instead of inside the isolated board layer. */
+.board{isolation:auto;overflow:visible}
+.board-shell,.board-zone{overflow:visible}
+.cell.carrot{z-index:12}
+.cell.carrot .card,.cell.carrot img{overflow:visible}
+.atmosphere-light{position:fixed;inset:0;pointer-events:none;background:none;z-index:0}
+.app{z-index:1}
+body[data-heat='0'] .ambient{filter:brightness(.35) saturate(.85)}
+body[data-heat='1'] .ambient{filter:brightness(.57) saturate(1.05) sepia(.32)}
+body[data-heat='2'] .ambient{filter:brightness(.5) saturate(1.5) hue-rotate(315deg)}
+body[data-heat='3'] .ambient{filter:brightness(.7) saturate(1.2) sepia(.45)}
+body[data-heat='1'] .atmosphere-light{background:radial-gradient(ellipse at 50% 8%,#ffbf555f,transparent 67%),radial-gradient(ellipse at 50% 95%,#d7963d30,transparent 60%)}
+body[data-heat='2'] .atmosphere-light{background:radial-gradient(ellipse at 0% 45%,#f029ac70,transparent 64%),radial-gradient(ellipse at 100% 20%,#ff65b759,transparent 70%)}
+body[data-heat='3'] .atmosphere-light{background:radial-gradient(ellipse at 50% 0%,#ffe7a58c,transparent 65%),radial-gradient(ellipse at 0% 72%,#ffbf4770,transparent 55%),radial-gradient(ellipse at 100% 72%,#ffbf4770,transparent 55%)}
+.app[data-heat='1'] .multipliers{filter:brightness(1.22) drop-shadow(0 0 7px #ffbc4777)}
+.app[data-heat='2'] .multipliers{filter:brightness(1.18) drop-shadow(0 0 10px #ff4eaeaa)}
+.app[data-heat='3'] .multipliers{filter:brightness(1.45) drop-shadow(0 0 11px #ffdf8dcc)}
+.app[data-heat='1'] .board-shell:before{filter:brightness(1.15) drop-shadow(0 0 6px #ffbc4799)}
+.app[data-heat='2'] .board-shell:before{filter:brightness(1.15) drop-shadow(0 0 10px #ff4eaecc)}
+.app[data-heat='3'] .board-shell:before{filter:brightness(1.4) drop-shadow(0 0 12px #ffe4a8dd)}
+.app[data-heat='1'] .mouth{filter:drop-shadow(0 0 4px #ffbf4d)}
+.app[data-heat='2'] .mouth{filter:drop-shadow(0 0 5px #ff4eb5)}
+.app[data-heat='3'] .mouth{filter:brightness(1.3) drop-shadow(0 0 6px #fff2bc)}
+.app[data-heat='3'] .multipliers .active{color:#fff;font-size:26px;text-shadow:0 0 6px #fff,0 0 18px #ffb237}
+@media(max-height:700px){.app[data-heat='3'] .multipliers .active{font-size:23px}}
+@media(max-width:350px){.topbar{grid-template-columns:88px minmax(0,1fr) 112px}.amount-carrot{width:12px;height:16px}.amount-value{gap:2px}}
+@media(prefers-reduced-motion:reduce){.app .multipliers,.app .dealer,.app .mouth,.app .board-shell:before{filter:none}}
+.multipliers{background-image:url('assets/art/v4/multiplier-base.svg');border-radius:0;padding-left:5%;padding-right:5%}
+.dealer{height:60px;background-image:url('assets/art/v4/dealer-housing.svg');overflow:visible}
+.mouths{top:30%;bottom:16%;height:auto}
+.mouth{border-radius:0;background:none;overflow:hidden}
+.mouth img{display:block;width:100%;height:100%;object-fit:fill}
+.board-zone{height:min(calc(100cqh - 268px),calc(100cqw / .938))}
+@media(max-height:700px){.dealer{height:44px}.board-zone{height:min(calc(100cqh - 216px),calc(100cqw / .938))}}
+#betEntry.money-field>span.amount-value{position:static;inset:auto;width:max-content;font-size:inherit;line-height:1.2;letter-spacing:0;color:inherit}

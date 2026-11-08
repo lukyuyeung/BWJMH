@@ -1,4 +1,4 @@
-import {compactMoney} from './money.js?v=hud-v3';
+import {compactMoney} from './money.js?v=hud-v4';
 export const ANIMATION_DEFINITIONS = Object.freeze([
   {
     "id": "ANIM-01",
@@ -653,7 +653,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    case 1:add(track(target||q('.dealer'),[{filter:'brightness(1)'},{filter:'brightness(1.1)',offset:.5},{filter:'brightness(1)'}],d));add(sweep(q('.dealer'),d));break;
    case 2:add(track(target||q('#spin'),[{transform:'scale(1)'},{transform:'scale(.9)',offset:.35},{transform:'scale(1)'}],d));break;
    case 3:add(cardMotion(nodes,[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(12px) scale(.92)'}],d));break;
-   case 4:all('.mouth img').forEach((el,i)=>add(track(el,[{transform:'translateY(-4%)'},{transform:'translateY(7%)',offset:.55},{transform:'translateY(0)'}],d,{delay:i*35})));add(sweep(q('.dealer'),d));break;
+   case 4:all('.mouth img').forEach((el,i)=>add(track(el,[{filter:'brightness(1)'},{filter:'brightness(1.45)',offset:.55},{filter:'brightness(1)'}],d,{delay:i*35})));add(sweep(q('.dealer'),d));break;
    case 5:case 10:nodes.forEach((el,i)=>{const card=el.querySelector('.card')||el;const targetBox=el.getBoundingClientRect(),outlet=all('.mouth')[Number(el.dataset.index)%5]?.getBoundingClientRect();const drop=outlet?outlet.bottom-targetBox.top-targetBox.height:-targetBox.height*3;add(track(card,[{opacity:0,transform:`translateY(${drop}px) rotateX(7deg)`},{opacity:1,transform:'translateY(3px) rotateX(0deg)',offset:.83},{opacity:1,transform:'translateY(0) rotateX(0deg)'}],d-100,{delay:(Number(el.dataset.index)%5)*18}));});break;
    case 6:add(track(q('#message'),[{opacity:.4,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}],d));break;
    case 7:add(glow(nodes,d));add(cardMotion(nodes,[{filter:'brightness(1)'},{filter:'brightness(1.18)',offset:.45},{filter:'brightness(1)'}],d));break;
