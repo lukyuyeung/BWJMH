@@ -1,0 +1,6 @@
+/* Original transparent brand artwork sits on the felt, underneath cards and effects. */
+.board{position:relative}
+.table-brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62%;max-width:260px;height:auto;object-fit:contain;opacity:.5;pointer-events:none;z-index:0}
+#board .cell:before,.feed-card:before{display:none!important}
+#board .cell{border:0;box-shadow:none}
+.header-tools{grid-column:1}

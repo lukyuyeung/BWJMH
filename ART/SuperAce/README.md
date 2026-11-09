@@ -1,3 +1,5 @@
+最新畫面修訂：[牌桌Logo與獎勵同步氣氛](15_Table_Brand_Reward_Sync/README.md)。
+
 最新畫面修訂：[桌面清晰度與頂部留白](14_Desktop_Clarity/README.md)。
 
 最新更新：[自訂概率模型、RTP驗證與遊戲審視](13_Math_Model_Review/README.md)。

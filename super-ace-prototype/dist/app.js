@@ -1,9 +1,9 @@
-import {createCarrotScenes} from './carrot-scenes.js?v=math-v1';
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=math-v1';
-import {createPlaybackClock} from './playback-clock.js?v=math-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=math-v1';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=math-v1';
-import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=math-v1';
+import {createCarrotScenes} from './carrot-scenes.js?v=reward-sync-v1';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=reward-sync-v1';
+import {createPlaybackClock} from './playback-clock.js?v=reward-sync-v1';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=reward-sync-v1';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=reward-sync-v1';
+import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=reward-sync-v1';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
 const legacy=(()=>{try{return reviewMode?{}:JSON.parse(localStorage.getItem('gala-carrot-v1'))||{}}catch{return{}}})();
@@ -57,10 +57,11 @@ async function runRecord(record,{recovering=false}={}){
    }
    await Promise.all(feeds);await wait(80);
    const carrotIndices=()=>board.flatMap((c,i)=>c.symbol==='CARROT'?[i]:[]);
-   for(const step of plan.steps){board=structuredClone(step.board);render();setMultiplier(step.index,plan.isFree);if(step.index)effect(11,{target:$('#multipliers .active')});
+   for(const step of plan.steps){board=structuredClone(step.board);render();
     if(step.award){const state={balance,free,freeTotal};const fresh=applyBonus(state,record);applyState(state);if(fresh){if(auto?.onFeature){auto=null;effect(43,{stopped:true})}save();effect(34,{target:$('#freePill')})}update();if(!record.featureAcknowledged){effect(31,{indices:carrotIndices()});await wait(500);await feature(step.award,plan.isFree);record.featureAcknowledged=true;save();effect(33)}}
-    const result=step.result;if(!result.total){if(!plan.total){msg('本局沒有中獎。');effect(6)}break}
+    const result=step.result;if(!result.total){setMultiplier(0,plan.isFree);if(!plan.total){msg('本局沒有中獎。');effect(6)}break}
     const winning=result.positions,angel=winning.filter(i=>board[i].symbol==='ANGEL'),wild=winning.filter(i=>['ANGEL','DEVIL'].includes(board[i].symbol)),gold=winning.filter(i=>board[i].gold&&!['ANGEL','DEVIL'].includes(board[i].symbol));
+    setMultiplier(step.index,plan.isFree);if(step.index)effect(11,{target:$('#multipliers .active')});
     lastWin=Math.round((lastWin+result.total)*100)/100;msg(`連鎖 ${step.index+1} · ×${step.multiplier}`);$$('#board .cell').forEach((n,i)=>n.classList.toggle('dim',!winning.includes(i)));effect(7,{indices:winning});if(gold.length)effect(14,{indices:gold});if(angel.length)effect(18,{indices:angel});effect(8,{indices:winning,amount:result.total});update();await wait(Math.max(850,effects.durationFor(8)));
     const next=step.next;if(wild.length)effect(23,{indices:wild});effect(9,{indices:next.replacements.map(c=>c.index)});if(next.conversions.length)effect(15,{indices:next.conversions.map(c=>c.index)});await wait(260);
     const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();const refill=next.replacements.length?effect(10,{indices:next.replacements.map(c=>c.index)}):null;
