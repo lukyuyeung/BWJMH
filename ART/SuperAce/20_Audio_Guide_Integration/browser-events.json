@@ -1,0 +1,4217 @@
+[
+  {
+    "seed": 2,
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1971.2999999523163,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "card_shuffle",
+        "at": 1971.2999999523163,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1988.699999988079,
+        "round": 1
+      },
+      {
+        "kind": "played",
+        "id": "card_shuffle",
+        "at": 1989,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 17.600000023841858,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 2237.7999999523163,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 2237.899999976158,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2541.5,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2541.599999964237,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2607.5,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2608,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx",
+        "lag": 0.5,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2681.099999964237,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2681.899999976158,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx",
+        "lag": 0.800000011920929,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2755.199999988079,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2755.7999999523163,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx",
+        "lag": 0.800000011920929,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2824.199999988079,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2824.399999976158,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx",
+        "lag": 0.30000001192092896,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "no_win",
+        "at": 2907.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "no_win",
+        "at": 2908,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.5,
+        "activeSfx": 3
+      }
+    ],
+    "state": {
+      "enabled": true,
+      "mode": "base",
+      "unlocked": true,
+      "paused": false,
+      "failed": false,
+      "playing": [
+        "base"
+      ],
+      "gains": {
+        "lobby": 0,
+        "base": 0.2590034008026123,
+        "free": 0
+      },
+      "settings": {
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "voiceEnabled": true,
+        "musicVolume": 0.6,
+        "sfxVolume": 0.7,
+        "voiceVolume": 0.9
+      },
+      "ready": 34,
+      "total": 34,
+      "activeSfx": 3,
+      "active": [
+        {
+          "id": "reel_stop",
+          "bus": "sfx"
+        },
+        {
+          "id": "reel_stop",
+          "bus": "sfx"
+        },
+        {
+          "id": "no_win",
+          "bus": "sfx"
+        }
+      ],
+      "hasVo": false,
+      "missingVo": [
+        "vo_superace_yellow.wav",
+        "vo_superace_wizard.wav",
+        "vo_superace_ninja.wav",
+        "vo_superace_king.wav"
+      ]
+    },
+    "balance": 1980,
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1826.0999999642372,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1826.7999999523163,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1974.0999999642372,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1974.199999988079,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 2238,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2238.699999988079,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2312.899999976158,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2384.899999976158,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2456,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2527.599999964237,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-06",
+        "at": 2908.399999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 2909.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 2911.199999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 2911.899999976158,
+        "indices": [],
+        "preview": false
+      }
+    ]
+  },
+  {
+    "seed": 37,
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1805.300000011921,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "card_shuffle",
+        "at": 1805.4000000357628,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1819.4000000357628,
+        "round": 1
+      },
+      {
+        "kind": "played",
+        "id": "card_shuffle",
+        "at": 1819.699999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 14.299999952316284,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 2071.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 2071.800000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2372.699999988079,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2372.699999988079,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2438.699999988079,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2439,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx",
+        "lag": 0.20000004768371582,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "scatter",
+        "at": 2439,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "scatter",
+        "at": 2439,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2505.300000011921,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2505.400000035763,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2572.199999988079,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2572.199999988079,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2655.400000035763,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2655.600000023842,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2737.600000023842,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2737.699999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 2737.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_countup",
+        "at": 2737.900000035763,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 3598.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 3598.699999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "multiplier",
+        "at": 4343.900000035763,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "multiplier",
+        "at": 4343.900000035763,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 4345.800000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 4345.900000035763,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 4345.900000035763,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "win_countup",
+        "at": 4345.900000035763,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 5200.400000035763,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 5200.400000035763,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "multiplier",
+        "at": 6059.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "multiplier",
+        "at": 6059.800000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 6060.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 6060.900000035763,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.20000004768371582,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 6060.900000035763,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "win_countup",
+        "at": 6060.900000035763,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 6914.100000023842,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 6914.199999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "multiplier",
+        "at": 7685.800000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "multiplier",
+        "at": 7685.900000035763,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 7687.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 7687.800000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 7687.800000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "win_countup",
+        "at": 7687.800000011921,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 8541.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 8541.600000023842,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.30000001192092896,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 9275.600000023842,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 9275.699999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 9275.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_countup",
+        "at": 9275.800000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 10128.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 10128.800000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 10859.199999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 10859.199999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 10859.199999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_countup",
+        "at": 10859.199999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 11712,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 11712.199999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "coins",
+        "at": 12443.400000035763,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "coins",
+        "at": 12443.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 12444.5,
+        "round": 1,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 12444.600000023842,
+        "round": 1,
+        "bus": "music",
+        "lag": 0.19999998807907104,
+        "activeSfx": 2
+      }
+    ],
+    "state": {
+      "enabled": true,
+      "mode": "base",
+      "unlocked": true,
+      "paused": false,
+      "failed": false,
+      "playing": [
+        "base"
+      ],
+      "gains": {
+        "lobby": 0,
+        "base": 0.35127002000808716,
+        "free": 0
+      },
+      "settings": {
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "voiceEnabled": true,
+        "musicVolume": 0.6,
+        "sfxVolume": 0.7,
+        "voiceVolume": 0.9
+      },
+      "ready": 34,
+      "total": 34,
+      "activeSfx": 2,
+      "active": [
+        {
+          "id": "cascade",
+          "bus": "sfx"
+        },
+        {
+          "id": "cascade",
+          "bus": "sfx"
+        },
+        {
+          "id": "win_big",
+          "bus": "music"
+        }
+      ],
+      "hasVo": false,
+      "missingVo": [
+        "vo_superace_yellow.wav",
+        "vo_superace_wizard.wav",
+        "vo_superace_ninja.wav",
+        "vo_superace_king.wav"
+      ]
+    },
+    "balance": 2148,
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1674.4000000357628,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1675.1000000238419,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1808.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1809,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 2071.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2072.5,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2145.400000035763,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2216.800000011921,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2287.900000035763,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2358.900000035763,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-25",
+        "at": 2439.100000023842,
+        "indices": [
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 2736.600000023842,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 2737.900000035763,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 3598.699999988079,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 3860.699999988079,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 4188.600000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 4343.900000035763,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 4345,
+        "indices": [
+          2,
+          3,
+          10,
+          11,
+          13,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 4345.900000035763,
+        "indices": [
+          2,
+          3,
+          10,
+          11,
+          13,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 5200.5,
+        "indices": [
+          2,
+          3,
+          10,
+          11,
+          13,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 5462.5,
+        "indices": [
+          2,
+          3,
+          10,
+          11,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 5905.100000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 6059.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 6060.199999988079,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 6060.900000035763,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 6914.300000011921,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 7176.600000023842,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 7521.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 7685.900000035763,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 7687.400000035763,
+        "indices": [
+          1,
+          12,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 7687.800000011921,
+        "indices": [
+          1,
+          12,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 8541.800000011921,
+        "indices": [
+          1,
+          12,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 8805.300000011921,
+        "indices": [
+          1,
+          12,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 9121.600000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 9272.600000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 9275,
+        "indices": [
+          0,
+          1,
+          5,
+          7,
+          10,
+          15,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 9275.800000011921,
+        "indices": [
+          0,
+          1,
+          5,
+          7,
+          10,
+          15,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 10128.900000035763,
+        "indices": [
+          0,
+          1,
+          5,
+          7,
+          10,
+          15,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 10390.900000035763,
+        "indices": [
+          0,
+          1,
+          5,
+          7,
+          10,
+          15,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 10705.100000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 10857,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 10858.800000011921,
+        "indices": [
+          6,
+          7,
+          10
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 10859.199999988079,
+        "indices": [
+          6,
+          7,
+          10
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 11712.199999988079,
+        "indices": [
+          6,
+          7,
+          10
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 11974,
+        "indices": [
+          6,
+          7,
+          10
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 12288.400000035763,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 12443.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 12444.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 12445.600000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-26",
+        "at": 12445.800000011921,
+        "indices": [],
+        "preview": false
+      }
+    ]
+  },
+  {
+    "seed": 288,
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1723.199999988079,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "card_shuffle",
+        "at": 1723.300000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1737.800000011921,
+        "round": 1
+      },
+      {
+        "kind": "played",
+        "id": "card_shuffle",
+        "at": 1738.199999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 14.799999952316284,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1988.3999999761581,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1988.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2277.699999988079,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2277.899999976158,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2361.099999964237,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2361.300000011921,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx",
+        "lag": 0.20000004768371582,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "scatter",
+        "at": 2361.300000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "scatter",
+        "at": 2361.300000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "scatter_near",
+        "at": 2361.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "scatter_near",
+        "at": 2361.699999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 3644.199999988079,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 3644.300000011921,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 4927.5,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 4927.699999988079,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 6210.699999988079,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 6210.899999976158,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "scatter",
+        "at": 6210.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "scatter",
+        "at": 6211,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "golden_card",
+        "at": 6212.399999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "golden_card",
+        "at": 6212.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "no_win",
+        "at": 7395.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "no_win",
+        "at": 7395.599999964237,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "freespin_trigger",
+        "at": 7407.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "freespin_trigger",
+        "at": 7408.099999964237,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "bgm",
+        "id": "free",
+        "at": 12671.599999964237,
+        "round": 1
+      }
+    ],
+    "state": {
+      "enabled": true,
+      "mode": "free",
+      "unlocked": true,
+      "paused": false,
+      "failed": false,
+      "playing": [
+        "base",
+        "free"
+      ],
+      "gains": {
+        "lobby": 0,
+        "base": 0.28473231196403503,
+        "free": 0.07526769489049911
+      },
+      "settings": {
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "voiceEnabled": true,
+        "musicVolume": 0.6,
+        "sfxVolume": 0.7,
+        "voiceVolume": 0.9
+      },
+      "ready": 34,
+      "total": 34,
+      "activeSfx": 0,
+      "active": [],
+      "hasVo": false,
+      "missingVo": [
+        "vo_superace_yellow.wav",
+        "vo_superace_wizard.wav",
+        "vo_superace_ninja.wav",
+        "vo_superace_king.wav"
+      ]
+    },
+    "balance": 1980,
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1595.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1596.0999999642372,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1725.3999999761581,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1725.5999999642372,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 1988.5999999642372,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1989.0999999642372,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2061.800000011921,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-25",
+        "at": 2361.399999976158,
+        "indices": [
+          1,
+          6
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-27",
+        "at": 2361.800000011921,
+        "indices": [
+          1,
+          6
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-28",
+        "at": 2362.199999988079,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 3012.899999976158,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": true
+      },
+      {
+        "id": "ANIM-27",
+        "at": 3644.300000011921,
+        "indices": [
+          1,
+          6
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-28",
+        "at": 3644.800000011921,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 4295.899999976158,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": true
+      },
+      {
+        "id": "ANIM-27",
+        "at": 4927.800000011921,
+        "indices": [
+          1,
+          6
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-28",
+        "at": 4928.399999976158,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 5578.899999976158,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": true
+      },
+      {
+        "id": "ANIM-25",
+        "at": 6211.099999964237,
+        "indices": [
+          14
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-30",
+        "at": 6211.399999976158,
+        "indices": [
+          14
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-34",
+        "at": 6293.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-31",
+        "at": 6294,
+        "indices": [
+          1,
+          6,
+          14
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-06",
+        "at": 7395.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 7396.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-46",
+        "at": 12410.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-33",
+        "at": 12674.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 12674.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 12675.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 12676.099999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-26",
+        "at": 12676.199999988079,
+        "indices": [],
+        "preview": false
+      }
+    ]
+  },
+  {
+    "seed": 8,
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1902.800000011921,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "card_shuffle",
+        "at": 1902.8999999761581,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1917.199999988079,
+        "round": 1
+      },
+      {
+        "kind": "played",
+        "id": "card_shuffle",
+        "at": 1917.3999999761581,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 14.400000035762787,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 2169.199999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 2169.300000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2466.800000011921,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2466.899999976158,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2532.899999976158,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2533.199999988079,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx",
+        "lag": 0.30000001192092896,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2599.300000011921,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2599.399999976158,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2682.699999988079,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2682.800000011921,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2749.5,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2749.599999964237,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2832.099999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2832.300000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.20000004768371582,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 2832.300000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_countup",
+        "at": 2832.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 3689.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 3690,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "coins",
+        "at": 4517.800000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "coins",
+        "at": 4517.800000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 4518.699999988079,
+        "round": 1,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 4518.699999988079,
+        "round": 1,
+        "bus": "music",
+        "lag": 0,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 4518.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_countup",
+        "at": 4519,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "coins",
+        "at": 4519,
+        "round": 1,
+        "bus": "sfx"
+      }
+    ],
+    "state": {
+      "enabled": true,
+      "mode": "base",
+      "unlocked": true,
+      "paused": false,
+      "failed": false,
+      "playing": [
+        "base"
+      ],
+      "gains": {
+        "lobby": 0,
+        "base": 0.25200000405311584,
+        "free": 0
+      },
+      "settings": {
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "voiceEnabled": true,
+        "musicVolume": 0.6,
+        "sfxVolume": 0.7,
+        "voiceVolume": 0.9
+      },
+      "ready": 34,
+      "total": 34,
+      "activeSfx": 1,
+      "active": [
+        {
+          "id": "cascade",
+          "bus": "sfx"
+        },
+        {
+          "id": "win_big",
+          "bus": "music"
+        }
+      ],
+      "hasVo": false,
+      "missingVo": [
+        "vo_superace_yellow.wav",
+        "vo_superace_wizard.wav",
+        "vo_superace_ninja.wav",
+        "vo_superace_king.wav"
+      ]
+    },
+    "balance": 2300,
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1750.8999999761581,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1751.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1905.5999999642372,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1905.8999999761581,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 2169.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2169.800000011921,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2242.5,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2313.5,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2384.599999964237,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2455.5,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 2830.800000011921,
+        "indices": [
+          0,
+          3,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 2832.599999964237,
+        "indices": [
+          0,
+          3,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 3690.099999964237,
+        "indices": [
+          0,
+          3,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 4039,
+        "indices": [
+          0,
+          3,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 4366,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 4517.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "CARROT-WATERFALL",
+        "count": 64,
+        "mega": false,
+        "at": 4538.800000011921
+      },
+      {
+        "id": "ANIM-38",
+        "at": 4538.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-46",
+        "at": 4776,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 5039.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 5041.399999976158,
+        "indices": [],
+        "preview": false
+      }
+    ]
+  },
+  {
+    "seed": 72,
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 3131.399999976158,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "card_shuffle",
+        "at": 3131.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 3174.699999988079,
+        "round": 1
+      },
+      {
+        "kind": "played",
+        "id": "card_shuffle",
+        "at": 3174.899999976158,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 43.299999952316284,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 3412.099999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 3412.2999999523163,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 3726.199999988079,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 3726.399999976158,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 3792.899999976158,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 3793.2999999523163,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx",
+        "lag": 0.40000003576278687,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 3859.099999964237,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 3859.199999988079,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 3926.7999999523163,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 3926.899999976158,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 4009.399999976158,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 4009.5,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "golden_card",
+        "at": 4009.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "golden_card",
+        "at": 4009.599999964237,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 4091.599999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 4091.899999976158,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 4091.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_countup",
+        "at": 4091.899999976158,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 4949.299999952316,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 4949.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.20000004768371582,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "multiplier",
+        "at": 5680.199999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "multiplier",
+        "at": 5680.299999952316,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 5681.299999952316,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 5681.399999976158,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 5681.399999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "win_countup",
+        "at": 5681.399999976158,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 6535,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 6535.099999964237,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "multiplier",
+        "at": 7280.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "multiplier",
+        "at": 7281.099999964237,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 7282.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 7282.599999964237,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 7282.599999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "win_countup",
+        "at": 7282.599999964237,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 8136.199999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 8136.299999952316,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "golden_eliminate",
+        "at": 8137.399999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "golden_eliminate",
+        "at": 8137.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "little_joker",
+        "at": 8401.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "little_joker",
+        "at": 8402,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.20000004768371582,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "coins",
+        "at": 9206.099999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "coins",
+        "at": 9206.199999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      }
+    ],
+    "state": {
+      "enabled": true,
+      "mode": "base",
+      "unlocked": true,
+      "paused": false,
+      "failed": false,
+      "playing": [
+        "base"
+      ],
+      "gains": {
+        "lobby": 0,
+        "base": 0.36000001430511475,
+        "free": 0
+      },
+      "settings": {
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "voiceEnabled": true,
+        "musicVolume": 0.6,
+        "sfxVolume": 0.7,
+        "voiceVolume": 0.9
+      },
+      "ready": 34,
+      "total": 34,
+      "activeSfx": 3,
+      "active": [
+        {
+          "id": "golden_eliminate",
+          "bus": "sfx"
+        },
+        {
+          "id": "little_joker",
+          "bus": "sfx"
+        },
+        {
+          "id": "coins",
+          "bus": "sfx"
+        }
+      ],
+      "hasVo": false,
+      "missingVo": [
+        "vo_superace_yellow.wav",
+        "vo_superace_wizard.wav",
+        "vo_superace_ninja.wav",
+        "vo_superace_king.wav"
+      ]
+    },
+    "balance": 2028,
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 2895.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 2902.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 3135.599999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 3135.7999999523163,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 3412.2999999523163,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 3413.399999976158,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 3496.699999988079,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 3568.099999964237,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 3641.199999988079,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 3720.899999976158,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 4090.699999988079,
+        "indices": [
+          0,
+          8,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 4092,
+        "indices": [
+          0,
+          8,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 4949.5,
+        "indices": [
+          0,
+          8,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 5211.599999964237,
+        "indices": [
+          0,
+          8,
+          10,
+          12,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 5525.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 5680.299999952316,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 5680.899999976158,
+        "indices": [
+          0,
+          6,
+          7,
+          11,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 5681.5,
+        "indices": [
+          0,
+          6,
+          7,
+          11,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 6535.199999988079,
+        "indices": [
+          0,
+          6,
+          7,
+          11,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 6797.099999964237,
+        "indices": [
+          0,
+          6,
+          7,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 7125.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 7281.099999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 7281.5,
+        "indices": [
+          3,
+          4,
+          6,
+          7,
+          15,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-14",
+        "at": 7282.099999964237,
+        "indices": [
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 7282.599999964237,
+        "indices": [
+          3,
+          4,
+          6,
+          7,
+          15,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 8136.399999976158,
+        "indices": [
+          3,
+          4,
+          6,
+          7,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-15",
+        "at": 8137.599999964237,
+        "indices": [
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 8398.799999952316,
+        "indices": [
+          3,
+          4,
+          6,
+          7,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-16",
+        "at": 8402,
+        "indices": [
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 9052.599999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 9206.299999952316,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 9207.099999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 9207.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-17",
+        "at": 9207.799999952316,
+        "indices": [],
+        "preview": false
+      }
+    ]
+  },
+  {
+    "seed": 181,
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1753.5999999642372,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "card_shuffle",
+        "at": 1753.8999999761581,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 1767.199999988079,
+        "round": 1
+      },
+      {
+        "kind": "played",
+        "id": "card_shuffle",
+        "at": 1767.3999999761581,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 13.5,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 2019.800000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 2019.8999999761581,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2304.599999964237,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2304.699999988079,
+        "round": 1,
+        "column": 0,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2388.099999964237,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2388.199999988079,
+        "round": 1,
+        "column": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2454.399999976158,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2454.599999964237,
+        "round": 1,
+        "column": 2,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2521.099999964237,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2521.199999988079,
+        "round": 1,
+        "column": 3,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "reel_stop",
+        "at": 2604.599999964237,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_stop",
+        "at": 2604.599999964237,
+        "round": 1,
+        "column": 4,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "golden_card",
+        "at": 2604.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "golden_card",
+        "at": 2604.800000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2687.099999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2687.199999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 2687.300000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_countup",
+        "at": 2687.399999976158,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 3545.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 3545.599999964237,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "golden_eliminate",
+        "at": 3546.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "golden_eliminate",
+        "at": 3547,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "big_joker",
+        "at": 4465.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "big_joker",
+        "at": 4466,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "multiplier",
+        "at": 5971,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "multiplier",
+        "at": 5971.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.3999999761581421,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 5976.800000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 5976.899999976158,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.09999996423721313,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 5976.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "win_countup",
+        "at": 5977,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 6834.599999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "cascade",
+        "at": 6834.599999964237,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "scatter",
+        "at": 7101.300000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "scatter",
+        "at": 7101.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "multiplier",
+        "at": 7673.300000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "multiplier",
+        "at": 7673.300000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 7674.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 7675,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 7675,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "win_countup",
+        "at": 7675,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 8530.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "cascade",
+        "at": 8530.899999976158,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "multiplier",
+        "at": 9243.899999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "multiplier",
+        "at": 9244,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 9246.599999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 9246.699999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.10000002384185791,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 9246.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "limited",
+        "id": "win_countup",
+        "at": 9246.699999988079,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "cascade",
+        "at": 10099.800000011921,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "cascade",
+        "at": 10100,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "coins",
+        "at": 10840.399999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "coins",
+        "at": 10840.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 10841.399999976158,
+        "round": 1,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 10841.599999964237,
+        "round": 1,
+        "bus": "music",
+        "lag": 0.19999998807907104,
+        "activeSfx": 2
+      },
+      {
+        "kind": "event",
+        "id": "win_countup",
+        "at": 10841.599999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "win_countup",
+        "at": 10841.699999988079,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0,
+        "activeSfx": 3
+      },
+      {
+        "kind": "event",
+        "id": "coins",
+        "at": 10841.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      }
+    ],
+    "state": {
+      "enabled": true,
+      "mode": "base",
+      "unlocked": true,
+      "paused": false,
+      "failed": false,
+      "playing": [
+        "base"
+      ],
+      "gains": {
+        "lobby": 0,
+        "base": 0.25200000405311584,
+        "free": 0
+      },
+      "settings": {
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "voiceEnabled": true,
+        "musicVolume": 0.6,
+        "sfxVolume": 0.7,
+        "voiceVolume": 0.9
+      },
+      "ready": 34,
+      "total": 34,
+      "activeSfx": 1,
+      "active": [
+        {
+          "id": "cascade",
+          "bus": "sfx"
+        },
+        {
+          "id": "win_big",
+          "bus": "music"
+        }
+      ],
+      "hasVo": false,
+      "missingVo": [
+        "vo_superace_yellow.wav",
+        "vo_superace_wizard.wav",
+        "vo_superace_ninja.wav",
+        "vo_superace_king.wav"
+      ]
+    },
+    "balance": 2361,
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1607.3999999761581,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1607.8999999761581,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1756.0999999642372,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1756.199999988079,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 2020,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2020.3999999761581,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2093.099999964237,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2164.199999988079,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2235.099999964237,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2307,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 2685.800000011921,
+        "indices": [
+          1,
+          2,
+          5,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-14",
+        "at": 2686.800000011921,
+        "indices": [
+          1
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 2687.399999976158,
+        "indices": [
+          1,
+          2,
+          5,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 3545.599999964237,
+        "indices": [
+          2,
+          5,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-15",
+        "at": 3547,
+        "indices": [
+          1
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 3809,
+        "indices": [
+          2,
+          5,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-19",
+        "at": 3812,
+        "indices": [
+          1
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-20",
+        "at": 4466.199999988079,
+        "indices": [
+          1
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-21",
+        "at": 4746.899999976158,
+        "indices": [
+          9,
+          3,
+          4,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-22",
+        "at": 4748,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-19",
+        "at": 5406.699999988079,
+        "indices": [
+          9,
+          3,
+          4,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 5809.599999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 5971.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 5972.899999976158,
+        "indices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          15,
+          17,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 5977,
+        "indices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          15,
+          17,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-23",
+        "at": 6833.199999988079,
+        "indices": [
+          1,
+          3,
+          4,
+          9,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 6834.699999988079,
+        "indices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          15,
+          17,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 7098.399999976158,
+        "indices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          15,
+          17,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-25",
+        "at": 7101.5,
+        "indices": [
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 7513.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 7673.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 7674.599999964237,
+        "indices": [
+          0,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 7675,
+        "indices": [
+          0,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 8531.300000011921,
+        "indices": [
+          0,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 8798,
+        "indices": [
+          0,
+          10,
+          12,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 9087.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 9244,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 9245.800000011921,
+        "indices": [
+          1,
+          10,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 9246.699999988079,
+        "indices": [
+          1,
+          10,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 10100,
+        "indices": [
+          1,
+          10,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 10361.899999976158,
+        "indices": [
+          1,
+          10,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 10687.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 10840.599999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "CARROT-WATERFALL",
+        "count": 64,
+        "mega": false,
+        "at": 10859.199999988079
+      },
+      {
+        "id": "ANIM-38",
+        "at": 10859.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-46",
+        "at": 11249.199999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 11510.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 11511.599999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-26",
+        "at": 11511.699999988079,
+        "indices": [],
+        "preview": false
+      }
+    ]
+  }
+]

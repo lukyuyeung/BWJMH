@@ -1,0 +1,199 @@
+{
+  "p95": 16.799999999999272,
+  "over50": 1,
+  "balance": 2148,
+  "played": [
+    {
+      "id": "intro",
+      "lag": 0.30000001192092896,
+      "activeSfx": 0
+    },
+    {
+      "id": "card_shuffle",
+      "lag": 0.09999996423721313,
+      "activeSfx": 1
+    },
+    {
+      "id": "reel_spin",
+      "lag": 0.10000002384185791,
+      "activeSfx": 2
+    },
+    {
+      "id": "reel_stop",
+      "lag": 0.09999996423721313,
+      "activeSfx": 3
+    },
+    {
+      "id": "reel_stop",
+      "lag": 0.19999998807907104,
+      "activeSfx": 3
+    },
+    {
+      "id": "scatter",
+      "lag": 0.19999998807907104,
+      "activeSfx": 3
+    },
+    {
+      "id": "reel_stop",
+      "lag": 0.09999996423721313,
+      "activeSfx": 3
+    },
+    {
+      "id": "reel_stop",
+      "lag": 0.19999998807907104,
+      "activeSfx": 3
+    },
+    {
+      "id": "reel_stop",
+      "lag": 0,
+      "activeSfx": 3
+    },
+    {
+      "id": "win_normal",
+      "lag": 0.09999996423721313,
+      "activeSfx": 3
+    },
+    {
+      "id": "win_countup",
+      "lag": 0,
+      "activeSfx": 3
+    },
+    {
+      "id": "cascade",
+      "lag": 0.19999998807907104,
+      "activeSfx": 3
+    },
+    {
+      "id": "multiplier",
+      "lag": 0.10000002384185791,
+      "activeSfx": 3
+    },
+    {
+      "id": "win_normal",
+      "lag": 0.09999996423721313,
+      "activeSfx": 3
+    },
+    {
+      "id": "cascade",
+      "lag": 0.10000002384185791,
+      "activeSfx": 3
+    },
+    {
+      "id": "multiplier",
+      "lag": 0,
+      "activeSfx": 3
+    },
+    {
+      "id": "win_normal",
+      "lag": 0.10000002384185791,
+      "activeSfx": 3
+    },
+    {
+      "id": "cascade",
+      "lag": 0,
+      "activeSfx": 3
+    },
+    {
+      "id": "multiplier",
+      "lag": 0,
+      "activeSfx": 3
+    },
+    {
+      "id": "win_normal",
+      "lag": 0.10000002384185791,
+      "activeSfx": 3
+    },
+    {
+      "id": "cascade",
+      "lag": 0.09999996423721313,
+      "activeSfx": 3
+    },
+    {
+      "id": "win_normal",
+      "lag": 0.10000002384185791,
+      "activeSfx": 3
+    },
+    {
+      "id": "win_countup",
+      "lag": 0,
+      "activeSfx": 3
+    },
+    {
+      "id": "cascade",
+      "lag": 0,
+      "activeSfx": 2
+    },
+    {
+      "id": "win_normal",
+      "lag": 0,
+      "activeSfx": 2
+    },
+    {
+      "id": "win_countup",
+      "lag": 0,
+      "activeSfx": 3
+    },
+    {
+      "id": "cascade",
+      "lag": 0.09999996423721313,
+      "activeSfx": 3
+    },
+    {
+      "id": "coins",
+      "lag": 0.19999998807907104,
+      "activeSfx": 3
+    },
+    {
+      "id": "win_big",
+      "lag": 0,
+      "activeSfx": 2
+    }
+  ],
+  "music": {
+    "enabled": true,
+    "mode": "base",
+    "unlocked": true,
+    "paused": false,
+    "failed": false,
+    "playing": [
+      "base"
+    ],
+    "gains": {
+      "lobby": 0,
+      "base": 0.34866002202033997,
+      "free": 0
+    },
+    "settings": {
+      "musicEnabled": true,
+      "sfxEnabled": true,
+      "voiceEnabled": true,
+      "musicVolume": 0.6,
+      "sfxVolume": 0.7,
+      "voiceVolume": 0.9
+    },
+    "ready": 34,
+    "total": 34,
+    "activeSfx": 2,
+    "active": [
+      {
+        "id": "cascade",
+        "bus": "sfx"
+      },
+      {
+        "id": "cascade",
+        "bus": "sfx"
+      },
+      {
+        "id": "win_big",
+        "bus": "music"
+      }
+    ],
+    "hasVo": false,
+    "missingVo": [
+      "vo_superace_yellow.wav",
+      "vo_superace_wizard.wav",
+      "vo_superace_ninja.wav",
+      "vo_superace_king.wav"
+    ]
+  }
+}

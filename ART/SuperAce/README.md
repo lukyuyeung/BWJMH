@@ -1,3 +1,5 @@
+最新更新：[按音效指南接入遊戲事件、獨立音量及37段試聽](20_Audio_Guide_Integration/README.md)。
+
 最新更新：[載入通順度、圖片快取與遊戲音樂](19_Smooth_Loading_Audio/README.md)。
 
 最新更新：[免費模式金色倍率底座](18_Free_Gold_Multiplier/README.md)。

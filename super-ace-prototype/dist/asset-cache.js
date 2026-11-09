@@ -1,4 +1,4 @@
-import {ASSET_MAP} from './asset-map.js?v=smooth-v1';
+import {ASSET_MAP} from './asset-map.js?v=audio-guide-v1';
 const images=new Map(),pending=new Map(),queue=[];let active=0,completed=0;const listeners=new Set();
 export const assetURL=src=>ASSET_MAP[src.split('?')[0]]??src;
 const notify=()=>listeners.forEach(fn=>fn({completed,total:completed+pending.size,active}));

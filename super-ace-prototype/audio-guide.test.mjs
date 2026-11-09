@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {winSound} from './dist/music.js';
+test('guide sound thresholds leave 1000x in ultimate and jackpot above1000x',()=>{for(const[r,s]of[[0,'win_normal'],[4.99,'win_normal'],[5,'win_big'],[19.99,'win_big'],[20,'mega_win'],[99.99,'mega_win'],[100,'ultimate_win'],[1000,'ultimate_win'],[1000.01,'jackpot']])assert.equal(winSound(r),s)});
