@@ -1,3 +1,5 @@
+最新更新：[金帽兔子・免費遊戲全屏圖與手動開始](17_FreeSpin_Rabbit/README.md)。
+
 最新更新：[獎勵倒數、牌局明細與效能](16_Rewards_History_Performance/README.md)。
 
 最新畫面修訂：[牌桌Logo與獎勵同步氣氛](15_Table_Brand_Reward_Sync/README.md)。

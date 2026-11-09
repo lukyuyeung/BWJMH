@@ -697,7 +697,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    case 28:add(glow(selected(detail,[4,9,14,19]),d));add(track(q('.dealer'),[{filter:'brightness(1)'},{filter:'brightness(1.35)',offset:.6},{filter:'brightness(1)'}],d));break;
    case 29:add(track(q('.board-shell'),[{filter:'brightness(1.12)'},{filter:'brightness(1)'}],d));break;
    case 30:nodes.forEach(el=>add(burst(el,d,.9)));add(cardMotion(nodes,[{transform:'scale(.9)'},{transform:'scale(1.09)',offset:.45},{transform:'scale(1)'}],d));break;
-   case 31:nodes.forEach(el=>{add(burst(el,d,1));add(halo(el,d))});add(coinsToBalance(detail,d));break;
+   case 31:nodes.forEach(el=>{add(burst(el,1100,1.15));add(halo(el,1100));add(sweep(el,1100));add(pulse(el.querySelector('.art-card')||el,1100,1.075))});break;
    case 32:add(track(target||q('#modalContent'),[{opacity:0,transform:'translateY(18px) scale(.94)'},{opacity:1,transform:'translateY(0) scale(1)'}],d));add(halo(target||q('#modalContent'),d));break;
    case 33:add(sweep(q('#multipliers'),d));add(pulse(q('.balance-bar'),d,1.015));break;
    case 34:add(pulse(target||q('#freePill')||q('#freeLabel'),d,1.15));break;

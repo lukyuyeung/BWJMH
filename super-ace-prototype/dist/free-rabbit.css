@@ -1,0 +1,16 @@
+/* Character and carrot are independent painted artwork; text remains crisp at every size. */
+#modal.feature-modal.rabbit-feature{width:min(100vw,520px);height:100dvh;max-height:100dvh;padding:0;border-radius:0;background:#190a20 url('assets/art/v6/free-gala-backdrop.png') center/cover no-repeat;overflow:hidden}
+#modal.rabbit-feature::before{background:linear-gradient(180deg,#16091d33 0%,#16091d00 30%,#17081eaa 67%,#17081ef5 100%)}
+#modal.rabbit-feature .modal-head{display:none}
+#modal.rabbit-feature #modalContent{height:100%;width:100%;display:block;padding:0;position:relative;overflow:hidden}
+.rabbit-feature-hero{position:absolute;inset:0 0 auto;width:100%;height:72%;object-fit:contain;object-position:center 55%;pointer-events:none}
+.rabbit-feature-copy{position:absolute;bottom:max(5%,env(safe-area-inset-bottom));left:4%;right:4%;text-align:center;z-index:2;color:#ffedb7;text-shadow:0 3px 5px #18091c,0 0 24px #2b0b24}
+.rabbit-congrats{font-size:clamp(23px,5vw,30px);font-weight:700;letter-spacing:5px;margin:0 0 8px}
+#modal.rabbit-feature h2{font-size:clamp(24px,6vw,34px);margin:0;line-height:1.25;letter-spacing:2px}
+.rabbit-feature-copy strong{font-size:clamp(65px,13dvh,112px);line-height:1;color:#fff0ae;vertical-align:-.06em;font-variant-numeric:tabular-nums}
+.rabbit-free-title{font-weight:900;font-size:clamp(31px,8vw,45px);line-height:1.1;letter-spacing:3px;margin:5px 0 12px;color:#ffe18b}
+.rabbit-feature-multipliers{font-size:18px;letter-spacing:2px;margin:5px 0 16px;color:#ffdba5}
+#featureCountdown{font-size:12px;line-height:1.5;min-height:18px;margin:0;color:#ecd1e0;letter-spacing:.5px}
+#spin.free-ready .spin-word{visibility:visible;display:block;position:absolute;left:-6px;right:-6px;bottom:-2px;height:auto;font-size:12px;line-height:18px;font-weight:700;color:#ffe5a0;text-shadow:0 2px 3px #16091d,0 0 8px #19091e}
+#spin.free-ready{filter:drop-shadow(0 0 10px #ffbf5088)}
+@media(max-height:650px){.rabbit-feature-hero{height:67%}.rabbit-feature-copy{bottom:4%}.rabbit-feature-copy strong{font-size:65px}.rabbit-congrats{font-size:22px;margin-bottom:3px}.rabbit-free-title{font-size:30px;margin-bottom:5px}.rabbit-feature-multipliers{font-size:15px;margin:4px 0 9px}}
