@@ -1,0 +1,176 @@
+[
+  {
+    "name": "desktop",
+    "header": {
+      "x": 512,
+      "y": 4,
+      "width": 416,
+      "height": 54,
+      "top": 4,
+      "right": 928,
+      "bottom": 58,
+      "left": 512
+    },
+    "rail": {
+      "x": 512,
+      "y": 121.25,
+      "width": 416,
+      "height": 40,
+      "top": 121.25,
+      "right": 928,
+      "bottom": 161.25,
+      "left": 512
+    },
+    "scene": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 900,
+      "top": 0,
+      "right": 1440,
+      "bottom": 900,
+      "left": 0
+    },
+    "app": {
+      "x": 500,
+      "y": 0,
+      "width": 440,
+      "height": 900,
+      "top": 0,
+      "right": 940,
+      "bottom": 900,
+      "left": 500
+    },
+    "card": {
+      "x": 528.625,
+      "y": 250.296875,
+      "width": 71.734375,
+      "height": 95.828125,
+      "top": 250.296875,
+      "right": 600.359375,
+      "bottom": 346.125,
+      "left": 528.625
+    },
+    "cardRendering": "pixelated",
+    "scroll": [
+      1440,
+      900
+    ]
+  },
+  {
+    "name": "narrow",
+    "header": {
+      "x": 17,
+      "y": 4,
+      "width": 416,
+      "height": 54,
+      "top": 4,
+      "right": 433,
+      "bottom": 58,
+      "left": 17
+    },
+    "rail": {
+      "x": 17,
+      "y": 121.25,
+      "width": 416,
+      "height": 40,
+      "top": 121.25,
+      "right": 433,
+      "bottom": 161.25,
+      "left": 17
+    },
+    "scene": {
+      "x": 0,
+      "y": 0,
+      "width": 450,
+      "height": 900,
+      "top": 0,
+      "right": 450,
+      "bottom": 900,
+      "left": 0
+    },
+    "app": {
+      "x": 5,
+      "y": 0,
+      "width": 440,
+      "height": 900,
+      "top": 0,
+      "right": 445,
+      "bottom": 900,
+      "left": 5
+    },
+    "card": {
+      "x": 33.625,
+      "y": 250.109375,
+      "width": 71.9375,
+      "height": 96.09375,
+      "top": 250.109375,
+      "right": 105.5625,
+      "bottom": 346.203125,
+      "left": 33.625
+    },
+    "cardRendering": "pixelated",
+    "scroll": [
+      450,
+      900
+    ]
+  },
+  {
+    "name": "mobile",
+    "header": {
+      "x": 12,
+      "y": 4,
+      "width": 366,
+      "height": 54,
+      "top": 4,
+      "right": 378,
+      "bottom": 58,
+      "left": 12
+    },
+    "rail": {
+      "x": 12,
+      "y": 119.90625,
+      "width": 366,
+      "height": 40,
+      "top": 119.90625,
+      "right": 378,
+      "bottom": 159.90625,
+      "left": 12
+    },
+    "scene": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844,
+      "top": 0,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "app": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844,
+      "top": 0,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "card": {
+      "x": 26.625,
+      "y": 246.234375,
+      "width": 63.359375,
+      "height": 84.640625,
+      "top": 246.234375,
+      "right": 89.984375,
+      "bottom": 330.875,
+      "left": 26.625
+    },
+    "cardRendering": "pixelated",
+    "scroll": [
+      390,
+      844
+    ]
+  }
+]

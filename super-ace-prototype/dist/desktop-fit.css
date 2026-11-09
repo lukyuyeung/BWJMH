@@ -1,0 +1,9 @@
+/* Match portrait artwork to its actual stage, instead of enlarging it to a landscape viewport. */
+.scene-stack{left:50%;right:auto;width:min(100%,440px);transform:translateX(-50%)}
+/* Original pixel/voxel drawing stays intact; normal sampling avoids extra aliasing when shrinking it. */
+.card img.art-card,.mouth img{image-rendering:auto}
+@media(min-width:761px),(hover:hover) and (pointer:fine){
+ .app{height:min(100dvh,820px)}
+ .scene-stack{height:min(100dvh,820px);bottom:auto}
+ .game{justify-content:flex-start}
+}
