@@ -1,0 +1,18 @@
+/* Same independent button ART, aligned with the award's title and amount. */
+#modal.feature-modal .btn-row,#modal.reward-modal .btn-row{justify-content:center;margin-left:auto;margin-right:auto}
+.feature-modal .btn,.reward-modal .btn{min-width:145px}
+#spin[data-preparing='true']{animation:preparingCards 1.2s linear infinite}
+@keyframes preparingCards{to{transform:rotate(360deg)}}
+.history-modal h2{margin-bottom:8px}
+.history-list{display:grid;gap:8px;margin:12px 0}
+.history-row{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12px 10px;border:0;border-radius:0;background:transparent url('assets/art/ui/components/tabs/normal.svg') center/100% 100% no-repeat;color:#ffe5b0;text-align:left;font:inherit;font-size:15px}
+.history-row>span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.history-row small{display:block;font-size:10px;line-height:1.4;color:#d6bfc9;margin-top:5px}
+.history-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px 0;border-top:1px solid #9c744266;border-bottom:1px solid #9c744266}
+.history-summary small{display:block;font-size:11px;color:#d6bfc9}.history-summary strong{display:block;font-size:18px;overflow-wrap:anywhere;margin-top:4px;font-variant-numeric:tabular-nums}
+.history-step{padding:10px 0;border-bottom:1px solid #9c744255}.history-step h3{color:#ffdda0;margin:0 0 8px;font-size:15px}
+.history-win{margin-bottom:8px}.history-win strong{font-size:12px}.history-win p{font-size:12px;line-height:1.7;margin:4px 0;overflow-wrap:anywhere}
+.history-subtotal{font-weight:600;color:#ffe1aa}.history-version{font-size:10px;line-height:1.5;overflow-wrap:anywhere;color:#bba1b2}
+html[data-fx-quality='low'] .perimeter-runner{filter:none}
+html[data-fx-quality='low'] .fx-art,html[data-fx-quality='low'] .fx-slot-light{mix-blend-mode:normal!important}
+@media(prefers-reduced-motion:reduce){#spin[data-preparing='true']{animation:none}}

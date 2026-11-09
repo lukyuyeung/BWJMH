@@ -1,0 +1,6 @@
+const money=n=>Math.round((Number(n)||0)*100)/100;
+export function summariseRound(record,balanceAfter){const p=record.plan;return{id:record.id,at:record.startedAt??Date.now(),mathVersion:p.mathVersion??'legacy-unversioned',isFree:!!p.isFree,bet:p.bet,charged:p.isFree?0:p.bet,payout:p.total,net:money(p.total-(p.isFree?0:p.bet)),balanceAfter:money(balanceAfter),bonus:p.bonus||0,steps:p.steps.filter(s=>s.result.total>0).map(s=>({index:s.index,multiplier:s.multiplier,payout:s.result.total,wins:s.result.wins.map(w=>({symbol:w.symbol,reels:w.reels,ways:w.ways,pay:w.pay,amount:w.amount}))}))}}
+export function createRoundHistory(storage,key='gala-round-history-v1',limit=50){
+ function read(){try{const v=JSON.parse(storage.getItem(key));return Array.isArray(v)?v.filter(r=>r&&typeof r.id==='string'&&Number.isFinite(r.bet)&&Number.isFinite(r.payout)&&Array.isArray(r.steps)).slice(0,limit):[]}catch{return[]}}
+ return{read,commit(record,balance){if(record.demo||!record.credited)return false;const rows=read();if(rows.some(r=>r.id===record.id))return false;try{storage.setItem(key,JSON.stringify([summariseRound(record,balance),...rows].slice(0,limit)));return true}catch{return false}}};
+}

@@ -1,3 +1,4 @@
+import {createPresentationQuality} from './presentation-quality.js?v=comfort-v1';
 import {compactMoney} from './money.js?v=math-v1';
 export const ANIMATION_DEFINITIONS = Object.freeze([
   {
@@ -585,6 +586,7 @@ const key=id=>typeof id==='number'?`ANIM-${String(id).padStart(2,'0')}`:id;
 export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  const doc=root.ownerDocument||root;const q=s=>root.querySelector(s),all=s=>[...root.querySelectorAll(s)];
  const app=q('.app')||doc.body;const stage=doc.createElement('div');stage.className='fx-stage';stage.setAttribute('aria-hidden','true');app.append(stage);
+ const quality=createPresentationQuality({onChange:level=>doc.documentElement.dataset.fxQuality=level});let qualityFrame;function sampleFrame(time){if(qualityFrame&& !doc.hidden&&!clock?.paused&&(q('#spin')?.disabled||q('#modal.reward-modal')?.open))quality.sample(time-qualityFrame);qualityFrame=time;doc.defaultView.requestAnimationFrame(sampleFrame)}doc.defaultView.requestAnimationFrame(sampleFrame);
  const ready=Promise.all(['aura','bubble','burst','halo','sweep','trail'].map(name=>{const img=new Image();img.src=ASSET_BASE+name+'.svg';return img.decode().catch(()=>{})}));
  const history=[];const active=new Set(),idle=new Set(),counters=new Set();let idleTimer,paused=!!clock?.paused,mode=getSpeed(),idleEnabled=false,forceReduced=null;
  const reduced=()=>forceReduced??doc.defaultView.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -638,7 +640,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
   const title=parent.querySelector('.feature-title');if(title)entries.push(track(title,[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1.07)',offset:.7},{opacity:1,transform:'scale(1)'}],550));return entries;
  }
  function startWaterfall(host,{mega=false}={}){
-  const layer=doc.createElement('div');layer.className='carrot-waterfall';layer.setAttribute('aria-hidden','true');host.prepend(layer);const entries=[],count=reduced()?0:mega?180:110;let stopped=false;
+  const layer=doc.createElement('div');layer.className='carrot-waterfall';layer.setAttribute('aria-hidden','true');host.prepend(layer);const entries=[],count=reduced()?0:quality.budget(mega);let stopped=false;
   const width=host.clientWidth,height=host.clientHeight;
   for(let i=0;i<count;i++){const img=doc.createElement('img');img.src='assets/carrot.png';img.alt='';img.className='waterfall-carrot';const depth=i%3,size=depth===0?12+i%7:depth===1?24+i%11:38+i%17;
    // Near particles favour the sides, preserving the title and amount in front.
@@ -649,8 +651,9 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
   }
   layer.style.opacity='0';entries.push(track(layer,[{opacity:0},{opacity:1}],500,{delay:200,cleanup:()=>{if(!stopped)layer.style.opacity='1'}}));
   for(let i=0;i<(reduced()?0:12);i++){const img=doc.createElement('img');img.src='assets/carrot.png';img.alt='';img.className='waterfall-burst';layer.append(img);const dx=(i-5.5)*29;entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${dx*.6}px,-220px) scale(1)`,offset:.45},{opacity:0,transform:`translate(${dx}px,-110px) rotate(${dx}deg) scale(.7)`}],850,{delay:i%4*35,cleanup:()=>img.remove()}))}
+  const particles=entries.slice(0,count);const unsubscribe=quality.subscribe(()=>{const budget=quality.budget(mega);for(let i=budget;i<particles.length;i++)particles[i]?.animation.cancel()});
   history.push({id:'CARROT-WATERFALL',count,mega,at:performance.now()});
-  return{count,stop(){if(stopped)return;stopped=true;entries.forEach(e=>e?.animation.cancel());layer.remove()}};
+  return{count,stop(){if(stopped)return;stopped=true;unsubscribe();entries.forEach(e=>e?.animation.cancel());layer.remove()}};
  }
  const idles={1:()=>track(q('.dealer'),[{filter:'brightness(1)'},{filter:'brightness(1.08)',offset:.5},{filter:'brightness(1)'}],1800,{persistent:true,iterations:Infinity}),13:()=>all('.card.gold:not(.special)').map((n,i)=>sweep(n,3000,{persistent:true,iterations:Infinity,delay:i*140})),17:()=>all('.cell[data-face^="ANGEL"] .card').map(n=>pulse(n,2000,1.012,{persistent:true,iterations:Infinity})),26:()=>all('.cell.carrot .art-card').map(n=>track(n,[{transform:'translateY(0) rotate(-1deg)'},{transform:'translateY(-3px) rotate(1deg)'},{transform:'translateY(0) rotate(-1deg)'}],2400,{persistent:true,iterations:Infinity}))};
  function play(input,detail={}){
@@ -662,8 +665,8 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    case 3:add(cardMotion(nodes,[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(12px) scale(.92)'}],d));break;
    case 4:all('.mouth>.dealer-outlet-art').forEach((el,i)=>add(track(el,[{filter:'brightness(1)'},{filter:'brightness(1.45)',offset:.55},{filter:'brightness(1)'}],d,{delay:i*35})));add(sweep(q('.dealer'),d));break;
    case 5:case 10:{
-    const sr=stage.getBoundingClientRect();
-    nodes.forEach(el=>{const card=el.querySelector('.card');if(!card)return;const index=Number(el.dataset.index),box=el.getBoundingClientRect(),outlet=all('.mouth')[index%5]?.getBoundingClientRect();if(!outlet)return;
+    const sr=stage.getBoundingClientRect(),outlets=all('.mouth').map(el=>el.getBoundingClientRect()),snapshots=nodes.map(el=>({el,card:el.querySelector('.card'),index:Number(el.dataset.index),box:el.getBoundingClientRect()}));
+    snapshots.forEach(({el,card,index,box})=>{if(!card)return;const outlet=outlets[index%5];if(!outlet)return;
      const top=outlet.bottom-2,travel=box.top-top,token=String(performance.now())+':'+index;el.dataset.feedToken=token;el.classList.add('feed-waiting');
      const viewport=doc.createElement('div');viewport.className='feed-viewport';Object.assign(viewport.style,{left:`${box.left-sr.left}px`,top:`${top-sr.top}px`,width:`${box.width}px`,height:`${travel+box.height+5}px`});
      const flight=doc.createElement('div');flight.className='cell feed-card'+(el.classList.contains('carrot')?' carrot':el.classList.contains('wild')?' wild':'');Object.assign(flight.style,{width:`${box.width}px`,height:`${box.height}px`});flight.append(card.cloneNode(true));viewport.append(flight);stage.append(viewport);
@@ -772,5 +775,5 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  }
  function durationForPreview(id){const d=ANIMATION_DEFINITIONS.find(a=>a.id===id)?.duration??0;return reduced()?Math.min(d,140):d}
 
- return{startWaterfall,animate:track,get reducedMotion(){return reduced()},ready,play,setReducedMotion,startIdle,stopIdle,clear,setPlaybackRate,pause,resume,finishCounters,get isCounting(){return counters.size>0},history,durationFor:input=>ANIMATION_DEFINITIONS.find(d=>d.id===key(input))?.duration??0,previews:()=>ANIMATION_DEFINITIONS.map(a=>({...a})),preview};
+ return{countersFinished:()=>Promise.all([...counters].map(c=>c.entry.finished)),quality,startWaterfall,animate:track,get reducedMotion(){return reduced()},ready,play,setReducedMotion,startIdle,stopIdle,clear,setPlaybackRate,pause,resume,finishCounters,get isCounting(){return counters.size>0},history,durationFor:input=>ANIMATION_DEFINITIONS.find(d=>d.id===key(input))?.duration??0,previews:()=>ANIMATION_DEFINITIONS.map(a=>({...a})),preview};
 }
