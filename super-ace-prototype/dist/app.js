@@ -1,13 +1,13 @@
-import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=quiet-mix-v1';
-import {createGameMusic} from './music.js?v=quiet-mix-v1';
-import {createRoundHistory} from './round-history.js?v=quiet-mix-v1';
-import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=quiet-mix-v1';
-import {createCarrotScenes} from './carrot-scenes.js?v=quiet-mix-v1';
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=quiet-mix-v1';
-import {createPlaybackClock} from './playback-clock.js?v=quiet-mix-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=quiet-mix-v1';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=quiet-mix-v1';
-import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=quiet-mix-v1';
+import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=quiet-reveal-v1';
+import {createGameMusic} from './music.js?v=quiet-reveal-v1';
+import {createRoundHistory} from './round-history.js?v=quiet-reveal-v1';
+import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=quiet-reveal-v1';
+import {createCarrotScenes} from './carrot-scenes.js?v=quiet-reveal-v1';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=quiet-reveal-v1';
+import {createPlaybackClock} from './playback-clock.js?v=quiet-reveal-v1';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=quiet-reveal-v1';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=quiet-reveal-v1';
+import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=quiet-reveal-v1';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
 const legacy=(()=>{try{return reviewMode?{}:JSON.parse(localStorage.getItem('gala-carrot-v1'))||{}}catch{return{}}})();
@@ -70,11 +70,11 @@ async function runRecord(record,{recovering=false}={}){
     if(anticipating){msg('再一個 CARROT，開啟免費遊戲');effect(27,{indices:revealedCarrots});effect(28,{indices});await wait(650)}
     indices.forEach(index=>covers[index].remove());const feed=effect(5,{indices,slow:anticipating});
     const landed=indices.filter(i=>board[i].symbol==='CARROT'),before=revealedCarrots.length;revealedCarrots.push(...landed);const count=revealedCarrots.length;
-    const settled=feed.finished.then(()=>{music.cue('reel_stop',{priority:2,maxMs:110,detail:{column:col}});if(landed.length){effect(25,{indices:landed});if(before<3&&count>=3){music.stop('scatter_near');effect(30,{indices:[revealedCarrots[2]]})}}});feeds.push(settled);
+    const settled=feed.finished.then(()=>{music.cue('reel_stop',{priority:2,maxMs:110,detail:{column:col}});if(landed.length){effect(25,{indices:landed,carrotCount:count});if(before<3&&count>=3){music.stop('scatter_near');effect(30,{indices:[revealedCarrots[2]]})}}});feeds.push(settled);
     if(anticipating||(before<2&&count===2&&col<4))await settled;else await wait(70);
     if(anticipating&&revealedCarrots.length===2&&col===4)effect(29);
    }
-   await Promise.all(feeds);music.stop('reel_spin');music.stop('card_shuffle');music.stop('scatter_near');if(board.some(c=>c.gold))music.cue('golden_card',{priority:2});await wait(80);
+   await Promise.all(feeds);music.stop('reel_spin');music.stop('card_shuffle');music.stop('scatter_near');await wait(80);
    const carrotIndices=()=>board.flatMap((c,i)=>c.symbol==='CARROT'?[i]:[]);
    for(const step of plan.steps){board=structuredClone(step.board);render();
     if(step.award){const state={balance,free,freeTotal};const fresh=applyBonus(state,record);applyState(state);if(fresh){if(auto?.onFeature){auto=null;effect(43,{stopped:true})}if(!plan.isFree)freeStartPending=true;save();effect(34,{target:$('#freePill')})}update();if(!record.featureAcknowledged){effect(31,{indices:carrotIndices()});await wait(1100);if(plan.isFree){await feature(step.award,true);record.featureAcknowledged=true;save();effect(33)}}}
@@ -83,8 +83,8 @@ async function runRecord(record,{recovering=false}={}){
     setMultiplier(step.index,plan.isFree);if(step.index)effect(11,{target:$('#multipliers .active'),multiplier:step.multiplier});
     lastWin=Math.round((lastWin+result.total)*100)/100;msg(`連鎖 ${step.index+1} · ×${step.multiplier}`);$$('#board .cell').forEach((n,i)=>n.classList.toggle('dim',!winning.includes(i)));effect(7,{indices:winning});if(gold.length)effect(14,{indices:gold});if(angel.length)effect(18,{indices:angel});effect(8,{indices:winning,amount:result.total});update();await wait(Math.max(850,effects.durationFor(8)));
     const next=step.next;if(wild.length)effect(23,{indices:wild});effect(9,{indices:next.replacements.map(c=>c.index)});if(next.conversions.length)effect(15,{indices:next.conversions.map(c=>c.index)});await wait(260);
-    const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();const refill=next.replacements.length?effect(10,{indices:next.replacements.map(c=>c.index)}):null;if(refill&&next.replacements.some(c=>intermediate[c.index].gold))refill.finished.then(()=>music.cue('golden_card',{priority:2}));
-    const landedCarrots=next.replacements.filter(c=>board[c.index].symbol==='CARROT').map(c=>c.index);if(landedCarrots.length){effect(25,{indices:landedCarrots});if(board.filter(c=>c.symbol==='CARROT').length>=3)effect(30,{indices:landedCarrots})}
+    const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();const refill=next.replacements.length?effect(10,{indices:next.replacements.map(c=>c.index)}):null;
+    const landedCarrots=next.replacements.filter(c=>board[c.index].symbol==='CARROT').map(c=>c.index);if(landedCarrots.length){effect(25,{indices:landedCarrots,carrotCount:board.filter(c=>c.symbol==='CARROT').length});if(board.filter(c=>c.symbol==='CARROT').length>=3)effect(30,{indices:landedCarrots})}
     for(const conversion of next.conversions){effect(conversion.card.symbol==='ANGEL'?16:19,{indices:[conversion.index]});if(conversion.card.symbol==='DEVIL'&&!next.copies.length)music.cue('big_joker',{priority:2})}await Promise.all([wait(next.conversions.length?650:280),refill?.finished]);
     if(next.copies.length){const sources=[...new Set(next.copies.map(c=>c.source))];effect(20,{indices:sources});await wait(280);effect(21,{indices:next.copies.map(c=>c.index)});effect(22,{copies:next.copies});await wait(650);board=structuredClone(next.board);render();effect(19,{indices:next.copies.map(c=>c.index)});await wait(400)}
     effect(24);await wait(150);
