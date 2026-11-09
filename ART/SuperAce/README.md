@@ -1,3 +1,5 @@
+最新更新：[聲音留白：減少背景與音效堆疊](21_Quiet_Audio_Mix/README.md)。
+
 最新更新：[按音效指南接入遊戲事件、獨立音量及37段試聽](20_Audio_Guide_Integration/README.md)。
 
 最新更新：[載入通順度、圖片快取與遊戲音樂](19_Smooth_Loading_Audio/README.md)。

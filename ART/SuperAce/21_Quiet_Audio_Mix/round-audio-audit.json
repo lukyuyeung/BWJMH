@@ -1,0 +1,364 @@
+{
+  "played": [
+    {
+      "kind": "played",
+      "id": "card_shuffle",
+      "at": 2220.300000011921,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 15.099999964237213,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "reel_stop",
+      "at": 2775,
+      "round": 1,
+      "column": 0,
+      "bus": "sfx",
+      "lag": 0.2999999523162842,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "reel_stop",
+      "at": 2874.300000011921,
+      "round": 1,
+      "column": 1,
+      "bus": "sfx",
+      "lag": 0.30000001192092896,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "scatter",
+      "at": 2874.5,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.09999996423721313,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "reel_stop",
+      "at": 2941.899999976158,
+      "round": 1,
+      "column": 2,
+      "bus": "sfx",
+      "lag": 0.19999998807907104,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "reel_stop",
+      "at": 3040.800000011921,
+      "round": 1,
+      "column": 3,
+      "bus": "sfx",
+      "lag": 0.19999998807907104,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "reel_stop",
+      "at": 3090.699999988079,
+      "round": 1,
+      "column": 4,
+      "bus": "sfx",
+      "lag": 0.09999996423721313,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "win_normal",
+      "at": 3172.600000023842,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "cascade",
+      "at": 4045.600000023842,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.5,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "multiplier",
+      "at": 4837.399999976158,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.3999999761581421,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "win_normal",
+      "at": 4851.5,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 5.199999988079071,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "cascade",
+      "at": 5722,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.19999998807907104,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "multiplier",
+      "at": 6479.300000011921,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.10000002384185791,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "win_normal",
+      "at": 6480.5,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "cascade",
+      "at": 7334.800000011921,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.09999996423721313,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "multiplier",
+      "at": 8099.300000011921,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.10000002384185791,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "win_normal",
+      "at": 8103.199999988079,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.09999996423721313,
+      "activeSfx": 2
+    },
+    {
+      "kind": "played",
+      "id": "cascade",
+      "at": 8956.399999976158,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.09999996423721313,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "win_normal",
+      "at": 9695.699999988079,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.09999996423721313,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "cascade",
+      "at": 10548.800000011921,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.10000002384185791,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "win_normal",
+      "at": 11276.899999976158,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.09999996423721313,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "cascade",
+      "at": 12129.5,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "coins",
+      "at": 12860.100000023842,
+      "round": 1,
+      "bus": "sfx",
+      "lag": 0.20000004768371582,
+      "activeSfx": 1
+    },
+    {
+      "kind": "played",
+      "id": "win_big",
+      "at": 12861.300000011921,
+      "round": 1,
+      "bus": "music",
+      "lag": 0.10000002384185791,
+      "activeSfx": 0
+    }
+  ],
+  "state": {
+    "mathVersion": "bunny-ace-2026-11-09-v1",
+    "scene": {
+      "heat": 0,
+      "free": false
+    },
+    "balance": 2148,
+    "bet": 20,
+    "sessionNet": 148,
+    "board": [
+      {
+        "symbol": "J",
+        "gold": false
+      },
+      {
+        "symbol": "A",
+        "gold": false
+      },
+      {
+        "symbol": "Q",
+        "gold": false
+      },
+      {
+        "symbol": "Q",
+        "gold": false
+      },
+      {
+        "symbol": "H",
+        "gold": false
+      },
+      {
+        "symbol": "C",
+        "gold": false
+      },
+      {
+        "symbol": "H",
+        "gold": false
+      },
+      {
+        "symbol": "H",
+        "gold": false
+      },
+      {
+        "symbol": "K",
+        "gold": false
+      },
+      {
+        "symbol": "A",
+        "gold": false
+      },
+      {
+        "symbol": "D",
+        "gold": false
+      },
+      {
+        "symbol": "K",
+        "gold": false
+      },
+      {
+        "symbol": "C",
+        "gold": false
+      },
+      {
+        "symbol": "D",
+        "gold": false
+      },
+      {
+        "symbol": "J",
+        "gold": false
+      },
+      {
+        "symbol": "C",
+        "gold": false
+      },
+      {
+        "symbol": "CARROT",
+        "gold": false
+      },
+      {
+        "symbol": "D",
+        "gold": false
+      },
+      {
+        "symbol": "D",
+        "gold": false
+      },
+      {
+        "symbol": "S",
+        "gold": false
+      }
+    ],
+    "visualReady": true,
+    "assets": {
+      "decoded": 96,
+      "pending": 0,
+      "queued": 0
+    },
+    "music": {
+      "enabled": true,
+      "mode": "base",
+      "unlocked": true,
+      "paused": false,
+      "failed": false,
+      "playing": [
+        "base"
+      ],
+      "gains": {
+        "lobby": 0,
+        "base": 0.18000000715255737,
+        "free": 0
+      },
+      "settings": {
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "voiceEnabled": true,
+        "musicVolume": 0.6,
+        "sfxVolume": 0.7,
+        "voiceVolume": 0.9
+      },
+      "ready": 34,
+      "total": 34,
+      "activeSfx": 0,
+      "active": [],
+      "hasVo": false,
+      "missingVo": [
+        "vo_superace_yellow.wav",
+        "vo_superace_wizard.wav",
+        "vo_superace_ninja.wav",
+        "vo_superace_king.wav"
+      ]
+    },
+    "free": 0,
+    "freeStartPending": false,
+    "busy": false,
+    "speed": 0,
+    "auto": null,
+    "quality": "medium",
+    "activeRound": null
+  }
+}

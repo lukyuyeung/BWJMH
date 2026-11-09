@@ -1,13 +1,13 @@
-import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=audio-guide-v1';
-import {createGameMusic} from './music.js?v=audio-guide-v1';
-import {createRoundHistory} from './round-history.js?v=audio-guide-v1';
-import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=audio-guide-v1';
-import {createCarrotScenes} from './carrot-scenes.js?v=audio-guide-v1';
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=audio-guide-v1';
-import {createPlaybackClock} from './playback-clock.js?v=audio-guide-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=audio-guide-v1';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=audio-guide-v1';
-import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=audio-guide-v1';
+import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=quiet-mix-v1';
+import {createGameMusic} from './music.js?v=quiet-mix-v1';
+import {createRoundHistory} from './round-history.js?v=quiet-mix-v1';
+import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=quiet-mix-v1';
+import {createCarrotScenes} from './carrot-scenes.js?v=quiet-mix-v1';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=quiet-mix-v1';
+import {createPlaybackClock} from './playback-clock.js?v=quiet-mix-v1';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=quiet-mix-v1';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=quiet-mix-v1';
+import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=quiet-mix-v1';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
 const legacy=(()=>{try{return reviewMode?{}:JSON.parse(localStorage.getItem('gala-carrot-v1'))||{}}catch{return{}}})();
@@ -70,7 +70,7 @@ async function runRecord(record,{recovering=false}={}){
     if(anticipating){msg('再一個 CARROT，開啟免費遊戲');effect(27,{indices:revealedCarrots});effect(28,{indices});await wait(650)}
     indices.forEach(index=>covers[index].remove());const feed=effect(5,{indices,slow:anticipating});
     const landed=indices.filter(i=>board[i].symbol==='CARROT'),before=revealedCarrots.length;revealedCarrots.push(...landed);const count=revealedCarrots.length;
-    const settled=feed.finished.then(()=>{music.cue('reel_stop',{priority:1,detail:{column:col}});if(landed.length){effect(25,{indices:landed});if(before<3&&count>=3){music.stop('scatter_near');effect(30,{indices:[revealedCarrots[2]]})}}});feeds.push(settled);
+    const settled=feed.finished.then(()=>{music.cue('reel_stop',{priority:2,maxMs:110,detail:{column:col}});if(landed.length){effect(25,{indices:landed});if(before<3&&count>=3){music.stop('scatter_near');effect(30,{indices:[revealedCarrots[2]]})}}});feeds.push(settled);
     if(anticipating||(before<2&&count===2&&col<4))await settled;else await wait(70);
     if(anticipating&&revealedCarrots.length===2&&col===4)effect(29);
    }
