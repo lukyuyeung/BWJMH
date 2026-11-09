@@ -1,11 +1,11 @@
 /* Original art is composited in independent layers; opacity crossfades use the pausable game clock. */
 .ambient,.atmosphere-light{display:none!important}
 .scene-stack{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#180d1b}
-.scene-layer{position:absolute;inset:0;opacity:0;background:url('assets/art/scene/portrait-background.png') center top/cover no-repeat}
+.scene-layer{position:absolute;inset:0;opacity:0;background:url('assets/runtime/portrait-background-d53999fc-q90-50c67b1d2127.webp') center top/cover no-repeat}
 .scene-base-0{filter:brightness(.35) saturate(.85)}
 .scene-base-1{filter:brightness(.62) sepia(.3) saturate(1.1)}
 .scene-base-2{filter:brightness(.55) saturate(1.5) hue-rotate(315deg)}
-.scene-base-3,.scene-free-0,.scene-free-1,.scene-free-2,.scene-free-3{background-image:url('assets/art/v5/carrot-world.png');background-position:center}
+.scene-base-3,.scene-free-0,.scene-free-1,.scene-free-2,.scene-free-3{background-image:url('assets/runtime/carrot-world-0fd01098-q90-ab2dc0c0057d.webp');background-position:center}
 .scene-base-3{filter:brightness(.7) saturate(1.15)}
 .scene-free-0{filter:brightness(.38) saturate(1.05)}
 .scene-free-1{filter:brightness(.53) sepia(.2) saturate(1.15)}
@@ -26,7 +26,7 @@
 .mouth .dealer-ready-window img{display:block;width:100%;height:auto;aspect-ratio:625/835;object-fit:cover;object-position:top}
 .dealer-front-lip{position:absolute;left:0;right:0;bottom:0;height:10%;overflow:hidden;z-index:4;pointer-events:none}
 .mouth .dealer-front-lip img{position:absolute;left:0;bottom:0;width:100%;height:1000%;object-fit:fill}
-#modal.feature-modal{width:min(100vw,440px);height:100dvh;max-height:100dvh;aspect-ratio:auto;margin:auto;padding:env(safe-area-inset-top) 22px env(safe-area-inset-bottom);background:#1b0b21 url('assets/art/v5/carrot-world.png') center/cover no-repeat;border:0;box-shadow:none;overflow:hidden}
+#modal.feature-modal{width:min(100vw,440px);height:100dvh;max-height:100dvh;aspect-ratio:auto;margin:auto;padding:env(safe-area-inset-top) 22px env(safe-area-inset-bottom);background:#1b0b21 url('assets/runtime/carrot-world-0fd01098-q90-ab2dc0c0057d.webp') center/cover no-repeat;border:0;box-shadow:none;overflow:hidden}
 .feature-modal:before{content:'';position:absolute;inset:0;background:#1a082263;pointer-events:none}
 .feature-modal .modal-head{z-index:5;position:relative;height:44px;flex-shrink:0;margin:0}
 .feature-modal .eyebrow{visibility:hidden}
@@ -45,7 +45,7 @@
 .waterfall-burst{position:absolute;left:50%;top:85%;width:36px;height:36px;object-fit:contain;z-index:3}
 .reward-modal #modalContent{z-index:5}
 .reward-modal .reward-pile{position:fixed;left:0;bottom:-2%;width:100%;height:24%;object-fit:contain;object-position:center bottom;z-index:1;pointer-events:none}
-.reward-modal.is-mega .feature-title{background-image:url('assets/art/v5/mega-win.svg')!important;height:165px}
+.reward-modal.is-mega .feature-title{background-image:url('assets/runtime/mega-win-5653b674-q90-09713a64b396.webp')!important;height:165px}
 .reward-modal .btn-row{z-index:12}
 @media(max-height:700px){.free-feature-art{height:26dvh}.free-award-count{font-size:60px}.free-feature-title{font-size:22px}.free-feature-multipliers{font-size:18px;margin:4px 0}.feature-modal #modalContent{gap:5px;padding-bottom:15px}.reward-modal.is-mega .feature-title{height:130px}.reward-modal .reward-amount{margin:8px 0 16px}.reward-modal .btn-row{margin-top:8px}}
 @media(prefers-reduced-motion:reduce){.app .board-shell:before{animation:none}.perimeter-runner,.waterfall-carrot,.waterfall-burst{display:none}.app .multipliers,.app .mouth,.app .board-shell:before{transition-duration:140ms}}

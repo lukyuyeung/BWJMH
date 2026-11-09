@@ -1,0 +1,944 @@
+{
+  "before": {
+    "images": 46,
+    "resources": [
+      {
+        "url": "/localhost:4173/style.css",
+        "bytes": 15797,
+        "duration": 89.89999997615814
+      },
+      {
+        "url": "/localhost:4173/art-style.css",
+        "bytes": 11696,
+        "duration": 101.80000001192093
+      },
+      {
+        "url": "/localhost:4173/cards-art.css",
+        "bytes": 683,
+        "duration": 95.89999997615814
+      },
+      {
+        "url": "/localhost:4173/portrait.css?v=comfort-v1",
+        "bytes": 15982,
+        "duration": 96.39999997615814
+      },
+      {
+        "url": "/localhost:4173/effects.css?v=comfort-v1",
+        "bytes": 4413,
+        "duration": 99.80000001192093
+      },
+      {
+        "url": "/localhost:4173/hud-v3.css?v=comfort-v1",
+        "bytes": 5962,
+        "duration": 106.89999997615814
+      },
+      {
+        "url": "/localhost:4173/hud-v4.css?v=comfort-v1",
+        "bytes": 4221,
+        "duration": 107
+      },
+      {
+        "url": "/localhost:4173/carrot-v5.css?v=comfort-v1",
+        "bytes": 6108,
+        "duration": 102.20000004768372
+      },
+      {
+        "url": "/localhost:4173/desktop-fit.css?v=desktop-fit-v1",
+        "bytes": 519,
+        "duration": 106.39999997615814
+      },
+      {
+        "url": "/localhost:4173/table-brand.css?v=comfort-v1",
+        "bytes": 423,
+        "duration": 107.39999997615814
+      },
+      {
+        "url": "/localhost:4173/comfort.css?v=comfort-v1",
+        "bytes": 1962,
+        "duration": 107.29999995231628
+      },
+      {
+        "url": "/localhost:4173/free-rabbit.css?v=free-gold-v1",
+        "bytes": 3264,
+        "duration": 110.80000001192093
+      },
+      {
+        "url": "localhost:4173/assets/carrot.png",
+        "bytes": 2632,
+        "duration": 137.19999998807907
+      },
+      {
+        "url": "localhost:4173/assets/bunny-gala-transparent.png",
+        "bytes": 2006942,
+        "duration": 174.60000002384186
+      },
+      {
+        "url": "/localhost:4173/app.js?v=free-gold-v1",
+        "bytes": 36393,
+        "duration": 137.5
+      },
+      {
+        "url": "/fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap",
+        "bytes": 0,
+        "duration": 16.899999976158142
+      },
+      {
+        "url": "buttons/info/normal.svg?v=portrait-20261107",
+        "bytes": 1226570,
+        "duration": 60.69999998807907
+      },
+      {
+        "url": "buttons/settings/normal.svg?v=portrait-20261107",
+        "bytes": 1208294,
+        "duration": 67.10000002384186
+      },
+      {
+        "url": "components/toast/normal.svg?v=portrait-20261107",
+        "bytes": 1272601,
+        "duration": 72.39999997615814
+      },
+      {
+        "url": "art/v4/multiplier-base.svg",
+        "bytes": 1074818,
+        "duration": 81.69999998807907
+      },
+      {
+        "url": "art/v6/multiplier-free-gold.svg",
+        "bytes": 1558038,
+        "duration": 237.30000001192093
+      },
+      {
+        "url": "art/v4/dealer-housing.svg",
+        "bytes": 2014113,
+        "duration": 275.69999998807907
+      },
+      {
+        "url": "art/v3/numeric-hud.svg",
+        "bytes": 1050064,
+        "duration": 233.5999999642372
+      },
+      {
+        "url": "assets/art/control-square.svg",
+        "bytes": 2276563,
+        "duration": 347.9000000357628
+      },
+      {
+        "url": "buttons/spin/normal.svg?v=portrait-20261107",
+        "bytes": 2119709,
+        "duration": 311
+      },
+      {
+        "url": "art/scene/board-frame.svg?v=portrait-20261107",
+        "bytes": 419935,
+        "duration": 125
+      },
+      {
+        "url": "art/v2/board-felt.png",
+        "bytes": 2396727,
+        "duration": 381.10000002384186
+      },
+      {
+        "url": "/localhost:4173/round-history.js?v=free-gold-v1",
+        "bytes": 1192,
+        "duration": 5.699999988079071
+      },
+      {
+        "url": "/localhost:4173/card-assets.js?v=free-gold-v1",
+        "bytes": 1090,
+        "duration": 7.300000011920929
+      },
+      {
+        "url": "/localhost:4173/carrot-scenes.js?v=free-gold-v1",
+        "bytes": 2803,
+        "duration": 5.799999952316284
+      },
+      {
+        "url": "/localhost:4173/money.js?v=free-gold-v1",
+        "bytes": 1934,
+        "duration": 6.100000023841858
+      },
+      {
+        "url": "/localhost:4173/playback-clock.js?v=free-gold-v1",
+        "bytes": 1633,
+        "duration": 9.5
+      },
+      {
+        "url": "/localhost:4173/round-plan.js?v=free-gold-v1",
+        "bytes": 1874,
+        "duration": 12.5
+      },
+      {
+        "url": "/localhost:4173/effects.js?v=free-gold-v1",
+        "bytes": 42770,
+        "duration": 14
+      },
+      {
+        "url": "/localhost:4173/engine.js?v=free-gold-v1",
+        "bytes": 5277,
+        "duration": 13.699999988079071
+      },
+      {
+        "url": "/localhost:4173/engine.js?v=math-v1",
+        "bytes": 5277,
+        "duration": 5
+      },
+      {
+        "url": "/localhost:4173/presentation-quality.js?v=comfort-v1",
+        "bytes": 980,
+        "duration": 3.699999988079071
+      },
+      {
+        "url": "/localhost:4173/money.js?v=math-v1",
+        "bytes": 1934,
+        "duration": 2.800000011920929
+      },
+      {
+        "url": "art/scene/portrait-background.png",
+        "bytes": 2146284,
+        "duration": 159.10000002384186
+      },
+      {
+        "url": "art/v5/carrot-world.png",
+        "bytes": 1891223,
+        "duration": 61
+      },
+      {
+        "url": "assets/art/card-normal-J.png",
+        "bytes": 946435,
+        "duration": 156.80000001192093
+      },
+      {
+        "url": "assets/art/card-gold-J.png",
+        "bytes": 2001010,
+        "duration": 294.69999998807907
+      },
+      {
+        "url": "assets/art/card-normal-Q.png",
+        "bytes": 964300,
+        "duration": 99.90000003576279
+      },
+      {
+        "url": "assets/art/card-normal-K.png",
+        "bytes": 1018253,
+        "duration": 269.30000001192093
+      },
+      {
+        "url": "assets/art/card-gold-Q.png",
+        "bytes": 2156539,
+        "duration": 390.9000000357628
+      },
+      {
+        "url": "assets/art/card-gold-K.png",
+        "bytes": 1880477,
+        "duration": 569.5999999642372
+      },
+      {
+        "url": "assets/art/card-normal-A.png",
+        "bytes": 1020620,
+        "duration": 709.3999999761581
+      },
+      {
+        "url": "assets/art/card-gold-A.png",
+        "bytes": 1659216,
+        "duration": 844.3000000119209
+      },
+      {
+        "url": "assets/art/card-normal-H.png",
+        "bytes": 1060908,
+        "duration": 498.30000001192093
+      },
+      {
+        "url": "assets/art/card-normal-S.png",
+        "bytes": 1040635,
+        "duration": 674.1000000238419
+      },
+      {
+        "url": "assets/art/card-normal-C.png",
+        "bytes": 1070144,
+        "duration": 663.5
+      },
+      {
+        "url": "assets/art/card-gold-S.png",
+        "bytes": 2050843,
+        "duration": 957.3000000119209
+      },
+      {
+        "url": "assets/art/card-gold-H.png",
+        "bytes": 2363489,
+        "duration": 984.5
+      },
+      {
+        "url": "assets/art/card-gold-C.png",
+        "bytes": 2212642,
+        "duration": 1044.300000011921
+      },
+      {
+        "url": "assets/art/card-normal-D.png",
+        "bytes": 1006301,
+        "duration": 477.60000002384186
+      },
+      {
+        "url": "assets/art/carrot-bonus.png",
+        "bytes": 1182559,
+        "duration": 957.6000000238419
+      },
+      {
+        "url": "assets/art/card-gold-D.png",
+        "bytes": 2149666,
+        "duration": 971
+      },
+      {
+        "url": "assets/art/wild-angel-fitted.svg",
+        "bytes": 2547324,
+        "duration": 1071.800000011921
+      },
+      {
+        "url": "assets/art/wild-devil-fitted.svg",
+        "bytes": 2196559,
+        "duration": 1155.9000000357628
+      },
+      {
+        "url": "assets/art/card-gold-overlay.png",
+        "bytes": 376061,
+        "duration": 473.60000002384186
+      },
+      {
+        "url": "localhost:4173/assets/back.png",
+        "bytes": 371800,
+        "duration": 248.39999997615814
+      },
+      {
+        "url": "art/effects/aura.svg",
+        "bytes": 2272248,
+        "duration": 1171.5
+      },
+      {
+        "url": "art/effects/bubble.svg",
+        "bytes": 1381278,
+        "duration": 1163.300000011921
+      },
+      {
+        "url": "art/effects/burst.svg",
+        "bytes": 2316721,
+        "duration": 1268
+      },
+      {
+        "url": "art/effects/sweep.svg",
+        "bytes": 2096298,
+        "duration": 587.1000000238419
+      },
+      {
+        "url": "art/effects/halo.svg",
+        "bytes": 484342,
+        "duration": 1092.7000000476837
+      },
+      {
+        "url": "art/effects/trail.svg",
+        "bytes": 2160918,
+        "duration": 1487.3999999761581
+      },
+      {
+        "url": "art/v6/free-rabbit-carrot.png",
+        "bytes": 1728786,
+        "duration": 1291.1000000238419
+      },
+      {
+        "url": "art/v4/dealer-outlet.svg",
+        "bytes": 2289639,
+        "duration": 450.0999999642372
+      },
+      {
+        "url": "art/v6/free-gala-backdrop.png",
+        "bytes": 1712235,
+        "duration": 1290.3999999761581
+      },
+      {
+        "url": "/localhost:4173/favicon.ico",
+        "bytes": 335,
+        "duration": 4.100000023841858
+      }
+    ],
+    "long": [
+      {
+        "at": 245.80000001192093,
+        "ms": 313
+      },
+      {
+        "at": 749.7000000476837,
+        "ms": 75
+      },
+      {
+        "at": 946.6000000238419,
+        "ms": 58
+      },
+      {
+        "at": 1005.3000000119209,
+        "ms": 66
+      },
+      {
+        "at": 1118.800000011921,
+        "ms": 59
+      },
+      {
+        "at": 1258.4000000357628,
+        "ms": 143
+      },
+      {
+        "at": 1816.300000011921,
+        "ms": 314
+      },
+      {
+        "at": 2154.2000000476837,
+        "ms": 175
+      },
+      {
+        "at": 2425.800000011921,
+        "ms": 208
+      },
+      {
+        "at": 2649.400000035763,
+        "ms": 102
+      },
+      {
+        "at": 2752.400000035763,
+        "ms": 62
+      },
+      {
+        "at": 2856.2000000476837,
+        "ms": 157
+      }
+    ]
+  },
+  "after": {
+    "long": [
+      {
+        "at": 4736.200000047684,
+        "ms": 69
+      },
+      {
+        "at": 5668.5,
+        "ms": 55
+      },
+      {
+        "at": 8949.600000023842,
+        "ms": 253
+      },
+      {
+        "at": 9737.400000035763,
+        "ms": 61
+      },
+      {
+        "at": 11759.200000047684,
+        "ms": 75
+      },
+      {
+        "at": 11842.200000047684,
+        "ms": 64
+      }
+    ],
+    "resources": [
+      {
+        "url": "/localhost:4173/style.css",
+        "bytes": 15797,
+        "duration": 89.89999997615814
+      },
+      {
+        "url": "/localhost:4173/art-style.css",
+        "bytes": 11696,
+        "duration": 101.80000001192093
+      },
+      {
+        "url": "/localhost:4173/cards-art.css",
+        "bytes": 683,
+        "duration": 95.89999997615814
+      },
+      {
+        "url": "/localhost:4173/portrait.css?v=comfort-v1",
+        "bytes": 15982,
+        "duration": 96.39999997615814
+      },
+      {
+        "url": "/localhost:4173/effects.css?v=comfort-v1",
+        "bytes": 4413,
+        "duration": 99.80000001192093
+      },
+      {
+        "url": "/localhost:4173/hud-v3.css?v=comfort-v1",
+        "bytes": 5962,
+        "duration": 106.89999997615814
+      },
+      {
+        "url": "/localhost:4173/hud-v4.css?v=comfort-v1",
+        "bytes": 4221,
+        "duration": 107
+      },
+      {
+        "url": "/localhost:4173/carrot-v5.css?v=comfort-v1",
+        "bytes": 6108,
+        "duration": 102.20000004768372
+      },
+      {
+        "url": "/localhost:4173/desktop-fit.css?v=desktop-fit-v1",
+        "bytes": 519,
+        "duration": 106.39999997615814
+      },
+      {
+        "url": "/localhost:4173/table-brand.css?v=comfort-v1",
+        "bytes": 423,
+        "duration": 107.39999997615814
+      },
+      {
+        "url": "/localhost:4173/comfort.css?v=comfort-v1",
+        "bytes": 1962,
+        "duration": 107.29999995231628
+      },
+      {
+        "url": "/localhost:4173/free-rabbit.css?v=free-gold-v1",
+        "bytes": 3264,
+        "duration": 110.80000001192093
+      },
+      {
+        "url": "localhost:4173/assets/carrot.png",
+        "bytes": 2632,
+        "duration": 137.19999998807907
+      },
+      {
+        "url": "localhost:4173/assets/bunny-gala-transparent.png",
+        "bytes": 2006942,
+        "duration": 174.60000002384186
+      },
+      {
+        "url": "/localhost:4173/app.js?v=free-gold-v1",
+        "bytes": 36393,
+        "duration": 137.5
+      },
+      {
+        "url": "/fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap",
+        "bytes": 0,
+        "duration": 16.899999976158142
+      },
+      {
+        "url": "buttons/info/normal.svg?v=portrait-20261107",
+        "bytes": 1226570,
+        "duration": 60.69999998807907
+      },
+      {
+        "url": "buttons/settings/normal.svg?v=portrait-20261107",
+        "bytes": 1208294,
+        "duration": 67.10000002384186
+      },
+      {
+        "url": "components/toast/normal.svg?v=portrait-20261107",
+        "bytes": 1272601,
+        "duration": 72.39999997615814
+      },
+      {
+        "url": "art/v4/multiplier-base.svg",
+        "bytes": 1074818,
+        "duration": 81.69999998807907
+      },
+      {
+        "url": "art/v6/multiplier-free-gold.svg",
+        "bytes": 1558038,
+        "duration": 237.30000001192093
+      },
+      {
+        "url": "art/v4/dealer-housing.svg",
+        "bytes": 2014113,
+        "duration": 275.69999998807907
+      },
+      {
+        "url": "art/v3/numeric-hud.svg",
+        "bytes": 1050064,
+        "duration": 233.5999999642372
+      },
+      {
+        "url": "assets/art/control-square.svg",
+        "bytes": 2276563,
+        "duration": 347.9000000357628
+      },
+      {
+        "url": "buttons/spin/normal.svg?v=portrait-20261107",
+        "bytes": 2119709,
+        "duration": 311
+      },
+      {
+        "url": "art/scene/board-frame.svg?v=portrait-20261107",
+        "bytes": 419935,
+        "duration": 125
+      },
+      {
+        "url": "art/v2/board-felt.png",
+        "bytes": 2396727,
+        "duration": 381.10000002384186
+      },
+      {
+        "url": "/localhost:4173/round-history.js?v=free-gold-v1",
+        "bytes": 1192,
+        "duration": 5.699999988079071
+      },
+      {
+        "url": "/localhost:4173/card-assets.js?v=free-gold-v1",
+        "bytes": 1090,
+        "duration": 7.300000011920929
+      },
+      {
+        "url": "/localhost:4173/carrot-scenes.js?v=free-gold-v1",
+        "bytes": 2803,
+        "duration": 5.799999952316284
+      },
+      {
+        "url": "/localhost:4173/money.js?v=free-gold-v1",
+        "bytes": 1934,
+        "duration": 6.100000023841858
+      },
+      {
+        "url": "/localhost:4173/playback-clock.js?v=free-gold-v1",
+        "bytes": 1633,
+        "duration": 9.5
+      },
+      {
+        "url": "/localhost:4173/round-plan.js?v=free-gold-v1",
+        "bytes": 1874,
+        "duration": 12.5
+      },
+      {
+        "url": "/localhost:4173/effects.js?v=free-gold-v1",
+        "bytes": 42770,
+        "duration": 14
+      },
+      {
+        "url": "/localhost:4173/engine.js?v=free-gold-v1",
+        "bytes": 5277,
+        "duration": 13.699999988079071
+      },
+      {
+        "url": "/localhost:4173/engine.js?v=math-v1",
+        "bytes": 5277,
+        "duration": 5
+      },
+      {
+        "url": "/localhost:4173/presentation-quality.js?v=comfort-v1",
+        "bytes": 980,
+        "duration": 3.699999988079071
+      },
+      {
+        "url": "/localhost:4173/money.js?v=math-v1",
+        "bytes": 1934,
+        "duration": 2.800000011920929
+      },
+      {
+        "url": "art/scene/portrait-background.png",
+        "bytes": 2146284,
+        "duration": 159.10000002384186
+      },
+      {
+        "url": "art/v5/carrot-world.png",
+        "bytes": 1891223,
+        "duration": 61
+      },
+      {
+        "url": "assets/art/card-normal-J.png",
+        "bytes": 946435,
+        "duration": 156.80000001192093
+      },
+      {
+        "url": "assets/art/card-gold-J.png",
+        "bytes": 2001010,
+        "duration": 294.69999998807907
+      },
+      {
+        "url": "assets/art/card-normal-Q.png",
+        "bytes": 964300,
+        "duration": 99.90000003576279
+      },
+      {
+        "url": "assets/art/card-normal-K.png",
+        "bytes": 1018253,
+        "duration": 269.30000001192093
+      },
+      {
+        "url": "assets/art/card-gold-Q.png",
+        "bytes": 2156539,
+        "duration": 390.9000000357628
+      },
+      {
+        "url": "assets/art/card-gold-K.png",
+        "bytes": 1880477,
+        "duration": 569.5999999642372
+      },
+      {
+        "url": "assets/art/card-normal-A.png",
+        "bytes": 1020620,
+        "duration": 709.3999999761581
+      },
+      {
+        "url": "assets/art/card-gold-A.png",
+        "bytes": 1659216,
+        "duration": 844.3000000119209
+      },
+      {
+        "url": "assets/art/card-normal-H.png",
+        "bytes": 1060908,
+        "duration": 498.30000001192093
+      },
+      {
+        "url": "assets/art/card-normal-S.png",
+        "bytes": 1040635,
+        "duration": 674.1000000238419
+      },
+      {
+        "url": "assets/art/card-normal-C.png",
+        "bytes": 1070144,
+        "duration": 663.5
+      },
+      {
+        "url": "assets/art/card-gold-S.png",
+        "bytes": 2050843,
+        "duration": 957.3000000119209
+      },
+      {
+        "url": "assets/art/card-gold-H.png",
+        "bytes": 2363489,
+        "duration": 984.5
+      },
+      {
+        "url": "assets/art/card-gold-C.png",
+        "bytes": 2212642,
+        "duration": 1044.300000011921
+      },
+      {
+        "url": "assets/art/card-normal-D.png",
+        "bytes": 1006301,
+        "duration": 477.60000002384186
+      },
+      {
+        "url": "assets/art/carrot-bonus.png",
+        "bytes": 1182559,
+        "duration": 957.6000000238419
+      },
+      {
+        "url": "assets/art/card-gold-D.png",
+        "bytes": 2149666,
+        "duration": 971
+      },
+      {
+        "url": "assets/art/wild-angel-fitted.svg",
+        "bytes": 2547324,
+        "duration": 1071.800000011921
+      },
+      {
+        "url": "assets/art/wild-devil-fitted.svg",
+        "bytes": 2196559,
+        "duration": 1155.9000000357628
+      },
+      {
+        "url": "assets/art/card-gold-overlay.png",
+        "bytes": 376061,
+        "duration": 473.60000002384186
+      },
+      {
+        "url": "localhost:4173/assets/back.png",
+        "bytes": 371800,
+        "duration": 248.39999997615814
+      },
+      {
+        "url": "art/effects/aura.svg",
+        "bytes": 2272248,
+        "duration": 1171.5
+      },
+      {
+        "url": "art/effects/bubble.svg",
+        "bytes": 1381278,
+        "duration": 1163.300000011921
+      },
+      {
+        "url": "art/effects/burst.svg",
+        "bytes": 2316721,
+        "duration": 1268
+      },
+      {
+        "url": "art/effects/sweep.svg",
+        "bytes": 2096298,
+        "duration": 587.1000000238419
+      },
+      {
+        "url": "art/effects/halo.svg",
+        "bytes": 484342,
+        "duration": 1092.7000000476837
+      },
+      {
+        "url": "art/effects/trail.svg",
+        "bytes": 2160918,
+        "duration": 1487.3999999761581
+      },
+      {
+        "url": "art/v6/free-rabbit-carrot.png",
+        "bytes": 1728786,
+        "duration": 1291.1000000238419
+      },
+      {
+        "url": "art/v4/dealer-outlet.svg",
+        "bytes": 2289639,
+        "duration": 450.0999999642372
+      },
+      {
+        "url": "art/v6/free-gala-backdrop.png",
+        "bytes": 1712235,
+        "duration": 1290.3999999761581
+      },
+      {
+        "url": "/localhost:4173/favicon.ico",
+        "bytes": 335,
+        "duration": 4.100000023841858
+      },
+      {
+        "url": "buttons/spin/disabled.svg?v=portrait-20261107",
+        "bytes": 1881861,
+        "duration": 17.599999964237213
+      },
+      {
+        "url": "assets/art/carrot-bonus.png",
+        "bytes": 1182559,
+        "duration": 1.7000000476837158
+      },
+      {
+        "url": "components/tabs/normal.svg",
+        "bytes": 1378513,
+        "duration": 8.900000035762787
+      },
+      {
+        "url": "assets/art/card-win-glow.png",
+        "bytes": 313314,
+        "duration": 8.300000011920929
+      },
+      {
+        "url": "art/effects/burst.svg",
+        "bytes": 2316721,
+        "duration": 8.899999976158142
+      },
+      {
+        "url": "art/effects/sweep.svg",
+        "bytes": 2096298,
+        "duration": 23.099999964237213
+      },
+      {
+        "url": "assets/art/card-win-glow.png",
+        "bytes": 313314,
+        "duration": 19.30000001192093
+      },
+      {
+        "url": "assets/art/card-normal-C.png",
+        "bytes": 1070144,
+        "duration": 18
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2148,
+      "bet": 20,
+      "sessionNet": 148,
+      "board": [
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        }
+      ],
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "low",
+      "activeRound": null
+    }
+  },
+  "summary": {
+    "coldBytes": 70557281,
+    "spinNewResources": 8,
+    "frameP95": 66.60000000000036,
+    "frameOver50": 29,
+    "longTasks": 6,
+    "maxLongTask": 253
+  }
+}

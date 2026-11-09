@@ -9,7 +9,7 @@ const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4173';
    const page=await browser.newPage({viewport:{width,height}});const errors=[];
    page.on('pageerror',e=>errors.push(e.message));
    await page.addInitScript(()=>{localStorage.setItem('gala-carrot-tutorial','1');localStorage.setItem('gala-carrot-v1',JSON.stringify({balance:123456789.12}))});
-   await page.goto(origin);await page.locator('.cell').nth(19).waitFor();
+   await page.goto(origin);await page.waitForFunction(()=>window.galaDebug?.getState().visualReady);await page.locator('.cell').nth(19).waitFor();
    await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))));
    await page.evaluate(()=>document.fonts.ready);
    const result=await page.evaluate(()=>{

@@ -5,7 +5,7 @@
 @keyframes preparingCards{to{transform:rotate(360deg)}}
 .history-modal h2{margin-bottom:8px}
 .history-list{display:grid;gap:8px;margin:12px 0}
-.history-row{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12px 10px;border:0;border-radius:0;background:transparent url('assets/art/ui/components/tabs/normal.svg') center/100% 100% no-repeat;color:#ffe5b0;text-align:left;font:inherit;font-size:15px}
+.history-row{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12px 10px;border:0;border-radius:0;background:transparent url('assets/runtime/normal-7398685d-display512-q90-c2bae8162174.webp') center/100% 100% no-repeat;color:#ffe5b0;text-align:left;font:inherit;font-size:15px}
 .history-row>span:last-child{text-align:right;font-variant-numeric:tabular-nums}
 .history-row small{display:block;font-size:10px;line-height:1.4;color:#d6bfc9;margin-top:5px}
 .history-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px 0;border-top:1px solid #9c744266;border-bottom:1px solid #9c744266}

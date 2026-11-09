@@ -37,8 +37,8 @@ body[data-heat='3'] .atmosphere-light{background:radial-gradient(ellipse at 50% 
 @media(max-height:700px){.app[data-heat='3'] .multipliers .active{font-size:23px}}
 @media(max-width:350px){.topbar{grid-template-columns:88px minmax(0,1fr) 112px}.amount-carrot{width:12px;height:16px}.amount-value{gap:2px}}
 @media(prefers-reduced-motion:reduce){.app .multipliers,.app .dealer,.app .mouth,.app .board-shell:before{filter:none}}
-.multipliers{background-image:url('assets/art/v4/multiplier-base.svg');border-radius:0;padding-left:5%;padding-right:5%}
-.dealer{height:60px;background-image:url('assets/art/v4/dealer-housing.svg');overflow:visible}
+.multipliers{background-image:url('assets/runtime/multiplier-base-49935f72-display1536w-q90-f2cad48742de.webp');border-radius:0;padding-left:5%;padding-right:5%}
+.dealer{height:60px;background-image:url('assets/runtime/dealer-housing-ac1afdab-display1536w-q90-22cbf1fae917.webp');overflow:visible}
 .mouths{top:30%;bottom:16%;height:auto}
 .mouth{border-radius:0;background:none;overflow:hidden}
 .mouth img{display:block;width:100%;height:100%;object-fit:fill}

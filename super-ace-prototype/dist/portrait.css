@@ -1,7 +1,7 @@
 /* Portrait stage. Existing standalone artwork supplies all decorative surfaces. */
 html,body{width:100%;height:100%;margin:0;overflow:hidden;overscroll-behavior:none}
 body{position:fixed;inset:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.ambient{background-image:url('assets/art/scene/portrait-background.png');background-position:center;background-size:cover;filter:brightness(.3) saturate(.7)}
+.ambient{background-image:url('assets/runtime/portrait-background-d53999fc-q90-50c67b1d2127.webp');background-position:center;background-size:cover;filter:brightness(.3) saturate(.7)}
 .app{position:relative;width:min(100%,440px);height:100dvh;max-width:none;margin:0 auto;padding:calc(4px + env(safe-area-inset-top)) 12px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-rows:54px minmax(0,1fr);gap:4px;overflow:hidden}
 .topbar{width:100%;height:auto;min-height:0;display:grid;grid-template-columns:88px minmax(0,1fr) 44px;gap:4px;border:0}
 .header-tools{display:flex;align-items:center;gap:0}
@@ -12,7 +12,7 @@ body{position:fixed;inset:0;touch-action:manipulation;-webkit-tap-highlight-colo
 .mode-heading{position:absolute;width:1px;height:1px;min-height:0;overflow:hidden;clip-path:inset(50%);padding:0}
 .multipliers{height:40px;min-height:0;aspect-ratio:auto;margin:0;align-items:stretch;padding:3px 3%;background-size:100% 100%}
 .multipliers span{display:grid;place-items:center;padding:0;font-family:inherit;font-size:22px;font-weight:600;color:#d6b98f;transition:none}
-.multipliers .active{color:#fff5cf;background-image:url('assets/art/ui/components/input/normal.svg?v=portrait-20261107');background-size:96% 90%;background-position:center}
+.multipliers .active{color:#fff5cf;background-image:url('assets/runtime/normal-2e7e302c-display512-q90-7a7aa6cfa1d8.webp');background-size:96% 90%;background-position:center}
 .dealer{width:88%;height:52px;min-height:0;aspect-ratio:auto;justify-self:center;margin:0;padding:0;background-size:100% 100%}
 .mouths{inset:24% 9% 17%;gap:6%;align-items:center}
 .mouth{width:100%;height:100%;overflow:hidden}
@@ -64,7 +64,7 @@ p,li{font-size:13px;line-height:1.8}.form-row{font-size:13px;gap:6px}.form-row l
 }
 @media(max-width:350px){.app{padding-left:8px;padding-right:8px}.balance-bar strong{font-size:17px}.balance-bar label{font-size:10px}.controls{padding:0}.spin-controls{gap:0}.tool{width:46px}.bet-adjust{width:44px}.secondary-controls{gap:0}}
 /* UI surfaces fit their allocated rectangles; card art keeps its original ratio. */
-.multipliers .active{background-image:url('assets/art/ui/hud/multiplier-active.svg?v=portrait-20261107');background-size:96% 96%}
+.multipliers .active{background-image:url('assets/runtime/multiplier-active-a9d2d00f-display1536w-q90-6e2fb186e0d1.webp');background-size:96% 96%}
 .mouths{inset:24% 8% 17%;gap:3.5%}
 .mouth img{width:58%;height:96%;object-fit:cover;object-position:center 25%;transform:perspective(150px) rotateX(24deg)}
 /* Keep the dealer next to the table; leave any surplus room below the cards. */
@@ -93,10 +93,10 @@ p,li{font-size:13px;line-height:1.8}.form-row{font-size:13px;gap:6px}.form-row l
 .btn,.btn.primary{background-size:100% 90%}
 table{font-size:12px}th,td{padding:8px 4px}
 /* Blank independent panels keep dynamic labels free of baked artwork text/icons. */
-.chips button,.btn{background-image:url('assets/art/ui/components/tabs/normal.svg?v=portrait-20261107')}
-.chips button.selected,.btn.primary{background-image:url('assets/art/ui/components/tabs/selected.svg?v=portrait-20261107')}
-.btn:active,.btn.primary:active{background-image:url('assets/art/ui/components/input/normal.svg?v=portrait-20261107')}
-.btn:disabled,.btn.primary:disabled{background-image:url('assets/art/ui/components/tabs/normal.svg?v=portrait-20261107')}
+.chips button,.btn{background-image:url('assets/runtime/normal-7398685d-display512-q90-c2bae8162174.webp')}
+.chips button.selected,.btn.primary{background-image:url('assets/runtime/selected-aaf5d733-display512-q90-f4b8746db6d9.webp')}
+.btn:active,.btn.primary:active{background-image:url('assets/runtime/normal-2e7e302c-display512-q90-7a7aa6cfa1d8.webp')}
+.btn:disabled,.btn.primary:disabled{background-image:url('assets/runtime/normal-7398685d-display512-q90-c2bae8162174.webp')}
 @keyframes fall{0%{transform:translate(var(--deal-shift,0px),var(--drop-start,-260%));opacity:0}12%{opacity:1}80%{transform:translate(0,3%)}100%{transform:translate(0,0)}}
 .chips button.selected{background-size:100% 72%}
 .balance-bar>div{min-width:0}.balance-bar strong{max-width:100%;overflow:hidden;text-overflow:ellipsis}
@@ -108,7 +108,7 @@ table{font-size:12px}th,td{padding:8px 4px}
 .win-pop.show{animation-duration:calc(650ms * var(--motion-scale,1))}
 .ray{animation-duration:calc(500ms * var(--motion-scale,1))}
 .dealer.dealing .mouth img{animation-duration:calc(350ms * var(--motion-scale,1))}
-.balance-bar{position:relative;background-image:url('assets/art/ui/components/tabs/normal.svg?v=portrait-20261107')}
+.balance-bar{position:relative;background-image:url('assets/runtime/normal-7398685d-display512-q90-c2bae8162174.webp')}
 .balance-currency{position:absolute;left:4%;top:50%;width:32px;height:32px;object-fit:contain;transform:translateY(-50%)}
 .currency-inline{display:inline-block;width:32px;height:32px;object-fit:contain;vertical-align:middle}
 .reward-amount{display:flex;align-items:center;justify-content:center;gap:6px;text-align:center;font-size:clamp(22px,7vw,32px);color:#f8dba2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
@@ -132,15 +132,15 @@ dialog.auto-modal{height:min(94dvh,540px);padding:20px 18px}
 .game{--card-gap:clamp(4px,1.28vw,6px);--board-pad:4%}
 .multipliers .active{background-image:none;color:#fff7cf;text-shadow:0 0 6px #fff2a6,0 0 14px #ffc34d;position:relative;isolation:isolate}
 .multipliers .active:before{content:'';position:absolute;inset:5% 0;background:radial-gradient(ellipse at center,#ffd26b65 0%,#e49b2730 40%,transparent 72%);z-index:-1;pointer-events:none}
-.dealer{width:var(--board-width,100%);background-image:url('assets/art/v2/dealer-carrier.svg');background-size:100% 100%;position:relative;margin:0 auto}
+.dealer{width:var(--board-width,100%);background-image:url('assets/runtime/dealer-carrier-053f787a-display1536w-q90-336dfcf1c039.webp');background-size:100% 100%;position:relative;margin:0 auto}
 .mouths{inset:0 var(--board-pad);gap:var(--card-gap);height:100%;align-items:center}
 .mouth{position:relative;width:100%;height:auto;aspect-ratio:3/2;overflow:hidden;border-radius:3px;background:none;box-shadow:none}
 .mouth img{display:block;width:100%;max-width:none;height:100%;margin:0;object-fit:fill;object-position:center;transform:none;aspect-ratio:auto;image-rendering:auto}
-.mouth:after{content:'';position:absolute;inset:0;background:url('assets/art/v2/dealer-outlet-rim.svg') center/100% 100% no-repeat;pointer-events:none}
+.mouth:after{content:'';position:absolute;inset:0;background:url('assets/runtime/dealer-outlet-rim-d6c83036-q90-4fd20e6caf30.webp') center/100% 100% no-repeat;pointer-events:none}
 .dealer.dealing .mouth img{animation-name:backFeed}
 @keyframes backFeed{50%{transform:translateY(5%)}}
-.board{padding:var(--board-pad);column-gap:var(--card-gap);row-gap:var(--card-gap);background-image:url('assets/art/v2/board-felt.png');background-size:cover;border-radius:8px}
-.cell:before{content:'';position:absolute;inset:0;background:url('assets/art/v2/card-slot-rim.svg') center/100% 100% no-repeat;pointer-events:none;z-index:5}
+.board{padding:var(--board-pad);column-gap:var(--card-gap);row-gap:var(--card-gap);background-image:url('assets/runtime/board-felt-6fbf9fa2-q90-9a89cd4e2742.webp');background-size:cover;border-radius:8px}
+.cell:before{content:'';position:absolute;inset:0;background:url('assets/runtime/card-slot-rim-ec43dc4c-q90-1e33627ac204.webp') center/100% 100% no-repeat;pointer-events:none;z-index:5}
 .card{position:absolute;inset:1px;width:auto;height:auto;border-radius:3px;overflow:hidden}
 .card img.art-card{width:100%;height:100%;object-fit:cover}
 .card.special{inset:0;overflow:visible}
@@ -149,9 +149,9 @@ dialog.auto-modal{height:min(94dvh,540px);padding:20px 18px}
 .card{transition-duration:calc(160ms * var(--motion-scale,1))}
 .cell.anticipate img{animation-duration:calc(1100ms * var(--motion-scale,1))}
 /* The same independent 44px button surface for every secondary control. */
-#minus,#plus,#auto,#speed,#betEntry{width:44px;height:44px;min-width:44px;min-height:44px;border:0;padding:0;box-shadow:none;border-radius:5px;background:transparent url('assets/art/control-square.svg') center/100% 100% no-repeat;color:#ffe4a4;position:relative;display:grid;place-items:center;font-family:inherit}
+#minus,#plus,#auto,#speed,#betEntry{width:44px;height:44px;min-width:44px;min-height:44px;border:0;padding:0;box-shadow:none;border-radius:5px;background:transparent url('assets/runtime/control-square-668c2833-display512-q90-1eda314c51cc.webp') center/100% 100% no-repeat;color:#ffe4a4;position:relative;display:grid;place-items:center;font-family:inherit}
 #minus,#plus{font-size:26px;line-height:1}
-#auto.on,#auto:active,#auto.on:active,#speed[data-speed='1'],#speed[data-speed='2'],#speed:active,#speed[data-speed='1']:active,#speed[data-speed='2']:active,#plus:active,#minus:active,#plus:disabled,#minus:disabled{background-image:url('assets/art/control-square.svg')}
+#auto.on,#auto:active,#auto.on:active,#speed[data-speed='1'],#speed[data-speed='2'],#speed:active,#speed[data-speed='1']:active,#speed[data-speed='2']:active,#plus:active,#minus:active,#plus:disabled,#minus:disabled{background-image:url('assets/runtime/control-square-668c2833-display512-q90-1eda314c51cc.webp')}
 #auto.on,#speed[data-speed='1'],#speed[data-speed='2']{filter:brightness(1.2)}
 #auto>span,#speed>span{display:block;visibility:visible;position:absolute;top:3px;left:0;right:0;text-align:center;font-size:21px;line-height:22px}
 #auto small,#speed small{position:absolute;bottom:4px;left:0;right:0;margin:0;font-size:9px;line-height:11px;transform:none;color:#ffe4a4}

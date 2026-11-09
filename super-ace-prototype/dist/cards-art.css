@@ -4,4 +4,4 @@
 .card.special{overflow:visible}
 .cell.carrot .card img.art-card{width:126%;height:118%;max-width:none;margin-left:-13%;margin-top:-10%;object-fit:contain;filter:none}
 .cell.hit .card{box-shadow:none}
-.cell.hit:after{content:'';position:absolute;inset:0;background:url('assets/art/card-win-glow.png') center/100% 100% no-repeat;pointer-events:none;animation:winPulse .65s ease-in-out infinite}
+.cell.hit:after{content:'';position:absolute;inset:0;background:url('assets/runtime/card-win-glow-00e20285-q90-d0377a635243.webp') center/100% 100% no-repeat;pointer-events:none;animation:winPulse .65s ease-in-out infinite}

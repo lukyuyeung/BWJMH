@@ -9,11 +9,11 @@
 #modalContent{position:relative}
 .fx-number-host,.reward-amount,.fx-counter-value{font-family:var(--fx-numeric-font)!important;font-variant-numeric:tabular-nums lining-nums;position:relative;z-index:3}
 #winPop{animation:none!important;pointer-events:none}
-#winPop.fx-win-amount{position:absolute;inset:auto;z-index:45;display:flex;align-items:center;justify-content:center;gap:2px;padding:5px 18px;line-height:1;font-family:var(--fx-numeric-font)!important;font-size:30px;font-weight:700;font-variant-numeric:tabular-nums lining-nums;color:#fff7d6;-webkit-text-stroke:.5px #624219;text-shadow:0 2px 1px #170d17,0 0 4px #170d17,0 0 8px #170d17;background:url('assets/art/ui/components/tabs/normal.svg') center/100% 100% no-repeat;filter:drop-shadow(0 3px 5px #130919c0)}
+#winPop.fx-win-amount{position:absolute;inset:auto;z-index:45;display:flex;align-items:center;justify-content:center;gap:2px;padding:5px 18px;line-height:1;font-family:var(--fx-numeric-font)!important;font-size:30px;font-weight:700;font-variant-numeric:tabular-nums lining-nums;color:#fff7d6;-webkit-text-stroke:.5px #624219;text-shadow:0 2px 1px #170d17,0 0 4px #170d17,0 0 8px #170d17;background:url('assets/runtime/normal-7398685d-display512-q90-c2bae8162174.webp') center/100% 100% no-repeat;filter:drop-shadow(0 3px 5px #130919c0)}
 .fx-win-prefix{font-size:.75em;line-height:1;opacity:.95}
 .fx-counter-value{white-space:nowrap}
 .fx-preview-symbol{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:7}
-.fx-preview-panel{position:absolute;z-index:80;left:6%;right:6%;top:22%;min-height:250px;max-height:65%;padding:35px 25px;background:url('assets/art/ui/components/modal/normal.svg') center/100% 100% no-repeat;text-align:center;pointer-events:none;overflow:hidden}
+.fx-preview-panel{position:absolute;z-index:80;left:6%;right:6%;top:22%;min-height:250px;max-height:65%;padding:35px 25px;background:url('assets/runtime/normal-14436a1a-display512-q90-bc7f293d93e6.webp') center/100% 100% no-repeat;text-align:center;pointer-events:none;overflow:hidden}
 .fx-preview-panel h2{font-family:var(--fx-numeric-font);font-size:25px;position:relative;z-index:3}.fx-preview-panel p{position:relative;z-index:3}.fx-preview-panel .btn{position:relative;z-index:3;min-width:100px}
 @media(max-width:350px){#winPop.fx-win-amount{padding:5px 14px;font-size:26px}.fx-preview-panel{padding:28px 20px;min-height:220px}}
 @media(prefers-reduced-motion:reduce){.fx-art,.fx-slot-light{filter:none}}
@@ -29,9 +29,9 @@
 .reward-modal .modal-head{height:48px;margin:0;position:relative;z-index:20}
 .reward-modal .modal-head .eyebrow{visibility:hidden}
 .reward-modal #modalContent{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:visible;padding:0 0 40px;isolation:isolate}
-.reward-modal .feature-title{width:100%;height:150px;font-size:0;background:url('assets/art/reward-big.svg') center/contain no-repeat;z-index:5;flex-shrink:0}
-.reward-modal:has(.feature-title[data-epic]) .feature-title{background-image:url('assets/art/reward-epic.svg')}
-.reward-modal .reward-amount{font-size:clamp(30px,9vw,44px);font-weight:600;white-space:nowrap;max-width:100%;margin:12px 0 30px;padding:18px 24px;background:#1d1024 url('assets/art/ui/components/tabs/normal.svg') center/100% 100% no-repeat;border-radius:12px;color:#fff6cb;text-shadow:0 2px 3px #000;z-index:10}
+.reward-modal .feature-title{width:100%;height:150px;font-size:0;background:url('assets/runtime/reward-big-32659b5d-q90-bd511d78a4d6.webp') center/contain no-repeat;z-index:5;flex-shrink:0}
+.reward-modal:has(.feature-title[data-epic]) .feature-title{background-image:url('assets/runtime/reward-epic-670d8758-q90-dd5c3651ec2e.webp')}
+.reward-modal .reward-amount{font-size:clamp(30px,9vw,44px);font-weight:600;white-space:nowrap;max-width:100%;margin:12px 0 30px;padding:18px 24px;background:#1d1024 url('assets/runtime/normal-7398685d-display512-q90-c2bae8162174.webp') center/100% 100% no-repeat;border-radius:12px;color:#fff6cb;text-shadow:0 2px 3px #000;z-index:10}
 .reward-modal .reward-amount img{width:30px;height:36px;object-fit:contain}
 .reward-modal .btn-row{position:relative;z-index:10;width:80%;margin-top:24px}
 .reward-modal .fx-celebration-carrot{z-index:2}

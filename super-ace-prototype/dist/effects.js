@@ -1,3 +1,4 @@
+import {assetURL,prepareImages} from './asset-cache.js?v=smooth-v1';
 import {createPresentationQuality} from './presentation-quality.js?v=comfort-v1';
 import {compactMoney} from './money.js?v=math-v1';
 export const ANIMATION_DEFINITIONS = Object.freeze([
@@ -587,7 +588,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  const doc=root.ownerDocument||root;const q=s=>root.querySelector(s),all=s=>[...root.querySelectorAll(s)];
  const app=q('.app')||doc.body;const stage=doc.createElement('div');stage.className='fx-stage';stage.setAttribute('aria-hidden','true');app.append(stage);
  const quality=createPresentationQuality({onChange:level=>doc.documentElement.dataset.fxQuality=level});let qualityFrame;function sampleFrame(time){if(qualityFrame&& !doc.hidden&&!clock?.paused&&(q('#spin')?.disabled||q('#modal.reward-modal')?.open))quality.sample(time-qualityFrame);qualityFrame=time;doc.defaultView.requestAnimationFrame(sampleFrame)}doc.defaultView.requestAnimationFrame(sampleFrame);
- const ready=Promise.all(['aura','bubble','burst','halo','sweep','trail'].map(name=>{const img=new Image();img.src=ASSET_BASE+name+'.svg';return img.decode().catch(()=>{})}));
+ const ready=prepareImages(['aura','bubble','burst','halo','sweep','trail'].map(name=>ASSET_BASE+name+'.svg'));
  const history=[];const active=new Set(),idle=new Set(),counters=new Set();let idleTimer,paused=!!clock?.paused,mode=getSpeed(),idleEnabled=false,forceReduced=null;
  const reduced=()=>forceReduced??doc.defaultView.matchMedia('(prefers-reduced-motion: reduce)').matches;
  function applyFont(){const sample=q('.balance-bar strong');if(sample){app.style.setProperty('--fx-numeric-font',getComputedStyle(sample).fontFamily);doc.documentElement.style.setProperty('--fx-numeric-font',getComputedStyle(sample).fontFamily)}}applyFont();
@@ -605,12 +606,12 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
   entry.finished=finished;return entry;
  }
  function art(host,name,className='fx-art',style={}){
-  if(!host)return null;const img=doc.createElement('img');img.className=className;img.src=ASSET_BASE+name+'.svg';img.alt='';img.setAttribute('aria-hidden','true');Object.assign(img.style,style);host.append(img);return img;
+  if(!host)return null;const img=doc.createElement('img');img.className=className;img.src=assetURL(ASSET_BASE+name+'.svg');img.alt='';img.setAttribute('aria-hidden','true');Object.assign(img.style,style);host.append(img);return img;
  }
  function overlay(host,name,frames,duration,style={},options={}){const img=art(host,name,'fx-art',style);return track(img,frames,duration,{...options,cleanup:()=>img?.remove()})}
  function pulse(el,d=500,strength=1.035,options={}){return track(el,[{transform:'scale(1)',filter:'brightness(1)'},{transform:`scale(${strength})`,filter:'brightness(1.25)',offset:.45},{transform:'scale(1)',filter:'brightness(1)'}],d,options)}
  function glow(nodes,d=600,color='gold'){
-  const entries=[];for(const el of nodes){const img=doc.createElement('img');img.className='fx-slot-light';img.src='assets/art/card-win-glow.png';img.alt='';el.append(img);entries.push(track(img,[{opacity:0,transform:'scale(.96)'},{opacity:color==='purple'?.8:.95,transform:'scale(1.03)',offset:.45},{opacity:0,transform:'scale(1.04)'}],d,{cleanup:()=>img.remove()}))}return entries;
+  const entries=[];for(const el of nodes){const img=doc.createElement('img');img.className='fx-slot-light';img.src='assets/runtime/card-win-glow-00e20285-q90-d0377a635243.webp';img.alt='';el.append(img);entries.push(track(img,[{opacity:0,transform:'scale(.96)'},{opacity:color==='purple'?.8:.95,transform:'scale(1.03)',offset:.45},{opacity:0,transform:'scale(1.04)'}],d,{cleanup:()=>img.remove()}))}return entries;
  }
  function burst(el,d=600,magnitude=1){return overlay(el,'burst',[{opacity:0,transform:'scale(.35)'},{opacity:.78,transform:`scale(${magnitude})`,offset:.38},{opacity:0,transform:`scale(${magnitude*1.3})`}],d,{inset:'-18%',width:'136%',height:'136%'})}
  function halo(el,d=700){return overlay(el,'aura',[{opacity:0,transform:'scale(.5) rotate(-14deg)'},{opacity:.9,transform:'scale(1) rotate(3deg)',offset:.45},{opacity:0,transform:'scale(1.18) rotate(12deg)'}],d,{inset:'-10%',width:'120%',height:'120%'})}
@@ -632,7 +633,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
   return[track(host,[{opacity:1,transform:'scale(.88)'},{opacity:1,transform:'scale(1.025)',offset:.17},{opacity:1,transform:'translateY(0) scale(1)',offset:.78},{opacity:1,transform:'scale(1)'}],d,{informational:true,cleanup:()=>{host.classList.remove('fx-win-amount');host.style.opacity='0'}})];
  }
  function flyCopies(copies,duration=650){const entries=[];const sr=stage.getBoundingClientRect();for(const{source,index}of copies){const a=cells([source])[0],b=cells([index])[0];if(!a||!b)continue;const ar=a.getBoundingClientRect(),br=b.getBoundingClientRect(),dx=br.x-ar.x,dy=br.y-ar.y;const img=art(stage,'trail','fx-flight',{left:`${ar.x+ar.width/2-sr.x-24}px`,top:`${ar.y+ar.height/2-sr.y-18}px`,width:'48px',height:'36px'});entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.4)'},{opacity:1,transform:`translate(${dx*.48}px,${dy*.48-18}px) scale(1)`,offset:.48},{opacity:0,transform:`translate(${dx}px,${dy}px) scale(.6)`}],duration,{cleanup:()=>img.remove()}));entries.push(burst(b,duration,.7));}return entries}
- function coinsToBalance(detail,d=650){const src=element(detail.target,'.board-shell'),dest=q('#balance');if(!src||!dest)return[];const a=src.getBoundingClientRect(),b=dest.getBoundingClientRect(),sr=stage.getBoundingClientRect();const entries=[];for(let i=0;i<8;i++){const img=doc.createElement('img');img.src='assets/carrot.png';img.className='fx-credit-carrot';img.alt='';const x=a.x+a.width*(.25+(i%4)*.16)-sr.x,y=a.y+a.height*.6-sr.y;Object.assign(img.style,{left:x+'px',top:y+'px'});stage.append(img);entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${(i-4)*7}px,-24px) scale(1)`,offset:.23},{opacity:0,transform:`translate(${b.x+b.width/2-sr.x-x}px,${b.y+b.height/2-sr.y-y}px) scale(.5)`}],d,{delay:i*24,cleanup:()=>img.remove()}))}return entries}
+ function coinsToBalance(detail,d=650){const src=element(detail.target,'.board-shell'),dest=q('#balance');if(!src||!dest)return[];const a=src.getBoundingClientRect(),b=dest.getBoundingClientRect(),sr=stage.getBoundingClientRect();const entries=[];for(let i=0;i<8;i++){const img=doc.createElement('img');img.src='assets/runtime/carrot-49719a53-q90-0da1bff27175.webp';img.className='fx-credit-carrot';img.alt='';const x=a.x+a.width*(.25+(i%4)*.16)-sr.x,y=a.y+a.height*.6-sr.y;Object.assign(img.style,{left:x+'px',top:y+'px'});stage.append(img);entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${(i-4)*7}px,-24px) scale(1)`,offset:.23},{opacity:0,transform:`translate(${b.x+b.width/2-sr.x-x}px,${b.y+b.height/2-sr.y-y}px) scale(.5)`}],d,{delay:i*24,cleanup:()=>img.remove()}))}return entries}
  function celebrate(detail,d,level=1){
   const host=element(detail.target,'.reward-amount')||q('#modalContent');if(!host)return[];const parent=host.parentElement,entries=[];host.classList.add('fx-number-host');
   entries.push(counter(host,detail.from??0,detail.amount??detail.to??280,level===2?3600:2600,{preview:detail.preview}));
@@ -642,7 +643,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  function startWaterfall(host,{mega=false}={}){
   const layer=doc.createElement('div');layer.className='carrot-waterfall';layer.setAttribute('aria-hidden','true');host.prepend(layer);const entries=[],count=reduced()?0:quality.budget(mega);let stopped=false;
   const width=host.clientWidth,height=host.clientHeight;
-  for(let i=0;i<count;i++){const img=doc.createElement('img');img.src='assets/carrot.png';img.alt='';img.className='waterfall-carrot';const depth=i%3,size=depth===0?12+i%7:depth===1?24+i%11:38+i%17;
+  for(let i=0;i<count;i++){const img=doc.createElement('img');img.src='assets/runtime/carrot-49719a53-q90-0da1bff27175.webp';img.alt='';img.className='waterfall-carrot';const depth=i%3,size=depth===0?12+i%7:depth===1?24+i%11:38+i%17;
    // Near particles favour the sides, preserving the title and amount in front.
    const fraction=depth===2?(i%2?.77+(i%13)/65:.04+(i%13)/65):((i*47)%101)/100,x=fraction*width;
    Object.assign(img.style,{width:size+'px',height:size+'px',left:x+'px',top:'-70px',opacity:depth===0?'.4':depth===1?'.75':'1',zIndex:String(depth)});layer.append(img);
@@ -650,7 +651,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    entries.push(track(img,[{transform:`translate(0,0) rotate(${i*29%180}deg)`},{transform:`translate(${(i%7-3)*9}px,${height+155}px) rotate(${260+i*37%300}deg)`}],duration,{iterations:Infinity,delay:-(i*137%duration),easing:'linear',cleanup:()=>img.remove()}));
   }
   layer.style.opacity='0';entries.push(track(layer,[{opacity:0},{opacity:1}],500,{delay:200,cleanup:()=>{if(!stopped)layer.style.opacity='1'}}));
-  for(let i=0;i<(reduced()?0:12);i++){const img=doc.createElement('img');img.src='assets/carrot.png';img.alt='';img.className='waterfall-burst';layer.append(img);const dx=(i-5.5)*29;entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${dx*.6}px,-220px) scale(1)`,offset:.45},{opacity:0,transform:`translate(${dx}px,-110px) rotate(${dx}deg) scale(.7)`}],850,{delay:i%4*35,cleanup:()=>img.remove()}))}
+  for(let i=0;i<(reduced()?0:12);i++){const img=doc.createElement('img');img.src='assets/runtime/carrot-49719a53-q90-0da1bff27175.webp';img.alt='';img.className='waterfall-burst';layer.append(img);const dx=(i-5.5)*29;entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${dx*.6}px,-220px) scale(1)`,offset:.45},{opacity:0,transform:`translate(${dx}px,-110px) rotate(${dx}deg) scale(.7)`}],850,{delay:i%4*35,cleanup:()=>img.remove()}))}
   const particles=entries.slice(0,count);const unsubscribe=quality.subscribe(()=>{const budget=quality.budget(mega);for(let i=budget;i<particles.length;i++)particles[i]?.animation.cancel()});
   history.push({id:'CARROT-WATERFALL',count,mega,at:performance.now()});
   return{count,stop(){if(stopped)return;stopped=true;unsubscribe();entries.forEach(e=>e?.animation.cancel());layer.remove()}};
@@ -741,17 +742,17 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    // A valid left-to-right three-reel J combination; only the middle J is gold.
    for(const index of [0,6,12])symbol(index,`assets/art/card-${index===6&&n>=14?'gold':'normal'}-J.png`);
    if(n===14||n===15)detail.indices=[6];
-   if(n===15){const img=cells([6])[0].querySelector('.fx-preview-symbol');timers.push(setTimeout(()=>{if(!cleaned)img.src='assets/art/wild-angel-fitted.svg'},Math.max(0,durationForPreview(id)*scale()*.5)))}
+   if(n===15){const img=cells([6])[0].querySelector('.fx-preview-symbol');timers.push(setTimeout(()=>{if(!cleaned)img.src='assets/runtime/wild-angel-fitted-0b9d18fb-display512.webp'},Math.max(0,durationForPreview(id)*scale()*.5)))}
   }
   if(n>=16&&n<=23){
    detail.indices=[6,12,18];
-   if(n<=18)detail.indices.forEach(index=>symbol(index,'assets/art/wild-angel-fitted.svg'));
-   else if(n===21||n===22){symbol(6,'assets/art/wild-devil-fitted.svg');detail.indices=n===21?[8,13]:[6]}
-   else {if(n===20)detail.indices=[6];detail.indices.forEach(index=>symbol(index,'assets/art/wild-devil-fitted.svg'))}
+   if(n<=18)detail.indices.forEach(index=>symbol(index,'assets/runtime/wild-angel-fitted-0b9d18fb-display512.webp'));
+   else if(n===21||n===22){symbol(6,'assets/runtime/wild-devil-fitted-1a5ea49b-display512.webp');detail.indices=n===21?[8,13]:[6]}
+   else {if(n===20)detail.indices=[6];detail.indices.forEach(index=>symbol(index,'assets/runtime/wild-devil-fitted-1a5ea49b-display512.webp'))}
   }
   if(n>=25&&n<=31){
-   const indices=n===25?[5]:n<=29?[5,7]:[5,7,9];indices.forEach(index=>symbol(index,'assets/art/carrot-bonus.png',true));detail.indices=indices;
-   if(n===28){detail.indices=[4,9,14,19];detail.indices.forEach(index=>symbol(index,'assets/back.png'))}
+   const indices=n===25?[5]:n<=29?[5,7]:[5,7,9];indices.forEach(index=>symbol(index,'assets/runtime/carrot-bonus-96e3f871-display512.webp',true));detail.indices=indices;
+   if(n===28){detail.indices=[4,9,14,19];detail.indices.forEach(index=>symbol(index,'assets/runtime/back-1ff4ca3b-display512.webp'))}
    if(n===30)detail.indices=[9];
   }
   if(n===6||n===12){const host=q('#message'),original=host.textContent;host.textContent=n===6?'本局沒有中獎。':'連鎖結束，下一局倍率重設。';restore.push(()=>host.textContent=original)}
@@ -759,12 +760,12 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
   if(n===34||n===35){detail.target=setPill(n===35?'最後 1 次免費':'免費 ＋5 次');if(n===35)detail.indices=Array.from({length:20},(_,i)=>i)}
   if([32,36,38,39,40,42,46,47,48].includes(n)){
    const panel=doc.createElement('section');panel.className='fx-preview-panel';
-   if(n===32)panel.innerHTML='<h2>FREE SPINS</h2><div class="feature-carrots">'+[1,2,3].map(()=>'<img src="assets/art/carrot-bonus.png" alt="CARROT">').join('')+'</div><div class="feature-title">10 FREE SPINS</div><button class="btn primary" type="button">開始免費遊戲</button>';
+   if(n===32)panel.innerHTML='<h2>FREE SPINS</h2><div class="feature-carrots">'+[1,2,3].map(()=>'<img src="assets/runtime/carrot-bonus-96e3f871-display512.webp" alt="CARROT">').join('')+'</div><div class="feature-title">10 FREE SPINS</div><button class="btn primary" type="button">開始免費遊戲</button>';
    else if(n===42)panel.innerHTML='<h2>Auto Play</h2><div class="chips"><button>10</button><button class="selected">20</button><button>30</button></div><p>旋轉次數、獎勵倍數、餘額上下限</p><div class="btn-row"><button class="btn">取消</button><button class="btn primary">開始</button></div>';
    else if(n===46)panel.innerHTML='<h2>玩法與計算</h2><div class="tabs"><button class="active">玩法</button><button>賠付與例子</button></div><p>由最左列開始，至少連續 3 列相同符號即可中獎。</p><button class="btn primary">明白</button>';
-   else if(n===47)panel.innerHTML='<h2>新手教學</h2><div class="tutorial-cards">'+[1,2,3].map(()=>'<img src="assets/art/card-normal-J.png" alt="J">').join('')+'</div><p>左至右連續三列，認識第一次中獎。</p><div class="tutorial-progress"><i class="active"></i><i></i><i></i><i></i></div>';
+   else if(n===47)panel.innerHTML='<h2>新手教學</h2><div class="tutorial-cards">'+[1,2,3].map(()=>'<img src="assets/runtime/card-normal-J-42a47a8f-display512.webp" alt="J">').join('')+'</div><p>左至右連續三列，認識第一次中獎。</p><div class="tutorial-progress"><i class="active"></i><i></i><i></i><i></i></div>';
    else if(n===48)panel.innerHTML='<h2>牌局已暫停</h2><p>恢復後繼續同一局已保存的結果，不重新扣除下注或重複發放獎勵。</p><button class="btn primary">繼續牌局</button>';
-   else panel.innerHTML=`<h2>${n===36?'TOTAL WIN':n===39?'EPIC WIN':'BIG WIN'}</h2><div class="reward-amount"><img class="currency-inline" src="assets/carrot.png" alt="蘿蔔"> ${formatting(detail.amount)}</div><button class="btn primary" type="button">收下獎勵</button>`;
+   else panel.innerHTML=`<h2>${n===36?'TOTAL WIN':n===39?'EPIC WIN':'BIG WIN'}</h2><div class="reward-amount"><img class="currency-inline" src="assets/runtime/carrot-49719a53-q90-0da1bff27175.webp" alt="蘿蔔"> ${formatting(detail.amount)}</div><button class="btn primary" type="button">收下獎勵</button>`;
    app.append(panel);temporary.push(panel);detail.target=[32,42,46,47,48].includes(n)?panel:panel.querySelector('.reward-amount');
    if(n===40){const award=play(38,{...detail,target:panel.querySelector('.reward-amount')});let resolve;const finished=new Promise(r=>resolve=r);timers.push(setTimeout(()=>{if(cleaned)return;finishCounters();play(40,{preview:true,target:panel.querySelector('button')});timers.push(setTimeout(()=>{const exit=track(panel,[{opacity:1},{opacity:0}],260);exit.finished.then(()=>{award.cancel();clean();resolve()})},400))},350));return{id,duration:1200,element:panel,finished,cancel(){award.cancel();clean();resolve()}}}
   }

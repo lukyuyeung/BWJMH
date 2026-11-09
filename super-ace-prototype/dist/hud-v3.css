@@ -6,21 +6,21 @@
 #sessionTotal strong{font-size:17px;font-weight:600;line-height:1.2;white-space:nowrap;font-variant-numeric:tabular-nums}
 #sessionTotal[data-sign=positive] strong{color:#ffe4a2}#sessionTotal[data-sign=negative] strong{color:#ffabc9}
 .game{grid-template-rows:40px 52px minmax(0,1fr) 70px 82px;position:relative}
-.multipliers{height:40px;background:transparent url('assets/art/v3/multiplier-base.svg') center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;padding:2px 5%;overflow:hidden}
+.multipliers{height:40px;background:transparent url('assets/runtime/multiplier-base-5afe73dc-display1536w-q90-c5f3eed00584.webp') center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;padding:2px 5%;overflow:hidden}
 .multipliers span{border:0;background:none}
 .multipliers .active{background:none!important}
-.dealer{height:52px;width:var(--board-width,100%);border-radius:0;background:transparent url('assets/art/v3/dealer-carrier.svg') center/100% 100% no-repeat;overflow:hidden}
+.dealer{height:52px;width:var(--board-width,100%);border-radius:0;background:transparent url('assets/runtime/dealer-carrier-d954ecec-display1536w-q90-0fdfb14c2ac9.webp') center/100% 100% no-repeat;overflow:hidden}
 .mouths{height:auto;top:9px;bottom:9px;align-items:stretch}
 .mouth{height:100%;aspect-ratio:auto;border-radius:0;overflow:hidden}
 .mouth img{width:100%;height:100%;object-fit:fill}
 .mouth:after{background:none}
-.balance-bar{height:70px;aspect-ratio:auto;padding:5px 2%;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;background:transparent url('assets/art/v3/numeric-hud.svg') center/100% 100% no-repeat}
+.balance-bar{height:70px;aspect-ratio:auto;padding:5px 2%;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;background:transparent url('assets/runtime/numeric-hud-4cd82876-display1536w-q90-0e3fe17c2e94.webp') center/100% 100% no-repeat}
 .balance-bar .money-field,#betEntry.money-field{position:static;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:100%;height:100%;min-width:0;min-height:44px;padding:0 3px;margin:0;border:0;border-radius:0;box-shadow:none;background:none;color:#fff3d9;font-family:inherit}
 .balance-bar .money-field label{position:static;display:block;font-size:11px;line-height:1.2;pointer-events:none;color:#e0c6d0}
 .balance-bar .money-field strong,#betEntry.money-field strong{position:static;display:block;max-width:none;width:auto;overflow:visible;text-overflow:clip;margin:0;font-size:21px;font-weight:600;line-height:1.2;white-space:nowrap;letter-spacing:0;font-variant-numeric:tabular-nums}
 .money-field:focus-visible,#sessionTotal:focus-visible{outline:2px solid #ff9bcc;outline-offset:-4px}
 .status{display:none}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-#freePill{position:absolute;right:7px;top:calc(40px + 52px + 8px);z-index:15;min-height:24px;padding:4px 9px;font-size:11px;color:#fff2c2;background:#271227 url('assets/art/ui/hud/free-counter.svg') center/100% 100% no-repeat;pointer-events:none}
+#freePill{position:absolute;right:7px;top:calc(40px + 52px + 8px);z-index:15;min-height:24px;padding:4px 9px;font-size:11px;color:#fff2c2;background:#271227 url('assets/runtime/free-counter-9230f617-display1536w-q90-4ef72c066c62.webp') center/100% 100% no-repeat;pointer-events:none}
 #freePill[hidden]{display:none}
 .cell.wild:before{display:none}
 .cell.wild .card{inset:1px;overflow:visible}

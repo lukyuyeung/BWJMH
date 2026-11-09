@@ -1,3 +1,5 @@
+最新更新：[載入通順度、圖片快取與遊戲音樂](19_Smooth_Loading_Audio/README.md)。
+
 最新更新：[免費模式金色倍率底座](18_Free_Gold_Multiplier/README.md)。
 
 最新更新：[金帽兔子・免費遊戲全屏圖與手動開始](17_FreeSpin_Rabbit/README.md)。
