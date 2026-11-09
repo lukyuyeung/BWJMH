@@ -1,11 +1,11 @@
-import {createRoundHistory} from './round-history.js?v=rabbit-free-v1';
-import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=rabbit-free-v1';
-import {createCarrotScenes} from './carrot-scenes.js?v=rabbit-free-v1';
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=rabbit-free-v1';
-import {createPlaybackClock} from './playback-clock.js?v=rabbit-free-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=rabbit-free-v1';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=rabbit-free-v1';
-import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=rabbit-free-v1';
+import {createRoundHistory} from './round-history.js?v=free-gold-v1';
+import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=free-gold-v1';
+import {createCarrotScenes} from './carrot-scenes.js?v=free-gold-v1';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=free-gold-v1';
+import {createPlaybackClock} from './playback-clock.js?v=free-gold-v1';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=free-gold-v1';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=free-gold-v1';
+import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=free-gold-v1';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
 const legacy=(()=>{try{return reviewMode?{}:JSON.parse(localStorage.getItem('gala-carrot-v1'))||{}}catch{return{}}})();
@@ -33,10 +33,10 @@ async function close(){if(featureAnnouncementLocked)return;if(recoveryPrompt){re
 $('#closeModal').onclick=close;$('#modal').addEventListener('cancel',e=>{e.preventDefault();close()});
 function confirmation(id){return new Promise(resolve=>{featureResolver=resolve;$('#'+id).onclick=()=>{effect(40,{target:$('#'+id)});if(effects.finishCounters())return;close()}})}
 function idle(){effects.startIdle()}
-const rabbitHero=new Image(),rabbitBackdrop=new Image();rabbitHero.src='assets/art/v6/free-rabbit-carrot.png';rabbitBackdrop.src='assets/art/v6/free-gala-backdrop.png';
+const rabbitHero=new Image(),rabbitBackdrop=new Image(),freeRail=new Image();freeRail.src='assets/art/v6/multiplier-free-gold.svg';rabbitHero.src='assets/art/v6/free-rabbit-carrot.png';rabbitBackdrop.src='assets/art/v6/free-gala-backdrop.png';
 async function feature(n,extra=false){
- try{await Promise.all([rabbitHero.decode(),rabbitBackdrop.decode()])}catch{throw new Error('免費遊戲主視覺未能載入')}
- openModal(`<img class="rabbit-feature-hero" id="featureHero" src="${rabbitHero.src}" alt="Bunny Gala 金帽兔子開心咬著金色蘿蔔"><div class="rabbit-feature-copy"><p class="rabbit-congrats">${extra?'好運延續！':'恭喜你！'}</p><h2>${extra?'再獲得':'贏得'} <strong>${extra?'＋':''}${n}</strong> 次</h2><p class="rabbit-free-title">FREE SPINS</p><p class="rabbit-feature-multipliers">×2　×4　×6　×10</p><p id="featureCountdown" role="status"></p></div>`,0);
+ try{await Promise.all([rabbitHero.decode(),rabbitBackdrop.decode(),freeRail.decode()])}catch{throw new Error('免費遊戲主視覺未能載入')}
+ openModal(`<img class="rabbit-feature-hero" id="featureHero" src="${rabbitHero.src}" alt="Bunny Gala 金帽兔子開心咬著金色蘿蔔"><div class="rabbit-feature-copy"><p class="rabbit-congrats">${extra?'好運延續！':'恭喜你！'}</p><h2>${extra?'再獲得':'贏得'} <strong>${extra?'＋':''}${n}</strong> 次</h2><p class="rabbit-free-title">FREE SPINS</p><p id="featureCountdown" role="status"></p></div>`,0);
  $('#modal').classList.add('feature-modal','rabbit-feature');if(extra)$('#modal').classList.add('retrigger');featureAnnouncementLocked=true;
  // Reading time is independent of 2× play and pauses when the page is hidden.
  try{for(let seconds=5;seconds>0;seconds--){$('#featureCountdown').textContent=`${seconds} 秒後${extra?'繼續免費遊戲':'進入免費模式 · 等待你按開始'}`;await readingClock.wait(1000)}}finally{featureAnnouncementLocked=false}

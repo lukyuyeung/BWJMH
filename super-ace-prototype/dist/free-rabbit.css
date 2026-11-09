@@ -14,3 +14,14 @@
 #spin.free-ready .spin-word{visibility:visible;display:block;position:absolute;left:-6px;right:-6px;bottom:-2px;height:auto;font-size:12px;line-height:18px;font-weight:700;color:#ffe5a0;text-shadow:0 2px 3px #16091d,0 0 8px #19091e}
 #spin.free-ready{filter:drop-shadow(0 0 10px #ffbf5088)}
 @media(max-height:650px){.rabbit-feature-hero{height:67%}.rabbit-feature-copy{bottom:4%}.rabbit-feature-copy strong{font-size:65px}.rabbit-congrats{font-size:22px;margin-bottom:3px}.rabbit-free-title{font-size:30px;margin-bottom:5px}.rabbit-feature-multipliers{font-size:15px;margin:4px 0 9px}}
+
+/* Crossfade the independent gold rail over the original purple artwork. */
+.app .multipliers{position:relative;isolation:isolate}
+.app .multipliers::before{content:'';position:absolute;inset:0;background:url('assets/art/v6/multiplier-free-gold.svg') center/100% 100% no-repeat;opacity:0;transition:opacity 1100ms ease;pointer-events:none;z-index:-1}
+.app .multipliers span{transition:color 1100ms ease,text-shadow 1100ms ease}
+.app[data-scene-free='true'] .multipliers::before{opacity:1}
+.app[data-scene-free='true'] .multipliers{filter:drop-shadow(0 0 6px #ffc45b66)}
+.app[data-scene-free='true'] .multipliers span{color:#583318;text-shadow:none;font-weight:650}
+.app[data-scene-free='true'] .multipliers span.active{color:#2b0925;font-weight:900;text-shadow:0 0 3px #fff9dc,0 0 12px #fff3bf}
+.app[data-scene-free='true'] .multipliers .active::before{background:radial-gradient(ellipse at center,#fffbe8dc 0%,#fff1ad70 35%,transparent 72%)}
+@media(prefers-reduced-motion:reduce){.app .multipliers::before,.app .multipliers span{transition-duration:140ms}}
