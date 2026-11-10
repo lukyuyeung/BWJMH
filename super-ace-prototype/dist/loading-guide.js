@@ -1,4 +1,4 @@
-import {assetURL,loadImage} from './asset-cache.js?v=phone-guide-v2';
+import {assetURL,loadImage} from './asset-cache.js?v=session-speed-v1';
 const slides=[
  {key:'ways',tag:'WAYS WIN',title:'由左開始，連續三列中獎',body:'相同符號由最左列起，至少連續出現3列。',note:'不必在同一行。',mascot:'ways',art:'ways'},
  {key:'gold',tag:'GOLD TO WILD',title:'金牌中獎後，翻成 WILD',body:'天使替代普通牌；惡魔還能擴散。',note:'WILD不替代CARROT。',mascot:'gold-k',art:'wild'},
