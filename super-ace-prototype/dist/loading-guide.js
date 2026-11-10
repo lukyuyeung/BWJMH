@@ -1,4 +1,5 @@
-import {assetURL,loadImage} from './asset-cache.js?v=guide-no-title-v1';
+import {languagePicker} from './i18n.js?v=locale-waterfall-v1';
+import {assetURL,loadImage} from './asset-cache.js?v=locale-waterfall-v1';
 const slides=[
  {key:'ways',title:'由左開始，連續三列中獎',body:'相同符號由最左列起，至少連續出現3列。',note:'不必在同一行。',mascot:'ways',art:'ways'},
  {key:'gold',title:'金牌中獎後，翻成 WILD',body:'天使替代普通牌；惡魔還能擴散。',note:'WILD不替代CARROT。',mascot:'gold-k',art:'wild'},
@@ -14,7 +15,7 @@ function diagram(type){
 }
 export function createLoadingGuide({root,onEnter=()=>{}}={}){
  let index=0,ready=false,timer,closed=false,revision=0;
- root.innerHTML=`<div class="guide-brand">${image('assets/bunny-gala-transparent.png','','Bunny Gala')}<small>SUPER ACE · 基本玩法</small></div><div id="guideContent" class="guide-content"></div><nav class="guide-navigation" aria-label="玩法介紹頁面"><button id="guidePrev" aria-label="上一張">‹</button><div class="guide-dots">${slides.map((s,i)=>`<button data-guide="${i}" aria-label="第${i+1}張：${s.title}"></button>`).join('')}</div><button id="guideNext" aria-label="下一張">›</button></nav><div class="guide-loading"><p id="loadingText" role="status">正在準備遊戲…</p><progress id="loadingProgress" max="1" value="0" aria-label="遊戲圖片載入進度"></progress><button id="enterGame" class="btn primary" disabled>準備中…</button><button id="retryAssets" class="btn" hidden>重新載入圖片</button></div>`;
+ root.innerHTML=`${languagePicker('guide-language')}<div class="guide-brand">${image('assets/bunny-gala-transparent.png','','Bunny Gala')}<small>SUPER ACE · 基本玩法</small></div><div id="guideContent" class="guide-content"></div><nav class="guide-navigation" aria-label="玩法介紹頁面"><button id="guidePrev" aria-label="上一張">‹</button><div class="guide-dots">${slides.map((s,i)=>`<button data-guide="${i}" aria-label="第${i+1}張：${s.title}"></button>`).join('')}</div><button id="guideNext" aria-label="下一張">›</button></nav><div class="guide-loading"><p id="loadingText" role="status">正在準備遊戲…</p><progress id="loadingProgress" max="1" value="0" aria-label="遊戲圖片載入進度"></progress><button id="enterGame" class="btn primary" disabled>準備中…</button><button id="retryAssets" class="btn" hidden>重新載入圖片</button></div>`;
  const q=s=>root.querySelector(s);
  function restart(){clearInterval(timer);timer=setInterval(()=>{if(!closed&&!document.hidden)show((index+1)%slides.length)},5500)}
  async function show(next){index=(next+slides.length)%slides.length;const token=++revision,s=slides[index];const src='assets/art/v8/loading-bunny-'+s.mascot+'.webp';let mascotReady=true;try{await loadImage(src,{priority:'high'})}catch{mascotReady=false}if(token!==revision||closed)return;q('#guideContent').innerHTML=`<div class="guide-art">${mascotReady?`<img class="guide-mascot" src="${src}" alt="Bunny Gala 金帽兔子介紹玩法">`:''}<div class="guide-diagram">${diagram(s.art)}</div></div><h1>${s.title}</h1><p class="guide-body">${s.body}</p><p class="guide-note">${s.note}</p>`;q('#guideContent').dataset.slide=s.key;root.querySelectorAll('[data-guide]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.guide)===index)))}

@@ -97,3 +97,7 @@
 ## 26 · Portrait spacing and rabbit loading guide
 
 [Four illustrated lessons, independent rabbit art and phone layout](26_Phone_Layout_Loading_Guide/README.md)
+
+## 28 · Languages and full-screen carrot rain
+
+[English/Filipino switch, independent gold-carrot art, fullscreen reward review](28_Languages_Fullscreen_Carrot/README.md)
