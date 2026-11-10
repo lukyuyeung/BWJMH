@@ -1,4 +1,4 @@
-import {assetURL,prepareImages} from './asset-cache.js?v=locale-waterfall-v1';
+import {assetURL,prepareImages,loadImage} from './asset-cache.js?v=smooth-locale-v2';
 import {createPresentationQuality} from './presentation-quality.js?v=comfort-v1';
 import {compactMoney} from './money.js?v=math-v1';
 export const ANIMATION_DEFINITIONS = Object.freeze([
@@ -588,7 +588,8 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  const doc=root.ownerDocument||root;const q=s=>root.querySelector(s),all=s=>[...root.querySelectorAll(s)];
  const app=q('.app')||doc.body;const stage=doc.createElement('div');stage.className='fx-stage';stage.setAttribute('aria-hidden','true');app.append(stage);
  const quality=createPresentationQuality({onChange:level=>doc.documentElement.dataset.fxQuality=level});let qualityFrame;function sampleFrame(time){if(qualityFrame&& !doc.hidden&&!clock?.paused&&(q('#spin')?.disabled||q('#modal.reward-modal')?.open))quality.sample(time-qualityFrame);qualityFrame=time;doc.defaultView.requestAnimationFrame(sampleFrame)}doc.defaultView.requestAnimationFrame(sampleFrame);
- const ready=prepareImages([...['aura','bubble','burst','halo','sweep','trail'].map(name=>ASSET_BASE+name+'.svg'),'assets/art/v9/carrot-waterfall-sheet.webp','assets/art/v9/gold-carrot-particle.webp']);
+ let rainTexture,rainParticle;
+ const ready=Promise.all([prepareImages(['aura','bubble','burst','halo','sweep','trail'].map(name=>ASSET_BASE+name+'.svg')),loadImage('assets/art/v9/carrot-waterfall-sheet.webp').then(img=>rainTexture=img),loadImage('assets/art/v9/gold-carrot-particle.webp').then(img=>rainParticle=img)]);
  const history=[];const active=new Set(),idle=new Set(),counters=new Set();let idleTimer,paused=!!clock?.paused,mode=getSpeed(),idleEnabled=false,forceReduced=null;
  const reduced=()=>forceReduced??doc.defaultView.matchMedia('(prefers-reduced-motion: reduce)').matches;
  function applyFont(){const sample=q('.balance-bar strong');if(sample){app.style.setProperty('--fx-numeric-font',getComputedStyle(sample).fontFamily);doc.documentElement.style.setProperty('--fx-numeric-font',getComputedStyle(sample).fontFamily)}}applyFont();
@@ -641,24 +642,24 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
   const title=parent.querySelector('.feature-title');if(title)entries.push(track(title,[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1.07)',offset:.7},{opacity:1,transform:'scale(1)'}],550));return entries;
  }
  function startWaterfall(host,{mega=false}={}){
-  const layer=doc.createElement('div');layer.className='carrot-waterfall';layer.setAttribute('aria-hidden','true');host.prepend(layer);const entries=[],count=reduced()?0:Math.min(quality.budget(mega),mega?54:36);let stopped=false;
-  const width=host.clientWidth,height=host.clientHeight;
-  // Dense precomposed artwork keeps the whole viewport full even at the lowest particle tier.
-  const sheets=[];
-  for(let depth=0;depth<(reduced()||quality.level==='low'?1:2);depth++){const sheet=doc.createElement('div');sheet.className='waterfall-sheet waterfall-sheet-'+depth;sheet.innerHTML='<div></div><div></div>';layer.append(sheet);sheets.push(sheet);if(!reduced())entries.push(track(sheet,[{transform:'translate3d(0,-50%,0)'},{transform:'translate3d(0,0,0)'}],depth?6400:4400,{iterations:Infinity,easing:'linear',delay:depth?-2100:0,cleanup:()=>sheet.remove()}))}
-  const particleStart=entries.length;
-  for(let i=0;i<count;i++){const img=doc.createElement('img');img.src='assets/art/v9/gold-carrot-particle.webp';img.alt='';img.className='waterfall-carrot';const depth=i%3,size=depth===0?28+i%13:depth===1?45+i%19:66+i%23;
-   // Near particles favour the sides, preserving the title and amount in front.
-   const fraction=depth===2?(i%2?.77+(i%13)/65:.04+(i%13)/65):((i*47)%101)/100,x=fraction*width;
-   Object.assign(img.style,{width:size+'px',height:size+'px',left:x+'px',top:'-70px',opacity:depth===0?'.4':depth===1?'.75':'1',zIndex:String(depth)});layer.append(img);
-   const duration=depth===0?3300+(i%5)*160:depth===1?2400+(i%5)*100:1800+(i%5)*100;
-   entries.push(track(img,[{transform:`translate(0,0) rotate(${i*29%180}deg)`},{transform:`translate(${(i%7-3)*9}px,${height+155}px) rotate(${260+i*37%300}deg)`}],duration,{iterations:Infinity,delay:-(i*137%duration),easing:'linear',cleanup:()=>img.remove()}));
+  const layer=doc.createElement('div');layer.className='carrot-waterfall';layer.setAttribute('aria-hidden','true');
+  const canvas=doc.createElement('canvas');canvas.className='waterfall-canvas';layer.append(canvas);host.prepend(layer);
+  // One bounded backing store, independent of device DPR; card textures stay at native quality.
+  const width=host.clientWidth,height=host.clientHeight,ratio=Math.min(1,1280/Math.max(width,height));
+  canvas.width=Math.max(1,Math.round(width*ratio));canvas.height=Math.max(1,Math.round(height*ratio));
+  const ctx=canvas.getContext('2d',{alpha:true});ctx?.scale(ratio,ratio);
+  const count=reduced()?0:mega?18:12;let frame=0,stopped=false,last=0,lastDraw=0,elapsed=0;
+  function draw(){if(!ctx||!rainTexture)return;ctx.clearRect(0,0,width,height);ctx.globalAlpha=mega?1:.9;
+   const tileW=Math.min(width,440),tileH=tileW*rainTexture.naturalHeight/rainTexture.naturalWidth,offset=(elapsed*(mega?.22:.18))%tileH;
+   for(let x=0;x<width;x+=tileW)for(let y=offset-tileH;y<height;y+=tileH)ctx.drawImage(rainTexture,x,y,tileW,tileH);
+   const near=quality.level==='low'?Math.min(count,6):count;
+   if(rainParticle)for(let i=0;i<near;i++){const size=48+i%5*9,x=((i*67)%101)/100*(width-size),y=((elapsed*(.18+i%3*.05)+i*83)%(height+140))-90;ctx.save();ctx.globalAlpha=.9;ctx.translate(x+size/2,y+size/2);ctx.rotate((i*31+elapsed*.035)*Math.PI/180);ctx.drawImage(rainParticle,-size/2,-size/2,size,size);ctx.restore()}
+   ctx.globalAlpha=1;
   }
-  layer.style.opacity='0';entries.push(track(layer,[{opacity:0},{opacity:1}],500,{delay:200,cleanup:()=>{if(!stopped)layer.style.opacity='1'}}));
-  for(let i=0;i<(reduced()?0:12);i++){const img=doc.createElement('img');img.src='assets/art/v9/gold-carrot-particle.webp';img.alt='';img.className='waterfall-burst';layer.append(img);const dx=(i-5.5)*29;entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${dx*.6}px,-220px) scale(1)`,offset:.45},{opacity:0,transform:`translate(${dx}px,-110px) rotate(${dx}deg) scale(.7)`}],850,{delay:i%4*35,cleanup:()=>img.remove()}))}
-  const particles=entries.slice(particleStart,particleStart+count);const unsubscribe=quality.subscribe(()=>{const budget=quality.budget(mega);if(quality.level==='low'&&sheets[1]){entries[1]?.animation.cancel();sheets[1].remove()}for(let i=budget;i<particles.length;i++)particles[i]?.animation.cancel()});
-  history.push({id:'CARROT-WATERFALL',count,sheets:sheets.length,fullscreen:true,mega,at:performance.now()});
-  return{count,stop(){if(stopped)return;stopped=true;unsubscribe();entries.forEach(e=>e?.animation.cancel());layer.remove()}};
+  function tick(now){if(stopped)return;const delta=last?Math.min(80,now-last):0;last=now;if(!paused&&!doc.hidden){elapsed+=delta;const interval=quality.level==='high'?1000/60:1000/30;if(now-lastDraw>=interval-1){draw();lastDraw=now}}frame=doc.defaultView.requestAnimationFrame(tick)}
+  draw();if(!reduced())frame=doc.defaultView.requestAnimationFrame(tick);
+  history.push({id:'CARROT-WATERFALL',renderer:'bounded-canvas',count,sheets:1,fullscreen:true,pixels:canvas.width*canvas.height,mega,at:performance.now()});
+  return{count,stop(){if(stopped)return;stopped=true;doc.defaultView.cancelAnimationFrame(frame);canvas.width=0;canvas.height=0;layer.remove()}};
  }
  const idles={1:()=>track(q('.dealer'),[{filter:'brightness(1)'},{filter:'brightness(1.08)',offset:.5},{filter:'brightness(1)'}],1800,{persistent:true,iterations:Infinity}),13:()=>all('.card.gold:not(.special)').map((n,i)=>sweep(n,3000,{persistent:true,iterations:Infinity,delay:i*140})),17:()=>all('.cell[data-face^="ANGEL"] .card').map(n=>pulse(n,2000,1.012,{persistent:true,iterations:Infinity})),26:()=>all('.cell.carrot .art-card').map(n=>track(n,[{transform:'translateY(0) rotate(-1deg)'},{transform:'translateY(-3px) rotate(1deg)'},{transform:'translateY(0) rotate(-1deg)'}],2400,{persistent:true,iterations:Infinity}))};
  function play(input,detail={}){
