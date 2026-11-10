@@ -14,11 +14,12 @@
 <link rel="stylesheet" href="free-rabbit.css?v=smooth-v1">
 <link rel="stylesheet" href="smooth.css?v=smooth-v1">
 <link rel="stylesheet" href="audio-controls.css?v=audio-guide-v1">
-<link rel="stylesheet" href="roll-controls.css?v=ledger-ten-v1">
-<link rel="stylesheet" href="phone-layout.css?v=ledger-ten-v1">
-<link rel="stylesheet" href="loading-guide.css?v=ledger-ten-v1">
-<link rel="stylesheet" href="locale-waterfall.css?v=ledger-ten-v1">
-<link rel="stylesheet" href="session-ledger.css?v=ledger-ten-v1">
+<link rel="stylesheet" href="roll-controls.css?v=calm-rewards-v1">
+<link rel="stylesheet" href="phone-layout.css?v=calm-rewards-v1">
+<link rel="stylesheet" href="loading-guide.css?v=calm-rewards-v1">
+<link rel="stylesheet" href="locale-waterfall.css?v=calm-rewards-v1">
+<link rel="stylesheet" href="session-ledger.css?v=calm-rewards-v1">
+<link rel="stylesheet" href="calm-rewards.css?v=calm-rewards-v1">
 </head>
 <body>
 <section id="assetLoading" class="asset-loading" role="region" aria-label="玩法介紹與遊戲載入"><div class="loading-brand"><img src="assets/runtime/bunny-gala-transparent-34aa9c81-display768w.webp" alt="Bunny Gala"></div><p id="loadingText">正在準備遊戲…</p><progress id="loadingProgress" max="1" value="0" aria-label="遊戲圖片載入進度"></progress><button id="retryAssets" hidden>重新載入圖片</button></section>
@@ -27,7 +28,7 @@
 <header class="topbar">
 <div class="header-tools"><button class="round" id="help" aria-label="玩法與計算">ⓘ</button><button class="round" id="settings" aria-label="設定">⚙</button></div>
 
-<button id="sessionTotal" aria-label="查看本次淨輸贏與完整流水"><span id="sessionLabel">本次淨輸贏</span><span class="amount-value"><img class="amount-carrot" src="assets/runtime/carrot-49719a53-q90-0da1bff27175.webp" alt=""><strong id="sessionValue">0</strong></span></button><button id="sound" style="display:none" aria-label="切換音效">♫</button>
+<button id="sessionTotal" aria-label="查看本次淨輸贏與完整流水"><span id="sessionLabel">本次淨輸贏</span><span class="amount-value"><img class="amount-carrot" src="assets/runtime/carrot-49719a53-q90-0da1bff27175.webp" alt=""><strong id="sessionValue">0</strong><small id="sessionPercent">0.00%</small></span></button><button id="sound" style="display:none" aria-label="切換音效">♫</button>
 </header>
 <section class="game" aria-label="Bunny Gala 直屏撲克牌遊戲">
 <div class="mode-heading" aria-live="polite"><span id="modeLabel">LET THE CARROTS FALL</span><small id="freeLabel">1024 WAYS · 金牌連鎖</small></div>
@@ -45,6 +46,6 @@
 <dialog id="modal"><div class="modal-head"><span class="eyebrow">BUNNY GALA</span><button id="closeModal" aria-label="關閉">×</button></div><div id="modalContent"></div></dialog>
 <dialog id="connectionDialog"><h2>牌局已暫停</h2><p>連線恢復後，繼續同一局已保存的結果。</p></dialog>
 <div class="toast" id="toast" role="status"></div>
-<script type="module" src="app.js?v=ledger-ten-v1"></script>
+<script type="module" src="app.js?v=calm-rewards-v1"></script>
 </body>
 </html>

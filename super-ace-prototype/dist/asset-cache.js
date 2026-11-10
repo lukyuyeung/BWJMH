@@ -1,4 +1,4 @@
-import {ASSET_MAP} from './asset-map.js?v=ledger-ten-v1';
+import {ASSET_MAP} from './asset-map.js?v=calm-rewards-v1';
 const images=new Map(),pending=new Map(),queue=[];let active=0,completed=0;const listeners=new Set();
 export const assetURL=src=>ASSET_MAP[src.split('?')[0]]??src;
 const notify=()=>listeners.forEach(fn=>fn({completed,total:completed+pending.size,active}));
@@ -20,4 +20,4 @@ export function preparedImage(source){const img=images.get(assetURL(source));ret
 // Keep decoded Image objects alive for the session instead of only retaining URL promises.
 export function presentationSources(){return Object.keys(ASSET_MAP).filter(src=>
  src.startsWith('assets/art/effects/')||src.startsWith('assets/art/ui/')||src.startsWith('assets/art/v4/')||src.startsWith('assets/art/v6/')||
- ['assets/carrot.png','assets/back.png','assets/bunny-gala-transparent.png','assets/art/v2/board-felt.png','assets/art/v3/numeric-hud.svg','assets/art/scene/portrait-background.png','assets/art/v5/carrot-world.png','assets/art/v5/carrot-pile.svg','assets/art/v5/mega-win.svg','assets/art/reward-big.svg','assets/art/control-square.svg','assets/art/card-win-glow.png'].includes(src)).concat(['assets/art/v7/control-auto-button.webp','assets/art/v7/control-speed-normal-button.webp','assets/art/v7/control-speed-fast-button.webp']);}
+ ['assets/carrot.png','assets/back.png','assets/bunny-gala-transparent.png','assets/art/v2/board-felt.png','assets/art/v3/numeric-hud.svg','assets/art/scene/portrait-background.png','assets/art/v5/carrot-world.png','assets/art/v5/mega-win.svg','assets/art/reward-big.svg','assets/art/control-square.svg','assets/art/card-win-glow.png'].includes(src)).concat(['assets/art/v10/ledger-clean-panel.webp','assets/art/v10/reward-carrot-heap.webp','assets/art/v8/loading-bunny-carrot.webp','assets/art/v7/control-auto-button.webp','assets/art/v7/control-speed-normal-button.webp','assets/art/v7/control-speed-fast-button.webp']);}

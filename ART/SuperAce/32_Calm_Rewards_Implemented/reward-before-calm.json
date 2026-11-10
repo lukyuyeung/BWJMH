@@ -1,0 +1,17 @@
+{
+  "reward": {
+    "p95": 16.800000000000182,
+    "over50": 1,
+    "blanks": 0
+  },
+  "ongoing": {
+    "canvas": 1,
+    "activeAnimations": 1
+  },
+  "spin": {
+    "p95": 16.80000000000109,
+    "over50": 6,
+    "blanks": 0
+  },
+  "balance": 2148
+}

@@ -1,6 +1,7 @@
 import {BET_UNIT,maxBet} from './engine.js?v=math-v1';
 /** Display is abbreviated; all accepted stakes and game results retain their numeric value. */
-export const exactMoney=n=>Number(n||0).toLocaleString('en-US',{maximumFractionDigits:2});
+const exactMoneyFormatter=new Intl.NumberFormat('en-US',{maximumFractionDigits:2});
+export const exactMoney=n=>exactMoneyFormatter.format(Number(n||0));
 export function compactMoney(value){
  const n=Number(value)||0,a=Math.abs(n);if(a<1e6)return exactMoney(n);
  const units=[[1e12,'T'],[1e9,'B'],[1e6,'M']];let i=units.findIndex(([scale])=>a>=scale);if(i>0&&Number((a/units[i][0]).toFixed(3))>=1000)i--;
@@ -17,5 +18,5 @@ export function parseMoney(input){const m=String(input).replaceAll(',','').trim(
 export function createSessionTotal(storage,balance,key='gala-session-total-v1'){
  let opening;try{opening=JSON.parse(storage.getItem(key))?.opening}catch{}if(!Number.isFinite(opening))opening=balance;
  const persist=()=>storage.setItem(key,JSON.stringify({opening}));persist();
- return{net:current=>roundMoney(current-opening),reset(current){opening=current;persist()}};
+ return{get opening(){return opening},percent:current=>opening>0?(current-opening)/opening*100:null,net:current=>roundMoney(current-opening),reset(current){opening=current;persist()}};
 }

@@ -1,4 +1,4 @@
-import {AUDIO_CATALOG} from './audio-catalog.js?v=ledger-ten-v1';
+import {AUDIO_CATALOG} from './audio-catalog.js?v=calm-rewards-v1';
 const TRACKS=Object.fromEntries(AUDIO_CATALOG.tracks.map(t=>[t.id,t]));
 const LEVELS={intro:.8,lobby:.5,bgm_main:.6,bgm_bonus:.6,card_shuffle:.7,reel_spin:.6,reel_stop:.7,bet_change:.6,turbo_spin:.6,auto_spin:.6,no_win:.5,win_normal:.7,win_countup:.6,coins:.6,golden_card:.8,golden_eliminate:.8,little_joker:.7,big_joker:.8,cascade:.7,multiplier:.8,scatter:.7,scatter_near:.7,freespin_trigger:.9,freespin_retrigger:.8,freespin_bigwin:.9,freespin_result:.7,return_base:.6,win_big:.8,mega_win:.9,ultimate_win:1,jackpot:1,paytable_open:.6,settings_open:.6,pause:.6,quit:.6,no_coins:.7,buy_bonus:.8};
 const MUSIC_CUES=new Set(['intro','win_normal','win_big','mega_win','ultimate_win','jackpot','freespin_bigwin']);

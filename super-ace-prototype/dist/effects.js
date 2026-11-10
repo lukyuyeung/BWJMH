@@ -1,4 +1,4 @@
-import {assetURL,prepareImages,loadImage} from './asset-cache.js?v=ledger-ten-v1';
+import {assetURL,prepareImages} from './asset-cache.js?v=calm-rewards-v1';
 import {createPresentationQuality} from './presentation-quality.js?v=comfort-v1';
 import {compactMoney} from './money.js?v=math-v1';
 export const ANIMATION_DEFINITIONS = Object.freeze([
@@ -588,8 +588,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  const doc=root.ownerDocument||root;const q=s=>root.querySelector(s),all=s=>[...root.querySelectorAll(s)];
  const app=q('.app')||doc.body;const stage=doc.createElement('div');stage.className='fx-stage';stage.setAttribute('aria-hidden','true');app.append(stage);
  const quality=createPresentationQuality({onChange:level=>doc.documentElement.dataset.fxQuality=level});let qualityFrame;function sampleFrame(time){if(qualityFrame&& !doc.hidden&&!clock?.paused&&(q('#spin')?.disabled||q('#modal.reward-modal')?.open))quality.sample(time-qualityFrame);qualityFrame=time;doc.defaultView.requestAnimationFrame(sampleFrame)}doc.defaultView.requestAnimationFrame(sampleFrame);
- let rainTexture,rainParticle;
- const ready=Promise.all([prepareImages(['aura','bubble','burst','halo','sweep','trail'].map(name=>ASSET_BASE+name+'.svg')),loadImage('assets/art/v9/carrot-waterfall-sheet.webp').then(img=>rainTexture=img),loadImage('assets/art/v9/gold-carrot-particle.webp').then(img=>rainParticle=img)]);
+ const ready=prepareImages([...['aura','bubble','burst','halo','sweep','trail'].map(name=>ASSET_BASE+name+'.svg'),'assets/art/v9/gold-carrot-particle.webp']);
  const history=[];const active=new Set(),idle=new Set(),counters=new Set();let idleTimer,paused=!!clock?.paused,mode=getSpeed(),idleEnabled=false,forceReduced=null;
  const reduced=()=>forceReduced??doc.defaultView.matchMedia('(prefers-reduced-motion: reduce)').matches;
  function applyFont(){const sample=q('.balance-bar strong');if(sample){app.style.setProperty('--fx-numeric-font',getComputedStyle(sample).fontFamily);doc.documentElement.style.setProperty('--fx-numeric-font',getComputedStyle(sample).fontFamily)}}applyFont();
@@ -637,29 +636,20 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  function coinsToBalance(detail,d=650){const src=element(detail.target,'.board-shell'),dest=q('#balance');if(!src||!dest)return[];const a=src.getBoundingClientRect(),b=dest.getBoundingClientRect(),sr=stage.getBoundingClientRect();const entries=[];for(let i=0;i<8;i++){const img=doc.createElement('img');img.src='assets/runtime/carrot-49719a53-q90-0da1bff27175.webp';img.className='fx-credit-carrot';img.alt='';const x=a.x+a.width*(.25+(i%4)*.16)-sr.x,y=a.y+a.height*.6-sr.y;Object.assign(img.style,{left:x+'px',top:y+'px'});stage.append(img);entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${(i-4)*7}px,-24px) scale(1)`,offset:.23},{opacity:0,transform:`translate(${b.x+b.width/2-sr.x-x}px,${b.y+b.height/2-sr.y-y}px) scale(.5)`}],d,{delay:i*24,cleanup:()=>img.remove()}))}return entries}
  function celebrate(detail,d,level=1){
   const host=element(detail.target,'.reward-amount')||q('#modalContent');if(!host)return[];const parent=host.parentElement,entries=[];host.classList.add('fx-number-host');
-  entries.push(counter(host,detail.from??0,detail.amount??detail.to??280,level===2?3600:2600,{preview:detail.preview}));
-  entries.push(overlay(parent,'aura',[{opacity:0,transform:'scale(.6)'},{opacity:.85,transform:'scale(1)',offset:.3},{opacity:.3,transform:'scale(1.15)'}],1500,{top:'-20%',height:'140%',zIndex:'0'}));
-  const title=parent.querySelector('.feature-title');if(title)entries.push(track(title,[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1.07)',offset:.7},{opacity:1,transform:'scale(1)'}],550));return entries;
+  entries.push(counter(host,detail.from??0,detail.amount??detail.to??280,level===2?2200:1800,{preview:detail.preview}));
+  entries.push(overlay(parent,'aura',[{opacity:0,transform:'scale(.6)'},{opacity:.22,transform:'scale(1)',offset:.3},{opacity:0,transform:'scale(1)'}],1500,{top:'-20%',height:'140%',zIndex:'0'}));
+  const title=parent.querySelector('.feature-title');if(title)entries.push(track(title,[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],550));return entries;
  }
- function startWaterfall(host,{mega=false}={}){
-  const layer=doc.createElement('div');layer.className='carrot-waterfall';layer.setAttribute('aria-hidden','true');
-  const canvas=doc.createElement('canvas');canvas.className='waterfall-canvas';layer.append(canvas);host.prepend(layer);
-  // One bounded backing store, independent of device DPR; card textures stay at native quality.
-  const width=host.clientWidth,height=host.clientHeight,ratio=Math.min(1,1280/Math.max(width,height));
-  canvas.width=Math.max(1,Math.round(width*ratio));canvas.height=Math.max(1,Math.round(height*ratio));
-  const ctx=canvas.getContext('2d',{alpha:true});ctx?.scale(ratio,ratio);
-  const count=reduced()?0:mega?18:12;let frame=0,stopped=false,last=0,lastDraw=0,elapsed=0;
-  function draw(){if(!ctx||!rainTexture)return;ctx.clearRect(0,0,width,height);ctx.globalAlpha=mega?1:.9;
-   const tileW=Math.min(width,440),tileH=tileW*rainTexture.naturalHeight/rainTexture.naturalWidth,offset=(elapsed*(mega?.22:.18))%tileH;
-   for(let x=0;x<width;x+=tileW)for(let y=offset-tileH;y<height;y+=tileH)ctx.drawImage(rainTexture,x,y,tileW,tileH);
-   const near=quality.level==='low'?Math.min(count,6):count;
-   if(rainParticle)for(let i=0;i<near;i++){const size=48+i%5*9,x=((i*67)%101)/100*(width-size),y=((elapsed*(.18+i%3*.05)+i*83)%(height+140))-90;ctx.save();ctx.globalAlpha=.9;ctx.translate(x+size/2,y+size/2);ctx.rotate((i*31+elapsed*.035)*Math.PI/180);ctx.drawImage(rainParticle,-size/2,-size/2,size,size);ctx.restore()}
-   ctx.globalAlpha=1;
-  }
-  function tick(now){if(stopped)return;const delta=last?Math.min(80,now-last):0;last=now;if(!paused&&!doc.hidden){elapsed+=delta;const interval=quality.level==='high'?1000/60:1000/30;if(now-lastDraw>=interval-1){draw();lastDraw=now}}frame=doc.defaultView.requestAnimationFrame(tick)}
-  draw();if(!reduced())frame=doc.defaultView.requestAnimationFrame(tick);
-  history.push({id:'CARROT-WATERFALL',renderer:'bounded-canvas',count,sheets:1,fullscreen:true,pixels:canvas.width*canvas.height,mega,at:performance.now()});
-  return{count,stop(){if(stopped)return;stopped=true;doc.defaultView.cancelAnimationFrame(frame);canvas.width=0;canvas.height=0;layer.remove()}};
+ function startCelebration(host,{mega=false}={}){
+  const scene=host.querySelector('.calm-reward-scene'),entries=[];if(!scene)return{stop(){}};
+  const add=(el,frames,duration,options={})=>{const entry=track(el,frames,duration,options);if(entry){entry.animation.playbackRate=1;entries.push(entry)}return entry};
+  const pile=scene.querySelector('.calm-reward-pile'),rabbit=scene.querySelector('.reward-rabbit-window');
+  add(pile,[{opacity:0,transform:'translateY(12px) scale(.85)'},{opacity:.65,transform:'translateY(0) scale(.91)',offset:.4},{opacity:1,transform:'translateY(0) scale(1.025)',offset:.85},{opacity:1,transform:'translateY(0) scale(1)'}],1800);
+  if(rabbit)add(rabbit,[{opacity:0,transform:'translateY(20px)'},{opacity:0,transform:'translateY(20px)',offset:.65},{opacity:1,transform:'translateY(0)'}],1800);
+  if(!reduced())for(let i=0;i<(mega?8:5);i++){const img=doc.createElement('img');img.className='calm-toss';img.src='assets/art/v9/gold-carrot-particle.webp';img.alt='';img.style.left=(18+i*(mega?8:14))+'%';scene.append(img);const dx=(i-(mega?3.5:2))*9;add(img,[{opacity:0,transform:'translate(0,20px) rotate(-8deg)'},{opacity:1,transform:`translate(${dx}px,-45px) rotate(8deg)`,offset:.38},{opacity:1,transform:`translate(${dx*1.3}px,5px) rotate(12deg)`,offset:.85},{opacity:0,transform:`translate(${dx*1.3}px,15px) rotate(12deg)`}],750,{delay:Math.floor(i/3)*220,cleanup:()=>img.remove()})}
+  for(const [i,glint]of [...scene.querySelectorAll('.calm-glint')].entries())add(glint,[{opacity:0,transform:'scale(.7)'},{opacity:.65,transform:'scale(1)',offset:.5},{opacity:0,transform:'scale(.8)'}],700,{delay:1700+i*280});
+  history.push({id:'CALM-REWARD',count:reduced()?0:mega?8:5,mega,at:performance.now()});
+  let stopped=false;return{stop(){if(stopped)return;stopped=true;entries.forEach(e=>{e.animation.cancel();e.cleanup?.()});scene.querySelectorAll('.calm-toss').forEach(el=>el.remove())}};
  }
  const idles={1:()=>track(q('.dealer'),[{filter:'brightness(1)'},{filter:'brightness(1.08)',offset:.5},{filter:'brightness(1)'}],1800,{persistent:true,iterations:Infinity}),13:()=>all('.card.gold:not(.special)').map((n,i)=>sweep(n,3000,{persistent:true,iterations:Infinity,delay:i*140})),17:()=>all('.cell[data-face^="ANGEL"] .card').map(n=>pulse(n,2000,1.012,{persistent:true,iterations:Infinity})),26:()=>all('.cell.carrot .art-card').map(n=>track(n,[{transform:'translateY(0) rotate(-1deg)'},{transform:'translateY(-3px) rotate(1deg)'},{transform:'translateY(0) rotate(-1deg)'}],2400,{persistent:true,iterations:Infinity}))};
  function play(input,detail={}){
@@ -781,5 +771,5 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  }
  function durationForPreview(id){const d=ANIMATION_DEFINITIONS.find(a=>a.id===id)?.duration??0;return reduced()?Math.min(d,140):d}
 
- return{countersFinished:()=>Promise.all([...counters].map(c=>c.entry.finished)),quality,startWaterfall,animate:track,get reducedMotion(){return reduced()},ready,play,setReducedMotion,startIdle,stopIdle,clear,setPlaybackRate,pause,resume,finishCounters,get isCounting(){return counters.size>0},history,durationFor:input=>ANIMATION_DEFINITIONS.find(d=>d.id===key(input))?.duration??0,previews:()=>ANIMATION_DEFINITIONS.map(a=>({...a})),preview};
+ return{countersFinished:()=>Promise.all([...counters].map(c=>c.entry.finished)),quality,startCelebration,animate:track,get reducedMotion(){return reduced()},ready,play,setReducedMotion,startIdle,stopIdle,clear,setPlaybackRate,pause,resume,finishCounters,get isCounting(){return counters.size>0},history,durationFor:input=>ANIMATION_DEFINITIONS.find(d=>d.id===key(input))?.duration??0,previews:()=>ANIMATION_DEFINITIONS.map(a=>({...a})),preview};
 }
