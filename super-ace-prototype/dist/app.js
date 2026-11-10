@@ -1,16 +1,16 @@
-import {createSessionActivity} from './session-activity.js?v=calm-rewards-v1';
-import {i18n,languagePicker,translate} from './i18n.js?v=calm-rewards-v1';
-import {createLoadingGuide} from './loading-guide.js?v=calm-rewards-v1';
-import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=calm-rewards-v1';
-import {createGameMusic} from './music.js?v=calm-rewards-v1';
-import {createRoundHistory} from './round-history.js?v=calm-rewards-v1';
-import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=calm-rewards-v1';
-import {createCarrotScenes} from './carrot-scenes.js?v=calm-rewards-v1';
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=calm-rewards-v1';
-import {createPlaybackClock} from './playback-clock.js?v=calm-rewards-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=calm-rewards-v1';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=calm-rewards-v1';
-import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=calm-rewards-v1';
+import {createSessionActivity} from './session-activity.js?v=card-reveal-v1';
+import {i18n,languagePicker,translate} from './i18n.js?v=card-reveal-v1';
+import {createLoadingGuide} from './loading-guide.js?v=card-reveal-v1';
+import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=card-reveal-v1';
+import {createGameMusic} from './music.js?v=card-reveal-v1';
+import {createRoundHistory} from './round-history.js?v=card-reveal-v1';
+import {prepareCardAssets,preparePlanAssets,ensureBoardImages,ensureCardImage} from './card-assets.js?v=card-reveal-v1';
+import {createCarrotScenes} from './carrot-scenes.js?v=card-reveal-v1';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=card-reveal-v1';
+import {createPlaybackClock} from './playback-clock.js?v=card-reveal-v1';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=card-reveal-v1';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=card-reveal-v1';
+import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=card-reveal-v1';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
 const legacy=(()=>{try{return reviewMode?{}:JSON.parse(localStorage.getItem('gala-carrot-v1'))||{}}catch{return{}}})();
@@ -29,7 +29,7 @@ function msg(t){$('#message').textContent=translate(t)}
 function toast(t){$('#toast').textContent=translate(t);$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),2800)}
 function setSound(value){soundOn=!!value;sessionStorageAdapter.setItem('gala-music-enabled',soundOn?'1':'0');music.setEnabled(soundOn);update()}
 function save(){if(isDemo)return;journal.write({balance,bet,board,free,freeTotal,lastWin,freeStartPending,active:activeRound})}
-function cardHTML(c){const special=['CARROT','ANGEL','DEVIL'].includes(c.symbol),path=c.symbol==='CARROT'?'carrot-bonus.png':c.symbol==='ANGEL'?'wild-angel-fitted.svg':c.symbol==='DEVIL'?'wild-devil-fitted.svg':`card-${c.gold?'gold':'normal'}-${c.symbol}.png`;return `<div class="card ${special?'special':''} ${c.gold?'gold':''}"><img class="art-card" src="${assetURL(`assets/art/${path}`)}" alt="${c.symbol}">${c.gold&&!special?'<img class="gold-frame-art" src="assets/runtime/card-gold-overlay-5576f9fc-display512.webp" alt="" aria-hidden="true">':''}</div>`}
+function cardHTML(c){const special=['CARROT','ANGEL','DEVIL'].includes(c.symbol),path=c.symbol==='CARROT'?'carrot-bonus.png':c.symbol==='ANGEL'?'wild-angel-fitted.svg':c.symbol==='DEVIL'?'wild-devil-fitted.svg':`card-${c.gold?'gold':'normal'}-${c.symbol}.png`;return `<div class="card ${special?'special':''} ${c.gold?'gold':''}"><img class="art-card" data-card-source="${assetURL(`assets/art/${path}`)}" src="${assetURL(`assets/art/${path}`)}" alt="${c.symbol}">${c.gold&&!special?'<img class="gold-frame-art" src="assets/runtime/card-gold-overlay-5576f9fc-display512.webp" alt="" aria-hidden="true">':''}</div>`}
 function render(){const nodes=$$('#board .cell');board.forEach((c,i)=>{let n=nodes[i];if(!n){n=document.createElement('div');$('#board').append(n)}n.className='cell '+(c.symbol==='CARROT'?'carrot':['ANGEL','DEVIL'].includes(c.symbol)?'wild':'');n.dataset.index=i;n.setAttribute('aria-label',translate(`${Math.floor(i/5)+1}行${i%5+1}列 ${c.symbol}`));const key=c.symbol+':'+Number(c.gold);if(n.dataset.face!==key){n.innerHTML=cardHTML(c);n.dataset.face=key}});update()}
 let amountFitFrame=0;
 function fitAmounts(){if(amountFitFrame)return;amountFitFrame=requestAnimationFrame(()=>{amountFitFrame=0;const fields=[];
@@ -66,7 +66,7 @@ async function runRecord(record,{recovering=false}={}){
   if(recovering){music.startRound(plan.isFree,{shuffle:!record.credited,total:plan.total,bet:roundBet});effect(48,{resuming:true})}
   if(!record.credited){
    effect(2);effect(3,{indices:board.map((_,i)=>i)});await wait(260);
-   board=structuredClone(plan.initialBoard);render();
+   board=structuredClone(plan.initialBoard);render();await ensureBoardImages();
    const covers=board.map((_,index)=>{const img=document.createElement('img');img.className='reveal-cover';img.src='assets/runtime/back-1ff4ca3b-display512.webp';img.alt='待揭牌';$$('#board .cell')[index].querySelector('.card').append(img);return img});
    $$('#board .cell').forEach(el=>el.classList.add('feed-waiting'));const revealedCarrots=[],feeds=[];effect(4);
    for(let col=0;col<5;col++){
@@ -87,10 +87,10 @@ async function runRecord(record,{recovering=false}={}){
     setMultiplier(step.index,plan.isFree);if(step.index)effect(11,{target:$('#multipliers .active'),multiplier:step.multiplier});
     lastWin=Math.round((lastWin+result.total)*100)/100;msg(`連鎖 ${step.index+1} · ×${step.multiplier}`);$$('#board .cell').forEach((n,i)=>n.classList.toggle('dim',!winning.includes(i)));effect(7,{indices:winning});if(gold.length)effect(14,{indices:gold});if(angel.length)effect(18,{indices:angel});effect(8,{indices:winning,amount:result.total,multiplier:step.multiplier,tier:Math.min(step.index,3),isFree:plan.isFree});update();await wait(Math.max(850,effects.durationFor(8)));
     const next=step.next;if(wild.length)effect(23,{indices:wild});effect(9,{indices:next.replacements.map(c=>c.index)});if(next.conversions.length)effect(15,{indices:next.conversions.map(c=>c.index)});await wait(260);
-    const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();const refill=next.replacements.length?effect(10,{indices:next.replacements.map(c=>c.index)}):null;
+    const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();await ensureBoardImages();const refill=next.replacements.length?effect(10,{indices:next.replacements.map(c=>c.index)}):null;
     const landedCarrots=next.replacements.filter(c=>board[c.index].symbol==='CARROT').map(c=>c.index);if(landedCarrots.length){effect(25,{indices:landedCarrots,carrotCount:board.filter(c=>c.symbol==='CARROT').length});if(board.filter(c=>c.symbol==='CARROT').length>=3)effect(30,{indices:landedCarrots})}
     for(const conversion of next.conversions){effect(conversion.card.symbol==='ANGEL'?16:19,{indices:[conversion.index],reveal:true});}await Promise.all([wait(next.conversions.length?650:280),refill?.finished]);
-    if(next.copies.length){const sources=[...new Set(next.copies.map(c=>c.source))];effect(20,{indices:sources});await wait(280);effect(21,{indices:next.copies.map(c=>c.index)});effect(22,{copies:next.copies});await wait(650);board=structuredClone(next.board);render();effect(19,{indices:next.copies.map(c=>c.index)});await wait(400)}
+    if(next.copies.length){const sources=[...new Set(next.copies.map(c=>c.source))];effect(20,{indices:sources});await wait(280);effect(21,{indices:next.copies.map(c=>c.index)});effect(22,{copies:next.copies});await wait(650);board=structuredClone(next.board);render();await ensureBoardImages();effect(19,{indices:next.copies.map(c=>c.index)});await wait(400)}
     effect(24);await wait(150);
    }
    board=structuredClone(plan.finalBoard);const before=balance,state={balance,free,freeTotal};if(!record.demo)settleRound(state,record);else record.credited=true;applyState(state);lastWin=plan.total;save();history.commit(record,balance);sessionHistory.commit(record,balance);render();effect(41,{from:before,to:balance,target:$('#balance')});
@@ -103,7 +103,7 @@ async function runRecord(record,{recovering=false}={}){
   if(auto&&!plan.isFree&&!record.autoApplied){auto.left--;record.autoApplied=true;effect(43,{target:$('#auto')});if(auto.left<=0||plan.total/roundBet>=auto.ratio||balance<auto.lower||balance>auto.upper||roundBet>maxBet(balance)){auto=null;effect(43,{stopped:true})}}
   activeRound=null;msg(plan.total?`本局獲得 ${fmt(plan.total)} 蘿蔔`:'本局沒有中獎。');save();effect(12);
  }catch(error){console.error(error);auto=null;msg('牌局已保存，重新整理後繼續。');toast('已保留本局結果，請重新整理恢復。')}
- finally{busy=false;isDemo=false;render();if(plan.isFree&&free===0&&!activeRound){setMultiplier(0,false);effect(33)}music.endRound(free>0);idle()}
+ finally{$$('#board .cell').forEach(el=>{el.classList.remove('feed-waiting','feed-active');el.style.removeProperty('clip-path');delete el.dataset.feedToken;el.querySelectorAll('.reveal-cover').forEach(cover=>cover.remove())});busy=false;isDemo=false;render();if(plan.isFree&&free===0&&!activeRound){setMultiplier(0,false);effect(33)}music.endRound(free>0);idle()}
  if(activeRound)return;
  if(free>0&&freeStartPending){setMultiplier(0,true);update();return}
  if(free>0){if(free===1){effect(35,{target:$('#freePill')});msg('最後一次免費遊戲')}await wait(400);spin()}else if(auto&&!stopRequested){await wait(650);if(auto&&!busy)spin()}
@@ -152,6 +152,7 @@ const lessons=[['不同位置，也能連成幸運','由最左列開始，至少
 function tutorial(i){const [title,text,art]=lessons[i];openModal(`<h2>${title}</h2>${art}<p>${text}</p><div class="tutorial-progress">${lessons.map((_,j)=>`<i class="${j===i?'active':''}"></i>`).join('')}</div><div class="btn-row"><button class="btn" id="skipLesson">跳過</button><button class="btn primary" id="nextLesson">${i===3?'開始遊戲':'下一步'}</button></div>`,47);const done=()=>{localStorage.setItem('gala-carrot-tutorial','1');close()};$('#skipLesson').onclick=done;$('#nextLesson').onclick=()=>i===3?done():tutorial(i+1)}
 const resetPlaytest=()=>{if(busy||free||activeRound){toast('請先完成目前遊戲');return}openModal('<h2>重新開始試玩？</h2><p>將本瀏覽器的測試蘿蔔重設為 2,000，並停止 Auto。</p><div class="btn-row"><button class="btn" id="cancelReset">取消</button><button class="btn primary" id="confirmReset">重設</button></div>');$('#cancelReset').onclick=close;$('#confirmReset').onclick=()=>{auto=null;balance=2000;bet=20;lastWin=0;sessionTotal.reset(balance);sessionHistory.clear();save();render();close();msg('新的金色時刻，開始吧。')}};
 const demoAnimation=()=>{if(busy||free||activeRound){toast('請先完成目前遊戲');return}auto=null;spin({demo:true})};
+$('#board').addEventListener('error',e=>{const img=e.target;if(img.matches?.('.art-card,.gold-frame-art')&&!img.dataset.cardRepairFailed)ensureCardImage(img).catch(error=>console.error('Card image recovery failed',error))},true);
 $('.mouths').innerHTML=Array.from({length:5},()=>'<div class="mouth"><img class="dealer-outlet-art" src="assets/runtime/dealer-outlet-3df1c5ff-display1536w-q90-069c79a9f6db.webp" alt=""><div class="dealer-ready-window"><img src="assets/runtime/back-1ff4ca3b-display512.webp" alt=""></div><div class="dealer-front-lip"><img src="assets/runtime/dealer-outlet-3df1c5ff-display1536w-q90-069c79a9f6db.webp" alt=""></div></div>').join('');
 function alignDealer(){$('.game').style.setProperty('--board-width',$('.board-shell').getBoundingClientRect().width+'px');scenes.resize()}
 new ResizeObserver(alignDealer).observe($('.board-shell'));window.addEventListener('resize',()=>{fitAmounts();alignDealer()});document.fonts.ready.then(fitAmounts);

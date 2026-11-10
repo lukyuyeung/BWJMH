@@ -1,4 +1,4 @@
-import {translations,dynamicTranslations} from './locale-copy.js?v=calm-rewards-v1';
+import {translations,dynamicTranslations} from './locale-copy.js?v=card-reveal-v1';
 const valid=['zh-Hant','en','fil'];let locale='zh-Hant';try{const saved=localStorage.getItem('gala-language-v1');if(valid.includes(saved))locale=saved}catch{}
 const patterns=dynamicTranslations.map(r=>({...r,re:new RegExp(r.pattern)}));
 export function translate(source){if(locale==='zh-Hant')return source;const trimmed=source.trim();if(!trimmed)return source;const column=locale==='en'?0:1;let output=translations[trimmed]?.[column];if(output===undefined)for(const r of patterns){if(r.re.test(trimmed)){const match=trimmed.match(r.re);output=r[locale].replace(/\$(\d+)/g,(_,n)=>translate(match[Number(n)]??''));break}}return output===undefined?source:source.replace(trimmed,output)}

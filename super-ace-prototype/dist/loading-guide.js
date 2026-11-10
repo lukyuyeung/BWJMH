@@ -1,5 +1,5 @@
-import {languagePicker,i18n} from './i18n.js?v=calm-rewards-v1';
-import {assetURL,loadImage} from './asset-cache.js?v=calm-rewards-v1';
+import {languagePicker,i18n} from './i18n.js?v=card-reveal-v1';
+import {assetURL,loadImage} from './asset-cache.js?v=card-reveal-v1';
 const slides=[
  {key:'ways',title:'由左開始，連續三列中獎',body:'相同符號由最左列起，至少連續出現3列。',note:'不必在同一行。',mascot:'ways',art:'ways'},
  {key:'gold',title:'金牌中獎後，翻成 WILD',body:'天使替代普通牌；惡魔還能擴散。',note:'WILD不替代CARROT。',mascot:'gold-k',art:'wild'},
