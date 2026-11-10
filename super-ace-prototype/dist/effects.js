@@ -1,4 +1,4 @@
-import {assetURL,prepareImages} from './asset-cache.js?v=card-reveal-v1';
+import {assetURL,prepareImages} from './asset-cache.js?v=guide-no-title-v1';
 import {createPresentationQuality} from './presentation-quality.js?v=comfort-v1';
 import {compactMoney} from './money.js?v=math-v1';
 export const ANIMATION_DEFINITIONS = Object.freeze([
@@ -588,7 +588,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  const doc=root.ownerDocument||root;const q=s=>root.querySelector(s),all=s=>[...root.querySelectorAll(s)];
  const app=q('.app')||doc.body;const stage=doc.createElement('div');stage.className='fx-stage';stage.setAttribute('aria-hidden','true');app.append(stage);
  const quality=createPresentationQuality({onChange:level=>doc.documentElement.dataset.fxQuality=level});let qualityFrame;function sampleFrame(time){if(qualityFrame&& !doc.hidden&&!clock?.paused&&(q('#spin')?.disabled||q('#modal.reward-modal')?.open))quality.sample(time-qualityFrame);qualityFrame=time;doc.defaultView.requestAnimationFrame(sampleFrame)}doc.defaultView.requestAnimationFrame(sampleFrame);
- const ready=prepareImages([...['aura','bubble','burst','halo','sweep','trail'].map(name=>ASSET_BASE+name+'.svg'),'assets/art/v9/gold-carrot-particle.webp']);
+ const ready=prepareImages(['aura','bubble','burst','halo','sweep','trail'].map(name=>ASSET_BASE+name+'.svg'));
  const history=[];const active=new Set(),idle=new Set(),counters=new Set();let idleTimer,paused=!!clock?.paused,mode=getSpeed(),idleEnabled=false,forceReduced=null;
  const reduced=()=>forceReduced??doc.defaultView.matchMedia('(prefers-reduced-motion: reduce)').matches;
  function applyFont(){const sample=q('.balance-bar strong');if(sample){app.style.setProperty('--fx-numeric-font',getComputedStyle(sample).fontFamily);doc.documentElement.style.setProperty('--fx-numeric-font',getComputedStyle(sample).fontFamily)}}applyFont();
@@ -602,8 +602,7 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
   const entry={animation,duration,iterations,persistent,cleanup};active.add(entry);if(persistent)idle.add(entry);
   animation.playbackRate=s===0?100000:1/s;
   if(paused)animation.pause();
-  let settle;const completion=new Promise(resolve=>settle=resolve);entry.settle=settle;animation.addEventListener('finish',settle,{once:true});animation.addEventListener('cancel',settle,{once:true});Promise.resolve().then(()=>animation.finished).then(settle,settle);
-  const finished=completion.then(()=>{animation.removeEventListener('finish',settle);animation.removeEventListener('cancel',settle);if(!persistent){active.delete(entry);cleanup?.();animation.cancel()}});
+  const finished=animation.finished.catch(()=>{}).then(()=>{if(!persistent){active.delete(entry);cleanup?.();animation.cancel()}});
   entry.finished=finished;return entry;
  }
  function art(host,name,className='fx-art',style={}){
@@ -637,20 +636,25 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  function coinsToBalance(detail,d=650){const src=element(detail.target,'.board-shell'),dest=q('#balance');if(!src||!dest)return[];const a=src.getBoundingClientRect(),b=dest.getBoundingClientRect(),sr=stage.getBoundingClientRect();const entries=[];for(let i=0;i<8;i++){const img=doc.createElement('img');img.src='assets/runtime/carrot-49719a53-q90-0da1bff27175.webp';img.className='fx-credit-carrot';img.alt='';const x=a.x+a.width*(.25+(i%4)*.16)-sr.x,y=a.y+a.height*.6-sr.y;Object.assign(img.style,{left:x+'px',top:y+'px'});stage.append(img);entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${(i-4)*7}px,-24px) scale(1)`,offset:.23},{opacity:0,transform:`translate(${b.x+b.width/2-sr.x-x}px,${b.y+b.height/2-sr.y-y}px) scale(.5)`}],d,{delay:i*24,cleanup:()=>img.remove()}))}return entries}
  function celebrate(detail,d,level=1){
   const host=element(detail.target,'.reward-amount')||q('#modalContent');if(!host)return[];const parent=host.parentElement,entries=[];host.classList.add('fx-number-host');
-  entries.push(counter(host,detail.from??0,detail.amount??detail.to??280,level===2?2200:1800,{preview:detail.preview}));
-  entries.push(overlay(parent,'aura',[{opacity:0,transform:'scale(.6)'},{opacity:.22,transform:'scale(1)',offset:.3},{opacity:0,transform:'scale(1)'}],1500,{top:'-20%',height:'140%',zIndex:'0'}));
-  const title=parent.querySelector('.feature-title');if(title)entries.push(track(title,[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],550));return entries;
+  entries.push(counter(host,detail.from??0,detail.amount??detail.to??280,level===2?3600:2600,{preview:detail.preview}));
+  entries.push(overlay(parent,'aura',[{opacity:0,transform:'scale(.6)'},{opacity:.85,transform:'scale(1)',offset:.3},{opacity:.3,transform:'scale(1.15)'}],1500,{top:'-20%',height:'140%',zIndex:'0'}));
+  const title=parent.querySelector('.feature-title');if(title)entries.push(track(title,[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1.07)',offset:.7},{opacity:1,transform:'scale(1)'}],550));return entries;
  }
- function startCelebration(host,{mega=false}={}){
-  const scene=host.querySelector('.calm-reward-scene'),entries=[];if(!scene)return{stop(){}};
-  const add=(el,frames,duration,options={})=>{const entry=track(el,frames,duration,options);if(entry){entry.animation.playbackRate=1;entries.push(entry)}return entry};
-  const pile=scene.querySelector('.calm-reward-pile'),rabbit=scene.querySelector('.reward-rabbit-window');
-  add(pile,[{opacity:0,transform:'translateY(12px) scale(.85)'},{opacity:.65,transform:'translateY(0) scale(.91)',offset:.4},{opacity:1,transform:'translateY(0) scale(1.025)',offset:.85},{opacity:1,transform:'translateY(0) scale(1)'}],1800);
-  if(rabbit)add(rabbit,[{opacity:0,transform:'translateY(20px)'},{opacity:0,transform:'translateY(20px)',offset:.65},{opacity:1,transform:'translateY(0)'}],1800);
-  if(!reduced())for(let i=0;i<(mega?8:5);i++){const img=doc.createElement('img');img.className='calm-toss';img.src='assets/art/v9/gold-carrot-particle.webp';img.alt='';img.style.left=(18+i*(mega?8:14))+'%';scene.append(img);const dx=(i-(mega?3.5:2))*9;add(img,[{opacity:0,transform:'translate(0,20px) rotate(-8deg)'},{opacity:1,transform:`translate(${dx}px,-45px) rotate(8deg)`,offset:.38},{opacity:1,transform:`translate(${dx*1.3}px,5px) rotate(12deg)`,offset:.85},{opacity:0,transform:`translate(${dx*1.3}px,15px) rotate(12deg)`}],750,{delay:Math.floor(i/3)*220,cleanup:()=>img.remove()})}
-  for(const [i,glint]of [...scene.querySelectorAll('.calm-glint')].entries())add(glint,[{opacity:0,transform:'scale(.7)'},{opacity:.65,transform:'scale(1)',offset:.5},{opacity:0,transform:'scale(.8)'}],700,{delay:1700+i*280});
-  history.push({id:'CALM-REWARD',count:reduced()?0:mega?8:5,mega,at:performance.now()});
-  let stopped=false;return{stop(){if(stopped)return;stopped=true;entries.forEach(e=>{e.animation.cancel();e.cleanup?.()});scene.querySelectorAll('.calm-toss').forEach(el=>el.remove())}};
+ function startWaterfall(host,{mega=false}={}){
+  const layer=doc.createElement('div');layer.className='carrot-waterfall';layer.setAttribute('aria-hidden','true');host.prepend(layer);const entries=[],count=reduced()?0:quality.budget(mega);let stopped=false;
+  const width=host.clientWidth,height=host.clientHeight;
+  for(let i=0;i<count;i++){const img=doc.createElement('img');img.src='assets/runtime/carrot-49719a53-q90-0da1bff27175.webp';img.alt='';img.className='waterfall-carrot';const depth=i%3,size=depth===0?12+i%7:depth===1?24+i%11:38+i%17;
+   // Near particles favour the sides, preserving the title and amount in front.
+   const fraction=depth===2?(i%2?.77+(i%13)/65:.04+(i%13)/65):((i*47)%101)/100,x=fraction*width;
+   Object.assign(img.style,{width:size+'px',height:size+'px',left:x+'px',top:'-70px',opacity:depth===0?'.4':depth===1?'.75':'1',zIndex:String(depth)});layer.append(img);
+   const duration=depth===0?3300+(i%5)*160:depth===1?2400+(i%5)*100:1800+(i%5)*100;
+   entries.push(track(img,[{transform:`translate(0,0) rotate(${i*29%180}deg)`},{transform:`translate(${(i%7-3)*9}px,${height+155}px) rotate(${260+i*37%300}deg)`}],duration,{iterations:Infinity,delay:-(i*137%duration),easing:'linear',cleanup:()=>img.remove()}));
+  }
+  layer.style.opacity='0';entries.push(track(layer,[{opacity:0},{opacity:1}],500,{delay:200,cleanup:()=>{if(!stopped)layer.style.opacity='1'}}));
+  for(let i=0;i<(reduced()?0:12);i++){const img=doc.createElement('img');img.src='assets/runtime/carrot-49719a53-q90-0da1bff27175.webp';img.alt='';img.className='waterfall-burst';layer.append(img);const dx=(i-5.5)*29;entries.push(track(img,[{opacity:0,transform:'translate(0,0) scale(.5)'},{opacity:1,transform:`translate(${dx*.6}px,-220px) scale(1)`,offset:.45},{opacity:0,transform:`translate(${dx}px,-110px) rotate(${dx}deg) scale(.7)`}],850,{delay:i%4*35,cleanup:()=>img.remove()}))}
+  const particles=entries.slice(0,count);const unsubscribe=quality.subscribe(()=>{const budget=quality.budget(mega);for(let i=budget;i<particles.length;i++)particles[i]?.animation.cancel()});
+  history.push({id:'CARROT-WATERFALL',count,mega,at:performance.now()});
+  return{count,stop(){if(stopped)return;stopped=true;unsubscribe();entries.forEach(e=>e?.animation.cancel());layer.remove()}};
  }
  const idles={1:()=>track(q('.dealer'),[{filter:'brightness(1)'},{filter:'brightness(1.08)',offset:.5},{filter:'brightness(1)'}],1800,{persistent:true,iterations:Infinity}),13:()=>all('.card.gold:not(.special)').map((n,i)=>sweep(n,3000,{persistent:true,iterations:Infinity,delay:i*140})),17:()=>all('.cell[data-face^="ANGEL"] .card').map(n=>pulse(n,2000,1.012,{persistent:true,iterations:Infinity})),26:()=>all('.cell.carrot .art-card').map(n=>track(n,[{transform:'translateY(0) rotate(-1deg)'},{transform:'translateY(-3px) rotate(1deg)'},{transform:'translateY(0) rotate(-1deg)'}],2400,{persistent:true,iterations:Infinity}))};
  function play(input,detail={}){
@@ -662,20 +666,13 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    case 3:add(cardMotion(nodes,[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(12px) scale(.92)'}],d));break;
    case 4:all('.mouth>.dealer-outlet-art').forEach((el,i)=>add(track(el,[{filter:'brightness(1)'},{filter:'brightness(1.45)',offset:.55},{filter:'brightness(1)'}],d,{delay:i*35})));add(sweep(q('.dealer'),d));break;
    case 5:case 10:{
-    // Move the original image through an overflow viewport: no clone, no negative clip-path.
-    const sr=stage.getBoundingClientRect(),outlets=all('.mouth').map(el=>el.getBoundingClientRect()),snapshots=nodes.map(el=>({el,card:el.querySelector('.card'),index:Number(el.dataset.index),box:el.getBoundingClientRect()})),feeds=[];
+    const sr=stage.getBoundingClientRect(),outlets=all('.mouth').map(el=>el.getBoundingClientRect()),snapshots=nodes.map(el=>({el,card:el.querySelector('.card'),index:Number(el.dataset.index),box:el.getBoundingClientRect()}));
     snapshots.forEach(({el,card,index,box})=>{if(!card)return;const outlet=outlets[index%5];if(!outlet)return;
-     const token=String(performance.now())+':'+index,top=outlet.bottom-2,travel=box.top-top;el.dataset.feedToken=token;el.classList.add('feed-waiting');
-     // Retained same-face cards must not inherit a previous discard/elimination transform.
-     for(const old of active)if(old.animation.effect?.target===card){old.animation.cancel();old.settle?.()}
+     const top=outlet.bottom-2,travel=box.top-top,token=String(performance.now())+':'+index;el.dataset.feedToken=token;el.classList.add('feed-waiting');
      const viewport=doc.createElement('div');viewport.className='feed-viewport';Object.assign(viewport.style,{left:`${box.left-sr.left}px`,top:`${top-sr.top}px`,width:`${box.width}px`,height:`${travel+box.height+5}px`});
-     const flight=doc.createElement('div');flight.className='cell feed-card'+(el.classList.contains('carrot')?' carrot':el.classList.contains('wild')?' wild':'');Object.assign(flight.style,{width:`${box.width}px`,height:`${box.height}px`});flight.append(card);viewport.append(flight);stage.append(viewport);
-     const reveal=()=>{if(el.dataset.feedToken===token){el.append(card);el.classList.remove('feed-waiting','feed-active');el.style.removeProperty('clip-path');delete el.dataset.feedToken}viewport.remove()};
-     try{const entry=track(flight,[{transform:`translateY(${-box.height+5}px)`,opacity:1},{transform:`translateY(${travel+3}px)`,opacity:1,offset:.88},{transform:`translateY(${travel}px)`,opacity:1}],detail.slow?480:220,{delay:(3-Math.floor(index/5))*(detail.slow?40:20)+(n===10?index%5*12:0),easing:'cubic-bezier(.3,.02,.35,1)',cleanup:reveal});feeds.push(entry);add(entry)}catch{reveal()}
-    });
-    const guard=clock?.wait?clock.wait(detail.slow?1600:1200):new Promise(resolve=>setTimeout(resolve,detail.slow?1600:1200));
-    guard.then(()=>{for(const entry of feeds)if(active.has(entry)){try{entry.animation.finish()}catch{}entry.settle();history.push({id:'FEED-RECOVERED',at:performance.now()})}});
-    break;
+     const flight=doc.createElement('div');flight.className='cell feed-card'+(el.classList.contains('carrot')?' carrot':el.classList.contains('wild')?' wild':'');Object.assign(flight.style,{width:`${box.width}px`,height:`${box.height}px`});flight.append(card.cloneNode(true));viewport.append(flight);stage.append(viewport);
+     add(track(flight,[{transform:`translateY(${-box.height+5}px)`,opacity:1},{transform:`translateY(${travel+3}px)`,opacity:1,offset:.88},{transform:`translateY(${travel}px)`,opacity:1}],detail.slow?480:220,{delay:(3-Math.floor(index/5))*(detail.slow?40:20)+(n===10?index%5*12:0),easing:'cubic-bezier(.3,.02,.35,1)',cleanup:()=>{viewport.remove();if(el.dataset.feedToken===token){el.classList.remove('feed-waiting');delete el.dataset.feedToken}}}));
+    });break;
    }
    case 6:add(track(q('#message'),[{opacity:.4,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}],d));break;
    case 7:add(glow(nodes,d));add(cardMotion(nodes,[{filter:'brightness(1)'},{filter:'brightness(1.18)',offset:.45},{filter:'brightness(1)'}],d));break;
@@ -779,5 +776,5 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
  }
  function durationForPreview(id){const d=ANIMATION_DEFINITIONS.find(a=>a.id===id)?.duration??0;return reduced()?Math.min(d,140):d}
 
- return{countersFinished:()=>Promise.all([...counters].map(c=>c.entry.finished)),quality,startCelebration,animate:track,get reducedMotion(){return reduced()},ready,play,setReducedMotion,startIdle,stopIdle,clear,setPlaybackRate,pause,resume,finishCounters,get isCounting(){return counters.size>0},history,durationFor:input=>ANIMATION_DEFINITIONS.find(d=>d.id===key(input))?.duration??0,previews:()=>ANIMATION_DEFINITIONS.map(a=>({...a})),preview};
+ return{countersFinished:()=>Promise.all([...counters].map(c=>c.entry.finished)),quality,startWaterfall,animate:track,get reducedMotion(){return reduced()},ready,play,setReducedMotion,startIdle,stopIdle,clear,setPlaybackRate,pause,resume,finishCounters,get isCounting(){return counters.size>0},history,durationFor:input=>ANIMATION_DEFINITIONS.find(d=>d.id===key(input))?.duration??0,previews:()=>ANIMATION_DEFINITIONS.map(a=>({...a})),preview};
 }

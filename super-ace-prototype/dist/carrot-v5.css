@@ -16,8 +16,7 @@
 .app[data-heat='3'] .board-shell:before{animation:framePower 1.8s ease-in-out infinite}
 .app[data-heat='3'][data-scene-free='true'] .board-shell:before{animation-duration:1.25s}
 @keyframes framePower{0%,100%{opacity:.78}50%{opacity:1}}
-.feed-waiting:not(.feed-active)>.card{visibility:hidden}
-.cell.feed-active{z-index:30!important}.cell.feed-active>.card{visibility:visible!important}
+.feed-waiting>.card{visibility:hidden}
 .feed-viewport{position:absolute;overflow:hidden;pointer-events:none;z-index:20}
 .feed-card{position:absolute!important;left:0;top:0;perspective:none;aspect-ratio:auto;pointer-events:none}
 .feed-card:before{display:none!important}
