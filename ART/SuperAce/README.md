@@ -1,3 +1,5 @@
+最新更新：[恢復ROLL、期待、翻牌／Joker與BIG WIN音樂](25_Restored_Event_Audio/README.md)。
+
 最新更新：[ROLL保持背景曲，×1／×2／×3／×5逐級配樂](24_Multiplier_Music/README.md)。
 
 最新更新：[待機、Roll、單段中獎與獨立AUTO／速度圖案](23_Roll_Flow_Controls/README.md)。

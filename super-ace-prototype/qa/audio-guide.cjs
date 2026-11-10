@@ -1,2 +1,2 @@
-// Latest multiplier-stage sound policy.
-require('./cascade-music.cjs');
+// Current gameplay event audio, including uploaded Joker replacements.
+require('./event-audio.cjs');

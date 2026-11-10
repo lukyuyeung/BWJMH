@@ -1,0 +1,4118 @@
+[
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1459.699999988079,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1588.3999999761581,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1588.5999999642372,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1589.0999999642372,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_reel_spin.m4a",
+        "duration": 2.5,
+        "lag": 0.40000003576278687,
+        "activeSfx": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 2425.5,
+        "round": 1,
+        "elapsed": 836.3999999761581
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2507.300000011921,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2507.300000011921,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_win_normal.m4a",
+        "duration": 1.5,
+        "lag": 0,
+        "activeSfx": 0
+      },
+      {
+        "kind": "finished",
+        "id": "win_normal",
+        "at": 3998.399999976158,
+        "round": 1,
+        "elapsed": 1491.0999999642372
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 4096.599999964237,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2000,
+      "bet": 20,
+      "sessionNet": 0,
+      "board": [
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "lobby",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "lobby"
+        ],
+        "gains": {
+          "lobby": 0.23999999463558197,
+          "base": 0,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": true,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 14,
+        "total": 14,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1443.199999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1443.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1591.3999999761581,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1591.699999988079,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 1854.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1855.199999988079,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1927.800000011921,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1998.8999999761581,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2070.099999964237,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2141.300000011921,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-25",
+        "at": 2358.699999988079,
+        "indices": [
+          3
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 2506.300000011921,
+        "indices": [
+          0,
+          7,
+          11,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 2507.300000011921,
+        "indices": [
+          0,
+          7,
+          11,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 3367.199999988079,
+        "indices": [
+          0,
+          7,
+          11,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 3629.199999988079,
+        "indices": [
+          0,
+          7,
+          11,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 3942,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 4094,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 4095.599999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 4096.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-26",
+        "at": 4096.899999976158,
+        "indices": [],
+        "preview": false
+      }
+    ],
+    "seed": 1
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1415,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1526.6000000238419,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1526.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1527,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_reel_spin.m4a",
+        "duration": 2.5,
+        "lag": 0.30000001192092896,
+        "activeSfx": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 2367.100000023842,
+        "round": 1,
+        "elapsed": 840.1000000238419
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 2450.199999988079,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 1980,
+      "bet": 20,
+      "sessionNet": -20,
+      "board": [
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "lobby",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "lobby"
+        ],
+        "gains": {
+          "lobby": 0.23999999463558197,
+          "base": 0,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": false,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 14,
+        "total": 14,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1400.6000000238419,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1401.1000000238419,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1529.199999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1529.3999999761581,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 1792.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1792.699999988079,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1865.8999999761581,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1937,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2008.1000000238419,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2079,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-06",
+        "at": 2447.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 2448.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 2449.600000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 2450.300000011921,
+        "indices": [],
+        "preview": false
+      }
+    ],
+    "seed": 2
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1378.6000000238419,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1490.300000011921,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1490.4000000357628,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1490.7000000476837,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_reel_spin.m4a",
+        "duration": 2.5,
+        "lag": 0.30000001192092896,
+        "activeSfx": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 2328.600000023842,
+        "round": 1,
+        "elapsed": 837.8999999761581
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2410.300000011921,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2410.5,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_win_normal.m4a",
+        "duration": 1.5,
+        "lag": 0.19999998807907104,
+        "activeSfx": 0
+      },
+      {
+        "kind": "finished",
+        "id": "win_normal",
+        "at": 3909.800000011921,
+        "round": 1,
+        "elapsed": 1499.300000011921
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 4017,
+        "round": 1,
+        "multiplier": 2,
+        "tier": 1,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 4017.100000023842,
+        "round": 1,
+        "multiplier": 2,
+        "tier": 1,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_win_big.m4a",
+        "duration": 4,
+        "lag": 0.10000002384185791,
+        "activeSfx": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 5381.700000047684,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "mega_win",
+        "at": 5647.200000047684,
+        "round": 1,
+        "multiplier": 3,
+        "tier": 2,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "stopped",
+        "id": "win_big",
+        "at": 5647.300000011921,
+        "round": 1,
+        "elapsed": 1630.199999988079
+      },
+      {
+        "kind": "played",
+        "id": "mega_win",
+        "at": 5647.5,
+        "round": 1,
+        "multiplier": 3,
+        "tier": 2,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_mega_win.m4a",
+        "duration": 5.8,
+        "lag": 0.2999999523162842,
+        "activeSfx": 0
+      },
+      {
+        "kind": "event",
+        "id": "ultimate_win",
+        "at": 7341.800000011921,
+        "round": 1,
+        "multiplier": 5,
+        "tier": 3,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "stopped",
+        "id": "mega_win",
+        "at": 7341.900000035763,
+        "round": 1,
+        "elapsed": 1694.4000000357628
+      },
+      {
+        "kind": "played",
+        "id": "ultimate_win",
+        "at": 7342.100000023842,
+        "round": 1,
+        "multiplier": 5,
+        "tier": 3,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_ultimate_win.m4a",
+        "duration": 7.5,
+        "lag": 0.30000001192092896,
+        "activeSfx": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 12536.600000023842,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2148,
+      "bet": 20,
+      "sessionNet": 148,
+      "board": [
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.03750000149011612,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": true,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 14,
+        "total": 14,
+        "activeSfx": 0,
+        "active": [
+          {
+            "id": "ultimate_win",
+            "bus": "music"
+          }
+        ],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1363.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1364,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1493.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1493.7000000476837,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 1756.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1756.9000000357628,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1829.5,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1900.800000011921,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1971.9000000357628,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2042.800000011921,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-25",
+        "at": 2128.400000035763,
+        "indices": [
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 2409.7000000476837,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 2410.600000023842,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 3267.7000000476837,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 3529.800000011921,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 3861.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 4015.7000000476837,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 4016.400000035763,
+        "indices": [
+          2,
+          3,
+          10,
+          11,
+          13,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 4017.100000023842,
+        "indices": [
+          2,
+          3,
+          10,
+          11,
+          13,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 4870.100000023842,
+        "indices": [
+          2,
+          3,
+          10,
+          11,
+          13,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 5134.100000023842,
+        "indices": [
+          2,
+          3,
+          10,
+          11,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 5478.200000047684,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 5642.200000047684,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 5646.400000035763,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 5647.600000023842,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 6568.200000047684,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 6836.700000047684,
+        "indices": [
+          2,
+          6,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 7178.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 7339.200000047684,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 7341.400000035763,
+        "indices": [
+          1,
+          12,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 7342.100000023842,
+        "indices": [
+          1,
+          12,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 8197.200000047684,
+        "indices": [
+          1,
+          12,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 8469.800000011921,
+        "indices": [
+          1,
+          12,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 8834.700000047684,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 8987.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 9007.900000035763,
+        "indices": [
+          0,
+          1,
+          5,
+          7,
+          10,
+          15,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 9151.800000011921,
+        "indices": [
+          0,
+          1,
+          5,
+          7,
+          10,
+          15,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 10010.600000023842,
+        "indices": [
+          0,
+          1,
+          5,
+          7,
+          10,
+          15,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 10320.300000011921,
+        "indices": [
+          0,
+          1,
+          5,
+          7,
+          10,
+          15,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 10645.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 10797.200000047684,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 10799.900000035763,
+        "indices": [
+          6,
+          7,
+          10
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 10800.300000011921,
+        "indices": [
+          6,
+          7,
+          10
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 11784.800000011921,
+        "indices": [
+          6,
+          7,
+          10
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 12048.800000011921,
+        "indices": [
+          6,
+          7,
+          10
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 12378,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 12534.400000035763,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 12535.700000047684,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 12536.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-26",
+        "at": 12537.100000023842,
+        "indices": [],
+        "preview": false
+      }
+    ],
+    "seed": 37
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 2925.5,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 3025.899999976158,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 3026.099999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 3026.399999976158,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_reel_spin.m4a",
+        "duration": 2.5,
+        "lag": 0.30000001192092896,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "scatter_near",
+        "at": 3667.399999976158,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "scatter_near",
+        "at": 3667.5,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_scatter_near.m4a",
+        "duration": 3,
+        "lag": 0,
+        "activeSfx": 2
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 6967.799999952316,
+        "round": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "scatter_near",
+        "at": 7517.099999964237,
+        "round": 1,
+        "elapsed": 3849.699999988079
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 7517.799999952316,
+        "round": 1,
+        "elapsed": 4491.300000011921
+      },
+      {
+        "kind": "event",
+        "id": "freespin_trigger",
+        "at": 8714.099999964237,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "freespin_trigger",
+        "at": 8714.299999952316,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_freespin_trigger.m4a",
+        "duration": 4,
+        "lag": 0.19999998807907104,
+        "activeSfx": 1
+      },
+      {
+        "kind": "finished",
+        "id": "freespin_trigger",
+        "at": 12717.299999952316,
+        "round": 1,
+        "elapsed": 4003
+      },
+      {
+        "kind": "bgm",
+        "id": "free",
+        "at": 13977,
+        "round": 1
+      },
+      {
+        "kind": "bgm",
+        "id": "free",
+        "at": 13979.899999976158,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": true
+      },
+      "balance": 1980,
+      "bet": 20,
+      "sessionNet": -20,
+      "board": [
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": true
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": true
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "free",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base",
+          "free"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.14775000512599945,
+          "free": 0.0027000000700354576
+        },
+        "roundActive": false,
+        "roundWinPlayed": false,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 14,
+        "total": 14,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 10,
+      "freeStartPending": true,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 2903,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 2903.7999999523163,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 3030.599999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 3030.7999999523163,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 3293.599999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 3294.199999988079,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 3367.2999999523163,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-25",
+        "at": 3667.099999964237,
+        "indices": [
+          1,
+          6
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-27",
+        "at": 3667.5,
+        "indices": [
+          1,
+          6
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-28",
+        "at": 3668,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 4318.899999976158,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": true
+      },
+      {
+        "id": "ANIM-27",
+        "at": 4950.299999952316,
+        "indices": [
+          1,
+          6
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-28",
+        "at": 4950.799999952316,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 5601.5,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": true
+      },
+      {
+        "id": "ANIM-27",
+        "at": 6233.599999964237,
+        "indices": [
+          1,
+          6
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-28",
+        "at": 6234.299999952316,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 6885.099999964237,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": true
+      },
+      {
+        "id": "ANIM-25",
+        "at": 7516.699999988079,
+        "indices": [
+          14
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-30",
+        "at": 7517.299999952316,
+        "indices": [
+          14
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-34",
+        "at": 7598.799999952316,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-31",
+        "at": 7599.299999952316,
+        "indices": [
+          1,
+          6,
+          14
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-06",
+        "at": 8700.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 8702,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-46",
+        "at": 13715.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-33",
+        "at": 13978.799999952316,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 13979.099999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 13979.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 13980.099999964237,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-26",
+        "at": 13980.399999976158,
+        "indices": [],
+        "preview": false
+      }
+    ],
+    "seed": 288
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1422.300000011921,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1534.5,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1534.5999999642372,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1534.8999999761581,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_reel_spin.m4a",
+        "duration": 2.5,
+        "lag": 0.20000004768371582,
+        "activeSfx": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 2371.5,
+        "round": 1,
+        "elapsed": 836.6999999880791
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2453.699999988079,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2453.800000011921,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_win_normal.m4a",
+        "duration": 1.5,
+        "lag": 0.10000002384185791,
+        "activeSfx": 0
+      },
+      {
+        "kind": "finished",
+        "id": "win_normal",
+        "at": 3945.199999988079,
+        "round": 1,
+        "elapsed": 1491.3999999761581
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 4042.300000011921,
+        "round": 1,
+        "multiplier": 2,
+        "tier": 1,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 4042.399999976158,
+        "round": 1,
+        "multiplier": 2,
+        "tier": 1,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_win_big.m4a",
+        "duration": 4,
+        "lag": 0.09999996423721313,
+        "activeSfx": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 5427.5,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "mega_win",
+        "at": 5643.5,
+        "round": 1,
+        "multiplier": 3,
+        "tier": 2,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "stopped",
+        "id": "win_big",
+        "at": 5643.599999964237,
+        "round": 1,
+        "elapsed": 1601.199999988079
+      },
+      {
+        "kind": "played",
+        "id": "mega_win",
+        "at": 5643.800000011921,
+        "round": 1,
+        "multiplier": 3,
+        "tier": 2,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_mega_win.m4a",
+        "duration": 5.8,
+        "lag": 0.19999998807907104,
+        "activeSfx": 0
+      },
+      {
+        "kind": "event",
+        "id": "golden_eliminate",
+        "at": 6498.5,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "golden_eliminate",
+        "at": 6498.599999964237,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_golden_eliminate.m4a",
+        "duration": 2,
+        "lag": 0.09999996423721313,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "little_joker",
+        "at": 6762.300000011921,
+        "round": 1,
+        "origin": "joker-reveal",
+        "indices": [
+          18
+        ],
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "little_joker",
+        "at": 6762.300000011921,
+        "round": 1,
+        "origin": "joker-reveal",
+        "indices": [
+          18
+        ],
+        "bus": "sfx",
+        "src": "assets/audio/superace_little_joker-user-177f82c790.m4a",
+        "duration": 2.5,
+        "lag": 0,
+        "activeSfx": 2
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 7567.199999988079,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2028,
+      "bet": 20,
+      "sessionNet": 28,
+      "board": [
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "ANGEL",
+          "gold": true
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.03750000149011612,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": true,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 14,
+        "total": 14,
+        "activeSfx": 2,
+        "active": [
+          {
+            "id": "mega_win",
+            "bus": "music"
+          },
+          {
+            "id": "golden_eliminate",
+            "bus": "sfx"
+          },
+          {
+            "id": "little_joker",
+            "bus": "sfx"
+          }
+        ],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1405.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1406.199999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1537,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1537.300000011921,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 1800.0999999642372,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1800.699999988079,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1873.5,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1944.5,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2015.800000011921,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2087,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 2452.599999964237,
+        "indices": [
+          0,
+          8,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 2453.899999976158,
+        "indices": [
+          0,
+          8,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 3311.099999964237,
+        "indices": [
+          0,
+          8,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 3573.300000011921,
+        "indices": [
+          0,
+          8,
+          10,
+          12,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 3887.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 4041.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 4041.899999976158,
+        "indices": [
+          0,
+          6,
+          7,
+          11,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 4042.5,
+        "indices": [
+          0,
+          6,
+          7,
+          11,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 4895.399999976158,
+        "indices": [
+          0,
+          6,
+          7,
+          11,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 5157.300000011921,
+        "indices": [
+          0,
+          6,
+          7,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 5488,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 5642.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 5642.5,
+        "indices": [
+          3,
+          4,
+          6,
+          7,
+          15,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-14",
+        "at": 5643.099999964237,
+        "indices": [
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 5643.800000011921,
+        "indices": [
+          3,
+          4,
+          6,
+          7,
+          15,
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 6497.599999964237,
+        "indices": [
+          3,
+          4,
+          6,
+          7,
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-15",
+        "at": 6498.699999988079,
+        "indices": [
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 6760,
+        "indices": [
+          3,
+          4,
+          6,
+          7,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-16",
+        "at": 6762.300000011921,
+        "indices": [
+          18
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 7412.899999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 7565.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 7566.399999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 7567.399999976158,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-17",
+        "at": 7567.5,
+        "indices": [],
+        "preview": false
+      }
+    ],
+    "seed": 72
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1383.699999988079,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1479.9000000357628,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1480,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1480.300000011921,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_reel_spin.m4a",
+        "duration": 2.5,
+        "lag": 0.19999998807907104,
+        "activeSfx": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 2319.400000035763,
+        "round": 1,
+        "elapsed": 839.1000000238419
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2401.699999988079,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2401.800000011921,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_win_normal.m4a",
+        "duration": 1.5,
+        "lag": 0,
+        "activeSfx": 0
+      },
+      {
+        "kind": "event",
+        "id": "golden_eliminate",
+        "at": 3259.699999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "golden_eliminate",
+        "at": 3259.900000035763,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_golden_eliminate.m4a",
+        "duration": 2,
+        "lag": 0.10000002384185791,
+        "activeSfx": 1
+      },
+      {
+        "kind": "event",
+        "id": "big_joker",
+        "at": 3523.900000035763,
+        "round": 1,
+        "origin": "joker-reveal",
+        "indices": [
+          1
+        ],
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "big_joker",
+        "at": 3524,
+        "round": 1,
+        "origin": "joker-reveal",
+        "indices": [
+          1
+        ],
+        "bus": "sfx",
+        "src": "assets/audio/superace_big_joker-user-2963fcc0c5.m4a",
+        "duration": 2.5,
+        "lag": 0,
+        "activeSfx": 2
+      },
+      {
+        "kind": "finished",
+        "id": "win_normal",
+        "at": 3895.5,
+        "round": 1,
+        "elapsed": 1493.800000011921
+      },
+      {
+        "kind": "finished",
+        "id": "golden_eliminate",
+        "at": 5265.5,
+        "round": 1,
+        "elapsed": 2005.699999988079
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 5386.199999988079,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 5668.199999988079,
+        "round": 1,
+        "multiplier": 2,
+        "tier": 1,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 5668.400000035763,
+        "round": 1,
+        "multiplier": 2,
+        "tier": 1,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_win_big.m4a",
+        "duration": 4,
+        "lag": 0.10000002384185791,
+        "activeSfx": 1
+      },
+      {
+        "kind": "finished",
+        "id": "big_joker",
+        "at": 6025.600000023842,
+        "round": 1,
+        "elapsed": 2501.699999988079,
+        "origin": "joker-reveal"
+      },
+      {
+        "kind": "event",
+        "id": "mega_win",
+        "at": 7291.600000023842,
+        "round": 1,
+        "multiplier": 3,
+        "tier": 2,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "stopped",
+        "id": "win_big",
+        "at": 7291.600000023842,
+        "round": 1,
+        "elapsed": 1623.300000011921
+      },
+      {
+        "kind": "played",
+        "id": "mega_win",
+        "at": 7291.699999988079,
+        "round": 1,
+        "multiplier": 3,
+        "tier": 2,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_mega_win.m4a",
+        "duration": 5.8,
+        "lag": 0.09999996423721313,
+        "activeSfx": 0
+      },
+      {
+        "kind": "event",
+        "id": "ultimate_win",
+        "at": 8875.699999988079,
+        "round": 1,
+        "multiplier": 5,
+        "tier": 3,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "stopped",
+        "id": "mega_win",
+        "at": 8875.699999988079,
+        "round": 1,
+        "elapsed": 1584
+      },
+      {
+        "kind": "played",
+        "id": "ultimate_win",
+        "at": 8875.800000011921,
+        "round": 1,
+        "multiplier": 5,
+        "tier": 3,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_ultimate_win.m4a",
+        "duration": 7.5,
+        "lag": 0.10000002384185791,
+        "activeSfx": 0
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 10472.300000011921,
+        "round": 1,
+        "origin": "reward-overlay",
+        "title": "BIG WIN",
+        "ratio": 19.05,
+        "bus": "music"
+      },
+      {
+        "kind": "stopped",
+        "id": "ultimate_win",
+        "at": 10472.400000035763,
+        "round": 1,
+        "elapsed": 1596.6000000238419
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 10472.5,
+        "round": 1,
+        "origin": "reward-overlay",
+        "title": "BIG WIN",
+        "ratio": 19.05,
+        "bus": "music",
+        "src": "assets/audio/superace_win_big.m4a",
+        "duration": 4,
+        "lag": 0.19999998807907104,
+        "activeSfx": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 10909.5,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2361,
+      "bet": 20,
+      "sessionNet": 361,
+      "board": [
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.03750000149011612,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": true,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 14,
+        "total": 14,
+        "activeSfx": 0,
+        "active": [
+          {
+            "id": "win_big",
+            "bus": "music"
+          }
+        ],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1370.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1370.9000000357628,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1482.1000000238419,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1482.4000000357628,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 1744.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1745.300000011921,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1818.199999988079,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1889.5,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 1960.800000011921,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2031.699999988079,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 2400.5,
+        "indices": [
+          1,
+          2,
+          5,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-14",
+        "at": 2401.400000035763,
+        "indices": [
+          1
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 2401.800000011921,
+        "indices": [
+          1,
+          2,
+          5,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 3258.600000023842,
+        "indices": [
+          2,
+          5,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-15",
+        "at": 3259.900000035763,
+        "indices": [
+          1
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 3521.400000035763,
+        "indices": [
+          2,
+          5,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-19",
+        "at": 3524,
+        "indices": [
+          1
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-20",
+        "at": 4174.699999988079,
+        "indices": [
+          1
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-21",
+        "at": 4455.400000035763,
+        "indices": [
+          9,
+          3,
+          4,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-22",
+        "at": 4456.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-19",
+        "at": 5110.600000023842,
+        "indices": [
+          9,
+          3,
+          4,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 5511.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 5666.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 5667.199999988079,
+        "indices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          15,
+          17,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 5668.400000035763,
+        "indices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          15,
+          17,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-23",
+        "at": 6522.100000023842,
+        "indices": [
+          1,
+          3,
+          4,
+          9,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 6523,
+        "indices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          15,
+          17,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 6785.199999988079,
+        "indices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          15,
+          17,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-25",
+        "at": 6788.5,
+        "indices": [
+          15
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 7135.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 7290.600000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 7291.100000023842,
+        "indices": [
+          0,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 7291.699999988079,
+        "indices": [
+          0,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 8144.900000035763,
+        "indices": [
+          0,
+          10,
+          12,
+          16
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 8407.100000023842,
+        "indices": [
+          0,
+          10,
+          12,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 8718.900000035763,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-11",
+        "at": 8873.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 8875.300000011921,
+        "indices": [
+          1,
+          10,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 8875.800000011921,
+        "indices": [
+          1,
+          10,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 9729.600000023842,
+        "indices": [
+          1,
+          10,
+          17
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 9991.300000011921,
+        "indices": [
+          1,
+          10,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 10318.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 10471.400000035763,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "CARROT-WATERFALL",
+        "count": 64,
+        "mega": false,
+        "at": 10491.600000023842
+      },
+      {
+        "id": "ANIM-38",
+        "at": 10491.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-46",
+        "at": 10646,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 10908.600000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 10909.699999988079,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-26",
+        "at": 10909.900000035763,
+        "indices": [],
+        "preview": false
+      }
+    ],
+    "seed": 181
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1866.699999988079,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1979.3999999761581,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1979.6000000238419,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1979.8999999761581,
+        "round": 1,
+        "bus": "sfx",
+        "src": "assets/audio/superace_reel_spin.m4a",
+        "duration": 2.5,
+        "lag": 0.2999999523162842,
+        "activeSfx": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 2835.399999976158,
+        "round": 1,
+        "elapsed": 855.5
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2918.199999988079,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2918.399999976158,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music",
+        "src": "assets/audio/superace_win_normal.m4a",
+        "duration": 1.5,
+        "lag": 0.19999998807907104,
+        "activeSfx": 0
+      },
+      {
+        "kind": "finished",
+        "id": "win_normal",
+        "at": 4417.600000023842,
+        "round": 1,
+        "elapsed": 1499.2000000476837
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 4521.199999988079,
+        "round": 1,
+        "origin": "reward-overlay",
+        "title": "BIG WIN",
+        "ratio": 16,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 4521.399999976158,
+        "round": 1,
+        "origin": "reward-overlay",
+        "title": "BIG WIN",
+        "ratio": 16,
+        "bus": "music",
+        "src": "assets/audio/superace_win_big.m4a",
+        "duration": 4,
+        "lag": 0,
+        "activeSfx": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 5867.899999976158,
+        "round": 1
+      },
+      {
+        "kind": "finished",
+        "id": "win_big",
+        "at": 8517.5,
+        "round": 1,
+        "elapsed": 3996.300000011921,
+        "origin": "reward-overlay"
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 8823.199999988079,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2300,
+      "bet": 20,
+      "sessionNet": 300,
+      "board": [
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.11282018572092056,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": true,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 14,
+        "total": 14,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "fx": [
+      {
+        "id": "ANIM-01",
+        "at": 1853.1000000238419,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-13",
+        "at": 1853.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-02",
+        "at": 1981.800000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-03",
+        "at": 1981.8999999761581,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-04",
+        "at": 2247,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2248.399999976158,
+        "indices": [
+          0,
+          5,
+          10,
+          15
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2322.100000023842,
+        "indices": [
+          1,
+          6,
+          11,
+          16
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2393.100000023842,
+        "indices": [
+          2,
+          7,
+          12,
+          17
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2464.300000011921,
+        "indices": [
+          3,
+          8,
+          13,
+          18
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-05",
+        "at": 2537,
+        "indices": [
+          4,
+          9,
+          14,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-07",
+        "at": 2916.600000023842,
+        "indices": [
+          0,
+          3,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-08",
+        "at": 2918.5,
+        "indices": [
+          0,
+          3,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-09",
+        "at": 3775.699999988079,
+        "indices": [
+          0,
+          3,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          19
+        ],
+        "preview": false
+      },
+      {
+        "id": "ANIM-10",
+        "at": 4038.699999988079,
+        "indices": [
+          0,
+          3,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          19
+        ],
+        "preview": false,
+        "slow": false
+      },
+      {
+        "id": "ANIM-24",
+        "at": 4368.600000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-41",
+        "at": 4520.300000011921,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "CARROT-WATERFALL",
+        "count": 64,
+        "mega": false,
+        "at": 4535.899999976158
+      },
+      {
+        "id": "ANIM-38",
+        "at": 4536,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-46",
+        "at": 8561.100000023842,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-12",
+        "at": 8822.5,
+        "indices": [],
+        "preview": false
+      },
+      {
+        "id": "ANIM-01",
+        "at": 8823.399999976158,
+        "indices": [],
+        "preview": false
+      }
+    ],
+    "seed": 8
+  }
+]

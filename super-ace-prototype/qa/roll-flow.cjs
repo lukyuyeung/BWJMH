@@ -1,2 +1,2 @@
-// Current background-through-roll and multiplier music integration.
-require('./cascade-music.cjs');
+// Current roll plus background and event audio integration.
+require('./event-audio.cjs');

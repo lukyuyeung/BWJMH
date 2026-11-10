@@ -57,15 +57,16 @@
     {
       "id": "big_joker",
       "sourceFile": "superace_big_joker.wav",
-      "sourcePath": "Bunny_Gala_Riichi_v2.7.2/super_ace_bgm/superace_big_joker.wav",
-      "src": "assets/audio/superace_big_joker.m4a",
-      "duration": 2.78,
-      "encodedDuration": 2.78,
-      "inputBytes": 445056,
-      "outputBytes": 44638,
+      "sourcePath": "user-upload/superace_big_joker.wav",
+      "src": "assets/audio/superace_big_joker-user-2963fcc0c5.m4a",
+      "duration": 2.5,
+      "encodedDuration": 2.5,
+      "inputBytes": 400256,
+      "outputBytes": 40545,
       "category": "sfx",
       "sampleRate": 44100,
-      "channels": 2
+      "channels": 2,
+      "sourceSha256": "2963fcc0c5eedd105359fdfb84ea79c2c40b861806fb3e7ea7ff95fb8bced113"
     },
     {
       "id": "buy_bonus",
@@ -226,15 +227,16 @@
     {
       "id": "little_joker",
       "sourceFile": "superace_little_joker.wav",
-      "sourcePath": "Bunny_Gala_Riichi_v2.7.2/super_ace_bgm/superace_little_joker.wav",
-      "src": "assets/audio/superace_little_joker.m4a",
-      "duration": 1.5,
-      "encodedDuration": 1.5,
-      "inputBytes": 240256,
-      "outputBytes": 23497,
+      "sourcePath": "user-upload/superace_little_joker.wav",
+      "src": "assets/audio/superace_little_joker-user-177f82c790.m4a",
+      "duration": 2.5,
+      "encodedDuration": 2.5,
+      "inputBytes": 400256,
+      "outputBytes": 40335,
       "category": "sfx",
       "sampleRate": 44100,
-      "channels": 2
+      "channels": 2,
+      "sourceSha256": "177f82c790a1a9e5c6ecad29dda09acddd5043fecddf5ed6d3bfce54788643f2"
     },
     {
       "id": "lobby",
