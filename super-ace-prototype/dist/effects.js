@@ -1,4 +1,4 @@
-import {assetURL,prepareImages,loadImage} from './asset-cache.js?v=smooth-locale-v2';
+import {assetURL,prepareImages,loadImage} from './asset-cache.js?v=ledger-ten-v1';
 import {createPresentationQuality} from './presentation-quality.js?v=comfort-v1';
 import {compactMoney} from './money.js?v=math-v1';
 export const ANIMATION_DEFINITIONS = Object.freeze([

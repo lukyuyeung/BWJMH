@@ -1,5 +1,10 @@
 /** Traditional Chinese source copy → English and Filipino. Brand/game symbols remain unchanged. */
 export const translations={
+'最近10回遊戲':['Latest 10 rounds','Huling 10 round'],
+'回合':['Round','Round'],
+'下注':['Bet','Taya'],
+'派彩':['Payout','Bayad'],
+'點旁邊空白位置返回遊戲':['Tap outside to return to the game','Pindutin sa labas para bumalik sa laro'],
 '蘿蔔':['Carrots','Carrots'],
 '蘿蔔餘額':['Balance','Balanse'],
 '本局獎勵':['Round win','Panalo sa round'],
