@@ -1,14 +1,14 @@
-import {createLoadingGuide} from './loading-guide.js?v=phone-guide-v1';
-import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=phone-guide-v1';
-import {createGameMusic} from './music.js?v=phone-guide-v1';
-import {createRoundHistory} from './round-history.js?v=phone-guide-v1';
-import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=phone-guide-v1';
-import {createCarrotScenes} from './carrot-scenes.js?v=phone-guide-v1';
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=phone-guide-v1';
-import {createPlaybackClock} from './playback-clock.js?v=phone-guide-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=phone-guide-v1';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=phone-guide-v1';
-import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=phone-guide-v1';
+import {createLoadingGuide} from './loading-guide.js?v=phone-guide-v2';
+import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=phone-guide-v2';
+import {createGameMusic} from './music.js?v=phone-guide-v2';
+import {createRoundHistory} from './round-history.js?v=phone-guide-v2';
+import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=phone-guide-v2';
+import {createCarrotScenes} from './carrot-scenes.js?v=phone-guide-v2';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=phone-guide-v2';
+import {createPlaybackClock} from './playback-clock.js?v=phone-guide-v2';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=phone-guide-v2';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=phone-guide-v2';
+import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=phone-guide-v2';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
 const legacy=(()=>{try{return reviewMode?{}:JSON.parse(localStorage.getItem('gala-carrot-v1'))||{}}catch{return{}}})();
@@ -151,9 +151,7 @@ window.galaDebug={getState:()=>({mathVersion:MATH_VERSION,scene:scenes.state,bal
 
 // The first game frame is revealed atomically after all in-play textures are decoded.
 const loading=document.getElementById('assetLoading');
-const forceGuide=new URLSearchParams(location.search).has('loadingGuide');
-const returning=reviewMode||!!localStorage.getItem('gala-carrot-tutorial')||!!activeRound||free>0;
-const guide=createLoadingGuide({root:loading,autoEnter:returning&&!forceGuide,onEnter:()=>{document.body.classList.add('assets-ready');loading.hidden=true;render();idle();music.tryAutoplay();if(!reviewMode)localStorage.setItem('gala-carrot-tutorial','1');if(activeRound||(free&&!freeStartPending)){recoveryPrompt=true;openModal('<h2>繼續已保存的牌局</h2><p>本局結果已保留，恢復不會重新扣除下注或重複發放獎勵。</p><div class="btn-row"><button class="btn primary" id="resumeRound">繼續牌局</button></div>',48);$('#resumeRound').onclick=resumeRecovery}}});
+const guide=createLoadingGuide({root:loading,onEnter:()=>{document.body.classList.add('assets-ready');loading.hidden=true;render();idle();music.tryAutoplay();if(!reviewMode)localStorage.setItem('gala-carrot-tutorial','1');if(activeRound||(free&&!freeStartPending)){recoveryPrompt=true;openModal('<h2>繼續已保存的牌局</h2><p>本局結果已保留，恢復不會重新扣除下注或重複發放獎勵。</p><div class="btn-row"><button class="btn primary" id="resumeRound">繼續牌局</button></div>',48);$('#resumeRound').onclick=resumeRecovery}}});
 const loadingText=document.getElementById('loadingText'),loadingBar=document.getElementById('loadingProgress'),retryAssets=document.getElementById('retryAssets');
 onAssetProgress(({completed,total})=>{if(guide.ready||!retryAssets.hidden)return;loadingBar.max=Math.max(1,total);loadingBar.value=completed;loadingText.textContent=`正在準備遊戲 ${completed} / ${total}`});
 document.addEventListener('pointerdown',()=>{if(visualReady)music.unlock()},{passive:true});document.addEventListener('keydown',()=>{if(visualReady)music.unlock()},{passive:true});
