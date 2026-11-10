@@ -1,15 +1,15 @@
-import {AUDIO_CATALOG} from './audio-catalog.js?v=roll-flow-v1';
+import {AUDIO_CATALOG} from './audio-catalog.js?v=cascade-music-v1';
 const TRACKS=Object.fromEntries(AUDIO_CATALOG.tracks.map(t=>[t.id,t]));
 const LEVELS={intro:.8,lobby:.5,bgm_main:.6,bgm_bonus:.6,card_shuffle:.7,reel_spin:.6,reel_stop:.7,bet_change:.6,turbo_spin:.6,auto_spin:.6,no_win:.5,win_normal:.7,win_countup:.6,coins:.6,golden_card:.8,golden_eliminate:.8,little_joker:.7,big_joker:.8,cascade:.7,multiplier:.8,scatter:.7,scatter_near:.7,freespin_trigger:.9,freespin_retrigger:.8,freespin_bigwin:.9,freespin_result:.7,return_base:.6,win_big:.8,mega_win:.9,ultimate_win:1,jackpot:1,paytable_open:.6,settings_open:.6,pause:.6,quit:.6,no_coins:.7,buy_bonus:.8};
 const MUSIC_CUES=new Set(['intro','win_normal','win_big','mega_win','ultimate_win','jackpot','freespin_bigwin']);
-const GAME_CUES=new Set(['reel_spin','win_normal','win_big','mega_win','ultimate_win','jackpot','freespin_bigwin','freespin_trigger','freespin_retrigger','freespin_result']);
+const GAME_CUES=new Set(['win_normal','win_big','mega_win','ultimate_win','jackpot','freespin_bigwin','freespin_trigger','freespin_retrigger','freespin_result']);
 export function winSound(ratio){return ratio>1000?'jackpot':ratio>=100?'ultimate_win':ratio>=20?'mega_win':ratio>=5?'win_big':'win_normal'}
 /** Independent audio clock, RNG and network: callers never await sound to play a round. */
 export function createGameMusic({enabled=true,storage=null}={}){
  let prefs={musicEnabled:enabled,sfxEnabled:true,voiceEnabled:true,musicVolume:.6,sfxVolume:.7,voiceVolume:.9};
  try{prefs={...prefs,...JSON.parse(storage?.getItem('gala-audio-v2')||'null')}}catch{}
  const players={},bgNodes={},buffers=new Map(),loads=new Map(),queue=[],voices=new Set(),history=[],lastCue=new Map(),stopVersions=new Map();
- let context,output,monitor,mode='lobby',roundActive=false,roundWinPlayed=false,plannedRatio=0,currentFree=false,introCompleted=false,started=false,unlocked=false,mediaUnlocked=false,silentSession=false,paused=false,failed=false,fadeFrame=0,loading=0,warmPromise,warming=false,pauseTimer,generation=0,previewVersion=0,lastVoiceRound=-1,round=0,anticipation=false,lastMultiplier=1;
+ let context,output,monitor,mode='lobby',roundActive=false,roundWinPlayed=false,lastWinningTier=-1,plannedRatio=0,currentFree=false,introCompleted=false,started=false,unlocked=false,mediaUnlocked=false,silentSession=false,paused=false,failed=false,fadeFrame=0,loading=0,warmPromise,warming=false,pauseTimer,generation=0,previewVersion=0,lastVoiceRound=-1,round=0,anticipation=false,lastMultiplier=1;
  const log=(kind,id,extra={})=>{history.push({kind,id,at:performance.now(),round,...extra});if(history.length>1200)history.splice(0,history.length-1200)};
  const save=()=>{try{storage?.setItem('gala-audio-v2',JSON.stringify(prefs))}catch{}};
  function audioContext(){if(!context){const C=globalThis.AudioContext||globalThis.webkitAudioContext;if(C){context=new C();output=context.createDynamicsCompressor();output.threshold.value=-6;output.knee.value=8;output.ratio.value=12;output.attack.value=.003;output.release.value=.12;output.connect(context.destination)}}return context}
@@ -22,17 +22,17 @@ export function createGameMusic({enabled=true,storage=null}={}){
   loads.set(id,promise);return promise;
  }
  function prepare(){if(warming)return warmPromise;warming=true;warmPromise=Promise.allSettled([...GAME_CUES].map(id=>load(id))).finally(()=>warming=false);return warmPromise}
- function bgPlayer(name){if(!players[name]){const id={base:'lobby',free:'bgm_bonus',lobby:'intro'}[name],a=new Audio();a.preload='none';a.loop=name!=='lobby';a.volume=0;a.src=TRACKS[id].src;const ctx=audioContext();if(ctx){const source=ctx.createMediaElementSource(a),gain=ctx.createGain();gain.gain.value=0;source.connect(gain);gain.connect(output);bgNodes[name]={source,gain};a.volume=1;}a.addEventListener('error',()=>{failed=true;log('load-failed',id)});if(name==='lobby')a.addEventListener('ended',()=>{introCompleted=true;if(mode==='lobby'&&!roundActive){mode='base';playBgm()}});players[name]=a}return players[name]}
- function unlockMedia(){if(mediaUnlocked||!prefs.musicEnabled)return;mediaUnlocked=true;for(const name of ['lobby','base','free']){const a=bgPlayer(name);a.play().then(()=>{if(paused||roundActive||voices.size||!prefs.musicEnabled||name!==mode)a.pause()}).catch(()=>{})}}
+ function bgPlayer(name){if(!players[name]){const id={base:'lobby',free:'bgm_bonus',lobby:'intro'}[name],a=new Audio();a.preload='none';a.loop=name!=='lobby';a.volume=0;a.src=TRACKS[id].src;const ctx=audioContext();if(ctx){const source=ctx.createMediaElementSource(a),gain=ctx.createGain();gain.gain.value=0;source.connect(gain);gain.connect(output);bgNodes[name]={source,gain};a.volume=1;}a.addEventListener('error',()=>{failed=true;log('load-failed',id)});if(name==='lobby')a.addEventListener('ended',()=>{introCompleted=true;if(mode==='lobby'){mode='base';playBgm()}});players[name]=a}return players[name]}
+ function unlockMedia(){if(mediaUnlocked||!prefs.musicEnabled)return;mediaUnlocked=true;for(const name of ['lobby','base','free']){const a=bgPlayer(name);a.play().then(()=>{if(paused||!prefs.musicEnabled||name!==mode)a.pause()}).catch(()=>{})}}
  function bgVolume(name){return bgNodes[name]?.gain.gain.value??players[name]?.volume??0}
  function setBgVolume(name,value){if(bgNodes[name])bgNodes[name].gain.gain.value=value;else players[name].volume=value}
  function duck(){return [...voices].some(v=>v.duck)?.25:1}
  function cueGain(id,bus){return prefs[bus+'Volume']*(LEVELS[id]??.8)*(bus==='sfx'?.7:bus==='music'?.75:1)}
- function fade(duration=1300){cancelAnimationFrame(fadeFrame);const start=performance.now(),from=Object.fromEntries(Object.entries(players).map(([n])=>[n,bgVolume(n)]));function tick(now){const t=Math.min(1,Math.max(0,(now-start)/duration));for(const[n,a]of Object.entries(players)){const target=prefs.musicEnabled&&!paused&&!roundActive&&!voices.size&&unlocked&&n===mode?prefs.musicVolume*.5*LEVELS[{base:'lobby',free:'bgm_bonus',lobby:'intro'}[n]]*duck():0;setBgVolume(n,Math.max(0,Math.min(1,(from[n]??0)+(target-(from[n]??0))*t)));if(t===1&&target===0)a.pause()}if(t<1)fadeFrame=requestAnimationFrame(tick)}fadeFrame=requestAnimationFrame(tick)}
- function playBgm(){if(silentSession||roundActive||voices.size||!unlocked||paused||!prefs.musicEnabled)return;const a=bgPlayer(mode);if(a.error)a.load();a.play().catch(()=>{});fade();log('bgm',mode)}
+ function fade(duration=1300){cancelAnimationFrame(fadeFrame);const start=performance.now(),from=Object.fromEntries(Object.entries(players).map(([n])=>[n,bgVolume(n)]));function tick(now){const t=Math.min(1,Math.max(0,(now-start)/duration));for(const[n,a]of Object.entries(players)){const target=prefs.musicEnabled&&!paused&&unlocked&&n===mode?prefs.musicVolume*.5*LEVELS[{base:'lobby',free:'bgm_bonus',lobby:'intro'}[n]]*duck():0;setBgVolume(n,Math.max(0,Math.min(1,(from[n]??0)+(target-(from[n]??0))*t)));if(t===1&&target===0)a.pause()}if(t<1)fadeFrame=requestAnimationFrame(tick)}fadeFrame=requestAnimationFrame(tick)}
+ function playBgm(){if(silentSession||!unlocked||paused||!prefs.musicEnabled)return;const a=bgPlayer(mode);if(a.error)a.load();a.play().catch(()=>{});fade();log('bgm',mode)}
  function stopVoice(v,{natural=false}={}){if(!voices.has(v))return;voices.delete(v);clearTimeout(v.timer);v.source.onended=null;log(natural?'finished':'stopped',v.id,{elapsed:performance.now()-v.at});
-  try{const now=context.currentTime;v.gain.gain.cancelScheduledValues(now);v.gain.gain.setValueAtTime(v.gain.gain.value,now);v.gain.gain.linearRampToValueAtTime(0,now+.12);v.source.stop(now+.125)}catch{}
-  setTimeout(()=>{v.source.disconnect();v.gain.disconnect()},145);v.onend?.();if(!roundActive&&!voices.size)playBgm();else if(v.duck)fade(450);
+  try{const now=context.currentTime,tail=v.bus==='music'?.35:.12;v.gain.gain.cancelScheduledValues(now);v.gain.gain.setValueAtTime(v.gain.gain.value,now);v.gain.gain.linearRampToValueAtTime(0,now+tail);v.source.stop(now+tail+.005)}catch{}
+  setTimeout(()=>{v.source.disconnect();v.gain.disconnect()},365);v.onend?.();if(!roundActive&&!voices.size)playBgm();else if(v.duck)fade(450);
  }
  function stop(id){if(id)stopVersions.set(id,(stopVersions.get(id)||0)+1);else{generation++;previewVersion++}for(const v of [...voices])if(!id||v.id===id)stopVoice(v)}
  function cue(id,{priority=1,maxMs=0,deadline=180,force=false,onend,bus=MUSIC_CUES.has(id)?'music':'sfx',detail={}}={}){
@@ -45,7 +45,7 @@ export function createGameMusic({enabled=true,storage=null}={}){
    const ctx=audioContext();if(!ctx){log('blocked',id);return}if(ctx.state!=='running'){ctx.resume().then(()=>{if(ctx.state==='running')launch(buffer);else log('blocked',id)}).catch(()=>{});return}
    const group=force?[...voices].filter(v=>v.bus===bus):[...voices],limit=force&&bus==='sfx'?2:1;
    if(group.length>=limit){const candidate=group.sort((a,b)=>a.priority-b.priority||a.at-b.at)[0];if(candidate.priority>priority){log('limited',id);return}stopVoice(candidate)}
-   const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=buffer;gain.gain.value=Math.max(0,Math.min(1,cueGain(id,bus)));source.connect(gain);gain.connect(output);
+   const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=buffer;gain.gain.value=Math.max(0,Math.min(1,cueGain(id,bus)));if(!force&&bus==='music'&&id!=='win_normal'){const target=gain.gain.value;gain.gain.value=0;gain.gain.setValueAtTime(0,ctx.currentTime);gain.gain.linearRampToValueAtTime(target,ctx.currentTime+.18)}source.connect(gain);gain.connect(output);
    const v={id,bus,source,gain,priority,at:performance.now(),duck:bus==='voice'||priority>=3,onend};voices.add(v);source.onended=()=>stopVoice(v,{natural:true});source.start();if(maxMs)v.timer=setTimeout(()=>stopVoice(v),maxMs);log('played',id,{...detail,bus,lag:v.at-requestedAt,activeSfx:[...voices].filter(x=>x.bus==='sfx').length});fade(120);
   }
   if(buffers.has(id))launch(buffers.get(id));else load(id,true).then(launch).catch(()=>{});
@@ -53,13 +53,14 @@ export function createGameMusic({enabled=true,storage=null}={}){
  function configure(values){prefs={...prefs,...values};for(const k of ['musicVolume','sfxVolume','voiceVolume'])prefs[k]=Math.min(1,Math.max(0,Number(prefs[k])||0));for(const v of [...voices]){if(!prefs[v.bus+'Enabled'])stopVoice(v);else v.gain.gain.value=cueGain(v.id,v.bus)}save();if(prefs.musicEnabled){if(unlocked)unlockMedia();playBgm();}else fade()}
  function tryAutoplay(){if(silentSession||roundActive||paused||!prefs.musicEnabled)return;const ctx=audioContext(),a=bgPlayer(mode);if(!ctx)return;Promise.all([ctx.resume(),a.play()]).then(()=>{if(ctx.state==='running'){unlocked=true;playBgm()}}).catch(()=>a.pause())}
  function unlock({silent=false}={}){if(unlocked){if(!silent)unlockMedia();return}unlocked=true;silentSession=silent;if(!silent)unlockMedia();const ctx=audioContext();ctx?.resume().then(()=>{if(!silent)playBgm()}).catch(()=>{});prepare()}
- function startRound(free,{shuffle=true,total=0,bet=1}={}){silentSession=false;roundActive=true;started=true;roundWinPlayed=false;plannedRatio=total/bet;currentFree=free;stop();round++;anticipation=false;lastMultiplier=free?2:1;mode=free?'free':'base';fade(180);if(shuffle)cue('reel_spin',{priority:3})}
- function setMode(free){const next=free?'free':started||introCompleted?'base':'lobby';if(next===mode)return;mode=next;playBgm()}
- function winRound(ratio=plannedRatio,free=currentFree){if(roundActive&&roundWinPlayed)return;roundWinPlayed=true;stop('reel_spin');const id=free&&ratio>=10&&ratio<100?'freespin_bigwin':winSound(ratio);cue(id,{priority:3})}
+ function startRound(free,{total=0,bet=1}={}){silentSession=false;roundActive=true;started=true;roundWinPlayed=false;lastWinningTier=-1;plannedRatio=total/bet;currentFree=free;stop();round++;anticipation=false;lastMultiplier=free?2:1;if(free)mode='free';else if(mode==='free')mode='base';playBgm()}
+ function setMode(free){const next=free?'free':mode==='free'?'base':mode;if(next===mode)return;mode=next;playBgm()}
+ function cascadeWin(multiplier,tier=0,free=currentFree){tier=Math.max(0,Math.min(3,tier));if(tier===lastWinningTier)return;lastWinningTier=tier;roundWinPlayed=true;const id=(free?['win_big','mega_win','ultimate_win','freespin_bigwin']:['win_normal','win_big','mega_win','ultimate_win'])[tier];cue(id,{priority:tier===0&&!free?2:3,detail:{multiplier,tier,free}})}
+ function winRound(ratio=plannedRatio,free=currentFree){if(roundActive&&roundWinPlayed)return;roundWinPlayed=true;const id=free&&ratio>=10&&ratio<100?'freespin_bigwin':winSound(ratio);cue(id,{priority:3})}
  function voice(){return false}
- function animation(id){if(id===8)winRound()}
+ function animation(id,detail={}){if(id===8)cascadeWin(detail.multiplier,detail.tier,detail.isFree)}
  function reward(amount,bet,{free=false,total=false}={}){if(total){stop();cue('freespin_result',{priority:3})}else winRound(amount/bet,free)}
- function endRound(free=false){roundActive=false;mode=free?'free':started?'base':'lobby';playBgm()}
+ function endRound(free=false){roundActive=false;if(free)mode='free';else if(mode==='free')mode='base';playBgm()}
  return{prepare,tryAutoplay,unlock,cue,voice,stop,animation,startRound,endRound,setMode,reward,configure,
   feature(extra=false){stop();cue(extra?'freespin_retrigger':'freespin_trigger',{priority:3});},
   setEnabled(value){configure({musicEnabled:!!value})},

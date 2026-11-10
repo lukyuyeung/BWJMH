@@ -1,13 +1,13 @@
-import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=roll-flow-v1';
-import {createGameMusic} from './music.js?v=roll-flow-v1';
-import {createRoundHistory} from './round-history.js?v=roll-flow-v1';
-import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=roll-flow-v1';
-import {createCarrotScenes} from './carrot-scenes.js?v=roll-flow-v1';
-import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=roll-flow-v1';
-import {createPlaybackClock} from './playback-clock.js?v=roll-flow-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=roll-flow-v1';
-import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=roll-flow-v1';
-import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=roll-flow-v1';
+import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=cascade-music-v1';
+import {createGameMusic} from './music.js?v=cascade-music-v1';
+import {createRoundHistory} from './round-history.js?v=cascade-music-v1';
+import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=cascade-music-v1';
+import {createCarrotScenes} from './carrot-scenes.js?v=cascade-music-v1';
+import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=cascade-music-v1';
+import {createPlaybackClock} from './playback-clock.js?v=cascade-music-v1';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=cascade-music-v1';
+import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=cascade-music-v1';
+import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=cascade-music-v1';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reviewMode=new URLSearchParams(location.search).has('review');const sessionStorageAdapter=reviewMode?{getItem:()=>null,setItem:()=>{}}:localStorage;const engine=createEngine(),journal=createJournal(sessionStorageAdapter),saved=journal.read();
 const legacy=(()=>{try{return reviewMode?{}:JSON.parse(localStorage.getItem('gala-carrot-v1'))||{}}catch{return{}}})();
@@ -81,7 +81,7 @@ async function runRecord(record,{recovering=false}={}){
     const result=step.result;if(!result.total){setMultiplier(0,plan.isFree);if(!plan.total){msg('本局沒有中獎。');effect(6)}break}
     const winning=result.positions,angel=winning.filter(i=>board[i].symbol==='ANGEL'),wild=winning.filter(i=>['ANGEL','DEVIL'].includes(board[i].symbol)),gold=winning.filter(i=>board[i].gold&&!['ANGEL','DEVIL'].includes(board[i].symbol));
     setMultiplier(step.index,plan.isFree);if(step.index)effect(11,{target:$('#multipliers .active'),multiplier:step.multiplier});
-    lastWin=Math.round((lastWin+result.total)*100)/100;msg(`連鎖 ${step.index+1} · ×${step.multiplier}`);$$('#board .cell').forEach((n,i)=>n.classList.toggle('dim',!winning.includes(i)));effect(7,{indices:winning});if(gold.length)effect(14,{indices:gold});if(angel.length)effect(18,{indices:angel});effect(8,{indices:winning,amount:result.total});update();await wait(Math.max(850,effects.durationFor(8)));
+    lastWin=Math.round((lastWin+result.total)*100)/100;msg(`連鎖 ${step.index+1} · ×${step.multiplier}`);$$('#board .cell').forEach((n,i)=>n.classList.toggle('dim',!winning.includes(i)));effect(7,{indices:winning});if(gold.length)effect(14,{indices:gold});if(angel.length)effect(18,{indices:angel});effect(8,{indices:winning,amount:result.total,multiplier:step.multiplier,tier:Math.min(step.index,3),isFree:plan.isFree});update();await wait(Math.max(850,effects.durationFor(8)));
     const next=step.next;if(wild.length)effect(23,{indices:wild});effect(9,{indices:next.replacements.map(c=>c.index)});if(next.conversions.length)effect(15,{indices:next.conversions.map(c=>c.index)});await wait(260);
     const intermediate=structuredClone(next.board);for(const copy of next.copies)intermediate[copy.index]=structuredClone(board[copy.index]);board=intermediate;render();const refill=next.replacements.length?effect(10,{indices:next.replacements.map(c=>c.index)}):null;
     const landedCarrots=next.replacements.filter(c=>board[c.index].symbol==='CARROT').map(c=>c.index);if(landedCarrots.length){effect(25,{indices:landedCarrots,carrotCount:board.filter(c=>c.symbol==='CARROT').length});if(board.filter(c=>c.symbol==='CARROT').length>=3)effect(30,{indices:landedCarrots})}

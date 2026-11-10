@@ -1,0 +1,466 @@
+[
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 2638.300000011921,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 6639.5,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 7615.900000035763,
+        "round": 1
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 8540.600000023842,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 1980,
+      "bet": 20,
+      "sessionNet": -20,
+      "board": [
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0.019496507942676544,
+          "base": 0.1378146857023239,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": false,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 9,
+        "total": 9,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "drops": [],
+    "seed": 2
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1514.699999988079,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 5515.300000011921,
+        "round": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 6492.5,
+        "round": 1
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 7427.199999988079,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 7427.899999976158,
+        "round": 1,
+        "multiplier": 1,
+        "tier": 0,
+        "free": false,
+        "bus": "music",
+        "lag": 0.5,
+        "activeSfx": 0
+      },
+      {
+        "kind": "finished",
+        "id": "win_normal",
+        "at": 8924.800000011921,
+        "round": 1,
+        "elapsed": 1497.1000000238419
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 9033.399999976158,
+        "round": 1,
+        "multiplier": 2,
+        "tier": 1,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 9033.599999964237,
+        "round": 1,
+        "multiplier": 2,
+        "tier": 1,
+        "free": false,
+        "bus": "music",
+        "lag": 0.19999998807907104,
+        "activeSfx": 0
+      },
+      {
+        "kind": "event",
+        "id": "mega_win",
+        "at": 10652,
+        "round": 1,
+        "multiplier": 3,
+        "tier": 2,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "stopped",
+        "id": "win_big",
+        "at": 10652,
+        "round": 1,
+        "elapsed": 1618.4000000357628
+      },
+      {
+        "kind": "played",
+        "id": "mega_win",
+        "at": 10652.199999988079,
+        "round": 1,
+        "multiplier": 3,
+        "tier": 2,
+        "free": false,
+        "bus": "music",
+        "lag": 0.09999996423721313,
+        "activeSfx": 0
+      },
+      {
+        "kind": "event",
+        "id": "ultimate_win",
+        "at": 12268.599999964237,
+        "round": 1,
+        "multiplier": 5,
+        "tier": 3,
+        "free": false,
+        "bus": "music"
+      },
+      {
+        "kind": "stopped",
+        "id": "mega_win",
+        "at": 12268.699999988079,
+        "round": 1,
+        "elapsed": 1616.6000000238419
+      },
+      {
+        "kind": "played",
+        "id": "ultimate_win",
+        "at": 12268.800000011921,
+        "round": 1,
+        "multiplier": 5,
+        "tier": 3,
+        "free": false,
+        "bus": "music",
+        "lag": 0.20000004768371582,
+        "activeSfx": 0
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 17015.69999998808,
+        "round": 1
+      },
+      {
+        "kind": "finished",
+        "id": "ultimate_win",
+        "at": 19764.599999964237,
+        "round": 1,
+        "elapsed": 7495.799999952316
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 19764.69999998808,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2148,
+      "bet": 20,
+      "sessionNet": 148,
+      "board": [
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.038564424961805344,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": true,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 9,
+        "total": 9,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "drops": [],
+    "seed": 37
+  }
+]
