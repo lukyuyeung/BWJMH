@@ -4,11 +4,11 @@ import {createLoadingGuide} from './loading-guide.js?v=card-reveal-v1';
 import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=card-reveal-v1';
 import {createGameMusic} from './music.js?v=card-reveal-v1';
 import {createRoundHistory} from './round-history.js?v=card-reveal-v1';
-import {prepareCardAssets,preparePlanAssets,ensureBoardImages,ensureCardImage} from './card-assets.js?v=card-reveal-v1';
-import {createCarrotScenes} from './carrot-scenes.js?v=card-reveal-v1';
+import {prepareCardAssets,preparePlanAssets,ensureBoardImages,ensureCardImage} from './card-assets.js?v=decode-once-v1';
+import {createCarrotScenes} from './carrot-scenes.js?v=visible-scenes-v1';
 import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=card-reveal-v1';
 import {createPlaybackClock} from './playback-clock.js?v=card-reveal-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=card-reveal-v1';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=feed-viewport-v2';
 import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=card-reveal-v1';
 import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=card-reveal-v1';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -152,7 +152,7 @@ const lessons=[['不同位置，也能連成幸運','由最左列開始，至少
 function tutorial(i){const [title,text,art]=lessons[i];openModal(`<h2>${title}</h2>${art}<p>${text}</p><div class="tutorial-progress">${lessons.map((_,j)=>`<i class="${j===i?'active':''}"></i>`).join('')}</div><div class="btn-row"><button class="btn" id="skipLesson">跳過</button><button class="btn primary" id="nextLesson">${i===3?'開始遊戲':'下一步'}</button></div>`,47);const done=()=>{localStorage.setItem('gala-carrot-tutorial','1');close()};$('#skipLesson').onclick=done;$('#nextLesson').onclick=()=>i===3?done():tutorial(i+1)}
 const resetPlaytest=()=>{if(busy||free||activeRound){toast('請先完成目前遊戲');return}openModal('<h2>重新開始試玩？</h2><p>將本瀏覽器的測試蘿蔔重設為 2,000，並停止 Auto。</p><div class="btn-row"><button class="btn" id="cancelReset">取消</button><button class="btn primary" id="confirmReset">重設</button></div>');$('#cancelReset').onclick=close;$('#confirmReset').onclick=()=>{auto=null;balance=2000;bet=20;lastWin=0;sessionTotal.reset(balance);sessionHistory.clear();save();render();close();msg('新的金色時刻，開始吧。')}};
 const demoAnimation=()=>{if(busy||free||activeRound){toast('請先完成目前遊戲');return}auto=null;spin({demo:true})};
-$('#board').addEventListener('error',e=>{const img=e.target;if(img.matches?.('.art-card,.gold-frame-art')&&!img.dataset.cardRepairFailed)ensureCardImage(img).catch(error=>console.error('Card image recovery failed',error))},true);
+$('.app').addEventListener('error',e=>{const img=e.target;if(img.matches?.('.art-card,.gold-frame-art')&&!img.dataset.cardRepairFailed)ensureCardImage(img).catch(error=>console.error('Card image recovery failed',error))},true);
 $('.mouths').innerHTML=Array.from({length:5},()=>'<div class="mouth"><img class="dealer-outlet-art" src="assets/runtime/dealer-outlet-3df1c5ff-display1536w-q90-069c79a9f6db.webp" alt=""><div class="dealer-ready-window"><img src="assets/runtime/back-1ff4ca3b-display512.webp" alt=""></div><div class="dealer-front-lip"><img src="assets/runtime/dealer-outlet-3df1c5ff-display1536w-q90-069c79a9f6db.webp" alt=""></div></div>').join('');
 function alignDealer(){$('.game').style.setProperty('--board-width',$('.board-shell').getBoundingClientRect().width+'px');scenes.resize()}
 new ResizeObserver(alignDealer).observe($('.board-shell'));window.addEventListener('resize',()=>{fitAmounts();alignDealer()});document.fonts.ready.then(fitAmounts);

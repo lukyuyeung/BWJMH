@@ -662,14 +662,17 @@ export function createEffects({clock,root=document,getSpeed=()=>0}={}){
    case 3:add(cardMotion(nodes,[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(12px) scale(.92)'}],d));break;
    case 4:all('.mouth>.dealer-outlet-art').forEach((el,i)=>add(track(el,[{filter:'brightness(1)'},{filter:'brightness(1.45)',offset:.55},{filter:'brightness(1)'}],d,{delay:i*35})));add(sweep(q('.dealer'),d));break;
    case 5:case 10:{
-    // Animate decoded board nodes themselves: no cloned image/texture hand-off at landing.
-    const outlets=all('.mouth').map(el=>el.getBoundingClientRect()),snapshots=nodes.map(el=>({el,card:el.querySelector('.card'),index:Number(el.dataset.index),box:el.getBoundingClientRect()})),feeds=[];
+    // Move the original image through an overflow viewport: no clone, no negative clip-path.
+    const sr=stage.getBoundingClientRect(),outlets=all('.mouth').map(el=>el.getBoundingClientRect()),snapshots=nodes.map(el=>({el,card:el.querySelector('.card'),index:Number(el.dataset.index),box:el.getBoundingClientRect()})),feeds=[];
     snapshots.forEach(({el,card,index,box})=>{if(!card)return;const outlet=outlets[index%5];if(!outlet)return;
-     const token=String(performance.now())+':'+index,travel=outlet.bottom-box.top-box.height+3;el.dataset.feedToken=token;el.classList.add('feed-waiting','feed-active');el.style.clipPath=`inset(${outlet.bottom-2-box.top}px -2px -3px -2px)`;
-     const reveal=()=>{if(el.dataset.feedToken===token){el.classList.remove('feed-waiting','feed-active');el.style.removeProperty('clip-path');delete el.dataset.feedToken}};
-     try{const entry=track(card,[{transform:`translateY(${travel}px)`,opacity:1},{transform:'translateY(3px)',opacity:1,offset:.88},{transform:'translateY(0)',opacity:1}],detail.slow?480:220,{delay:(3-Math.floor(index/5))*(detail.slow?40:20)+(n===10?index%5*12:0),easing:'cubic-bezier(.3,.02,.35,1)',cleanup:reveal});feeds.push(entry);add(entry)}catch{reveal();card.style.removeProperty('transform');card.style.removeProperty('opacity')}
+     const token=String(performance.now())+':'+index,top=outlet.bottom-2,travel=box.top-top;el.dataset.feedToken=token;el.classList.add('feed-waiting');
+     // Retained same-face cards must not inherit a previous discard/elimination transform.
+     for(const old of active)if(old.animation.effect?.target===card){old.animation.cancel();old.settle?.()}
+     const viewport=doc.createElement('div');viewport.className='feed-viewport';Object.assign(viewport.style,{left:`${box.left-sr.left}px`,top:`${top-sr.top}px`,width:`${box.width}px`,height:`${travel+box.height+5}px`});
+     const flight=doc.createElement('div');flight.className='cell feed-card'+(el.classList.contains('carrot')?' carrot':el.classList.contains('wild')?' wild':'');Object.assign(flight.style,{width:`${box.width}px`,height:`${box.height}px`});flight.append(card);viewport.append(flight);stage.append(viewport);
+     const reveal=()=>{if(el.dataset.feedToken===token){el.append(card);el.classList.remove('feed-waiting','feed-active');el.style.removeProperty('clip-path');delete el.dataset.feedToken}viewport.remove()};
+     try{const entry=track(flight,[{transform:`translateY(${-box.height+5}px)`,opacity:1},{transform:`translateY(${travel+3}px)`,opacity:1,offset:.88},{transform:`translateY(${travel}px)`,opacity:1}],detail.slow?480:220,{delay:(3-Math.floor(index/5))*(detail.slow?40:20)+(n===10?index%5*12:0),easing:'cubic-bezier(.3,.02,.35,1)',cleanup:reveal});feeds.push(entry);add(entry)}catch{reveal()}
     });
-    // Pausable presentation-clock guard also covers a lost finish event/promise or stalled animation.
     const guard=clock?.wait?clock.wait(detail.slow?1600:1200):new Promise(resolve=>setTimeout(resolve,detail.slow?1600:1200));
     guard.then(()=>{for(const entry of feeds)if(active.has(entry)){try{entry.animation.finish()}catch{}entry.settle();history.push({id:'FEED-RECOVERED',at:performance.now()})}});
     break;

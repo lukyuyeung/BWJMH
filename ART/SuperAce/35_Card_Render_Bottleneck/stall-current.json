@@ -1,0 +1,1032 @@
+{
+  "boardDecode": [
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 2892.599999964237,
+      "ms": 19.200000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 2893.800000011921,
+      "ms": 18.099999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 2893.800000011921,
+      "ms": 18.099999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 2893.800000011921,
+      "ms": 18.099999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 2893.800000011921,
+      "ms": 18.099999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 2893.800000011921,
+      "ms": 18.099999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 2893.800000011921,
+      "ms": 18.099999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 2894.300000011921,
+      "ms": 17.599999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 2894.300000011921,
+      "ms": 17.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 2894.300000011921,
+      "ms": 17.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 2894.399999976158,
+      "ms": 17.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 2894.399999976158,
+      "ms": 17.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 2894.399999976158,
+      "ms": 17.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 2894.5,
+      "ms": 17.599999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 2894.899999976158,
+      "ms": 17.19999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 2895.199999988079,
+      "ms": 17
+    },
+    {
+      "board": true,
+      "src": "carrot-bonus-96e3f871-display512.webp",
+      "at": 2895.199999988079,
+      "ms": 17
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 2895.199999988079,
+      "ms": 17
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 2895.199999988079,
+      "ms": 19.399999976158142
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 2895.199999988079,
+      "ms": 19.399999976158142
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 4821.800000011921,
+      "ms": 15.699999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 4821.899999976158,
+      "ms": 15.600000023841858
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 4822.199999988079,
+      "ms": 15.300000011920929
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 4822.199999988079,
+      "ms": 15.300000011920929
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.199999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.199999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.199999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.199999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.199999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.199999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.199999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.199999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.299999952316284
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 15.299999952316284
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 16.19999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 16.19999998807907
+    },
+    {
+      "board": true,
+      "src": "carrot-bonus-96e3f871-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 16.19999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 16.19999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 4822.300000011921,
+      "ms": 16.19999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 4822.399999976158,
+      "ms": 16.100000023841858
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 6561.399999976158,
+      "ms": 24.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 6561.399999976158,
+      "ms": 26.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 6561.5,
+      "ms": 26.399999976158142
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 6561.5,
+      "ms": 26.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 6561.5,
+      "ms": 26.599999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 6561.5,
+      "ms": 26.599999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 6561.5,
+      "ms": 26.599999964237213
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 6561.5,
+      "ms": 26.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 6561.5,
+      "ms": 26.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 6562.5,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 6562.5,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 6562.5,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 6562.5,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 6562.5,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 6562.5,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 6562.5,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "carrot-bonus-96e3f871-display512.webp",
+      "at": 6562.599999964237,
+      "ms": 25.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 6562.599999964237,
+      "ms": 25.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 6562.599999964237,
+      "ms": 25.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 6562.599999964237,
+      "ms": 25.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 8291.599999964237,
+      "ms": 20.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 8291.699999988079,
+      "ms": 20.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 8291.699999988079,
+      "ms": 20.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 8292.5,
+      "ms": 19.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 8292.599999964237,
+      "ms": 19.400000035762787
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 8292.699999988079,
+      "ms": 19.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 8292.699999988079,
+      "ms": 19.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 8292.699999988079,
+      "ms": 19.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 8292.699999988079,
+      "ms": 19.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 8292.699999988079,
+      "ms": 19.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 8292.699999988079,
+      "ms": 19.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 8292.699999988079,
+      "ms": 19.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 8292.800000011921,
+      "ms": 19.299999952316284
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 8292.800000011921,
+      "ms": 19.299999952316284
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 8292.800000011921,
+      "ms": 19.299999952316284
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 8293.199999988079,
+      "ms": 18.899999976158142
+    },
+    {
+      "board": true,
+      "src": "carrot-bonus-96e3f871-display512.webp",
+      "at": 8293.199999988079,
+      "ms": 18.899999976158142
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 8293.199999988079,
+      "ms": 18.899999976158142
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 8293.199999988079,
+      "ms": 19.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 8293.199999988079,
+      "ms": 19.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 9971.399999976158,
+      "ms": 1.699999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 9971.399999976158,
+      "ms": 1.699999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 9971.5,
+      "ms": 1.5999999642372131
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 9971.5,
+      "ms": 1.5999999642372131
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 9971.5,
+      "ms": 1.5999999642372131
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 9971.5,
+      "ms": 1.5999999642372131
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 9971.5,
+      "ms": 1.5999999642372131
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 9971.5,
+      "ms": 1.699999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 9971.5,
+      "ms": 1.699999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 9971.5,
+      "ms": 1.699999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 9971.5,
+      "ms": 1.699999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 9971.5,
+      "ms": 1.699999988079071
+    },
+    {
+      "board": true,
+      "src": "card-normal-C-73a092d1-display512.webp",
+      "at": 9972.300000011921,
+      "ms": 4.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 9972.300000011921,
+      "ms": 4.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 9972.300000011921,
+      "ms": 4.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 9972.300000011921,
+      "ms": 4.5
+    },
+    {
+      "board": true,
+      "src": "carrot-bonus-96e3f871-display512.webp",
+      "at": 9972.300000011921,
+      "ms": 4.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 9972.300000011921,
+      "ms": 4.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 9972.300000011921,
+      "ms": 4.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 9972.300000011921,
+      "ms": 4.5
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 11610.5,
+      "ms": 28.80000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 11613.599999964237,
+      "ms": 25.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 11613.599999964237,
+      "ms": 25.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 11613.599999964237,
+      "ms": 25.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 11613.599999964237,
+      "ms": 25.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-C-73a092d1-display512.webp",
+      "at": 11613.699999988079,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 11613.699999988079,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 11613.699999988079,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 11613.699999988079,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 11613.699999988079,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 11613.699999988079,
+      "ms": 25.80000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 11613.699999988079,
+      "ms": 25.80000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-C-73a092d1-display512.webp",
+      "at": 11613.800000011921,
+      "ms": 25.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 11613.800000011921,
+      "ms": 28.799999952316284
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 11614.399999976158,
+      "ms": 28.19999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-C-73a092d1-display512.webp",
+      "at": 11614.399999976158,
+      "ms": 28.19999998807907
+    },
+    {
+      "board": true,
+      "src": "carrot-bonus-96e3f871-display512.webp",
+      "at": 11614.399999976158,
+      "ms": 28.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 11614.399999976158,
+      "ms": 28.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 11614.399999976158,
+      "ms": 28.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 11614.5,
+      "ms": 28.19999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 13321.699999988079,
+      "ms": 65.69999998807907
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 13321.899999976158,
+      "ms": 66.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 13321.899999976158,
+      "ms": 66.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-Q-b52d82e1-display512.webp",
+      "at": 13321.899999976158,
+      "ms": 66.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 13327,
+      "ms": 61.30000001192093
+    },
+    {
+      "board": true,
+      "src": "card-normal-C-73a092d1-display512.webp",
+      "at": 13327.599999964237,
+      "ms": 60.700000047683716
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 13327.699999988079,
+      "ms": 61
+    },
+    {
+      "board": true,
+      "src": "card-normal-H-312374d8-display512.webp",
+      "at": 13327.699999988079,
+      "ms": 61
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 13327.699999988079,
+      "ms": 61
+    },
+    {
+      "board": true,
+      "src": "card-normal-A-d590f7a4-display512.webp",
+      "at": 13327.699999988079,
+      "ms": 61
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 13327.699999988079,
+      "ms": 61.10000002384186
+    },
+    {
+      "board": true,
+      "src": "card-normal-K-b7bb9d8d-display512.webp",
+      "at": 13327.800000011921,
+      "ms": 61
+    },
+    {
+      "board": true,
+      "src": "card-normal-C-73a092d1-display512.webp",
+      "at": 13327.800000011921,
+      "ms": 61
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 13328.800000011921,
+      "ms": 60
+    },
+    {
+      "board": true,
+      "src": "card-normal-J-42a47a8f-display512.webp",
+      "at": 13328.800000011921,
+      "ms": 60
+    },
+    {
+      "board": true,
+      "src": "card-normal-C-73a092d1-display512.webp",
+      "at": 13328.800000011921,
+      "ms": 60
+    },
+    {
+      "board": true,
+      "src": "carrot-bonus-96e3f871-display512.webp",
+      "at": 13328.899999976158,
+      "ms": 59.90000003576279
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 13328.899999976158,
+      "ms": 59.90000003576279
+    },
+    {
+      "board": true,
+      "src": "card-normal-D-8325c3d0-display512.webp",
+      "at": 13328.899999976158,
+      "ms": 59.90000003576279
+    },
+    {
+      "board": true,
+      "src": "card-normal-S-1bdd33f2-display512.webp",
+      "at": 13328.899999976158,
+      "ms": 60
+    }
+  ],
+  "saves": [],
+  "frames": [
+    99.89999999999964,
+    66.69999999999982,
+    83.30000000000018,
+    100,
+    116.69999999999891,
+    66.60000000000036
+  ],
+  "slow": [
+    {
+      "name": "RunTask",
+      "ms": 92.874
+    },
+    {
+      "name": "RunTask",
+      "ms": 83.885
+    },
+    {
+      "name": "PrePaint",
+      "ms": 82.743,
+      "data": {
+        "frame": "0B52F71E747B10A4F3B2FA972606B0DD",
+        "isMainFrame": true,
+        "isOutermostMainFrame": true,
+        "page": "0B52F71E747B10A4F3B2FA972606B0DD"
+      }
+    },
+    {
+      "name": "RunTask",
+      "ms": 79.804
+    },
+    {
+      "name": "RunTask",
+      "ms": 75.386
+    },
+    {
+      "name": "TimerFire",
+      "ms": 74.63,
+      "data": {
+        "frame": "0B52F71E747B10A4F3B2FA972606B0DD",
+        "timerId": 178
+      }
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 74.591
+    },
+    {
+      "name": "RunTask",
+      "ms": 68.376
+    },
+    {
+      "name": "RunTask",
+      "ms": 67.285
+    },
+    {
+      "name": "TimerFire",
+      "ms": 66.342,
+      "data": {
+        "frame": "0B52F71E747B10A4F3B2FA972606B0DD",
+        "timerId": 282
+      }
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 63.176
+    },
+    {
+      "name": "RunTask",
+      "ms": 62.589
+    },
+    {
+      "name": "TimerFire",
+      "ms": 62.564,
+      "data": {
+        "frame": "0B52F71E747B10A4F3B2FA972606B0DD",
+        "timerId": 152
+      }
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 62.523
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 59.149
+    },
+    {
+      "name": "RunTask",
+      "ms": 55.104
+    },
+    {
+      "name": "TimerFire",
+      "ms": 54.431,
+      "data": {
+        "frame": "0B52F71E747B10A4F3B2FA972606B0DD",
+        "timerId": 229
+      }
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 54.386
+    }
+  ],
+  "totals": [
+    [
+      "RunTask",
+      8575.705000000913
+    ],
+    [
+      "UpdateLayoutTree",
+      927.3110000000003
+    ],
+    [
+      "RasterTask",
+      876.7940000000004
+    ],
+    [
+      "RunMicrotasks",
+      783.5129999999996
+    ],
+    [
+      "TimerFire",
+      596.143
+    ],
+    [
+      "PrePaint",
+      496.6509999999998
+    ],
+    [
+      "Layerize",
+      422.96299999999917
+    ],
+    [
+      "Layout",
+      421.1419999999999
+    ],
+    [
+      "Commit",
+      415.539
+    ],
+    [
+      "FireAnimationFrame",
+      317.9519999999991
+    ],
+    [
+      "FunctionCall",
+      290.3260000000009
+    ],
+    [
+      "Paint",
+      288.73999999999893
+    ],
+    [
+      "HitTest",
+      83.41600000000001
+    ],
+    [
+      "PaintImage",
+      49.57000000000027
+    ],
+    [
+      "UpdateLayer",
+      40.40100000000106
+    ],
+    [
+      "MajorGC",
+      29.464
+    ],
+    [
+      "V8.GC_MARK_COMPACTOR",
+      29.248
+    ],
+    [
+      "ParseHTML",
+      23.617
+    ],
+    [
+      "V8.GC_MC_INCREMENTAL",
+      20.793999999999993
+    ],
+    [
+      "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+      18.645999999999997
+    ]
+  ],
+  "balance": 2148
+}

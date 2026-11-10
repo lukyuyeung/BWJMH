@@ -1,0 +1,187 @@
+{
+  "boardDecode": [],
+  "saves": [],
+  "frames": [
+    100.09999999999991,
+    66.59999999999991,
+    83.30000000000018,
+    66.59999999999854
+  ],
+  "slow": [
+    {
+      "name": "RunTask",
+      "ms": 73.644
+    },
+    {
+      "name": "TimerFire",
+      "ms": 73.608,
+      "data": {
+        "frame": "BB802619169EB8E20A11DDA4B55FC791",
+        "timerId": 143
+      }
+    },
+    {
+      "name": "RunTask",
+      "ms": 73.092
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 72.736
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 67.759
+    },
+    {
+      "name": "RunTask",
+      "ms": 66.647
+    },
+    {
+      "name": "TimerFire",
+      "ms": 66.433,
+      "data": {
+        "frame": "BB802619169EB8E20A11DDA4B55FC791",
+        "timerId": 149
+      }
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 66.394
+    },
+    {
+      "name": "RunTask",
+      "ms": 61.423
+    },
+    {
+      "name": "TimerFire",
+      "ms": 61.396,
+      "data": {
+        "frame": "BB802619169EB8E20A11DDA4B55FC791",
+        "timerId": 132
+      }
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 61.356
+    },
+    {
+      "name": "RunTask",
+      "ms": 50.701
+    },
+    {
+      "name": "TimerFire",
+      "ms": 50.678,
+      "data": {
+        "frame": "BB802619169EB8E20A11DDA4B55FC791",
+        "timerId": 155
+      }
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 50.637
+    },
+    {
+      "name": "RunTask",
+      "ms": 49.614
+    },
+    {
+      "name": "TimerFire",
+      "ms": 49.593,
+      "data": {
+        "frame": "BB802619169EB8E20A11DDA4B55FC791",
+        "timerId": 138
+      }
+    },
+    {
+      "name": "RunMicrotasks",
+      "ms": 49.559
+    },
+    {
+      "name": "RunTask",
+      "ms": 45.233
+    }
+  ],
+  "totals": [
+    [
+      "RunTask",
+      8101.964000000856
+    ],
+    [
+      "UpdateLayoutTree",
+      959.616
+    ],
+    [
+      "RasterTask",
+      737.5999999999996
+    ],
+    [
+      "RunMicrotasks",
+      709.0219999999993
+    ],
+    [
+      "TimerFire",
+      590.532
+    ],
+    [
+      "Layerize",
+      459.8779999999995
+    ],
+    [
+      "Layout",
+      414.06899999999996
+    ],
+    [
+      "PrePaint",
+      403.1549999999998
+    ],
+    [
+      "Commit",
+      348.66600000000057
+    ],
+    [
+      "Paint",
+      275.92099999999886
+    ],
+    [
+      "FireAnimationFrame",
+      268.09999999999934
+    ],
+    [
+      "FunctionCall",
+      222.8730000000005
+    ],
+    [
+      "HitTest",
+      65.77999999999999
+    ],
+    [
+      "PaintImage",
+      49.66300000000028
+    ],
+    [
+      "MajorGC",
+      39.326
+    ],
+    [
+      "V8.GC_MARK_COMPACTOR",
+      38.165
+    ],
+    [
+      "UpdateLayer",
+      33.013000000000446
+    ],
+    [
+      "V8.GC_MC_INCREMENTAL",
+      28.967999999999993
+    ],
+    [
+      "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+      22.338000000000005
+    ],
+    [
+      "V8.GC_MC_BACKGROUND_MARKING",
+      21.759000000000004
+    ]
+  ],
+  "balance": 2148
+}
