@@ -1,4 +1,4 @@
-import {prepareImages} from './asset-cache.js?v=card-reveal-v1';
+import {prepareImages} from './asset-cache.js?v=carrot-suspense-v1';
 const symbols=['J','Q','K','A','S','H','C','D'];
 const paths=symbols.flatMap(s=>['normal','gold'].map(t=>`assets/art/card-${t}-${s}.png`)).concat(['assets/art/carrot-bonus.png','assets/art/wild-angel-fitted.svg','assets/art/wild-devil-fitted.svg','assets/art/card-gold-overlay.png','assets/back.png']);
 export function prepareCardAssets(){return prepareImages(paths)}

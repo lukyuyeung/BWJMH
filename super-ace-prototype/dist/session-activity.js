@@ -1,4 +1,4 @@
-import {summariseRound} from './round-history.js?v=card-reveal-v1';
+import {summariseRound} from './round-history.js?v=carrot-suspense-v1';
 const empty=()=>({rows:[],charged:0,payout:0,count:0});
 const valid=r=>r&&typeof r.id==='string'&&Number.isFinite(r.bet)&&Number.isFinite(r.payout)&&Number.isFinite(r.charged)&&Array.isArray(r.steps);
 export function createSessionActivity(storage,key='gala-session-ledger-v2',legacyKey='gala-session-history-v1'){
