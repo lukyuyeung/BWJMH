@@ -1,0 +1,19 @@
+/* Reallocate the portrait viewport; individual cards keep their 625:835 shape. */
+.app{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+.app .game{display:grid;grid-template-rows:44px 64px minmax(0,1fr) 78px 116px;gap:10px;justify-content:normal;align-content:stretch;--card-row-gap:12px}
+.app .multipliers{height:44px}
+.app .dealer{height:64px}
+.app .board-zone{height:100%;min-height:0;place-items:center}
+/* H = 1.063296W - 4.2752(column gap) + 3(row gap), from 5x4 portrait cards and4%padding. */
+.app .board-shell{width:min(100cqw,calc((100cqh + 4.2752 * var(--card-gap) - 3 * var(--card-row-gap)) / 1.063296));max-width:100%;place-self:center}
+.app .board{row-gap:var(--card-row-gap);column-gap:var(--card-gap)}
+.app .balance-bar{height:78px}
+.app .controls{height:116px;grid-template-columns:52px 52px minmax(92px,1fr) 52px 52px;grid-template-rows:92px 20px;row-gap:4px}
+.app #spin{width:92px;height:92px}
+.app #minus,.app #plus,.app #auto,.app #speed{width:48px;height:48px;min-width:48px;min-height:48px}
+.app #auto .control-icon,.app #speed .control-icon{top:3px;width:31px;height:28px}
+.app #speed[data-speed='1'] .control-icon{width:34px}
+.app #auto small,.app #speed small{font-size:10px;line-height:12px;bottom:4px}
+@media(min-height:880px){.app .game{grid-template-rows:48px 76px minmax(0,1fr) 86px 126px;gap:16px}.app .multipliers{height:48px}.app .dealer{height:76px}.app .balance-bar{height:86px}.app .controls{height:126px;grid-template-columns:56px 56px minmax(100px,1fr) 56px 56px;grid-template-rows:100px 22px}.app #spin{width:100px;height:100px}.app #freePill{font-size:13px;line-height:20px}}
+@media(max-height:700px){.app .game{grid-template-rows:32px 44px minmax(0,1fr) 62px 94px;gap:6px;--card-row-gap:6px}.app .multipliers{height:32px}.app .dealer{height:44px}.app .balance-bar{height:62px}.app .controls{height:94px;grid-template-columns:48px 48px minmax(72px,1fr) 48px 48px;grid-template-rows:72px 18px}.app #spin{width:72px;height:72px}.app #minus,.app #plus,.app #auto,.app #speed{width:44px;height:44px;min-width:44px;min-height:44px}.app #auto .control-icon,.app #speed .control-icon{width:28px;height:25px}.app #speed[data-speed='1'] .control-icon{width:31px}.app #auto small,.app #speed small{font-size:9px;line-height:11px}}
+@media(max-width:350px){.app .controls{grid-template-columns:44px 44px minmax(72px,1fr) 44px 44px}}
