@@ -93,3 +93,7 @@
 ## 舊版方形牌布局（已取代）
 
 ![舊版](90_History/11-superseded-square-card-layout.png)
+
+## 26 · Portrait spacing and rabbit loading guide
+
+[Four illustrated lessons, independent rabbit art and phone layout](26_Phone_Layout_Loading_Guide/README.md)
