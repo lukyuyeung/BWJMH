@@ -1,3 +1,4 @@
+import {installCardImageRecovery} from './card-image-recovery.js?v=baseline-visibility-v1';
 import {createLoadingGuide} from './loading-guide.js?v=guide-no-title-v1';
 import {assetURL,loadImage,prepareImages,presentationSources,onAssetProgress,assetStats} from './asset-cache.js?v=guide-no-title-v1';
 import {createGameMusic} from './music.js?v=guide-no-title-v1';
@@ -6,7 +7,7 @@ import {prepareCardAssets,preparePlanAssets} from './card-assets.js?v=guide-no-t
 import {createCarrotScenes} from './carrot-scenes.js?v=guide-no-title-v1';
 import {compactMoney,exactMoney,betStep,clampBet,ratioBets,parseMoney,validBet,createSessionTotal} from './money.js?v=guide-no-title-v1';
 import {createPlaybackClock} from './playback-clock.js?v=guide-no-title-v1';
-import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=guide-no-title-v1';
+import {createEffects,ANIMATION_DEFINITIONS} from './effects.js?v=baseline-visibility-v1';
 import {buildRoundPlan,applyBonus,settleRound,createJournal} from './round-plan.js?v=guide-no-title-v1';
 import {createEngine,BASE_MULTIPLIERS,FREE_MULTIPLIERS,DEFAULT_PAYTABLE,MATH_VERSION,BET_UNIT,maxBet} from './engine.js?v=guide-no-title-v1';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -22,12 +23,13 @@ const sessionTotal=createSessionTotal(reviewMode?sessionStorageAdapter:sessionSt
 const fmt=compactMoney,suits={S:'♠',H:'♥',C:'♣',D:'♦'},durations=[1,.5],playback=createPlaybackClock(),effects=createEffects({clock:playback,getSpeed:()=>speed});
 const wait=ms=>playback.wait(ms),effect=(id,detail={})=>{music.animation(id,detail);return effects.play('ANIM-'+String(id).padStart(2,'0'),detail)};
 const scenes=createCarrotScenes(effects);
+const cardImageRecovery=installCardImageRecovery($('.app'),{recoverFeed:index=>effects.recoverFeed(index)});
 const pauseReasons=new Set();
 function msg(t){$('#message').textContent=t}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),2800)}
 function setSound(value){soundOn=!!value;sessionStorageAdapter.setItem('gala-music-enabled',soundOn?'1':'0');music.setEnabled(soundOn);update()}
 function save(){if(isDemo)return;journal.write({balance,bet,board,free,freeTotal,lastWin,freeStartPending,active:activeRound})}
-function cardHTML(c){const special=['CARROT','ANGEL','DEVIL'].includes(c.symbol),path=c.symbol==='CARROT'?'carrot-bonus.png':c.symbol==='ANGEL'?'wild-angel-fitted.svg':c.symbol==='DEVIL'?'wild-devil-fitted.svg':`card-${c.gold?'gold':'normal'}-${c.symbol}.png`;return `<div class="card ${special?'special':''} ${c.gold?'gold':''}"><img class="art-card" src="${assetURL(`assets/art/${path}`)}" alt="${c.symbol}">${c.gold&&!special?'<img class="gold-frame-art" src="assets/runtime/card-gold-overlay-5576f9fc-display512.webp" alt="" aria-hidden="true">':''}</div>`}
+function cardHTML(c){const special=['CARROT','ANGEL','DEVIL'].includes(c.symbol),path=c.symbol==='CARROT'?'carrot-bonus.png':c.symbol==='ANGEL'?'wild-angel-fitted.svg':c.symbol==='DEVIL'?'wild-devil-fitted.svg':`card-${c.gold?'gold':'normal'}-${c.symbol}.png`;return `<div class="card ${special?'special':''} ${c.gold?'gold':''}"><img class="art-card" data-card-source="${assetURL(`assets/art/${path}`)}" src="${assetURL(`assets/art/${path}`)}" alt="${c.symbol}">${c.gold&&!special?'<img class="gold-frame-art" data-card-source="assets/runtime/card-gold-overlay-5576f9fc-display512.webp" src="assets/runtime/card-gold-overlay-5576f9fc-display512.webp" alt="" aria-hidden="true">':''}</div>`}
 function render(){const nodes=$$('#board .cell');board.forEach((c,i)=>{let n=nodes[i];if(!n){n=document.createElement('div');$('#board').append(n)}n.className='cell '+(c.symbol==='CARROT'?'carrot':['ANGEL','DEVIL'].includes(c.symbol)?'wild':'');n.dataset.index=i;n.setAttribute('aria-label',`${Math.floor(i/5)+1}行${i%5+1}列 ${c.symbol}`);const key=c.symbol+':'+Number(c.gold);if(n.dataset.face!==key){n.innerHTML=cardHTML(c);n.dataset.face=key}});update()}
 let amountFitFrame=0;
 function fitAmounts(){if(amountFitFrame)return;amountFitFrame=requestAnimationFrame(()=>{amountFitFrame=0;const fields=[];
@@ -101,7 +103,7 @@ async function runRecord(record,{recovering=false}={}){
   if(auto&&!plan.isFree&&!record.autoApplied){auto.left--;record.autoApplied=true;effect(43,{target:$('#auto')});if(auto.left<=0||plan.total/roundBet>=auto.ratio||balance<auto.lower||balance>auto.upper||roundBet>maxBet(balance)){auto=null;effect(43,{stopped:true})}}
   activeRound=null;msg(plan.total?`本局獲得 ${fmt(plan.total)} 蘿蔔`:'本局沒有中獎。');save();effect(12);
  }catch(error){console.error(error);auto=null;msg('牌局已保存，重新整理後繼續。');toast('已保留本局結果，請重新整理恢復。')}
- finally{busy=false;isDemo=false;render();if(plan.isFree&&free===0&&!activeRound){setMultiplier(0,false);effect(33)}music.endRound(free>0);idle()}
+ finally{effects.finishFeeds();$$('#board .reveal-cover').forEach(el=>el.remove());busy=false;isDemo=false;render();if(plan.isFree&&free===0&&!activeRound){setMultiplier(0,false);effect(33)}music.endRound(free>0);idle()}
  if(activeRound)return;
  if(free>0&&freeStartPending){setMultiplier(0,true);update();return}
  if(free>0){if(free===1){effect(35,{target:$('#freePill')});msg('最後一次免費遊戲')}await wait(400);spin()}else if(auto&&!stopRequested){await wait(650);if(auto&&!busy)spin()}
@@ -150,7 +152,7 @@ window.addEventListener('offline',()=>pausePresentation('offline'));window.addEv
 $('#connectionDialog').addEventListener('cancel',e=>e.preventDefault());if(!navigator.onLine)pausePresentation('offline');if(document.hidden)pausePresentation('hidden');
 async function resumeRecovery(){recoveryPrompt=false;$('#modal').close();if(activeRound)return runRecord(activeRound,{recovering:true});if(free)return spin()}
 render();setMultiplier(0,free>0||!!activeRound?.plan.isFree);alignDealer();
-window.galaDebug={getState:()=>({mathVersion:MATH_VERSION,scene:scenes.state,balance,bet,sessionNet:sessionTotal.net(balance),board:structuredClone(board),visualReady,assets:assetStats(),music:music.state,free,freeStartPending,busy,speed,auto,quality:effects.quality.level,activeRound:activeRound?{id:activeRound.id,credited:activeRound.credited,bonusApplied:activeRound.bonusApplied,mathVersion:activeRound.plan.mathVersion??'legacy-unversioned'}:null}),spin,help,tutorial,demoAnimation,resetPlaytest,effects,scenes,audio:music,history,showHistory,previewFeature:async(n=10,extra=false)=>{if(!reviewMode)return;await bootPromise;if(!visualReady)return;busy=true;update();try{await feature(n,extra);free=n;freeStartPending=!extra;setMultiplier(0,true)}finally{busy=false;render()}},definitions:ANIMATION_DEFINITIONS,previewAnimation:id=>effects.preview(id),setReviewState:state=>{if(!reviewMode)return;if(Number.isFinite(state.balance))balance=state.balance;if(Number.isFinite(state.bet))bet=state.bet;if(Number.isFinite(state.lastWin))lastWin=state.lastWin;if(state.board)board=structuredClone(state.board);if(Number.isInteger(state.heat))setMultiplier(state.heat,!!state.isFree);render()},setReviewSpeed:mode=>{if(reviewMode){speed=Number(mode)===1?1:0;update()}},previewReward:async(amount=280)=>{await bootPromise;if(visualReady)return prize(amount>=600?'MEGA WIN':'BIG WIN',amount,'rewardGo',amount>=600?39:38)},pause:()=>pausePresentation('review'),resume:()=>resumePresentation('review')};
+window.galaDebug={getCardRecovery:()=>({images:cardImageRecovery.read(),feeds:effects.history.filter(e=>e.id==='CARD-REVEAL-RECOVERED')}),getState:()=>({mathVersion:MATH_VERSION,scene:scenes.state,balance,bet,sessionNet:sessionTotal.net(balance),board:structuredClone(board),visualReady,assets:assetStats(),music:music.state,free,freeStartPending,busy,speed,auto,quality:effects.quality.level,activeRound:activeRound?{id:activeRound.id,credited:activeRound.credited,bonusApplied:activeRound.bonusApplied,mathVersion:activeRound.plan.mathVersion??'legacy-unversioned'}:null}),spin,help,tutorial,demoAnimation,resetPlaytest,effects,scenes,audio:music,history,showHistory,previewFeature:async(n=10,extra=false)=>{if(!reviewMode)return;await bootPromise;if(!visualReady)return;busy=true;update();try{await feature(n,extra);free=n;freeStartPending=!extra;setMultiplier(0,true)}finally{busy=false;render()}},definitions:ANIMATION_DEFINITIONS,previewAnimation:id=>effects.preview(id),setReviewState:state=>{if(!reviewMode)return;if(Number.isFinite(state.balance))balance=state.balance;if(Number.isFinite(state.bet))bet=state.bet;if(Number.isFinite(state.lastWin))lastWin=state.lastWin;if(state.board)board=structuredClone(state.board);if(Number.isInteger(state.heat))setMultiplier(state.heat,!!state.isFree);render()},setReviewSpeed:mode=>{if(reviewMode){speed=Number(mode)===1?1:0;update()}},previewReward:async(amount=280)=>{await bootPromise;if(visualReady)return prize(amount>=600?'MEGA WIN':'BIG WIN',amount,'rewardGo',amount>=600?39:38)},pause:()=>pausePresentation('review'),resume:()=>resumePresentation('review')};
 
 // The first game frame is revealed atomically after all in-play textures are decoded.
 const loading=document.getElementById('assetLoading');
