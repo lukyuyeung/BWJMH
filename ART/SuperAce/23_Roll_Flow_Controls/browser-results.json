@@ -1,0 +1,840 @@
+[
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1480.3999999761581,
+        "round": 0
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1610.1000000238419,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1610.300000011921,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.19999998807907104,
+        "activeSfx": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2179,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2243.399999976158,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2326.600000023842,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2393.100000023842,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2460.600000023842,
+        "round": 1
+      },
+      {
+        "kind": "finished",
+        "id": "reel_spin",
+        "at": 4115.600000023842,
+        "round": 1,
+        "elapsed": 2505.300000011921
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 4116.100000023842,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 1980,
+      "bet": 20,
+      "sessionNet": -20,
+      "board": [
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.15000000596046448,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": false,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 10,
+        "total": 10,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "seed": 2
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1497.5,
+        "round": 0
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1609.2999999523163,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1609.5999999642372,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.20000004768371582,
+        "activeSfx": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2159.2999999523163,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2242.199999988079,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2309,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2375.399999976158,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2458.7999999523163,
+        "round": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 2541.2999999523163,
+        "round": 1,
+        "elapsed": 931.7999999523163
+      },
+      {
+        "kind": "event",
+        "id": "win_big",
+        "at": 2541.399999976158,
+        "round": 1,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_big",
+        "at": 2541.599999964237,
+        "round": 1,
+        "bus": "music",
+        "lag": 0.19999998807907104,
+        "activeSfx": 0
+      },
+      {
+        "kind": "finished",
+        "id": "win_big",
+        "at": 6550.599999964237,
+        "round": 1,
+        "elapsed": 4009
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 12147.399999976158,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2148,
+      "bet": 20,
+      "sessionNet": 148,
+      "board": [
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.15000000596046448,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": true,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 10,
+        "total": 10,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "seed": 37
+  },
+  {
+    "history": [
+      {
+        "kind": "bgm",
+        "id": "lobby",
+        "at": 1544.199999988079,
+        "round": 0
+      },
+      {
+        "kind": "event",
+        "id": "reel_spin",
+        "at": 1653.199999988079,
+        "round": 1,
+        "bus": "sfx"
+      },
+      {
+        "kind": "played",
+        "id": "reel_spin",
+        "at": 1653.5,
+        "round": 1,
+        "bus": "sfx",
+        "lag": 0.30000001192092896,
+        "activeSfx": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2208.699999988079,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2293.5,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2357.899999976158,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2424.600000023842,
+        "round": 1
+      },
+      {
+        "kind": "suppressed",
+        "id": "reel_stop",
+        "at": 2491.399999976158,
+        "round": 1
+      },
+      {
+        "kind": "stopped",
+        "id": "reel_spin",
+        "at": 2573.600000023842,
+        "round": 1,
+        "elapsed": 920.1000000238419
+      },
+      {
+        "kind": "event",
+        "id": "win_normal",
+        "at": 2573.699999988079,
+        "round": 1,
+        "bus": "music"
+      },
+      {
+        "kind": "played",
+        "id": "win_normal",
+        "at": 2573.800000011921,
+        "round": 1,
+        "bus": "music",
+        "lag": 0.10000002384185791,
+        "activeSfx": 0
+      },
+      {
+        "kind": "finished",
+        "id": "win_normal",
+        "at": 4064.100000023842,
+        "round": 1,
+        "elapsed": 1490.300000011921
+      },
+      {
+        "kind": "bgm",
+        "id": "base",
+        "at": 7687.399999976158,
+        "round": 1
+      }
+    ],
+    "state": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2028,
+      "bet": 20,
+      "sessionNet": 28,
+      "board": [
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "ANGEL",
+          "gold": true
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [
+          "base"
+        ],
+        "gains": {
+          "lobby": 0,
+          "base": 0.15000000596046448,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": true,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 10,
+        "total": 10,
+        "activeSfx": 0,
+        "active": [],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 0,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    },
+    "seed": 72
+  },
+  {
+    "freeTexts": [
+      "免費 10 次 · 待開始",
+      "免費 10 次",
+      "免費 9 次",
+      "免費 8 次",
+      "免費 7 次",
+      "免費 6 次",
+      "免費 5 次",
+      "免費 4 次",
+      "免費 3 次",
+      "免費 2 次",
+      "免費 1 次"
+    ],
+    "final": {
+      "mathVersion": "bunny-ace-2026-11-09-v1",
+      "scene": {
+        "heat": 0,
+        "free": false
+      },
+      "balance": 2168,
+      "bet": 20,
+      "sessionNet": 168,
+      "board": [
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        },
+        {
+          "symbol": "A",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": true
+        },
+        {
+          "symbol": "Q",
+          "gold": true
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "Q",
+          "gold": false
+        },
+        {
+          "symbol": "H",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "D",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "J",
+          "gold": false
+        },
+        {
+          "symbol": "K",
+          "gold": false
+        },
+        {
+          "symbol": "C",
+          "gold": false
+        },
+        {
+          "symbol": "CARROT",
+          "gold": false
+        },
+        {
+          "symbol": "S",
+          "gold": false
+        }
+      ],
+      "visualReady": true,
+      "assets": {
+        "decoded": 99,
+        "pending": 0,
+        "queued": 0
+      },
+      "music": {
+        "enabled": true,
+        "mode": "base",
+        "unlocked": true,
+        "paused": false,
+        "failed": false,
+        "playing": [],
+        "gains": {
+          "lobby": 0,
+          "base": 0,
+          "free": 0
+        },
+        "roundActive": false,
+        "roundWinPlayed": false,
+        "settings": {
+          "musicEnabled": true,
+          "sfxEnabled": true,
+          "voiceEnabled": true,
+          "musicVolume": 0.6,
+          "sfxVolume": 0.7,
+          "voiceVolume": 0.9
+        },
+        "ready": 10,
+        "total": 10,
+        "activeSfx": 1,
+        "active": [
+          {
+            "id": "freespin_result",
+            "bus": "sfx"
+          }
+        ],
+        "hasVo": false,
+        "missingVo": [
+          "vo_superace_yellow.wav",
+          "vo_superace_wizard.wav",
+          "vo_superace_ninja.wav",
+          "vo_superace_king.wav"
+        ]
+      },
+      "free": 0,
+      "freeStartPending": false,
+      "busy": false,
+      "speed": 1,
+      "auto": null,
+      "quality": "medium",
+      "activeRound": null
+    }
+  }
+]

@@ -1,3 +1,5 @@
+最新更新：[待機、Roll、單段中獎與獨立AUTO／速度圖案](23_Roll_Flow_Controls/README.md)。
+
 最新更新：[金牌及第一個CARROT出現時不播提示聲](22_Quiet_Reveal/README.md)。
 
 最新更新：[聲音留白：減少背景與音效堆疊](21_Quiet_Audio_Mix/README.md)。

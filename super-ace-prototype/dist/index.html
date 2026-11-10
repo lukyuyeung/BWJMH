@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="free-rabbit.css?v=smooth-v1">
 <link rel="stylesheet" href="smooth.css?v=smooth-v1">
 <link rel="stylesheet" href="audio-controls.css?v=audio-guide-v1">
+<link rel="stylesheet" href="roll-controls.css?v=roll-flow-v1">
 </head>
 <body>
 <section id="assetLoading" class="asset-loading" role="status" aria-live="polite"><div class="loading-brand"><img src="assets/runtime/bunny-gala-transparent-34aa9c81-display768w.webp" alt="Bunny Gala"></div><p id="loadingText">正在準備遊戲…</p><progress id="loadingProgress" max="1" value="0" aria-label="遊戲圖片載入進度"></progress><button id="retryAssets" hidden>重新載入圖片</button></section>
@@ -29,17 +30,17 @@
 <div class="multipliers" id="multipliers" aria-label="連鎖倍率"><span class="active">×1</span><span>×2</span><span>×3</span><span>×5</span></div>
 <div class="dealer" aria-hidden="true"><div class="mouths"></div></div>
 <div class="board-zone"><div class="board-shell"><div class="board" id="board" aria-label="五列四行撲克牌盤面"><img class="table-brand" src="assets/runtime/bunny-gala-transparent-34aa9c81-display768w.webp" alt="" aria-hidden="true"></div><div class="rays" id="rays"></div><div class="win-pop" id="winPop"></div></div></div>
-<span id="message" class="sr-only" aria-live="polite"></span><span class="free-pill" id="freePill" hidden></span>
+<span id="message" class="sr-only" aria-live="polite"></span>
 <div class="balance-bar"><button id="balanceEntry" class="money-field" aria-label="查看完整蘿蔔餘額"><label>蘿蔔餘額</label><span class="amount-value"><img class="amount-carrot" src="assets/runtime/carrot-49719a53-q90-0da1bff27175.webp" alt=""><strong id="balance">2,000</strong></span></button><button id="betEntry" class="money-field" aria-label="選擇下注"><label>BET</label><span class="amount-value"><img class="amount-carrot" src="assets/runtime/carrot-49719a53-q90-0da1bff27175.webp" alt=""><strong id="bet">20</strong></span></button><button id="winEntry" class="money-field" aria-label="查看本局派彩明細"><label>本局獎勵</label><span class="amount-value"><img class="amount-carrot" src="assets/runtime/carrot-49719a53-q90-0da1bff27175.webp" alt=""><strong id="win">0</strong></span></button></div>
 <div class="controls">
-<div class="spin-controls"><button class="bet-adjust" id="minus" aria-label="減少下注">−</button><button class="bet-adjust" id="plus" aria-label="增加下注">＋</button><button class="spin" id="spin" aria-label="開始旋轉"><span class="spin-arrow">↻</span><span class="spin-word">SPIN</span></button></div>
-<div class="secondary-controls right"><button class="tool" id="auto" aria-label="自動遊戲設定"><span>⟳</span><small>AUTO</small></button><button class="tool" id="speed" aria-label="切換遊戲速度"><span>ϟ</span><small>正常</small></button></div>
+<div class="spin-controls"><button class="bet-adjust" id="minus" aria-label="減少下注">−</button><button class="bet-adjust" id="plus" aria-label="增加下注">＋</button><button class="spin" id="spin" aria-label="開始旋轉"><span class="spin-arrow">↻</span></button></div>
+<span class="free-pill" id="freePill" hidden aria-live="polite"></span><div class="secondary-controls right"><button class="tool" id="auto" aria-label="自動遊戲設定"><img class="control-icon" src="assets/art/v7/control-auto-button.webp" alt=""><small>AUTO</small></button><button class="tool" id="speed" aria-label="切換遊戲速度"><img class="control-icon" id="speedIcon" src="assets/art/v7/control-speed-normal-button.webp" alt=""><small>正常</small></button></div>
 </div>
 </section>
 </main>
 <dialog id="modal"><div class="modal-head"><span class="eyebrow">BUNNY GALA</span><button id="closeModal" aria-label="關閉">×</button></div><div id="modalContent"></div></dialog>
 <dialog id="connectionDialog"><h2>牌局已暫停</h2><p>連線恢復後，繼續同一局已保存的結果。</p></dialog>
 <div class="toast" id="toast" role="status"></div>
-<script type="module" src="app.js?v=quiet-reveal-v1"></script>
+<script type="module" src="app.js?v=roll-flow-v1"></script>
 </body>
 </html>

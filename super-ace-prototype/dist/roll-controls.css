@@ -1,0 +1,9 @@
+/* Original independent gold icons replace font glyphs; button surfaces stay aligned. */
+#auto .control-icon,#speed .control-icon{position:absolute;top:3px;left:50%;transform:translateX(-50%);width:28px;height:25px;object-fit:contain;pointer-events:none}
+#speed[data-speed='1'] .control-icon{width:31px}
+.app .controls{height:100px;grid-template-rows:78px 20px;row-gap:2px;flex-shrink:0;align-items:center}
+.app .board-zone{height:min(calc(100cqh - 258px - 100cqw / 5.45),calc(100cqw / .938))}
+.app #freePill{position:static;grid-column:3;grid-row:2;align-self:start;justify-self:center;min-height:18px;padding:0;margin:0;background:none;border:0;color:#ffe5ac;font-size:12px;line-height:18px;text-align:center;white-space:nowrap;pointer-events:none}
+.app #freePill[hidden]{display:none}
+#spin .spin-word{display:none!important}
+@media(max-height:700px){.app .controls{height:84px;grid-template-rows:64px 18px;row-gap:2px}.app .board-zone{height:min(calc(100cqh - 197px - 100cqw / 5.45),calc(100cqw / .938))}.app #freePill{font-size:11px}}

@@ -1,0 +1,47 @@
+[
+  {
+    "name": "control-auto",
+    "original": [
+      1254,
+      1254
+    ],
+    "bounds": [
+      117,
+      90,
+      1117,
+      1174
+    ],
+    "transparentFraction": 0.6471616187053104,
+    "runtimeBytes": 39332
+  },
+  {
+    "name": "control-speed-normal",
+    "original": [
+      1254,
+      1254
+    ],
+    "bounds": [
+      300,
+      161,
+      939,
+      1106
+    ],
+    "transparentFraction": 0.7817052417908625,
+    "runtimeBytes": 28926
+  },
+  {
+    "name": "control-speed-fast",
+    "original": [
+      1329,
+      1183
+    ],
+    "bounds": [
+      169,
+      270,
+      1139,
+      932
+    ],
+    "transparentFraction": 0.7224710232176806,
+    "runtimeBytes": 35754
+  }
+]
