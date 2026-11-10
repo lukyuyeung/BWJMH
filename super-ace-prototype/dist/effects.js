@@ -1,4 +1,4 @@
-import {assetURL,prepareImages} from './asset-cache.js?v=session-speed-v1';
+import {assetURL,prepareImages} from './asset-cache.js?v=guide-no-title-v1';
 import {createPresentationQuality} from './presentation-quality.js?v=comfort-v1';
 import {compactMoney} from './money.js?v=math-v1';
 export const ANIMATION_DEFINITIONS = Object.freeze([

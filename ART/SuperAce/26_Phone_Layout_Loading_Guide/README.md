@@ -21,3 +21,5 @@
 `npm test`29passing checks. `qa/portrait-layout.cjs` six sizes320×568 through430×932,20portrait cards, per-axis even gutters, dealer alignment, accessible44pxminimum keys, no document scrolling. `qa/desktop-fit.cjs` five desktop/touch configurations. `qa/loading-guide.cjs` four decoded pages on three touch sizes, entry/replay preserves wallet, mandatory manual entry on both first/returning visits. See prototype QA sources for reproducible checks.
 
 2026-11-10 revision: removed01–04 labels; gold-hat rabbit now holds the approved gold K card. Updated independent PNG master and runtime WebP.
+
+Revision: remove the entire upper English lesson headings (WAYS WIN / GOLD TO WILD / FREE SPINS / CASCADE), rather than only their numbers. Keep the illustrations and Chinese instructional copy. Updated screenshots and browser assertion for absence of the heading element.
